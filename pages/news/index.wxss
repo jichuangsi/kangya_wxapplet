@@ -1,0 +1,57 @@
+/* pages/news/index.wxss */
+
+news {
+  height: 100%;
+}
+news .list {
+  margin-bottom: 20rpx;
+}
+news .list .smallbox{
+  width: 100%;
+  border-radius: 5rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f2f2f2;
+  position: relative;
+}
+news .list .smallbox .left {
+  display: inline-block;
+  vertical-align: top;
+}
+news .list .smallbox .left image {
+  width: 208rpx;
+  height: 188rpx;
+  display: inline-block;
+  vertical-align: top;
+}
+news .list .smallbox .right {
+  width: 468rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+  vertical-align: top;
+}
+news .list .smallbox .right .smallboxtitle {
+  font-size: 36rpx;
+  line-height: 56rpx;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow: hidden;
+}
+news .list .smallbox .right .smallboxtext {
+  font-size: 26rpx;
+  line-height: 46rpx;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow: hidden;
+}
+news .list .smallbox .right .money {
+  position: absolute;
+  right: 20rpx;
+  bottom: 30rpx;
+  display: flex;
+}
+.p4 {
+  font-size: 24rpx;
+  color: #999;
+}

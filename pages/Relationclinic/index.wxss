@@ -1,0 +1,67 @@
+/* pages/Relationclinic/index.wxss */
+.Relationclinic {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  padding: 20rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.center .ipt {
+  width: 100%;
+  height: 56rpx;
+  display: flex;
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+}
+.center .ipt input {
+  flex: 1;
+  height: 56rpx;
+  line-height: 56rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  margin-left: 20rpx;
+}
+.btn {
+  width: 98%;
+  height: 76rpx;
+  text-align: center;
+  line-height: 76rpx;
+  letter-spacing: 5rpx;
+  background-color: #16c7ae;
+  color: #fff;
+  font-size: 32rpx;
+  margin: 20rpx auto;
+}
+.nobtn {
+  opacity: 0.6;
+}

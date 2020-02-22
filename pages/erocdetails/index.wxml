@@ -1,0 +1,167 @@
+<!--pages/erocdetails/index.wxml-->
+
+<view class="erocdetails">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="a1" wx:if="{{title=='每日看板'}}">
+      <view class="time" bindtap="oneday">
+        {{time}}
+        <van-icon name="arrow-down" />
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日初诊成交总额（元）
+        </view>
+        <view class="boxcenter">
+        0.00
+        </view>
+        <view class="boxbottom">
+        昨日 0.00 丨 成交率 0.00%
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日诊疗收入（元）
+        </view>
+        <view class="boxcenter">
+        0.00
+        </view>
+        <view class="boxbottom">
+        昨日 0.00
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日现金流入（元）
+        </view>
+        <view class="boxcenter">
+        0.00
+        </view>
+        <view class="boxbottom">
+        昨日 0.00
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日欠款总额（元）
+        </view>
+        <view class="boxcenter">
+        0.00
+        </view>
+        <view class="boxbottom">
+        昨日 0.00
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日新增预交款总额（元）
+        </view>
+        <view class="boxcenter">
+        0.00
+        </view>
+        <view class="boxbottom">
+        昨日 0.00
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日退款总额（元）
+        </view>
+        <view class="boxcenter">
+        0.00
+        </view>
+        <view class="boxbottom">
+        昨日 0.00
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日预约人数（人次）
+        </view>
+        <view class="boxcenter">
+        0
+        </view>
+        <view class="boxbottom">
+        昨日 0
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日初诊人数（人次）
+        </view>
+        <view class="boxcenter">
+        0
+        </view>
+        <view class="boxbottom">
+        昨日 0 丨 初诊率 0.00%
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日复诊人数（人次）
+        </view>
+        <view class="boxcenter">
+        0
+        </view>
+        <view class="boxbottom">
+        昨日 0
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日流失数（人次）
+        </view>
+        <view class="boxcenter">
+        0
+        </view>
+        <view class="boxbottom">
+        昨日 0 丨 流失率 0.00%
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日新开会员卡数（张）
+        </view>
+        <view class="boxcenter">
+        0
+        </view>
+        <view class="boxbottom">
+        昨日 0
+        </view>
+      </view>
+      <view class="box">
+        <view class="boxtop">
+        今日会员充值总额（元）
+        </view>
+        <view class="boxcenter">
+        0.00
+        </view>
+        <view class="boxbottom">
+        昨日 0.00
+        </view>
+      </view>
+      <view class="h3">
+        <image src="../../images/my_icon_Praise.png"></image>
+        今日TOP指数
+      </view>
+      <view class="li">
+        <view>今日销售项目TOP3</view>
+      </view>
+      <view class="li">
+        <view>今日医生业绩TOP3</view>
+      </view>
+      <view class="li">
+        <view>今日咨询师业绩TOP3</view>
+      </view>
+    </view>
+  </view>
+  <van-popup
+    show="{{ show }}"
+    position="top"
+    bind:close="onClose"
+  >
+  </van-popup>
+</view>

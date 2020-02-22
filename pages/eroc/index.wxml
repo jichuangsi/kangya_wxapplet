@@ -1,0 +1,32 @@
+<!--pages/eroc/index.wxml-->
+<view class="eroc">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <van-grid column-num="3">
+    <van-grid-item icon="../../../images/clinic_operate_icon_kanban.png" text="每日看板" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=每日看板" />
+    <van-grid-item icon="../../../images/clinic_operate_icon_seeadoctor.png" text="就诊分析" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=就诊分析"/>
+    <van-grid-item icon="../../../images/clinic_operate_icon_reservation.png" text="预约分析" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=预约分析"/>
+    <van-grid-item icon="../../../images/clinic_operate_icon_thegrid.png" text="电网分析" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=电网分析"/>
+    <van-grid-item icon="../../../images/clinic_operate_icon_market.png" text="市场分析" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=市场分析"/>
+    <van-grid-item icon="../../../images/clinic_operate_icon_consulting.png" text="咨询分析" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=咨询分析"/>
+    <van-grid-item icon="../../../images/clinic_operate_icon_diagnosis.png" text="诊疗分析" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=诊疗分析"/>
+    <van-grid-item icon="../../../images/clinic_operate_icon_business.png" text="营业分析" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=营业分析"/>
+    <van-grid-item icon="../../../images/clinic_operate_icon_spending.png" text="支出分析" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=支出分析"/>
+    <van-grid-item icon="../../../images/clinic_operate_icon_returnvisit.png" text="回访分析" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=回访分析"/>
+    <van-grid-item icon="../../../images/clinic_operate_icon_chain.png" text="连锁分析" link-type="navigateTo"
+    url="/pages/erocdetails/index?title=连锁分析"/>
+  </van-grid>
+</view>
+

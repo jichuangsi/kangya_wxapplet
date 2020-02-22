@@ -1,0 +1,26 @@
+<!--pages/Relationclinic/index.wxml-->
+<view class="Relationclinic">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="ipt">
+      <van-icon name="home-o" />
+      <input value="{{clinicnum}}" placeholder="诊所管家号" bindinput="iptclinicnum"></input>
+    </view>
+    <view class="ipt">
+      <van-icon name="user-o" />
+      <input value="{{name}}" placeholder="诊所员工姓名" bindinput="iptname"></input>
+    </view>
+    <view class="ipt">
+      <van-icon name="bag" />
+      <input value="{{psw}}" password="{{pswstate}}" placeholder="密码（6-16）位" bindinput="iptpsw"></input>
+      <van-icon wx-if="{{!pswstate}}" name="eye-o" data-id="0" bindtap="pswcheck"/>
+      <van-icon wx-if="{{pswstate}}" name="closed-eye" data-id="1" bindtap="pswcheck"/>
+    </view>
+  </view>
+    <view class="{{state?'btn':'btn nobtn'}}" bindtap="btn">
+    完成
+    </view>
+</view>

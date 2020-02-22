@@ -1,0 +1,56 @@
+/* pages/addfriend/index.wxss */
+.addfriend {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.van-nav-bar__title {
+  color: #fff !important;
+}
+.van-nav-bar__text {
+  color: #fff !important;
+}
+van-icon {
+  vertical-align: middle !important;
+}
+.van-nav-bar__arrow {
+  color: #fff !important;
+}
+.van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.van-nav-bar__right {
+  height: 100%;
+}
+.ipt {
+  width: 100%;
+  height: 100rpx;
+  border: 20rpx solid #f2f2f2;
+  border-right: none;
+  border-left: none;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  box-sizing: border-box;
+}
+button {
+  display: flex;
+  width: 100% !important;
+  background-color: #fff;
+  align-items: center;
+  font-weight: 500;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+button image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}

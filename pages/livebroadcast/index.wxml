@@ -1,0 +1,165 @@
+<!--pages/livebroadcast/index.wxml-->
+<view class="livebroadcast">
+  <scroll-view scroll-y="true" style="height: 90vh;" bindscrolltolower="uptouch">
+  <view style="background-color: #5fc18d;">
+   <swiper indicator-dots='true' indicator-color='#666' indicator-active-color='#fff' circular='true'>
+    <swiper-item>
+    1
+    </swiper-item>
+    <swiper-item>
+    2
+    </swiper-item>
+  </swiper>
+  </view>
+  <van-grid border="{{borderstate}}">
+    <van-grid-item icon="../../../images/5.png" text="正畸" link-type="navigateTo"
+    url="/pages/studynav/index?id=正畸&&state=1" />
+    <van-grid-item icon="../../../images/6.png" text="种植" link-type="navigateTo"
+    url="/pages/studynav/index?id=种植&&state=1"/>
+    <van-grid-item icon="../../../images/7.png" text="修复" link-type="navigateTo"
+    url="/pages/studynav/index?id=修复&&state=1"/>
+    <van-grid-item icon="../../../images/8.png" text="根管" link-type="navigateTo"
+    url="/pages/studynav/index?id=根管&&state=1"/>
+    <van-grid-item icon="../../../images/9.png" text="牙周" link-type="navigateTo"
+    url="/pages/studynav/index?id=牙周&&state=1"/>
+    <van-grid-item icon="../../../images/10.png" text="管理" link-type="navigateTo"
+    url="/pages/studynav/index?id=管理&&state=1"/>
+    <van-grid-item icon="../../../images/11.png" text="营销" link-type="navigateTo"
+    url="/pages/studynav/index?id=营销&&state=1"/>
+    <van-grid-item icon="../../../images/12.png" text="耗材教学" link-type="navigateTo"
+    url="/pages/studynav/index?id=耗材教学&&state=1"/>
+  </van-grid>
+  <view class="nav">
+    <navigator url="/pages/studynav/index?id=免费课程&&state=2" hover-class="navigator-hover">
+    <view class="li">
+    <image src="../../images/learning_theme_course-1.png"></image>
+    </view>
+    </navigator>
+    <navigator url="/pages/studynav/index?id=明星主播&&state=2" hover-class="navigator-hover">
+    <view class="li" style="background-color: #ea7171;">
+      <image src="../../images/learning_theme_anchor.png"></image>
+    </view>
+    </navigator>
+    <navigator url="/pages/studynav/index?id=限时低价&&state=2" hover-class="navigator-hover">
+    <view class="li" style="background-color: #ab86e0;">
+      <image src="../../images/learning_theme_timelimit.png"></image>
+    </view>
+    </navigator>
+    <navigator url="/pages/studynav/index?id=讲师入驻&&state=3" hover-class="navigator-hover">
+    <view class="li" style="background-color: #759cdd;">
+      <image src="../../images/learning_theme_lecturer.png"></image>
+    </view>
+    </navigator>
+  </view>
+  <view class="xian">
+  </view>
+  <view class="box">
+    <view class="title">
+      <view class="h3">
+      直播预告
+      </view>
+      <navigator url="/pages/studynav/index?id=直播预告&&state=2" hover-class="navigator-hover">
+      <view class="all">
+      查看全部
+      <van-icon name="arrow" />
+      </view>
+      </navigator>
+    </view>
+    <swiper indicator-dots='true' indicator-color='#16c7ae' indicator-active-color='#999' circular='true'>
+      <swiper-item wx:for="{{[1,1]}}">
+    <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+        <view class="smallbox">
+          <view class="left">
+            <image src="../../images/5.png"></image>
+          </view>
+          <view class="right">
+            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
+            <view class="smallboxtext">02月06日 19：30<van-tag type="danger">预告</van-tag></view>
+            <view class="smallboxtext">
+              <van-icon name="clock-o" /> 预告中
+            </view>
+            <view class="money">
+              <!-- <view class='p1'>免费</view> -->
+              <view class='p2'>￥59.00</view>
+              <view class='p3'>￥0.00</view>
+            </view>
+          </view>
+        </view>
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="xian">
+  </view>
+  <view class="box">
+    <view class="title">
+      <view class="h3">
+      系列课
+      </view>
+      <navigator url="/pages/studynav/index?id=系列课&&state=2" hover-class="navigator-hover">
+      <view class="all">
+      查看全部
+      <van-icon name="arrow" />
+      </view>
+      </navigator>
+    </view>
+    <swiper indicator-dots='true' indicator-color='#16c7ae' indicator-active-color='#999' circular='true'>
+      <swiper-item  wx:for="{{[1,1]}}">
+      <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+        <view class="smallbox">
+          <view class="left">
+            <image src="../../images/5.png"></image>
+          </view>
+          <view class="right">
+            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
+            <view class="smallboxtext">02月06日 19：30</view>
+            <view class="smallboxtext">
+              已开课3节丨147次学习
+            </view>
+            <view class="money">
+              <view class='p1'>免费</view>
+              <!-- <view class='p2'>￥59.00</view>
+              <view class='p3'>￥0.00</view> -->
+            </view>
+          </view>
+        </view>
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="xian">
+  </view>
+  <view class="box list">
+    <view class="title">
+      <view class="h3">
+      单课程
+      </view>
+      <navigator url="/pages/studynav/index?id=正畸&&state=1" hover-class="navigator-hover">
+      <view class="all">
+      查看全部336个
+      <van-icon name="arrow" />
+      </view>
+      </navigator>
+    </view>
+        <view class="smallbox" wx:for="{{course_arr}}">
+        <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+          <view class="left">
+            <image src="../../images/5.png"></image>
+          </view>
+          <view class="right">
+            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
+            <view class="smallboxtext">02月06日 19：30</view>
+            <view class="smallboxtext">
+              已开课3节丨147次学习
+            </view>
+            <view class="money">
+              <view class='p1'>免费</view>
+              <!-- <view class='p2'>￥59.00</view>
+              <view class='p3'>￥0.00</view> -->
+            </view>
+          </view>
+          </navigator>
+        </view>
+  </view>
+</scroll-view>
+</view>

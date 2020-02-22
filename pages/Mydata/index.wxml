@@ -1,0 +1,129 @@
+<!--pages/Mydata/index.wxml-->
+<view class="Mydata">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft"
+      bind:click-right="onClickRight"  >
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="li" bindtap="showPopup">
+      <view class="left">
+        头像
+      </view>
+      <view class="right">
+        <image src="../../images/my_headportrait_male.png"></image>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="li" data-text="设置姓名" bindtap="editgo">
+      <view class="left">
+        姓名
+      </view>
+      <view class="right">
+        <view>请输入姓名</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="li" bindtap="showPopup2">
+      <view class="left">
+        性别
+      </view>
+      <view class="right">
+        <view>情选择性别</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+  <navigator url="/pages/QRCode/index" hover-class="navigator-hover">
+    <view class="li">
+      <view class="left">
+        我的二维码
+      </view>
+      <view class="right">
+        <van-icon name="arrow" />
+      </view>
+    </view>
+  </navigator>
+    <view class="li" data-text="设置年龄" bindtap="editgo">
+      <view class="left">
+        年龄
+      </view>
+      <view class="right">
+        <view>1</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="li" data-text="选择职称" bindtap="editgo">
+      <view class="left">
+        职称
+      </view>
+      <view class="right">
+        <view>执业助理医师</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="li" bindtap="showPopup1">
+      <view class="left">
+        地区
+      </view>
+      <view class="right">
+        <view>广西南宁兴宁区</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="li" data-text="编辑个性签名" bindtap="editgo">
+      <view class="left">
+        个性签名
+      </view>
+      <view class="right">
+        <view>编辑个性签名</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="li" data-text="添加项目" bindtap="editgo">
+      <view class="left">
+        擅长项目
+      </view>
+    </view>
+    <view class="project" data-text="添加项目" bindtap="editgo">
+      <view class="project_li">+ 添加项目</view>
+      <!-- <view class="project_li"></view> -->
+    </view>
+    <view class="li" data-text="编辑从医履历" bindtap="editgo">
+      <view class="left">
+        从医履历
+      </view>
+      <view class="right">
+        <view>编辑个性签名</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="text" data-text="编辑从医履历" bindtap="editgo">
+     情介绍自己的从业经验和特长，以方便患者在微信公众平台了解你。
+    </view>
+    <view class="btn">
+       退出登录
+    </view>
+  </view>
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+  <view class="userimg" wx:if="{{text == '头像'}}">
+    <view catchtap="pz">拍照</view>
+    <view catchtap="xc">相册</view>
+    <view class="xian"></view>
+    <view class="qx" catchtap="onClose">取消</view>
+  </view>
+  <view class="area" wx:if="{{text == '地区'}}">
+    <van-area area-list="{{ areaList }}" value="110101" bind:cancel="onClose" bind:confirm="areaclick" />
+  </view>
+  <view class="sex" wx:if="{{text == '性别'}}">
+    <view>
+    <!-- <image src="../../images/"></image> -->
+    男
+    </view>
+    <view>
+    女
+    </view>
+    <view class="xian"></view>
+    <view class="qx" catchtap="onClose">取消</view>
+  </view>
+</van-popup>
+</view>

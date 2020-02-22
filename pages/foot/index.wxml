@@ -1,0 +1,63 @@
+<!--pages/foot/index.wxml-->
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item>
+    <image
+      slot="icon"
+      src="../../images/tabbar_clinic_icon_uncheck.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="../../images/tabbar_clinic_icon_selection.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    诊所
+  </van-tabbar-item>
+  <van-tabbar-item dot="{{state}}">
+    <image
+      slot="icon"
+      src="../../images/tabbar_news_icon_uncheck.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="../../images/tabbar_news_icon_selection.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    消息
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image
+      slot="icon"
+      src="../../images/tabbar_Study_icon_uncheck.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="../../images/tabbar_Study_icon_selection.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    学习吧
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image
+      slot="icon"
+      src="../../images/tabbar_my_icon_uncheck.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="../../images/tabbar_my_icon_selection.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    我的
+  </van-tabbar-item>
+</van-tabbar>

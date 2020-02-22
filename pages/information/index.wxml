@@ -1,0 +1,92 @@
+<!--pages/information/index.wxml-->
+<view class="information">
+  <view class="top">
+    <view class="title">
+      <view class="bj {{indexnum==0?'letf':'right'}}"></view>
+      <view class="text">
+        <view class="{{indexnum==0?'check':''}}" data-index="0" bindtap="tabclick">消息</view>
+        <view class="{{indexnum==1?'check':''}}" data-index="1" bindtap="tabclick">顾客</view>
+      </view>
+    </view>
+    <view class="left" bindtap="leftclick"  wx:if="{{indexnum==0}}">
+      <van-icon name="filter-o" />
+      {{left_text}}
+    </view>
+    <navigator url="/pages/addfriend/index?title=通讯录" hover-class="navigator-hover">
+      <van-icon class="first" name="friends-o"  wx:if="{{indexnum==0}}" />
+    </navigator>
+    <navigator url="/pages/addfriend/index?title=添加好友" hover-class="navigator-hover">
+      <van-icon name="plus" wx:if="{{indexnum==0}}" />
+    </navigator>
+  </view>
+    <swiper current="{{indexnum}}" class="tab" style="height: 90vh;" bindanimationfinish="sss">
+      <swiper-item>
+        <view class="center">
+          <view class="li">
+            <image src="../../images/news_icon_system.png"></image>
+            <view class="right">
+              <view class="title">
+                <view class="name">系统消息</view>
+                <view class="time">中午 12:13</view>
+              </view>
+              <view class="text">dsadsads7dsadsads787ddsadsad时代sadsad87dsadsad时代</view>
+            </view>
+          </view>
+          <view class="li">
+            <image src="../../images/news_icon_housekeeper.png"></image>
+            <view class="right">
+              <view class="title">
+                <view class="name">管家提醒</view>
+                <view class="time">中午 12:13</view>
+              </view>
+            </view>
+          </view>
+          <view class="li">
+            <image src="../../images/news_icon_groupchat.png"></image>
+            <view class="right">
+              <view class="title">
+                <view class="name">牙医管家演示群</view>
+                <view class="time">中午 1:13</view>
+              </view>
+            </view>
+          </view>
+          
+          <view class="li" wx:for="{{messages_arr}}">
+            <image src="../../images/11.png"></image>
+            <view class="right">
+              <view class="title">
+                <view class="name">A</view>
+                <view class="time">2019-1-2</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="center friend_box">
+        <navigator url="/pages/friendsearch/index" hover-class="navigator-hover">
+          <view class="ipt">
+            <van-icon name="search" size="36rpx" />
+            搜索
+          </view>
+        </navigator>
+          <view class="li" wx:for="{{friend_arr}}">
+            <image src="../../images/11.png"></image>
+            <view class="right">
+              <view class="title">
+                <view class="name">A</view>
+                <view class="time">2019-1-2</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+    <van-popup show="{{ show }}"
+  position="top"
+  bindtap="onClose">
+      <view data-id="1" class="{{tabnum==1?'check':''}}" bindtap="tab">全部患者</view>
+      <view data-id="2" class="{{tabnum==2?'check':''}}" bindtap="tab">我的患者</view>
+    </van-popup>
+    <foot footnum="1"></foot>
+</view>

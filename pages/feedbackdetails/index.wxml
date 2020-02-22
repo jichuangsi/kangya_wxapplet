@@ -1,0 +1,32 @@
+<!--pages/feedbackdetails/index.wxml-->
+<view class="feedbackdetails">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+      <view class="li">
+        <view class="title">为什么新注册账户这样</view>
+        <view class="user_text">
+          工单编号：248159
+        </view>
+      </view>
+      <view class="q_li">
+        <image src="../../images/my_headportrait_male.png"></image>
+        <view class="text">
+          <view>为什么新注册账户这样</view>
+          <view class="time">
+          2019-11-8 12:30
+          </view>
+        </view>
+      </view>
+  </view>
+  <view class="btn">
+    <view class="left">
+      确定完成
+    </view>
+    <view class="right" bindtap="feedbackbtn">
+      继续反馈
+    </view>
+  </view>
+</view>

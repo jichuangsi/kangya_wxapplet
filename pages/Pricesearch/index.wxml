@@ -1,0 +1,19 @@
+<!--pages/Pricesearch/index.wxml-->
+<view class="Pricesearch">
+  <view class="top">
+    <view class="ipt">
+      <van-icon name="search" color="#999"/>
+      <input type="text" value="{{searchtext}}" bindconfirm="searchclick" placeholder="搜索药品名称"></input>
+    </view>
+    <view bindtap="back">取消</view>
+  </view>
+  <view class="center">
+    <view class="list">
+      <view class="left">
+        <view class="title">修复费</view>
+        <view class="text">固定义齿修复</view>
+      </view>
+      <view class="money">166.00</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,118 @@
+/* pages/Mydata/index.wxss */
+.top {
+  width: 100%;
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  z-index: 9;
+  background-color: #16c7ae;
+}
+.van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.van-nav-bar__title {
+  color: #fff !important;
+}
+.van-nav-bar__text {
+  color: #fff !important;
+}
+van-icon {
+  vertical-align: middle !important;
+}
+.van-nav-bar__arrow {
+  color: #fff !important;
+}
+.van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.van-nav-bar__right {
+  height: 100%;
+}
+van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  padding-top: 100rpx;
+  box-sizing: border-box;
+}
+.center .li{
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.center .li .left {
+  font-size: 34rpx;
+  line-height: 46rpx;
+}
+.center .li .right {
+  font-size: 30rpx;
+  line-height: 46rpx;
+  display: flex;
+  align-items: center;
+}
+.center .li .right image {
+  width: 46rpx;
+  height: 46rpx;
+}
+.center .project {
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 26rpx solid #999;
+}
+.center .project .project_li {
+  display: inline-block;
+  border: 1rpx solid #f2f2f2;
+  border-radius: 46rpx;
+  padding: 10rpx;
+  font-size: 30rpx;
+  line-height: 46rpx;
+  box-sizing: border-box;
+}
+.center .text {
+  font-size: 28rpx;
+  line-height: 46rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  color: #f2f2f2;
+}
+.center .btn {
+  font-size: 46rpx;
+  letter-spacing: 5rpx;
+  border: 20rpx solid #f2f2f2;
+  background-color: #ee0a24;
+  color: #fff;
+  text-align: center;
+  line-height: 86rpx;
+  box-sizing: border-box;
+}
+.userimg {
+  text-align: center;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+.userimg view {
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.sex {
+  text-align: center;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+.sex view {
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.xian {
+  width: 100%;
+  height: 30rpx;
+  background-color: #f2f2f2;
+}
+.qx {
+  color: #ee0a24;
+}

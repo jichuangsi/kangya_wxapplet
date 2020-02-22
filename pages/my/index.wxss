@@ -1,0 +1,63 @@
+/* pages/lzq/index.wxss */
+page {
+  background-color: #f2f2f2;
+}
+.user {
+  width: 100%;
+  display: flex;
+  background-color: #1cc8b5;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.userImg {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.userImg  image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.user_info {
+  flex: 1;
+  margin-left: 20rpx;
+  color: #fff;
+}
+
+.user_detail {
+  display: flex;
+  align-items: center;
+}
+
+
+.user_content {
+  height: auto;
+}
+
+.user_clinic {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.user_clinic image {
+  width: 50rpx;
+  height: 50rpx;
+} 
+
+.clinic {
+  margin-left: 30rpx;
+}
+.item {
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-bottom: 20rpx solid #f2f2f2;
+}
+

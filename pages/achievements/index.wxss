@@ -1,0 +1,71 @@
+/* pages/achievements/index.wxss */
+.achievements {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  
+}
+.center .center_top {
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 20rpx solid #f2f2f2;
+  color: #c3c3c3;
+}
+.center .center_top .title {
+  margin-bottom: 20rpx;
+}
+.center .center_top .box {
+  display: flex;
+}
+.center .center_top .box .left {
+  flex: 1;
+}
+.center .center_top .box .right {
+  flex: 1;
+}
+.center .center_top .box image {
+  width: 60rpx;
+  height: 60rpx;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20rpx;
+}
+.center .center_top .box .text {
+  display: inline-block;
+}
+.center .center_top .box .text .n1{
+  color: #ffd000;
+}
+.center .center_top .box .text .n2{
+  color: #0094ff;
+}

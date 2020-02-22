@@ -1,0 +1,55 @@
+<!--pages/achievements/index.wxml-->
+<view class="activity">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="center_top">
+      <view class="title">活动总计</view>
+      <view class="box">
+        <view class="left">
+         <image src="../../images/activity_popularize_icon_use.png"></image>
+         <view class="text">
+          <view class="num n1">0</view>
+          <view>使用人数</view>
+         </view>
+        </view>
+        <view class="right">
+         <image src="../../images/activity_popularize_icon_Receive.png"></image>
+         <view class="text">
+          <view class="num n2">0</view>
+          <view>领取人数</view>
+         </view>
+        </view>
+      </view>
+    </view>
+    
+      <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
+        <van-tab title="全部" name="全部">
+          <view class="list">
+            <view class="smallbox"  wx:for="{{first_arr}}">
+              <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+              </navigator>
+              </view>
+          </view>
+          </van-tab>
+          <van-tab title="未使用" name="未使用">
+          <view class="list">
+            <view class="smallbox"  wx:for="{{first_arr}}">
+              <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+              </navigator>
+              </view>
+          </view>
+          </van-tab>
+          <van-tab title="已使用" name="已使用">
+          <view class="list">
+            <view class="smallbox"  wx:for="{{first_arr}}">
+              <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+              </navigator>
+              </view>
+          </view>
+          </van-tab>
+      </van-tabs>
+  </view>
+</view>

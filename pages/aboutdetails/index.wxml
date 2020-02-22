@@ -1,0 +1,15 @@
+<!--pages/aboutdetails/index.wxml-->
+<view class="aboutdetails">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="h3">一、新增手机验证登录</view>
+    <view class="text">
+    用户可在登录界面中用手机验证码和密码验证两种方式
+    </view>
+    <view class="img">
+    </view>
+  </view>
+</view>

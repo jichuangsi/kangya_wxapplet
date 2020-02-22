@@ -1,0 +1,56 @@
+<!--pages/synopsis/index.wxml-->
+<van-nav-bar title="{{title}}" left-text="返回" left-arrow   bind:click-left="onClickLeft"
+  >
+  <button open-type="share" slot="right">
+      <van-icon name="ellipsis"  size="30rpx" />
+  </button>
+  </van-nav-bar>
+  <view class="center">
+    <view class="topbox">
+      <image src="../../images/10.png"></image>
+      <view class="message">
+        <view class="name">石医牙学院</view>
+        <view>关注 2 丨 粉丝 360</view>
+      </view>
+    </view>
+    <view class="box">
+      <view class="h3">
+      讲师简介
+      </view>
+    </view>
+    <view class="xian"></view>
+    <view class="list">
+      <view class="h3">
+      系列课
+       <navigator url="/pages/studynav/index?id=系列课&&state=2" hover-class="navigator-hover">
+        <view class="all">
+        查看全部
+        <van-icon name="arrow" />
+        </view>
+      </navigator>
+      </view>
+        <view class="smallbox" wx:for="{{more_arr}}">
+          <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+            <view class="left">
+              <image src="../../images/5.png"></image>
+            </view>
+            <view class="right">
+              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
+              <view class="smallboxtext">02月06日 19：30</view>
+              <view class="smallboxtext">
+                147次学习
+              </view>
+              <view class="money">
+                <view class='p1'>免费</view>
+                <!-- <view class='p2'>￥59.00</view>
+                <view class='p3'>￥0.00</view> -->
+              </view>
+            </view>
+          </navigator>
+        </view>
+    </view>
+    <view class="btn">
+      <view wx:if="{{!follow}}">关注TA</view>
+      <view wx:if="{{follow}}">取消关注</view>
+    </view>
+  </view>

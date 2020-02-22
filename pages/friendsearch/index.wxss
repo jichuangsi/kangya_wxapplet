@@ -1,0 +1,98 @@
+/* pages/friendsearch/index.wxss */
+.top {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10rpx 20rpx;
+  background-color: #16c7ae;
+  color: #fff;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+}
+.top .ipt {
+  flex: 1;
+  display: flex;
+  background-color: #fff;
+  border-radius: 5rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+  padding: 0rpx 10rpx;
+  box-sizing: border-box;
+  margin-right: 10rpx;
+}
+.top .ipt input{
+  flex: 1;
+  height: 100%;
+  padding: 0rpx 10rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+.top .back {
+  display: flex;
+  align-items: center;
+  margin-right: 20rpx;
+}
+.center .li {
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.center .li image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+.center .li .right {
+  flex: 1;
+  max-width: 600rpx;
+}
+.center .li .right .title{
+  font-size: 32rpx;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+.center .li .right .title .time {
+  font-size: 28rpx;
+  color: #999;
+  font-weight: 500;
+}
+.center .li .right .text{
+  justify-content: space-between;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow: hidden;
+}
+
+
+.li_hz {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.li_hz image {
+  width: 86rpx;
+  height: 86rpx;
+}
+.li_hz .right_li {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.li_hz .right_li .right_li_top {
+  display: flex;
+  justify-content: space-between;
+}
+.li_hz .right_li .right_li_bottom {
+  display: flex;
+  justify-content: space-between;
+  color: #999;
+}
+.li_hz .right_li .state {
+  padding: 5rpx 15rpx;
+  background-color: #16c7ae;
+  color: #fff;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+}

@@ -1,0 +1,66 @@
+<!--pages/lzq/index.wxml-->
+<view class="content">
+  <view class="user" bindtap="mydatago">
+    <view class="userImg">
+      <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+    </view>
+    <view class="user_info">
+      <view class="user_phone">13751901925</view>
+      <view class="user_">外科医生</view>
+    </view>
+    <view class="user_detail">
+      <van-icon name="qr" size="56rpx" color="#fff" />
+      <van-icon name="arrow" size="32rpx" color="#fff" />
+    </view>
+  </view>
+  <view class="user_content">
+    <view class="item">
+      <navigator url="/pages/Myclinic/index" hover-class="navigator-hover">
+        <view class="user_clinic">
+          <image src="../../images/my_icon_clinic.png"></image>
+          <view class="clinic">我的诊所</view>
+        </view>
+      </navigator>
+      <navigator url="/pages/Record/index?title=我的关注" hover-class="navigator-hover">
+        <view class="user_clinic ">
+          <image src="../../images/my_icon_follow.png"></image>
+          <view class="clinic">我的关注</view>
+        </view>
+      </navigator>
+      <navigator url="/pages/Record/index?title=购买记录" hover-class="navigator-hover">
+        <view class="user_clinic">
+          <image src="../../images/my_icon_buy.png"></image>
+          <view class="clinic">购买记录</view>
+        </view>
+      </navigator>
+      <navigator url="/pages/Record/index?title=学习记录" hover-class="navigator-hover">
+        <view class="user_clinic">
+          <image src="../../images/my_icon_learning.png"></image>
+          <view class="clinic">学习记录</view>
+        </view>
+      </navigator>
+    </view>
+
+    <view class="item">
+      <navigator url="/pages/about/index" hover-class="navigator-hover">
+        <view class="user_clinic">
+          <image src="../../images/my_icon_housekeeper.png"></image>
+          <view class="clinic">关于牙医管家</view>
+        </view>
+      </navigator>
+      <navigator url="/pages/feedback/index" hover-class="navigator-hover">
+      <view class="user_clinic">
+        <image src="../../images/my_icon_opinion.png"></image>
+        <view class="clinic">意见反馈</view>
+      </view>
+      </navigator>
+      <navigator url="/pages/set/index" hover-class="navigator-hover">
+      <view class="user_clinic">
+        <image src="../../images/my_icon_setup.png"></image>
+        <view class="clinic">设置</view>
+      </view>
+      </navigator>
+    </view>
+  </view>
+  <foot footnum="3"></foot>
+</view>

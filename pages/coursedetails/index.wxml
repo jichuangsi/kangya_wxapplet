@@ -1,0 +1,82 @@
+<!--pages/coursedetails/index.wxml-->
+<van-nav-bar title="{{title}}" left-text="返回" left-arrow   bind:click-left="onClickLeft"
+  >
+  <van-icon wx:if="{{!collection}}" data-state="0" bindtap="collectionclick" name="star-o"  slot="right" size="30rpx" />
+  <van-icon wx:if="{{collection}}" data-state="1" bindtap="collectionclick" name="star" color="#fff"  slot="right"  size="30rpx"  />
+  <button open-type="share" slot="right">
+      <van-icon name="ellipsis"  size="30rpx" />
+  </button>
+  </van-nav-bar>
+  <view class="center">
+    <image src="../../images/learning_theme_anchor.png"></image>
+    <view class="title">
+      孙跑名丨年度撒旦撒旦撒大撒大撒
+    </view>
+    <view class="text">
+      ·已结束 丨 1279次学习
+      <view class="textstate">
+          <!-- <view class='p1'>免费</view> -->
+          <view class='p2'>￥59.00</view>
+          <view class='p3'>￥0.00</view>
+      </view>
+    </view>
+    
+    <view class="text">
+    直播时间
+     <view class="textstate">
+      <view class="p4">02月7日 18：00</view>
+     </view>
+    </view>
+    
+    <navigator url="/pages/synopsis/index?id=1" hover-class="navigator-hover">
+      <view class="text">
+        <image src="../../images/5.png"></image>
+        乾坤解剖种植
+        <view class="textstate">
+          <van-icon wx:if="{{!love}}" data-state="0" catchtap="loveclick" name="like-o" size="36rpx" />
+          <van-icon wx:if="{{love}}" data-state="1" catchtap="loveclick" name="like" color="red"  size="36rpx"/>
+        </view>
+      </view>
+    </navigator>
+    <view class="xian"></view>
+    <view class="box">
+      <view class="h3">
+      课程简介
+      </view>
+    </view>
+    <view class="xian"></view>
+    <view class="list">
+      <view class="h3">
+      更多好课
+      </view>
+        <view class="smallbox" wx:for="{{more_arr}}">
+          <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+            <view class="left">
+              <image src="../../images/5.png"></image>
+            </view>
+            <view class="right">
+              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
+              <view class="smallboxtext">02月06日 19：30</view>
+              <view class="smallboxtext">
+                147次学习
+              </view>
+              <view class="money">
+                <view class='p1'>免费</view>
+                <!-- <view class='p2'>￥59.00</view>
+                <view class='p3'>￥0.00</view> -->
+              </view>
+            </view>
+          </navigator>
+        </view>
+    </view>
+    <view class="btn">
+      <view class="left">
+              <view class='p1'>免费</view>
+              <!-- <view class='p2'>￥59.00</view>
+              <view class='p3'>￥0.00</view> -->
+      </view>
+      <view class="right" bindtap="videogo">
+        立即学习
+      </view>
+    </view>
+  </view>

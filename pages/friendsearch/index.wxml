@@ -1,0 +1,51 @@
+<!--pages/friendsearch/index.wxml-->
+<view class="friendsearch">
+  <view class="top">
+    <view class="back" bindtap="back">
+      <van-icon name="arrow-left" color="#fff" />
+      返回
+    </view>
+    <view class="ipt">
+      <van-icon name="search" color="#999"/>
+      <input type="text" value="{{searchtext}}" bindconfirm="searchclick"></input>
+    </view>
+  </view>
+  <view class="center">
+    <view class="li" wx:for="{{arr}}" wx:if="{{state==0}}">
+      <image src="../../images/11.png"></image>
+      <view class="right">
+        <view class="title">
+          <view class="name">A</view>
+          <view class="time">2019-1-2</view>
+        </view>
+      </view>
+    </view>
+      <van-index-bar scroll-top="{{ scrollTop }}" wx:if="{{state==1}}">
+        <view wx:for="{{project_list}}">
+          <van-index-anchor index="{{item.index}}" />
+          <van-cell>
+            <view class="li">
+              <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+            <view class="user" use-slot>
+              <view class="name">莫须有</view>
+              <view>管理员</view>
+            </view>
+            </view>
+          </van-cell>
+        </view>
+      </van-index-bar>
+      <view class="li_hz" wx:for="{{arr}}" wx:if="{{state==2}}">
+        <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <view class="right_li">
+          <view class="right_li_top">
+            <view>五里桥</view>
+            <view class="state">种植</view>
+          </view>
+          <view class="right_li_bottom">
+            <view>新顾客</view>
+            <view class="time">23:55</view>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>

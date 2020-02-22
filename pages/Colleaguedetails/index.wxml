@@ -1,0 +1,39 @@
+<!--pages/Colleaguedetails/index.wxml-->
+<view class="Colleaguedetails">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="center_top">
+      <image src="../../images/my_headportrait_female.png"></image>
+      <view class="name">百慕大</view>
+      <view>护士</view>
+    </view>
+    <view class="li">
+       <view>手机号码</view>
+       <view>未填写</view>
+    </view>
+    <view class="xian"></view>
+    <view class="li">
+       <view>性别</view>
+       <view>未填写</view>
+    </view>
+    <view class="li">
+       <view>年龄</view>
+       <view>未填写</view>
+    </view>
+    <view class="li">
+       <view>个性签名</view>
+       <view>未填写</view>
+    </view>
+    <view class="xian"></view>
+    <view class="li">
+       <view>设置为我的护士</view>
+       <view>
+      <van-switch checked="{{ checked }}" active-color="#16c7ae"
+  inactive-color="#f2f2f2" bind:change="onChange" /></view>
+    </view>
+  </view>
+  <view class="btn"><van-icon name="chat-o" />发消息</view>
+</view>

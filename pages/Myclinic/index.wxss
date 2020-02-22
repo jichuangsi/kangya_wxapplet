@@ -1,0 +1,78 @@
+/* pages/Myclinic/index.wxss */
+.Myclinic {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+/* .top {
+  width: 100%;
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  z-index: 9;
+  background-color: #16c7ae;
+} */
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  display: flex;
+  flex-wrap: wrap;
+}
+.center .li {
+  width: 50%;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.center .li image {
+  width: 120rpx;
+  height: 160rpx;
+  margin-top: 40rpx;
+}
+.center .li .name {
+  margin-top: 30rpx;
+}
+.center .li .num {
+  color: #ccc;
+  margin-top: 10rpx;
+}
+.center .li .state {
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+}
+.van-dialog__button {
+  flex: none;
+  width: 50%;
+}

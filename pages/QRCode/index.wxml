@@ -1,0 +1,15 @@
+<!--pages/QRCode/index.wxml-->
+<view class="QRCode">
+  <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+  </van-nav-bar>
+  <view class="center">
+    <view class="title">
+      <image src="../../images/9.png"></image>
+      <view class="text">
+        <view class="name"></view>
+        <view>广西南宁区</view>
+      </view>
+    </view>
+    <image class="Code" src="../../images/12.png"></image>
+  </view>
+</view>

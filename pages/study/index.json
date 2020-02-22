@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "foot": "../foot/index",
+    "livebroadcast" : "../livebroadcast/index",
+    "news": "../news/index"
+  }
+}

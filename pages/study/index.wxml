@@ -1,0 +1,26 @@
+<!--pages/study/index.wxml-->
+<view class="study">
+  <view class="top">
+    <view class="title">
+      <view class="bj {{indexnum==0?'letf':'right'}}"></view>
+      <view class="text">
+        <view class="{{indexnum==0?'check':''}}" data-index="0" bindtap="tabclick">直播</view>
+        <view class="{{indexnum==1?'check':''}}" data-index="1" bindtap="tabclick">新闻</view>
+      </view>
+    </view>
+    <navigator url="/pages/studysearch/index" hover-class="navigator-hover">
+      <van-icon name="search" wx:if="{{indexnum==0}}" />
+    </navigator>
+  </view>
+    <swiper current="{{indexnum}}" class="tab" style="height: 90vh;" bindanimationfinish="sss">
+      <swiper-item style="overflow:auto;">
+      <!-- <scroll-view scroll-x="false" scroll-y="true" class='scroll-views'> -->
+        <livebroadcast class="livebroadcast"></livebroadcast>
+      <!-- </scroll-view> -->
+      </swiper-item>
+      <swiper-item>
+        <news class="news"></news>
+      </swiper-item>
+    </swiper>
+    <foot footnum="2"></foot>
+</view>

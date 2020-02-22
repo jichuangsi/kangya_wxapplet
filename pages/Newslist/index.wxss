@@ -1,0 +1,90 @@
+/* pages/Newslist/index.wxss */
+.Newslist {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center .list {
+  margin-bottom: 20rpx;
+}
+.center .list .smallbox{
+  width: 100%;
+  border-radius: 5rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f2f2f2;
+  position: relative;
+}
+.center .list .smallbox .left {
+  display: inline-block;
+  vertical-align: top;
+}
+.center .list .smallbox .left image {
+  width: 208rpx;
+  height: 148rpx;
+  display: inline-block;
+  vertical-align: top;
+}
+.center .list .smallbox .right {
+  width: 468rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+  vertical-align: top;
+}
+.center .list .smallbox .right .smallboxtitle {
+  font-size: 36rpx;
+  line-height: 56rpx;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow: hidden;
+}
+.center .list .smallbox .right .smallboxtext {
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color: #c6c6c6;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.center .list .smallbox .right .money {
+  position: absolute;
+  right: 20rpx;
+  bottom: 30rpx;
+  display: flex;
+}
+.p4 {
+  font-size: 24rpx;
+  color: #999;
+}

@@ -1,0 +1,74 @@
+<!--pages/Record/index.wxml-->
+<view class="Record">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="record" wx:if="{{title == '我的关注'}}">
+      <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
+        <van-tab title="主播" name="主播">
+          <view class="list">
+            <view class="text">共关注了2个主播</view>
+            <view class="smallbox"  wx:for="{{first_arr}}">
+              <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+                <image src="../../images/5.png"></image>
+                <view class="title">亚视口腔学院</view>
+                <view class="text">
+                  <van-icon name="like" color="" />
+                  已关注
+                </view>
+              </navigator>
+              </view>
+          </view>
+          </van-tab>
+          <van-tab title="课程" name="课程">
+          <view class="list">
+            <view class="text">共关注了2个课程</view>
+            <view class="smallbox"  wx:for="{{first_arr}}">
+              <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+                <view class="left">
+                  <image src="../../images/learning_theme_anchor.png"></image>
+                </view>
+                <view class="right">
+                  <view class="smallboxtitle">自体骨肉成骨肉，即可拔牙</view>
+                  <view class="smallboxtext">乾坤揭破种植</view>
+                </view>
+              </navigator>
+              </view>
+          </view>
+          </van-tab>
+      </van-tabs>
+    </view>
+    <view class="study" wx:if="{{title == '学习记录'}}">
+          <view class="list">
+            <view class="smallbox"  wx:for="{{first_arr}}">
+              <navigator url="/pages/Videoplay/index?state=1" hover-class="navigator-hover">
+                <view class="left">
+                  <image src="../../images/learning_theme_anchor.png"></image>
+                </view>
+                <view class="right">
+                  <view class="smallboxtitle">自体骨肉成骨肉，即可拔牙</view>
+                  <view class="smallboxtext">乾坤揭破种植</view>
+                </view>
+              </navigator>
+              </view>
+          </view>
+    </view>
+    <view class="buy study" wx:if="{{title == '购买记录'}}">
+          <view class="list">
+            <view class="smallbox"  wx:for="{{first_arr}}">
+              <navigator url="/pages/Videoplay/index?state=1" hover-class="navigator-hover">
+                <view class="left">
+                  <image src="../../images/learning_theme_anchor.png"></image>
+                </view>
+                <view class="right">
+                  <view class="smallboxtitle">自体骨肉成骨肉，即可拔牙</view>
+                  <view class="smallboxtext">乾坤揭破种植</view>
+                </view>
+              </navigator>
+              </view>
+          </view>
+    </view>
+  </view>
+</view>

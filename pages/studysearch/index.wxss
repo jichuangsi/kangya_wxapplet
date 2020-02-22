@@ -1,0 +1,98 @@
+/* pages/studysearch/index.wxss */
+.top {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10rpx 20rpx;
+  background-color: #16c7ae;
+  color: #fff;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+}
+.top .ipt {
+  flex: 1;
+  display: flex;
+  background-color: #fff;
+  border-radius: 5rpx;
+  height: 60rpx;
+  padding: 0rpx 10rpx;
+  box-sizing: border-box;
+  margin-right: 10rpx;
+}
+.top .ipt input{
+  flex: 1;
+  height: 100%;
+  padding: 0rpx 10rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.studysearch .list {
+  margin-bottom: 20rpx;
+}
+.studysearch .list .smallbox{
+  width: 100%;
+  border-radius: 5rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f2f2f2;
+  position: relative;
+}
+.studysearch .list .smallbox .left {
+  display: inline-block;
+  vertical-align: top;
+}
+.studysearch .list .smallbox .left image {
+  width: 288rpx;
+  height: 188rpx;
+  display: inline-block;
+  vertical-align: top;
+}
+.studysearch .list .smallbox .right {
+  width: 388rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+  vertical-align: top;
+}
+.studysearch .list .smallbox .right .smallboxtitle {
+  font-size: 36rpx;
+  line-height: 56rpx;
+  font-weight: 600;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.studysearch .list .smallbox .right .smallboxtext {
+  font-size: 26rpx;
+  line-height: 46rpx;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow: hidden;
+}
+.studysearch .list .smallbox .right .money {
+  position: absolute;
+  right: 20rpx;
+  bottom: 30rpx;
+  display: flex;
+}
+.p1 {
+  font-size: 30rpx;
+  color: #16c7ae;
+}
+.p2 {
+  font-size: 24rpx;
+  color: #999;
+  text-decoration:line-through;
+}
+.p3 {
+  font-size: 26rpx;
+  color: #e88070;
+}
+.p4 {
+  font-size: 24rpx;
+  color: #999;
+}

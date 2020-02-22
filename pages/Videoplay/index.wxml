@@ -1,0 +1,70 @@
+<!--pages/Videoplay/index.wxml-->
+<view class="Videoplay">
+  <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft"
+    bind:click-right="onClickRight"  >
+  </van-nav-bar>
+   <video id="myVideo" poster="" src="" controls></video>
+   <view class="center" wx:if="{{state==1}}">
+    <view class="center_top">
+      <view bindtap="loveclick" wx:if="{{lovestate}}">
+        <van-icon name="like" color="red" />
+        已关注
+      </view>
+      <view bindtap="loveclick" wx:if="{{!lovestate}}">
+        <van-icon name="like-o" />
+        关注主播
+      </view>
+      <view class="title">·已结束</view>
+      <view>
+        1505次
+        <van-icon name="volume" color="#16c7ae" />
+      </view>
+    </view>
+    <view class="center_center">
+      <view class="li" wx:for="{{arr}}">
+        <view class="user_img">
+          <image src="../../images/my_headportrait_male.png"></image>
+        </view>
+        <view class="user_text">
+          <view class="user_name">牙医管家</view>
+          <view class="text">
+            欢迎欢迎！！
+            <view class="dian"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="center_bottom">
+      <input placeholder="来说点什么" value="{{text}}" bindinput="ipttext"></input>
+      <van-icon name="chat" size="56rpx;" color="#c3c3c3" bindtap=""/>
+      <van-icon name="more" size="56rpx;" color="#c3c3c3" bindtap="showPopup" wx:if="{{text ==''}}"/>
+      <view class="btn" wx:if="{{text !=''}}" bindtap="send">发送</view>
+    </view>
+   </view>
+   <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+      <view class="pop_top">
+        <view>讨论(89)</view>
+        <van-icon name="arrow-down" catchtap="onClose" />
+      </view>
+    <view class="center_center">
+      <view class="li" wx:for="{{arr}}">
+        <view class="user_img">
+          <image src="../../images/my_headportrait_male.png"></image>
+        </view>
+        <view class="user_text">
+          <view class="user_name">
+          牙医管家
+          <view class="time">2019-11-28</view>
+          </view>
+          <view class="text">
+            欢迎欢迎！！
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="center_bottom">
+      <input placeholder="来说点什么" value="{{text}}" bindinput="ipttext"></input>
+      <view class="btn" catchtap="send">发送</view>
+    </view>
+   </van-popup>
+</view>

@@ -1,0 +1,81 @@
+/* pages/Colleague/index.wxss */
+.Colleague {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.van-grid-item__icon {
+  font-size: 80rpx !important;
+}
+.center .ipt {
+  width: 100%;
+  height: 80rpx;
+  border: 10rpx solid #f2f2f2;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  box-sizing: border-box;
+  margin-top: 10rpx;
+}
+.center .li {
+  font-size: 34rpx;
+  line-height: 56rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.center .li .text{
+  color: #16c7ae;
+}
+van-cell {
+  display: flex;
+}
+van-cell image {
+  width: 80rpx;
+  height: 80rpx;
+}
+van-cell .li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+van-cell .li .user {
+  flex: 1;
+  text-align: left;
+  text-indent: 20rpx;
+}
+van-cell .li .user .name {
+  color: #333;
+}

@@ -1,0 +1,35 @@
+<!--pages/set/index.wxml-->
+<view class="set">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <navigator url="/pages/aboutdetails/index?title=新功能介绍" hover-class="navigator-hover">
+    <view class="li">
+      <view>手机号码</view>
+      <view>15945511212<van-icon name="arrow" /></view>
+    </view>
+    </navigator>
+    <navigator url="/pages/aboutdetails/index?title=服务和使用协议" hover-class="navigator-hover">
+    <view class="li">
+      <view>密码管理</view>
+      <van-icon name="arrow" />
+    </view>
+    </navigator>
+    <view class="xian"></view>
+    <view class="li">
+      <view>新消息通知</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="li">
+      <view>同步日程</view>
+      <van-switch checked="{{ checked }}" active-color="#16c7ae"
+  inactive-color="#f2f2f2" bind:change="onChange" />
+    </view>
+    <view class="li" bindtap="iphone">
+      <view>检测更新</view>
+      <view>v4.2.1.6<van-icon name="arrow" /></view>
+    </view>
+  </view>
+</view>

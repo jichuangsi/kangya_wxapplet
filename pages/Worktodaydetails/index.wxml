@@ -1,0 +1,24 @@
+<!--pages/Worktodaydetails/index.wxml-->
+<view class="Worktodaydetails">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+      <view class="li_box">
+        <view class="li" wx:for="{{arr}}">
+          <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+          <view class="right_li">
+            <view class="right_li_top">
+              <view>五里桥</view>
+              <view class="state">种植</view>
+            </view>
+            <view class="right_li_bottom">
+              <view>新顾客</view>
+              <view class="time">23:55</view>
+            </view>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>

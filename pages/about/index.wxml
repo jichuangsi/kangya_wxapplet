@@ -1,0 +1,37 @@
+<!--pages/about/index.wxml-->
+<view class="about">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="center_top">
+      <image src="../../images/clinic_marketing_icon_whitening.png"></image>
+      <view>v4.12.1.6</view>
+    </view>
+    <navigator url="/pages/aboutdetails/index?title=新功能介绍" hover-class="navigator-hover">
+    <view class="li">
+      <view>新功能介绍</view>
+      <van-icon name="arrow" />
+    </view>
+    </navigator>
+    <navigator url="/pages/aboutdetails/index?title=服务和使用协议" hover-class="navigator-hover">
+    <view class="li">
+      <view>服务和使用协议</view>
+      <van-icon name="arrow" />
+    </view>
+    </navigator>
+    <view class="li">
+      <view>QQ客服</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="li">
+      <view>QQ交流群</view>
+      <view>228737929</view>
+    </view>
+    <view class="li" bindtap="iphone">
+      <view>客服电话</view>
+      <view class="num">400-660-5770</view>
+    </view>
+  </view>
+</view>

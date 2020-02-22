@@ -1,0 +1,75 @@
+<!--pages/studysearch/index.wxml-->
+<view class="studysearch">
+  <view class="top">
+    <view class="ipt">
+      <van-icon name="search" color="#999"/>
+      <input type="text" value="{{searchtext}}" bindconfirm="searchclick"></input>
+    </view>
+    <view bindtap="back">取消</view>
+  </view>
+  <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
+    <van-tab title="单课程" name="单课程">
+      <view class="list">
+        <view class="smallbox"  wx:for="{{first_arr}}">
+          <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+            <view class="left">
+              <image src="../../images/5.png"></image>
+            </view>
+            <view class="right">
+              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
+              <view class="smallboxtext">02月06日 19：30</view>
+              <view class="smallboxtext">116次学习</view>
+              <view class="money">
+                <!-- <view class='p1'>免费</view> -->
+                <view class='p2'>￥59.00</view>
+                <view class='p3'>￥0.00</view>
+              </view>
+            </view>
+          </navigator>
+          </view>
+      </view>
+      </van-tab>
+      <van-tab title="系列课程" name="系列课程">
+      <view class="list">
+        <view class="smallbox"  wx:for="{{first_arr}}">
+          <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+            <view class="left">
+              <image src="../../images/5.png"></image>
+            </view>
+            <view class="right">
+              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
+              <view class="smallboxtext">02月06日 19：30</view>
+              <view class="smallboxtext">116次学习</view>
+              <view class="money">
+                <!-- <view class='p1'>免费</view> -->
+                <view class='p2'>￥59.00</view>
+                <view class='p3'>￥0.00</view>
+              </view>
+            </view>
+          </navigator>
+          </view>
+      </view>
+      </van-tab>
+      <van-tab title="主播" name="主播">
+      <view class="list">
+        <view class="smallbox"  wx:for="{{first_arr}}">
+          <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+            <view class="left">
+              <image src="../../images/5.png"></image>
+            </view>
+            <view class="right">
+              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
+              <view class="smallboxtext">02月06日 19：30</view>
+              <view class="smallboxtext">116次学习</view>
+              <view class="money">
+                <!-- <view class='p1'>免费</view> -->
+                <view class='p2'>￥59.00</view>
+                <view class='p3'>￥0.00</view>
+              </view>
+            </view>
+          </navigator>
+          </view>
+      </view>
+      </van-tab>
+  </van-tabs>
+</view>

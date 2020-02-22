@@ -1,0 +1,25 @@
+<!--pages/Myclinic/index.wxml-->
+<view class="Myclinic">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft"
+      bind:click-right="onClickRight"  >
+      <van-icon name="plus" slot="right"/>
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="li">
+      <image src="../../images/clinic_website_icon_clinic.png"></image>
+      <view class="name">
+        牙医管家演示
+      </view>
+      <view class="num">
+      8888
+      </view>
+      <view class="state" bindtap="close" data-name="牙医管家演示" data-num="8888">
+        <van-icon name="cross" color="#ccc" />
+      </view>
+    </view>
+  </view>
+  <van-dialog id="van-dialog" />
+</view>
+

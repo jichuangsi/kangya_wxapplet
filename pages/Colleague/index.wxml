@@ -1,0 +1,27 @@
+<!--pages/Colleague/index.wxml-->
+<view class="Colleague">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="ipt" bindtap="searchgo">
+      <van-icon name="search" size="36rpx" />
+      搜索
+    </view>
+      <van-index-bar scroll-top="{{ scrollTop }}">
+        <view wx:for="{{project_list}}">
+          <van-index-anchor index="{{item.index}}" />
+          <van-cell>
+            <view class="li" catchtap="detailsgo">
+              <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+            <view class="user" use-slot>
+              <view class="name">莫须有</view>
+              <view>管理员</view>
+            </view>
+            </view>
+          </van-cell>
+        </view>
+      </van-index-bar>
+  </view>
+</view>
