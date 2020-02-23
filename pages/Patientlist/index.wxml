@@ -3,7 +3,7 @@
   <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     <van-icon name="search" slot="right" catchtap="searchgo" size="34rpx"/>
-    <van-icon name="plus" slot="right" size="34rpx"/>
+    <van-icon name="plus" slot="right" catchtap="addgo"  size="34rpx"/>
     </van-nav-bar>
     <view class="nav">
       <view data-index="1" bindtap="showPopup">{{nav1}}<van-icon name="arrow-down" /></view>
@@ -19,7 +19,7 @@
         <view class="text">最近患者</view>
         <view class="num">1241人</view>
       </view>
-      <view class="li" wx:for="{{arr}}" wx:if="{{li_num==1}}">
+      <view class="li" wx:for="{{arr}}" wx:if="{{li_num==1}}" bindtap="Patientclick">
         <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
         <view class="right_li">
           <view class="right_li_top">

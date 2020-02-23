@@ -12,13 +12,28 @@ Page({
   data: {
     nav_num:0,
     ec: 0,
+    check_nav_num:0,
+    time:'',
     list: ['08:00', '22:00'],
-    list_date: [0, 0]
+    list_date: [0, 0],
+    calendarConfig: {
+      // 配置内置主题
+      theme: 'elegant',
+      chooseAreaMode: false,
+    },
+    show:false
   },
   onClickLeft() {
     wx.navigateBack({
       delta: 1
     })
+  },
+
+  onClose() {
+    this.setData({ show: false });
+  },
+  onClickRight(){
+    this.setData({ show: true });
   },
   navclick(e){
     let index = e.currentTarget.dataset.index
@@ -50,6 +65,50 @@ Page({
       })
     }
   },
+  check_navclick(e){
+    let index = e.currentTarget.dataset.index
+    this.setData({
+      check_nav_num: index,
+    })
+    if (index == 1){
+      this.setData({
+        calendarConfig: {
+          theme: 'elegant',
+          chooseAreaMode: true,
+        }
+      })
+      this.doSomeThing()
+    } else {
+      this.setData({
+        calendarConfig: {
+          theme: 'elegant',
+          chooseAreaMode: false,
+        }
+      })
+      this.doSomeThing()
+    }
+    this.calendar.cancelAllSelectedDay()
+  },
+  doSomeThing() {
+    // 调用日历方法
+    this.calendar.enableArea();
+  },
+  afterTapDay(e) {
+    console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
+    if(this.data.check_nav_num == 0){
+      this.setData({
+        time: e.detail.year + '年' + e.detail.month + '月' + e.detail.day + '日'
+      })
+      this.onClose()
+    }else{
+      let arr = this.calendar.getSelectedDay()
+      this.setData({
+        time: arr[0].year + '年' + arr[0].month + '月' + arr[0].day + '日' + '~' + arr[arr.length - 1].year + '年' + arr[arr.length - 1].month + '月' + arr[arr.length - 1].day + '日'
+      })
+      this.onClose()
+    }
+    console.log(this.data.time)
+  },
 
 
   initChart(canvas, width, height) {
@@ -74,19 +133,19 @@ Page({
 
 
 
-      textStyle: {
-        fontSize: 24,
-        color: '#fff',
-        rich: {}
-      },
+      // textStyle: {
+      //   fontSize: 24,
+      //   color: '#fff',
+      //   rich: {}
+      // },
       series: [{
         label: {
           normal: {
-            textStyle: {
-              fontSize: 24,
+            // textStyle: {
+              fontSize: 60,
               color: '#09fbfd',
               rich: {}
-            }
+            // }
           }
         },
         data: self.data.list_date,

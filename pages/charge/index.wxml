@@ -1,0 +1,41 @@
+<!--pages/charge/index.wxml-->
+<view class="charge">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <!-- <van-icon name="eye-o" slot="right" size="36rpx" /> -->
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="title">历史费用概况</view>
+    <view class="li">
+      <view class="libox">
+        <view>0.00</view>
+        <view>总费用</view>
+      </view>
+      <view class="libox">
+        <view>0.00</view>
+        <view>已收金额</view>
+      </view>
+      <view class="libox">
+        <view>0.00</view>
+        <view>应收金额</view>
+      </view>
+      <view class="libox">
+        <view class="red">0.00</view>
+        <view>折扣金额</view>
+      </view>
+      <view class="libox">
+        <view>0.00</view>
+        <view>减免金额</view>
+      </view>
+      <view class="libox">
+        <view>0.00</view>
+        <view>剩余预付款</view>
+      </view>
+      <view class="libox">
+        <view class="red">0.00</view>
+        <view>欠款</view>
+      </view>
+    </view>
+  </view>
+</view>

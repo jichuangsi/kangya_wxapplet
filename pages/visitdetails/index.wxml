@@ -1,0 +1,65 @@
+<!--pages/visitdetails/index.wxml-->
+<view class="visitdetails">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <view slot="right">删除回访</view>
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="center_top">
+      <!-- <navigator url="/pages/Patientdetails/index" hover-class="navigator-hover"> -->
+      <view class="user_box">
+        <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <view class="user">
+          <view class="name">空白格</view>
+          <view class="state">
+            <view> </view>
+          </view>
+        </view>
+      </view>
+      <!-- </navigator> -->
+    </view>
+    <view class="box">
+      <van-icon name="tosend" />
+      <view class="text">回访时间</view>
+      <view>02月24日</view>
+    </view>
+    <view class="box">
+      <van-icon name="tosend" />
+      <view class="text">回访人时间</view>
+      <view>试试</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box">
+      <van-icon name="tosend" />
+      <view class="text">回访类型</view>
+    </view>
+    <!-- <view class="box_li">
+      <view>补牙</view>
+    </view> -->
+    <view class="xian"></view>
+    <view class="box">
+      <van-icon name="manager-o" />
+      <view class="text">回访状态</view>
+      <view>已回访</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box">
+      <van-icon name="notes-o" />
+      <view class="text">回访内容</view>
+    </view>
+      <view class="bz">治疗一周后回访</view>
+    <view class="xian"></view>
+    <view class="box">
+      <van-icon name="notes-o" />
+      <view class="text">回访结果</view>
+    </view>
+      <view class="bz">未填写</view>
+      <view class="center_bottom">
+        <view bindtap="chatgo"><van-icon name="comment-o" />通知患者</view>
+        <view bindtap="iphoneclick"><van-icon name="phone-o" />打电话</view>
+        <view bindtap="editgo"><van-icon name="edit" />修改回访</view>
+      </view>
+  </view>
+  <van-dialog id="van-dialog" />
+</view>

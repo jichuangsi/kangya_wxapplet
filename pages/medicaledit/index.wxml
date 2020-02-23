@@ -1,0 +1,213 @@
+<!--pages/medicaledit/index.wxml-->
+<view class="medicaledit">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <view slot="right">病历模板</view>
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="box">
+      <van-icon name="../../../images/case_icon_type_defauit.png" />
+      <view class="text">病历类型</view>
+      <view></view>
+    </view>
+    <view class="box_li">
+      <view data-text="初诊病历" bindtap="checkclick" class="{{check_text=='初诊病历'?'check':''}}">初诊病历</view>
+      <view data-text="复诊病历" bindtap="checkclick" class="{{check_text=='复诊病历'?'check':''}}">复诊病历</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box">
+      <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+      <view class="text">语音备忘录</view>
+      <view></view>
+      <van-icon name="arrow" />
+      <view class="bz">暂无录音</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入主诉" bindtap="editgo">
+      <van-icon name="../../../images/case_icon_mainsuitl_defauit.png" />
+      <view class="text">主诉</view>
+      <view></view>
+      <view class="bz">请输入主诉内容</view>
+    </view>
+    <view class="box" wx:if="{{check_text=='复诊病历'}}" data-text="输入复诉" bindtap="editgo">
+      <van-icon name="../../../images/case_icon_mainsuitl_defauit.png" />
+      <view class="text">复诉</view>
+      <view></view>
+      <view class="bz">请输入复诉内容</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入现病史" bindtap="editgo">
+      <van-icon name="../../../images/case_icon_hpi_defauit.png" />
+      <view class="text">现病史</view>
+      <view></view>
+      <view class="bz">请输入现病史</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入既往史" bindtap="editgo">
+      <van-icon name="../../../images/case_icon_hpi_defauit.png" />
+      <view class="text">既往史</view>
+      <view></view>
+      <view class="bz">请输入既往史</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入过敏史" bindtap="editgo">
+      <van-icon name="../../../images/case_icon_pasthistoryi_defauit.png" />
+      <view class="text">过敏史</view>
+      <view></view>
+      <view class="bz">请输入过敏史</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box">
+      <van-icon name="../../../images/case_icon_synchronous_defauit.png" />
+      <view class="text">同步牙位</view>
+      <van-switch checked="{{ checked }}" active-color="#16c7ae"
+  inactive-color="#f2f2f2" bind:change="onChange" />
+    </view>
+    <view class="box title">
+      <van-icon name="../../../images/case_icon_check_defauit.png" />
+      <view class="text">检查</view>
+      <!-- <view class="del" bindtap="del1" wx:if="{{medical.arr1.length>1}}">
+        <van-icon name="close" color="red" />
+        减少
+      </view>
+      <view class="add" bindtap="add1">
+        <van-icon name="add-o" color="#16c7ae" />
+        添加
+      </view> -->
+    </view>
+    <view class="box" bindtap="ygo">
+      <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+      <view class="text">牙位</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" data-text="输入检查" bindtap="editgo">
+      <view class="bz"></view>
+    </view>
+    <view class="box title">
+      <van-icon name="../../../images/case_icon_auxiliary_defauit.png" />
+      <view class="text">辅助检查</view>
+      <!-- <view class="del" bindtap="del1" wx:if="{{medical.arr1.length>1}}">
+        <van-icon name="close" color="red" />
+        减少
+      </view>
+      <view class="add" bindtap="add1">
+        <van-icon name="add-o" color="#16c7ae" />
+        添加
+      </view> -->
+    </view>
+    <view class="box" bindtap="ygo">
+      <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+      <view class="text">牙位</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" data-text="输入辅助检查" bindtap="editgo">
+      <view class="bz"></view>
+    </view>
+    <view class="box title">
+      <van-icon name="../../../images/case_icon_diagnosis_defauit.png" />
+      <view class="text">诊断</view>
+      <!-- <view class="del" bindtap="del1" wx:if="{{medical.arr1.length>1}}">
+        <van-icon name="close" color="red" />
+        减少
+      </view>
+      <view class="add" bindtap="add1">
+        <van-icon name="add-o" color="#16c7ae" />
+        添加
+      </view> -->
+    </view>
+    <view class="box" bindtap="ygo">
+      <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+      <view class="text">牙位</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" data-text="输入诊断" bindtap="editgo">
+      <view class="bz"></view>
+    </view>
+    <view class="box title">
+      <van-icon name="../../../images/case_icon_diagnosis_defauit.png" />
+      <view class="text">治疗方案</view>
+      <!-- <view class="del" bindtap="del1" wx:if="{{medical.arr1.length>1}}">
+        <van-icon name="close" color="red" />
+        减少
+      </view>
+      <view class="add" bindtap="add1">
+        <van-icon name="add-o" color="#16c7ae" />
+        添加
+      </view> -->
+    </view>
+    <view class="box" bindtap="ygo">
+      <van-icon name="../../../images/case_icon_programme_defauit.png" />
+      <view class="text">牙位</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" data-text="输入治疗方案" bindtap="editgo">
+      <view class="bz"></view>
+    </view>
+    <view class="box title">
+      <van-icon name="../../../images/case_icon_treatment_defauit.png" />
+      <view class="text">治疗</view>
+      <!-- <view class="del" bindtap="del1" wx:if="{{medical.arr1.length>1}}">
+        <van-icon name="close" color="red" />
+        减少
+      </view>
+      <view class="add" bindtap="add1">
+        <van-icon name="add-o" color="#16c7ae" />
+        添加
+      </view> -->
+    </view>
+    <view class="box" bindtap="ygo">
+      <van-icon name="../../../images/case_icon_programme_defauit.png" />
+      <view class="text">牙位</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" data-text="输入治疗" bindtap="editgo">
+      <view class="bz"></view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" data-text="输入医嘱" bindtap="editgo">
+      <van-icon name="../../../images/case_icon_programme_defauit.png" />
+      <view class="text">医嘱</view>
+      <view></view>
+      <van-icon name="arrow" />
+      <view class="bz"></view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" data-text="影像浏览" bindtap="editgo">
+      <van-icon name="../../../images/case_icon_image_defauit.png" />
+      <view class="text">影像</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="xian"></view>
+    <view class="box" bindtap="Colleaguego">
+      <van-icon name="../../../images/case_icon_doctor_defauit.png" />
+      <view class="text">医生</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" bindtap="Colleaguego">
+      <van-icon name="../../../images/case_icon_nurse_defauit.png" />
+      <view class="text">护士</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" bindtap="showpopup">
+      <van-icon name="clock-o" />
+      <view class="text">就诊日期</view>
+      <view>{{time}}</view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <view class="btn" bindtap="btn">完成</view>
+  <van-popup show="{{ show }}" bind:close="onClose"
+  position="top"
+  custom-style="widht: 100%">
+    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+  </van-popup>
+</view>

@@ -7,6 +7,8 @@ Page({
   data: {
     title:'患者',
     show:false,
+    state:0,
+    check_list:0,
     nav1: '就诊时间',
     nav2: '患者类型',
     nav3: '会员等级',
@@ -58,11 +60,25 @@ Page({
       nav4: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '其他条件'
     })
   },
+  Patientclick(){
+    if(this.data.state == 0){
+      wx.navigateTo({
+        url: '../Patientdetails/index',
+      })
+    }else{
+      this.onClickLeft()
+    }
+  },
+  addgo(){
+    wx.navigateTo({
+      url: '../AddPatient/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({ state: options.state ? options.state:0})
   },
 
   /**

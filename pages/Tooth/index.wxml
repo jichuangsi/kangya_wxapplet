@@ -1,0 +1,26 @@
+<!--pages/Tooth/index.wxml-->
+<view class="Tooth">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+      <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
+        <van-tab title="恒牙" name="恒牙">
+          <view class="box">
+            <view wx:for="{{arr1}}" data-index="{{index}}" bindtap="check1" class="y t{{item.id}} {{item.state==1?'check':''}}">{{item.text}}</view>
+            <view wx:for="{{arr2}}" data-index="{{index}}" bindtap="check1" class="y b{{item.id}} {{item.state==1?'check':''}}">{{item.text}}</view>
+          </view>
+        </van-tab>
+        <van-tab title="乳牙" name="乳牙">
+          <view class="box">
+            <view wx:for="{{arr3}}" data-index="{{index}}" bindtap="check3" class="y t{{item.id}} {{item.state==1?'check':''}}">{{item.text}}</view>
+            <view wx:for="{{arr4}}" data-index="{{index}}" bindtap="check4" class="y b{{item.id}} {{item.state==1?'check':''}}">{{item.text}}</view>
+          </view>
+        </van-tab>
+      </van-tabs>
+  </view>
+  <view class="btn" bindtap="btn">确认</view>
+  <van-dialog id="van-dialog" />
+</view>
+

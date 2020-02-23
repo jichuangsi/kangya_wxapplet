@@ -13,7 +13,7 @@
         <view wx:for="{{project_list}}">
           <van-index-anchor index="{{item.index}}" />
           <van-cell>
-            <view class="li" catchtap="detailsgo">
+            <view class="li" data-name="莫须有" catchtap="detailsgo">
               <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
             <view class="user" use-slot>
               <view class="name">莫须有</view>

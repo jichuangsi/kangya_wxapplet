@@ -1,2 +1,143 @@
 <!--pages/order/index.wxml-->
-<text>pages/order/index.wxml</text>
+<view class="order">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <van-icon name="calender-o" slot="right" size="36rpx" wx:if="{{title=='预约列表'}}" />
+    <van-icon name="plus" slot="right" size="36rpx" wx:if="{{title!='预约列表'}}" />
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable wx:if="{{title=='预约列表'}}">
+      <van-tab title="网络预约" name="网络预约">
+        <view class="li_box" wx:if="{{show}}">
+          <view class="date">2020-02-24</view>
+          <view class="li">
+            <view class="time">14:00-15:00 <van-icon name="close" /></view>
+            <view>
+              <van-icon name="manager" />空八二
+            </view>
+            <view>
+              <van-icon name="add-o" />补牙
+            </view>
+            <view>
+              <van-icon name="manager-o" />时代
+            </view>
+            <view class="bz">
+              <van-icon name="notes-o" />请添加预约备忘
+            </view>
+          </view>
+        </view>
+        <view class="wu">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
+        <view class="bottom" data-index="0" bindtap="numshow">
+          {{state1}}<van-icon name="arrow-down" />
+        </view>
+      </van-tab>
+      <van-tab title="预约信息" name="预约信息">
+        <view class="li_box">
+          <view class="date">2020-02-24</view>
+          <view class="li" bindtap="detailgo">
+            <view class="time">14:00-15:00 <van-icon name="close" catchtap="del" /></view>
+            <view>
+              <van-icon name="manager" />空八二
+            </view>
+            <view>
+              <van-icon name="add-o" />补牙
+            </view>
+            <view>
+              <van-icon name="manager-o" />时代
+            </view>
+            <view class="bz">
+              <van-icon name="notes-o" />请添加预约备忘
+            </view>
+          </view>
+        </view>
+        <view class="bottom">
+          <view data-index="1" bindtap="numshow">{{state2}}<van-icon name="arrow-down" /></view>
+          <view data-index="2" bindtap="numshow">{{state3}}<van-icon name="arrow-down" /></view>
+          <view class="green" bindtap="addgo"><van-icon name="plus" />添加</view>
+          <view class="green" bindtap="searchgo"><van-icon name="search" />搜索</view> 
+        </view>
+      </van-tab>
+    </van-tabs>
+    <view wx:if="{{title=='明日预约'}}">
+        <view class="wu">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
+        <view class="li_box" wx:if="{{show}}">
+          <view class="date">2020-02-24</view>
+          <view class="li" bindtap="detailgo">
+            <view class="time">14:00-15:00 <van-icon name="close" catchtap="del" /></view>
+            <view>
+              <van-icon name="manager" />空八二
+            </view>
+            <view>
+              <van-icon name="add-o" />补牙
+            </view>
+            <view>
+              <van-icon name="manager-o" />时代
+            </view>
+            <view class="bz">
+              <van-icon name="notes-o" />请添加预约备忘
+            </view>
+          </view>
+        </view>
+    </view>
+    <view wx:if="{{title=='预约'}}">
+        <view class="wu" wx:if="{{show}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
+        <view class="li_box">
+          <view class="date">2020-02-24</view>
+          <view class="li" bindtap="detailgo">
+            <view class="time">14:00-15:00 <van-icon name="close" catchtap="del" /></view>
+            <view>
+              <van-icon name="manager" />空八二
+            </view>
+            <view>
+              <van-icon name="add-o" />补牙
+            </view>
+            <view>
+              <van-icon name="manager-o" />时代
+            </view>
+            <view class="bz">
+              <van-icon name="notes-o" />请添加预约备忘
+            </view>
+          </view>
+        </view>
+    </view>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose"
+  position="top"
+  custom-style="widht: 100%">
+    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+  </van-popup>
+  <van-popup show="{{ showbottom }}" bind:close="onClosebottom"
+  position="bottom"
+  custom-style="widht: 100%">
+  <view class="popupbox" wx:if="{{num == 0}}">
+    <view catchtap="numclick" data-text="全部">全部</view>
+    <view catchtap="numclick" data-text="待确认">待确认</view>
+    <view catchtap="numclick" data-text="已确认">已确认</view>
+    <view catchtap="numclick" data-text="已取消">已取消</view>
+  </view>
+  <view class="popupbox" wx:if="{{num == 1}}">
+    <view catchtap="numclick1" data-text="全部">全部</view>
+    <view catchtap="numclick1" data-text="已预约">已预约</view>
+    <view catchtap="numclick1" data-text="已确认">已确认</view>
+    <view catchtap="numclick1" data-text="已送达">已送达</view>
+    <view catchtap="numclick1" data-text="已流失">已流失</view>
+  </view>
+  <view class="popupbox" wx:if="{{num == 2}}">
+    <view catchtap="numclick2" data-text="全部">全部</view>
+    <view catchtap="numclick2" data-text="李青青">李青青</view>
+    <view catchtap="numclick2" data-text="李医生">李医生</view>
+    <view catchtap="numclick2" data-text="莫医生">莫医生</view>
+  </view>
+  </van-popup>
+  <van-dialog id="van-dialog" />
+</view>

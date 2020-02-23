@@ -1,7 +1,7 @@
 <!--pages/achievement/index.wxml-->
 <view class="achievement">
   <view class="top">
-    <van-nav-bar left-text="返回" left-arrow bind:click-left="onClickLeft">
+    <van-nav-bar left-text="返回" left-arrow bind:click-left="onClickLeft"  bind:click-right="onClickRight">
     <van-icon name="calender-o" slot="right" size="36rpx" />
     <view slot="title" class="nav_top">
       <view data-index="0" bindtap="navclick" class="{{nav_num==0?'check':''}}">日</view>
@@ -11,7 +11,7 @@
     </van-nav-bar>
   </view>
   <view class="center">
-    <view class="center_title">我的实收业绩(元)<view class="time">2020年2月18日</view></view>
+    <view class="center_title">我的实收业绩(元)<view class="time">{{time}}</view></view>
     <view class="recommend_hot_box">
         <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" wx:if="{{nav_num == 0}}">
         </ec-canvas>
@@ -38,17 +38,32 @@
       <view>0.00</view>
     </view>
     <view class="xian"></view>
-    <view class="center_li">
-      <view>当前就诊患者</view>
-      <view><van-icon name="arrow" /></view>
-    </view>
-    <view class="center_li">
-      <view>当前医生排名</view>
-      <view><van-icon name="arrow" /></view>
-    </view>
-    <view class="center_li">
-      <view>当前热门项目</view>
-      <view><van-icon name="arrow" /></view>
-    </view>
+    <navigator url="/pages/achievementNext/index?title=就诊患者" hover-class="navigator-hover">
+      <view class="center_li">
+        <view>当前就诊患者</view>
+        <view><van-icon name="arrow" /></view>
+      </view>
+    </navigator>
+    <navigator url="/pages/achievementNext/index?title=医生排名" hover-class="navigator-hover">
+      <view class="center_li">
+        <view>当前医生排名</view>
+        <view><van-icon name="arrow" /></view>
+      </view>
+    </navigator>
+    <navigator url="/pages/achievementNext/index?title=热门项目" hover-class="navigator-hover">
+      <view class="center_li">
+        <view>当前热门项目</view>
+        <view><van-icon name="arrow" /></view>
+      </view>
+    </navigator>
   </view>
+  <van-popup show="{{ show }}" bind:close="onClose"
+  position="top"
+  custom-style="widht: 100%">
+    <view class='check_nav'>
+      <view class="{{check_nav_num==0?'check_n':''}}" bindtap="check_navclick" data-index="0">单次查询</view>
+      <view class="{{check_nav_num==1?'check_n':''}}" bindtap="check_navclick" data-index="1">多次查询</view>
+    </view>
+    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+  </van-popup>
 </view>

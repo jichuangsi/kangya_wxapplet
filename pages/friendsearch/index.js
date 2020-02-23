@@ -8,6 +8,7 @@ Page({
     searchtext: '',
     arr: [],
     state: 0,
+    Patientstate:0,
     scrollTop: 'A',
     project_list: [],
   },
@@ -35,12 +36,39 @@ Page({
       scrollTop: event.scrollTop
     });
   },
+  detailsgo(e){
+    console.log(this.data.Patientstate)
+    if (this.data.Patientstate == 0) {
+      wx.navigateTo({
+        url: '../Colleaguedetails/index',
+      })
+    } else {
+      let arr;
+      wx.getStorage({
+        key: 'Patientlist',
+        success: function (res) {
+          arr = res.data
+          console.log(arr)
+          console.log(arr.doctor)
+          arr.doctor = e.currentTarget.dataset.name
+          wx.setStorage({
+            key: 'Patientlist',
+            data: arr,
+          })
+          wx.navigateBack({
+            delta: 2
+          })
+        },
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options.state)
     this.setData({
+      Patientstate: options.Patientstate ? options.Patientstate : 0,
       state: options.state ? options.state:0
     })
   },

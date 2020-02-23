@@ -1,0 +1,91 @@
+<!--pages/Patientdetails/index.wxml-->
+<view class="Patientdetails">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <van-icon name="ellipsis" slot="right" size="34rpx"/>
+    </van-nav-bar>    
+  </view>
+  <view class="center">
+    <view class="center_top">
+      <view class="user_box">
+        <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <view class="user">
+          <view class="name">空白格</view>
+          <view class="state">
+            <view> </view>
+          </view>
+        </view>
+        <navigator url="/pages/QRCode/index?" hover-class="navigator-hover">
+            <van-icon name="qr" size="56rpx" />
+        </navigator>
+      </view>
+      <view class="message">
+        <van-icon name="description" />
+        <view class="none">
+          点击添加患者信息
+        </view>
+      </view>
+    </view>
+    <van-cell icon="todo-list" color="#01c7b5">
+      <view slot="title">
+        <view class="van-cell-text">档案</view>
+      </view>
+    </van-cell>
+    <view class="center_center">
+      <van-grid border="{{borderstate}}">
+        <van-grid-item icon="../../../images/news_details_icon_data.png" text="资料" link-type="navigateTo"
+        url="/pages/Patientdata/index" />
+        <van-grid-item icon="../../../images/news_details_icon_disposal.png" text="处置" link-type="navigateTo"
+        url="/pages/studynav/index?id=种植&&state=1"/>
+        <van-grid-item icon="../../../images/news_details_icon_charge.png" text="收费" link-type="navigateTo"
+        url="/pages/charge/index"/>
+        <van-grid-item icon="../../../images/news_details_icon_image.png" text="影像" link-type="navigateTo"
+        url="/pages/img/index"/>
+        <van-grid-item icon="../../../images/news_details_icon_cases.png" text="病历" link-type="navigateTo"
+        url="/pages/medical/index"/>
+        <van-grid-item icon="../../../images/news_details_icon_reservation.png" text="预约" link-type="navigateTo"
+        url="/pages/order/index?title=预约"/>
+        <van-grid-item icon="../../../images/news_details_icon_returnvisit.png" text="回访" link-type="navigateTo"
+        url="/pages/visit/index?state=1"/>
+        <van-grid-item icon="../../../images/news_details_icon_consulting.png" text="咨询" link-type="navigateTo"
+        url="/pages/activity/index"/>
+        <van-grid-item icon="../../../images/clinic_workbench_icon_operating.png" text="预交款" link-type="navigateTo"
+        url="/pages/payment/index"/>
+      </van-grid>
+    </view>
+    <view class="center_bottom">
+      <view>
+        <van-icon name="chat-o" />
+        消息
+      </view>
+      <view bindtap="iphoneclick">
+        <van-icon name="phone-o" />
+        电话
+      </view>
+      <view>
+        <van-icon name="clock-o" />
+        复诊
+      </view>
+    </view>
+  </view>
+  
+  <van-popup show="{{ show }}"
+  bindtap="onClose"
+  custom-style="width:auto;top:180rpx;left:620rpx;"
+  >
+    <view class="showli">
+      <view>
+        <van-icon name="bag-o" />
+        解除微信
+      </view>
+      <view>
+        <van-icon name="edit" />
+        编辑分组
+      </view>
+      <view>
+        <image src="../../images/returnvisit_icon_thename_default.png"></image>
+        删除患者
+      </view>
+    </view>
+  </van-popup>
+</view>

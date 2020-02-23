@@ -1,0 +1,63 @@
+<!--pages/orderedit/index.wxml-->
+<view class="orderedit">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <view slot="right">完成</view>
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="xian"></view>
+    <view class="box" bindtap="Patientgo">
+      <van-icon name="contact" />
+      <view class="text">患者姓名</view>
+      <view>空白</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" bindtap="Colleaguego">
+      <van-icon name="contact" />
+      <view class="text">预约医生</view>
+      <view>为五十</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" bindtap="showpoup">
+      <van-icon name="tosend" />
+      <view class="text">就诊日期</view>
+      <view>{{time}}</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" data-text="就诊时长" bindtap="Patienteditgo">
+      <van-icon name="clock-o" />
+      <view class="text">就诊时长</view>
+      <view>30分钟</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" data-text="选择事项" bindtap="Patienteditgo">
+      <van-icon name="tosend" />
+      <view class="text">预约事项</view>
+      <view>补牙</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="xian"></view>
+    <view class="box">
+      <van-icon name="tosend" />
+      <view class="text">预约类型</view>
+      <view></view>
+    </view>
+    <view class="box_li">
+      <view data-text="初诊" bindtap="checkclick" class="{{check_text=='初诊'?'check':''}}">初诊</view>
+      <view data-text="复诊" bindtap="checkclick" class="{{check_text=='复诊'?'check':''}}">复诊</view>
+      <view data-text="新诊" bindtap="checkclick" class="{{check_text=='新诊'?'check':''}}">新诊</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box">
+      <van-icon name="notes-o" />
+      <view class="text">备注</view>
+    </view>
+      <view class="bz">未填写备注信息</view>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose"
+  position="top"
+  custom-style="widht: 100%">
+    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+  </van-popup>
+</view>

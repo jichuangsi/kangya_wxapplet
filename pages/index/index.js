@@ -59,6 +59,34 @@ Page({
       url: '../Worktoday/index',
     })
   },
+  addgo(){
+    wx.navigateTo({
+      url: '../AddPatient/index',
+    })
+    this.setData({ showleft: false });
+  },
+  addordergo(){
+    wx.navigateTo({
+      url: '../orderedit/index?title=添加预约',
+    })
+    this.setData({ showleft: false });
+  },
+  addvisitgo() {
+    wx.navigateTo({
+      url: '../visitedit/index?title=添加回访',
+    })
+    this.setData({ showleft: false });
+  },
+  ordergo(){
+    wx.navigateTo({
+      url: '../order/index?title=明日预约',
+    })
+  },
+  Arrearsgo() {
+    wx.navigateTo({
+      url: '../Arrears/index',
+    })
+  },
   Hospital_click(e){
     console.log(e.currentTarget.dataset.name)
     this.setData({ name: e.currentTarget.dataset.name})

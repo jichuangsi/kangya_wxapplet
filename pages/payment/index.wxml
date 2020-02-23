@@ -1,0 +1,46 @@
+<!--pages/payment/index.wxml-->
+<view class="payment">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <!-- <van-icon name="eye-o" slot="right" size="36rpx" /> -->
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="li">
+      <van-icon name="clock-o" />
+      <view class="text">操作时间</view>
+      <view class="time">2020-01-08</view>
+    </view>
+    <view class="nav">
+      <view class="navbox">
+        <view>20.00</view>
+        <view>收入</view>
+      </view>
+      <view class="navbox">
+        <view class="red">0.00</view>
+        <view>支出</view>
+      </view>
+      <view class="navbox">
+        <view class="blue">20.00</view>
+        <view>余额</view>
+      </view>
+    </view>
+    <view class="li">
+      <view class="text">操作</view>
+      <view class="green">充值</view>
+    </view>
+    <view class="li">
+      <view class="text">收费方式</view>
+      <view>现金</view>
+    </view>
+    <view class="li">
+      <view class="text">经手人</view>
+      <view>试试</view>
+    </view>
+    <view class="li">
+      <van-icon name="notes-o" />
+      <view class="text">备注</view>
+      <view class="bz">未填写备注</view>
+    </view>
+  </view>
+</view>

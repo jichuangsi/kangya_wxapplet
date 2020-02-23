@@ -1,0 +1,95 @@
+<!--pages/Patientedit/index.wxml-->
+<view class="Patientedit">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <view slot="right">确定</view>
+    </van-nav-bar>    
+  </view>
+  <view class="center">
+    <input value="{{name}}" maxlength="32" placeholder="请输入内容" bindinput="nameipt" wx:if="{{title=='输入姓名'}}"></input>
+    <input value="{{age}}" maxlength="3" placeholder="请输入您的年龄" bindinput="ageipt"  wx:if="{{title=='添加年龄'}}"></input>
+    <input value="{{hobby}}" maxlength="32" placeholder="请输入内容" bindinput="hobbyipt"  wx:if="{{title=='添加兴趣爱好'}}"></input>
+    <input value="{{Economic}}" maxlength="32" placeholder="请输入内容" bindinput="Economicipt"  wx:if="{{title=='添加经济实力'}}"></input>
+    <input value="{{qq}}" maxlength="32" placeholder="请输入内容" bindinput="qqipt"  wx:if="{{title=='添加QQ号码'}}"></input>
+    <input value="{{mailbox}}" maxlength="32" placeholder="请输入内容" bindinput="mailboxipt"  wx:if="{{title=='添加电子邮箱'}}"></input>
+    <input value="{{iphone1}}" maxlength="32" placeholder="请输入内容" bindinput="iphone1ipt"  wx:if="{{title=='添加电话1'}}"></input>
+    <input value="{{iphone2}}" maxlength="32" placeholder="请输入内容" bindinput="iphone2ipt"  wx:if="{{title=='添加电话2'}}"></input>
+    <textarea value="{{address}}" maxlength="150" placeholder="请输入内容" bindinput="addressipt"  wx:if="{{title=='修改地址'}}"></textarea>
+    <textarea value="{{remarks}}" maxlength="150" placeholder="请输入内容" bindinput="remarksipt"  wx:if="{{title=='修改备注'}}"></textarea>
+    <input value="{{IDCard}}" maxlength="32" placeholder="请输入内容" bindinput="IDCardipt"  wx:if="{{title=='添加身份证'}}"></input>
+    <input value="{{socialcard}}" maxlength="32" placeholder="请输入内容" bindinput="socialcardipt"  wx:if="{{title=='添加社保号'}}"></input>
+    <input value="{{Introducer}}" maxlength="32" placeholder="请输入内容" bindinput="Introduceript"  wx:if="{{title=='添加介绍人'}}"></input>
+    <input value="{{Habit}}" maxlength="32" placeholder="请输入内容" bindinput="Habitipt"  wx:if="{{title=='添加洁牙习惯'}}"></input>
+    <input value="{{experience}}" maxlength="32" placeholder="请输入内容" bindinput="experienceipt"  wx:if="{{title=='添加就诊经历'}}"></input>
+    <textarea value="{{allergy}}" maxlength="150" placeholder="请输入内容" bindinput="allergyipt"  wx:if="{{title=='添加过敏史'}}"></textarea>
+    <textarea value="{{past}}" maxlength="150" placeholder="请输入内容" bindinput="pastipt"  wx:if="{{title=='添加既往史'}}"></textarea>
+    <textarea value="{{ask}}" maxlength="150" placeholder="请输入内容" bindinput="askipt"  wx:if="{{title=='添加顾客要求'}}"></textarea>
+    <textarea value="{{bz}}" maxlength="150" placeholder="请输入内容" bindinput="bzipt"  wx:if="{{title=='备注信息'}}"></textarea>
+    <textarea value="{{yybz}}" maxlength="150" placeholder="请输入内容" bindinput="yybzipt"  wx:if="{{title=='输入预约备注信息'}}"></textarea>
+    <textarea value="{{hfnr}}" maxlength="150" placeholder="请输入内容" bindinput="hfnript"  wx:if="{{title=='添加回访内容'}}"></textarea>
+    <textarea value="{{hfjg}}" maxlength="150" placeholder="请输入内容" bindinput="hfjgipt"  wx:if="{{title=='添加回访结果'}}"></textarea>
+    <view class="li" wx:for="{{project_arr}}" data-text="{{item}}" wx:if="{{title=='选择项目'}}" bindtap="projectclick">
+    {{item}}
+    <van-icon name="arrow" />
+    </view>
+    <view class="li" wx:for="{{Occupation_arr}}" data-text="{{item}}" wx:if="{{title=='职业模板'}}" bindtap="Occupationclick">
+    {{item}}
+    <van-icon name="arrow" />
+    </view>
+    <view class="li" wx:for="{{Education_arr}}" data-text="{{item}}" wx:if="{{title=='学历模板'}}" bindtap="Educationclick">
+    {{item}}
+    <van-icon name="arrow" />
+    </view>
+    <view class="li" wx:for="{{ascription_arr}}" data-text="{{item}}" wx:if="{{title=='添加电话1归属人'}}" bindtap="ascriptionclick1">
+    {{item}}
+    <van-icon name="arrow" />
+    </view>
+    <view class="li" wx:for="{{ascription_arr}}" data-text="{{item}}" wx:if="{{title=='添加电话2归属人'}}" bindtap="ascriptionclick2">
+    {{item}}
+    <van-icon name="arrow" />
+    </view>
+    <view class="li" wx:for="{{Consultant_arr}}" data-text="{{item}}" wx:if="{{title=='咨询师模板'}}" bindtap="Consultantclick">
+    {{item}}
+    <van-icon name="arrow" />
+    </view>
+    <view class="li" wx:for="{{powergrid_arr}}" data-text="{{item}}" wx:if="{{title=='编辑电网咨询'}}" bindtap="powergridclick">
+    {{item}}
+    <van-icon name="arrow" />
+    </view>
+    <view class="li" wx:for="{{impression_arr}}" data-index="{{index}}" wx:if="{{title=='患者印象'}}" bindtap="impressionclick">
+    {{item.title}}
+    <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
+    </view>
+    <view class="li" wx:for="{{allergy_arr}}" data-index="{{index}}" wx:if="{{title=='过敏史模板'}}" bindtap="allergyclick">
+    {{item.title}}
+    <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
+    </view>
+    <view class="li" wx:for="{{past_arr}}" data-index="{{index}}" wx:if="{{title=='既往史模板'}}" bindtap="pastclick">
+    {{item.title}}
+    <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
+    </view>
+    <view class="li" wx:for="{{Matter_arr}}" data-index="{{index}}" wx:if="{{title=='选择事项'}}" bindtap="Matterclick">
+    {{item.title}}
+    <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
+    </view>
+    <view class="li">
+    <view wx:for="{{time_arr}}" data-index="{{index}}" wx:if="{{title=='就诊时长'}}" bindtap="timeclick" class="smallbox {{(time_end>=index&&index>=time_start)||index==time_start?'checkbox':''}}">
+    {{item}}</view>
+    </view>
+    
+    <view class="li" wx:for="{{lx_arr}}" data-text="{{item}}" wx:if="{{title=='回访类型'}}" bindtap="lxclick">
+    {{item}}
+    <van-icon name="arrow" />
+  </view>
+
+    <view class="li" wx:for="{{nr_arr}}" data-text="{{item}}" wx:if="{{title=='回访内容模板'}}" bindtap="nrclick">
+    {{item}}
+    <van-icon name="arrow" />
+  </view>
+    
+    <view class="li" wx:for="{{jg_arr}}" data-text="{{item}}" wx:if="{{title=='回访结果模板'}}" bindtap="jgclick">
+    {{item}}
+    <van-icon name="arrow" />
+  </view>
+  </view>
+</view>

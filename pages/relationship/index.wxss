@@ -1,0 +1,70 @@
+/* pages/relationship/index.wxss */
+.relationship {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.top {
+  width: 100%;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 9;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  padding-top: 100rpx;
+  box-sizing: border-box;
+}
+.li {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  box-sizing: border-box;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.li .text {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.li .bz {
+  width: 100%;
+  height: 260rpx;
+}
+.popup_box {
+  text-align: center;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+.popup_box view {
+  border-bottom: 1rpx solid #f2f2f2;
+}

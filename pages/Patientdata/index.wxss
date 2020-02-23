@@ -1,0 +1,128 @@
+/* pages/Patientdata/index.wxss */
+.Patientdata {
+  width: 100%;
+  height: 100vh;
+  /* background-color: #f2f2f2; */
+}
+.top {
+  width: 100%;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 9;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  padding-top: 100rpx;
+  box-sizing: border-box;
+}
+
+.center .li{
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.center .li .left {
+  font-size: 34rpx;
+  line-height: 46rpx;
+  display: flex;
+}
+.center .li .right {
+  font-size: 30rpx;
+  line-height: 46rpx;
+  display: flex;
+  align-items: center;
+}
+.center .li .right image {
+  width: 46rpx;
+  height: 46rpx;
+}
+.center .title {
+  background-color: #f2f2f2;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.xian {
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 20rpx;
+}
+.center_bottom {
+  padding: 20rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+}
+.center_bottom view {
+  width: 45%;
+  color: #fff;
+  font-size: 38rpx;
+  background-color: #16c7ae;
+  text-align: center;
+  line-height: 66rpx;
+}
+.popup_box {
+  text-align: center;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+.popup_box view {
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.li image {
+  width: 76rpx;
+  height: 76rpx;
+}
+.li .user {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.relationship_btn {
+  box-sizing: border-box;
+  width: 100%;
+  height: 106rpx;
+  border: 20rpx solid #fff;
+  background-color: #16c7ae;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+}

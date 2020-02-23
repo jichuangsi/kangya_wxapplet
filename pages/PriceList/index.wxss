@@ -26,7 +26,6 @@ van-icon {
 van-sidebar {
   height: 100vh;
   overflow: auto;
-
 }
 .center {
   display: flex;

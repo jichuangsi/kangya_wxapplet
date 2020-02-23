@@ -1,0 +1,67 @@
+<!--pages/achievementNext/index.wxml-->
+<view class="achievementNext">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="hz" wx:if="{{title=='就诊患者'}}">
+      <view class="box">
+        <view class="title">
+          初复诊分析
+        </view>
+        <view class="recommend_hot_box">
+          <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}">
+          </ec-canvas>
+        </view>
+      </view>
+      <view class="box">
+        <view class="title">
+          患者类型分析
+        </view>
+        <view class="recommend_hot_box">
+          <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec1 }}">
+          </ec-canvas>
+        </view>
+      </view>
+      <view class="box">
+        <view class="title">
+          患者来源分析
+        </view>
+        <view class="recommend_hot_box">
+          <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec2 }}">
+          </ec-canvas>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{title=='医生排名'}}">
+      <view class="li" wx:for="{{doctor_arr}}">
+        <view>{{index+1}}</view>
+        <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <view class="name">{{item.name}}</view>
+        <view class="money">￥{{item.money}}</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view wx:if="{{title=='热门项目'}}">
+    <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
+      <van-tab title="人数统计" name="人数统计">
+      <view class="li" wx:for="{{project_arr}}">
+        <view>{{index+1}}</view>
+        <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <view class="name">{{item.name}}</view>
+        <view class="money">{{item.num}}人</view>
+      </view>
+      </van-tab>
+      <van-tab title="费用统计" name="费用统计">
+      <view class="li" wx:for="{{project_arr}}">
+        <view>{{index+1}}</view>
+        <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <view class="name">{{item.name}}</view>
+        <view class="money">￥{{item.money}}</view>
+      </view>
+      </van-tab>
+    </van-tabs>
+    </view>
+  </view>
+</view>

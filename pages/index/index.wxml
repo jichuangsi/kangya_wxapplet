@@ -34,11 +34,11 @@
       <view class="num">{{Worktoday}}</view>
       今日工作
     </view>
-    <view class="li">
+    <view class="li" bindtap="ordergo">
       <view class="num">{{Tomorroworder}}</view>
       明日预约
     </view>
-    <view class="li">
+    <view class="li" bindtap="Arrearsgo">
       <view class="num">{{Worktoday}}</view>
       历史欠款
     </view>
@@ -62,15 +62,15 @@
   custom-style="width:auto;top:400rpx;left:600rpx;"
   >
     <view class="showli">
-      <view>
+      <view catchtap="addgo">
         <image src="../../images/clinic_new_icon_patient.png"></image>
         添加患者
       </view>
-      <view>
+      <view catchtap="addordergo">
         <image src="../../images/clinic_new_icon_reservation.png"></image>
         添加预约
       </view>
-      <view>
+      <view catchtap="addvisitgo">
         <image src="../../images/clinic_new_icon_returnvisit.png"></image>
         添加回访
       </view>
@@ -88,9 +88,9 @@
     <van-grid-item icon="../../../images/clinic_workbench_icon_patient.png" text="患者" link-type="navigateTo"
     url="/pages/Patientlist/index" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_reservation.png" text="预约" link-type="navigateTo"
-    url="/pages/studynav/index?id=种植&&state=1"/>
+    url="/pages/order/index?title=预约列表"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_returnvisit.png" text="回访" link-type="navigateTo"
-    url="/pages/studynav/index?id=修复&&state=1"/>
+    url="/pages/visit/index?state=0"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_colleague.png" text="同事" link-type="navigateTo"
     url="/pages/Colleague/index"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_scheduling.png" text="排班" link-type="navigateTo"

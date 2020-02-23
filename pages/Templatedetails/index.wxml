@@ -1,0 +1,18 @@
+<!--pages/Templatedetails/index.wxml-->
+<view class="Templatedetails">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="li">
+      <view class="tab" wx:for="{{arr}}">
+        <view class="left">{{item.title}}</view>
+        <view class="right" wx:if="{{item.text != '影像'}}">{{item.text}}</view>
+        <view class="right" wx:if="{{item.text == '影像'}}">{{item.text}}<van-icon name="arrow" /></view>
+      </view>
+    </view>
+  </view>
+  <view class="btn" bindtap="btn">使用此模板</view>
+  <van-dialog id="van-dialog" />
+</view>

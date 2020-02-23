@@ -64,9 +64,9 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/achievement/index",
-					"pathName": "pages/achievement/index",
-					"query": "state=0",
+					"name": "pages/payment/index",
+					"pathName": "pages/payment/index",
+					"query": "title=影像浏览&&state=0",
 					"scene": null
 				}
 			]

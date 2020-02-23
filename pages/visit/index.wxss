@@ -1,0 +1,112 @@
+/* pages/visit/index.wxss */
+.visit {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.top {
+  /* width: 100%;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 9999;
+  background-color: #16c7ae !important; */
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  /* padding-top: 100rpx; */
+  box-sizing: border-box;
+  /* background-color: #fff; */
+}
+.date {
+  width: 200rpx;
+  height: 56rpx;
+  text-align: center;
+  line-height: 56rpx;
+  border-radius: 56px;
+  background-color: #c6c6c6;
+  color: #fff;
+  margin: 20rpx auto;
+}
+.li {
+  padding: 20rpx;
+  box-sizing: border-box;
+  line-height: 46rpx;
+  margin: 20rpx;
+  background-color: #fff;
+}
+.li .li_top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #f2f2f2;
+  margin-bottom: 10rpx;
+}
+.li .li_top .li_left {
+  display: flex;
+}
+.li .li_top image {
+  width: 76rpx;
+  height: 76rpx;
+}
+.li .libox {
+  border-right: 1rpx solid #f2f2f2;
+  padding: 0rpx 20rpx;
+}
+.wu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bottom {
+  background-color: #fff;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  line-height: 76rpx;
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.bottom view{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.green {
+  color: #16c7ae;
+}
+.van-dialog__button {
+  flex: none;
+  width: 50%;
+}

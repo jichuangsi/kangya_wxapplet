@@ -83,3 +83,16 @@ ec-canvas {
   box-sizing: border-box;
   border-bottom: 1rpx solid #f2f2f2;
 }
+.check_nav {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+}
+.check_nav view {
+  flex: 1;
+  text-align: center;
+}
+.check_nav .check_n {
+  color: #16c7ae;
+}

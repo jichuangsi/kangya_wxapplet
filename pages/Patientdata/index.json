@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "AddPatient": "../AddPatient/index",
+    "Patientinformation": "../Patientinformation/index"
+  }
+}

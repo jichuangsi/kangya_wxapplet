@@ -1,0 +1,92 @@
+<!--pages/visit/index.wxml-->
+<view class="visit">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <van-icon name="calender-o" slot="right" size="36rpx" wx:if="{{state==0}}" />
+    <van-icon name="plus" slot="right" size="36rpx" wx:if="{{state!=0}}" />
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view wx:if="{{state==0}}">
+      <view class="li_box">
+            <view class="li" bindtap="detailsgo">
+              <view class="li_top">
+                <view class="li_left">
+                  <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+                  <view class="libox">
+                    <view>患者姓名</view>
+                    <view>空白</view>
+                  </view>
+                  <view class="libox">
+                    <view>回访人</view>
+                    <view>试试</view>
+                  </view>
+                  <view class="libox">
+                    <view>回访日期</view>
+                    <view>2020-02-18</view>
+                  </view>
+                </view>
+                <van-icon name="close" catchtap="del" />
+              </view>
+              <view class="green" style="font-size:46rpx;">治疗一周回访</view>
+              <view>暂无回访结果</view>
+            </view>
+          </view>
+          <view class="bottom">
+            <view data-index="1" bindtap="numshow">{{state2}}<van-icon name="arrow-down" /></view>
+            <view data-index="2" bindtap="numshow">{{state3}}<van-icon name="arrow-down" /></view>
+            <view class="green" bindtap="addgo"><van-icon name="plus" />添加</view>
+            <view class="green" bindtap="searchgo"><van-icon name="search" />搜索</view> 
+          </view>
+    </view>
+    <view wx:if="{{state==1}}">
+      <view class="li_box">
+            <view class="li" bindtap="detailsgo">
+              <view class="li_top">
+                <view class="li_left">
+                  <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+                  <view class="libox">
+                    <view>患者姓名</view>
+                    <view>空白</view>
+                  </view>
+                  <view class="libox">
+                    <view>回访人</view>
+                    <view>试试</view>
+                  </view>
+                  <view class="libox">
+                    <view>回访日期</view>
+                    <view>2020-02-18</view>
+                  </view>
+                </view>
+                <van-icon name="close" catchtap="del" />
+              </view>
+              <view class="green" style="font-size:46rpx;">治疗一周回访</view>
+              <view>暂无回访结果</view>
+            </view>
+          </view>
+    </view>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose"
+  position="top"
+  custom-style="widht: 100%">
+    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+  </van-popup>
+  <van-popup show="{{ showbottom }}" bind:close="onClosebottom"
+  position="bottom"
+  custom-style="widht: 100%">
+  <view class="popupbox" wx:if="{{num == 1}}">
+    <view catchtap="numclick1" data-text="全部">全部</view>
+    <view catchtap="numclick1" data-text="已预约">已预约</view>
+    <view catchtap="numclick1" data-text="已确认">已确认</view>
+    <view catchtap="numclick1" data-text="已送达">已送达</view>
+    <view catchtap="numclick1" data-text="已流失">已流失</view>
+  </view>
+  <view class="popupbox" wx:if="{{num == 2}}">
+    <view catchtap="numclick2" data-text="全部">全部</view>
+    <view catchtap="numclick2" data-text="李青青">李青青</view>
+    <view catchtap="numclick2" data-text="李医生">李医生</view>
+    <view catchtap="numclick2" data-text="莫医生">莫医生</view>
+  </view>
+  </van-popup>
+  <van-dialog id="van-dialog" />
+</view>

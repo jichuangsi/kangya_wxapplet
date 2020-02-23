@@ -1,0 +1,66 @@
+/* pages/charge/index.wxss */
+.charge {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.top {
+  /* width: 100%;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 9999;
+  background-color: #16c7ae !important; */
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.title {
+  line-height: 46rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.li {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #fff;
+}
+.li .libox {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #f2f2f2;
+}
+.li .red {
+  color: red;
+}

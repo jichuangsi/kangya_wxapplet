@@ -1,0 +1,115 @@
+/* pages/Patientdetails/index.wxss */
+.Patientdetails {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.top {
+  width: 100%;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 9;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  background-color: #fff;
+  padding-top: 100rpx;
+  box-sizing: border-box;
+}
+.center .center_top {
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 20rpx solid #f2f2f2;
+}
+.center .center_top .user_box {
+  display: flex;
+  align-items: center;
+}
+.center .center_top .user_box image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+.center .center_top .user_box .user {
+  flex: 1;
+}
+.center .center_top .message {
+  color: #999;
+  display: flex;
+  margin-top: 20rpx;
+}
+.center .center_top .message van-icon {
+  margin-right: 20rpx;
+}
+.center .center_bottom {
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  box-sizing: border-box;
+  display: flex;
+  background-color: #fff;
+}
+.center .center_center {
+  background-color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.center .center_bottom view {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 66rpx;
+}
+.center .center_bottom view van-icon {
+  margin-right: 10rpx;
+}
+
+
+.showli view {
+  display: flex;
+  padding: 10rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+  align-items: center;
+}
+.showli view image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+.showli view .van-icon {
+  color: #01c7b5;
+}
+.van-grid-item__icon {
+  font-size: 80rpx !important;
+}
