@@ -96,3 +96,13 @@ ec-canvas {
 .check_nav .check_n {
   color: #16c7ae;
 }
+.canvas_box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+    background-color: #16c7ae;
+}
+.canvas {
+    width: 600rpx;
+    height: 600rpx;
+}

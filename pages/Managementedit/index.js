@@ -1,75 +1,68 @@
-// pages/Patientdetails/index.js
+// pages/Managementedit/index.js
 import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog.js';
 Page({
 
   /**
    * 页面的初始数据
    */
+
   data: {
-    title:'患者详情',
-    show: false,
-    borderstate:false
+    title: '处置',
+    arr: [
+      {
+        username: '空白',
+        time: '2020-02-20 17:38',
+        name: '试试',
+        text: '测试'
+        // arr1:[
+        //   { title: '沟通记录', text: '测试' }
+        // ]
+      },
+    ]
   },
   onClickLeft() {
     wx.navigateBack({
       delta: 1
     })
   },
-  onClickRight(){
-    this.setData({
-      show:true
-    })
-  },
-  onClose() {
-    this.setData({
-      show: false
-    })
-  },
-  iphoneclick(){
-    wx.makePhoneCall({
-      phoneNumber: '' //仅为示例，并非真实的电话号码
-    })
-  },
-  delwx() {
-    Dialog.confirm({
-      title: '解除微信',
-      message: '确定解除关联微信吗？'
-    }).then(() => {
-      // on confirm
-    }).catch(() => {
-      // on cancel
-    });
-  },
-  delPatient(){
-    Dialog.confirm({
-      title: '删除患者',
-      message: '确定删除？'
-    }).then(() => {
-      // on confirm
-    }).catch(() => {
-      // on cancel
-    });
-  },
-  addyuyue(){
+  onClickRight() {
     wx.navigateTo({
-      url: '../orderedit/index?title=添加预约',
+      url: '../programme/index',
     })
   },
-  chatgo() {
+  Agreeimggo() {
     wx.navigateTo({
-      url: '../chat/index',
+      url: '../Agreeimg/index',
     })
   },
-  Patienteditgo() {
+  prescriptiongo(){
     wx.navigateTo({
-      url: '../Patientedit/index?title=编辑分组',
+      url: '../prescription/index',
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      title:options.title
+    })
+  },
+  btn(){
+    this.onClickLeft()
+  },
+  del() {
+    Dialog.confirm({
+      title: '提示',
+      message: '您确定删除该处置吗？'
+    }).then(() => {
+      // on confirm
+      wx.navigateBack({
+        delta: 1,
+      })
+    }).catch(() => {
+      // on cancel
+    })
   },
 
   /**

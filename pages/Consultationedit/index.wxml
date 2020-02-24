@@ -1,0 +1,99 @@
+<!--pages/Consultationedit/index.wxml-->
+<view class="Consultationedit">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <view slot="right">完成</view>
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="box" data-text="语音备忘录" bindtap="Patienteditgo">
+        <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+        <view class="text">语音备忘录</view>
+        <view></view>
+        <van-icon name="arrow" />
+        <view class="bz">暂无</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" data-text="输入客户主诉" bindtap="Patienteditgo">
+        <van-icon name="../../../images/returnvisit_icon_content_default.png" />
+        <view class="text">客户主诉</view>
+        <view></view>
+        <van-icon name="arrow" />
+        <view class="bz">请输入客户主诉</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" data-text="基本需求" bindtap="Patienteditgo">
+        <van-icon name="../../../images/returnvisit_icon_content_default.png" />
+        <view class="text">基本需求</view>
+        <view>模板</view>
+        <van-icon name="arrow" />
+        <view class="bz" data-text="输入基本需求" catchtap="Patienteditgo">请输入基本需求</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" data-text="潜在需求" bindtap="Patienteditgo">
+        <van-icon name="../../../images/case_icon_programme_defauit.png" />
+        <view class="text">潜在需求</view>
+        <view>模板</view>
+        <van-icon name="arrow" />
+        <view class="bz" data-text="输入潜在需求" catchtap="Patienteditgo">请输入潜在需求</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" data-text="输入医生方案" bindtap="Patienteditgo">
+        <van-icon name="../../../images/case_icon_programme_defauit.png" />
+        <view class="text">医生方案</view>
+        <view></view>
+        <van-icon name="arrow" />
+        <view class="bz">请输入医生方案</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" data-text="输入沟通记录" bindtap="Patienteditgo">
+        <van-icon name="../../../images/returnvisit_icon_result_default.png" />
+        <view class="text">沟通记录</view>
+        <view></view>
+        <van-icon name="arrow" />
+        <view class="bz">请输入沟通记录</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" data-text="输入服务建议" bindtap="Patienteditgo">
+        <van-icon name="../../../images/case_icon_mainsuitl_defauit.png" />
+        <view class="text">服务建议</view>
+        <view></view>
+        <van-icon name="arrow" />
+        <view class="bz">请输入服务建议</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" bindtap="showpoup">
+      <van-icon name="tosend" />
+      <view class="text">录入日期</view>
+      <view>{{time}}</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" data-text="沟通类型" bindtap="Patienteditgo">
+      <van-icon name="../../../images/returnvisit_icon_type_default.png" />
+      <view class="text">沟通类型</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" bindtap="Colleaguego">
+      <van-icon name="../../../images/case_icon_nurse_defauit.png" />
+      <view class="text">接诊医生</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="box" bindtap="Colleaguego">
+      <van-icon name="../../../images/returnvisit_icon_personnel_default.png" />
+      <view class="text">录入人</view>
+      <view></view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="xian"></view>
+    <view class="btn" wx:if="{{title=='修改咨询'}}" bindtap="del">删除</view>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose"
+  position="top"
+  custom-style="widht: 100%">
+    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+  </van-popup>
+  <van-dialog id="van-dialog" />
+</view>
+

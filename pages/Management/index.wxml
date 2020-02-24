@@ -1,0 +1,42 @@
+<!--pages/Management/index.wxml-->
+<view class="Management">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+      <van-icon name="plus" slot="right" size="36rpx" />
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="li">
+      <image class="img" src="../../images/clinic_colleagues_headportrait_male.png"></image>
+      <view class="name">试试</view>
+      <view class="state">治疗中</view>
+      <view class="time">2020-020-24 12:30</view>
+    </view>
+    <view class="li">
+      <view class="title">处方</view>
+      <view class="text">
+        <view>头孢拉定胶囊</view>
+        <view class="money">
+          <view>￥2.00</view> x1
+        </view>
+      </view>
+      <view class="bz">口服一日三次</view>
+    </view>
+    <view class="li">
+        <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+        <view>语音备忘录</view>
+        <view></view>
+        <van-icon name="arrow" />
+        <view class="bz">暂无</view>
+    </view>
+    <view class="li" bindtap="Agreeimggo">
+        <view>知情同意书</view>
+        <view></view>
+        <van-icon name="arrow" />
+    </view>
+    <view class="li">
+      <view class="btn" bindtap="editgo"><van-icon name="records" size="36rpx" />编辑</view>
+      <view class="btn" bindtap="Pricego"><van-icon name="completed" size="36rpx" />划价</view>
+    </view>
+  </view>
+</view>

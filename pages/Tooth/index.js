@@ -7,6 +7,7 @@ Page({
   data: {
     title: '标记牙位',
     active:'恒牙',
+    state:0,
     arr1:[
       { state: 0, text: 8, id: 0 },
       { state: 0, text: 7, id: 1 },
@@ -74,9 +75,15 @@ Page({
     })
   },
   btn() {
-    wx.navigateBack({
-      delta: 1
-    })
+    if(this.data.state == 1){
+      wx.navigateBack({
+        delta: 2
+      })
+    } else {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
   },
   onChange(event) {
     this.setData({
@@ -119,7 +126,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({ state: options.state})
   },
 
   /**

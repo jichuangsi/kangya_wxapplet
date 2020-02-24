@@ -64,9 +64,9 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/payment/index",
-					"pathName": "pages/payment/index",
-					"query": "title=影像浏览&&state=0",
+					"name": "pages/Patientdetails/index",
+					"pathName": "pages/Patientdetails/index",
+					"query": "title=确认内容&&state=0",
 					"scene": null
 				}
 			]

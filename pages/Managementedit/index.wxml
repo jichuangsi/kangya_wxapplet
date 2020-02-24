@@ -1,0 +1,57 @@
+<!--pages/Managementedit/index.wxml-->
+<view class="Managementedit">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+      <view slot="right">添加方案</view>
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="li">
+        <view class="first">就诊类型</view>
+        <view>复诊</view>
+    </view>
+    <view class="li">
+        <view class="first">就诊医生</view>
+      <image class="img" src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <view>试试</view>
+    </view>
+    <view class="li">
+        <view class="first">就诊日期</view>
+        <view>2020-02-24 13:00</view>
+    </view>
+    <view class="xian"></view>
+    <view class="li" bindtap="prescriptiongo">
+      <view class="first">处方</view>
+      <van-icon name="arrow" />
+      <view class="text" wx:if="{{show}}">
+        <view>头孢拉定胶囊</view>
+        <view class="money">
+          <view>￥2.00</view> x1
+        </view>
+      </view>
+      <view class="bz">口服一日三次</view>
+    </view>
+    <view class="li">
+        <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+        <view class="first">语音备忘录</view>
+        <view></view>
+        <van-icon name="arrow" />
+        <view class="bz">暂无</view>
+    </view>
+    <view class="li" bindtap="Agreeimggo">
+        <view class="first">知情同意书</view>
+        <view></view>
+        <van-icon name="arrow" />
+    </view>
+    <view class="li">
+        <view class="first">总计</view>
+        <view>（共0个）</view>
+        <view class="red">￥0.00</view>
+    </view>
+    <view class="li libox">
+      <view class="btn" bindtap="btn"><van-icon name="passed" size="36rpx" />确定</view>
+      <view class="btn" bindtap="del"><van-icon name="close" color="#eb2c2c" size="36rpx" />删除</view>
+    </view>
+  </view>
+  <van-dialog id="van-dialog" />
+</view>

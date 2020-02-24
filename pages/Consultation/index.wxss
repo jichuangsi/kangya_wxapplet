@@ -1,16 +1,8 @@
-/* pages/achievementNext/index.wxss */
-.achievementNext {
+/* pages/Consultation/index.wxss */
+.Consultation {
   width: 100%;
   height: 100vh;
   background-color: #f2f2f2;
-}
-.top {
-  /* width: 100%;
-  position: fixed;
-  top: 0rpx;
-  left: 0rpx;
-  z-index: 9999;
-  background-color: #16c7ae !important; */
 }
 .top .van-nav-bar {
   vertical-align: middle !important;
@@ -41,47 +33,38 @@
   overflow: auto;
 }
 .center {
-  /* padding-top: 100rpx; */
-  box-sizing: border-box;
+  /* margin-bottom: 100rpx; */
   background-color: #fff;
-}
-.center .box {
-  border-bottom: 20rpx solid #f2f2f2;
-}
-.recommend_hot_box {
-  height: 400rpx;
-  /* background-color: #16c7ae; */
-}
-ec-canvas {
-  width: 100%;
-  height: 400rpx;
-}
-.title {
-  text-align: center;
-  margin: 20rpx;
-  line-height: 56rpx;
 }
 .li {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   padding: 20rpx;
   box-sizing: border-box;
-  align-items: center;
   border-bottom: 1rpx solid #f2f2f2;
 }
 .li image {
-  width: 76rpx;
-  height: 76rpx;
+  width: 56rpx;
+  height: 56rpx;
+}
+.li .text {
+  flex: 1;
   margin-left: 20rpx;
   margin-right: 20rpx;
 }
-.li .name {
-  flex: 1;
+.li .time {
+  margin-right: 20rpx;
+  font-size: 28rpx;
+} 
+.bz {
+  width: 100%;
+  font-size: 24rpx;
 }
-.li .money {
+.green {
   color: #16c7ae;
 }
-.canvas {
-    width: 100%;
-    height: 800rpx;
-    margin: 10rpx auto;
+.van-dialog__button {
+  flex: none;
+  width: 50%;
 }

@@ -59,7 +59,20 @@ Page({
 
     lx_arr: ['未上门', '未成交', '术后'],
     nr_arr: ['治疗后一周', '拔牙后一周', '治疗后隔天'],
-    jg_arr: ['少量出血', '无不适', '牙微疼痛']
+    jg_arr: ['少量出血', '无不适', '牙微疼痛'],
+
+    gt_arr: ['咨询沟通', '投诉',],
+    jbxq_arr:[
+      { title: '补牙', state: 0 },
+      { title: '拔牙', state: 0 }
+    ],
+     qzxq_arr: [
+      { title: '补牙', state: 0 },
+       { title: '拔牙', state: 0 },
+       { title: 'RTC', state: 0 }
+    ],
+
+    bjfz_arr: ['健康宣教', '最近患者', '治疗完成']
   },
   onClickLeft() {
     wx.navigateBack({
@@ -563,6 +576,28 @@ Page({
   }, nrclick() {
     this.onClickLeft()
   }, jgclick() {
+    this.onClickLeft()
+  },
+
+
+
+  jbxqclick(e) {
+    let index = e.currentTarget.dataset.index
+    let arr = this.data.jbxq_arr
+    arr[index].state = arr[index].state == 0 ? 1 : 0
+    this.setData({ jbxq_arr: arr })
+  },
+  qzxqclick(e) {
+    let index = e.currentTarget.dataset.index
+    let arr = this.data.qzxq_arr
+    arr[index].state = arr[index].state == 0 ? 1 : 0
+    this.setData({ qzxq_arr: arr })
+  },
+  gtclick() {
+    this.onClickLeft()
+  },
+
+  bjfzclick() {
     this.onClickLeft()
   },
   /**

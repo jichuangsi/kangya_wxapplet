@@ -12,13 +12,8 @@
   </view>
   <view class="center">
     <view class="center_title">我的实收业绩(元)<view class="time">{{time}}</view></view>
-    <view class="recommend_hot_box">
-        <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" wx:if="{{nav_num == 0}}">
-        </ec-canvas>
-        <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" wx:if="{{nav_num == 1}}">
-        </ec-canvas>
-        <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" wx:if="{{nav_num == 2}}">
-        </ec-canvas>
+    <view class="canvas_box">
+      <canvas class="canvas" canvas-id="pieGraph"></canvas>
     </view>
     <view class="center_top">
       <view>当前我的实收业绩</view>

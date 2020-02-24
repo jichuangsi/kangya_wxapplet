@@ -10,28 +10,19 @@
         <view class="title">
           初复诊分析
         </view>
-        <view class="recommend_hot_box">
-          <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}">
-          </ec-canvas>
-        </view>
+        <canvas class="canvas" canvas-id="pieGraph1"></canvas>
       </view>
       <view class="box">
         <view class="title">
           患者类型分析
         </view>
-        <view class="recommend_hot_box">
-          <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec1 }}">
-          </ec-canvas>
-        </view>
+        <canvas class="canvas" canvas-id="pieGraph2"></canvas>
       </view>
       <view class="box">
         <view class="title">
           患者来源分析
         </view>
-        <view class="recommend_hot_box">
-          <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec2 }}">
-          </ec-canvas>
-        </view>
+        <canvas class="canvas" canvas-id="pieGraph3"></canvas>
       </view>
     </view>
     <view wx:if="{{title=='医生排名'}}">

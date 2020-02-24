@@ -1,0 +1,32 @@
+<!--pages/prescription/index.wxml-->
+<view class="prescription">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+      <van-icon name="setting-o" slot="right" size="36rpx" />
+    </van-nav-bar>
+  </view>
+  <view class="center">
+            <view class="libox">
+              <view class="list" wx:for="{{arr}}">
+                <view class="left">
+                  <view class="title">{{item.title}}</view>
+                  <view class="price">单价：<input data-index="{{index}}"  data-id="{{item.id}}" value="{{item.price}}" bindinput="ipt"></input>元</view>
+                  <view class="text" data-text="{{item.text}}" bindtap="editgo">
+                  使用方法：{{item.text}}<van-icon name="arrow" />
+                  </view>
+                </view>
+                <view class="check_state"><van-icon name="checked" wx:if="{{item.num == 0}}" size="36rpx" /><van-icon name="checked" color="#16c7ae" wx:if="{{item.num > 0}}" size="36rpx" /></view>
+                <view class="num">
+                  <van-icon name="clear" size="36rpx" color="#eb4921" data-item="{{item}}" data-index="{{index}}" bindtap="delone" wx:if="{{item.num>0}}" />
+                  <view wx:if="{{item.num>0}}">{{item.num}}</view>
+                  <van-icon name="add" size="36rpx" color="#16c7ae" data-item="{{item}}" data-index="{{index}}" bindtap="addone" />
+                </view>
+              </view>
+            </view>
+  </view>
+  
+  <view class="bottom_btn">
+    <view class="bottom_num">总价：<view class="red">{{price}}</view></view>
+    <view class="next" bindtap="next">完成</view>
+  </view>
+</view>

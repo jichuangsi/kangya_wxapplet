@@ -1,5 +1,5 @@
 // pages/achievementNext/index.js
-import * as echarts from '../../ec-canvas/echarts';
+const CHARTS = require('../../data/wxcharts-min.js');
 Page({
 
   /**
@@ -7,12 +7,19 @@ Page({
    */
   data: {
     title: '关于牙医管家',
-    ec: '',
-    ec1: '',
-    ec2: '',
-    a1: [1],
-    b1: [1],
-    c1: [1],
+    a1: [
+      { name: '初诊', data: 4 },
+      { name: '复诊', data: 3 }
+    ],
+    a2: [
+      { name: '未分类', data: 6 },
+      { name: '洗牙', data: 1 }
+    ],
+    a3: [
+      { name: '未分类', data: 2 },
+      { name: '网络咨询', data: 1 },
+      { name: '家住附近', data: 2 }
+    ],
     doctor_arr:[
       {name:'李医生',money:'930.00'}
     ],
@@ -32,176 +39,74 @@ Page({
     })
   },
 
-
-  initChart(canvas, width, height) {
-    let self = this
-    console.log(canvas)
-    const chart = echarts.init(canvas, null, {
-      width: width,
-      height: height
-    });
-    canvas.setChart(chart);
-
-    var option = {
-      tooltip: {
-        trigger: 'item',
-        formatter: '{b}:{d}%'
-      },
-      series: [
-        {
-          name: '访问来源',
-          type: 'pie',
-          radius: ['0%', '70%'],
-          avoidLabelOverlap: false,
-          label: {
-            normal: {
-              show: false,
-              position: 'center',
-              fontSize: '30',
-              rich:{}
-            },
-          },
-          emphasis: {
-            show: true,
-            textStyle: {
-              fontSize: '30',
-              fontWeight: 'bold'
-            }
-          },
-          labelLine: {
-            normal: {
-              show: false
-            }
-          },
-          data: [
-            { value: 4, name: '初诊' },
-            { value: 3, name: '复诊' },
-          ]
+  pieShow1(data) {
+    let pie = {
+      canvasId: 'pieGraph1', // canvas-id
+      type: 'pie', // 图表类型，可选值为pie, line, column, area, ring
+      series: this.data.a1,
+      width: 380, // 宽度，单位为px
+      height: 300, // 高度，单位为px
+      legend: {
+        orient: 'vertical',
+      }, // 是否显示图表下方各类别的标识
+      dataLabel: true, // 是否在图表中显示数据内容值
+      extra: {
+        pie: {
+          offsetAngle: -90
         }
-      ]
+      }
     };
-
-    chart.setOption(option);
-    return chart;
+    new CHARTS(pie);
   },
-  initChart1(canvas, width, height) {
-    let self = this
-    console.log(canvas)
-    const chart = echarts.init(canvas, null, {
-      width: width,
-      height: height
-    });
-    canvas.setChart(chart);
-
-    var option = {
-      tooltip: {
-        trigger: 'item',
-        formatter: '{b}:{d}%'
-      },
-      series: [
-        {
-          name: '访问来源',
-          type: 'pie',
-          radius: ['0%', '70%'],
-          avoidLabelOverlap: false,
-          label: {
-            normal: {
-              show: false,
-              position: 'center',
-              fontSize: '30',
-              rich: {}
-            },
-          },
-          emphasis: {
-            show: true,
-            textStyle: {
-              fontSize: '30',
-              fontWeight: 'bold'
-            }
-          },
-          labelLine: {
-            normal: {
-              show: false
-            }
-          },
-          data: [
-            { value: 6, name: '未分类' },
-            { value: 1, name: '洗牙' },
-          ]
+  pieShow2(data) {
+    let pie = {
+      canvasId: 'pieGraph2', // canvas-id
+      type: 'pie', // 图表类型，可选值为pie, line, column, area, ring
+      series: this.data.a2,
+      width: 380, // 宽度，单位为px
+      height: 300, // 高度，单位为px
+      legend: {
+        orient: 'vertical',
+      }, // 是否显示图表下方各类别的标识
+      dataLabel: true, // 是否在图表中显示数据内容值
+      extra: {
+        pie: {
+          offsetAngle: -90
         }
-      ]
+      }
     };
-
-    chart.setOption(option);
-    return chart;
+    new CHARTS(pie);
   },
-  initChart2(canvas, width, height) {
-    let self = this
-    console.log(canvas)
-    const chart = echarts.init(canvas, null, {
-      width: width,
-      height: height
-    });
-    canvas.setChart(chart);
-
-    var option = {
-      tooltip: {
-        trigger: 'item',
-        formatter: '{b}:{d}%'
-      },
-      series: [
-        {
-          name: '访问来源',
-          type: 'pie',
-          radius: ['0%', '70%'],
-          avoidLabelOverlap: false,
-          label: {
-            normal: {
-              show: false,
-              position: 'center',
-              fontSize: '30',
-              rich: {}
-            },
-          },
-          emphasis: {
-            show: true,
-            textStyle: {
-              fontSize: '30',
-              fontWeight: 'bold'
-            }
-          },
-          labelLine: {
-            normal: {
-              show: false
-            }
-          },
-          data: [
-            { value: 4, name: '未分类' },
-            { value: 2, name: '家住附近' },
-            { value: 1, name: '网络咨询' },
-          ]
+  pieShow3(data) {
+    let pie = {
+      canvasId: 'pieGraph3', // canvas-id
+      type: 'pie', // 图表类型，可选值为pie, line, column, area, ring
+      series: this.data.a3,
+      width: 380, // 宽度，单位为px
+      height: 300, // 高度，单位为px
+      legend: {
+        orient: 'vertical',
+      }, // 是否显示图表下方各类别的标识
+      dataLabel: true, // 是否在图表中显示数据内容值
+      extra: {
+        pie: {
+          offsetAngle: -90
         }
-      ]
+      }
     };
-
-    chart.setOption(option);
-    return chart;
+    new CHARTS(pie);
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    this.pieShow1()
+    this.pieShow2()
+    this.pieShow3()
     this.setData({
       title:options.title,
-      ec: {
-        onInit: this.initChart
-      },
-      ec1: {
-        onInit: this.initChart1
-      },
-      ec2: {
-        onInit: this.initChart2
-      }
     })
     console.log(this.data.ec)
   },

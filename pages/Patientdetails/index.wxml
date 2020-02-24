@@ -36,7 +36,7 @@
         <van-grid-item icon="../../../images/news_details_icon_data.png" text="资料" link-type="navigateTo"
         url="/pages/Patientdata/index" />
         <van-grid-item icon="../../../images/news_details_icon_disposal.png" text="处置" link-type="navigateTo"
-        url="/pages/studynav/index?id=种植&&state=1"/>
+        url="/pages/Management/index?"/>
         <van-grid-item icon="../../../images/news_details_icon_charge.png" text="收费" link-type="navigateTo"
         url="/pages/charge/index"/>
         <van-grid-item icon="../../../images/news_details_icon_image.png" text="影像" link-type="navigateTo"
@@ -48,13 +48,13 @@
         <van-grid-item icon="../../../images/news_details_icon_returnvisit.png" text="回访" link-type="navigateTo"
         url="/pages/visit/index?state=1"/>
         <van-grid-item icon="../../../images/news_details_icon_consulting.png" text="咨询" link-type="navigateTo"
-        url="/pages/activity/index"/>
+        url="/pages/Consultation/index"/>
         <van-grid-item icon="../../../images/clinic_workbench_icon_operating.png" text="预交款" link-type="navigateTo"
         url="/pages/payment/index"/>
       </van-grid>
     </view>
     <view class="center_bottom">
-      <view>
+      <view bindtap="chatgo">
         <van-icon name="chat-o" />
         消息
       </view>
@@ -62,7 +62,7 @@
         <van-icon name="phone-o" />
         电话
       </view>
-      <view>
+      <view bindtap="addyuyue">
         <van-icon name="clock-o" />
         复诊
       </view>
@@ -74,18 +74,19 @@
   custom-style="width:auto;top:180rpx;left:620rpx;"
   >
     <view class="showli">
-      <view>
+      <view bindtap="delwx">
         <van-icon name="bag-o" />
         解除微信
       </view>
-      <view>
+      <view bindtap="Patienteditgo">
         <van-icon name="edit" />
         编辑分组
       </view>
-      <view>
+      <view bindtap="delPatient">
         <image src="../../images/returnvisit_icon_thename_default.png"></image>
         删除患者
       </view>
     </view>
   </van-popup>
+  <van-dialog id="van-dialog" />
 </view>

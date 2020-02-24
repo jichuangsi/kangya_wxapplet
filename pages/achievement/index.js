@@ -1,8 +1,5 @@
 // pages/achievement/index.js
-import * as echarts from '../../ec-canvas/echarts';
-let listd = ['08:00', '22:00']
-let listm = ['01日', '31日']
-let listy = ['1月', '12月']
+const CHARTS = require('../../data/wxcharts-min.js');
 
 Page({
 
@@ -11,11 +8,14 @@ Page({
    */
   data: {
     nav_num:0,
-    ec: 0,
     check_nav_num:0,
     time:'',
     list: ['08:00', '22:00'],
-    list_date: [0, 0],
+    list_data: [0,0],
+    a1: [
+      { name: '初诊', data: 4 },
+      { name: '初诊', data: 3 }
+    ],
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
@@ -40,29 +40,21 @@ Page({
     this.setData({
       nav_num: index,
     })
-    if (index == 0) {
+    if (index ==0){
       this.setData({
-        list: listd,
-        ec: {
-          onInit: this.initChart
-        }
+        list: ['08:00', '22:00']
       })
+      this.pieShow()
     } else if (index == 1) {
-      console.log(111)
       this.setData({
-        list: listm,
-        ec: {
-          onInit: this.initChart
-        }
+        list: ['1日', '31日']
       })
-      console.log(this.data.list)
+      this.pieShow()
     } else if (index == 2) {
       this.setData({
-        list: listy,
-        ec: {
-          onInit: this.initChart
-        }
+        list: ['1月', '12月']
       })
+      this.pieShow()
     }
   },
   check_navclick(e){
@@ -111,92 +103,65 @@ Page({
   },
 
 
-  initChart(canvas, width, height) {
-    let self = this
-    const chart = echarts.init(canvas, null, {
-      width: width,
-      height: height
-    });
-    canvas.setChart(chart);
-
-    var option = {
-      xAxis: {
-        type: 'category',
-        data: self.data.list
-      },
-      yAxis: {
-        type: 'value', 
-        splitLine: {
-          　　　　show: false
-        　　}
-      },
-
-
-
-      // textStyle: {
-      //   fontSize: 24,
-      //   color: '#fff',
-      //   rich: {}
-      // },
+  pieShow(data) {
+    let pie = {
+      canvasId: 'pieGraph', // canvas-id
+      type: 'area', // 图表类型，可选值为pie, line, column, area, ring
+      width: 330,
+      height: 300,
+      background:'#16c7ae',
+      dataLabel: true,
+      categories: this.data.list,
       series: [{
-        label: {
-          normal: {
-            // textStyle: {
-              fontSize: 60,
-              color: '#09fbfd',
-              rich: {}
-            // }
-          }
+        name:'业绩',
+        data: this.data.list_data,//设置某一个值为null会出现断层
+        format: function (val) {
+          return val.toFixed(2) + '元';
+        }
+      }],
+      yAxis: {
+        title: '成交金额 (元)',
+        format: function (val) {
+          return val.toFixed(2);
         },
-        data: self.data.list_date,
-        type: 'line',
-        itemStyle: {
-          normal: {
-            color: '#8cd5c2', //改变折线点的颜色
-            lineStyle: {
-              color: '#8cd5c2' //改变折线颜色
-            }
-          }
-        },
-
-      }]
+        fontColor: "#fff",
+        titleFontColor: "#fff",
+        min: 0,
+        gridColor: "#fff"
+      },
+      xAxis: {
+        fontColor: "#fff",
+        titleFontColor: "#fff",
+        gridColor: "#fff"
+      }
     };
-
-    chart.setOption(option);
-    return chart;
+    new CHARTS(pie);
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options)
+    this.pieShow()
     this.setData({
-      nav_num: options.state,
-      ec: {
-        onInit: this.initChart
-      }
+      nav_num: options.state
     })
-    if (options.state == 0){
+
+    if (options.state == 0) {
       this.setData({
-        list: listd,
-        ec: {
-          onInit: this.initChart
-        }
+        list: ['08:00', '22:00']
       })
-    } else if (options.state == 1){
+      this.pieShow()
+    } else if (options.state == 1) {
       this.setData({
-        list: listm,
-        ec: {
-          onInit: this.initChart
-        }
+        list: ['1日', '31日']
       })
+      this.pieShow()
     } else if (options.state == 2) {
       this.setData({
-        list: listy,
-        ec: {
-          onInit: this.initChart
-        }
+        list: ['1月', '12月']
       })
+      this.pieShow()
     }
   },
 
