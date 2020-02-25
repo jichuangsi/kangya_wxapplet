@@ -38,7 +38,7 @@
       <van-tab title="预约信息" name="预约信息">
         <view class="li_box">
           <view class="date">2020-02-24</view>
-          <view class="li" bindtap="detailgo">
+          <view class="li" bindtap="detailsgo">
             <view class="time">14:00-15:00 <van-icon name="close" catchtap="del" /></view>
             <view>
               <van-icon name="manager" />空八二

@@ -11,7 +11,7 @@
           <image src="../../images/my_headportrait_male.png"></image>
         </view>
         <view class="user_text">
-          <view class="user_name">牙医管家</view>
+          <view class="user_name">康牙医生</view>
           <view class="text">
             欢迎欢迎！！
             <view class="dian"></view>

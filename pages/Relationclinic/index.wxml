@@ -7,7 +7,7 @@
   <view class="center">
     <view class="ipt">
       <van-icon name="home-o" />
-      <input value="{{clinicnum}}" placeholder="诊所管家号" bindinput="iptclinicnum"></input>
+      <input value="{{clinicnum}}" placeholder="康牙医生号" bindinput="iptclinicnum"></input>
     </view>
     <view class="ipt">
       <van-icon name="user-o" />

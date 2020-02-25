@@ -64,8 +64,8 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/Patientdetails/index",
-					"pathName": "pages/Patientdetails/index",
+					"name": "pages/Videoplay/index",
+					"pathName": "pages/Videoplay/index",
 					"query": "title=确认内容&&state=0",
 					"scene": null
 				}

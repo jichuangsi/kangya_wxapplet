@@ -36,7 +36,8 @@
     </view>
     <view class="li">
       <view class="btn" bindtap="editgo"><van-icon name="records" size="36rpx" />编辑</view>
-      <view class="btn" bindtap="Pricego"><van-icon name="completed" size="36rpx" />划价</view>
+      <!--  bindtap="Pricego" -->
+      <view class="btn"><van-icon name="completed" size="36rpx" />划价</view>
     </view>
   </view>
 </view>

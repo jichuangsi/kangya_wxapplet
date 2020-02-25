@@ -18,7 +18,7 @@ Page({
   },
   onShareAppMessage: function (res) {
     return {
-      title: '牙医小程序',
+      title: '康牙医生小程序',
       path: this.data.url,  // 路径，传递参数到指定页面。
       imageUrl: '../../imgs/xx.png', // 分享的封面图
       success: function (res) {

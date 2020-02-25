@@ -3,7 +3,7 @@
   <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft"
     bind:click-right="onClickRight"  >
   </van-nav-bar>
-   <video id="myVideo" poster="" src="" controls></video>
+   <video id="myVideo" poster="" src="../../video/a.mp4" controls></video>
    <view class="center" wx:if="{{state==1}}">
     <view class="center_top">
       <view bindtap="loveclick" wx:if="{{lovestate}}">
@@ -26,7 +26,7 @@
           <image src="../../images/my_headportrait_male.png"></image>
         </view>
         <view class="user_text">
-          <view class="user_name">牙医管家</view>
+          <view class="user_name">康牙医生</view>
           <view class="text">
             欢迎欢迎！！
             <view class="dian"></view>
@@ -53,7 +53,7 @@
         </view>
         <view class="user_text">
           <view class="user_name">
-          牙医管家
+          康牙医生
           <view class="time">2019-11-28</view>
           </view>
           <view class="text">

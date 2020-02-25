@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: '关于牙医管家',
+    title: '关于康牙医生',
     a1: [
       { name: '初诊', data: 4 },
       { name: '复诊', data: 3 }
