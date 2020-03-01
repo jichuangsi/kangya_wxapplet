@@ -1,0 +1,67 @@
+/* pages/setdetails/index.wxss */
+.setdetails {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  margin-bottom: 100rpx;
+  background-color: #fff;
+}
+.ipt {
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.ipt .van-icon {
+  margin-right: 20rpx;
+}
+.ipt input {
+  flex: 1;
+}
+.ipt .yzm {
+  padding: 5rpx 20rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #16c7ae;
+  color: #16c7ae;
+  border-radius: 46rpx;
+}
+.btn {
+  width: 98%;
+  line-height: 86rpx;
+  text-align: center;
+  margin: 10rpx auto;
+  background-color: #16c7ae;
+  color: #fff;
+}

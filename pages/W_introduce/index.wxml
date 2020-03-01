@@ -1,0 +1,38 @@
+<!--pages/W_introduce/index.wxml-->
+<view class="W_introduce">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <image class="img" src=""></image>
+    <view class="xian"></view>
+    <view class="li">
+      <view>诊所名称</view>
+      <view>{{title}}</view>
+    </view>
+    <view class="li">
+      <view>诊所地址</view>
+      <view>广州市荔湾区</view>
+    </view>
+    <view class="li">
+      <view>联系人</view>
+      <view>管理员</view>
+    </view>
+    <view class="li">
+      <view>电话</view>
+      <view class="green" bindtap="iphoneclick" data-iphone="135611545">135611545</view>
+    </view>
+    <view class="li">
+      <view>营业时间</view>
+      <view>-</view>
+    </view>
+    <view class="xian"></view>
+    <view class="li">
+      <view>诊所介绍</view>
+      <view>关注数：114</view>
+      <view class="bz"></view>
+    </view>
+  </view>
+  <view class="btn" bindtap="W_ordergo">在线预约</view>
+</view>

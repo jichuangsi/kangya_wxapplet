@@ -1,0 +1,45 @@
+<!--pages/S_Order/index.wxml-->
+<view class="S_Order">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <van-tabs active="{{active}}">
+      <van-tab title="全部" name="全部">
+        <view class="libox">
+          <view class="li">
+            <view>2020-02-01 15:30</view>
+            <view>已完成</view>
+          </view>
+          <view class="li">
+            <van-card
+              num="2"
+              price="2.00"
+              desc="描述信息"
+              title="商品标题"
+              thumb="../../../images/my_service_icon_consumables.png"
+              link-type="navigateTo"
+              thumb-link="/pages/S_Orderdetails/index?state=1"
+                          />
+          </view>
+          <view class="li right">共2件商品，总价￥4.00</view>
+          <view class="li right">
+            <view bindtap="del">删除订单</view>
+            <view bindtap="S_Orderdetailsgo">电子三证</view>
+            <view bindtap="S_invoicego">申请开票</view>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="待付款" name="待付款">
+      </van-tab>
+      <van-tab title="待发货" name="待发货">
+      </van-tab>
+      <van-tab title="待收货" name="待收货">
+      </van-tab>
+      <van-tab title="已完成" name="已完成">
+      </van-tab>
+    </van-tabs>
+  </view>
+  <van-dialog id="van-dialog" />
+</view>

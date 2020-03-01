@@ -1,0 +1,225 @@
+/* pages/S_Settlement/index.wxss */
+.S_Settlement {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+  overflow-y: auto;
+}
+.top {
+  width: 100%;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 9;
+  background-color: #16c7ae;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  padding: 106rpx 20rpx;
+  box-sizing: border-box;
+  /* background-color: red; */
+}
+.box {
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+.box .user {
+  flex: 1;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.box .user .user_top {
+  display: flex;
+}
+.box .user .user_top view:first-child{
+  margin-right: 20rpx;
+}
+.box .user .user_bottom {
+  display: flex;
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+.box .user .user_bottom .state {
+  background-color: red;
+  color: #fff;
+  padding: 0rpx 5rpx;
+  box-sizing: border-box;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+.li{
+  width: 100%;
+  display: flex;
+  padding: 20rpx 0rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.li .title {
+  flex: 1;
+}
+.li van-card {
+  width: 100%;
+}
+.li input {
+  flex: 1;
+  text-align: right;
+}
+.li .right {
+  flex: 1;
+  text-align: right;
+}
+.bottom_btn {
+  display: flex;
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+}
+.bottom_btn .text {
+  flex: 1;
+  text-align: right;
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.bottom_btn .bottom_btn_left {
+  display: flex;
+  align-items: center;
+}
+.bottom_btn .btn{
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  color: #fff;
+  background-color: red;
+  border-radius: 5rpx;
+}
+.bottom_btn .bottom_delbtn{
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  color: red;
+  border: 1rpx solid red;
+  border-radius: 5rpx;
+}
+.yh {
+  padding: 100rpx 20rpx;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  height: 100%;
+  position: relative;
+}
+.yh_title {
+  margin-bottom: 20rpx;
+}
+.yh .yh_li {
+  display: flex;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.yh .yh_li .left {
+  border-right: 1rpx solid #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.yh .yh_li .left view {
+  font-size: 28rpx;
+}
+.yh .yh_li .left view:first-child{
+  color: rgba(255, 0, 0, 0.815);
+  font-size: 60rpx;
+  display: flex;
+  align-items: flex-end;
+}
+.yh .yh_li .left view:first-child view {
+  font-size: 26rpx;
+}
+.yh .yh_li .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.yh .yh_li .right .right_top {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+.yh .yh_li .right .right_top .state {
+  padding: 2rpx 10rpx;
+  background-color: pink;
+  color: red;
+}
+.yh .yh_li .right .right_bottom {
+  font-size: 26rpx;
+  margin-top: 40rpx;
+}
+.yh .yh_li .right .right_state {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 46rpx;
+  background-color: #0094ff;
+  color: #fff;
+}
+.yh_btn {
+  width: 80%;
+  height: 66rpx;
+  line-height: 66rpx;
+  text-align: center;
+  color: #fff;
+  background-color: red;
+  border-radius: 66rpx;
+  position: absolute;
+  bottom: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.red {
+  color: red;
+}

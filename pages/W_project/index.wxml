@@ -1,0 +1,15 @@
+<!--pages/W_project/index.wxml-->
+<view class="W_project">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="li" wx:for="{{arr}}">
+      <image src="{{item.img}}"></image>
+      <view>{{item.title}}</view>
+      <view class="money">￥{{item.price}}</view>
+      <view class="btn" data-id="{{item.id}}" bindtap="W_ordergo">预约治疗</view>
+    </view>
+  </view>
+</view>

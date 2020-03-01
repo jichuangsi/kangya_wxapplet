@@ -149,6 +149,10 @@
       </view>
       <view class="li">
         <view>今日销售项目TOP3</view>
+        <view class="top_li">
+          <view>1</view>
+          <view>种植</view>
+        </view>
       </view>
       <view class="li">
         <view>今日医生业绩TOP3</view>
@@ -157,11 +161,45 @@
         <view>今日咨询师业绩TOP3</view>
       </view>
     </view>
+    <view class="a2">
+      <view class="center_top" wx:if="{{title=='就诊分析'}}">
+        <view class="left">
+          <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
+          <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
+        </view>
+        <view class="right" bindtap="oneday">{{time}}</view>
+      </view>
+      <view class="jznav">
+        <view class="nav_li">
+          <view>就诊总人数</view>
+          <view>0</view>
+        </view>
+        <view class="nav_li">
+          <view>流失总人数</view>
+          <view>0</view>
+        </view>
+        <view class="nav_li">
+          <view>成交总金额</view>
+          <view>0</view>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>初诊人次0</view>
+          <view>流失人次0</view>
+          <view>流失率0.00%</view>  
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraph"></canvas>
+        </view>
+      </view>
+    </view>
   </view>
   <van-popup
     show="{{ show }}"
     position="top"
     bind:close="onClose"
   >
+    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
   </van-popup>
 </view>

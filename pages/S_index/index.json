@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "S_foot":"../S_foot/index"
+  }
+}

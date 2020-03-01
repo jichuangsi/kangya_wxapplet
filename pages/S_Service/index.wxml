@@ -1,0 +1,58 @@
+<!--pages/S_Service/index.wxml-->
+<view class="S_Service">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center" wx:if="{{state==1}}">
+    <view class="box">
+          <view class="li">
+            <van-card
+              num="2"
+              price="2.00"
+              desc="描述信息"
+              title="商品标题"
+              thumb="../../../images/my_service_icon_consumables.png"
+              >
+            </van-card>
+          </view>
+    </view>
+    <view class="box">
+      <view class="li">
+        <view>申请类型</view>
+        <view>退货退款</view>
+      </view>
+      <view class="li">
+        <view>申请原因</view>
+        <view>请选择退款原因<van-icon name="arrow" size="36rpx" /></view>
+      </view>
+      <view class="li">
+        <view>退款金额</view>
+        <view>￥4.00</view>
+      </view>
+      <view class="li">
+        <view>申请说明</view>
+        <input placeholder="请填写申请说明"></input>
+      </view>
+    <view class="ipt">
+      <view class="title">上传凭证</view>
+      <view class="img">
+        <view class="img_box" wx:for="{{img_arr}}">
+          <view class="none"><van-icon name="cross" data-index="{{index}}" bindtap="delimg" /></view>
+          <image src="{{item}}"></image>
+        </view>
+        <view class="img_add" bindtap="showPopup" wx:if="{{img_arr.length<2}}">+</view>
+      </view>
+    </view>
+    </view>
+    <view class="btn">提交申请</view>
+  </view>
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+  <view class="userimg">
+    <view catchtap="pz">拍照</view>
+    <view catchtap="xc">相册</view>
+    <view class="xian"></view>
+    <view class="qx" catchtap="onClose">取消</view>
+  </view>
+</van-popup>
+</view>

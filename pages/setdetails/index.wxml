@@ -1,0 +1,48 @@
+<!--pages/setdetails/index.wxml-->
+<view class="setdetails">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <view slot="right" wx:if="{{title=='变更手机号'}}">完成</view>
+    </van-nav-bar>
+  </view>
+  <view class="center" wx:if="{{title=='变更手机号'}}">
+    <view class="ipt">
+      <van-icon name="phone-o" size="36rpx" />
+      <input placeholder="请输入手机号码"></input>
+    </view>
+    <view class="ipt">
+      <van-icon name="phone-o" size="36rpx" />
+      <input placeholder="请输入验证码"></input>
+      <view class="yzm">获取验证码</view>
+    </view>
+  </view>
+
+  <view class="center" wx:if="{{title=='密码管理'&&state==0}}">
+    <view class="ipt" data-text="修改密码" data-index="1" bindtap="stateclick">
+      <view>登录密码</view>
+      <van-icon name="arrow" size="36rpx"/>
+    </view>
+    <view class="ipt" data-text="手势密码" data-index="2" bindtap="stateclick">
+      <view>手势密码</view>
+      <van-icon name="arrow" size="36rpx"/>
+    </view>
+  </view>
+  <view class="center" wx:if="{{title=='修改密码'&&state==1}}">
+    <view class="ipt">
+      <input placeholder="请输入原密码"></input>
+    </view>
+    <view class="ipt">
+      <input placeholder="请输入新密码"></input>
+    </view>
+    <view class="ipt">
+      <input placeholder="请重复输入新密码"></input>
+    </view>
+    <view class="btn" bindtap="btn">完成</view>
+  </view>
+  <view class="center" wx:if="{{title=='手势密码'&&state==2}}">
+    <view class="ipt">
+      <view>手势密码</view>
+      <van-switch checked="{{ checked }}" bind:change="onChange" />
+    </view>
+  </view>
+</view>

@@ -64,9 +64,9 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/Videoplay/index",
-					"pathName": "pages/Videoplay/index",
-					"query": "title=确认内容&&state=0",
+					"name": "pages/Scheduling/index",
+					"pathName": "pages/Scheduling/index",
+					"query": "title=就诊分析&&state=1",
 					"scene": null
 				}
 			]

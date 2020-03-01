@@ -94,9 +94,9 @@
     <van-grid-item icon="../../../images/clinic_workbench_icon_colleague.png" text="同事" link-type="navigateTo"
     url="/pages/Colleague/index"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_scheduling.png" text="排班" link-type="navigateTo"
-    url="/pages/studynav/index?id=牙周&&state=1"/>
+    url="/pages/Scheduling/index"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_website.png" text="微官网" link-type="navigateTo"
-    url="/pages/studynav/index?id=管理&&state=1"/>
+    url="/pages/W_index/index?title={{name}}"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_marketing.png" text="营销" link-type="navigateTo"
     url="/pages/Marketing/index"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_activity.png" text="活动" link-type="navigateTo"
@@ -104,7 +104,7 @@
     <van-grid-item icon="../../../images/clinic_workbench_icon_operating.png" text="运营中心" link-type="navigateTo"
     url="/pages/eroc/index?title={{name}}"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_mall.png" text="商城" link-type="navigateTo"
-    url="/pages/Shop/index"/>
+    url="/pages/S_index/index"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_communication.png" text="医患沟通" link-type="navigateTo"
     url="/pages/PriceList/index?title=医患沟通视频"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_dentist.png" text="看牙无忧" link-type="navigateTo"

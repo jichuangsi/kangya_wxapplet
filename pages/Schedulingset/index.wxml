@@ -1,0 +1,83 @@
+<!--pages/Schedulingset/index.wxml-->
+<view class="Schedulingset">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <van-icon name="plus" slot="right" size="36rpx" wx:if="{{title=='班次设置'}}" />
+    <view slot="right" wx:if="{{title=='添加班次'}}">完成</view>
+    <van-icon name="cross" slot="right" size="36rpx" wx:if="{{title=='编辑班次'}}" />
+    </van-nav-bar>
+  </view>
+  <view class="center" wx:if="{{title=='班次设置'}}">
+    <view class="li" bindtap="edit">
+      <view class="color"></view>
+      <view class="text">休息</view>
+      <view class="time">00:00~06:00</view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+  </view>
+  <view class="center" wx:if="{{title=='添加班次'}}">
+    <view class="li">
+      <view>班次名称</view>
+      <input placeholder="请输入班次"></input>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+    <view class="li" bindtap="showpopup">
+      <view class="text">颜色</view>
+      <view></view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+    <view class="li" data-text="上下班时间" bindtap="Patienteditgo">
+      <view class="text">上下班时间</view>
+      <view></view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+  </view>
+  <view class="center" wx:if="{{title=='编辑班次'}}">
+    <view class="li">
+      <view>班次名称</view>
+      <input placeholder="请输入班次"></input>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+    <view class="li" bindtap="showpopup">
+      <view class="text">颜色</view>
+      <view></view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+    <view class="li" data-text="上下班时间" bindtap="Patienteditgo">
+      <view class="text">上下班时间</view>
+      <view></view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+  </view>
+  <van-popup
+  show="{{ show }}"
+  position="bottom"
+  custom-style=""
+  bind:close="onClose"
+  >
+  <view class="colorbox" bindtap="onClose">
+    <view class="color_li">选择颜色</view>
+    <view class="color_li">
+      <view class="hui"></view>
+      <view>灰色</view>
+    </view>
+    <view class="color_li">
+      <view class="red"></view>
+      <view>红色</view>
+    </view>
+    <view class="color_li">
+      <view class="blue"></view>
+      <view>蓝色</view>
+    </view>
+    <view class="color_li">
+      <view class="yellow"></view>
+      <view>黄色</view>
+    </view>
+    <view class="color_li">
+      <view class="green"></view>
+      <view>绿色</view>
+    </view>
+  </view>
+  </van-popup>
+  <van-dialog id="van-dialog" />
+</view>

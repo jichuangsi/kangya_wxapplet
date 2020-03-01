@@ -1,0 +1,13 @@
+<!--pages/W_address/index.wxml-->
+<view class="W_address">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+  </view>
+  <view class="btn">
+    <view class="bl" bindtap="iphoneclick">拨打电话</view>
+    <view class="br" bindtap="W_ordergo">立即预约</view>
+  </view>
+</view>

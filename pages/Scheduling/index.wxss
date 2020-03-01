@@ -1,0 +1,72 @@
+/* pages/Scheduling/index.wxss */
+.Scheduling {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.center {
+  margin-bottom: 100rpx;
+  background-color: #fff;
+}
+.center .center_top{
+  width: 100%;
+  display: flex;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.center .center_bottom{
+  width: 100%;
+  display: flex;
+  background-color: #f9f9f9;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.center .left view{
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+.center .right {
+  flex: 1;
+  overflow-x: auto;
+  display: flex;
+}
+.center .right view {
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}

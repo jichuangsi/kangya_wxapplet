@@ -1,0 +1,147 @@
+/* pages/S_Collection/index.wxss */
+.S_Collection {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+  overflow-y: auto;
+}
+.top {
+  width: 100%;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 9;
+  background-color: #16c7ae;
+}
+.top .van-nav-bar {
+  vertical-align: middle !important;
+  background-color: #16c7ae !important;
+  color: #fff !important;
+  padding-top: 0px !important;
+}
+.top .van-nav-bar__title {
+  color: #fff !important;
+}
+.top .van-nav-bar__text {
+  color: #fff !important;
+}
+.top van-icon {
+  vertical-align: middle !important;
+}
+.top .van-nav-bar__arrow {
+  color: #fff !important;
+}
+.top .van-nav-bar .van-icon {
+  color: #fff !important;
+}
+.top .van-nav-bar__right {
+  height: 100%;
+}
+.top van-sidebar {
+  height: 100vh;
+  overflow: auto;
+}
+.top_title {
+  width: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.top_title .van-icon {
+  margin-right: 20rpx;
+  color: #333;
+}
+.top_title .text {
+  flex: 1;
+}
+.top_title .top_btn {
+  color: red;
+}
+.center {
+  padding: 180rpx 20rpx 320rpx 20rpx;
+  box-sizing: border-box;
+}
+.li {
+  display: flex;
+  background-color: #fff;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.li .left {
+  width: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.van-card {
+  background-color: #fff !important;
+}
+.tag {
+  display: inline-block;
+  background-color: #f2f2f2;
+  padding: 0rpx 10rpx;
+}
+.hui {
+  background-color: #f2f2f2 !important;
+}
+.del {
+  width: 120rpx;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: red;
+}
+.van-dialog__button {
+  flex: none;
+  width: 50%;
+}
+.carbox {
+  height: 46rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.alike {
+  background-color: #fff;
+  border: 1rpx solid red;
+  padding: 5rpx 10rpx;
+  color: red;
+  border-radius: 5rpx;
+}
+.bottom_btn {
+  display: flex;
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+}
+.bottom_btn .text {
+  flex: 1;
+  text-align: right;
+  margin-right: 20rpx;
+}
+.bottom_btn .bottom_btn_left {
+  display: flex;
+  align-items: center;
+}
+.bottom_btn .btn{
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  color: #fff;
+  background-color: red;
+  border-radius: 5rpx;
+}
+.bottom_btn .bottom_delbtn{
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  color: red;
+  border: 1rpx solid red;
+  border-radius: 5rpx;
+}

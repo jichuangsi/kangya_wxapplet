@@ -82,7 +82,7 @@
     <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
     </view>
     <view class="li">
-    <view wx:for="{{time_arr}}" data-index="{{index}}" wx:if="{{title=='就诊时长'}}" bindtap="timeclick" class="smallbox {{(time_end>=index&&index>=time_start)||index==time_start?'checkbox':''}}">
+    <view wx:for="{{time_arr}}" data-index="{{index}}" wx:if="{{title=='就诊时长'||title=='上下班时间'}}" bindtap="timeclick" class="smallbox {{(time_end>=index&&index>=time_start)||index==time_start?'checkbox':''}}">
     {{item}}</view>
     </view>
     

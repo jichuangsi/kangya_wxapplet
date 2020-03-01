@@ -1,0 +1,50 @@
+<!--pages/S_Collection/index.wxml-->
+<view class="S_Collection">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+    <view class="top_title">
+      <view class="text">共收藏2件商品</view>
+      <view class="top_btn" data-index="1" bindtap="edit" wx:if="{{del_state==0}}">编辑</view>
+      <view class="top_btn" data-index="0" bindtap="edit" wx:if="{{del_state==1}}">完成</view>
+    </view>
+  </view>
+  <view class="center">
+      <view class="li" wx:for="{{Invalid_arr}}">
+          <view class="left" wx:if="{{del_state==1}}">
+            <van-icon name="checked" wx:if="{{item.state == 0}}" data-index="{{index}}" data-first_index="{{first_index}}" bindtap="check"/>
+            <van-icon name="checked" color="#16c7ae" wx:if="{{item.state == 1}}" data-index="{{index}}" data-first_index="{{first_index}}" bindtap="check"/>
+          </view>
+          <view class="right">
+            <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
+              <!-- <van-cell-group> -->
+                <van-card
+                  title="{{item.title}}"
+                  thumb="{{ item.img }}"
+                  price="{{item.price}}"
+                  thumb-link="/pages/S_Detail/index?id={{item.id}}"
+                  link-type="navigateTo"
+                >
+                  <view slot="tags">
+                    <view class="tag">{{item.tags}}</view>
+                  </view>
+                  <view slot="footer" class="carbox">
+                      <view class="alike" bindtap="alike">找相似</view>
+                  </view>
+                </van-card>
+              <!-- </van-cell-group> -->
+              <view slot="right" class="del" bindtap="del">取消收藏</view>
+            </van-swipe-cell>
+          </view>
+        </view>
+  </view>
+  <view class="bottom_btn" wx:if="{{del_state==1}}">
+    <view class="bottom_btn_left" bindtap="allcheck">
+      <van-icon name="checked" wx:if="{{allstate == 0}}"/>
+      <van-icon name="checked" color="#16c7ae" wx:if="{{allstate == 1}}"/>
+      <view>全选</view>
+    </view>
+    <view class="bottom_delbtn" bindtap="del">取消收藏</view>
+  </view>
+  <van-dialog id="van-dialog" />
+</view>

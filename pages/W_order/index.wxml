@@ -1,0 +1,77 @@
+<!--pages/W_order/index.wxml-->
+<view class="W_order">
+  <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view>
+  <view class="center">
+    <view class="li">
+      <van-icon name="../../../images/returnvisit_icon_personnel_default.png" />
+      <view>姓名</view>
+      <input value="{{name}}" bindinput="nameipt" placeholder="姓名"></input>
+    </view>
+    <view class="li">
+      <van-icon name="phone-o" size="36rpx" color="#16c7ae" />
+      <view>手机</view>
+      <input value="{{phone}}" bindinput="phoneipt" placeholder="手机号"></input>
+    </view>
+    <view class="xian"></view>
+    <view class="li" bindtap="showpoup" data-index="0">
+      <van-icon name="../../../images/returnvisit_icon_date_default.png" />
+      <view>预约日期</view>
+      <view class="text fr">{{check_time}}</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="li" bindtap="showpoup" data-index="1">
+      <van-icon name="../../../images/subscribe_icon_dater_defauit.png" />
+      <view>选择时段</view>
+      <view class="text fr">{{check_timeslot}}</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="li" bindtap="showpoup" data-index="2">
+      <van-icon name="../../../images/subscribe_icon_matter_defauit.png" />
+      <view>选择治疗项目</view>
+      <view class="text fr">{{check_project}}</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="li" bindtap="showpoup" data-index="3">
+      <van-icon name="../../../images/subscribe_icon_doctor_defauit.png" />
+      <view>选择医生</view>
+      <view class="text fr">{{check_doctor}}</view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="xian"></view>
+    <view class="li">
+      <van-icon name="../../../images/subscribe_icon_remarks_defauit.png" />
+      <view class="text">病情描述</view>
+      <textarea value="{{bz}}" bindinput="bzipt" placeholder="病情描述..."></textarea>
+    </view>
+    <view class="xian"></view>
+  </view>
+  <van-popup
+  show="{{ show }}"
+  position="bottom"
+  bind:close="onClose"
+>
+<van-datetime-picker
+  type="date"
+  value="{{ currentDate }}"
+  bind:input="onInput"
+  min-date="{{ minDate }}"
+  formatter="{{ formatter }}"
+  bind:cancel="onCancel"
+  bind:confirm="onConfirm"
+  wx:if="{{check_num==0}}"
+/>
+<van-picker
+  show-toolbar
+  columns="{{ columns }}"
+  bind:cancel="onCancel"
+  bind:confirm="onConfirm1"
+  wx:if="{{check_num!=0}}"
+/>
+</van-popup>
+  <van-toast id="van-toast" />
+  <view class="btn" bindtap="btn">立即预约</view>
+</view>
+

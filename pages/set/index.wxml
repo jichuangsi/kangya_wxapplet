@@ -5,13 +5,13 @@
     </van-nav-bar>
   </view>
   <view class="center">
-    <navigator url="/pages/aboutdetails/index?title=新功能介绍" hover-class="navigator-hover">
+    <navigator url="/pages/setdetails/index?title=变更手机号" hover-class="navigator-hover">
     <view class="li">
       <view>手机号码</view>
       <view>15945511212<van-icon name="arrow" /></view>
     </view>
     </navigator>
-    <navigator url="/pages/aboutdetails/index?title=服务和使用协议" hover-class="navigator-hover">
+    <navigator url="/pages/setdetails/index?title=密码管理" hover-class="navigator-hover">
     <view class="li">
       <view>密码管理</view>
       <van-icon name="arrow" />
