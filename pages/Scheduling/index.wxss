@@ -32,6 +32,16 @@
   height: 100vh;
   overflow: auto;
 }
+.top_right {
+  padding: 20rpx;
+  box-sizing: border-box;
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  border-radius: 10rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
 .center {
   margin-bottom: 100rpx;
   background-color: #fff;
@@ -47,26 +57,115 @@
   background-color: #f9f9f9;
   border-bottom: 1rpx solid #f2f2f2;
 }
-.center .left view{
+.center .left {
+  width: 150rpx;
+}
+.center .left .time{
+  width: 100rpx;
+  height: 160rpx;
   padding: 20rpx;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   white-space: nowrap;
+  text-align: center;
+}
+.center .left .time view:last-child {
+  margin-top: 40rpx;
+}
+.center .left .name {
+  width: 100rpx;
+  height: 100rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+  text-align: center;
 }
 .center .right {
   flex: 1;
   overflow-x: auto;
+}
+.center .right .right_li {
+  flex: 1;
   display: flex;
 }
-.center .right view {
+.center .right .right_li .time {
+  width: 100rpx;
+  height: 160rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+  text-align: center;
+  float: left;
+}
+.center .right .right_li .time view:last-child {
+  margin-top: 40rpx;
+}
+.center .right .right_li .color {
+  width: 100rpx;
+  height: 100rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+  text-align: center;
+  color:#fff;
+  position: relative;
+}
+.center .right .right_li .color view {
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 35%;
+  top: 25%;
+  /* transform: translate(-50%,-50%)； */
+}
+.bottom {
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+}
+.bottom view {
+  flex: 1;
   padding: 20rpx;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  white-space: nowrap;
+  color: #16c7ae;
+}
+.zw {
+
+}
+.zw view {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.color_li {
+  display: flex;
+  justify-content: center;
+}
+.color_li view {
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.a0 {
+  background-color: #fff;
+}
+.a1 {
+  background-color: #f2f2f2;
+}
+.a2 {
+  background-color: green;
+}
+.a3 {
+  background-color: pink;
+}
+.a4 {
+  background-color: blue;
 }

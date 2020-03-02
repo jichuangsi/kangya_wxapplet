@@ -1,12 +1,17 @@
 <!--pages/coursedetails/index.wxml-->
-<van-nav-bar title="{{title}}" left-text="返回" left-arrow   bind:click-left="onClickLeft"
+<!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow   bind:click-left="onClickLeft"
   >
   <van-icon wx:if="{{!collection}}" data-state="0" bindtap="collectionclick" name="star-o"  slot="right" size="30rpx" />
   <van-icon wx:if="{{collection}}" data-state="1" bindtap="collectionclick" name="star" color="#fff"  slot="right"  size="30rpx"  />
   <button open-type="share" slot="right">
       <van-icon name="ellipsis"  size="30rpx" />
   </button>
-  </van-nav-bar>
+  </van-nav-bar> -->
+  <view class="top_right">
+    <van-icon wx:if="{{!collection}}" data-state="0" bindtap="collectionclick" name="star" color="#fff" size="36rpx" />
+    <van-icon wx:if="{{collection}}" data-state="1" bindtap="collectionclick" name="star" color="yellow"  size="36rpx"  />
+    <!-- <van-icon name="ellipsis" size="36rpx" /> -->
+  </view>
   <view class="center">
     <image src="../../images/learning_theme_anchor.png"></image>
     <view class="title">

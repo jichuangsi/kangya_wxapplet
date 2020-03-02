@@ -1,9 +1,9 @@
 <!--pages/S_Service/index.wxml-->
 <view class="S_Service">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center" wx:if="{{state==1}}">
     <view class="box">
           <view class="li">
@@ -24,7 +24,7 @@
       </view>
       <view class="li">
         <view>申请原因</view>
-        <view>请选择退款原因<van-icon name="arrow" size="36rpx" /></view>
+        <view class="s">请选择退款原因<van-icon name="arrow" size="36rpx" /></view>
       </view>
       <view class="li">
         <view>退款金额</view>

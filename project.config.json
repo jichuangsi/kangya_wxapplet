@@ -64,9 +64,9 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/Scheduling/index",
-					"pathName": "pages/Scheduling/index",
-					"query": "title=就诊分析&&state=1",
+					"name": "pages/my/index",
+					"pathName": "pages/my/index",
+					"query": "state=1",
 					"scene": null
 				}
 			]

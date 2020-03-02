@@ -159,6 +159,9 @@ Page({
       check_title:options.title,
       search_state:options.search
     })
+    wx.setNavigationBarTitle({
+      title: '商城'
+    })
   },
 
   /**

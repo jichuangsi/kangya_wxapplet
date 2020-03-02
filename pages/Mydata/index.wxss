@@ -36,7 +36,6 @@ van-sidebar {
   overflow: auto;
 }
 .center {
-  padding-top: 100rpx;
   box-sizing: border-box;
 }
 .center .li{

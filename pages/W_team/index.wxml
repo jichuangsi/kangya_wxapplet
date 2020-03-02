@@ -1,9 +1,9 @@
 <!--pages/W_team/index.wxml-->
 <view class="W_team">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="libox">
       <image src="../../images/clinic_colleagues_headportrait_male.png"></image>

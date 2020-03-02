@@ -1,9 +1,9 @@
 <!--pages/S_Assemble/index.wxml-->
 <view class="S_Assemble">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <van-tabs active="{{active}}">
       <van-tab title="全部" name="全部">

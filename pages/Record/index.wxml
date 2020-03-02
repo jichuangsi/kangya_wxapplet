@@ -1,9 +1,9 @@
 <!--pages/Record/index.wxml-->
 <view class="Record">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="record" wx:if="{{title == '我的关注'}}">
       <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>

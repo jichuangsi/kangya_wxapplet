@@ -60,7 +60,7 @@
   color: red;
 }
 .center {
-  padding: 180rpx 20rpx 320rpx 20rpx;
+  padding: 100rpx 20rpx 320rpx 20rpx;
   box-sizing: border-box;
 }
 .li {

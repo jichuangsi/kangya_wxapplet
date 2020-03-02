@@ -42,7 +42,7 @@
   overflow: auto;
 }
 .center {
-  padding: 76rpx 0rpx;
+  padding: rpx 0rpx;
   box-sizing: border-box;
 }
 .center_top {

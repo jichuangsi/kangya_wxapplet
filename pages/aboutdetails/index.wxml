@@ -1,9 +1,9 @@
 <!--pages/aboutdetails/index.wxml-->
 <view class="aboutdetails">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="h3">一、新增手机验证登录</view>
     <view class="text">

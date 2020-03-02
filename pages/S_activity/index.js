@@ -58,6 +58,9 @@ Page({
    */
   onLoad: function (options) {
 
+    wx.setNavigationBarTitle({
+      title: '商城'
+    })
   },
 
   /**

@@ -1,9 +1,12 @@
 <!--pages/Scheduling/index.wxml-->
 <view class="Scheduling">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <van-icon name="setting-o"slot="right" size="36rpx" />
     </van-nav-bar>
+  </view> -->
+  <view class="top_right" bindtap="onClickRight">
+    <van-icon name="setting-o"slot="right" size="36rpx" />
   </view>
   <view class="center">
     <view class="center_top">
@@ -12,25 +15,34 @@
           <view>月份</view>
           <view>3</view>
         </view>
+        <view class="name" wx:for="{{name_arr}}">{{item}}</view>
       </view>
       <view class="right">
-        <view class="time" wx:for="{{time_arr}}">
-          <view>{{item.week}}</view>
-          <view>{{item.date}}</view>
+        <view class="right_li">
+          <view class="time" wx:for="{{time_arr}}">
+            <view>{{item.week}}</view>
+            <view>{{item.date}}</view>
+          </view>
+        </view>
+        <view class="right_li" wx:for="{{data_arr}}" wx:for-index="first_index">
+          <view class="color" wx:for="{{item.child}}" data-first_index="{{first_index}}" data-index="{{index}}" bindtap="colorclick">周一
+            <view class="a{{item.state}}"></view>
+          </view>
         </view>
       </view>
     </view>
-    <view class="center_bottom" wx:for="{{r_arr}}">
-      <view class="left">
-        <view class="time">
-          <view>{{item.name}}</view>
-        </view>
-      </view>
-      <view class="right">
-        <view class="time" wx:for="{{item.child}}">
-          <view wx:if="{{item.state}}"></view>
-        </view>
-      </view>
+  </view>
+  <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+    <view class="zw">
+      <view wx:for="{{zw_arr}}" data-text="{{item}}" bindtap="zwclick" wx:if="{{state == 0}}">{{item}}</view>
+      <view class="color_li" wx:for="{{color_arr}}" data-id="{{item.id}}" bindtap="pbclick" wx:if="{{state == 1}}"><view class="a{{item.id}}"></view>{{item.title}}</view>
+      <view class="color_li" data-id="0" bindtap="pbclick">撤销</view>
     </view>
+  </van-popup>
+  <view class="bottom">
+    <view wx:if="{{state == 0}}" bindtap="showpopup">{{check_zw}}<van-icon name="arrow-up" size="36rpx" /></view>
+    <view wx:if="{{state == 0}}" data-index="1" bindtap="stateclick"><van-icon name="edit" size="36rpx" />编辑排班</view>
+    <view wx:if="{{state == 1}}" bindtap="showpopup"><van-icon name="edit" size="36rpx" />选择排班</view>
+    <view wx:if="{{state == 1}}" data-index="0" bindtap="stateclick"><van-icon name="checked" size="36rpx" />完成</view>
   </view>
 </view>

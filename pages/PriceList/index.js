@@ -71,7 +71,9 @@ Page({
     this.setData({
       title: options.title
     })
-    console.log(this.data.title)
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
   },
 
   /**

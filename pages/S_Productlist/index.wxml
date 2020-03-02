@@ -1,8 +1,8 @@
 <!--pages/S_Productlist/index.wxml-->
 <view class="S_Productlist">
   <view class="top">
-    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
-    </van-nav-bar>
+    <!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar> -->
     <view class="ipt">
       <van-icon name="search" size="36rpx" />
       <input placeholder="搜索你想要的商品" value="{{search_text}}" bindinput="searchipt" bindfocus="searchfocus"></input>

@@ -59,6 +59,9 @@ Page({
       areaList: require("../../data/area.js").default
     })
     console.log(this.data.areaList)
+    wx.setNavigationBarTitle({
+      title: '商城'
+    })
   },
 
   /**

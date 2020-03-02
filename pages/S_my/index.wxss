@@ -55,7 +55,7 @@
   color: #333;
 }
 .center {
-  padding:76rpx 0rpx 150rpx 0rpx;
+  padding:0rpx 0rpx 150rpx 0rpx;
   box-sizing: border-box;
 }
 .center_top {

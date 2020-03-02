@@ -1,9 +1,9 @@
 <!--pages/W_introduce/index.wxml-->
 <view class="W_introduce">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <image class="img" src=""></image>
     <view class="xian"></view>

@@ -1,34 +1,70 @@
 // pages/livebroadcast/index.js
-Page({
+Component({
 
   /**
    * 页面的初始数据
    */
   data: {
     course_arr: [],
-    borderstate: false
+    Notice_arr:[],
+    series_arr:[],
+    img_arr:[],
+    borderstate: false,
+    pageIndex:1,
+    pageCount:0
   },
-  uptouch(){
-    let arr = []
-    for(let i =0;i<10;i++){
-      arr.push(i)
-    }
-    this.setData({
-      course_arr:arr
-    })
+  methods:{
+    uptouch() {
+      if (this.data.pageIndex > this.data.pageCount){
+
+      } else {
+        this.getdata()
+      }
+    },
+    getdata() {
+      let self = this
+      wx.request({
+        url: 'http://192.168.31.251/livebroadcast.json',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data)
+          let arr = self.data.course_arr
+          arr.push(...res.data.course_arr)
+          let index = self.data.pageIndex +1 
+          if (res.data.result == 200) {
+            self.setData({
+              course_arr: arr,
+              pageIndex: index,
+              pageCount: res.data.pageCount,
+              Notice_arr: res.data.course_arr,
+              series_arr: res.data.course_arr,
+              img_arr:res.data.course_arr
+            })
+          }
+        },
+      })
+    },
+  },
+  attached(){
+
+    console.log(111)
+    this.getdata()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(111)
+    this.getdata()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log(111)
   },
 
   /**

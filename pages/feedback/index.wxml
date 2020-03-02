@@ -1,10 +1,11 @@
 <!--pages/feedback/index.wxml-->
 <view class="feedback">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <view slot="right">反馈</view>
     </van-nav-bar>
-  </view>
+  </view> -->
+  <view class="top_right" bindtap="onClickRight">反馈</view>
   <view class="center">
     <navigator url="/pages/feedbackdetails/index" hover-class="navigator-hover">
       <view class="li">

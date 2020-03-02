@@ -1,8 +1,8 @@
 <!--pages/S_shopcart/index.wxml-->
 <view class="S_shopcart">
   <view class="top">
-    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
-    </van-nav-bar>
+    <!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar> -->
     <view class="top_title">
       <van-icon name="shop-o" size="36rpx" />
       <view class="text">康牙医生商城</view>

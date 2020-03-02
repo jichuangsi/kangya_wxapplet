@@ -1,10 +1,10 @@
 <!--pages/erocdetails/index.wxml-->
 
 <view class="erocdetails">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="a1" wx:if="{{title=='每日看板'}}">
       <view class="time" bindtap="oneday">

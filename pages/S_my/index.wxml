@@ -1,9 +1,9 @@
 <!--pages/S_my/index.wxml-->
 <view class="S_my">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="center_top">
       <image src="../../images/my_headportrait_male.png"></image>

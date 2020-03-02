@@ -12,7 +12,7 @@
       <van-icon name="search" wx:if="{{indexnum==0}}" />
     </navigator>
   </view>
-    <swiper current="{{indexnum}}" class="tab" style="height: 90vh;" bindanimationfinish="sss">
+    <swiper current="{{indexnum}}" class="tab" style="height: 84vh;" bindanimationfinish="sss">
       <swiper-item style="overflow:auto;">
       <!-- <scroll-view scroll-x="false" scroll-y="true" class='scroll-views'> -->
         <livebroadcast class="livebroadcast"></livebroadcast>

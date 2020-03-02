@@ -1,0 +1,31 @@
+{
+  "result": "200",
+  "pageIndex":"1",
+  "total":"26",
+  "pageCount":"2",
+  "course_arr": [
+    {
+      "id":14,
+      "title": "孙跑名丨年度撒旦撒旦撒大撒大撒",
+      "time": "02月06日 19：30",
+      "num": 3,
+      "study":144,
+      "img":"../../images/5.png",
+      "state":0,
+      "price":"",
+      "oldprice":"",
+      "newprice":""
+    },{
+      "id": 15,
+      "title": "孙跑名丨年度撒旦撒旦撒大撒大撒",
+      "time": "02月06日 19：30",
+      "num": 3,
+      "study": 144,
+      "img": "../../images/5.png",
+      "state": 1,
+      "price": "",
+      "oldprice": "59.00",
+      "newprice": "0.00"
+    }
+  ]
+}

@@ -42,7 +42,7 @@
   overflow: auto;
 }
 .center {
-  padding: 76rpx 0rpx;
+  padding: 0rpx 0rpx;
   box-sizing: border-box;
 }
 .center_top {
@@ -132,9 +132,9 @@ van-card {
   padding: 0rpx 20rpx;
   box-sizing: border-box;
 }
-.li view {
+.li .s {
   display: flex;
-  align-content: center;
+  align-items: center;
 }
 .btn {
   border: 20rpx solid #f2f2f2;

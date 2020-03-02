@@ -44,6 +44,7 @@
 .center {
   padding: 106rpx 20rpx;
   box-sizing: border-box;
+  padding-top: 20rpx;
   /* background-color: red; */
 }
 .box {

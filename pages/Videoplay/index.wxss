@@ -38,7 +38,7 @@ van-sidebar {
 .center .center_top {
   width: 100%;
   position: fixed;
-  top: 540rpx;
+  top: 460rpx;
   left: 0rpx;
   background-color: #fff;
   display: flex;

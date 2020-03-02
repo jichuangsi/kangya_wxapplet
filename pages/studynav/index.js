@@ -20,6 +20,9 @@ Page({
     this.setData({
       active: event.detail.name
     })
+    wx.setNavigationBarTitle({
+      title: event.detail.name
+    })
   },
   onClickLeft() {
     wx.navigateBack({
@@ -52,7 +55,9 @@ Page({
       active:options.id,
       state: options.state
     })
-    console.log(this.data.state)
+    wx.setNavigationBarTitle({
+      title: options.id
+    })
   },
 
   /**

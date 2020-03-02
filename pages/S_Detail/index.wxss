@@ -44,6 +44,7 @@
 .center {
   padding: 100rpx 0rpx;
   box-sizing: border-box;
+  padding-top: 0rpx;
   /* background-color: #fff; */
 }
 swiper{

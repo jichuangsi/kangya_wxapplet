@@ -65,6 +65,9 @@ Page({
     this.setData({
       url: this.route
     })
+    wx.setNavigationBarTitle({
+      title:'课程详情'
+    })
   },
   
   /**

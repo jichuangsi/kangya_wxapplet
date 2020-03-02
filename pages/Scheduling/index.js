@@ -6,12 +6,24 @@ Page({
   data: {
     title:'排班',
     time_arr:[],
-    r_arr:[
+    name_arr:['李青琴'],
+    data_arr:[
       {
-        name:'李清琴',
         child:[]
       }
-    ]
+    ],
+    zw_arr: ['全部', '主任', '医生', '前台', '护士'],
+    check_zw:'选择职位',
+    show:false,
+    state:0,
+    color_arr:[
+      { id: 1, title: '休息' },
+      { id: 2, title: '早班' },
+      { id: 3, title: '午班' },
+      { id: 4, title: '晚班' },
+    ],
+    first_index:0,
+    index:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -26,25 +38,74 @@ Page({
   datatime(){
     var d1 = new Date(2020, 2, 1);
     var d2 = new Date(2020, 3, 1);
-    var arr = []
-    var arr2 = this.data.r_arr
+    var arr = this.data.time_arr
+    var length = this.data.name_arr.length
+    var arr1 = this.data.data_arr
     for (var i = d1.getTime(); i < d2.getTime(); i += 24 * 60 * 60 * 1000) {
       var d3 = new Date(i);
       var day = d3.getDate();
       var str = "周" + "日一二三四五六".charAt(d3.getDay());
       arr.push({ date: day, week:str})
-      arr2[0].child.push({state:0})
+      for (let j = 0; j < length; j++) {
+        arr1[j].child.push({ state: 0 })
+      }
     }
     this.setData({
       time_arr:arr,
-      r_arr: arr2
+      data_arr:arr1
     })
+    console.log(this.arr1)
+  },
+  showpopup(){
+    this.setData({
+      show:true
+    })
+  },
+  onClose() {
+    this.setData({
+      show: false
+    })
+  },
+  zwclick(e) {
+    this.setData({
+      check_zw: e.currentTarget.dataset.text
+    })
+    this.onClose()
+  },
+  stateclick(e) {
+    console.log(e)
+    this.setData({
+      state: e.currentTarget.dataset.index
+    })
+    console.log(this.data.state)
+  },
+  colorclick(e) {
+    console.log(e)
+    this.setData({
+      index: e.currentTarget.dataset.index,
+      first_index: e.currentTarget.dataset.first_index
+    })
+    if(this.data.state == 1) {
+      this.showpopup()
+    }
+  },
+  pbclick(e){
+    let arr = this.data.data_arr
+    arr[this.data.first_index].child[this.data.index].state = e.currentTarget.dataset.id
+    this.setData({
+      data_arr:arr
+    })
+    console.log(this.data.data_arr)
+    this.onClose()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.datatime()
+    wx.setNavigationBarTitle({
+      title:'排班'
+    })
   },
 
   /**

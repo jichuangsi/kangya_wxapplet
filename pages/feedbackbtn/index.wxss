@@ -123,3 +123,12 @@
   height: 20rpx;
   background-color: #f2f2f2;
 }
+.btn {
+  width: 98%;
+  line-height: 76rpx;
+  text-align: center;
+  background-color: #16c7ae;
+  color: #fff;
+  margin: 20rpx auto;
+  margin-top: 40rpx;
+}

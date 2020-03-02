@@ -1,13 +1,13 @@
 <!--pages/Newslist/index.wxml-->
 <view class="Marketing">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="list">
       <view class="smallbox"  wx:for="{{first_arr}}">
-      <navigator url="/pages/newsdetails/index?title=1" hover-class="navigator-hover">
+      <navigator url="/pages/newsdetails/index?title=断牙重接" hover-class="navigator-hover">
           <view class="left">
             <image src="../../images/5.png"></image>
           </view>

@@ -1,9 +1,9 @@
 <!--pages/eroc/index.wxml-->
 <view class="eroc">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <van-grid column-num="3">
     <van-grid-item icon="../../../images/clinic_operate_icon_kanban.png" text="每日看板" link-type="navigateTo"
     url="/pages/erocdetails/index?title=每日看板" />

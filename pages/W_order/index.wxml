@@ -1,9 +1,9 @@
 <!--pages/W_order/index.wxml-->
 <view class="W_order">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="li">
       <van-icon name="../../../images/returnvisit_icon_personnel_default.png" />

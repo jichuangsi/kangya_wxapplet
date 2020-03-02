@@ -1,0 +1,78 @@
+{
+  "result": "200",
+  "Today": "0",
+  "Tomorrow": "0",
+  "History": "0",
+  "Hospital_arr": [
+    {
+      "name": "广州大一口腔门诊","num": "8888"
+    }
+  ],
+  "achievement_arr": [
+    {
+      "title": "今日",
+      "money": "500.00"
+    },{
+      "title": "本月",
+      "money": "500.00"
+    },{
+      "title": "本年",
+      "money": "500.00"
+    }
+  ],
+  "nav_arr":[
+    {"title":"患者","state":true},
+    {
+      "title": "预约",
+      "state": true
+    },
+    {
+      "title": "回访",
+      "state": true
+    },
+    {
+      "title": "同事",
+      "state": true
+    },
+    {
+      "title": "排班",
+      "state": true
+    },
+    {
+      "title": "微官网",
+      "state": true
+    },
+    {
+      "title": "营销",
+      "state": true
+    },
+    {
+      "title": "活动",
+      "state": true
+    },
+    {
+      "title": "运营中心",
+      "state": true
+    },
+    {
+      "title": "商城",
+      "state": true
+    },
+    {
+      "title": "医患沟通",
+      "state": true
+    },
+    {
+      "title": "看牙无忧",
+      "state": true
+    },
+    {
+      "title": "审批",
+      "state": true
+    },
+    {
+      "title": "价目表",
+      "state": true
+    }
+  ]
+}

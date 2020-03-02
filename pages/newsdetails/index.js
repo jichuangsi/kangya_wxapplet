@@ -37,6 +37,9 @@ Page({
     this.setData({
       url: this.route
     })
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
   },
 
   /**

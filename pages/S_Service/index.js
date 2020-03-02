@@ -66,6 +66,9 @@ Page({
     this.setData({
       state: options.state
     })
+    wx.setNavigationBarTitle({
+      title: '商城'
+    })
   },
 
   /**

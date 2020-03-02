@@ -1,8 +1,8 @@
 <!--pages/S_sort/index.wxml-->
 <view class="S_sort">
   <view class="top">
-    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
-    </van-nav-bar>
+    <!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar> -->
     <view class="ipt">
       <navigator url="/pages/S_Productlist/index?search=1" hover-class="navigator-hover">
         <van-icon name="search" size="36rpx" />

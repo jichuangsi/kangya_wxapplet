@@ -1,9 +1,9 @@
 <!--pages/S_seckill/index.wxml-->
 <view class="S_seckill">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
     <view class="nav">
       <view class="nav_li {{nav_num==index?'check':''}}" wx:for="{{nav_arr}}" bindtap="navclick" data-index="{{index}}">
         <view>{{item.time}}</view>

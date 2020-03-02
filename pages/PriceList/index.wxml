@@ -1,9 +1,10 @@
 <!--pages/PriceList/index.wxml-->
 <view class="PriceList">
-    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft"
+    <!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft"
     bind:click-right="onClickRight"  >
         <van-icon name="search"  size="36rpx" slot="right" wx:if="{{title=='价目表'}}" />
-    </van-nav-bar>
+    </van-nav-bar> -->
+    <view class="top_right" wx:if="{{title=='价目表'}}" bindtap="onClickRight"><van-icon name="search"  size="36rpx" slot="right"/></view>
   <view class="center" wx:if="{{title=='价目表'}}">
     <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
       <van-sidebar-item title="全部" />

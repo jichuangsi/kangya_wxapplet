@@ -121,6 +121,9 @@ Page({
       check_title:options.title,
       buystate: options.buystate
     })
+    wx.setNavigationBarTitle({
+      title: '商城'
+    })
   },
 
   /**

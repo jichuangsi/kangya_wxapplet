@@ -1,9 +1,9 @@
 <!--pages/S_card/index.wxml-->
 <view class="S_card">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center" wx:if="{{state==0}}">
     <view class="li" data-index="1" bindtap="stateclick">
       <image src="../../images/my_service_icon_coupon.png"></image>

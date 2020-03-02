@@ -43,6 +43,9 @@ Page({
       title: options.title ? options.title:'',
       state: options.state ? options.state:0
     })
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
   },
   loveclick(){
     this.setData({

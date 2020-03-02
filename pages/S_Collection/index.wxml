@@ -1,8 +1,8 @@
 <!--pages/S_Collection/index.wxml-->
 <view class="S_Collection">
   <view class="top">
-    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
-    </van-nav-bar>
+    <!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar> -->
     <view class="top_title">
       <view class="text">共收藏2件商品</view>
       <view class="top_btn" data-index="1" bindtap="edit" wx:if="{{del_state==0}}">编辑</view>

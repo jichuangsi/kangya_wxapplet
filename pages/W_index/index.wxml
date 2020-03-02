@@ -1,9 +1,9 @@
 <!--pages/W_index/index.wxml-->
 <view class="W_index">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true' autoplay='true'>
       <swiper-item wx:for="{{arr}}">

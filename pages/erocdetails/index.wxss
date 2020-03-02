@@ -43,7 +43,6 @@
   font-size: 80rpx !important;
 }
 .center {
-  padding-top: 100rpx;
   box-sizing: border-box;
 }
 .time {

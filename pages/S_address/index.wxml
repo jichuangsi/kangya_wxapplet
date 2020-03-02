@@ -1,9 +1,9 @@
 <!--pages/S_address/index.wxml-->
 <view class="S_address">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center" wx:if="{{state == 0}}">
     <view class="box">
       <view class="user">

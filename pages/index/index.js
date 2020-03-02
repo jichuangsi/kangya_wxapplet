@@ -6,14 +6,15 @@ Page({
   data: {
     show: false, 
     name:'广州大一口腔门诊',
-    achievement_arr: require('../../data/indexdata.js').default.achievement_arr,
-    Hospital_arr: require('../../data/indexdata.js').default.Hospital_arr,
+    achievement_arr: [],
+    Hospital_arr: [],
+    nav_arr:[],
     moneystatus:false,
     borderstate:false,
     showleft:false,
-    Worktoday: require('../../data/indexdata.js').default.nav.Today,
-    Tomorroworder: require('../../data/indexdata.js').default.nav.Tomorrow,
-    Historyarrears: require('../../data/indexdata.js').default.nav.History,
+    Worktoday: '',
+    Tomorroworder: '',
+    Historyarrears: '',
   },
   
   //事件处理函数
@@ -96,20 +97,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(123456789)
+    let self =this
     wx.request({
-      url: '../../data/a.json',
+      url: 'http://192.168.31.251/index.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       success: function (res) {
-        console.log(222)},
-      fail: function (res) { console.log(res)},
-      complete: function (res) { console.log(res)},
+        console.log(res.data)
+        if (res.data.result == 200){
+          self.setData({
+            achievement_arr: res.data.achievement_arr,
+            Hospital_arr: res.data.Hospital_arr,
+            Worktoday: res.data.Today,
+            Tomorroworder: res.data.Tomorrow,
+            Historyarrears: res.data.History,
+            nav_arr: res.data.nav_arr
+          })
+        }
+      },
     })
-    wx.request({
-      url: '../../data/a.json', //仅为示例，并非真实的接口地址
-      success(res) {
-        console.log(res)
-        console.log(222)
-      }
-    })
+
   },
   bindViewTap: function() {
   },

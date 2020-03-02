@@ -27,6 +27,16 @@ van-sidebar {
   height: 100vh;
   overflow: auto;
 }
+.top_right {
+  padding: 20rpx;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 10rpx;
+  right: 10rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10rpx;
+  color: #fff;
+}
 .center {
   display: flex;
 }

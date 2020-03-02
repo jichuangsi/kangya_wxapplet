@@ -7,10 +7,10 @@
     <view data-id="2" class="{{tabnum==2?'check':''}}" bindtap="tab">最热课程</view>
     <view data-id="3" class="{{tabnum==3?'check':''}}" bindtap="tab">最新课程</view>
   </van-popup>
-  <van-nav-bar title="{{active}}" left-text="返回" left-arrow   bind:click-left="onClickLeft" bind:click-right="onClickRight"
+  <!-- <van-nav-bar title="{{active}}" left-text="返回" left-arrow   bind:click-left="onClickLeft" bind:click-right="onClickRight"
   >
     <van-icon name="filter-o" slot="right" size="30rpx" wx:if="{{state!=3}}" />
-  </van-nav-bar>
+  </van-nav-bar> -->
   <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" wx:if="{{state == 1}}">
     <van-tab title="正畸" name="正畸">
       <view class="list">
