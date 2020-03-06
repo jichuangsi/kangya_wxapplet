@@ -28,38 +28,43 @@
       <view class="bz">暂无录音</view>
     </view>
     <view class="xian"></view>
-    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入主诉" bindtap="editgo">
+    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入主诉" data-value="{{complain}}" bindtap="editgo">
       <van-icon name="../../../images/case_icon_mainsuitl_defauit.png" />
       <view class="text">主诉</view>
       <view></view>
-      <view class="bz">请输入主诉内容</view>
+      <view class="bz" wx:if="{{complain == ''}}">请输入主诉内容</view>
+      <view class="bz" wx:if="{{complain != ''}}">{{complain}}</view>
     </view>
-    <view class="box" wx:if="{{check_text=='复诊病历'}}" data-text="输入复诉" bindtap="editgo">
+    <view class="box" wx:if="{{check_text=='复诊病历'}}" data-text="输入复诉" data-value="{{repetition}}" bindtap="editgo">
       <van-icon name="../../../images/case_icon_mainsuitl_defauit.png" />
       <view class="text">复诉</view>
       <view></view>
-      <view class="bz">请输入复诉内容</view>
+      <view class="bz" wx:if="{{repetition == ''}}">请输入复诉内容</view>
+      <view class="bz" wx:if="{{repetition != ''}}">{{repetition}}</view>
     </view>
     <view class="xian"></view>
-    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入现病史" bindtap="editgo">
+    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入现病史" data-value="{{disease}}" bindtap="editgo">
       <van-icon name="../../../images/case_icon_hpi_defauit.png" />
       <view class="text">现病史</view>
       <view></view>
-      <view class="bz">请输入现病史</view>
+      <view class="bz" wx:if="{{disease == ''}}">请输入现病史</view>
+      <view class="bz" wx:if="{{disease != ''}}">{{disease}}</view>
     </view>
     <view class="xian"></view>
-    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入既往史" bindtap="editgo">
+    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入既往史" data-value="{{past}}" bindtap="editgo">
       <van-icon name="../../../images/case_icon_hpi_defauit.png" />
       <view class="text">既往史</view>
       <view></view>
-      <view class="bz">请输入既往史</view>
+      <view class="bz" wx:if="{{past == ''}}">请输入既往史</view>
+      <view class="bz" wx:if="{{past != ''}}">{{past}}</view>
     </view>
     <view class="xian"></view>
-    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入过敏史" bindtap="editgo">
+    <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入过敏史" data-value="{{allergy}}" bindtap="editgo">
       <van-icon name="../../../images/case_icon_pasthistoryi_defauit.png" />
       <view class="text">过敏史</view>
       <view></view>
-      <view class="bz">请输入过敏史</view>
+      <view class="bz" wx:if="{{allergy == ''}}">请输入过敏史</view>
+      <view class="bz" wx:if="{{allergy != ''}}">{{allergy}}</view>
     </view>
     <view class="xian"></view>
     <view class="box">
@@ -86,8 +91,9 @@
       <view></view>
       <van-icon name="arrow" />
     </view>
-    <view class="box" data-text="输入检查" bindtap="editgo">
-      <view class="bz"></view>
+    <view class="box" data-text="输入检查" data-value="{{inspect}}" bindtap="editgo">
+      <view class="bz" wx:if="{{inspect == ''}}"></view>
+      <view class="bz" wx:if="{{inspect != ''}}">{{inspect}}</view>
     </view>
     <view class="box title">
       <van-icon name="../../../images/case_icon_auxiliary_defauit.png" />
@@ -107,8 +113,9 @@
       <view></view>
       <van-icon name="arrow" />
     </view>
-    <view class="box" data-text="输入辅助检查" bindtap="editgo">
-      <view class="bz"></view>
+    <view class="box" data-text="输入辅助检查" data-value="{{auxiliary}}" bindtap="editgo">
+      <view class="bz" wx:if="{{auxiliary == ''}}"></view>
+      <view class="bz" wx:if="{{auxiliary != ''}}">{{auxiliary}}</view>
     </view>
     <view class="box title">
       <van-icon name="../../../images/case_icon_diagnosis_defauit.png" />
@@ -128,8 +135,9 @@
       <view></view>
       <van-icon name="arrow" />
     </view>
-    <view class="box" data-text="输入诊断" bindtap="editgo">
-      <view class="bz"></view>
+    <view class="box" data-text="输入诊断" data-value="{{diagnose}}" bindtap="editgo">
+      <view class="bz" wx:if="{{diagnose == ''}}"></view>
+      <view class="bz" wx:if="{{diagnose != ''}}">{{diagnose}}</view>
     </view>
     <view class="box title">
       <van-icon name="../../../images/case_icon_diagnosis_defauit.png" />
@@ -149,8 +157,9 @@
       <view></view>
       <van-icon name="arrow" />
     </view>
-    <view class="box" data-text="输入治疗方案" bindtap="editgo">
-      <view class="bz"></view>
+    <view class="box" data-text="输入治疗方案" data-value="{{programme}}" bindtap="editgo">
+      <view class="bz" wx:if="{{programme == ''}}"></view>
+      <view class="bz" wx:if="{{programme != ''}}">{{programme}}</view>
     </view>
     <view class="box title">
       <van-icon name="../../../images/case_icon_treatment_defauit.png" />
@@ -170,16 +179,18 @@
       <view></view>
       <van-icon name="arrow" />
     </view>
-    <view class="box" data-text="输入治疗" bindtap="editgo">
-      <view class="bz"></view>
+    <view class="box" data-text="输入治疗" data-value="{{treat}}" bindtap="editgo">
+      <view class="bz" wx:if="{{treat == ''}}"></view>
+      <view class="bz" wx:if="{{treat != ''}}">{{treat}}</view>
     </view>
     <view class="xian"></view>
-    <view class="box" data-text="输入医嘱" bindtap="editgo">
+    <view class="box" data-text="输入医嘱" data-value="{{advice}}" bindtap="editgo">
       <van-icon name="../../../images/case_icon_programme_defauit.png" />
       <view class="text">医嘱</view>
       <view></view>
       <van-icon name="arrow" />
-      <view class="bz"></view>
+      <view class="bz" wx:if="{{advice == ''}}"></view>
+      <view class="bz" wx:if="{{advice != ''}}">{{advice}}</view>
     </view>
     <view class="xian"></view>
     <view class="box" data-text="影像浏览" bindtap="editgo">

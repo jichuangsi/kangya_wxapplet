@@ -55,7 +55,7 @@ Page({
   getdata() {
     let self = this
     wx.request({
-      url: 'http://192.168.31.251/S_address.json',
+      url: getApp().data.API+'/S_address.json',
       headers: {
         'Content-Type': 'application/json'
       },

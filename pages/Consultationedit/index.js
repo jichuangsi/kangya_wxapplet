@@ -10,6 +10,14 @@ Page({
     title: '修改咨询',
     show: false,
     time: '',
+    complaints: '',
+    basicdemand: '',
+    potentialdemand: '',
+    programme: '',
+    record: '',
+    proposal: '',
+    communicatetype: '',
+    doctor_name: '',
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
@@ -60,9 +68,9 @@ Page({
       url: '../Colleague/index?title=医生&&state=2',
     })
   },
-  Patienteditgo(e) {
+  editgo(e) {
     wx.navigateTo({
-      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text,
+      url: '../edit/index?title=' + e.currentTarget.dataset.text + '&&value=' + e.currentTarget.dataset.value,
     })
   },
   /**

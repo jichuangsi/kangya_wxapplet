@@ -24,7 +24,7 @@ Component({
     getdata() {
       let self = this
       wx.request({
-        url: 'http://192.168.31.251/livebroadcast.json',
+        url: getApp().data.API+'/livebroadcast.json',
         headers: {
           'Content-Type': 'application/json'
         },

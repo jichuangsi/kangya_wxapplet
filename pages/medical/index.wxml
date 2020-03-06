@@ -9,19 +9,19 @@
     <van-icon name="plus" size="36rpx" />
   </view>
   <view class="center">
-    <view class="li">
+    <view class="li" wx:for="{{arr}}">
       <view class="li_top">
         <image src="../../images/my_headportrait_male.png"></image>
-        <view class="name">试试</view>
-        <view class="time">2020-02-23</view>
+        <view class="name">{{item.doctor_name}}</view>
+        <view class="time">{{item.time}}</view>
       </view>
       <view class="user">
         <view>患者姓名</view>
-        <view>空白</view>
+        <view>{{item.patient_name}}</view>
         <view>性别</view>
-        <view>男</view>
+        <view>{{item.sex==0?'男':'女'}}</view>
       </view>
-      <view class="tab" wx:for="{{arr}}">
+      <view class="tab" wx:for="{{item.medical_arr}}">
         <view class="left">{{item.title}}</view>
         <view class="right" wx:if="{{item.text != '影像'}}">{{item.text}}</view>
         <view class="right" wx:if="{{item.text == '影像'}}">{{item.text}}<van-icon name="arrow" /></view>

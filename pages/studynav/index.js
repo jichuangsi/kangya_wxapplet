@@ -1,4 +1,4 @@
-// pages/studylist/index.js
+// pages/studynav/index.js
 Page({
 
   /**
@@ -14,15 +14,20 @@ Page({
     addmechanism:"",
     addOther:"",
     addphone:"",
-    first_arr: [1, 1]
+    first_arr: [1, 1],
+    course_arr:[],
+    pageIndex: 1,
+    pageCount: 0
   },
   onChange(event){
     this.setData({
-      active: event.detail.name
+      active: event.detail.name,
+      course_arr:[]
     })
     wx.setNavigationBarTitle({
       title: event.detail.name
     })
+    this.getdata()
   },
   onClickLeft() {
     wx.navigateBack({
@@ -46,6 +51,28 @@ Page({
       result: event.detail
     });
   },
+    getdata() {
+      let self = this
+      wx.request({
+        url: getApp().data.API +'/studynav.json',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data)
+          let arr = self.data.course_arr
+          arr.push(...res.data.course_arr)
+          let index = self.data.pageIndex +1 
+          if (res.data.result == 200) {
+            self.setData({
+              course_arr: arr,
+              pageIndex: index,
+              pageCount: res.data.pageCount,
+            })
+          }
+        },
+      })
+    },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -58,6 +85,7 @@ Page({
     wx.setNavigationBarTitle({
       title: options.id
     })
+    this.getdata()
   },
 
   /**

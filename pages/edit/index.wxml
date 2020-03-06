@@ -1,22 +1,32 @@
 <!--pages/edit/index.wxml-->
 <view class="edit">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <view slot="right" wx:if="{{title!='影像浏览'}}">确定</view>
     <van-icon name="plus" slot="right" size="36rpx" wx:if="{{title=='影像浏览'}}"/>
     </van-nav-bar>    
+  </view> -->
+  <view class="top_right" bindtap="onClickRight" wx:if="{{title=='影像浏览'}}">
+    <van-icon name="plus" size="36rpx"/>
   </view>
-  <view class="center">
-    <textarea value="{{zs}}" maxlength="1000" placeholder="请输入内容" bindinput="zsipt"  wx:if="{{title=='输入主诉'}}"></textarea>
-    <textarea value="{{fs}}" maxlength="1000" placeholder="请输入内容" bindinput="fsipt"  wx:if="{{title=='输入复诉'}}"></textarea>
-    <textarea value="{{xb}}" maxlength="1000" placeholder="请输入内容" bindinput="xbipt"  wx:if="{{title=='输入现病史'}}"></textarea>
-    <textarea value="{{jw}}" maxlength="1000" placeholder="请输入内容" bindinput="jwipt"  wx:if="{{title=='输入既往史'}}"></textarea>
-    <textarea value="{{gm}}" maxlength="1000" placeholder="请输入内容" bindinput="gmipt"  wx:if="{{title=='输入过敏史'}}"></textarea>
-    <textarea value="{{jc}}" maxlength="1000" placeholder="请输入内容" bindinput="jcipt"  wx:if="{{title=='输入检查'}}"></textarea>
-    <textarea value="{{jcfz}}" maxlength="1000" placeholder="请输入内容" bindinput="jcfzipt"  wx:if="{{title=='输入辅助检查'}}"></textarea>
-    <textarea value="{{zd}}" maxlength="1000" placeholder="请输入内容" bindinput="zdipt"  wx:if="{{title=='输入诊断'}}"></textarea>
-    <textarea value="{{zlfa}}" maxlength="1000" placeholder="请输入内容" bindinput="zlfaipt"  wx:if="{{title=='输入治疗方案'}}"></textarea>
-    <textarea value="{{zl}}" maxlength="1000" placeholder="请输入内容" bindinput="zlipt"  wx:if="{{title=='输入治疗'}}"></textarea>
-    <textarea value="{{yz}}" maxlength="1000" placeholder="请输入内容" bindinput="yzipt"  wx:if="{{title=='输入医嘱'}}"></textarea>
+  <view class="center" wx:if="{{title!='影像浏览'&&title!='沟通类型'}}">
+    <textarea value="{{content}}" maxlength="1000" placeholder="请输入内容" bindinput="conInput"></textarea>
+      <view class="yuyinBtn {{recordState == true ? 'yuyinBtnBg':''}}" bindtouchstart="touchStart" bindtouchend="touchEnd">
+        <image src="../../images/returnvisit_icon_memo_default.png"></image>
+      </view>
+  <!-- 开始语音 弹出语音图标表示正在录音 -->
+      <view class="yy_text" wx:if="{{recordState == true}}">
+        倾听中...
+      </view>
+      <view class="btn" wx:if="{{title!='影像浏览'}}" bindtap="onClickRight">确定</view>
+  </view>
+  <view class="" wx:if="{{title=='影像浏览'}}">
+    <view class="img_box">
+      <image src="{{item}}" wx:for="{{img_arr}}"></image>
+    </view>
+  </view>
+  <view class="li" wx:for="{{gt_arr}}" data-text="{{item}}" wx:if="{{title=='沟通类型'}}" bindtap="gtclick">
+    {{item}}
+    <van-icon name="arrow" />
   </view>
 </view>

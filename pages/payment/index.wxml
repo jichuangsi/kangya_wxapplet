@@ -6,41 +6,43 @@
     <!-- </van-nav-bar>
   </view> -->
   <view class="center">
-    <view class="li">
+    <view class="libox" wx:for="{{arr}}">
+      <view class="li">
       <van-icon name="clock-o" />
       <view class="text">操作时间</view>
-      <view class="time">2020-01-08</view>
+      <view class="time">{{item.time}}</view>
     </view>
     <view class="nav">
       <view class="navbox">
-        <view>20.00</view>
+        <view>{{item.income}}</view>
         <view>收入</view>
       </view>
       <view class="navbox">
-        <view class="red">0.00</view>
+        <view class="red">{{item.expenditure}}</view>
         <view>支出</view>
       </view>
       <view class="navbox">
-        <view class="blue">20.00</view>
+        <view class="blue">{{item.balance}}</view>
         <view>余额</view>
       </view>
     </view>
     <view class="li">
       <view class="text">操作</view>
-      <view class="green">充值</view>
+      <view class="green">{{item.operation}}</view>
     </view>
     <view class="li">
       <view class="text">收费方式</view>
-      <view>现金</view>
+      <view>{{item.paymentmode}}</view>
     </view>
     <view class="li">
       <view class="text">经手人</view>
-      <view>试试</view>
+      <view>{{item.Experiencedperson}}</view>
     </view>
     <view class="li">
       <van-icon name="notes-o" />
       <view class="text">备注</view>
-      <view class="bz">未填写备注</view>
+      <view class="bz">{{item.bz}}</view>
+    </view>
     </view>
   </view>
 </view>

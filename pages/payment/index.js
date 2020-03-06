@@ -5,14 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: '预交款记录'
+    title: '预交款记录',
+    arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
       delta: 1,
     })
   },
-
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.API +'/payment.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            arr: res.data.arr,
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -20,6 +37,9 @@ Page({
     wx.setNavigationBarTitle({
       title: '预交款记录'
     })
+    console.log(111)
+    this.getdata()
+    console.log(111)
   },
 
   /**

@@ -14,19 +14,20 @@
   <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" wx:if="{{state == 1}}">
     <van-tab title="正畸" name="正畸">
       <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
+        <view class="smallbox"  wx:for="{{course_arr}}">
           <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.img}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">116次学习</view>
+              <view class="smallboxtitle">{{item.title}}</view>
+              <view class="smallboxtext">{{item.time}}</view>
+              <view class="smallboxtext">{{item.study}}次学习</view>
               <view class="money">
-                <!-- <view class='p1'>免费</view> -->
-                <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view>
+                <view class='p1' wx:if="{{item.state == 0}}">免费</view>
+                <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
+                <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
+                <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
               </view>
             </view>
           </navigator>
@@ -35,20 +36,20 @@
       </van-tab>
       <van-tab title="种植" name="种植">
       <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
-            
+        <view class="smallbox"  wx:for="{{course_arr}}">
           <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.img}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">116次学习</view>
+              <view class="smallboxtitle">{{item.title}}</view>
+              <view class="smallboxtext">{{item.time}}</view>
+              <view class="smallboxtext">{{item.study}}次学习</view>
               <view class="money">
-                <!-- <view class='p1'>免费</view> -->
-                <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view>
+                <view class='p1' wx:if="{{item.state == 0}}">免费</view>
+                <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
+                <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
+                <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
               </view>
             </view>
           </navigator>
@@ -57,19 +58,20 @@
       </van-tab>
       <van-tab title="修复" name="修复">
       <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
+        <view class="smallbox"  wx:for="{{course_arr}}">
           <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.img}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">116次学习</view>
+              <view class="smallboxtitle">{{item.title}}</view>
+              <view class="smallboxtext">{{item.time}}</view>
+              <view class="smallboxtext">{{item.study}}次学习</view>
               <view class="money">
-                <!-- <view class='p1'>免费</view> -->
-                <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view>
+                <view class='p1' wx:if="{{item.state == 0}}">免费</view>
+                <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
+                <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
+                <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
               </view>
             </view>
           </navigator>
@@ -78,19 +80,20 @@
       </van-tab>
       <van-tab title="根管" name="根管">
       <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
+        <view class="smallbox"  wx:for="{{course_arr}}">
           <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.img}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">116次学习</view>
+              <view class="smallboxtitle">{{item.title}}</view>
+              <view class="smallboxtext">{{item.time}}</view>
+              <view class="smallboxtext">{{item.study}}次学习</view>
               <view class="money">
-                <!-- <view class='p1'>免费</view> -->
-                <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view>
+                <view class='p1' wx:if="{{item.state == 0}}">免费</view>
+                <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
+                <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
+                <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
               </view>
             </view>
           </navigator>
@@ -99,19 +102,20 @@
       </van-tab>
       <van-tab title="牙周" name="牙周">
       <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
+        <view class="smallbox"  wx:for="{{course_arr}}">
           <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.img}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">116次学习</view>
+              <view class="smallboxtitle">{{item.title}}</view>
+              <view class="smallboxtext">{{item.time}}</view>
+              <view class="smallboxtext">{{item.study}}次学习</view>
               <view class="money">
-                <!-- <view class='p1'>免费</view> -->
-                <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view>
+                <view class='p1' wx:if="{{item.state == 0}}">免费</view>
+                <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
+                <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
+                <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
               </view>
             </view>
           </navigator>
@@ -120,19 +124,20 @@
       </van-tab>
       <van-tab title="管理" name="管理">
       <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
+        <view class="smallbox"  wx:for="{{course_arr}}">
           <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.img}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">116次学习</view>
+              <view class="smallboxtitle">{{item.title}}</view>
+              <view class="smallboxtext">{{item.time}}</view>
+              <view class="smallboxtext">{{item.study}}次学习</view>
               <view class="money">
-                <!-- <view class='p1'>免费</view> -->
-                <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view>
+                <view class='p1' wx:if="{{item.state == 0}}">免费</view>
+                <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
+                <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
+                <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
               </view>
             </view>
           </navigator>
@@ -141,19 +146,20 @@
       </van-tab>
       <van-tab title="营销" name="营销">
       <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
+        <view class="smallbox"  wx:for="{{course_arr}}">
           <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.img}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">116次学习</view>
+              <view class="smallboxtitle">{{item.title}}</view>
+              <view class="smallboxtext">{{item.time}}</view>
+              <view class="smallboxtext">{{item.study}}次学习</view>
               <view class="money">
-                <!-- <view class='p1'>免费</view> -->
-                <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view>
+                <view class='p1' wx:if="{{item.state == 0}}">免费</view>
+                <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
+                <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
+                <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
               </view>
             </view>
           </navigator>
@@ -162,19 +168,20 @@
       </van-tab>
       <van-tab title="耗材教学" name="耗材教学">
       <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
+        <view class="smallbox"  wx:for="{{course_arr}}">
           <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.img}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">116次学习</view>
+              <view class="smallboxtitle">{{item.title}}</view>
+              <view class="smallboxtext">{{item.time}}</view>
+              <view class="smallboxtext">{{item.study}}次学习</view>
               <view class="money">
-                <!-- <view class='p1'>免费</view> -->
-                <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view>
+                <view class='p1' wx:if="{{item.state == 0}}">免费</view>
+                <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
+                <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
+                <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
               </view>
             </view>
           </navigator>
@@ -183,19 +190,20 @@
       </van-tab>
       <van-tab title="其他" name="其他">
       <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
+        <view class="smallbox"  wx:for="{{course_arr}}">
           <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.img}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">116次学习</view>
+              <view class="smallboxtitle">{{item.title}}</view>
+              <view class="smallboxtext">{{item.time}}</view>
+              <view class="smallboxtext">{{item.study}}次学习</view>
               <view class="money">
-                <!-- <view class='p1'>免费</view> -->
-                <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view>
+                <view class='p1' wx:if="{{item.state == 0}}">免费</view>
+                <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
+                <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
+                <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
               </view>
             </view>
           </navigator>
@@ -205,19 +213,20 @@
   </van-tabs>
   <view wx:if="{{state == 2}}">
       <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
-        <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+        <view class="smallbox"  wx:for="{{course_arr}}">
+        <navigator url="/pages/coursedetails/index?id={{item.id}}" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.img}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">116次学习</view>
+              <view class="smallboxtitle">{{item.title}}</view>
+              <view class="smallboxtext">{{item.time}}</view>
+              <view class="smallboxtext">{{item.study}}次学习</view>
               <view class="money">
-                <!-- <view class='p1'>免费</view> -->
-                <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view>
+                <view class='p1' wx:if="{{item.state == 0}}">免费</view>
+                <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
+                <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
+                <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
               </view>
             </view>
             </navigator>

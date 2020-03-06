@@ -58,7 +58,7 @@ Page({
   getdata() {
     let self = this
     wx.request({
-      url: 'http://192.168.31.251/S_card.json',
+      url: getApp().data.API+'/S_card.json',
       headers: {
         'Content-Type': 'application/json'
       },

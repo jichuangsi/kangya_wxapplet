@@ -1,4 +1,6 @@
 // pages/Videoplay/index.js
+// const AgoraMiniappSDK = require('../../data/Agora_Miniapp_SDK_for_WeChat.js');
+// this.liveP = wx.createLivePlayerContext('livePlayer');
 Page({
 
   /**
@@ -10,8 +12,10 @@ Page({
     lovestate: false,
     arr:[1,1,1,1,1,1,1],
     text:'',
-    show:false
+    show: false,
+    client: ''
   },
+
 
   onClickLeft() {
     wx.navigateBack({
@@ -56,6 +60,69 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    let client = new AgoraMiniappSDK.Client();
+
+    // client.init("2da57d423c604b1e997e49840eee0dcb", function () {
+    // //   // 初始化成功
+    //   console.log("初始化成功");
+    //   client.join(null, "10sd0", "4as56123", function (uid) {
+    // //     // 加入成功
+    //     console.log("加入成功User " + uid + " join channel successfully");
+    // //     // 发布本地音频流并获取推流 url 地址
+    // //     client.publish(function (res) {
+    // //       // 发布成功
+    // //       console.log("发布成功pushPath" + res);
+    // //       that.setData({
+    // //         pushPath: res
+    // //       })
+    // //       // 监听
+    // //       client.on('error', function (err) {
+    // //         console.log("Got error msg:", err.reason);
+    // //         if (err.reason === 'DYNAMIC_KEY_TIMEOUT') {
+    // //           client.renewChannelKey(that.data.fangjianhao, function () {
+    // //             console.log("Renew channel key successfully");
+    // //           }, function (err) {
+    // //             console.log("Renew channel key failed: ", err);
+    // //           });
+    // //         }
+    // //       });
+    // //       // 监听远程视频添加
+    // //       client.on('stream-added', function (evt) {
+    // //         client.subscribe(evt.uid, function (res) {
+    // //           console.log("订阅视频流成功playUrl" + res);
+    // //           that.setData({
+    // //             playUrl: res
+    // //           });
+    // //         }, function (err) {
+    // //           console.log("订阅视频流错误", err);
+    // //         });
+    // //       });
+
+    // //       client.on('update-url', function (evt) {
+    // //         console.log("视频播放", evt);
+    // //       });
+
+    // //       client.on('stream-removed', function (evt) {
+    // //         console.log("视频停止播放");
+    // //       });
+
+    // //       client.on('video-rotation', function (evt) {
+    // //         console.log(evt.uid + " leaved from this channel");
+    // //       });
+
+
+    // //     }, function (err) {
+    // //       // 发布失败
+    // //       console.log("发布失败" + err);
+    // //     });
+    //   }, function (err) {
+    //     // 加入失败
+    //     console.log("加入失败", err);
+    //   });
+    // }, function (err) {
+    //   //初始化失败
+    //   console.log("初始化失败", err);
+    // });
 
   },
 

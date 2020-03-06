@@ -140,7 +140,7 @@ Page({
   getdata(time){
     let self = this
     wx.request({
-      url: 'http://192.168.31.251/achievement.json',
+      url: getApp().data.API+'/achievement.json',
       headers: {
         'Content-Type': 'application/json'
       },

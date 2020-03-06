@@ -156,6 +156,12 @@
     "navigationBarTitleText": "",
     "navigationBarTextStyle": "white"
   },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.0",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

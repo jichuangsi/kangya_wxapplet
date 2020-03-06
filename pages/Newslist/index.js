@@ -26,7 +26,7 @@ Page({
   getdata() {
     let self = this
     wx.request({
-      url: 'http://192.168.31.251/Newslist.json',
+      url: getApp().data.API+'/Newslist.json',
       headers: {
         'Content-Type': 'application/json'
       },

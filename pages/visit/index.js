@@ -89,7 +89,7 @@ Page({
   getdata(){
     let self = this
     wx.request({
-      url: 'http://192.168.31.251/visit.json',
+      url: getApp().data.API+'/visit.json',
       headers: {
         'Content-Type': 'application/json'
       },

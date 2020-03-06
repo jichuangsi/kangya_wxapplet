@@ -163,7 +163,7 @@ Page({
   getdata() {
     let self = this
     wx.request({
-      url: 'http://192.168.31.251/S_shopcart.json',
+      url: getApp().data.API+'/S_shopcart.json',
       headers: {
         'Content-Type': 'application/json'
       },

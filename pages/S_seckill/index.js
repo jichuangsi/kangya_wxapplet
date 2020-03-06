@@ -56,7 +56,7 @@ Page({
   getdata() {
     let self = this
     wx.request({
-      url: 'http://192.168.31.251/S_seckill.json',
+      url: getApp().data.API+'/S_seckill.json',
       headers: {
         'Content-Type': 'application/json'
       },

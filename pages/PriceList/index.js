@@ -45,7 +45,7 @@ Page({
       check_id: e.currentTarget.dataset.id
     })
     wx.request({
-      url: 'http://192.168.31.251/PriceListClick.json',
+      url: getApp().data.API+'/PriceListClick.json',
       data: {
         id: e.currentTarget.dataset.id
       },
@@ -68,7 +68,7 @@ Page({
       activeKey: event.detail.name
     })
     wx.request({
-      url: 'http://192.168.31.251/PriceListClick.json',
+      url: getApp().data.API+'/PriceListClick.json',
       data:{
         title: event.detail.name
       },
@@ -88,7 +88,7 @@ Page({
   getdata() {
     let self =this
     wx.request({
-      url: 'http://192.168.31.251/PriceList.json',
+      url: getApp().data.API+'/PriceList.json',
       headers: {
         'Content-Type': 'application/json'
       },

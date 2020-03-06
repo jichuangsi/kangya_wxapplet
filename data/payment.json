@@ -1,0 +1,15 @@
+{
+  "result": "200",
+  "arr": [
+    {
+      "time": "2020-02-18",
+      "income": "20.00",
+      "expenditure": "0.00",
+      "balance": "20.00",
+      "paymentmode":"现金",
+      "operation":"充值",
+      "Experiencedperson":"试试",
+      "bz":""
+    }
+  ]
+}

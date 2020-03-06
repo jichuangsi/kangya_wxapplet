@@ -100,7 +100,7 @@ Page({
   getdata(){
     let self = this
     wx.request({
-      url: 'http://192.168.31.251/Scheduling.json',
+      url: getApp().data.API+'/Scheduling.json',
       headers: {
         'Content-Type': 'application/json'
       },

@@ -7,17 +7,7 @@ Page({
    */
   data: {
     title: '病历',
-    arr:[
-      { title: '主诉', text: '坐上后牙痛' },
-      { title: '既往史', text: '曾经返回疼痛' },
-      { title: '检查', text: '牙龈乳头红肿，充血有嵌塞物。' },
-      { title: '辅助检查', text: '‘' },
-      { title: '诊断', text: '龈乳头炎' },
-      { title: '治疗方案', text: '控制炎症后局部治疗' },
-      { title: '治疗', text: '局部冲洗，上药。' },
-      { title: '医嘱', text: '暂时不能用左侧咀嚼' },
-      { title: '影像', text: '',img:'' }
-    ]
+    arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -44,6 +34,23 @@ Page({
       url: '../medicaledit/index?title=病历详情',
     })
   },
+  getdata(){
+    let self = this
+    wx.request({
+      url: getApp().data.API + '/medical.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            arr: res.data.arr
+          })
+        }
+      },
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -52,6 +59,7 @@ Page({
     wx.setNavigationBarTitle({
       title:'病历'
     })
+    this.getdata()
   },
 
   /**

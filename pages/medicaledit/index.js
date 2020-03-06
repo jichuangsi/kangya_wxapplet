@@ -9,6 +9,20 @@ Page({
     check_text: '初诊病历',
     checked: false,
     show: false,
+    complain: '',
+    repetition: '',
+    disease: '',
+    past: '',
+    allergy: '',
+    inspect: '',
+    auxiliary: '',
+    diagnose: '',
+    programme: '',
+    treat: '',
+    advice: '',
+    img_arr:[],
+    doctor_name: '',
+    nurse_name:'',
     time:'',
     calendarConfig: {
       // 配置内置主题
@@ -52,7 +66,7 @@ Page({
   },
   editgo(e) {
     wx.navigateTo({
-      url: '../edit/index?title=' + e.currentTarget.dataset.text,
+      url: '../edit/index?title=' + e.currentTarget.dataset.text + '&&value=' + e.currentTarget.dataset.value,
     })
   },
   Colleaguego() {

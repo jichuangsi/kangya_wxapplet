@@ -99,7 +99,7 @@ Page({
   onLoad: function (options) {
     let self =this
     wx.request({
-      url: 'http://192.168.31.251/index.json',
+      url: getApp().data.API+'/index.json',
       headers: {
         'Content-Type': 'application/json'
       },

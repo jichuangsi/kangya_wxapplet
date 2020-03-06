@@ -40,7 +40,6 @@
   overflow: auto;
 }
 .center {
-  padding-top: 100rpx;
   box-sizing: border-box;
 }
 input{
@@ -81,4 +80,58 @@ textarea {
   width: 16%;
   text-align: center;
   margin-bottom: 20rpx;
+}
+.yy_text {
+  width: 100%;
+  margin: 40rpx auto;
+  text-align: center;
+}
+.yuyinBtn {
+  border-radius: 50%;
+  width: 130rpx;
+  height: 130rpx;
+  display: block;
+  margin-top: 40rpx;
+  background-color: #fff;
+  margin: 40rpx auto;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.yuyinBtn:active {
+  background-color: #666;
+}
+.yuyinBtn image {
+  width: 86rpx;
+  height: 86rpx;
+}
+.btn {
+  width: 100%;
+  line-height: 86rpx;
+  text-align: center;
+  background-color: #16c7ae;
+  color: #fff;
+  margin-top: 60rpx;
+}
+.top_right {
+  padding: 20rpx;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 10rpx;
+  right: 10rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10rpx;
+  color: #fff;
+}
+.img_box {
+  width: 100%;
+  padding: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.img_box image {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 20rpx;
+  margin-right: 20rpx;
 }
