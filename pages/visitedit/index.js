@@ -10,6 +10,12 @@ Page({
     check_text: '已回访',
     show: false,
     time: '',
+    Patient_name: '',
+    doctor_name: '',
+    visittype: '',
+    visitcontent: '',
+    visitresult: '',
+    Voicefile: [],
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
@@ -61,8 +67,11 @@ Page({
     })
   },
   Patienteditgo(e) {
+    let btn = e.currentTarget.dataset.btn?'&&btnstate=1':''
+    let textstate = e.currentTarget.dataset.textstate ? '&&textstate=1' : ''
+    console.log(e.currentTarget.dataset.btn)
     wx.navigateTo({
-      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text,
+      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + btn + textstate,
     })
   },
   /**
@@ -71,6 +80,9 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
+      title: options.title
+    })
+    wx.setNavigationBarTitle({
       title: options.title
     })
   },

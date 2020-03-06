@@ -8,7 +8,8 @@ Page({
     title: '商城',
     state: 0,
     show: false,
-    img_arr: []
+    img_arr: [],
+    service_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -58,7 +59,23 @@ Page({
       }
     })
   },
-
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/S_Service.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            service_arr: res.data.service_arr
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -69,6 +86,9 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    if(this.data.state == 0){
+      this.getdata()
+    }
   },
 
   /**

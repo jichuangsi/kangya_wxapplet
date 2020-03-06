@@ -6,7 +6,7 @@
   </view> -->
   <view class="center">
     <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true' autoplay='true'>
-      <swiper-item wx:for="{{arr}}">
+      <swiper-item wx:for="{{img_arr}}">
         <image src="{{item}}"></image>
       </swiper-item>
     </swiper>

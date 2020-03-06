@@ -7,7 +7,8 @@ Page({
 
   data: {
     title: '商城',
-    active: '全部'
+    active: '全部',
+    assemble_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -19,6 +20,23 @@ Page({
       active: event.detail.name
     })
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/S_Assemble.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            assemble_arr: res.data.assemble_arr
+          })
+        }
+      },
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -27,6 +45,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    this.getdata()
   },
 
   /**

@@ -1,53 +1,73 @@
 <!--pages/Schedulingset/index.wxml-->
 <view class="Schedulingset">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <van-icon name="plus" slot="right" size="36rpx" wx:if="{{title=='班次设置'}}" />
     <view slot="right" wx:if="{{title=='添加班次'}}">完成</view>
     <van-icon name="cross" slot="right" size="36rpx" wx:if="{{title=='编辑班次'}}" />
     </van-nav-bar>
+  </view> -->
+  <view class="top_right" wx:if="{{title=='班次设置'}}" bindtap="onClickRight" >
+    <van-icon name="plus" slot="right" size="36rpx"/>
   </view>
   <view class="center" wx:if="{{title=='班次设置'}}">
-    <view class="li" bindtap="edit">
-      <view class="color"></view>
-      <view class="text">休息</view>
-      <view class="time">00:00~06:00</view>
+    <view class="li" data-item="{{item}}" bindtap="edit" wx:for="{{set_arr}}">
+      <view wx:if="{{item.state==0}}"></view>
+      <view class="colorli hui" wx:if="{{item.state==1}}"></view>
+      <view class="colorli red" wx:if="{{item.state==2}}"></view>
+      <view class="colorli blue" wx:if="{{item.state==3}}"></view>
+      <view class="colorli yellow" wx:if="{{item.state==4}}"></view>
+      <view class="colorli green" wx:if="{{item.state==5}}"></view>
+      <view class="text">{{item.title}}</view>
+      <view class="time">{{item.time}}</view>
       <van-icon name="arrow" size="36rpx" />
     </view>
   </view>
   <view class="center" wx:if="{{title=='添加班次'}}">
     <view class="li">
       <view>班次名称</view>
-      <input placeholder="请输入班次"></input>
+      <input placeholder="请输入班次" value="{{value}}" bindinput="ipt"></input>
       <van-icon name="arrow" size="36rpx" />
     </view>
     <view class="li" bindtap="showpopup">
       <view class="text">颜色</view>
-      <view></view>
+      <view wx:if="{{colorstate==0}}"></view>
+      <view class="colorli hui" wx:if="{{colorstate==1}}"></view>
+      <view class="colorli red" wx:if="{{colorstate==2}}"></view>
+      <view class="colorli blue" wx:if="{{colorstate==3}}"></view>
+      <view class="colorli yellow" wx:if="{{colorstate==4}}"></view>
+      <view class="colorli green" wx:if="{{colorstate==5}}"></view>
       <van-icon name="arrow" size="36rpx" />
     </view>
     <view class="li" data-text="上下班时间" bindtap="Patienteditgo">
       <view class="text">上下班时间</view>
-      <view></view>
+      <view>{{time}}</view>
       <van-icon name="arrow" size="36rpx" />
     </view>
+    <view class="btn" bindtap="onClickRight">完成</view>
   </view>
   <view class="center" wx:if="{{title=='编辑班次'}}">
     <view class="li">
       <view>班次名称</view>
-      <input placeholder="请输入班次"></input>
+      <input placeholder="请输入班次" value="{{value}}" bindinput="ipt"></input>
       <van-icon name="arrow" size="36rpx" />
     </view>
     <view class="li" bindtap="showpopup">
       <view class="text">颜色</view>
-      <view></view>
+      <view wx:if="{{colorstate==0}}"></view>
+      <view class="colorli hui" wx:if="{{colorstate==1}}"></view>
+      <view class="colorli red" wx:if="{{colorstate==2}}"></view>
+      <view class="colorli blue" wx:if="{{colorstate==3}}"></view>
+      <view class="colorli yellow" wx:if="{{colorstate==4}}"></view>
+      <view class="colorli green" wx:if="{{colorstate==5}}"></view>
       <van-icon name="arrow" size="36rpx" />
     </view>
     <view class="li" data-text="上下班时间" bindtap="Patienteditgo">
       <view class="text">上下班时间</view>
-      <view></view>
+      <view>{{time}}</view>
       <van-icon name="arrow" size="36rpx" />
     </view>
+    <view class="btn red" bindtap="onClickRight">删除</view>
   </view>
   <van-popup
   show="{{ show }}"
@@ -57,23 +77,23 @@
   >
   <view class="colorbox" bindtap="onClose">
     <view class="color_li">选择颜色</view>
-    <view class="color_li">
+    <view class="color_li" data-index="1" catchtap="colorclick">
       <view class="hui"></view>
       <view>灰色</view>
     </view>
-    <view class="color_li">
+    <view class="color_li" data-index="2" catchtap="colorclick">
       <view class="red"></view>
       <view>红色</view>
     </view>
-    <view class="color_li">
+    <view class="color_li" data-index="3" catchtap="colorclick">
       <view class="blue"></view>
       <view>蓝色</view>
     </view>
-    <view class="color_li">
+    <view class="color_li" data-index="4" catchtap="colorclick">
       <view class="yellow"></view>
       <view>黄色</view>
     </view>
-    <view class="color_li">
+    <view class="color_li" data-index="5" catchtap="colorclick">
       <view class="green"></view>
       <view>绿色</view>
     </view>

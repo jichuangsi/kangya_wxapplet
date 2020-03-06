@@ -97,7 +97,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(123456789)
     let self =this
     wx.request({
       url: 'http://192.168.31.251/index.json',

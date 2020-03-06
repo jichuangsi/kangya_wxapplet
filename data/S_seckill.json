@@ -1,0 +1,41 @@
+{
+  "result": "200",
+  "time":"10800000",
+  "nav_arr": [
+    { "time": "10: 00", "state": 0
+    },
+    { "time": "16: 00", "state": 1
+    },
+    { "time": "22: 00", "state": 2
+    }
+  ],
+  "arr": [
+    {
+        "id": "0",
+        "img": "../../images/my_service_icon_prepaid.png",
+        "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+        "price": "36.00",
+        "oldprice": "46.00",
+        "tags": "红",
+        "state": "0"
+    },
+    {
+      "id": "0",
+      "img": "../../images/my_service_icon_prepaid.png",
+      "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+      "price": "36.00",
+      "oldprice": "46.00",
+      "tags": "红",
+      "state": "0"
+    },
+    {
+      "id": "0",
+      "img": "../../images/my_service_icon_prepaid.png",
+      "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+      "price": "36.00",
+      "oldprice": "46.00",
+      "tags": "红",
+      "state": "0"
+    }
+  ]
+}

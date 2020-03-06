@@ -1,10 +1,10 @@
 <!--pages/friendsearch/index.wxml-->
 <view class="friendsearch">
   <view class="top">
-    <view class="back" bindtap="back">
+    <!-- <view class="back" bindtap="back">
       <van-icon name="arrow-left" color="#fff" />
       返回
-    </view>
+    </view> -->
     <view class="ipt">
       <van-icon name="search" color="#999"/>
       <input type="text" value="{{searchtext}}" bindconfirm="searchclick"></input>

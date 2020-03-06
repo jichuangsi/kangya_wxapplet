@@ -120,3 +120,12 @@
   background-color: #16c7ae;
   color: #fff;
 }
+
+.btn {
+  width: 100%;
+  line-height: 86rpx;
+  text-align: center;
+  background-color: #16c7ae;
+  color: #fff;
+  margin-top: 20rpx;
+}

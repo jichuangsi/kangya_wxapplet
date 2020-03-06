@@ -1,15 +1,15 @@
 <!--pages/relationship/index.wxml-->
 <view class="relationship">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <view slot="right">完成</view>
     </van-nav-bar>    
-  </view>  
+  </view>   -->
   <view class="center">
     <view class="li" bindtap="Patientgo">
       <van-icon name="manager" />
       <view class="text">亲友关系</view>
-      <view></view>
+      <view>{{Patient_name}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="li" bindtap="show">
@@ -23,6 +23,7 @@
       <view class="text">备注</view>
       <view class="bz">{{bz}}</view>
     </view>
+    <view class="btn" bindtap="onClickRight">完成</view>
   </view>
   <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
     <view class="popup_box">

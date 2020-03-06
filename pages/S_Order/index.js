@@ -7,7 +7,8 @@ Page({
    */
   data: {
     title: '商城',
-    active: '全部'
+    active: '全部',
+    order_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -18,6 +19,7 @@ Page({
     this.setData({
       active: event.detail.name
     })
+    this.getdata(event.detail.name)
   },
   del() {
     Dialog.confirm({
@@ -39,6 +41,26 @@ Page({
       url: '../S_Orderdetails/index?state=0',
     })
   },
+  getdata(text) {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/S_Order.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data:{
+        text: text
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            order_arr: res.data.order_arr
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -49,6 +71,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    this.getdata(options.title)
   },
 
   /**

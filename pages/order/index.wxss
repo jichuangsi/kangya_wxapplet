@@ -40,6 +40,16 @@
   height: 100vh;
   overflow: auto;
 }
+.top_right {
+  padding: 20rpx;
+  position: fixed;
+  top: 10rpx;
+  right: 10rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border-radius: 10rpx;
+  z-index: 9;
+}
 .center {
   /* padding-top: 100rpx; */
   box-sizing: border-box;
@@ -107,4 +117,8 @@
 .van-dialog__button {
   flex: none;
   width: 50%;
+}
+.popupbox view {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f2f2f2;
 }

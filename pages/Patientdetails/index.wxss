@@ -41,7 +41,6 @@
 }
 .center {
   background-color: #fff;
-  padding-top: 100rpx;
   box-sizing: border-box;
 }
 .center .center_top {

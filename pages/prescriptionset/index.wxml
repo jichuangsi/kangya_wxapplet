@@ -1,10 +1,10 @@
 <!--pages/prescriptionset/index.wxml-->
 <view class="prescriptionset">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
       <view slot="right">完成</view>
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
             <view class="libox">
               <view class="list" wx:for="{{arr}}">
@@ -17,11 +17,7 @@
                 </view>
               </view>
             </view>
-  </view>
-  
-  <view class="bottom_btn">
-    <view class="bottom_num">总价：<view class="red">{{price}}</view></view>
-    <view class="next" bindtap="next">完成</view>
+            <view class="btn" bindtap="onClickRight">完成</view>
   </view>
 </view>
 

@@ -7,19 +7,7 @@ Page({
    */
   data: {
     title: '关于康牙医生',
-    a1: [
-      { name: '初诊', data: 4 },
-      { name: '复诊', data: 3 }
-    ],
-    a2: [
-      { name: '未分类', data: 6 },
-      { name: '洗牙', data: 1 }
-    ],
-    a3: [
-      { name: '未分类', data: 2 },
-      { name: '网络咨询', data: 1 },
-      { name: '家住附近', data: 2 }
-    ],
+    chart_arr:[],
     doctor_arr:[
       {name:'李医生',money:'930.00'}
     ],
@@ -38,63 +26,48 @@ Page({
       active: event.detail.name
     })
   },
-
-  pieShow1(data) {
-    let pie = {
-      canvasId: 'pieGraph1', // canvas-id
-      type: 'pie', // 图表类型，可选值为pie, line, column, area, ring
-      series: this.data.a1,
-      width: 380, // 宽度，单位为px
-      height: 300, // 高度，单位为px
-      legend: {
-        orient: 'vertical',
-      }, // 是否显示图表下方各类别的标识
-      dataLabel: true, // 是否在图表中显示数据内容值
-      extra: {
-        pie: {
-          offsetAngle: -90
+  pieShow(data) {
+    for (let i = 0; i < this.data.chart_arr.length; i++) {
+      console.log('pieGraph' + i)
+      console.log(this.data.chart_arr[i].child)
+      let pie = {
+        canvasId: 'pieGraph'+i, // canvas-id
+        type: 'pie', // 图表类型，可选值为pie, line, column, area, ring
+        series: this.data.chart_arr[i].child,
+        width: 380, // 宽度，单位为px
+        height: 300, // 高度，单位为px
+        legend: {
+          orient: 'vertical',
+        }, // 是否显示图表下方各类别的标识
+        dataLabel: true, // 是否在图表中显示数据内容值
+        extra: {
+          pie: {
+            offsetAngle: -90
+          }
         }
-      }
-    };
-    new CHARTS(pie);
+      };
+      new CHARTS(pie);
+    }
   },
-  pieShow2(data) {
-    let pie = {
-      canvasId: 'pieGraph2', // canvas-id
-      type: 'pie', // 图表类型，可选值为pie, line, column, area, ring
-      series: this.data.a2,
-      width: 380, // 宽度，单位为px
-      height: 300, // 高度，单位为px
-      legend: {
-        orient: 'vertical',
-      }, // 是否显示图表下方各类别的标识
-      dataLabel: true, // 是否在图表中显示数据内容值
-      extra: {
-        pie: {
-          offsetAngle: -90
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/achievementNext.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            chart_arr: res.data.chart_arr,
+            doctor_arr: res.data.doctor_arr,
+            project_arr: res.data.project_arr,
+          })
+          self.pieShow()
         }
-      }
-    };
-    new CHARTS(pie);
-  },
-  pieShow3(data) {
-    let pie = {
-      canvasId: 'pieGraph3', // canvas-id
-      type: 'pie', // 图表类型，可选值为pie, line, column, area, ring
-      series: this.data.a3,
-      width: 380, // 宽度，单位为px
-      height: 300, // 高度，单位为px
-      legend: {
-        orient: 'vertical',
-      }, // 是否显示图表下方各类别的标识
-      dataLabel: true, // 是否在图表中显示数据内容值
-      extra: {
-        pie: {
-          offsetAngle: -90
-        }
-      }
-    };
-    new CHARTS(pie);
+      },
+    })
   },
 
   /**
@@ -102,13 +75,14 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    this.pieShow1()
-    this.pieShow2()
-    this.pieShow3()
     this.setData({
       title:options.title,
     })
     console.log(this.data.ec)
+    wx.setNavigationBarTitle({
+      title:options.title
+    })
+    this.getdata()
   },
 
   /**

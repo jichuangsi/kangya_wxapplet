@@ -6,7 +6,17 @@ Page({
    */
   data: {
     title: '康牙医生',
-    arr:['','','']
+    img_arr:['','',''],
+    clinic_phone:'',
+    clinic_name: '',
+    clinic_address: '',
+    contacts: '',
+    phone: '',
+    time: '',
+    bz: '',
+    follownum: '',
+    doctor_arr: '',
+    project_arr: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -14,11 +24,38 @@ Page({
     })
   },
   iphoneclick(){
+    let self = this
     wx.makePhoneCall({
-      phoneNumber: '1340000' //仅为示例，并非真实的电话号码
+      phoneNumber: self.data.clinic_phone //仅为示例，并非真实的电话号码
     })
   },
-
+  getdata(){
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/W_index.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            img_arr: res.data.img_arr,
+            clinic_phone: res.data.clinic_phone,
+            clinic_name: res.data.clinic_name,
+            clinic_address: res.data.clinic_address,
+            contacts: res.data.contacts,
+            phone: res.data.phone,
+            time: res.data.time,
+            bz: res.data.bz,
+            follownum: res.data.follownum,
+            doctor_arr: res.data.doctor_arr,
+            project_arr: res.data.project_arr,
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -27,6 +64,7 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    this.getdata()
   },
 
   /**

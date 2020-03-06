@@ -50,6 +50,7 @@
   padding: 20rpx;
   box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
   border-bottom: 1rpx solid #f2f2f2;
 }
 .box .text {
@@ -93,6 +94,15 @@
   color: #16c7ae;
 }
 .bz {
+  width: 100%;
   padding: 20rpx;
   box-sizing: border-box;
+}
+.btn {
+  width: 100%;
+  line-height: 86rpx;
+  text-align: center;
+  background-color: #16c7ae;
+  color: #fff;
+  margin-top: 20rpx;
 }

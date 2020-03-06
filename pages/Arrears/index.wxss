@@ -56,7 +56,7 @@ van-popup view {
   box-sizing: border-box;
 }
 .center {
-  padding: 140rpx 0rpx;
+  padding: 100rpx 0rpx;
   box-sizing: border-box;
 }
 .li {

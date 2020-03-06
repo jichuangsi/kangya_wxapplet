@@ -6,7 +6,7 @@
   </view> -->
   <view class="center">
     <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true'>
-      <swiper-item wx:for="{{arr}}">
+      <swiper-item wx:for="{{img_arr}}">
         <image src="{{item}}"></image>
       </swiper-item>
     </swiper>
@@ -17,8 +17,8 @@
             <view class="old">￥{{assemble_price}}</view>
           </view>
           <view class="left_bottom">
-            <view>2人团</view>
-            <view>已拼3885件</view>
+            <view>{{assemble_number}}人团</view>
+            <view>已拼{{assemble_num}}件</view>
           </view>
       </view>
       <view class="right">库存充足</view>
@@ -38,7 +38,7 @@
     </view>
     <view class="li">
       <view class="left">
-        <view class="text">VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂</view>
+        <view class="text">{{commodity_title}}</view>
           <view class="money" wx:if="{{check_title =='' }}">
             <view class="new">￥{{price}}</view>
             <view class="old">￥{{old_price}}</view>
@@ -88,9 +88,18 @@
     </view>
     <view class="xian"></view>
     <van-tabs active="{{ active }}" bind:change="onChange">
-      <van-tab title="图文详情" name="图文详情"></van-tab>
-      <van-tab title="注册证查询" name="注册证查询"></van-tab>
-      <van-tab title="售后保证" name="售后保证"></van-tab>
+      <van-tab title="图文详情" name="图文详情">
+        <view class="text" wx:for="{{details_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
+        <image src="{{item.text}}" wx:for="{{details_text}}" wx:if="{{item.state==1}}"></image>
+      </van-tab>
+      <van-tab title="注册证查询" name="注册证查询">
+        <view class="text" wx:for="{{prove_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
+        <image src="{{item.text}}" wx:for="{{prove_text}}" wx:if="{{item.state==1}}"></image>
+      </van-tab>
+      <van-tab title="售后保证" name="售后保证">
+        <view class="text" wx:for="{{ensure_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
+        <image src="{{item.text}}" wx:for="{{ensure_text}}" wx:if="{{item.state==1}}"></image>
+      </van-tab>
     </van-tabs>
   </view>
   <view class="bottom" wx:if="{{check_title==''}}">

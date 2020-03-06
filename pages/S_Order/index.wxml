@@ -7,23 +7,23 @@
   <view class="center">
     <van-tabs active="{{active}}">
       <van-tab title="全部" name="全部">
-        <view class="libox">
+        <view class="libox" wx:for="{{order_arr}}" wx:for-item="items">
           <view class="li">
-            <view>2020-02-01 15:30</view>
-            <view>已完成</view>
+            <view>{{items.time}}</view>
+            <view>{{items.order_state}}</view>
           </view>
-          <view class="li">
+          <view class="li" wx:for="{{items.child}}">
             <van-card
-              num="2"
-              price="2.00"
-              desc="描述信息"
-              title="商品标题"
-              thumb="../../../images/my_service_icon_consumables.png"
+              num="{{item.num}}"
+              price="{{item.price}}"
+              desc="{{item.text}}"
+              title="{{item.tilte}}"
+              thumb="{{item.img}}"
               link-type="navigateTo"
-              thumb-link="/pages/S_Orderdetails/index?state=1"
+              thumb-link="/pages/S_Orderdetails/index?state=1&&id={{items.id}}"
                           />
           </view>
-          <view class="li right">共2件商品，总价￥4.00</view>
+          <view class="li right">共{{items.num}}件商品，总价￥{{items.allprice}}</view>
           <view class="li right">
             <view bindtap="del">删除订单</view>
             <view bindtap="S_Orderdetailsgo">电子三证</view>

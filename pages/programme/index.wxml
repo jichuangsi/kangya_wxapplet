@@ -1,9 +1,9 @@
 <!--pages/programme/index.wxml-->
 <view class="programme">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
       <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
         <van-tab title="处置选择" name="处置选择">

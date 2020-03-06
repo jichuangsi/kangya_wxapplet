@@ -1,9 +1,12 @@
 <!--pages/chat/index.wxml-->
 <view class="chat">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <van-icon name="contact" slot="right" />
     </van-nav-bar>
+  </view> -->
+  <view class="top_right">
+    <van-icon name="contact" size="36rpx" bindtap="onClickRight" />
   </view>
   <view class="center">
       <view class="li" wx:for="{{arr}}">

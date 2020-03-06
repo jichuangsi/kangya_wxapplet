@@ -1,9 +1,12 @@
 <!--pages/addfriend/index.wxml-->
 <view class="addfriend">
-  <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft"
+  <!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft"
   bind:click-right="onClickRight">
     <van-icon name="plus" slot="right" size="34rpx"/>
-  </van-nav-bar>
+  </van-nav-bar> -->
+  <view class="top_right" bindtap="onClickRight" wx:if="{{title == '通讯录'}}">
+    <van-icon name="plus" size="34rpx"/>
+  </view>
   <navigator url="/pages/friendsearch/index" hover-class="navigator-hover">
   <view class="ipt" wx:if="{{title == '通讯录'}}">
     <van-icon name="search" size="36rpx" />

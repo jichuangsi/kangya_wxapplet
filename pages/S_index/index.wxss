@@ -4,6 +4,7 @@
   height: 100vh;
   background-color: #f2f2f2;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .top {
   width: 100%;
@@ -153,15 +154,15 @@ swiper{
   margin-bottom: 20rpx;
 }
 .assemble_li .money {
-  display: flex;
+  display: block;
   align-items: center;
 }
 .assemble_li .money .new {
   color: red;
+  margin-right: 20rpx;
 }
 .assemble_li .money .old {
   color: #999;
-  margin-left: 20rpx;
   font-size: 26rpx;
   text-decoration:line-through;
 }
@@ -214,10 +215,10 @@ swiper{
 }
 .Promotion_li .money .new {
   color: red;
+  margin-right: 20rpx;
 }
 .Promotion_li .money .old {
   color: #999;
-  margin-left: 20rpx;
   font-size: 26rpx;
   text-decoration:line-through;
 }
@@ -279,10 +280,10 @@ swiper{
 }
 .all_li .money .new {
   color: red;
+  margin-right: 20rpx;
 }
 .all_li .money .old {
   color: #999;
-  margin-left: 20rpx;
   font-size: 26rpx;
   text-decoration:line-through;
 }
@@ -291,6 +292,9 @@ swiper{
 }
 .brand .all_li {
   width: 30%;
+}
+.brand .money {
+  display: block;
 }
 .nav_text {
   text-align: center;

@@ -5,18 +5,20 @@
     </van-nav-bar>
   </view> -->
   <view class="center">
+  <scroll-view scroll-y="true" style="height: 100vh;" bindscrolltolower="uptouch">
     <view class="list">
-      <view class="smallbox"  wx:for="{{first_arr}}">
-      <navigator url="/pages/newsdetails/index?title=断牙重接" hover-class="navigator-hover">
+      <view class="smallbox"  wx:for="{{News_arr}}">
+      <navigator url="/pages/newsdetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
           <view class="left">
-            <image src="../../images/5.png"></image>
+            <image src="{{item.img}}"></image>
           </view>
           <view class="right">
-            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-            <view class="smallboxtext">02月06日 孙跑名丨年度撒旦撒旦撒大撒大撒孙跑名丨年度撒旦撒旦撒大撒大撒19：30</view>
+            <view class="smallboxtitle">{{item.title}}</view>
+            <view class="smallboxtext">{{item.text}}</view>
           </view>
           </navigator>
         </view>
     </view>
+    </scroll-view>
   </view>
 </view>

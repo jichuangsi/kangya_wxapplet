@@ -14,6 +14,7 @@ Page({
     nav_num:0,
     show:false,
     sxbrand:true,
+    brandstate:'',
     brand:[
       { state: 0, title: '3M ESPE' },
       { state: 0, title: '富士GC' },
@@ -58,6 +59,7 @@ Page({
     })
   },
   searchipt(e){
+    console.log(e)
     this.setData({
       search_text: e.detail.value
     })
@@ -71,6 +73,9 @@ Page({
     this.setData({
       highprice: e.detail.value
     })
+  },
+  searchenter(){
+    console.log(this.data.search_text)
   },
   search(){
     this.setData({
@@ -151,13 +156,37 @@ Page({
       li_state: this.data.li_state ? false : true
     })
   },
+
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/S_Productlist.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            list_arr: res.data.list_arr,
+            brand: res.data.brand,
+            assemble_arr: res.data.assemble_arr,
+            Promotion_list: res.data.Promotion_list,
+            all_arr: res.data.all_arr,
+            brand_arr: res.data.brand_arr
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
       check_title:options.title,
-      search_state:options.search
+      search_state:options.search,
+      brandstate: options.brand ? options.brand:''
     })
     wx.setNavigationBarTitle({
       title: '商城'

@@ -7,20 +7,21 @@
   <view class="center">
     <van-tabs active="{{active}}">
       <van-tab title="全部" name="全部">
-        <view class="libox" wx:if="{{none}}">
+        <view class="libox" wx:for="{{assemble_arr}}" wx:for-item="items">
           <view class="li">
-            <view>2020-02-01 15:30</view>
+            <view>{{items.time}}</view>
+            <view>{{items.assemble_state}}</view>
           </view>
-          <view class="li">
+          <view class="li" wx:for="{{items.child}}">
             <van-card
-              num="2"
-              price="2.00"
-              desc="描述信息"
-              title="商品标题"
-              thumb="../../../images/my_service_icon_consumables.png"
-                          />
+              num="{{item.num}}"
+              price="{{item.price}}"
+              desc="{{item.text}}"
+              title="{{item.tilte}}"
+              thumb="{{item.img}}"
+              />
           </view>
-          <view class="li right">共2件商品，总价￥4.00</view>
+          <view class="li right">共{{items.num}}件商品，总价￥{{items.allprice}}</view>
         </view>
       </van-tab>
       <van-tab title="拼团中" name="拼团中">

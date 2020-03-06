@@ -14,6 +14,9 @@ Page({
   },
   onClickRight() {
     this.setData({ title: '添加好友' });
+    wx.setNavigationBarTitle({
+      title: '添加好友'
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -21,6 +24,9 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({ title: options.title });
+    wx.setNavigationBarTitle({
+      title:options.title
+    })
   },
   getQRCode: function () {
     var _this = this;

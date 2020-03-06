@@ -6,33 +6,13 @@ Page({
    */
   data: {
     title:'价目表',
-    activeKey:0,
-    check_id:0,
-    videolist_arr:[
-      {
-        title:'儿童',
-        id: 1,
-        state:0,
-        arr:[
-          {
-            id: 101,
-            text:'不良习惯'
-          },
-          {
-            id: 102,
-            text: '动画片'
-          },
-          {
-            id: 103,
-            text: '深覆盖'
-          },
-          {
-            id: 104,
-            text: '牙弓狭窄'
-          }
-        ]
-      }
-    ]
+    activeKey:'全部',
+    check_id: 0,
+    LookTeethimg:"",
+    PriceList_arr: [],
+    PriceListclick_arr:[],
+    videolist_arr: [],
+    videolistclick_arr: [],
   },
   onClickLeft() {
     wx.navigateBack({
@@ -59,9 +39,70 @@ Page({
       })
     }
   },
-  litextclick(e){
+  litextclick(e) {
+    let self = this
     this.setData({
       check_id: e.currentTarget.dataset.id
+    })
+    wx.request({
+      url: 'http://192.168.31.251/PriceListClick.json',
+      data: {
+        id: e.currentTarget.dataset.id
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            videolistclick_arr: res.data.videoclick_arr
+          })
+        }
+      },
+    })
+  },
+  onChange(event) {
+    let self = this
+    self.setData({
+      activeKey: event.detail.name
+    })
+    wx.request({
+      url: 'http://192.168.31.251/PriceListClick.json',
+      data:{
+        title: event.detail.name
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            PriceListclick_arr: res.data.PriceListclick_arr
+          })
+        }
+      },
+    })
+  },
+  getdata() {
+    let self =this
+    wx.request({
+      url: 'http://192.168.31.251/PriceList.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            PriceList_arr: res.data.PriceList_arr,
+            videolist_arr: res.data.video_arr,
+            LookTeethimg: res.data.LookTeethimg,
+            activeKey: res.data.PriceList_arr[0]
+          })
+        }
+      },
     })
   },
   /**
@@ -74,6 +115,7 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    this.getdata()
   },
 
   /**

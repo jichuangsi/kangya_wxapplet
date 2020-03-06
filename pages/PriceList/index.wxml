@@ -7,44 +7,18 @@
     <view class="top_right" wx:if="{{title=='价目表'}}" bindtap="onClickRight"><van-icon name="search"  size="36rpx" slot="right"/></view>
   <view class="center" wx:if="{{title=='价目表'}}">
     <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
-      <van-sidebar-item title="全部" />
-      <van-sidebar-item title="综合收费" />
-      <van-sidebar-item title="检查" />
-      <van-sidebar-item title="洁治费" />
-      <van-sidebar-item title="西药" />
-      <van-sidebar-item title="诊查费" />
-      <van-sidebar-item title="放射" />
-      <van-sidebar-item title="口内治疗" />
-      <van-sidebar-item title="拔牙费" />
-      <van-sidebar-item title="拔牙" />
-      <van-sidebar-item title="补牙类" />
-      <van-sidebar-item title="手术费" />
-      <van-sidebar-item title="固定修复" />
-      <van-sidebar-item title="根管治疗" />
-      <van-sidebar-item title="牙周治疗" />
-      <van-sidebar-item title="活动修复" />
-      <van-sidebar-item title="正畸费" />
-      <van-sidebar-item title="活动义齿修复" />
-      <van-sidebar-item title="放射费" />
-      <van-sidebar-item title="固定义齿修复" />
-      <van-sidebar-item title="麻药费" />
-      <van-sidebar-item title="种植修复" />
-      <van-sidebar-item title="西药费" />
-      <van-sidebar-item title="正畸" />
-      <van-sidebar-item title="口腔全口洁治" />
-      <van-sidebar-item title="种植牙" />
-      <van-sidebar-item title="其他" />
+      <van-sidebar-item title="{{item}}" name="{{item}}" wx:for="{{PriceList_arr}}" />
     </van-sidebar>
-    <view class="list">
+    <view class="list" wx:for="{{PriceListclick_arr}}">
       <view class="left">
-        <view class="title">修复费</view>
-        <view class="text">固定义齿修复</view>
+        <view class="title">{{item.title}}</view>
+        <view class="text">{{item.text}}</view>
       </view>
-      <view class="money">166.00</view>
+      <view class="money">{{item.price}}</view>
     </view>
   </view>
   <view class="Worryfree" wx:if="{{title=='看牙无忧'}}">
-    <image src="../../images/5.png"></image>
+    <image src="{{LookTeethimg}}"></image>
     <view class="btn">
       立即申请
     </view>
@@ -54,7 +28,7 @@
       <view class="first" bindtap="first_click" data-id="{{item.id}}" data-index="{{index}}" data-state="{{item.state}}" wx:for="{{videolist_arr}}">
         <view class="title">
           <van-icon name="play" color="#666" />
-          儿童
+          {{item.title}}
         </view>
         <view class="{{item.state == 0?'second':'second second_check'}}">
           <view class="{{item.id == check_id?'litext litext_check':'litext'}}" wx:for="{{item.arr}}" data-id="{{item.id}}" catchtap="litextclick">{{item.text}}</view>
@@ -62,13 +36,13 @@
       </view>
     </view>
     <view class="right">
-      <view class="list">
-        <navigator url="/pages/Videoplay/index" hover-class="navigator-hover">
+      <view class="list" wx:for="{{videolistclick_arr}}">
+        <navigator url="/pages/Videoplay/index?id={{item.id}}&&title={{item.text}}" hover-class="navigator-hover">
         <view class="img">
-          <image src="../../images/learning_theme_anchor.png"></image>
+          <image src="{{item.img}}"></image>
         </view>
         <view class="text">
-        sadsad
+        {{item.text}}
         </view>
         </navigator>
       </view>

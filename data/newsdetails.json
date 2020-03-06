@@ -1,0 +1,16 @@
+{
+  "result": "200",
+  "id":"101",
+  "user":{
+    "img":"../../images/6.png",
+    "name":"空白"
+  },
+  "time":"199天前",
+  "look":"1090",
+  "message":"0",
+  "title":"断牙重接",
+  "text_arr":[
+    {"state":0,"text":"断牙重接是...."},
+    {"state":1,"text":"../../images/5.png"}
+  ]
+}

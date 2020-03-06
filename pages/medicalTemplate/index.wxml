@@ -1,9 +1,9 @@
 <!--pages/medicalTemplate/index.wxml-->
 <view class="medicalTemplate">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
       <van-sidebar-item title="口腔内科" />

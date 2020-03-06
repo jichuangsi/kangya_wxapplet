@@ -34,9 +34,10 @@ van-icon {
   height: 70%;
   border-radius: 10rpx;
   padding: 30rpx;
-  padding-top: 15%;
   box-sizing: border-box;
-  margin: 0 auto;
+  position: absolute;
+  left: 5%;
+  top: 15%;
 }
 .center .title {
   display: flex;

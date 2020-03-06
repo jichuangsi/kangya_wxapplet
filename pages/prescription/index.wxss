@@ -28,6 +28,15 @@
 .top .van-nav-bar__right {
   height: 100%;
 }
+.top_right {
+  padding: 20rpx;
+  position: fixed;
+  bottom: 100rpx;
+  right: 10rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border-radius: 10rpx;
+}
 .center {
   margin-bottom: 100rpx;
   background-color: #fff;

@@ -1,10 +1,14 @@
 <!--pages/Patientlist/index.wxml-->
 <view class="Patientlist">
   <view class="top">
-    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    <!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     <van-icon name="search" slot="right" catchtap="searchgo" size="34rpx"/>
     <van-icon name="plus" slot="right" catchtap="addgo"  size="34rpx"/>
-    </van-nav-bar>
+    </van-nav-bar> -->
+    <view class="top_right">
+      <van-icon class="first_icon" name="search" catchtap="searchgo" size="34rpx"/>
+      <van-icon name="plus" catchtap="addgo"  size="34rpx"/>
+    </view>
     <view class="nav">
       <view data-index="1" bindtap="showPopup">{{nav1}}<van-icon name="arrow-down" /></view>
       <view data-index="2" bindtap="showPopup">{{nav2}}<van-icon name="arrow-down" /></view>
@@ -13,52 +17,25 @@
     </view>
   </view>
   <view class="center">
-    <view class="li_box" data-index="1" bindtap="li_box_click">
+    <view class="li_box" data-index="{{first_index+1}}" bindtap="li_box_click" wx:for="{{Patientlist_arr}}" wx:for-index="first_index">
       <view class="title">
         <van-icon name="arrow" />
-        <view class="text">最近患者</view>
-        <view class="num">1241人</view>
+        <view class="text">{{item.title}}</view>
+        <view class="num">{{item.num}}人</view>
       </view>
-      <view class="li" wx:for="{{arr}}" wx:if="{{li_num==1}}" bindtap="Patientclick">
-        <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+      <view class="li" wx:for="{{item.child}}" wx:if="{{li_num==first_index+1}}" data-name="{{item.name}}" bindtap="Patientclick">
+        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == 0}}"></image>
+        <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == 1}}"></image>
         <view class="right_li">
           <view class="right_li_top">
-            <view>五里桥</view>
-            <view class="state">种植</view>
+            <view>{{item.name}}</view>
+            <view class="state">{{item.Matter}}</view>
           </view>
           <view class="right_li_bottom">
-            <view>新顾客</view>
-            <view class="time">23:55</view>
+            <view>{{item.postion}}</view>
+            <view class="time">{{item.time}}</view>
           </view>
         </view>
-      </view>
-    </view>
-    <view class="li_box" data-index="2" bindtap="li_box_click">
-      <view class="title">
-        <van-icon name="arrow" />
-        <view class="text">治疗完成</view>
-        <view class="num">0人</view>
-      </view>
-    </view>
-    <view class="li_box" data-index="3" bindtap="li_box_click">
-      <view class="title">
-        <van-icon name="arrow" />
-        <view class="text">根管治疗</view>
-        <view class="num">0人</view>
-      </view>
-    </view>
-    <view class="li_box" data-index="4" bindtap="li_box_click">
-      <view class="title">
-        <van-icon name="arrow" />
-        <view class="text">矫正</view>
-        <view class="num">0人</view>
-      </view>
-    </view>
-    <view class="li_box" data-index="5" bindtap="li_box_click">
-      <view class="title">
-        <van-icon name="arrow" />
-        <view class="text">种植</view>
-        <view class="num">0人</view>
       </view>
     </view>
   </view>

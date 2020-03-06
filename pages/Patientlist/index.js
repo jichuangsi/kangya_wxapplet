@@ -18,7 +18,7 @@ Page({
     nav2_arr: ['全部', '拔牙', '补牙', '义诊', '活动假牙', '洁牙', '正畸', '种植', '检查'],
     nav3_arr: ['全部', '金卡会员', '银卡会员', '铜卡会员'],
     nav4_arr: ['全部', '微信用户', '有病史用户', '有影像用户', '欠款用户', '预付用户'],
-    arr:[1,1,1,1],
+    Patientlist_arr:[],
     li_num:1
   },
   onClickLeft() {
@@ -35,6 +35,7 @@ Page({
     this.setData({ show: true, nav_num: e.currentTarget.dataset.index });
   },
   li_box_click(e){
+    console.log(e.currentTarget.dataset.index)
     this.setData({ li_num: this.data.li_num == e.currentTarget.dataset.index ? 0 : e.currentTarget.dataset.index });
   },
   onClose() {
@@ -60,12 +61,18 @@ Page({
       nav4: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '其他条件'
     })
   },
-  Patientclick(){
+  Patientclick(e){
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];  
     if(this.data.state == 0){
       wx.navigateTo({
         url: '../Patientdetails/index',
       })
     }else{
+      console.log(prevPage)
+      prevPage.setData({
+        Patient_name: e.currentTarget.dataset.name
+      })
       this.onClickLeft()
     }
   },
@@ -74,11 +81,32 @@ Page({
       url: '../AddPatient/index',
     })
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/Patientlist.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            Patientlist_arr: res.data.Patientlist_arr,
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ state: options.state ? options.state:0})
+    this.setData({ state: options.state ? options.state : 0 })
+    wx.setNavigationBarTitle({
+      title: '患者'
+    })
+    this.getdata()
   },
 
   /**

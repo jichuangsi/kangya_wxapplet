@@ -1,10 +1,10 @@
 <!--pages/medicaledit/index.wxml-->
 <view class="medicaledit">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <view slot="right">病历模板</view>
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="box">
       <van-icon name="../../../images/case_icon_type_defauit.png" />
@@ -14,6 +14,10 @@
     <view class="box_li">
       <view data-text="初诊病历" bindtap="checkclick" class="{{check_text=='初诊病历'?'check':''}}">初诊病历</view>
       <view data-text="复诊病历" bindtap="checkclick" class="{{check_text=='复诊病历'?'check':''}}">复诊病历</view>
+    </view>
+    <view class="xian"></view>
+    <view class="box" bindtap="onClickRight">
+      <view class="text">病历模板</view>
     </view>
     <view class="xian"></view>
     <view class="box">

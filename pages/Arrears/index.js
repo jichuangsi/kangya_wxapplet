@@ -11,6 +11,9 @@ Page({
     nav_num: 1,
     nav1_arr: ['全部', '拔牙', '补牙', '义诊', '活动假牙', '洁牙', '正畸', '种植', '检查'],
     nav2_arr: ['全部', '李青青', '李医生', '莫医生', '伍医生'],
+    arr: [],
+    pageIndex: '',
+    pageCount: ''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -33,12 +36,46 @@ Page({
       nav2: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '主治医生'
     })
   },
+  uptouch() {
+    if (this.data.pageIndex > this.data.pageCount) {
+
+    } else {
+      this.getdata()
+    }
+  },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/Arrears.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        title: self.data.title
+      },
+      success: function (res) {
+        console.log(res.data)
+        let arr = self.data.arr
+        arr.push(...res.data.arr)
+        let index = self.data.pageIndex + 1
+        if (res.data.result == 200) {
+          self.setData({
+            arr: res.data.arr,
+            pageIndex: index
+          })
+        }
+      },
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title:'历史欠款'
+    })
+    this.getdata()
   },
 
   /**

@@ -12,7 +12,7 @@ Page({
       { title: '满499元减150元', state: 0 },
       { title: '满299元减20元', state: 0 },
     ],
-    nav_num: 0,
+    nav_text: 0,
     arr: [
       {
         id: 0,
@@ -50,7 +50,30 @@ Page({
   },
   navclick(e) {
     this.setData({
-      nav_num: e.currentTarget.dataset.index
+      nav_text: e.currentTarget.dataset.text
+    })
+    this.getdata(e.currentTarget.dataset.text)
+  },
+  getdata(text) {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/S_activity.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data:{
+        text:text
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            nav_arr: res.data.nav_arr,
+            arr: res.data.arr,
+            nav_text: res.data.nav_arr[0].title
+          })
+        }
+      },
     })
   },
   /**
@@ -61,6 +84,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    this.getdata()
   },
 
   /**

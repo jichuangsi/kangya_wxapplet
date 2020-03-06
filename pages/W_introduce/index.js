@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: '康牙医生'
+    title: '康牙医生',
+    index_data:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -30,6 +31,11 @@ Page({
     this.setData({ title: options.title })
     wx.setNavigationBarTitle({
       title: options.title
+    })
+    var  pages  =  getCurrentPages();
+    var  prevPage  =  pages[pages.length  -  2];  //上一个页面
+    this.setData({
+      index_data: prevPage.data
     })
   },
 

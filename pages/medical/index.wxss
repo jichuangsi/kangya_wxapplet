@@ -32,6 +32,16 @@
   height: 100vh;
   overflow: auto;
 }
+.top_right {
+  padding: 20rpx;
+  position: fixed;
+  right: 10rpx;
+  top: 10rpx;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border-radius: 10rpx;
+}
 .center {
   /* margin-bottom: 100rpx; */
   background-color: #fff;

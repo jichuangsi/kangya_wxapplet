@@ -10,6 +10,7 @@ Page({
     title: '预约列表',
     active: '网络预约',
     show: false,
+    order_arr:[],
     num:0,
     state1: '处理状态',
     state2: '状态',
@@ -57,9 +58,10 @@ Page({
       // on cancel
     })
   },
-  detailsgo(){
+  detailsgo(e) {
+    let item = JSON.stringify(e.currentTarget.dataset.item)
     wx.navigateTo({
-      url: '../orderdetails/index',
+      url: '../orderdetails/index?item=' + item,
     })
   },
   numshow(e){
@@ -87,11 +89,33 @@ Page({
       url: '../friendsearch/index?state=3',
     })
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/order.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            order_arr: res.data.order_arr,
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({ title:options.title})
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
+    this.getdata()
   },
 
   /**

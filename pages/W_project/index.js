@@ -38,6 +38,11 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    this.setData({
+      arr: prevPage.data.project_arr
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

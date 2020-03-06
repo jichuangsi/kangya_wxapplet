@@ -70,7 +70,7 @@
   background-color: #fff;
   border-radius: 10rpx;
   margin: 0 auto;
-  margin-top: -180rpx;
+  margin-top: -80rpx;
 }
 .time_li {
   width: 100%;

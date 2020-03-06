@@ -65,8 +65,6 @@ Page({
     ]
   },
   onClickLeft() {
-    wx.clearStorage('Patientlist')
-    wx.clearStorage('informationlist')
     wx.navigateBack({
       delta: 1
     })
@@ -119,9 +117,11 @@ Page({
     this.setData({ show: false, sex_num: e.currentTarget.dataset.index });
   },
   editgo(e) {
-    console.log(e.currentTarget.dataset.text)
+    let btn = e.currentTarget.dataset.btn ? '&&btnstate=1' : ''
+    let iptstate = e.currentTarget.dataset.iptstate ? '&&iptstate=1' : ''
+    let textstate = e.currentTarget.dataset.textstate ? '&&textstate=1' : ''
     wx.navigateTo({
-      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text
+      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + iptstate + btn + textstate
     })
   },
   Colleaguego(e) {
@@ -157,13 +157,8 @@ Page({
     this.setData({
       areaList: require("../../data/area.js").default
     })
-    wx.setStorage({
-      key: 'Patientlist',
-      data: this.data.Patientlist,
-    })
-    wx.setStorage({
-      key: 'informationlist',
-      data: this.data.informationlist,
+    wx.setNavigationBarTitle({
+      title: '患者资料',
     })
   },
 

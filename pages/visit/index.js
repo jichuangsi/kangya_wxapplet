@@ -8,6 +8,7 @@ Page({
    */
   data: {
     title: '回访',
+    visit_arr:[],
     show: false,
     num: 0,
     state:0,
@@ -56,9 +57,10 @@ Page({
       // on cancel
     })
   },
-  detailsgo() {
+  detailsgo(e) {
+    let item = JSON.stringify(e.currentTarget.dataset.item)
     wx.navigateTo({
-      url: '../visitdetails/index',
+      url: '../visitdetails/index?item=' + item,
     })
   },
   numshow(e) {
@@ -84,18 +86,39 @@ Page({
       url: '../friendsearch/index?state=3',
     })
   },
+  getdata(){
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/visit.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            visit_arr: res.data.visit_arr,
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ state: options.state })
+    this.setData({ state: options.state ? options.state:0 })
+    wx.setNavigationBarTitle({
+      title: '回访'
+    })
+    this.getdata()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log(this.data.visit_arr)
   },
 
   /**

@@ -1,0 +1,21 @@
+{
+  "result": "200",
+  "assemble_arr": [
+    {
+      "id": "0",
+      "time": "2020-02-01 15:30",
+      "assemble_state": "已完成",
+      "num": 2,
+      "allprice": "4.00",
+      "child": [
+        {
+          "img": "../../../images/my_assemble_icon_consumables.png",
+          "title": "商品标题",
+          "text": "描述信息",
+          "price": "2.00",
+          "num": 2
+        }
+      ]
+    }
+  ]
+}

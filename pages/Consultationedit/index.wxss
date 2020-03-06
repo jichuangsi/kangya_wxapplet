@@ -112,7 +112,16 @@
   background-color: #e71919;
   box-sizing: border-box;
 }
+.btn view {
+  flex: 1;
+  height: 100%;
+  line-height: 86rpx;
+  text-align: center;
+}
 .van-dialog__button {
   flex: none;
   width: 50%;
+}
+.green {
+  background-color: #16c7ae;
 }

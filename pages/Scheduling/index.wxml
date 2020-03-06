@@ -35,7 +35,7 @@
   <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
     <view class="zw">
       <view wx:for="{{zw_arr}}" data-text="{{item}}" bindtap="zwclick" wx:if="{{state == 0}}">{{item}}</view>
-      <view class="color_li" wx:for="{{color_arr}}" data-id="{{item.id}}" bindtap="pbclick" wx:if="{{state == 1}}"><view class="a{{item.id}}"></view>{{item.title}}</view>
+      <view class="color_li" wx:for="{{color_arr}}" data-state="{{item.state}}" bindtap="pbclick" wx:if="{{state == 1}}"><view class="a{{item.state}}"></view>{{item.title}}</view>
       <view class="color_li" data-id="0" bindtap="pbclick">撤销</view>
     </view>
   </van-popup>

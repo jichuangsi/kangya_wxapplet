@@ -1,0 +1,219 @@
+{
+  "result":"200",
+  "index_img_arr":[
+    {
+      "url":"/pages/S_Productlist/index?title=活动&&activity=1",
+      "img":""
+    },
+    {
+      "url": "/pages/S_Productlist/index?title=活动&&activity=2",
+      "img": ""
+    },
+    {
+      "url": "/pages/S_Productlist/index?title=活动&&activity=3",
+      "img": ""
+    }
+  ],
+  "activity_arr":[
+    {
+      "id": "2",
+      "img": ""
+    },
+    {
+      "id": "3",
+      "img": ""
+    }
+  ],
+  "assemble_arr":[
+    {
+      "id": "2",
+      "title":"VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+      "img": "../../images/my_service_icon_prepaid.png",
+      "price": "36.00",
+      "oldprice": "46.00",
+      "tags": "红"
+    },
+    {
+      "id": "3",
+      "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+      "img": "../../images/my_service_icon_prepaid.png",
+      "price": "36.00",
+      "oldprice": "46.00",
+      "tags": "红"
+    },
+    {
+      "id": "4",
+      "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+      "img": "../../images/my_service_icon_prepaid.png",
+      "price": "36.00",
+      "oldprice": "46.00",
+      "tags": "红"
+    }
+  ],
+  "Promotion_list":{
+    "title":"",
+    "Promotion_arr": [
+      {
+        "arr": [
+          {
+            "id": "3",
+            "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+            "img": "../../images/my_service_icon_prepaid.png",
+            "price": "36.00",
+            "oldprice": "46.00",
+            "tags": "红"
+          },
+          {
+            "id": "4",
+            "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+            "img": "../../images/my_service_icon_prepaid.png",
+            "price": "36.00",
+            "oldprice": "46.00",
+            "tags": "红"
+          },
+          {
+            "id": "5",
+            "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+            "img": "../../images/my_service_icon_prepaid.png",
+            "price": "36.00",
+            "oldprice": "46.00",
+            "tags": "红"
+          },
+          {
+            "id": "6",
+            "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+            "img": "../../images/my_service_icon_prepaid.png",
+            "price": "36.00",
+            "oldprice": "46.00",
+            "tags": "红"
+          }
+        ]
+      },
+      {
+        "arr": [
+          {
+            "id": "3",
+            "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+            "img": "../../images/my_service_icon_prepaid.png",
+            "price": "36.00",
+            "oldprice": "46.00",
+            "tags": "红"
+          },
+          {
+            "id": "4",
+            "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+            "img": "../../images/my_service_icon_prepaid.png",
+            "price": "36.00",
+            "oldprice": "46.00",
+            "tags": "红"
+          },
+          {
+            "id": "5",
+            "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+            "img": "../../images/my_service_icon_prepaid.png",
+            "price": "36.00",
+            "oldprice": "46.00",
+            "tags": "红"
+          },
+          {
+            "id": "6",
+            "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+            "img": "../../images/my_service_icon_prepaid.png",
+            "price": "36.00",
+            "oldprice": "46.00",
+            "tags": "红"
+          }
+        ]
+      }
+    ]
+  },
+  "all_arr":[
+    {
+      "sort":"",
+      "title":"为您推荐",
+      "child":[
+        {
+          "id": "4",
+          "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+          "img": "../../images/my_service_icon_prepaid.png",
+          "price": "36.00",
+          "oldprice": "46.00",
+          "tags": "红"
+        }
+      ]
+    },
+    {
+      "sort": "预防齿科",
+      "title": "预防齿科",
+      "child": [
+        {
+          "id": "4",
+          "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+          "img": "../../images/my_service_icon_prepaid.png",
+          "price": "36.00",
+          "oldprice": "46.00",
+          "tags": "红"
+        }
+      ]
+    },
+    {
+      "sort": "修复",
+      "title": "修复",
+      "child": [
+        {
+          "id": "4",
+          "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+          "img": "../../images/my_service_icon_prepaid.png",
+          "price": "36.00",
+          "oldprice": "46.00",
+          "tags": "红"
+        }
+      ]
+    },
+    {
+      "sort": "牙体牙髓",
+      "title": "牙体牙髓",
+      "child": [
+        {
+          "id": "4",
+          "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+          "img": "../../images/my_service_icon_prepaid.png",
+          "price": "36.00",
+          "oldprice": "46.00",
+          "tags": "红"
+        }
+      ]
+    }
+  ],
+  "brand_arr":[
+    {
+      "brand": "DMG",
+      "child":[
+        {
+          "id": "4",
+          "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+          "img": "../../images/my_service_icon_prepaid.png",
+          "price": "36.00",
+          "oldprice": "46.00",
+          "tags": "红"
+        },
+        {
+          "id": "4",
+          "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+          "img": "../../images/my_service_icon_prepaid.png",
+          "price": "36.00",
+          "oldprice": "46.00",
+          "tags": "红"
+        },
+        {
+          "id": "4",
+          "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+          "img": "../../images/my_service_icon_prepaid.png",
+          "price": "36.00",
+          "oldprice": "46.00",
+          "tags": "红"
+        }
+      ]
+    }
+  ]
+}

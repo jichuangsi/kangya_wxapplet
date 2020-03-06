@@ -38,72 +38,35 @@ Page({
         tags: '红',
       }
     ],
-    Promotion_arr:[
-      {
-        arr:[
-          {
-            id: 0,
-            img: '../../images/my_service_icon_prepaid.png',
-            title: 'VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂',
-            price: 36.00,
-            oldprice: 46.00,
-            tags: '红',
-          },
-          {
-            id: 0,
-            img: '../../images/my_service_icon_prepaid.png',
-            title: 'VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂',
-            price: 36.00,
-            oldprice: 46.00,
-            tags: '红',
-          }, {
-            id: 0,
-            img: '../../images/my_service_icon_prepaid.png',
-            title: 'VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂',
-            price: 36.00,
-            oldprice: 46.00,
-            tags: '红',
-          }, {
-            id: 0,
-            img: '../../images/my_service_icon_prepaid.png',
-            title: 'VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂',
-            price: 36.00,
-            oldprice: 46.00,
-            tags: '红',
-          }
-        ]
-      }
-    ],
-    all_arr: [
-      {
-        id: 0,
-        img: '../../images/my_service_icon_prepaid.png',
-        title: 'VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂',
-        price: 36.00,
-        oldprice: 46.00,
-        tags: '红',
-      },
-      {
-        id: 0,
-        img: '../../images/my_service_icon_prepaid.png',
-        title: 'VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂',
-        price: 36.00,
-        oldprice: 46.00,
-        tags: '红',
-      },
-      {
-        id: 0,
-        img: '../../images/my_service_icon_prepaid.png',
-        title: 'VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂',
-        price: 36.00,
-        oldprice: 46.00,
-        tags: '红',
-      }
-    ],
+    Promotion_list:'',
+    all_arr: [],
+    brand_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
       delta: 999
+    })
+  },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/S_index.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            arr: res.data.index_img_arr,
+            activity_arr: res.data.activity_arr,
+            assemble_arr: res.data.assemble_arr,
+            Promotion_list: res.data.Promotion_list,
+            all_arr: res.data.all_arr,
+            brand_arr: res.data.brand_arr
+          })
+        }
+      },
     })
   },
 
@@ -114,6 +77,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    this.getdata()
   },
 
   /**

@@ -6,7 +6,12 @@ Page({
    */
   data: {
     title:"断牙重接",
-    url:''
+    id:0,
+    user:'',
+    time:'',
+    look:'',
+    message:'',
+    text_arr:[]
   },
 
   onClickLeft() {
@@ -14,20 +19,45 @@ Page({
       delta: 1
     })
   },
-  onShareAppMessage: function (res) {
-    return {
-      title: '牙医小程序',
-      path: this.data.url,  // 路径，传递参数到指定页面。
-      imageUrl: '../../imgs/xx.png', // 分享的封面图
-       success: function (res) {
-        // 转发成功
-        console.log("转发成功:" + JSON.stringify(res));
+  // onShareAppMessage: function (res) {
+  //   return {
+  //     title: '牙医小程序',
+  //     path: this.data.url,  // 路径，传递参数到指定页面。
+  //     imageUrl: '../../imgs/xx.png', // 分享的封面图
+  //      success: function (res) {
+  //       // 转发成功
+  //       console.log("转发成功:" + JSON.stringify(res));
+  //     },
+  //     fail: function (res) {
+  //       // 转发失败
+  //       console.log("转发失败:" + JSON.stringify(res));
+  //     }
+  //   }
+  // },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/newsdetails.json',
+      headers: {
+        'Content-Type': 'application/json'
       },
-      fail: function (res) {
-        // 转发失败
-        console.log("转发失败:" + JSON.stringify(res));
-      }
-    }
+      data: {
+        id: self.data.id
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            title: res.data.title,
+            user: res.data.user,
+            time: res.data.time,
+            look: res.data.look,
+            message: res.data.message,
+            text_arr: res.data.text_arr,
+          })
+        }
+      },
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -35,11 +65,12 @@ Page({
   onLoad: function (options) {
     console.log(this.route)
     this.setData({
-      url: this.route
+      id: options.id
     })
     wx.setNavigationBarTitle({
       title: options.title
     })
+    this.getdata()
   },
 
   /**

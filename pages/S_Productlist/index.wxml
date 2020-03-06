@@ -5,14 +5,14 @@
     </van-nav-bar> -->
     <view class="ipt">
       <van-icon name="search" size="36rpx" />
-      <input placeholder="搜索你想要的商品" value="{{search_text}}" bindinput="searchipt" bindfocus="searchfocus"></input>
+      <input placeholder="搜索你想要的商品" value="{{search_text}}" bindinput="searchipt" bindfocus="searchfocus" bindconfirm="searchenter"></input>
       <view class="btn" bindtap="search">{{search_state == 0?'搜索':'取消'}}</view>
     </view>
     <view class="nav" wx:if="{{search_state == 0}}">
       <view data-index="0" class="{{nav_num == 0?'nav_check':''}}" bindtap="navclick">默认</view>
       <view data-index="1" class="{{nav_num == 1?'nav_check':''}}" bindtap="navclick">销量<van-icon name="{{a1?'arrow-down':'arrow-up'}}" color="#16c7ae" /></view>
       <view data-index="2" class="{{nav_num == 2?'nav_check':''}}" bindtap="navclick">价格<van-icon name="{{a2?'arrow-down':'arrow-up'}}" color="#16c7ae" /></view>
-      <view bindtap="showpopup">筛选<van-icon name="filter-o" /></view>
+      <view bindtap="showpopup" wx:if="{{brandstate == ''}}">筛选<van-icon name="filter-o" /></view>
       <view bindtap="listate"><van-icon name="apps-o" /></view>
     </view>
   </view>

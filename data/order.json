@@ -1,0 +1,25 @@
+{
+  "result": "200",
+  "order_arr": [
+    {
+      "sex": 0,
+      "time": "2020-02-18",
+      "Patient_name": "空白",
+      "doctor_name": "试试",
+      "Duration": "14:00~15:00",
+      "Matter": ["拔牙"],
+      "orderbz": "",
+      "ordertype": "初诊"
+    },
+    {
+      "sex": 0,
+      "time": "2020-02-18",
+      "Patient_name": "空白",
+      "doctor_name": "试试",
+      "Duration": "14:00~15:00",
+      "Matter": ["拔牙"],
+      "orderbz": "",
+      "ordertype": "初诊"
+    }
+  ]
+}

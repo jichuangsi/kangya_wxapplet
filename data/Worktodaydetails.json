@@ -1,0 +1,23 @@
+{
+  "result": "200",
+  "pageIndex": "1",
+  "total": "26",
+  "pageCount": "2",
+  "arr":[
+    {
+      "img":"../../images/clinic_colleagues_headportrait_male.png",
+      "sex": "0",
+      "name": "控盘",
+      "postion": "新顾客",
+      "Matter": "种植",
+      "time": "23:55"
+    },{
+      "img": "../../images/clinic_colleagues_headportrait_female.png",
+      "sex": "0",
+      "name": "空白",
+      "postion": "新顾客",
+      "Matter": "种植",
+      "time": "23:55"
+    }
+  ]
+}

@@ -64,9 +64,9 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/my/index",
-					"pathName": "pages/my/index",
-					"query": "state=1",
+					"name": "pages/S_my/index",
+					"pathName": "pages/S_my/index",
+					"query": "title=商城",
 					"scene": null
 				}
 			]

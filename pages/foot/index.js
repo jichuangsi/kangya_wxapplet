@@ -5,7 +5,7 @@ Component({
    * 页面的初始数据
    */
   data: {
-    active: 0,
+    active: 0 ,
     state:false
   },
   properties: {
@@ -18,10 +18,13 @@ Component({
    * 生命周期函数--监听页面加载
    */
   attached: function () {
+    console.log(this.data.footnum)
     this.setData({ active: this.data.footnum });
+    
   },
   methods: {
     onChange(event) {
+      console.log(111)
       this.setData({ active: event.detail });
       if(event.detail ==0 ){
         wx.redirectTo({

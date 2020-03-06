@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/foot/index",
     "pages/index/index",
+    "pages/foot/index",
     "pages/my/index",
     "pages/information/index",
     "pages/study/index",

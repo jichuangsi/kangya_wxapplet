@@ -39,7 +39,7 @@
       明日预约
     </view>
     <view class="li" bindtap="Arrearsgo">
-      <view class="num">{{Worktoday}}</view>
+      <view class="num">{{Historyarrears}}</view>
       历史欠款
     </view>
   </view>

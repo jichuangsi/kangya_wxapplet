@@ -73,6 +73,9 @@ Page({
     this.setData({
       title: options.title
     })
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
   },
   del() {
     Dialog.confirm({

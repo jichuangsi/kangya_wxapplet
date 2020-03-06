@@ -40,6 +40,16 @@
   height: 100vh;
   overflow: auto;
 }
+.top_right {
+  position: fixed;
+  top: 10rpx;
+  right: 10rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
 .center {
   padding: 100rpx;
   box-sizing: border-box;

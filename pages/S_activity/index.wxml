@@ -7,7 +7,7 @@
   <view class="center">
     
     <view class="nav">
-      <view class="nav_li {{nav_num==index?'check':''}}" wx:for="{{nav_arr}}" bindtap="navclick" data-index="{{index}}">
+      <view class="nav_li {{nav_text==item.title?'check':''}}" wx:for="{{nav_arr}}" bindtap="navclick" data-text="{{item.title}}">
         {{item.title}}
       </view>
     </view>

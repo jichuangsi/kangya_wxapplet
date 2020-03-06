@@ -1,16 +1,16 @@
 <!--pages/visitedit/index.wxml-->
 <view class="visitedit">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <view slot="right">完成</view>
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="xian"></view>
     <view class="box" bindtap="Patientgo">
       <van-icon name="contact" />
       <view class="text">患者姓名</view>
-      <view>空白</view>
+      <view>{{Patient_name}}</view>
     </view>
     <view class="xian"></view>
     <view class="box" bindtap="showpoup">
@@ -22,13 +22,13 @@
     <view class="box" bindtap="Colleaguego">
       <van-icon name="contact" />
       <view class="text">回访人</view>
-      <view>试试</view>
+      <view>{{doctor_name}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="box"data-text="回访类型" bindtap="Patienteditgo">
       <van-icon name="tosend" />
       <view class="text">回访类型</view>
-      <view></view>
+      <view>{{visittype}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="xian"></view>
@@ -49,7 +49,7 @@
       <view>模板</view>
       <van-icon name="arrow" />
     </view>
-    <view class="bz" data-text="添加回访内容" bindtap="Patienteditgo">未填写回访内容信息</view>
+    <view class="bz" data-text="添加回访内容" data-btn="1" data-textstate="1"  bindtap="Patienteditgo">{{visitcontent==''?'未填写回访内容信息':visitcontent}}</view>
     <view class="xian"></view>
     <view class="box" data-text="回访结果模板" bindtap="Patienteditgo">
       <van-icon name="tosend" />
@@ -57,7 +57,7 @@
       <view>模板</view>
       <van-icon name="arrow" />
     </view>
-    <view class="bz" data-text="添加回访结果" bindtap="Patienteditgo">未填写回访结果信息</view>
+    <view class="bz" data-text="添加回访结果" data-btn="1" data-textstate="1" bindtap="Patienteditgo">{{visitresult==''?'未填写回访结果信息':visitresult}}</view>
     <view class="xian"></view>
     <view class="box" data-text="语音备忘录" bindtap="Patienteditgo">
       <van-icon name="tosend" />
@@ -66,6 +66,8 @@
       <van-icon name="arrow" />
     </view>
     <view class="bz" data-text="语音备忘录" bindtap="Patienteditgo">暂无</view>
+    <view class="xian"></view>
+    <view class="btn" bindtap="onClickRight">完成</view>
   </view>
     <view class="xian"></view>
   <van-popup show="{{ show }}" bind:close="onClose"

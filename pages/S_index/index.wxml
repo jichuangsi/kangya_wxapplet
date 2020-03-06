@@ -13,7 +13,9 @@
   <view class="center">
     <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true'>
       <swiper-item wx:for="{{arr}}">
-        <image src="{{item}}"></image>
+        <navigator url="{{item.url}}" hover-class="navigator-hover">
+          <image src="{{item.img}}"></image>
+        </navigator>
       </swiper-item>
     </swiper>
     <view class="nav_title">
@@ -55,7 +57,7 @@
         </navigator>
       </view>
       <view class="assemble_li" wx:for="{{assemble_arr}}">
-        <navigator url="/pages/S_Detail/index?id={{item.id}}" hover-class="navigator-hover">
+        <navigator url="/pages/S_Detail/index?id={{item.id}}&&title=拼团专区" hover-class="navigator-hover">
           <image src="{{item.img}}"></image>
           <view class="text">{{item.title}}</view>
           <view class="money">
@@ -68,9 +70,9 @@
     
       <view class="Promotion">
         <view class="Promotion_title">促销单品</view>
-        <view>购买以下商品立返100元5折券</view>
+        <view>{{Promotion_list.title}}</view>
         <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true'>
-          <swiper-item wx:for="{{Promotion_arr}}">
+          <swiper-item wx:for="{{Promotion_list.Promotion_arr}}">
             <view class="Promotion_libox">
               <view class="Promotion_li" wx:for="{{item.arr}}">
                 <navigator url="/pages/S_Detail/index?id={{item.id}}" hover-class="navigator-hover">
@@ -90,15 +92,15 @@
         <image class="nav_img" src="../../images/learning_theme_timelimit.png"></image>
       </navigator>
 
-    <view class="all">
+    <view class="all" wx:for="{{all_arr}}">
       <view class="all_title">
-        <view>为您推荐</view>
-        <navigator url="/pages/S_Productlist/index?title=全部商品" hover-class="navigator-hover">
+        <view>{{item.title}}</view>
+        <navigator url="/pages/S_Productlist/index?title=全部商品&&sort={{item.sort}}" hover-class="navigator-hover">
           查看更多
           <van-icon name="arrow" size="32rpx"/>
         </navigator>
       </view>
-      <view class="all_li" wx:for="{{all_arr}}">
+      <view class="all_li" wx:for="{{item.child}}">
         <navigator url="/pages/S_Detail/index?id={{item.id}}" hover-class="navigator-hover">
           <image src="{{item.img}}"></image>
           <view class="text">{{item.title}}</view>
@@ -110,78 +112,18 @@
       </view>
     </view>
 
-    <view class="all">
-      <view class="all_title">
-        <view>预防齿科</view>
-        <navigator url="/pages/S_Productlist/index?title=全部商品&&sort=预防齿科" hover-class="navigator-hover">
-          查看更多
-          <van-icon name="arrow" size="32rpx"/>
-        </navigator>
-      </view>
-      <view class="all_li" wx:for="{{all_arr}}">
-        <navigator url="/pages/S_Detail/index?id={{item.id}}" hover-class="navigator-hover">
-          <image src="{{item.img}}"></image>
-          <view class="text">{{item.title}}</view>
-          <view class="money">
-            <view class="new">￥{{item.price}}</view>
-            <view class="old">￥{{item.oldprice}}</view>
-          </view>
-        </navigator>
-      </view>
-    </view>
-    
-    <view class="all">
-      <view class="all_title">
-        <view>修复</view>
-        <navigator url="/pages/S_Productlist/index?title=全部商品&&sort=修复" hover-class="navigator-hover">
-          查看更多
-          <van-icon name="arrow" size="32rpx"/>
-        </navigator>
-      </view>
-      <view class="all_li" wx:for="{{all_arr}}">
-        <navigator url="/pages/S_Detail/index?id={{item.id}}" hover-class="navigator-hover">
-          <image src="{{item.img}}"></image>
-          <view class="text">{{item.title}}</view>
-          <view class="money">
-            <view class="new">￥{{item.price}}</view>
-            <view class="old">￥{{item.oldprice}}</view>
-          </view>
-        </navigator>
-      </view>
-    </view>
-
-    
-    <view class="all">
-      <view class="all_title">
-        <view>牙体牙髓</view>
-        <navigator url="/pages/S_Productlist/index?title=全部商品&&sort=牙体牙髓" hover-class="navigator-hover">
-          查看更多
-          <van-icon name="arrow" size="32rpx"/>
-        </navigator>
-      </view>
-      <view class="all_li" wx:for="{{all_arr}}">
-        <navigator url="/pages/S_Detail/index?id={{item.id}}" hover-class="navigator-hover">
-          <image src="{{item.img}}"></image>
-          <view class="text">{{item.title}}</view>
-          <view class="money">
-            <view class="new">￥{{item.price}}</view>
-            <view class="old">￥{{item.oldprice}}</view>
-          </view>
-        </navigator>
-      </view>
-    </view>
 
     <view class="nav_text">品牌聚焦</view>
 
-    <view class="all brand">
+    <view class="all brand" wx:for="{{brand_arr}}">
       <view class="all_title">
-        <view>DMG</view>
-        <navigator url="/pages/S_Productlist/index?title=全部商品&&brand=DMG" hover-class="navigator-hover">
+        <view>{{item.brand}}</view>
+        <navigator url="/pages/S_Productlist/index?title=全部商品&&brand={{item.brand}}" hover-class="navigator-hover">
           查看更多
           <van-icon name="arrow" size="32rpx"/>
         </navigator>
       </view>
-      <view class="all_li" wx:for="{{all_arr}}">
+      <view class="all_li" wx:for="{{item.child}}">
         <navigator url="/pages/S_Detail/index?id={{item.id}}" hover-class="navigator-hover">
           <image src="{{item.img}}"></image>
           <view class="text">{{item.title}}</view>

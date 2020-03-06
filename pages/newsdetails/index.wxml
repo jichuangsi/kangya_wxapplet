@@ -10,25 +10,25 @@
   <view class="center">
     <view class="user">
       <view class="userimg">
-      <image src="../../images/5.png"></image>
+      <image src="{{user.img}}"></image>
       </view>
       <view class="username">
-        <view class="name">bads123</view>
-        <view>119天前</view>
+        <view class="name">{{user.name}}</view>
+        <view>{{time}}</view>
       </view>
       <view class="state">
       <van-icon name="eye-o" />
-      <view>12345</view>
+      <view>{{look}}</view>
       <van-icon name="chat-o" />
-      <view>0</view>
+      <view>{{message}}</view>
       </view>
     </view>
     <view class="title">
       {{title}}
     </view>
-    <view class="text">
-      dsadsadsasd
+    <view class="textbox" wx:for="{{text_arr}}">
+      <view class="text" wx:if="{{item.state == 0}}">{{item.text}}</view>
+      <image src="{{item.text}}" wx:if="{{item.state == 1}}"></image>
     </view>
-      <image src="../../images/5.png"></image>
   </view>
 </view>

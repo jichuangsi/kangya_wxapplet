@@ -130,6 +130,9 @@ Page({
       key: 'Patientlist',
       data: this.data.Patientlist,
     })
+    wx.setNavigationBarTitle({
+      title:'添加患者'
+    })
   },
 
   /**

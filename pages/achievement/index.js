@@ -12,16 +12,17 @@ Page({
     time:'',
     list: ['08:00', '22:00'],
     list_data: [0,0],
-    a1: [
-      { name: '初诊', data: 4 },
-      { name: '初诊', data: 3 }
-    ],
+    achievement: '',
+    receivable: '',
+    discount: '',
+    payment: '',
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
       chooseAreaMode: false,
     },
-    show:false
+    show:false,
+    check_time:true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -37,24 +38,20 @@ Page({
   },
   navclick(e){
     let index = e.currentTarget.dataset.index
+    let a = new Date()
+    let year = a.getFullYear()
+    let month = a.getMonth()
+    let day = a.getDate()
     this.setData({
       nav_num: index,
+      check_time:true
     })
     if (index ==0){
-      this.setData({
-        list: ['08:00', '22:00']
-      })
-      this.pieShow()
+      this.getdata(year + '年' + month + '月' + day + '日')
     } else if (index == 1) {
-      this.setData({
-        list: ['1日', '31日']
-      })
-      this.pieShow()
+      this.getdata(year + '年' + month + '月' )
     } else if (index == 2) {
-      this.setData({
-        list: ['1月', '12月']
-      })
-      this.pieShow()
+      this.getdata(year + '年' )
     }
   },
   check_navclick(e){
@@ -99,7 +96,10 @@ Page({
       })
       this.onClose()
     }
-    console.log(this.data.time)
+    this.setData({
+      check_time:false
+    })
+    this.getdata(this.data.time)
   },
 
 
@@ -137,6 +137,32 @@ Page({
     };
     new CHARTS(pie);
   },
+  getdata(time){
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/achievement.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data:{
+        time:time
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            list: res.data.list,
+            list_data: res.data.list_data,
+            achievement: res.data.achievement,
+            receivable: res.data.receivable,
+            discount: res.data.discount,
+            payment: res.data.payment,
+          })
+          self.pieShow()
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -147,21 +173,16 @@ Page({
       nav_num: options.state
     })
 
+    let a = new Date()
+    let year = a.getFullYear()
+    let month = a.getMonth()
+    let day = a.getDate()
     if (options.state == 0) {
-      this.setData({
-        list: ['08:00', '22:00']
-      })
-      this.pieShow()
+      this.getdata(year + '年' + month + '月' + day + '日')
     } else if (options.state == 1) {
-      this.setData({
-        list: ['1日', '31日']
-      })
-      this.pieShow()
+      this.getdata(year + '年' + month + '月')
     } else if (options.state == 2) {
-      this.setData({
-        list: ['1月', '12月']
-      })
-      this.pieShow()
+      this.getdata(year + '年')
     }
   },
 

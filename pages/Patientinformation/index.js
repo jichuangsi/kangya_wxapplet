@@ -46,6 +46,9 @@ Page({
       key: 'informationlist',
       data: this.data.informationlist,
     })
+    wx.setNavigationBarTitle({
+      title: '填写诊前信息',
+    })
   },
 
   /**

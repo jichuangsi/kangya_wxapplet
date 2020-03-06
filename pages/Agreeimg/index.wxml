@@ -1,11 +1,15 @@
 <!--pages/Agreeimg/index.wxml-->
 <view class="Consultationedit">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <van-icon name="plus" slot="right" size="36rpx" />
     </van-nav-bar>
+  </view> -->
+  <view class="top_right" bindtap="onClickRight">
+    <van-icon name="plus" slot="right" size="36rpx" />
   </view>
   <view class="center">
+    <image src="{{item}}" wx:for="{{arr}}"></image>
   </view>
   
   <van-popup show="{{ show }}" position="bottom" bind:close="onClose">

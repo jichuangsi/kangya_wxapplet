@@ -1,9 +1,9 @@
 <!--pages/Templatedetails/index.wxml-->
 <view class="Templatedetails">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="li">
       <view class="tab" wx:for="{{arr}}">

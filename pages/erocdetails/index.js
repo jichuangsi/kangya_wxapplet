@@ -17,6 +17,11 @@ Page({
       chooseAreaMode: false,
     },
     check_num:0,
+    consultationnum: 0,
+    dealnum: 0,
+    lossnum: 0,
+    Chart_arr:[],
+    Ranking_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -54,39 +59,67 @@ Page({
     }
     console.log(this.data.time)
   },
-  pieShow(data) {
+  pieShow() {
+    let self = this
+    for (let i = 0; i < self.data.Chart_arr.length;i++){
+      console.log('pieGraph' + i)
     let pie = {
-      canvasId: 'pieGraph', // canvas-id
-      type: 'area', // 图表类型，可选值为pie, line, column, area, ring
+      canvasId: 'pieGraph'+i, // canvas-id
+      type: 'column', // 图表类型，可选值为pie, line, column, area, ring
       width: 330,
       height: 300,
-      background: '#fff',
-      dataLabel: true,
-      categories: [],
+      animation: true,
+      categories: self.data.Chart_arr[i].title_arr,
       series: [{
-        name: '业绩',
-        data: [],//设置某一个值为null会出现断层
-        format: function (val) {
-          return val.toFixed(2) + '元';
+        name: self.data.Chart_arr[i].state,
+        data: self.data.Chart_arr[i].value_arr,
+        format: function (val, name) {
+          return val
+          // .toFixed(2) + '万';
         }
       }],
       yAxis: {
-        title: '成交金额 (元)',
         format: function (val) {
-          return val.toFixed(2);
+          return val
+          //  + '万';
         },
-        fontColor: "#333",
-        titleFontColor: "#333",
-        min: 0,
-        gridColor: "#333"
+        title: '',
+        min: 0
       },
       xAxis: {
-        fontColor: "#333",
-        titleFontColor: "#333",
-        gridColor: "#333"
+        disableGrid: false,
+        type: 'calibration'
+      },
+      extra: {
+        column: {
+          width: 15
+        }
       }
     };
-    new CHARTS(pie);
+      new CHARTS(pie);
+    }
+  },
+  getdata(){
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/eroc.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            consultationnum: res.data.consultationnum,
+            dealnum: res.data.dealnum,
+            lossnum: res.data.lossnum,
+            Chart_arr: res.data.Chart_arr,
+            Ranking_arr: res.data.Ranking_arr
+          })
+          self.pieShow()
+        }
+      },
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -98,6 +131,7 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    this.getdata()
   },
 
   /**

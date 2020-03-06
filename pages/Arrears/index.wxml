@@ -1,25 +1,27 @@
 <!--pages/Arrears/index.wxml-->
 <view class="Arrears">
   <view class="top">
-    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
-    </van-nav-bar>
+    <!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar> -->
     <view class="nav">
       <view data-index="1" bindtap="showPopup">{{nav1}}<van-icon name="arrow-down" /></view>
       <view data-index="2" bindtap="showPopup">{{nav2}}<van-icon name="arrow-down" /></view>
     </view>
   </view>
-  <view class="center">
-    <view class="li">
-      <view class="left">
-        <view>鱼先生</view>
-        <view>李医生 01/15 16:11</view>
-      </view>
-      <view class="right">
-        <view>+120.00</view>
-        <view>无欠款</view>
+  <scroll-view scroll-y="true" style="height: 100vh;" bindscrolltolower="uptouch">
+    <view class="center">
+      <view class="li" wx:for="{{arr}}">
+        <view class="left">
+          <view>{{item.Patient_name}}</view>
+          <view>{{item.doctor_name}} {{item.time}}</view>
+        </view>
+        <view class="right">
+          <view>{{item.money}}</view>
+          <view>{{item.text}}</view>
+        </view>
       </view>
     </view>
-  </view>
+  </scroll-view>
   <van-popup show="{{ show }}"
   position="top"
   bindtap="onClose">

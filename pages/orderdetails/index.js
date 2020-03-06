@@ -7,6 +7,7 @@ Page({
    */
   data: {
     title: '预约详情',
+    item:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -45,7 +46,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: '预约详情'
+    })
+    let item = JSON.parse(options.item)
+    this.setData({
+      item: item
+    })
   },
 
   /**

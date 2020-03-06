@@ -5,28 +5,15 @@
     </van-nav-bar>
   </view> -->
   <view class="center" wx:if="{{state == 0}}">
-    <view class="box">
+    <view class="box" wx:for="{{address_arr}}">
       <view class="user">
         <view class="user_top">
-          <view>李清琴</view>
-          <view>13754064182</view>
+          <view>{{item.name}}</view>
+          <view>{{item.phone}}</view>
         </view>
         <view class="user_bottom">
-          <view class="state">住宅</view>
-          <view>广东省广州市荔湾区</view>
-        </view>
-      </view>
-      <van-icon name="edit" size="36rpx" bindtap="stateclick"/>
-    </view>
-    <view class="box">
-      <view class="user">
-        <view class="user_top">
-          <view>李清琴</view>
-          <view>13754064182</view>
-        </view>
-        <view class="user_bottom">
-          <view class="state">住宅</view>
-          <view>广东省广州市荔湾区</view>
+          <view class="state">{{item.address_state}}</view>
+          <view>{{item.address}}</view>
         </view>
       </view>
       <van-icon name="edit" size="36rpx" bindtap="stateclick"/>

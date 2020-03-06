@@ -6,7 +6,8 @@ Page({
    */
 
   data: {
-    title: '康牙医生'
+    title: '康牙医生',
+    doctor_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -25,6 +26,11 @@ Page({
     this.setData({ title: options.title })
     wx.setNavigationBarTitle({
       title: options.title
+    })
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    this.setData({
+      doctor_arr: prevPage.data.doctor_arr
     })
   },
   /**

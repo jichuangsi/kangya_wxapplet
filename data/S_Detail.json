@@ -1,0 +1,41 @@
+{
+  "result":"200",
+  "id":"0",
+  "commodity_title":"VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+  "gg_min": 30,
+  "price": 334.00,
+  "old_price": 360.00,
+  "assemble_price": 270.00,
+  "time": 1057842,
+  "assemble_number":2,
+  "assemble_num": 388,
+  "gg_arr": [
+    { "state": 0, "title": "1付加厚型10.8g,尺寸7"
+    },
+    { "state": 0, "title": "1付加厚型10.8g,尺寸7.5"
+    }
+  ],
+  "yh_arr": [
+    {
+        "state": 0,
+        "price": 20,
+        "m_price": 299,
+        "time":"2020-02-26至2020-03-01",
+        "title": "拼团券",
+        "text": "限拼团可用"
+    }
+  ],
+  "img_arr":["",""],
+  "details_text":[
+    {"state":0,"text:":""},
+    {"state":1,"text":""}
+  ],
+  "prove_text":[
+    {"state":0,"text:":""},
+    {"state":1,"text":""}
+  ],
+  "ensure_text":[
+    {"state":0,"text:":""},
+    {"state":1,"text":""}
+  ]
+}

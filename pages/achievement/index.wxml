@@ -1,7 +1,7 @@
 <!--pages/achievement/index.wxml-->
 <view class="achievement">
   <view class="top">
-    <van-nav-bar left-text="返回" left-arrow bind:click-left="onClickLeft"  bind:click-right="onClickRight">
+    <van-nav-bar left-text="" bind:click-left="onClickLeft"  bind:click-right="onClickRight">
     <van-icon name="calender-o" slot="right" size="36rpx" />
     <view slot="title" class="nav_top">
       <view data-index="0" bindtap="navclick" class="{{nav_num==0?'check':''}}">日</view>
@@ -13,24 +13,24 @@
   <view class="center">
     <view class="center_title">我的实收业绩(元)<view class="time">{{time}}</view></view>
     <view class="canvas_box">
-      <canvas class="canvas" canvas-id="pieGraph"></canvas>
+      <canvas class="canvas" canvas-id="pieGraph" wx:if="{{check_time}}"></canvas>
     </view>
     <view class="center_top">
       <view>当前我的实收业绩</view>
-      <view class="num">0.00</view>
+      <view class="num">{{achievement}}</view>
     </view>
     <view class="xian"></view>
     <view class="center_li">
       <view>当前应收</view>
-      <view>0.00</view>
+      <view>{{receivable}}</view>
     </view>
     <view class="center_li">
       <view>当前折扣</view>
-      <view>0.00</view>
+      <view>{{discount}}</view>
     </view>
     <view class="center_li">
       <view>当前预交款</view>
-      <view>0.00</view>
+      <view>{{payment}}</view>
     </view>
     <view class="xian"></view>
     <navigator url="/pages/achievementNext/index?title=就诊患者" hover-class="navigator-hover">

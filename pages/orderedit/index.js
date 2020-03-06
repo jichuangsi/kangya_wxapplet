@@ -10,6 +10,11 @@ Page({
     check_text: '初诊',
     show: false,
     time:'',
+    Patient_name: '',
+    doctor_name: '',
+    Duration: '',
+    Matter: '',
+    orderbz: '',
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
@@ -60,9 +65,11 @@ Page({
       url: '../Colleague/index?title=医生&&state=2',
     })
   },
-  Patienteditgo(e){
+  Patienteditgo(e) {
+    let btn = e.currentTarget.dataset.btn ? '&&btnstate=1' : ''
+    let textstate = e.currentTarget.dataset.textstate ? '&&textstate=1' : ''
     wx.navigateTo({
-      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text,
+      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + btn + textstate,
     })
   },
   /**
@@ -72,6 +79,9 @@ Page({
     console.log(options)
     this.setData({
       title:options.title
+    })
+    wx.setNavigationBarTitle({
+      title: options.title
     })
   },
 

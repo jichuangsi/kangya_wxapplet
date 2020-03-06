@@ -16,12 +16,7 @@ Page({
     check_zw:'选择职位',
     show:false,
     state:0,
-    color_arr:[
-      { id: 1, title: '休息' },
-      { id: 2, title: '早班' },
-      { id: 3, title: '午班' },
-      { id: 4, title: '晚班' },
-    ],
+    color_arr:[],
     first_index:0,
     index:0
   },
@@ -31,28 +26,32 @@ Page({
     })
   },
   onClickRight() {
+    console.log(111)
     wx.navigateTo({
       url: '../Schedulingset/index',
     })
   },
   datatime(){
-    var d1 = new Date(2020, 2, 1);
-    var d2 = new Date(2020, 3, 1);
+    var a = new Date()
+    var year = a.getFullYear()
+    var month = a.getMonth()+1
+    var d1 = new Date(year, month-1, 1);
+    var d2 = new Date(year, month, 1);
     var arr = this.data.time_arr
-    var length = this.data.name_arr.length
-    var arr1 = this.data.data_arr
+    // var length = this.data.name_arr.length
+    // var arr1 = this.data.data_arr
     for (var i = d1.getTime(); i < d2.getTime(); i += 24 * 60 * 60 * 1000) {
       var d3 = new Date(i);
       var day = d3.getDate();
       var str = "周" + "日一二三四五六".charAt(d3.getDay());
       arr.push({ date: day, week:str})
-      for (let j = 0; j < length; j++) {
-        arr1[j].child.push({ state: 0 })
-      }
+      // for (let j = 0; j < length; j++) {
+      //   arr1[j].child.push({ state: 0 })
+      // }
     }
     this.setData({
       time_arr:arr,
-      data_arr:arr1
+      // data_arr:arr1
     })
     console.log(this.arr1)
   },
@@ -91,12 +90,31 @@ Page({
   },
   pbclick(e){
     let arr = this.data.data_arr
-    arr[this.data.first_index].child[this.data.index].state = e.currentTarget.dataset.id
+    arr[this.data.first_index].child[this.data.index].state = e.currentTarget.dataset.state
     this.setData({
       data_arr:arr
     })
     console.log(this.data.data_arr)
     this.onClose()
+  },
+  getdata(){
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/Scheduling.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            name_arr:res.data.name_arr,
+            data_arr:res.data.data_arr,
+            color_arr:res.data.work_arr
+          })
+        }
+      },
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -106,6 +124,7 @@ Page({
     wx.setNavigationBarTitle({
       title:'排班'
     })
+    this.getdata()
   },
 
   /**

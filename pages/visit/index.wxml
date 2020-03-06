@@ -1,35 +1,40 @@
 <!--pages/visit/index.wxml-->
 <view class="visit">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <van-icon name="calender-o" slot="right" size="36rpx" wx:if="{{state==0}}" />
     <van-icon name="plus" slot="right" size="36rpx" wx:if="{{state!=0}}" />
     </van-nav-bar>
+  </view> -->
+  <view class="top_right" bindtap="onClickRight">
+    <van-icon name="calender-o" size="36rpx" wx:if="{{state==0}}" />
+    <van-icon name="plus" size="36rpx" wx:if="{{state!=0}}" />
   </view>
   <view class="center">
     <view wx:if="{{state==0}}">
       <view class="li_box">
-            <view class="li" bindtap="detailsgo">
+            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}">
               <view class="li_top">
                 <view class="li_left">
-                  <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+                  <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == 0}}"></image>
+                  <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == 1}}"></image>
                   <view class="libox">
                     <view>患者姓名</view>
-                    <view>空白</view>
+                    <view>{{item.Patient_name}}</view>
                   </view>
                   <view class="libox">
                     <view>回访人</view>
-                    <view>试试</view>
+                    <view>{{item.doctor_name}}</view>
                   </view>
                   <view class="libox">
                     <view>回访日期</view>
-                    <view>2020-02-18</view>
+                    <view>{{item.time}}</view>
                   </view>
                 </view>
                 <van-icon name="close" catchtap="del" />
               </view>
-              <view class="green" style="font-size:46rpx;">治疗一周回访</view>
-              <view>暂无回访结果</view>
+              <view class="green" style="font-size:46rpx;">{{item.visitcontent}}</view>
+              <view>{{item.visitresult}}</view>
             </view>
           </view>
           <view class="bottom">
@@ -41,27 +46,28 @@
     </view>
     <view wx:if="{{state==1}}">
       <view class="li_box">
-            <view class="li" bindtap="detailsgo">
+            <view class="li" bindtap="detailsgo" data-item="item" wx:for="{{visit_arr}}">
               <view class="li_top">
                 <view class="li_left">
-                  <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+                  <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == 0}}"></image>
+                  <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == 1}}"></image>
                   <view class="libox">
                     <view>患者姓名</view>
-                    <view>空白</view>
+                    <view>{{item.Patient_name}}</view>
                   </view>
                   <view class="libox">
                     <view>回访人</view>
-                    <view>试试</view>
+                    <view>{{item.doctor_name}}</view>
                   </view>
                   <view class="libox">
                     <view>回访日期</view>
-                    <view>2020-02-18</view>
+                    <view>{{item.time}}</view>
                   </view>
                 </view>
                 <van-icon name="close" catchtap="del" />
               </view>
-              <view class="green" style="font-size:46rpx;">治疗一周回访</view>
-              <view>暂无回访结果</view>
+              <view class="green" style="font-size:46rpx;">{{item.visitcontent}}</view>
+              <view>{{item.visitresult}}</view>
             </view>
           </view>
     </view>

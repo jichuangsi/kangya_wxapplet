@@ -1,4 +1,5 @@
 // pages/Patientedit/index.js
+
 Page({
 
   /**
@@ -7,6 +8,14 @@ Page({
 
   data: {
     title: '患者详情',
+    btnstate:false,
+    iptstate:false,
+    textstate:false,
+    iptvalue: '',
+    textvalue: '',
+
+
+    prevpage:'',
     name: '',
     age:'',
     hobby:'',
@@ -83,451 +92,312 @@ Page({
     let self = this
     let arr;
     if (this.data.title == '输入姓名'){
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          arr.name = self.data.name
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.Patientlist
+      list.name = self.data.iptvalue
+      self.data.prevpage.setData({
+        Patientlist: list
       })
-    } else if (this.data.title == '添加年龄'){
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          arr.age = self.data.age
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
+      console.log(self.data.prevpage.data)
+    } else if (this.data.title == '添加年龄') {
+      let list = self.data.prevpage.data.Patientlist
+      list.age = self.data.iptvalue
+      self.data.prevpage.setData({
+        Patientlist: list
       })
-    } else if (this.data.title == '添加兴趣爱好'){
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          arr.hobby = self.data.hobby
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
+    } else if (this.data.title == '添加兴趣爱好') {
+      let list = self.data.prevpage.data.Patientlist
+      list.hobby = self.data.iptvalue
+      self.data.prevpage.setData({
+        Patientlist: list
       })
     } else if (this.data.title == '添加经济实力') {
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          arr.Economic = self.data.Economic
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.Patientlist
+      list.Economic = self.data.iptvalue
+      self.data.prevpage.setData({
+        Patientlist: list
       })
     } else if (this.data.title == '添加QQ号码') {
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          arr.qq = self.data.qq
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.Patientlist
+      list.qq = self.data.iptvalue
+      self.data.prevpage.setData({
+        Patientlist: list
       })
     } else if (this.data.title == '添加电子邮箱') {
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          arr.mailbox = self.data.mailbox
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.Patientlist
+      list.mailbox = self.data.iptvalue
+      self.data.prevpage.setData({
+        Patientlist: list
       })
     } else if (this.data.title == '添加电话1') {
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          arr.iphone1 = self.data.iphone1
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.Patientlist
+      list.iphone1 = self.data.iptvalue
+      self.data.prevpage.setData({
+        Patientlist: list
       })
     } else if (this.data.title == '添加电话2') {
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          arr.iphone2 = self.data.iphone2
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.Patientlist
+      list.iphone2 = self.data.iptvalue
+      self.data.prevpage.setData({
+        Patientlist: list
       })
     } else if (this.data.title == '修改地址') {
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          arr.address = self.data.address
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.Patientlist
+      list.address = self.data.textvalue
+      self.data.prevpage.setData({
+        Patientlist: list
       })
     } else if (this.data.title == '修改备注') {
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          arr.remarks = self.data.remarks
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.Patientlist
+      list.remarks = self.data.textvalue
+      self.data.prevpage.setData({
+        Patientlist: list
       })
     } else if (this.data.title == '添加身份证') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          arr.IDCard = self.data.IDCard
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      list.IDCard = self.data.iptvalue
+      self.data.prevpage.setData({
+        informationlist: list
       })
     } else if (this.data.title == '添加社保号') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          arr.socialcard = self.data.socialcard
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      list.socialcard = self.data.iptvalue
+      self.data.prevpage.setData({
+        informationlist: list
       })
     } else if (this.data.title == '添加介绍人') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          arr.Introducer = self.data.Introducer
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      list.Introducer = self.data.iptvalue
+      self.data.prevpage.setData({
+        informationlist: list
       })
     } else if (this.data.title == '添加洁牙习惯') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          arr.Habit = self.data.Habit
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      list.Habit = self.data.iptvalue
+      self.data.prevpage.setData({
+        informationlist: list
       })
     } else if (this.data.title == '添加就诊经历') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          arr.experience = self.data.experience
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      list.experience = self.data.iptvalue
+      self.data.prevpage.setData({
+        informationlist: list
       })
     } else if (this.data.title == '患者印象') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          let text = '';
-          for(let i=0;i<self.data.impression_arr.length;i++){
-            if (self.data.impression_arr[i].state !=0){
-              text += self.data.impression_arr[i].title + ','
-            }
-          }
-          arr.impression = text
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      let arr = self.data.impression_arr
+      let arr1 = ''
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].state == 1) {
+          arr1+=arr[i].title+'、'
+        }
+      }
+      list.impression = arr1
+      self.data.prevpage.setData({
+        informationlist: list
       })
     } else if (this.data.title == '过敏史模板') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          let text = '';
-          for (let i = 0; i < self.data.allergy_arr.length; i++) {
-            if (self.data.allergy_arr[i].state != 0) {
-              text += self.data.allergy_arr[i].title + ','
-            }
-          }
-          arr.allergy = text
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      let arr = self.data.allergy_arr
+      let arr1 = ''
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].state == 1) {
+          arr1 += arr[i].title + '、'
+        }
+      }
+      list.allergy = arr1
+      self.data.prevpage.setData({
+        informationlist: list
       })
     } else if (this.data.title == '既往史模板') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          let text = '';
-          for (let i = 0; i < self.data.past_arr.length; i++) {
-            if (self.data.past_arr[i].state != 0) {
-              text += self.data.past_arr[i].title + ','
-            }
-          }
-          arr.past = text
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      let arr = self.data.past_arr
+      let arr1 = ''
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].state == 1) {
+          arr1 += arr[i].title + '、'
+        }
+      }
+      list.past = arr1
+      self.data.prevpage.setData({
+        informationlist: list
       })
     } else if (this.data.title == '添加过敏史') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          arr.allergy = self.data.allergy
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      list.allergy = self.data.textvalue
+      self.data.prevpage.setData({
+        informationlist: list
       })
     } else if (this.data.title == '添加既往史') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          arr.past = self.data.past
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      list.past = self.data.textvalue
+      self.data.prevpage.setData({
+        informationlist: list
       })
     } else if (this.data.title == '添加顾客要求') {
-      wx.getStorage({
-        key: 'informationlist',
-        success: function (res) {
-          arr = res.data
-          arr.ask = self.data.ask
-          wx.setStorage({
-            key: 'informationlist',
-            data: arr,
-          })
-        },
+      let list = self.data.prevpage.data.informationlist
+      list.ask = self.data.textvalue
+      self.data.prevpage.setData({
+        informationlist: list
+      })
+    } else if (this.data.title == '上下班时间') {
+      self.data.prevpage.setData({
+        time: self.data.time_arr[self.data.time_start] + '~' + self.data.time_arr[self.data.time_end]
+      })
+    } else if (this.data.title == '添加回访内容') {
+      self.data.prevpage.setData({
+        visitcontent:self.data.textvalue
+      })
+    } else if (this.data.title == '添加回访结果') {
+      self.data.prevpage.setData({
+        visitresult: self.data.textvalue
+      })
+    } else if (this.data.title == '就诊时长') {
+      self.data.prevpage.setData({
+        Duration: self.data.time_arr[self.data.time_start] + '~' + self.data.time_arr[self.data.time_end]
+      })
+    } else if (this.data.title == '选择事项') {
+      let arr = self.data.Matter_arr
+      let arr1 = []
+      for(let i =0;i<arr.length;i++){
+        if(arr[i].state == 1){
+          arr1.push(arr[i].title)
+        }
+      }
+      self.data.prevpage.setData({
+        Matter: arr1
+      })
+    } else if (this.data.title == '输入预约备注信息') {
+      self.data.prevpage.setData({
+        orderbz: self.data.textvalue
       })
     }
     self.onClickLeft()
   },
-  nameipt(e){
-    this.setData({ name: e.detail.value})
+
+  ipt(e) {
+    console.log(e)
+    this.setData({ iptvalue: e.detail.value})
   },
-  ageipt(e) {
-    this.setData({ age: e.detail.value })
-  }, 
-  hobbyipt(e) {
-    this.setData({ hobby: e.detail.value })
+  textipt(e) {
+    this.setData({ textvalue: e.detail.value })
   },
-  Economicipt(e) {
-    this.setData({ Economic: e.detail.value })
-  },
-  qqipt(e) {
-    this.setData({ qq: e.detail.value })
-  },
-  mailboxipt(e) {
-    this.setData({ mailbox: e.detail.value })
-  },
-  iphone1ipt(e) {
-    this.setData({ iphone1: e.detail.value })
-  }, 
-  iphone2ipt(e) {
-    this.setData({ iphone2: e.detail.value })
-  },
-  addressipt(e) {
-    this.setData({ address: e.detail.value })
-  }, 
-  remarksipt(e) {
-    this.setData({ remarks: e.detail.value })
-  }, 
-  IDCardipt(e) {
-    this.setData({ IDCard: e.detail.value })
-  }, 
-  socialcardipt(e) {
-    this.setData({ socialcard: e.detail.value })
-  },
-  Introduceript(e) {
-    this.setData({ Introducer: e.detail.value })
-  },
-  Habitipt(e) {
-    this.setData({ Habit: e.detail.value })
-  },
-  allergyipt(e) {
-    this.setData({ allergy: e.detail.value })
-  },
-  pastipt(e) {
-    this.setData({ past: e.detail.value })
-  },
-  askipt(e) {
-    this.setData({ ask: e.detail.value })
-  },
-  experienceipt(e) {
-    this.setData({ experience: e.detail.value })
-  },
+
+  // nameipt(e){
+  //   this.setData({ name: e.detail.value})
+  // },
+  // ageipt(e) {
+  //   this.setData({ age: e.detail.value })
+  // }, 
+  // hobbyipt(e) {
+  //   this.setData({ hobby: e.detail.value })
+  // },
+  // Economicipt(e) {
+  //   this.setData({ Economic: e.detail.value })
+  // },
+  // qqipt(e) {
+  //   this.setData({ qq: e.detail.value })
+  // },
+  // mailboxipt(e) {
+  //   this.setData({ mailbox: e.detail.value })
+  // },
+  // iphone1ipt(e) {
+  //   this.setData({ iphone1: e.detail.value })
+  // }, 
+  // iphone2ipt(e) {
+  //   this.setData({ iphone2: e.detail.value })
+  // },
+  // addressipt(e) {
+  //   this.setData({ address: e.detail.value })
+  // }, 
+  // remarksipt(e) {
+  //   this.setData({ remarks: e.detail.value })
+  // }, 
+  // IDCardipt(e) {
+  //   this.setData({ IDCard: e.detail.value })
+  // }, 
+  // socialcardipt(e) {
+  //   this.setData({ socialcard: e.detail.value })
+  // },
+  // Introduceript(e) {
+  //   this.setData({ Introducer: e.detail.value })
+  // },
+  // Habitipt(e) {
+  //   this.setData({ Habit: e.detail.value })
+  // },
+  // allergyipt(e) {
+  //   this.setData({ allergy: e.detail.value })
+  // },
+  // pastipt(e) {
+  //   this.setData({ past: e.detail.value })
+  // },
+  // askipt(e) {
+  //   this.setData({ ask: e.detail.value })
+  // },
+  // experienceipt(e) {
+  //   this.setData({ experience: e.detail.value })
+  // },
   projectclick(e){
-    console.log(e.currentTarget.dataset.text)
     let text = e.currentTarget.dataset.text
-    let self = this
-    let arr
-    wx.getStorage({
-      key: 'Patientlist',
-      success: function (res) {
-        arr = res.data
-        arr.check_project = text
-        wx.setStorage({
-          key: 'Patientlist',
-          data: arr,
-        })
-        self.onClickLeft()
-      },
+    let list = this.data.prevpage.data.Patientlist
+    list.check_project = e.currentTarget.dataset.text
+    this.data.prevpage.setData({
+      Patientlist:list
     })
+    this.onClickLeft()
   },
-  Occupationclick(e){
+  Occupationclick(e) {
     let text = e.currentTarget.dataset.text
-    let self = this
-    let arr
-    wx.getStorage({
-      key: 'Patientlist',
-      success: function (res) {
-        arr = res.data
-        arr.check_Occupation = text
-        wx.setStorage({
-          key: 'Patientlist',
-          data: arr,
-        })
-        self.onClickLeft()
-      },
+    let list = this.data.prevpage.data.Patientlist
+    list.check_Occupation = e.currentTarget.dataset.text
+    this.data.prevpage.setData({
+      Patientlist: list
     })
+    this.onClickLeft()
   },
   Educationclick(e) {
     let text = e.currentTarget.dataset.text
-    let self = this
-    let arr
-    wx.getStorage({
-      key: 'Patientlist',
-      success: function (res) {
-        arr = res.data
-        arr.check_Education = text
-        wx.setStorage({
-          key: 'Patientlist',
-          data: arr,
-        })
-        self.onClickLeft()
-      },
+    let list = this.data.prevpage.data.Patientlist
+    list.check_Education = e.currentTarget.dataset.text
+    this.data.prevpage.setData({
+      Patientlist: list
     })
+    this.onClickLeft()
   },
   ascriptionclick1(e) {
     let text = e.currentTarget.dataset.text
-    let self = this
-    let arr
-    wx.getStorage({
-      key: 'Patientlist',
-      success: function (res) {
-        arr = res.data
-        arr.check_ascription1 = text
-        wx.setStorage({
-          key: 'Patientlist',
-          data: arr,
-        })
-        self.onClickLeft()
-      },
+    let list = this.data.prevpage.data.Patientlist
+    list.check_ascription1 = e.currentTarget.dataset.text
+    this.data.prevpage.setData({
+      Patientlist: list
     })
+    this.onClickLeft()
   },
   ascriptionclick2(e) {
     let text = e.currentTarget.dataset.text
-    let self = this
-    let arr
-    wx.getStorage({
-      key: 'Patientlist',
-      success: function (res) {
-        arr = res.data
-        arr.check_ascription2 = text
-        wx.setStorage({
-          key: 'Patientlist',
-          data: arr,
-        })
-        self.onClickLeft()
-      },
+    let list = this.data.prevpage.data.Patientlist
+    list.check_ascription1 = e.currentTarget.dataset.text
+    this.data.prevpage.setData({
+      Patientlist: list
     })
+    this.onClickLeft()
   }, 
   Consultantclick(e) {
     let text = e.currentTarget.dataset.text
-    let self = this
-    let arr
-    wx.getStorage({
-      key: 'informationlist',
-      success: function (res) {
-        arr = res.data
-        arr.Consultant = text
-        wx.setStorage({
-          key: 'informationlist',
-          data: arr,
-        })
-        self.onClickLeft()
-      },
+    let list = this.data.prevpage.data.informationlist
+    list.Consultant = e.currentTarget.dataset.text
+    this.data.prevpage.setData({
+      informationlist: list
     })
+    this.onClickLeft()
   },
   powergridclick(e) {
     let text = e.currentTarget.dataset.text
-    let self = this
-    let arr
-    wx.getStorage({
-      key: 'informationlist',
-      success: function (res) {
-        arr = res.data
-        arr.powergrid = text
-        wx.setStorage({
-          key: 'informationlist',
-          data: arr,
-        })
-        self.onClickLeft()
-      },
+    let list = this.data.prevpage.data.informationlist
+    list.powergrid = e.currentTarget.dataset.text
+    this.data.prevpage.setData({
+      informationlist: list
     })
+    this.onClickLeft()
   },
   impressionclick(e) {
     let index = e.currentTarget.dataset.index
@@ -571,11 +441,23 @@ Page({
   },
 
 
-  lxclick(){
+  lxclick(e){
+    this.data.prevpage.setData({
+      visittype: e.currentTarget.dataset.text
+    })
     this.onClickLeft()
-  }, nrclick() {
+  },
+  nrclick(e) {
+    this.data.prevpage.setData({
+      visitcontent: e.currentTarget.dataset.text
+    })
     this.onClickLeft()
-  }, jgclick() {
+  }, 
+  jgclick(e) {
+    console.log(this.data.prevpage.data)
+    this.data.prevpage.setData({
+      visitresult: e.currentTarget.dataset.text
+    })
     this.onClickLeft()
   },
 
@@ -604,21 +486,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ title:options.title})
+    this.setData({ title: options.title, btnstate: options.btnstate ? true : false, iptstate: options.iptstate ? true : false, textstate: options.textstate ? true : false})
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];//上一个页面
+    this.setData({
+      prevpage: prevPage
+    })
   },
 
   /**

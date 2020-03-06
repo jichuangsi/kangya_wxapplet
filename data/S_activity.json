@@ -1,0 +1,69 @@
+{
+  "result": "200",
+  "nav_arr": [
+    { "title": "单品买3件送1件", "state": 0
+    },
+    { "title": "满1000元送1件", "state": 0
+    },
+    { "title": "满499元减150元", "state": 0
+    },
+    { "title": "满299元减20元", "state": 0
+    }
+  ],
+  "arr": [
+    {
+        "id": "0",
+        "img": "../../images/my_service_icon_prepaid.png",
+        "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+        "price": "36.00",
+        "oldprice": "46.00",
+        "tags": "红",
+        "state": "单品买3件送1件"
+    },
+    {
+      "id": "0",
+      "img": "../../images/my_service_icon_prepaid.png",
+      "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+      "price": "36.00",
+      "oldprice": "46.00",
+      "tags": "红",
+      "state": "单品买3件送1件"
+    },
+    {
+      "id": "0",
+      "img": "../../images/my_service_icon_prepaid.png",
+      "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+      "price": "36.00",
+      "oldprice": "46.00",
+      "tags": "红",
+      "state": "单品买3件送1件"
+    },
+    {
+      "id": "0",
+      "img": "../../images/my_service_icon_prepaid.png",
+      "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+      "price": "36.00",
+      "oldprice": "46.00",
+      "tags": "红",
+      "state": "单品买3件送1件"
+    },
+    {
+      "id": "0",
+      "img": "../../images/my_service_icon_prepaid.png",
+      "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+      "price": "36.00",
+      "oldprice": "46.00",
+      "tags": "红",
+      "state": "单品买3件送1件"
+    },
+    {
+      "id": "0",
+      "img": "../../images/my_service_icon_prepaid.png",
+      "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+      "price": "36.00",
+      "oldprice": "46.00",
+      "tags": "红",
+      "state": "单品买3件送1件"
+    }
+  ]
+}

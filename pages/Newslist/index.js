@@ -6,14 +6,48 @@ Page({
    */
   data: {
     title: '补牙',
-    first_arr:[1]
+    News_arr:[],
+    pageIndex:1,
+    pageCount:0,
   },
   onClickLeft() {
     wx.navigateBack({
       delta: 1
     })
   },
+  uptouch() {
+    if (this.data.pageIndex > this.data.pageCount) {
 
+    } else {
+      this.getdata()
+    }
+  },
+
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/Newslist.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data:{
+        title: self.data.title
+      },
+      success: function (res) {
+        console.log(res.data)
+        let arr = self.data.News_arr
+        arr.push(...res.data.NewsList_arr)
+        let index = self.data.pageIndex + 1
+        if (res.data.result == 200) {
+          self.setData({
+            News_arr: arr,
+            pageIndex: index,
+            pageCount: res.data.pageCount
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -24,6 +58,7 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    this.getdata()
   },
 
   /**

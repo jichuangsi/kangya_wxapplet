@@ -1,0 +1,16 @@
+{
+  "result":"200",
+  "visit_arr":[
+    {
+      "sex": 0,
+      "time": "2020-02-18",
+      "Patient_name": "空白",
+      "doctor_name": "试试",
+      "visittype": "未上门",
+      "visitcontent": "治疗后一周",
+      "visitresult": "少量出血",
+      "visitstate":"已回访",
+      "Voicefile": []
+    }
+  ]
+}

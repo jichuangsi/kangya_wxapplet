@@ -32,6 +32,16 @@
   height: 100vh;
   overflow: auto;
 }
+.top_right {
+  padding: 20rpx;
+  box-sizing: border-box;
+  position: fixed;
+  right: 10rpx;
+  bottom: 10rpx;
+  border-radius: 10rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
 .center {
   margin-bottom: 100rpx;
   background-color: #fff;
@@ -75,6 +85,20 @@
   border-radius: 50%;
   margin-right: 20rpx;
 }
+.btn {
+  width: 100%;
+  line-height: 86rpx;
+  text-align: center;
+  background-color: #16c7ae;
+  color: #fff;
+  margin-top: 40rpx;
+}
+.colorli {
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
 .hui {
   background-color: #f2f2f2;
 }
@@ -89,4 +113,8 @@
 }
 .green {
   background-color: green;
+}
+.van-dialog__button {
+  flex: none;
+  width: 50%;
 }

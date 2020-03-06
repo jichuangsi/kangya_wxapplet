@@ -1,10 +1,10 @@
 <!--pages/AddPatient/index.wxml-->
 <view class="AddPatient">
-  <view class="top" wx:if="{{!childA}}">
-    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
-    <!-- <van-icon name="phone-circle-o" slot="right" size="34rpx"/> -->
+  <!-- <view class="top" wx:if="{{!childA}}"> -->
+    <!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+    <!-- <van-icon name="phone-circle-o" slot="right" size="34rpx"/> 
     </van-nav-bar>    
-  </view> 
+  </view>  -->
   <view class="center">
     <view class="li" data-text="输入姓名" bindtap="editgo">
       <view class="left">

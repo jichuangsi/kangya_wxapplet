@@ -1,0 +1,33 @@
+{
+  "result": "200",
+  "chart_arr":[
+    {
+      "title":"初复诊分析",
+      "child":[
+        {"name":"初诊","data":41},
+        {"name":"复诊","data":31}
+      ]
+    },
+    {
+      "title":"患者类型分析",
+      "child":[
+        {"name":"未分类","data":61},
+        {"name":"洗牙","data":21}
+      ]
+    },
+    {
+      "title":"患者类型分析",
+      "child":[
+        {"name":"未分类","data":21},
+        {"name":"网络咨询","data":11},
+        {"name":"家住附近","data":15}
+      ]
+    }
+  ],
+  "doctor_arr":[
+    {"name":"李医生","money":"930.00"}
+  ],
+  "project_arr":[
+    {"name":"其他","num":"12","money":"930.00"}
+  ]
+}

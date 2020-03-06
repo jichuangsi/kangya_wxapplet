@@ -11,7 +11,8 @@ Page({
     arr: ['公司', '住宅', '诊所', '其他'],
     areaList:[],
     show:false,
-    checked:true
+    checked:true,
+    address_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -51,6 +52,23 @@ Page({
     // 需要手动对 checked 状态进行更新
     this.setData({ checked: detail });
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/S_address.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            address_arr: res.data.address_arr
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -62,6 +80,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    this.getdata()
   },
 
   /**

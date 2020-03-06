@@ -1,28 +1,16 @@
 <!--pages/achievementNext/index.wxml-->
 <view class="achievementNext">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="hz" wx:if="{{title=='就诊患者'}}">
-      <view class="box">
+      <view class="box" wx:for="{{chart_arr}}">
         <view class="title">
-          初复诊分析
+          {{item.title}}
         </view>
-        <canvas class="canvas" canvas-id="pieGraph1"></canvas>
-      </view>
-      <view class="box">
-        <view class="title">
-          患者类型分析
-        </view>
-        <canvas class="canvas" canvas-id="pieGraph2"></canvas>
-      </view>
-      <view class="box">
-        <view class="title">
-          患者来源分析
-        </view>
-        <canvas class="canvas" canvas-id="pieGraph3"></canvas>
+        <canvas class="canvas" canvas-id="pieGraph{{index}}"></canvas>
       </view>
     </view>
     <view wx:if="{{title=='医生排名'}}">

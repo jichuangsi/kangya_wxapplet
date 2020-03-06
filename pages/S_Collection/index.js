@@ -84,6 +84,23 @@ Page({
       allstate: a ? 1 : 0
     })
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/S_Collection.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            Invalid_arr: res.data.Invalid_arr
+          })
+        }
+      },
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -92,6 +109,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    this.getdata()
   },
 
   /**

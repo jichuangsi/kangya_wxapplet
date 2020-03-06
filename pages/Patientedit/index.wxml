@@ -1,12 +1,12 @@
 <!--pages/Patientedit/index.wxml-->
 <view class="Patientedit">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     <view slot="right">确定</view>
     </van-nav-bar>    
-  </view>
+  </view> -->
   <view class="center">
-    <input value="{{name}}" maxlength="32" placeholder="请输入内容" bindinput="nameipt" wx:if="{{title=='输入姓名'}}"></input>
+    <!-- <input value="{{name}}" maxlength="32" placeholder="请输入内容" bindinput="nameipt" wx:if="{{title=='输入姓名'}}"></input>
     <input value="{{age}}" maxlength="3" placeholder="请输入您的年龄" bindinput="ageipt"  wx:if="{{title=='添加年龄'}}"></input>
     <input value="{{hobby}}" maxlength="32" placeholder="请输入内容" bindinput="hobbyipt"  wx:if="{{title=='添加兴趣爱好'}}"></input>
     <input value="{{Economic}}" maxlength="32" placeholder="请输入内容" bindinput="Economicipt"  wx:if="{{title=='添加经济实力'}}"></input>
@@ -35,7 +35,9 @@
     <textarea value="{{qzxq}}" maxlength="150" placeholder="请输入内容" bindinput="qzxqipt"  wx:if="{{title=='请输入潜在需求'}}"></textarea>
     <textarea value="{{ysfa}}" maxlength="150" placeholder="请输入内容" bindinput="ysfaipt"  wx:if="{{title=='输入医生方案'}}"></textarea>
     <textarea value="{{gtjl}}" maxlength="150" placeholder="请输入内容" bindinput="gtjlipt"  wx:if="{{title=='输入沟通记录'}}"></textarea>
-    <textarea value="{{fwjy}}" maxlength="150" placeholder="请输入内容" bindinput="fwjyipt"  wx:if="{{title=='输入服务建议'}}"></textarea>
+    <textarea value="{{fwjy}}" maxlength="150" placeholder="请输入内容" bindinput="fwjyipt"  wx:if="{{title=='输入服务建议'}}"></textarea> -->
+    <input value="{{iptvalue}}" placeholder="请输入内容" wx:if="{{iptstate}}" bindinput="ipt"></input>
+    <textarea value="{{textvalue}}" maxlength="150" placeholder="请输入内容" bindinput="textipt"  wx:if="{{textstate}}"></textarea>
 
     <view class="li" wx:for="{{project_arr}}" data-text="{{item}}" wx:if="{{title=='选择项目'}}" bindtap="projectclick">
     {{item}}
@@ -81,8 +83,8 @@
     {{item.title}}
     <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
     </view>
-    <view class="li">
-    <view wx:for="{{time_arr}}" data-index="{{index}}" wx:if="{{title=='就诊时长'||title=='上下班时间'}}" bindtap="timeclick" class="smallbox {{(time_end>=index&&index>=time_start)||index==time_start?'checkbox':''}}">
+    <view class="li" wx:if="{{title=='就诊时长'||title=='上下班时间'}}">
+    <view wx:for="{{time_arr}}" data-index="{{index}}" bindtap="timeclick" class="smallbox {{(time_end>=index&&index>=time_start)||index==time_start?'checkbox':''}}">
     {{item}}</view>
     </view>
     
@@ -121,5 +123,7 @@
       {{item}}
       <van-icon name="arrow" />
     </view>
+
+    <view class="btn" bindtap="onClickRight" wx:if="{{btnstate}}">确定</view>
   </view>
 </view>

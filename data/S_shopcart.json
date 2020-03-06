@@ -1,0 +1,38 @@
+{
+  "result":"200",
+  "arr": [
+    {
+        "title":"满299减20元",
+        "state":"满减",
+        "id": "0",
+        "child": [
+        {
+            "img":"../../../images/my_service_icon_prepaid.png",
+            "title":"VOCO/我和 PRovicl氢氧化钙临时观桥粘接剂",
+            "min": "3",
+            "num": "3",
+            "price": "36.00",
+            "tags":"红",
+            "state": "0"
+        }
+      ]
+    }
+  ],
+  "Invalid_arr": [
+    {
+        "img": "../../../images/my_service_icon_prepaid.png",
+        "title": "VOCO/我和 PRovicl氢氧化钙临时观桥粘接剂",
+        "price": "36.00",
+        "tags": "红"
+    }
+  ],
+  "love_arr": [
+    {
+        "img": "../../images/my_service_icon_prepaid.png",
+        "title": "VOCO/我和 PRovicl氢氧化钙PRovicl氢氧化钙临时观桥粘接剂临时观桥粘接剂",
+        "price": "36.00",
+        "oldprice": "46.00",
+        "tags": "红"
+    }
+  ]
+}

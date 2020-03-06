@@ -7,18 +7,38 @@ Page({
 
   data: {
     title: '今日工作',
+    arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
       delta: 1
     })
   },
-
+  getdata(){
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/Worktoday.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            arr: res.data.arr,
+          })
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title:'今日工作'
+    })
+    this.getdata()
   },
 
   /**

@@ -7,11 +7,44 @@ Page({
 
   data: {
     title: '今日工作',
-    arr:'1111'
+    arr:[],
+    pageIndex:'',
+    pageCount:''
   },
   onClickLeft() {
     wx.navigateBack({
       delta: 1
+    })
+  },
+  uptouch(){
+    if (this.data.pageIndex > this.data.pageCount) {
+
+    } else {
+      this.getdata()
+    }
+  },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/Worktodaydetails.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data:{
+        title:self.data.title
+      },
+      success: function (res) {
+        console.log(res.data)
+        let arr = self.data.arr
+        arr.push(...res.data.arr)
+        let index = self.data.pageIndex + 1 
+        if (res.data.result == 200) {
+          self.setData({
+            arr: res.data.arr,
+            pageIndex:index
+          })
+        }
+      },
     })
   },
 
@@ -19,7 +52,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({title:options.title})
+    this.setData({ title: options.title })
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
+    this.getdata()
   },
 
   /**

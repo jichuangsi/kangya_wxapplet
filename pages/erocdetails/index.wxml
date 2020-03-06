@@ -147,21 +147,15 @@
         <image src="../../images/my_icon_Praise.png"></image>
         今日TOP指数
       </view>
-      <view class="li">
-        <view>今日销售项目TOP3</view>
-        <view class="top_li">
-          <view>1</view>
-          <view>种植</view>
+      <view class="li" wx:for="{{Ranking_arr}}">
+        <view>{{item.title}}</view>
+        <view class="top_li" wx:for="{{item.child}}">
+          <view>{{index+1}}</view>
+          <view>{{item.name}}</view>
         </view>
       </view>
-      <view class="li">
-        <view>今日医生业绩TOP3</view>
-      </view>
-      <view class="li">
-        <view>今日咨询师业绩TOP3</view>
-      </view>
     </view>
-    <view class="a2">
+    <view class="a2" wx:if="{{title!='每日看板'}}">
       <view class="center_top" wx:if="{{title=='就诊分析'}}">
         <view class="left">
           <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
@@ -172,25 +166,34 @@
       <view class="jznav">
         <view class="nav_li">
           <view>就诊总人数</view>
-          <view>0</view>
+          <view>{{consultationnum}}</view>
         </view>
         <view class="nav_li">
           <view>流失总人数</view>
-          <view>0</view>
+          <view>{{dealnum}}</view>
         </view>
         <view class="nav_li">
           <view>成交总金额</view>
-          <view>0</view>
+          <view>{{lossnum}}</view>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" wx:for="{{Chart_arr}}" wx:for-index="first_index">
         <view class="libox_title">
-          <view>初诊人次0</view>
-          <view>流失人次0</view>
-          <view>流失率0.00%</view>  
+          <view wx:for="{{item.title_arr}}">{{item}}</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraph"></canvas>
+          <canvas class="canvas" canvas-id="pieGraph{{first_index}}"></canvas>
+        </view>
+      </view>
+      <view class="h3">
+        <image src="../../images/my_icon_Praise.png"></image>
+        今日TOP指数
+      </view>
+      <view class="li" wx:for="{{Ranking_arr}}">
+        <view>{{item.title}}</view>
+        <view class="top_li" wx:for="{{item.child}}">
+          <view>{{index+1}}</view>
+          <view>{{item.name}}</view>
         </view>
       </view>
     </view>

@@ -9,7 +9,10 @@ Page({
     state:0,
     money:0.00,
     money_state:true,
-    active:'全部'
+    active:'全部',
+    cash_arr:[],
+    budget_arr:[],
+    check_index:0
   },
   onClickLeft() {
     if (this.data.state==0){
@@ -32,9 +35,31 @@ Page({
       state: 1
     })
   },
-  btn2() {
+  btn2(e) {
     this.setData({
-      state: 2
+      state: 2,
+      check_index: e.currentTarget.dataset.index
+    })
+  },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/S_recharge.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            money: res.data.money,
+            cash_arr: res.data.cash_arr,
+            assemble_arr: res.data.assemble_arr,
+            budget_arr: res.data.budget_arr
+          })
+          console.log(self.data.budget_arr)
+        }
+      },
     })
   },
   /**
@@ -44,6 +69,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    this.getdata()
   },
 
   /**

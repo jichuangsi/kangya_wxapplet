@@ -1,11 +1,12 @@
 <!--pages/prescriptionedit/index.wxml-->
 <view class="prescriptionedit">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
       <view slot="right">确定</view>
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
-  <textarea value="{{value}}" bindinput="ipt"></textarea>
+    <textarea value="{{value}}" bindinput="ipt"></textarea>
+    <view class="btn" bindtap="onClickRight">确定</view>
   </view>
 </view>

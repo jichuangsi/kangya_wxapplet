@@ -1,10 +1,10 @@
 <!--pages/charge/index.wxml-->
 <view class="charge">
-  <view class="top">
-    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
+  <!-- <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight"> -->
     <!-- <van-icon name="eye-o" slot="right" size="36rpx" /> -->
-    </van-nav-bar>
-  </view>
+    <!-- </van-nav-bar>
+  </view> -->
   <view class="center">
     <view class="title">历史费用概况</view>
     <view class="li">

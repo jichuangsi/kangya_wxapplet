@@ -8,13 +8,7 @@ Page({
     title: '同事',
     scrollTop: 'A',
     state:0,
-    project_list: [
-      { index: 'A' },
-      { index: 'B' },
-      { index: 'C' },
-      { index: 'D' },
-      { index: 'E' }
-    ],
+    project_list: [],
   },
   onClickLeft() {
     wx.navigateBack({
@@ -38,28 +32,44 @@ Page({
       })
     }
   },
-  detailsgo(e){
+  detailsgo(e) {
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2]; 
     if(this.data.state == 0){
       wx.navigateTo({
-        url: '../Colleaguedetails/index',
+        url: '../Colleaguedetails/index?id=' + e.currentTarget.dataset.id,
       })
     }else{
-      let arr;
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function(res) {
-          arr = res.data
-          console.log(arr)
-          console.log(arr.doctor)
-          arr.doctor = e.currentTarget.dataset.name
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-        },
-      })
+      if (this.data.state == 1){
+        let list = prevPage.data.Patientlist
+        list.doctor = e.currentTarget.dataset.name
+        prevPage.setData({
+          Patientlist: list
+        })
+      }else if (this.data.state == 2 && this.data.state == 2){
+        prevPage.setData({
+          doctor_name: e.currentTarget.dataset.name
+        })
+      }
       this.onClickLeft()
     }
+  },
+  getdata() {
+    let self = this
+    wx.request({
+      url: 'http://192.168.31.251/Colleague.json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.result == 200) {
+          self.setData({
+            project_list: res.data.project_list
+          })
+        }
+      },
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -69,6 +79,10 @@ Page({
       state: options.state ? options.state:0,
       title: options.title ? options.title :'同事'
     })
+    wx.setNavigationBarTitle({
+      title: options.title ? options.title : '同事'
+    })
+    this.getdata()
   },
 
   /**

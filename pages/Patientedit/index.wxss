@@ -40,7 +40,6 @@
   overflow: auto;
 }
 .center {
-  padding-top: 100rpx;
   box-sizing: border-box;
 }
 input{
@@ -81,4 +80,12 @@ textarea {
   width: 16%;
   text-align: center;
   margin-bottom: 20rpx;
+}
+.btn {
+  width: 100%;
+  line-height: 86rpx;
+  text-align: center;
+  background-color: #16c7ae;
+  color: #fff;
+  margin-top: 40rpx;
 }

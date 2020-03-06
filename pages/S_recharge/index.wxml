@@ -14,24 +14,48 @@
       <view class="dj_title">
         代金券
       </view>
-      <view class="dj_li">
+      <view class="dj_li" wx:for="{{cash_arr}}">
         <view class="left">
           <view class="state">代金券</view>
-          <view>100元</view>
-          <view class="time">有效期:2020.02.28-2020.04.02</view>
+          <view>{{item.oldprice}}元</view>
+          <view class="time">有效期:{{item.time}}</view>
         </view>
         <view class="right">
-          <view class="btn" bindtap="btn2">立即抢购</view>
-          <view>￥95元</view>
+          <view class="btn" data-index="{{index}}" bindtap="btn2">立即抢购</view>
+          <view>￥{{item.newprice}}元</view>
         </view>
       </view>
     </view>
   </view>
   <view class="center" wx:if="{{state == 1}}">
     <van-tabs active="{{active}}">
-      <van-tab title="全部" name="全部"></van-tab>
-      <van-tab title="收入" name="收入"></van-tab>
-      <van-tab title="支出" name="支出"></van-tab>
+      <van-tab title="全部" name="全部">
+        <view class="li" wx:for="{{budget_arr}}">
+          <view class="left">
+            <view>{{item.title}}</view>
+            <view class="time">{{item.time}}</view>
+          </view>
+          <view class="{{item.budget == 0?'green':'red'}}">{{item.budgetmoney}}</view>
+        </view>
+      </van-tab>
+      <van-tab title="收入" name="收入">
+        <view class="li" wx:for="{{budget_arr}}">
+          <view class="left">
+            <view>{{item.title}}</view>
+            <view class="time">{{item.time}}</view>
+          </view>
+          <view class="{{item.budget == 0?'green':'red'}}">{{item.budgetmoney}}</view>
+        </view>
+      </van-tab>
+      <van-tab title="支出" name="支出">
+        <view class="li" wx:for="{{budget_arr}}">
+          <view class="left">
+            <view>{{item.title}}</view>
+            <view class="time">{{item.time}}</view>
+          </view>
+          <view class="{{item.budget == 0?'green':'red'}}">{{item.budgetmoney}}</view>
+        </view>
+      </van-tab>
     </van-tabs>
   </view>
   <view class="center" wx:if="{{state == 2}}">
@@ -39,13 +63,14 @@
     </view>
     <view class="text_box">
       <view class="box">
-        <view>￥95</view>
-        <view>95代100元券</view>
+        <view>￥{{cash_arr[check_index].newprice}}</view>
+        <view>{{cash_arr[check_index].newprice}}代{{cash_arr[check_index].oldprice}}元券</view>
       </view>
       <view class="title_state">
-        <view>代金券</view><view>95代100元券</view>
+        <view>代金券</view><view>{{cash_arr[check_index].newprice}}代{{cash_arr[check_index].oldprice}}元券</view>
       </view>
-      <view class="text"></view>
+      <view class="text" wx:for="{{cash_arr[check_index].text_arr}}" wx:if="{{item.state == 0}}">{{item.title}}</view>
+      <image src="{{item.text}}" wx:for="{{cash_arr[check_index].text_arr}}" wx:if="{{item.state == 1}}"></image>
       <view class="btn">立即支付</view>
     </view>
   </view>

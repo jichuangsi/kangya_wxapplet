@@ -1,57 +1,57 @@
 <!--pages/Worktoday/index.wxml-->
 <view class="Worktoday">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <navigator url="/pages/Worktodaydetails/index?title=预约未到" hover-class="navigator-hover">
       <view class="li">
         <image src="../../images/clinic_today_icon_reservation.png"></image>
         <view class="title">预约未到</view>
-        <view class="text">0人<van-icon name="arrow" /></view>
+        <view class="text">{{arr[0].num}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=网络预约" hover-class="navigator-hover">
       <view class="li">
         <image src="../../images/clinic_workbench_icon_reservation.png"></image>
         <view class="title">网络预约</view>
-        <view class="text">0人<van-icon name="arrow" /></view>
+        <view class="text">{{arr[1].num}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=今日初诊" hover-class="navigator-hover">
       <view class="li">
         <image src="../../images/clinic_today_icon_pay.png"></image>
         <view class="title">今日初诊</view>
-        <view class="text">0人<van-icon name="arrow" /></view>
+        <view class="text">{{arr[2].num}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=今日复诊" hover-class="navigator-hover">
       <view class="li">
         <image src="../../images/clinic_today_icon_complete.png"></image>
         <view class="title">今日复诊</view>
-        <view class="text">0人<van-icon name="arrow" /></view>
+        <view class="text">{{arr[3].num}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=今日未访" hover-class="navigator-hover">
       <view class="li">
         <image src="../../images/clinic_today_icon_deal.png"></image>
         <view class="title">今日未访</view>
-        <view class="text">0人<van-icon name="arrow" /></view>
+        <view class="text">{{arr[4].num}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=今日回访" hover-class="navigator-hover">
       <view class="li">
         <image src="../../images/clinic_workbench_icon_returnvisit.png"></image>
         <view class="title">今日回访</view>
-        <view class="text">0人<van-icon name="arrow" /></view>
+        <view class="text">{{arr[5].num}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=今日生日" hover-class="navigator-hover">
       <view class="li">
         <image src="../../images/clinic_today_icon_birthday.png"></image>
         <view class="title">今日生日</view>
-        <view class="text">0人<van-icon name="arrow" /></view>
+        <view class="text">{{arr[6].num}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
   </view>

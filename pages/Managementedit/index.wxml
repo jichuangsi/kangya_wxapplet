@@ -1,10 +1,10 @@
 <!--pages/Managementedit/index.wxml-->
 <view class="Managementedit">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
       <view slot="right">添加方案</view>
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="li">
         <view class="first">就诊类型</view>
@@ -20,6 +20,9 @@
         <view>2020-02-24 13:00</view>
     </view>
     <view class="xian"></view>
+    <view class="li" bindtap="onClickRight">
+        <view class="first">添加方案</view>
+    </view>
     <view class="li" bindtap="prescriptiongo">
       <view class="first">处方</view>
       <van-icon name="arrow" />

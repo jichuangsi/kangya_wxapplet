@@ -7,6 +7,14 @@ Page({
    */
   data: {
     title: '回访详情',
+    time: '',
+    Patient_name: '',
+    doctor_name: '',
+    visittype: '',
+    visitstate:'',
+    visitcontent: '',
+    visitresult: '',
+    Voicefile: [],
   },
   onClickLeft() {
     wx.navigateBack({
@@ -45,7 +53,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: '回访详情'
+    })
+    console.log(options)
+    let item = JSON.parse(options.item)
+    this.setData({
+      time: item.time,
+      Patient_name: item.Patient_name,
+      doctor_name: item.doctor_name,
+      visittype: item.visittype,
+      visitstate: item.visitstate,
+      visitcontent: item.visitcontent,
+      visitresult: item.visitresult,
+      Voicefile: item.Voicefile,
+    })
   },
 
   /**

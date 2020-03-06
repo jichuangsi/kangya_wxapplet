@@ -5,12 +5,14 @@
     </van-nav-bar>
   </view> -->
   <view class="center">
-    <view class="libox">
-      <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+    <view class="libox" wx:for="{{doctor_arr}}">
+      <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.img!=''}}"></image>
+      <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.img!=''&&item.sex==0}}"></image>
+      <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.img!=''&&item.sex==1}}"></image>
       <view class="box">
-        <view class="name">默认医生</view>
-        <view>主治医生</view>
-        <view class="text">口腔正畸医师。</view>
+        <view class="name">{{item.doctor_name}}</view>
+        <view>{{item.position}}</view>
+        <view class="text">{{item.bz}}</view>
         <view class="state" bindtap="W_ordergo">立即预约</view>
       </view>
     </view>
