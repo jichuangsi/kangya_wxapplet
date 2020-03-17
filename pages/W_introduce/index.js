@@ -24,6 +24,22 @@ Page({
       url: '../W_order/index?title='+this.data.title,
     })
   },
+
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/VWeb/ClinicGet',
+      method: 'post',
+      data: {
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -37,6 +53,7 @@ Page({
     this.setData({
       index_data: prevPage.data
     })
+    this.getdata()
   },
 
   /**

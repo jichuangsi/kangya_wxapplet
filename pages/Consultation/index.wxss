@@ -46,6 +46,9 @@
   /* margin-bottom: 100rpx; */
   background-color: #fff;
 }
+.libox {
+  border-bottom: 20rpx solid #f2f2f2;
+}
 .li {
   display: flex;
   flex-wrap: wrap;

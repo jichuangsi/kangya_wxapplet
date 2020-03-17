@@ -1,7 +1,8 @@
 //app.js
 App({
   data:{
-    API: 'http://kangya.sample.jichuangsi.com'
+    API: 'http://kangya.sample.jichuangsi.com',
+    APIS: 'https://kyys.kyawang.com',
   },
   onLaunch: function () {
     // 展示本地存储能力

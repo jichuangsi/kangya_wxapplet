@@ -14,12 +14,16 @@ Page({
     state:0,
     state2: '状态',
     state3: '医生',
+    time:'',
     showbottom: false,
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
       chooseAreaMode: false,
     },
+    customerid: '',
+    clinicid: '',
+    patdetails: ''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -45,6 +49,9 @@ Page({
   },
   afterTapDay(e) {
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
+    this.setData({
+      time: year + '-' + month < 10 ? '0' + month : month + '-' + day < 10 ? '0' + day : day
+    })
     this.onClose()
   },
   del() {
@@ -88,20 +95,53 @@ Page({
   },
   getdata(){
     let self = this
-    wx.request({
-      url: getApp().data.API+'/visit.json',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
-          self.setData({
-            visit_arr: res.data.visit_arr,
-          })
-        }
-      },
-    })
+    if(self.data.state == 0){
+      wx.request({
+        url: getApp().data.APIS + '/returnvisit/visitlist',
+        method: 'post',
+        data: {
+          begindate: self.data.time,
+          enddate: self.data.time,
+          visitperson: "",
+          impressioninfo: "",
+          totalcount: "-1",
+          studyitem: "",
+          consultname: "",
+          pageno: "1",
+          doctorid: "",
+          visitdata: "",
+          visitpersonname: "全部",
+          pagesize: "10",
+          clinicid: "",
+          patient: ""
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              visit_arr: res.data.list
+            })
+          }
+        },
+      })
+    } else {
+      wx.request({
+        url: getApp().data.APIS + '/patient/patvisit',
+        method: 'post',
+        data: {
+          customerid: self.data.customerid,
+          clinicid: self.data.clinicid
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              visit_arr: res.data.list
+            })
+          }
+        },
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -111,6 +151,14 @@ Page({
     wx.setNavigationBarTitle({
       title: '回访'
     })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    this.setData({
+      customerid: Page.data.customerid ? Page.data.customerid:'',
+      clinicid: Page.data.clinicid ? Page.data.clinicid : '',
+      patdetails: Page.data.patdetails ? Page.data.patdetails : ''
+    })
+    console.log(this.data.patdetails)
     this.getdata()
   },
 

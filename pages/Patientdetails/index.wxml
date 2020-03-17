@@ -8,13 +8,15 @@
   <view class="center">
     <view class="center_top">
       <view class="user_box">
-        <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{patdetails.sex == '男'}}"></image>
+        <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{patdetails.sex == '女'}}"></image>
         <view class="user">
-          <view class="name">空白格</view>
+          <view class="name">{{patdetails.name}}</view>
           <view class="state">
             <view> </view>
           </view>
         </view>
+        <van-icon name="ellipsis" slot="right" size="38rpx" style="margin-right:10rpx;padding:20rpx;box-sizing:box-border;" bindtap="onClickRight"/>
         <navigator url="/pages/QRCode/index?" hover-class="navigator-hover">
             <van-icon name="qr" size="56rpx" />
         </navigator>
@@ -22,11 +24,11 @@
       <view class="message">
         <van-icon name="description" />
         <view class="none">
-          点击添加患者信息
+          {{patdetails.remark}}
         </view>
       </view>
     </view>
-    <van-cell icon="todo-list" color="#01c7b5">
+      <van-cell icon="todo-list" color="#01c7b5" size="36rpx">
       <view slot="title">
         <view class="van-cell-text">档案</view>
       </view>
@@ -55,15 +57,15 @@
     </view>
     <view class="center_bottom">
       <view bindtap="chatgo">
-        <van-icon name="chat-o" />
+        <van-icon name="chat-o" size="40rpx"/>
         消息
       </view>
       <view bindtap="iphoneclick">
-        <van-icon name="phone-o" />
+        <van-icon name="phone-o" size="40rpx"/>
         电话
       </view>
       <view bindtap="addyuyue">
-        <van-icon name="clock-o" />
+        <van-icon name="clock-o" size="40rpx"/>
         复诊
       </view>
     </view>

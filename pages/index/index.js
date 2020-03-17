@@ -92,23 +92,79 @@ Page({
     console.log(e.currentTarget.dataset.name)
     this.setData({ name: e.currentTarget.dataset.name})
   },
-  
+  getdata(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS +'/market/massage/BaseData',
+      success:function(res){
+        console.log(res)
+        if(res.data.info == 'ok'){
+          self.setData({
+            Hospital_arr:res.data.list
+          })
+          let date = new Date();
+          let year = date.getFullYear();
+          let month = date.getMonth() + 1;
+          let day = date.getDate();
+          let bengindate= year + '/' + month + '/' +'01'
+          let enddate = year + '/' + month+1 + '/' + '01'
+          self.getswiper(res.data.list[0].clinicid, bengindate, enddate)
+        }
+      }
+    })
+  },
+  getswiper(id, bengindata, enddate) {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/report/studyinfo',
+      method:'post',
+      data:{
+        clinkid:id,
+        bengindate: bengindata,
+        enddate: enddate
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            
+          })
+        }
+      }
+    })
+  },
+  getPerinfo() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/member/Perinfo',
+      method: 'post',
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let self =this
+    self.getdata()
+    self.getPerinfo()
     wx.request({
       url: getApp().data.API+'/index.json',
       headers: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data)
+        // console.log(res.data)
         if (res.data.result == 200){
           self.setData({
             achievement_arr: res.data.achievement_arr,
-            Hospital_arr: res.data.Hospital_arr,
             Worktoday: res.data.Today,
             Tomorroworder: res.data.Tomorrow,
             Historyarrears: res.data.History,

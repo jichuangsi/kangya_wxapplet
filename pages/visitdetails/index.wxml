@@ -57,9 +57,9 @@
     </view>
       <view class="bz">{{visitresult}}</view>
       <view class="center_bottom">
-        <view bindtap="chatgo"><van-icon name="comment-o" />通知患者</view>
-        <view bindtap="iphoneclick"><van-icon name="phone-o" />打电话</view>
-        <view bindtap="editgo"><van-icon name="edit" />修改回访</view>
+        <view bindtap="chatgo"><van-icon name="comment-o" size="40rpx"/>通知患者</view>
+        <view bindtap="iphoneclick"><van-icon name="phone-o" size="40rpx"/>打电话</view>
+        <view bindtap="editgo"><van-icon name="edit" size="40rpx"/>修改回访</view>
       </view>
       <view class="btn" bindtap="onClickRight">删除回访</view>
   </view>

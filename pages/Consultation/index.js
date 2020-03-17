@@ -9,15 +9,8 @@ Page({
   data: {
     title: '咨询',
     arr: [
-      { username: '空白',
-      time:'2020-02-20 17:38', 
-      name:'试试',
-      text: '测试'
-      // arr1:[
-      //   { title: '沟通记录', text: '测试' }
-      // ]
-      },
-    ]
+    ],
+    patdetails:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -44,7 +37,29 @@ Page({
       url: '../Consultationedit/index?title=修改咨询',
     })
   },
-
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/SelConsult',
+      method: 'post',
+      data: {
+        consulttype: '全部',
+        customerid: self.data.customerid,
+        clinicid: self.data.clinicid
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            arr: res.data.list
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -52,6 +67,16 @@ Page({
     wx.setNavigationBarTitle({
       title:'咨询'
     })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+
+    this.setData({
+      customerid: Page.data.customerid,
+      clinicid: Page.data.clinicid,
+      patdetails: Page.data.patdetails
+    })
+    console.log(this.data.patdetails)
+    this.getdata()
   },
 
   /**

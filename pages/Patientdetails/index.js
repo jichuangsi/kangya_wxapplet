@@ -8,7 +8,11 @@ Page({
   data: {
     title:'患者详情',
     show: false,
-    borderstate:false
+    borderstate:false,
+    customerid: '',
+    clinicid: '',
+    patdetails:'',
+    friend:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -65,6 +69,29 @@ Page({
       url: '../Patientedit/index?title=编辑分组',
     })
   },
+  getdata(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/qupatientbyid',
+      method: 'post',
+      data: {
+        customerid: self.data.customerid,
+        clinicid: self.data.clinicid
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            friend: res.data.list.friend,
+            patdetails: res.data.list.patdetails[0]
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -72,6 +99,11 @@ Page({
     wx.setNavigationBarTitle({
       title: '患者详情',
     })
+    this.setData({
+      customerid:options.customerid,
+      clinicid:options.clinicid
+    })
+    this.getdata()
   },
 
   /**

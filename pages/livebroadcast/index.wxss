@@ -168,3 +168,6 @@ livebroadcast .list .smallbox .right .smallboxtitle {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+van-grid .van-grid-item__icon {
+  font-size: 80rpx !important;
+}

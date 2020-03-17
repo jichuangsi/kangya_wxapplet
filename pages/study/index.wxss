@@ -61,3 +61,6 @@
 .top .title .text .check {
   color: #17cab0;
 }
+van-grid .van-grid-item__icon {
+  font-size: 80rpx !important;
+}

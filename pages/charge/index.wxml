@@ -9,32 +9,89 @@
     <view class="title">历史费用概况</view>
     <view class="li">
       <view class="libox">
-        <view>0.00</view>
+        <view>{{patientfee.totalfee}}</view>
         <view>总费用</view>
       </view>
       <view class="libox">
-        <view>0.00</view>
+        <view>{{patientfee.payment}}</view>
         <view>已收金额</view>
       </view>
       <view class="libox">
-        <view>0.00</view>
+        <view>{{patientfee.debts}}</view>
         <view>应收金额</view>
       </view>
       <view class="libox">
-        <view class="red">0.00</view>
+        <view class="red">{{patientfee.debts}}</view>
         <view>折扣金额</view>
       </view>
       <view class="libox">
-        <view>0.00</view>
+        <view>{{patientfee.debts}}</view>
         <view>减免金额</view>
       </view>
       <view class="libox">
-        <view>0.00</view>
+        <view>{{patientfee.advancepay}}</view>
         <view>剩余预付款</view>
       </view>
       <view class="libox">
-        <view class="red">0.00</view>
+        <view class="red">{{patientfee.debts}}</view>
         <view>欠款</view>
+      </view>
+    </view>
+    <view class="center_libox" wx:for="{{billinfo}}">
+      <view class="center_li">
+        <view class="text">开单时间</view>
+        <view>{{item.billdate}}</view>
+      </view>
+      <view class="center_li">
+        <view class="text">处置项目</view>
+        <view class="green">{{item.studystatus}}项</view>
+        <van-icon name="arrow" size="36rpx" />
+      </view>
+      <view class="center_li">
+        <view class="text">主治医生</view>
+        <view>{{item.billdoct}}</view>
+      </view>
+      <view class="center_li">
+        <view class="text">账单编号</view>
+        <view>{{item.billno}}</view>
+      </view>
+      <view class="center_li">
+        <view class="text">总费用</view>
+        <view class="blue">{{item.totalfee}}</view>
+        <van-icon name="arrow" size="36rpx" />
+      </view>
+      <view class="center_li">
+        <view class="text">折扣金额</view>
+        <view class="orange">{{item.discountfee}}</view>
+      </view>
+      <view class="center_li">
+        <view class="text">折扣率</view>
+        <view class="orange">{{item.discount}}%</view>
+      </view>
+      <view class="center_li">
+        <view class="text">应收金额</view>
+        <view class="blue">{{item.totalfee}}</view>
+        <van-icon name="arrow" size="36rpx" />
+      </view>
+      <view class="center_li">
+        <view class="text">已收金额</view>
+        <view class="green">{{item.totalfee}}</view>
+        <van-icon name="arrow" size="36rpx" />
+      </view>
+      <view class="center_li">
+        <view class="text">收费类型</view>
+        <view>预交款</view>
+      </view>
+      <view class="center_li">
+        <view class="text">减免金额</view>
+        <view class="green">{{item.totalfee}}</view>
+      </view>
+      <view class="center_li">
+        <view class="text">欠费</view>
+        <view class="red">{{item.totalfee}}</view>
+      </view>
+      <view class="center_li">
+        <view class="btn hui">不可分期</view>
       </view>
     </view>
   </view>

@@ -62,59 +62,62 @@ Page({
   onReady: function () {
     let client = new AgoraMiniappSDK.Client();
 
-    // client.init("2da57d423c604b1e997e49840eee0dcb", function () {
+    // client.init("ee1b888a0e83476da90812fcb1623031", function () {
     // //   // 初始化成功
     //   console.log("初始化成功");
-    //   client.join(null, "10sd0", "4as56123", function (uid) {
+    //   client.join(null, "10sd0", null, function (uid) {
     // //     // 加入成功
     //     console.log("加入成功User " + uid + " join channel successfully");
-    // //     // 发布本地音频流并获取推流 url 地址
-    // //     client.publish(function (res) {
-    // //       // 发布成功
-    // //       console.log("发布成功pushPath" + res);
-    // //       that.setData({
-    // //         pushPath: res
-    // //       })
-    // //       // 监听
-    // //       client.on('error', function (err) {
-    // //         console.log("Got error msg:", err.reason);
-    // //         if (err.reason === 'DYNAMIC_KEY_TIMEOUT') {
-    // //           client.renewChannelKey(that.data.fangjianhao, function () {
-    // //             console.log("Renew channel key successfully");
-    // //           }, function (err) {
-    // //             console.log("Renew channel key failed: ", err);
-    // //           });
-    // //         }
-    // //       });
-    // //       // 监听远程视频添加
-    // //       client.on('stream-added', function (evt) {
-    // //         client.subscribe(evt.uid, function (res) {
-    // //           console.log("订阅视频流成功playUrl" + res);
-    // //           that.setData({
-    // //             playUrl: res
-    // //           });
-    // //         }, function (err) {
-    // //           console.log("订阅视频流错误", err);
-    // //         });
-    // //       });
+    // // //     // 发布本地音频流并获取推流 url 地址
+    // // //     client.publish(function (res) {
+    // // //       // 发布成功
+    // // //       console.log("发布成功pushPath" + res);
+    // // //       that.setData({
+    // // //         pushPath: res
+    // // //       })
+    // // //       // 监听
+    //       client.on('error', function (err) {
+    //         console.log("Got error msg:", err.reason);
+    //         if (err.reason === 'DYNAMIC_KEY_TIMEOUT') {
+    //           client.renewChannelKey(that.data.fangjianhao, function () {
+    //             console.log("Renew channel key successfully");
+    //           }, function (err) {
+    //             console.log("Renew channel key failed: ", err);
+    //           });
+    //         }
+    //       });
+    // // //       // 监听远程视频添加
+    //       client.on('stream-added', function (evt) {
+    //         client.subscribe(evt.uid, function (res) {
+    //           console.log("订阅视频流成功playUrl" + res);
+    //           that.setData({
+    //             playUrl: res
+    //           });
+    //         }, function (err) {
+    //           console.log("订阅视频流错误", err);
+    //         });
+    //       });
 
-    // //       client.on('update-url', function (evt) {
-    // //         console.log("视频播放", evt);
-    // //       });
+    //       client.on('update-url', function (evt) {
+    //         console.log("视频播放", evt);
+    //       });
 
-    // //       client.on('stream-removed', function (evt) {
-    // //         console.log("视频停止播放");
-    // //       });
+    //       client.on('stream-removed', function (evt) {
+    //         console.log("视频停止播放");
+    //       });
 
-    // //       client.on('video-rotation', function (evt) {
-    // //         console.log(evt.uid + " leaved from this channel");
-    // //       });
+    //       client.on('video-rotation', function (evt) {
+    //         console.log(evt.uid + " leaved from this channel");
+    //       });
+    //     client.on('stream-subscribed', function (evt) {
+    //       console.log(54646)
+    //     })
 
 
-    // //     }, function (err) {
-    // //       // 发布失败
-    // //       console.log("发布失败" + err);
-    // //     });
+    // // //     }, function (err) {
+    // // //       // 发布失败
+    // // //       console.log("发布失败" + err);
+    // // //     });
     //   }, function (err) {
     //     // 加入失败
     //     console.log("加入失败", err);

@@ -60,6 +60,7 @@ Page({
       past: '',
       ask: ''
     },
+    patdetails:'',
     relationship_arr:[
       { name: '莫须有', relationship:'同事'}
     ]

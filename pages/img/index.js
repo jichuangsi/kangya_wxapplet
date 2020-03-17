@@ -6,7 +6,11 @@ Page({
    */
   data: {
     title: '影像',
-    show: false
+    show: false,
+    state:0,
+    arr:[],
+    customerid: '',
+    clinicid:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -41,14 +45,51 @@ Page({
       }
     })
   },
+  imgclick(e){
+    if (this.data.state == 0) {
+      wx.previewImage({
+        current: e.currentTarget.dataset.item.url, // 当前显示图片的http链接
+        urls: [e.currentTarget.dataset.item.url] // 需要预览的图片http链接列表
+      })
+    }
+  },
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/patientimagelist',
+      method: 'post',
+      data: {
+        customerid: self.data.customerid,
+        clinicid: self.data.clinicid
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            arr: res.data.list.imagelist
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ title: options.title })
+    this.setData({ title: options.title, state: options.state ? options.state:0 })
     wx.setNavigationBarTitle({
       title: options.title ? options.title :'影像'
     })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    this.setData({
+      customerid: Page.data.customerid,
+      clinicid: Page.data.clinicid
+    })
+    this.getdata()
   },
 
   /**

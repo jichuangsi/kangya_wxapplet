@@ -38,12 +38,27 @@ Page({
     this.setData({
       left_text: e.currentTarget.dataset.id == 1?'全部':'我的'
     })
-  }, 
+  },
+  getpatient() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/getpatientmsglist',
+      method: 'post',
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getpatient()
   },
 
   /**

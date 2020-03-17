@@ -7,7 +7,9 @@ Page({
    */
   data: {
     title: '病历',
-    arr:[]
+    arr:[],
+    name:'',
+    sex:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -36,17 +38,61 @@ Page({
   },
   getdata(){
     let self = this
+    // wx.request({
+    //   url: getApp().data.API + '/medical.json',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data)
+    //     if (res.data.result == 200) {
+    //       self.setData({
+    //         arr: res.data.arr
+    //       })
+    //     }
+    //   },
+    // })
     wx.request({
-      url: getApp().data.API + '/medical.json',
-      headers: {
-        'Content-Type': 'application/json'
+      url: getApp().data.APIS + '/patient/medicalrecordinfo',
+      method:'post',
+      success: function (res) {
+        // console.log(res)
+        // console.log(JSON.parse(res.data.list[11].exam))
+        if(res.data.info == 'ok'){
+          let arr = res.data.list
+          for(let i = 0;i<arr.length;i++){
+            // console.log(arr[i])
+            if (typeof (arr[i].exam) =='string'){
+              arr[i].exam = JSON.parse(arr[i].exam)
+              if ('items' in arr[i].exam) {
+                self.getdetails(arr[i].mediarecordidentity, arr[i].customerid,i)
+              }
+            }
+          }
+          self.setData({
+            arr:arr
+          })
+        }
+      },
+    })
+  }, 
+  getdetails(mediarecordidentity, customerid,index) {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/osexalist',
+      method: 'post',
+      data:{
+        mediarecordidentity: mediarecordidentity,
+        customerid: customerid,
       },
       success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
+        if(res.data.info == 'ok'){
+          let arr = self.data.arr
+          arr[index] = res.data.list[0]
           self.setData({
-            arr: res.data.arr
+            arr: arr
           })
+          console.log(self.data.arr)
         }
       },
     })
@@ -60,13 +106,20 @@ Page({
       title:'病历'
     })
     this.getdata()
+    // this.pieShow()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    console.log(prevPage.data)
+    this.setData({
+      name: prevPage.data.patdetails.name,
+      sex: prevPage.data.patdetails.sex
+    })
   },
 
   /**

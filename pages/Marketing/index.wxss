@@ -33,5 +33,5 @@
   overflow: auto;
 }
 .van-grid-item__icon {
-  font-size: 60rpx !important;
+  font-size: 114rpx !important;
 }

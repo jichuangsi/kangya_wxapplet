@@ -64,9 +64,9 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/Consultation/index",
-					"pathName": "pages/Consultation/index",
-					"query": "",
+					"name": "pages/PriceList/index",
+					"pathName": "pages/PriceList/index",
+					"query": "title=医患沟通视频&&state=0",
 					"scene": null
 				}
 			]

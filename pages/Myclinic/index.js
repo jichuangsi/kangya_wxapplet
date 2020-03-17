@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title:'我的诊所'
+    title:'我的诊所',
+    arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -32,12 +33,29 @@ Page({
     });
 
   },
-  
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/member/mycliniclist',
+      method: 'post',
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            arr:res.data.list
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: '我的诊所'
+    })
+    this.getdata()
   },
 
   /**

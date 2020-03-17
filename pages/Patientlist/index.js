@@ -18,8 +18,11 @@ Page({
     nav2_arr: ['全部', '拔牙', '补牙', '义诊', '活动假牙', '洁牙', '正畸', '种植', '检查'],
     nav3_arr: ['全部', '金卡会员', '银卡会员', '铜卡会员'],
     nav4_arr: ['全部', '微信用户', '有病史用户', '有影像用户', '欠款用户', '预付用户'],
-    Patientlist_arr:[],
-    li_num:1
+    grouping_arr:[],
+    patient_arr:[],
+    li_num:1,
+    pageIndex:1,
+    pagetotal:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -66,7 +69,7 @@ Page({
     let prevPage = pages[pages.length - 2];  
     if(this.data.state == 0){
       wx.navigateTo({
-        url: '../Patientdetails/index',
+        url: '../Patientdetails/index?customerid=' + e.currentTarget.dataset.customerid + '&&clinicid=' + e.currentTarget.dataset.clinicid,
       })
     }else{
       console.log(prevPage)
@@ -83,19 +86,61 @@ Page({
   },
   getdata() {
     let self = this
+    // wx.request({
+    //   url: getApp().data.API+'/Patientlist.json',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data)
+    //     if (res.data.result == 200) {
+    //       self.setData({
+    //         Patientlist_arr: res.data.Patientlist_arr,
+    //       })
+    //     }
+    //   },
+    // })
+
     wx.request({
-      url: getApp().data.API+'/Patientlist.json',
-      headers: {
-        'Content-Type': 'application/json'
+      url: getApp().data.APIS + '/patient/patientbasegroup',
+      method: 'post',
+      data: {
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
+        console.log(res)
+        if(res.data.info =='ok'){
           self.setData({
-            Patientlist_arr: res.data.Patientlist_arr,
+            grouping_arr:res.data.list
+          })
+          self.getpatientlist(res.data.list[0].dictionaryidentity)
+        }
+      }
+    })
+  },
+  getpatientlist(id) {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/qupatient',
+      method: 'post',
+      data: {
+        pageno: self.data.pageIndex,
+        pagesize: '20',
+        patgroupid: id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if(res.data.info =='ok'){
+          self.setData({
+            patient_arr:res.data.list
           })
         }
-      },
+      }
     })
   },
   /**

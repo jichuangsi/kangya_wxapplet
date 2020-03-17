@@ -6,7 +6,9 @@ Page({
    */
   data: {
     title: '预交款记录',
-    arr:[]
+    arr: [],
+    customerid: '',
+    clinicid: ''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -16,18 +18,23 @@ Page({
   getdata() {
     let self = this
     wx.request({
-      url: getApp().data.API +'/payment.json',
-      headers: {
-        'Content-Type': 'application/json'
+      url: getApp().data.APIS + '/patient/advpatientinfo',
+      method: 'post',
+      data: {
+        customerid: self.data.customerid
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
+        console.log(res)
+        if (res.data.info == 'ok') {
           self.setData({
-            arr: res.data.arr,
+            patientfee: res.data.list.patientfee[0],
+            billinfo: res.data.list.billinfo
           })
         }
-      },
+      }
     })
   },
   /**
@@ -37,7 +44,12 @@ Page({
     wx.setNavigationBarTitle({
       title: '预交款记录'
     })
-    console.log(111)
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    this.setData({
+      customerid: Page.data.customerid,
+      clinicid: Page.data.clinicid
+    })
     this.getdata()
     console.log(111)
   },

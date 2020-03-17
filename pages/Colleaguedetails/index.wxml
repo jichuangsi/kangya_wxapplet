@@ -41,5 +41,5 @@
   inactive-color="#f2f2f2" bind:change="onChange" /></view>
     </view>
   </view>
-  <view class="btn" bindtap="chatgo"><van-icon name="chat-o" />发消息</view>
+  <view class="btn" bindtap="chatgo"><van-icon name="chat-o" size="40rpx"/>发消息</view>
 </view>

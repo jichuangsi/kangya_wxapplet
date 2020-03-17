@@ -104,13 +104,13 @@
 .showli view image {
   width: 32rpx;
   height: 32rpx;
-  margin-right: 20rpx;
+  margin: 0rpx 10rpx;
 }
 .showli view .van-icon {
   color: #01c7b5;
 }
 .van-grid-item__icon {
-  font-size: 80rpx !important;
+  font-size: 114rpx !important;
 }
 .van-dialog__button {
   flex: none;

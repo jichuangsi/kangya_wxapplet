@@ -52,9 +52,9 @@
   <van-popup show="{{ show }}"
   position="top"
   bindtap="onClose">
-    <view class="Hospital_li" data-name="{{item.name}}" data-id="{{item.num}}" wx:for="{{Hospital_arr}}" bindtap="Hospital_click">
-      <view>{{item.name}}</view>
-      <view>管家号{{item.num}}</view>
+    <view class="Hospital_li" data-name="{{item.clinicname}}" data-id="{{item.clinicid}}" wx:for="{{Hospital_arr}}" bindtap="Hospital_click">
+      <view>{{item.clinicname}}</view>
+      <view>管家号{{item.clinicid}}</view>
     </view>
   </van-popup>
   <van-popup show="{{ showleft }}"

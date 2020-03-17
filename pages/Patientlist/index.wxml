@@ -17,23 +17,24 @@
     </view>
   </view>
   <view class="center">
-    <view class="li_box" data-index="{{first_index+1}}" bindtap="li_box_click" wx:for="{{Patientlist_arr}}" wx:for-index="first_index">
+    <view class="li_box" data-index="{{first_index+1}}" bindtap="li_box_click" wx:for="{{grouping_arr}}" wx:for-index="first_index">
       <view class="title">
         <van-icon name="arrow" />
-        <view class="text">{{item.title}}</view>
-        <view class="num">{{item.num}}人</view>
+        <view class="text">{{item.dictionaryname}}</view>
+        <view class="num">{{item.patsum}}人</view>
       </view>
-      <view class="li" wx:for="{{item.child}}" wx:if="{{li_num==first_index+1}}" data-name="{{item.name}}" bindtap="Patientclick">
-        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == 0}}"></image>
-        <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == 1}}"></image>
+      <view class="li" wx:for="{{patient_arr}}" wx:if="{{li_num==first_index+1}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" catchtap="Patientclick">
+        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
+        <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
+        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>
         <view class="right_li">
           <view class="right_li_top">
-            <view>{{item.name}}</view>
-            <view class="state">{{item.Matter}}</view>
+            <view>{{item.patientname}}</view>
+            <view class="state" wx:if="{{item.treatment!=''}}">{{item.treatment}}</view>
           </view>
           <view class="right_li_bottom">
-            <view>{{item.postion}}</view>
-            <view class="time">{{item.time}}</view>
+            <view>{{item.comefrom}}</view>
+            <view class="time">{{item.updatetime}}</view>
           </view>
         </view>
       </view>

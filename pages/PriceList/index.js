@@ -85,26 +85,56 @@ Page({
       },
     })
   },
-  getdata() {
-    let self =this
+  getvod() {
+    let self = this
     wx.request({
-      url: getApp().data.API+'/PriceList.json',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      url: getApp().data.APIS + '/video/getvod/EOk6llnOcw9X1e4',
+      method: 'get',
       success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
+        console.log(res)
+        if (res.data.info == 'ok') {
           self.setData({
-            PriceList_arr: res.data.PriceList_arr,
-            videolist_arr: res.data.video_arr,
-            LookTeethimg: res.data.LookTeethimg,
-            activeKey: res.data.PriceList_arr[0]
+
           })
         }
-      },
+      }
     })
   },
+  gethandle() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/sysset/gethandle',
+      method: 'post',
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+
+          })
+        }
+      }
+    })
+  },
+  // getdata() {
+  //   let self =this
+  //   wx.request({
+  //     url: getApp().data.API+'/PriceList.json',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     success: function (res) {
+  //       console.log(res.data)
+  //       if (res.data.result == 200) {
+  //         self.setData({
+  //           PriceList_arr: res.data.PriceList_arr,
+  //           videolist_arr: res.data.video_arr,
+  //           LookTeethimg: res.data.LookTeethimg,
+  //           activeKey: res.data.PriceList_arr[0]
+  //         })
+  //       }
+  //     },
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -115,7 +145,8 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
-    this.getdata()
+    this.gethandle()
+    this.getvod()
   },
 
   /**

@@ -4,7 +4,7 @@
     <van-icon name="eye-o" slot="right" size="36rpx" />
   </view>
   <view class="center">
-    <image src="{{item}}" wx:for="{{arr}}"></image>
+    <image src="{{item.url}}" wx:for="{{arr}}" data-item="{{item}}" bindtap="imgclick"></image>
   </view>
   <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
     <view class="showpopup">

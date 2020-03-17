@@ -12,18 +12,23 @@
     <view class="libox" wx:for="{{arr}}" bindtap="Consultationgo">
       <view class="li">
         <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
-        <view class="text">{{item.username}}</view>
-        <view class="time">{{item.time}}</view>
+        <view class="text">{{patdetails.name}}</view>
+        <view class="time">{{item.faceconsultdatetime}}</view>
         <van-icon name="close" size="36rpx" catchtap="del" />
       </view>
       <view class="li">
         <view class="green">沟通记录</view>
-        <view class="bz">{{item.text}}</view>
+        <view class="bz">{{item.faceconsultmark}}</view>
+      </view>
+      <view class="li">
+        <van-icon name="apps-o" color="#16c7ae" size="36rpx" />
+        <view class="text">沟通类型</view>
+        <view>{{item.faceconsulttype}}</view>
       </view>
       <view class="li">
         <van-icon name="manager" color="#16c7ae" size="36rpx" />
         <view class="text">录入人</view>
-        <view>{{item.name}}</view>
+        <view>{{item.facerecordername}}</view>
       </view>
     </view>
   </view>

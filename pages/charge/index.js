@@ -5,11 +5,41 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title:'收费'
+    title:'收费',
+    customerid: '',
+    clinicid: '',
+    pageIndex:1,
+    patientfee:'',
+    billinfo:[]
   },
   onClickLeft(){
     wx.navigateBack({
       delta: 1,
+    })
+  },
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/SelBillinfo',
+      method: 'post',
+      data: {
+        pageno: self.data.pageIndex,
+        pagesize: 20,
+        customerid: self.data.customerid,
+        clinicid: self.data.clinicid
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            patientfee: res.data.list.patientfee[0],
+            billinfo: res.data.list.billinfo
+          })
+        }
+      }
     })
   },
   /**
@@ -19,6 +49,13 @@ Page({
     wx.setNavigationBarTitle({
       title:'收费'
     })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    this.setData({
+      customerid: Page.data.customerid,
+      clinicid: Page.data.clinicid
+    })
+    this.getdata()
   },
 
   /**
