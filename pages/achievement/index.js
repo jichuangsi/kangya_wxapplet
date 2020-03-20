@@ -10,19 +10,24 @@ Page({
     nav_num:0,
     check_nav_num:0,
     time:'',
-    list: ['08:00', '22:00'],
+    list: ['08:00', '', '', '22:00'],
     list_data: [0,0],
     achievement: '',
     receivable: '',
     discount: '',
     payment: '',
+    first:'',
+    last:'',
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
       chooseAreaMode: false,
     },
     show:false,
-    check_time:true
+    check_time:true,
+    clinicid:'',
+    bengindate: '',
+    enddate: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -44,14 +49,16 @@ Page({
     let day = a.getDate()
     this.setData({
       nav_num: index,
-      check_time:true
+      check_time:true,
+      bengindate: year + '-' + month + '-' + day,
+      enddate: year + '-' + month + '-' + day
     })
     if (index ==0){
-      this.getdata(year + '年' + month + '月' + day + '日')
+      this.getdata()
     } else if (index == 1) {
-      this.getdata(year + '年' + month + '月' )
+      this.getdata()
     } else if (index == 2) {
-      this.getdata(year + '年' )
+      this.getdata()
     }
   },
   check_navclick(e){
@@ -86,20 +93,24 @@ Page({
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
     if(this.data.check_nav_num == 0){
       this.setData({
-        time: e.detail.year + '年' + e.detail.month + '月' + e.detail.day + '日'
+        time: e.detail.year + '年' + e.detail.month + '月' + e.detail.day + '日',
+        bengindate: e.detail.year + '-' + e.detail.month + '-' + e.detail.day,
+        enddate: e.detail.year + '-' + e.detail.month + '-' + e.detail.day
       })
       this.onClose()
     }else{
       let arr = this.calendar.getSelectedDay()
       this.setData({
-        time: arr[0].year + '年' + arr[0].month + '月' + arr[0].day + '日' + '~' + arr[arr.length - 1].year + '年' + arr[arr.length - 1].month + '月' + arr[arr.length - 1].day + '日'
+        time: arr[0].year + '年' + arr[0].month + '月' + arr[0].day + '日' + '~' + arr[arr.length - 1].year + '年' + arr[arr.length - 1].month + '月' + arr[arr.length - 1].day + '日',
+        bengindate: arr[0].year + '-' + arr[0].month + '-' + arr[0].day,
+        enddate: arr[arr.length - 1].year + '-' + arr[arr.length - 1].month + '-' + arr[arr.length - 1].day
       })
       this.onClose()
     }
     this.setData({
       check_time:false
     })
-    this.getdata(this.data.time)
+    this.getdata()
   },
 
 
@@ -137,30 +148,64 @@ Page({
     };
     new CHARTS(pie);
   },
-  getdata(time){
+  getdata(){
     let self = this
     wx.request({
-      url: getApp().data.API+'/achievement.json',
-      headers: {
-        'Content-Type': 'application/json'
+      url: getApp().data.APIS + '/finance/income2',
+      method: 'post',
+      data: {
+        pageno: self.data.pageIndex,
+        pagesize: 100,
+        bengindate: self.data.bengindate,
+        enddate: self.data.enddate,
+        clinicid: self.data.clinicid
       },
-      data:{
-        time:time
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = []
+          let val = ''
+          for (let i = 0; i < res.data.list.length; i++) {
+            arr.push(res.data.list[i].date)
+            val = res.data.list[i].paidfee.indexOf(',') != -1 ? Number(res.data.list[i].paidfee.split(',')[0] + res.data.list[i].paidfee.split(',')[1]) : Number(res.data.list[i].paidfee)
+            arr1.push(val)
+          }
           self.setData({
-            list: res.data.list,
-            list_data: res.data.list_data,
-            achievement: res.data.achievement,
-            receivable: res.data.receivable,
-            discount: res.data.discount,
-            payment: res.data.payment,
+            list: arr,
+            list_data: arr1,
+            achievement: res.data.main.baseinfo.paidfee,
+            receivable: res.data.main.baseinfo.needpay,
+            discount: res.data.main.baseinfo.dischargefee,
+            payment: res.data.main.baseinfo.advpay,
           })
           self.pieShow()
         }
+      }
+    })
+
+    wx.request({
+      url: getApp().data.APIS + '/finance/incomedebts',
+      method: 'post',
+      data: {
+        bengindate: self.data.bengindate,
+        enddate: self.data.enddate,
       },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            first: res.data.list.begindebts,
+            last: res.data.list.enddebts
+          })
+        }
+      }
     })
   },
   /**
@@ -169,20 +214,26 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.pieShow()
-    this.setData({
-      nav_num: options.state
-    })
 
     let a = new Date()
     let year = a.getFullYear()
     let month = a.getMonth()
     let day = a.getDate()
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];  //上一个页面
+    this.setData({
+      nav_num: options.state,
+      clinicid: prevPage.data.Hospital_arr[0].clinicid,
+      time: year + '年' + month + '月' + day + '日',
+      bengindate: year + '-' + month + '-' + day,
+      enddate: year + '-' + month + '-' + day
+    })
     if (options.state == 0) {
-      this.getdata(year + '年' + month + '月' + day + '日')
+      this.getdata()
     } else if (options.state == 1) {
-      this.getdata(year + '年' + month + '月')
+      this.getdata()
     } else if (options.state == 2) {
-      this.getdata(year + '年')
+      this.getdata()
     }
   },
 

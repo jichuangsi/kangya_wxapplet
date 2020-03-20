@@ -9,14 +9,14 @@
     <van-icon name="contact" size="36rpx" bindtap="onClickRight" />
   </view>
   <view class="center">
-      <view class="li" wx:for="{{arr}}">
+      <view class="li {{item.toopenid==newopenid?'li_left':''}}" wx:for="{{arr}}" wx:if="{{item.content!=''}}">
         <view class="user_img">
-          <image src="../../images/my_headportrait_male.png"></image>
+          <image src="{{item.headimgurl}}"></image>
         </view>
         <view class="user_text">
-          <view class="user_name">康牙医生</view>
-          <view class="text">
-            欢迎欢迎！！
+          <view class="user_name">{{item.fromusername}}</view>
+          <view class="text" wx:if="{{!item.teshu}}">
+            {{item.content}}
             <view class="dian"></view>
           </view>
         </view>

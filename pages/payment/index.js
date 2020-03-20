@@ -30,8 +30,7 @@ Page({
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
-            patientfee: res.data.list.patientfee[0],
-            billinfo: res.data.list.billinfo
+            arr: res.data.list.advpayfeelist
           })
         }
       }

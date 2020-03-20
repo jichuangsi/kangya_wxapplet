@@ -15,6 +15,7 @@ Page({
     Worktoday: '',
     Tomorroworder: '',
     Historyarrears: '',
+    user:''
   },
   
   //事件处理函数
@@ -142,7 +143,48 @@ Page({
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
-
+            user:res.data.list[0]
+          })
+        }
+      }
+    })
+  },
+  gettotal() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/homepagelefttotal',
+      method: 'post',
+      data: {
+        doctorid: '',
+        indexlsit: '1,2,3,4,5,6,7,8'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(111)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+          })
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/patient/homepagetotal',
+      method: 'post',
+      data: {
+        doctorid: '',
+        indexlsit: '1,2,3,4,5,6'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(111)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
           })
         }
       }
@@ -155,6 +197,7 @@ Page({
     let self =this
     self.getdata()
     self.getPerinfo()
+    self.gettotal()
     wx.request({
       url: getApp().data.API+'/index.json',
       headers: {

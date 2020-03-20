@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: '营销'
+    title: '营销',
+    clinicid:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -17,8 +18,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];  //上一个页面
     this.setData({
-      title:options.title
+      title:options.title,
+      clinicid: prevPage.data.Hospital_arr[0].clinicid
     })
     wx.setNavigationBarTitle({
       title: options.title

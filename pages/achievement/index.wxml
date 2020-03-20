@@ -32,6 +32,22 @@
       <view>当前预交款</view>
       <view>{{payment}}</view>
     </view>
+    <view class="center_li" wx:if="{{nav_num==1}}">
+      <view>月初欠款</view>
+      <view>{{first}}</view>
+    </view>
+    <view class="center_li" wx:if="{{nav_num==1}}">
+      <view>月末欠款</view>
+      <view>{{last}}</view>
+    </view>
+    <view class="center_li" wx:if="{{nav_num==2}}">
+      <view>期初欠款</view>
+      <view>{{first}}</view>
+    </view>
+    <view class="center_li" wx:if="{{nav_num==2}}">
+      <view>期末欠款</view>
+      <view>{{last}}</view>
+    </view>
     <view class="xian"></view>
     <navigator url="/pages/achievementNext/index?title=就诊患者" hover-class="navigator-hover">
       <view class="center_li">

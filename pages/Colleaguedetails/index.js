@@ -15,7 +15,7 @@ Page({
     position:'',
     name:'',
     nurse:false,
-    id:0
+    user:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -31,46 +31,46 @@ Page({
       url: '../chat/index?title=百慕大',
     })
   },
-  getdata() {
-    let self = this
-    wx.request({
-      url: getApp().data.API+'/Colleaguedetails.json',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data:{
-        id:self.data.id
-      },
-      success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
-          self.setData({
-            phone: res.data.phone,
-            sex: res.data.sex==0?'男':'女',
-            age: res.data.age,
-            bz: res.data.bz,
-            nurse: res.data.nurse,
-            img:res.data.img,
-            name:res.data.name,
-            position:res.data.position,
-            checked:res.data.set
-          })
-        }
-      },
-    })
-  },
+  // getdata() {
+  //   let self = this
+  //   wx.request({
+  //     url: getApp().data.API+'/Colleaguedetails.json',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     data:{
+  //       id:self.data.id
+  //     },
+  //     success: function (res) {
+  //       console.log(res.data)
+  //       if (res.data.result == 200) {
+  //         self.setData({
+  //           phone: res.data.phone,
+  //           sex: res.data.sex==0?'男':'女',
+  //           age: res.data.age,
+  //           bz: res.data.bz,
+  //           nurse: res.data.nurse,
+  //           img:res.data.img,
+  //           name:res.data.name,
+  //           position:res.data.position,
+  //           checked:res.data.set
+  //         })
+  //       }
+  //     },
+  //   })
+  // },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
-      id:options.id
+      user: JSON.parse(options.item)
     })
     wx.setNavigationBarTitle({
       title: '同事资料'
     })
-    this.getdata()
+    // this.getdata()
   },
 
   /**

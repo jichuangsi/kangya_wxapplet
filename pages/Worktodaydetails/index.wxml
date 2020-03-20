@@ -8,17 +8,17 @@
     <view class="center">
         <view class="li_box">
           <view class="li" wx:for="{{arr}}">
-            <image src="{{item.img}}" wx:if="{{item.img != ''}}"></image>
-            <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.img == ''&&item.sex ==0}}"></image>
-            <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.img == ''&&item.sex ==1}}"></image>
+            <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex !='男'&&item.sex !='女'}}"></image>
+            <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex =='男'}}"></image>
+            <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex =='女'}}"></image>
             <view class="right_li">
               <view class="right_li_top">
                 <view>{{item.name}}</view>
-                <view class="state">{{item.postion}}</view>
+                <view class="state">{{item.items}}</view>
               </view>
               <view class="right_li_bottom">
-                <view>{{item.postion}}</view>
-                <view class="time">{{item.time}}</view>
+                <view>{{item.impressioninfo}}</view>
+                <view class="time">{{item.schtime}}</view>
               </view>
             </view>
           </view>

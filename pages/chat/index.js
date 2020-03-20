@@ -6,8 +6,10 @@ Page({
    */
   data: {
     title: '空白',
-    arr:[1,1,1],
-    text:''
+    arr:[],
+    text:'',
+    openid:'',
+    newopenid:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -24,16 +26,50 @@ Page({
       text: e.detail.value
     })
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/getpatientmsg',
+      method: 'post',
+      data: {
+        openid: self.data.openid,
+        openidtype: 1,
+        isshowselectmsg: 1
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          for (let i = 0; i < res.data.list.data.records.length;i++){
+            if (res.data.list.data.records[i].content.indexOf('picurl') != '-1' || res.data.list.data.records[i].content.indexOf('customername') != '-1' || res.data.list.data.records[i].content.indexOf('sex') != '-1') {
+              res.data.list.data.records[i].content = ''
+            }
+          }
+          self.setData({
+            newopenid: res.data.list.data.openid,
+            arr: res.data.list.data.records
+          })
+          console.log(self.data.arr)
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];  //上一个页面
     this.setData({
-      title:options.title
+      title:options.title,
+      openid: options.openid
     })
     wx.setNavigationBarTitle({
       title: options.title
     })
+    this.getdata()
   },
 
   /**

@@ -13,7 +13,9 @@ Page({
     nav2_arr: ['全部', '李青青', '李医生', '莫医生', '伍医生'],
     arr: [],
     pageIndex: '',
-    pageCount: ''
+    pageCount: '',
+    clinicid:'',
+    name:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -45,26 +47,50 @@ Page({
   },
   getdata() {
     let self = this
+    // wx.request({
+    //   url: getApp().data.APIS + '/patient/SelBillinfo',
+    //   method: 'post',
+    //   data: {
+    //     clinicid: self.data.clinicid,
+    //     pageno: self.data.pageIndex,
+    //     pagesize:20
+    //   },
+    //   success: function (res) {
+    //     console.log(res)
+    //     if (res.data.info == 'ok') {
+    //       self.setData({
+    //         Hospital_arr: res.data.list
+    //       })
+    //     }
+    //   }
+    // })
+
     wx.request({
-      url: getApp().data.API+'/Arrears.json',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      url: getApp().data.APIS + '/patient/SelBillinfo',
+      method: 'post',
       data: {
-        title: self.data.title
+        pageno:self.data.pageIndex,
+        pagesize:20,
+        clinicid: self.data.clinicid
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
-        console.log(res.data)
-        let arr = self.data.arr
-        arr.push(...res.data.arr)
-        let index = self.data.pageIndex + 1
-        if (res.data.result == 200) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = res.data.list.billinfo
+          let arr1 = []
+          for(let i = 0;i<arr.length;i++){
+            if (arr[i].arrearagemoney!='0.00'){
+              arr1.push(arr[i])
+            }
+          }
           self.setData({
-            arr: res.data.arr,
-            pageIndex: index
+            arr: arr1
           })
         }
-      },
+      }
     })
   },
 
@@ -74,6 +100,12 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title:'历史欠款'
+    })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//当前页
+    this.setData({
+      clinicid: Page.data.Hospital_arr[0].clinicid,
+      name: Page.data.user.name
     })
     this.getdata()
   },

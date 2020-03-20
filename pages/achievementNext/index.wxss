@@ -72,10 +72,10 @@ ec-canvas {
   width: 76rpx;
   height: 76rpx;
   margin-left: 20rpx;
-  margin-right: 20rpx;
 }
 .li .name {
   flex: 1;
+  margin-left: 20rpx;
 }
 .li .money {
   color: #16c7ae;

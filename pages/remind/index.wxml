@@ -1,0 +1,15 @@
+<!--pages/remind/index.wxml-->
+<view class="remind">
+  <view class="libox">
+    <view class="time"><view>2月10号</view></view>
+    <view class="li">
+      <!-- <image src=""></image> -->
+      <view class="title">是顶顶顶</view>
+      <view class="text">sdads</view>
+      <view class="go">
+        <view class="green">查看详情</view>
+        <van-icon name="arrow" size="36rpx" />
+      </view>
+    </view>
+  </view>
+</view>

@@ -64,9 +64,9 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/PriceList/index",
-					"pathName": "pages/PriceList/index",
-					"query": "title=医患沟通视频&&state=0",
+					"name": "pages/chat/index",
+					"pathName": "pages/chat/index",
+					"query": "title=连锁分析&&state=0",
 					"scene": null
 				}
 			]

@@ -25,26 +25,48 @@ Page({
   },
   getdata() {
     let self = this
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let bengindate = year + '/' + month + '/' + day
+    let enddate = year + '/' + month + '/' + day
     wx.request({
-      url: getApp().data.API+'/Worktodaydetails.json',
-      headers: {
-        'Content-Type': 'application/json'
+      url: getApp().data.APIS + '/patient/visittoday',
+      method: 'post',
+      data: {
+        bengindate: bengindate,
+        enddate: enddate,
+        pageno: self.data.pageIndex,
+        pagesize: 100
       },
-      data:{
-        title:self.data.title
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
-        console.log(res.data)
-        let arr = self.data.arr
-        arr.push(...res.data.arr)
-        let index = self.data.pageIndex + 1 
-        if (res.data.result == 200) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          for (let i = 0; i < res.data.list.length; i++) {
+            if (res.data.list[i].status == '0' && self.data.title =='预约未到') {
+              arr.push(res.data.list[i])
+            } else if (res.data.list[i].status == '2' && self.data.title =='待分诊') {
+              arr.push(res.data.list[i])
+            } else if (res.data.list[i].status == '3' && self.data.title == '待接诊/治疗中') {
+              arr.push(res.data.list[i])
+            } else if (res.data.list[i].status == '4' && self.data.title == '待缴费') {
+              arr.push(res.data.list[i])
+} else if (res.data.list[i].status == '5' && self.data.title== '已完成') {
+              arr.push(res.data.list[i])
+} else if (res.data.list[i].status == '460' && self.data.title== '已缴费') {
+              arr.push(res.data.list[i])
+            }
+          }
           self.setData({
-            arr: res.data.arr,
-            pageIndex:index
+            arr: arr
           })
         }
-      },
+      }
     })
   },
 

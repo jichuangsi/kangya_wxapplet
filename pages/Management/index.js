@@ -8,16 +8,9 @@ Page({
   data: {
     title: '处置',
     arr: [
-      {
-        username: '空白',
-        time: '2020-02-20 17:38',
-        name: '试试',
-        text: '测试'
-        // arr1:[
-        //   { title: '沟通记录', text: '测试' }
-        // ]
-      },
-    ]
+    ],
+    customerid: '',
+    clinicid: ''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -44,6 +37,28 @@ Page({
       url: '../Price/index',
     })
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/getpatienthandlelist',
+      method: 'post',
+      data: {
+        CustomerID: self.data.customerid,
+        clinicid: self.data.customerid
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            arr : res.data.list.studylist
+          })
+        }
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -52,6 +67,13 @@ Page({
     wx.setNavigationBarTitle({
       title:'处置'
     })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    this.setData({
+      customerid: Page.data.customerid,
+      clinicid: Page.data.clinicid
+    })
+    this.getdata()
   },
 
   /**

@@ -11,6 +11,7 @@ Page({
     LookTeethimg:"",
     PriceList_arr: [],
     PriceListclick_arr:[],
+    all_PriceListclick_arr:[],
     videolist_arr: [],
     videolistclick_arr: [],
   },
@@ -64,26 +65,26 @@ Page({
   },
   onChange(event) {
     let self = this
+    console.log(event.detail)
     self.setData({
       activeKey: event.detail.name
     })
-    wx.request({
-      url: getApp().data.API+'/PriceListClick.json',
-      data:{
-        title: event.detail.name
-      },
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
-          self.setData({
-            PriceListclick_arr: res.data.PriceListclick_arr
-          })
+    if (self.data.PriceList_arr[event.detail] == '全部'){
+      this.setData({
+        PriceListclick_arr: self.data.all_PriceListclick_arr
+      })
+    }else{
+      let arr = self.data.all_PriceListclick_arr
+      let arr1 = []
+      for (let i = 0; i < arr.length;i++){
+        if (arr[i].feetype == self.data.PriceList_arr[event.detail]){
+          arr1.push(arr[i])
         }
-      },
-    })
+      }
+      this.setData({
+        PriceListclick_arr: arr1
+      })
+    }
   },
   getvod() {
     let self = this
@@ -94,7 +95,6 @@ Page({
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
-
           })
         }
       }
@@ -108,33 +108,23 @@ Page({
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {
+          let arr = self.data.PriceList_arr
+          arr.push('全部')
+          for (let i = 0; i < res.data.list.length;i++){
+            if (arr.indexOf(res.data.list[i].feetype)==-1){
+              arr.push(res.data.list[i].feetype)
+            }
+          }
+          console.log(arr)
           self.setData({
-
+            PriceList_arr: arr,
+            PriceListclick_arr: res.data.list,
+            all_PriceListclick_arr:res.data.list
           })
         }
       }
     })
   },
-  // getdata() {
-  //   let self =this
-  //   wx.request({
-  //     url: getApp().data.API+'/PriceList.json',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     success: function (res) {
-  //       console.log(res.data)
-  //       if (res.data.result == 200) {
-  //         self.setData({
-  //           PriceList_arr: res.data.PriceList_arr,
-  //           videolist_arr: res.data.video_arr,
-  //           LookTeethimg: res.data.LookTeethimg,
-  //           activeKey: res.data.PriceList_arr[0]
-  //         })
-  //       }
-  //     },
-  //   })
-  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -145,8 +135,11 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
-    this.gethandle()
-    this.getvod()
+    if (options.title == '价目表') {
+      this.gethandle()
+    } else if (options.title == '医患沟通视频') {
+      this.getvod()
+    }
   },
 
   /**

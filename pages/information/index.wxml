@@ -22,21 +22,21 @@
     <swiper current="{{indexnum}}" class="tab" style="height: 90vh;" bindanimationfinish="sss">
       <swiper-item>
         <view class="center">
-          <view class="li">
+          <view class="li" bindtap="remindgo" data-text="系统消息">
             <image src="../../images/news_icon_system.png"></image>
             <view class="right">
               <view class="title">
                 <view class="name">系统消息</view>
                 <view class="time">中午 12:13</view>
               </view>
-              <view class="text">dsadsads7dsadsads787ddsadsad时代sadsad87dsadsad时代</view>
+              <view class="text"></view>
             </view>
           </view>
-          <view class="li">
+          <view class="li" bindtap="remindgo" data-text="康牙牙医提醒">
             <image src="../../images/news_icon_housekeeper.png"></image>
             <view class="right">
               <view class="title">
-                <view class="name">管家提醒</view>
+                <view class="name">康牙牙医提醒</view>
                 <view class="time">中午 12:13</view>
               </view>
             </view>
@@ -45,18 +45,18 @@
             <image src="../../images/news_icon_groupchat.png"></image>
             <view class="right">
               <view class="title">
-                <view class="name">牙医管家演示群</view>
+                <view class="name">康牙牙医演示群</view>
                 <view class="time">中午 1:13</view>
               </view>
             </view>
           </view>
           
-          <view class="li" wx:for="{{messages_arr}}">
-            <image src="../../images/11.png"></image>
+          <view class="li" wx:for="{{messages_arr}}" data-item="{{item}}" bindtap="chatgo">
+            <image src="{{item.headimgurl}}"></image>
             <view class="right">
               <view class="title">
-                <view class="name">A</view>
-                <view class="time">2019-1-2</view>
+                <view class="name">{{item.customername}}</view>
+                <view class="time">{{item.submittime}}</view>
               </view>
             </view>
           </view>
@@ -64,18 +64,18 @@
       </swiper-item>
       <swiper-item>
         <view class="center friend_box">
-        <navigator url="/pages/friendsearch/index" hover-class="navigator-hover">
+        <navigator url="/pages/friendsearch/index" hover-class="navigator-hover" bindtap="chatgo">
           <view class="ipt">
             <van-icon name="search" size="36rpx" />
             搜索
           </view>
         </navigator>
-          <view class="li" wx:for="{{friend_arr}}">
-            <image src="../../images/11.png"></image>
+          <view class="li" wx:for="{{friend_arr}}" data-item="{{item}}" bindtap="detailsgo">
+            <image src="{{item.headimgurl}}"></image>
             <view class="right">
               <view class="title">
-                <view class="name">A</view>
-                <view class="time">2019-1-2</view>
+                <view class="name">{{item.customername}}</view>
+                <view class="time">{{item.submittime}}</view>
               </view>
             </view>
           </view>

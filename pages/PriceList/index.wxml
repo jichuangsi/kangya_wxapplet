@@ -9,12 +9,14 @@
     <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
       <van-sidebar-item title="{{item}}" name="{{item}}" wx:for="{{PriceList_arr}}" />
     </van-sidebar>
-    <view class="list" wx:for="{{PriceListclick_arr}}">
-      <view class="left">
-        <view class="title">{{item.title}}</view>
-        <view class="text">{{item.text}}</view>
+    <view class="right">
+      <view class="list" wx:for="{{PriceListclick_arr}}">
+        <view class="left">
+          <view class="title">{{item.handlename}}</view>
+          <view class="text">{{item.feetype}}</view>
+        </view>
+        <view class="money">{{item.handleprice}}</view>
       </view>
-      <view class="money">{{item.price}}</view>
     </view>
   </view>
   <view class="Worryfree" wx:if="{{title=='看牙无忧'}}">

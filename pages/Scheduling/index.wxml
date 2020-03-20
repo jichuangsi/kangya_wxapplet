@@ -15,7 +15,6 @@
           <view>月份</view>
           <view>3</view>
         </view>
-        <view class="name" wx:for="{{name_arr}}">{{item}}</view>
       </view>
       <view class="right">
         <view class="right_li">
@@ -24,9 +23,10 @@
             <view>{{item.date}}</view>
           </view>
         </view>
-        <view class="right_li" wx:for="{{data_arr}}" wx:for-index="first_index">
-          <view class="color" wx:for="{{item.child}}" data-first_index="{{first_index}}" data-index="{{index}}" bindtap="colorclick">周一
-            <view class="a{{item.state}}"></view>
+        <view class="right_li" wx:for="{{data_arr}}" wx:for-index="first_index" wx:for-item="first_item">
+        <view class="name">{{first_item.name}}</view>
+          <view class="color" wx:for="{{first_item.scheduling}}" data-first_index="{{first_index}}" data-index="{{index}}" bindtap="colorclick">周一
+            <view style="color:#333;background-color:{{item.workshiftcolor}}"></view>
           </view>
         </view>
       </view>
@@ -35,7 +35,7 @@
   <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
     <view class="zw">
       <view wx:for="{{zw_arr}}" data-text="{{item}}" bindtap="zwclick" wx:if="{{state == 0}}">{{item}}</view>
-      <view class="color_li" wx:for="{{color_arr}}" data-state="{{item.state}}" bindtap="pbclick" wx:if="{{state == 1}}"><view class="a{{item.state}}"></view>{{item.title}}</view>
+      <view class="color_li" wx:for="{{color_arr}}" data-item="{{item}}" bindtap="pbclick" wx:if="{{state == 1}}"><view style="background-color:{{item.workshiftcolor}}"></view>{{item.workshiftname}}</view>
       <view class="color_li" data-id="0" bindtap="pbclick">撤销</view>
     </view>
   </van-popup>

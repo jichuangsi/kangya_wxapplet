@@ -1,59 +1,54 @@
-// pages/Videoplay/index.js
+// pages/remind/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    title:'sadds',
-    state:0,
-    lovestate: false,
-    arr:[1,1,1,1,1,1,1],
-    text:'',
-    show: false,
-    client: ''
+    title:'',
+    arr:[],
+    remindid:''
   },
-
-
-  onClickLeft() {
-    wx.navigateBack({
-      delta: 1
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/getpatientmsg',
+      method: 'post',
+      data: {
+        openid: self.data.remindid,
+        openidtype: 1,
+        isshowselectmsg: 1
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            
+          })
+        }
+      }
     })
   },
-  ipttext(e) {
-    this.setData({
-      text: e.detail.value
-    })
-  },
-  send() {
-    this.setData({
-      text: ''
-    })
-  },
-  showPopup() {
-    this.setData({ show: true });
-  },
 
-  onClose() {
-    this.setData({ show: false, text: '' });
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      title: options.title ? options.title:'',
-      state: options.state ? options.state:0
-    })
     wx.setNavigationBarTitle({
       title: options.title
     })
-  },
-  loveclick(){
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];  //上一个页面
     this.setData({
-      lovestate:!this.data.lovestate
+      title: options.title,
+      remindid: prevPage.data.remind[0].openid
     })
+    this.getdata()
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

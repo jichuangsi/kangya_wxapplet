@@ -36,9 +36,17 @@ van-sidebar {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 10rpx;
   color: #fff;
+  z-index: 1;
 }
 .center {
   display: flex;
+  height: 100vh;
+  width: 100%;
+}
+.center .right {
+  flex: 1;
+  height: 100vh;
+  overflow: auto;
 }
 .center .list {
   width: 100%;

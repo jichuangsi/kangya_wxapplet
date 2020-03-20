@@ -9,6 +9,7 @@ Page({
     scrollTop: 'A',
     state:0,
     project_list: [],
+    pageIndex:1
   },
   onClickLeft() {
     wx.navigateBack({
@@ -37,7 +38,7 @@ Page({
     let prevPage = pages[pages.length - 2]; 
     if(this.data.state == 0){
       wx.navigateTo({
-        url: '../Colleaguedetails/index?id=' + e.currentTarget.dataset.id,
+        url: '../Colleaguedetails/index?item=' + JSON.stringify(e.currentTarget.dataset.item),
       })
     }else{
       if (this.data.state == 1){
@@ -57,18 +58,23 @@ Page({
   getdata() {
     let self = this
     wx.request({
-      url: getApp().data.API+'/Colleague.json',
-      headers: {
-        'Content-Type': 'application/json'
+      url: getApp().data.APIS + '/sysset/employeetreelist',
+      method: 'post',
+      data: {
+        pageno:self.data.pageIndex,
+        pagesize:20
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
+        console.log(res)
+        if (res.data.info == 'ok') {
           self.setData({
-            project_list: res.data.project_list
+            project_list:res.data.list
           })
         }
-      },
+      }
     })
   },
   /**

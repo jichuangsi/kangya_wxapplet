@@ -12,12 +12,11 @@
     <view class="center">
       <view class="li" wx:for="{{arr}}">
         <view class="left">
-          <view>{{item.Patient_name}}</view>
-          <view>{{item.doctor_name}} {{item.time}}</view>
+          <view>{{name}}</view>
+          <view>{{item.billdoct}} {{item.billdate}}</view>
         </view>
         <view class="right">
-          <view>{{item.money}}</view>
-          <view>{{item.text}}</view>
+          <view>欠￥{{item.arrearagemoney}}</view>
         </view>
       </view>
     </view>

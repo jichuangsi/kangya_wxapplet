@@ -95,7 +95,11 @@
 .center .li {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 20rpx;
+}
+.center .li_left{
+  
 }
 .center .li .user_img {
   width: 60rpx;
@@ -121,6 +125,7 @@
   position: relative;
   margin-top: 20rpx;
   border-radius: 5rpx;
+  max-width: 600rpx;
 }
 .center .li .user_text .text image {
   max-width: 50%;

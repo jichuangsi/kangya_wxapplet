@@ -16,10 +16,10 @@
         今日初诊成交总额（元）
         </view>
         <view class="boxcenter">
-        0.00
+        {{Daily.todayincome}}
         </view>
         <view class="boxbottom">
-        昨日 0.00 丨 成交率 0.00%
+        昨日 {{Daily.yesterdayincome}} 丨 成交率 0.00%
         </view>
       </view>
       <view class="box">
@@ -27,10 +27,10 @@
         今日诊疗收入（元）
         </view>
         <view class="boxcenter">
-        0.00
+        {{Daily.todayincome}}
         </view>
         <view class="boxbottom">
-        昨日 0.00
+        昨日 {{Daily.yesterdayincome}}
         </view>
       </view>
       <view class="box">
@@ -38,10 +38,10 @@
         今日现金流入（元）
         </view>
         <view class="boxcenter">
-        0.00
+        {{Daily.todayincome}}
         </view>
         <view class="boxbottom">
-        昨日 0.00
+        昨日 {{Daily.yesterdayincome}}
         </view>
       </view>
       <view class="box">
@@ -60,10 +60,10 @@
         今日新增预交款总额（元）
         </view>
         <view class="boxcenter">
-        0.00
+        {{Daily.advancepay}}
         </view>
         <view class="boxbottom">
-        昨日 0.00
+        昨日 {{Daily.yesterdayadvancepay}}
         </view>
       </view>
       <view class="box">
@@ -126,10 +126,10 @@
         今日新开会员卡数（张）
         </view>
         <view class="boxcenter">
-        0
+        {{Daily.vipcardnum}}
         </view>
         <view class="boxbottom">
-        昨日 0
+        昨日 {{Daily.yesterdayvipcardnum}}
         </view>
       </view>
       <view class="box">
@@ -137,26 +137,40 @@
         今日会员充值总额（元）
         </view>
         <view class="boxcenter">
-        0.00
+        {{Daily.vipcardfee}}
         </view>
         <view class="boxbottom">
-        昨日 0.00
+        昨日 {{Daily.yesterdayvipcardfee}}
         </view>
       </view>
       <view class="h3">
         <image src="../../images/my_icon_Praise.png"></image>
         今日TOP指数
       </view>
-      <view class="li" wx:for="{{Ranking_arr}}">
-        <view>{{item.title}}</view>
-        <view class="top_li" wx:for="{{item.child}}">
+      <view class="li">
+        <view>今日销售项目TOP3</view>
+        <view class="top_li" wx:for="{{Daily_rank1}}">
           <view>{{index+1}}</view>
-          <view>{{item.name}}</view>
+          <view>{{item.handlename}}</view>
+        </view>
+      </view>
+      <view class="li">
+        <view>今日医生业绩TOP3</view>
+        <view class="top_li" wx:for="{{Daily_rank2}}">
+          <view>{{index+1}}</view>
+          <view>{{item.bhdoct}}</view>
+        </view>
+      </view>
+      <view class="li">
+        <view>今日咨询师业绩TOP3</view>
+        <view class="top_li" wx:for="{{Daily_rank3}}">
+          <view>{{index+1}}</view>
+          <view>{{item.counselor}}</view>
         </view>
       </view>
     </view>
-    <view class="a2" wx:if="{{title!='每日看板'}}">
-      <view class="center_top" wx:if="{{title=='就诊分析'}}">
+    <view class="a2" wx:if="{{title=='就诊分析'}}">
+      <view class="center_top">
         <view class="left">
           <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
           <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
@@ -166,34 +180,576 @@
       <view class="jznav">
         <view class="nav_li">
           <view>就诊总人数</view>
-          <view>{{consultationnum}}</view>
+          <view>{{attendance.totalvisit}}</view>
         </view>
         <view class="nav_li">
           <view>流失总人数</view>
-          <view>{{dealnum}}</view>
+          <view>{{attendance.totallost}}</view>
         </view>
         <view class="nav_li">
           <view>成交总金额</view>
-          <view>{{lossnum}}</view>
+          <view>{{attendance.totalfee}}</view>
         </view>
       </view>
-      <view class="libox" wx:for="{{Chart_arr}}" wx:for-index="first_index">
+      <view class="libox">
         <view class="libox_title">
-          <view wx:for="{{item.title_arr}}">{{item}}</view>
+          <view>初诊人次 {{attendance_total1.visit}}</view>
+          <view>流失人次 {{attendance_total1.lost}}</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraph{{first_index}}"></canvas>
+          <canvas class="canvas" canvas-id="pieGraphattendance1"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>初诊成交总额 {{attendance_total1.free}}</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphattendance2"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>复诊人次{{attendance_total2.visit}}</view>
+          <view>复诊成交总额 {{attendance_total2.free}}</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphattendance3"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>新诊人次 {{attendance_total3.visit}}</view>
+          <view>流失人次 {{attendance_total3.lost}}</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphattendance4"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>新诊成交总额 {{attendance_total3.free}}</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphattendance5"></canvas>
         </view>
       </view>
       <view class="h3">
         <image src="../../images/my_icon_Praise.png"></image>
         今日TOP指数
       </view>
-      <view class="li" wx:for="{{Ranking_arr}}">
-        <view>{{item.title}}</view>
-        <view class="top_li" wx:for="{{item.child}}">
+      <view class="li">
+        <view>项目销售数量TOP10</view>
+        <view class="top_li" wx:for="{{attendance_rank1}}">
           <view>{{index+1}}</view>
-          <view>{{item.name}}</view>
+          <view>{{item.handlename}}</view>
+        </view>
+      </view>
+      <view class="li">
+        <view>项目销售金额TOP10</view>
+        <view class="top_li" wx:for="{{attendance_rank2}}">
+          <view>{{index+1}}</view>
+          <view>{{item.handlename}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="a3" wx:if="{{title=='预约分析'}}">
+      <view class="center_top">
+        <view class="left">
+          <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
+          <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
+        </view>
+        <view class="right" bindtap="oneday">{{time}}</view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>诊所预约人次 {{order_total1.visit}}</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphorder1"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>预约情况占比</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphorder2"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>医生预约情况统计(人次)</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphorder3"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>预约项目统计</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphorder4"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>预约初复诊情况</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphorder5"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>预约到诊和自然到诊情况</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphorder6"></canvas>
+        </view>
+      </view>
+    </view>
+    <view class="a4" wx:if="{{title=='电网分析'}}">
+      <view class="center_top">
+        <view class="left">
+          <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
+          <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
+        </view>
+        <view class="right" bindtap="oneday">{{time}}</view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>总咨询人次</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphpower1"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>咨询初诊情况</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphpower2"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>受理工具分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphpower3"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>咨询患者来源分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphpower4"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>咨询项目分溪</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphpower5"></canvas>
+        </view>
+      </view>
+      <view class="h3">
+        <image src="../../images/my_icon_Praise.png"></image>
+        受理人情况
+      </view>
+    </view>
+    <view class="a5" wx:if="{{title=='市场分析'}}">
+      <view class="center_top">
+        <view class="left">
+          <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
+          <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
+        </view>
+        <view class="right" bindtap="oneday">{{time}}</view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>区域分布</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphmarket1"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>年龄分布</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphmarket2"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>性别分布</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphmarket3"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>患者星级</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphmarket4"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>患者标签</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphmarket5"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>患者就诊项目</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphmarket6"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>来源分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphmarket7"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>患者收费分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphmarket8"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>来店时间段分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphmarket9"></canvas>
+        </view>
+      </view>
+    </view>
+    <view class="a6" wx:if="{{title=='咨询分析'}}">
+      <view class="center_top">
+        <view class="left">
+          <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
+          <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
+        </view>
+        <view class="right" bindtap="oneday">{{time}}</view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>总咨询人数0人</view>
+          <view>成交人数0人</view>
+          <view>未成交人数0人</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphconsult1"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>成交金额统计0.00</view>
+          <view>客单成交额0.00</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphconsult2"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>咨询成交项目分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphconsult3"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>咨询师成交分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphconsult4"></canvas>
+        </view>
+      </view>
+      <view class="h3">
+        <image src="../../images/my_icon_Praise.png"></image>
+        咨询师TOP指数
+      </view>
+      <view class="li">
+        <view>接诊人数TOP5</view>
+        <view class="top_li" wx:for="{{consult_rank1}}">
+          <view>{{index+1}}</view>
+          <view>{{item.handlename}}</view>
+        </view>
+      </view>
+      <view class="li">
+        <view>业绩TOP5</view>
+        <view class="top_li" wx:for="{{consult_rank2}}">
+          <view>{{index+1}}</view>
+          <view>{{item.handlename}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="a7" wx:if="{{title=='诊疗分析'}}">
+      <view class="center_top">
+        <view class="left">
+          <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
+          <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
+        </view>
+        <view class="right" bindtap="oneday">{{time}}</view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>诊疗营业额统计0.00</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphconsulting1"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>接诊人次统计 0</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphconsulting2"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>医生接诊人数统计</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphconsulting3"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>医生业绩分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphconsulting4"></canvas>
+        </view>
+      </view>
+      <view class="h3">
+        <image src="../../images/my_icon_Praise.png"></image>
+        医生TOP指数
+      </view>
+      <view class="li">
+        <view>接诊人数TOP5</view>
+        <view class="top_li" wx:for="{{consulting_rank1}}">
+          <view>{{index+1}}</view>
+          <view>{{item.handlename}}</view>
+        </view>
+      </view>
+      <view class="li">
+        <view>业绩TOP5</view>
+        <view class="top_li" wx:for="{{consulting_rank2}}">
+          <view>{{index+1}}</view>
+          <view>{{item.handlename}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="a8" wx:if="{{title=='营业分析'}}">
+      <view class="center_top">
+        <view class="left">
+          <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
+          <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
+        </view>
+        <view class="right" bindtap="oneday">{{time}}</view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>收入分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphbusiness1"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>现金流占比情况</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphbusiness2"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>会员卡分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphbusiness3"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>预交款分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphbusiness4"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>欠款分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphbusiness5"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>折扣免单分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphbusiness6"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>零售分析</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphbusiness7"></canvas>
+        </view>
+      </view>
+    </view>
+    <view class="a9" wx:if="{{title=='支出分析'}}">
+      <view class="center_top">
+        <view class="left">
+          <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
+          <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
+        </view>
+        <view class="right" bindtap="oneday">{{time}}</view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>支出金额统计</view>
+          <view>支出总余额{{expenditure_total}}</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphexpenditure1"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>支出分类情况占比</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphexpenditure2"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>付款方式情况占比</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphexpenditure3"></canvas>
+        </view>
+      </view>
+    </view>
+    <view class="a10" wx:if="{{title=='回访分析'}}">
+      <view class="center_top">
+        <view class="left">
+          <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
+          <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
+        </view>
+        <view class="right" bindtap="oneday">{{time}}</view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>回访总人数0</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGrapvisit1"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>回访类型占比</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGrapvisit2"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>患者回访情况</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGrapvisit3"></canvas>
+        </view>
+      </view>
+      <view class="li">
+        <view>回访人数情况</view>
+        <view class="top_li" wx:for="{{visit_rank1}}">
+          <view>{{index+1}}</view>
+          <view>{{item.handlename}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="a10" wx:if="{{title=='连锁分析'}}">
+      <view class="center_top">
+        <view class="left">
+          <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
+          <view class="{{check_num == 1?'check':''}}" data-index="1" bindtap="checkclick">月</view>
+        </view>
+        <view class="right" bindtap="oneday">{{time}}</view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>收入总额</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphchain1"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>各诊所收入占比</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphchain2"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>初诊人次占比</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphchain3"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>复诊人次占比</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGraphchain4"></canvas>
+        </view>
+      </view>
+      <view class="libox">
+        <view class="libox_title">
+          <view>新诊人次占比</view>
+        </view>
+        <view class="canvas_box">
+          <canvas class="canvas" canvas-id="pieGrapchain5"></canvas>
         </view>
       </view>
     </view>

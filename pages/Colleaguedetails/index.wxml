@@ -6,22 +6,21 @@
   </view> -->
   <view class="center">
     <view class="center_top">
-      <image src="{{img}}" wx:if="{{img !=''}}"></image>
-      <image src="../../images/my_headportrait_male.png" wx:if="{{img ==''&&sex==0}}"></image>
-      <image src="../../images/my_headportrait_female.png" wx:if="{{img ==''&&sex==1}}"></image>
-      <view class="name">{{name}}</view>
-      <view>{{position}}</view>
+      <image src="../../images/my_headportrait_male.png" wx:if="{{user.sex=='男'}}"></image>
+      <image src="../../images/my_headportrait_female.png" wx:if="{{user.sex=='女'}}"></image>
+      <view class="name">{{user.name}}</view>
+      <view>{{user.duty}}</view>
     </view>
     <view class="li">
        <view>手机号码</view>
-       <view wx:if="{{phone == ''}}">未填写</view>
-       <view wx:if="{{phone != ''}}">{{phone}}</view>
+       <view wx:if="{{user.phone == ''}}">未填写</view>
+       <view wx:if="{{user.phone != ''}}">{{user.phone}}</view>
     </view>
     <view class="xian"></view>
     <view class="li">
        <view>性别</view>
-       <view wx:if="{{sex == ''}}">未填写</view>
-       <view wx:if="{{sex != ''}}">{{sex}}</view>
+       <view wx:if="{{user.sex == ''}}">未填写</view>
+       <view wx:if="{{user.sex != ''}}">{{user.sex}}</view>
     </view>
     <view class="li">
        <view>年龄</view>
@@ -34,7 +33,7 @@
        <view wx:if="{{bz != ''}}">{{bz}}</view>
     </view>
     <view class="xian"></view>
-    <view class="li" wx:if="{{nurse}}">
+    <view class="li" wx:if="{{user.duty == '护士'}}">
        <view>设置为我的护士</view>
        <view>
       <van-switch checked="{{ checked }}" active-color="#16c7ae"

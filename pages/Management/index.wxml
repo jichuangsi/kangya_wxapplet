@@ -9,38 +9,50 @@
     <van-icon name="plus" size="36rpx" />
   </view>
   <view class="center">
-    <view class="li">
-      <image class="img" src="../../images/clinic_colleagues_headportrait_male.png"></image>
-      <view class="name">试试</view>
-      <view class="state">治疗中</view>
-      <view class="time">2020-020-24 12:30</view>
-    </view>
-    <view class="li">
-      <view class="title">处方</view>
-      <view class="text">
-        <view>头孢拉定胶囊</view>
-        <view class="money">
-          <view>￥2.00</view> x1
-        </view>
+    <view class="libox" wx:for="{{arr}}">
+      <view class="li">
+        <image class="img" src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <view class="name">{{item.examdoct}}</view>
+        <view class="state">{{item.studystatusname}}</view>
+        <view class="time">{{item.examdate}}</view>
       </view>
-      <view class="bz">口服一日三次</view>
-    </view>
-    <view class="li">
-        <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
-        <view>语音备忘录</view>
-        <view></view>
-        <van-icon name="arrow" />
-        <view class="bz">暂无</view>
-    </view>
-    <view class="li" bindtap="Agreeimggo">
-        <view>知情同意书</view>
-        <view></view>
-        <van-icon name="arrow" />
-    </view>
-    <view class="li">
-      <view class="btn" bindtap="editgo"><van-icon name="records" size="36rpx" />编辑</view>
-      <!--  bindtap="Pricego" -->
-      <view class="btn"><van-icon name="completed" size="36rpx" />划价</view>
+      <view class="li" wx:for="{{item.handlelist}}">
+        <view class="title">{{item.lb+','+item.lt+','+item.rb+','+item.rt}}</view>
+        <view class="text">
+          <view>{{item.name}}</view>
+          <view class="money">
+            <view>￥{{item.fee}}</view> x{{item.billnumber}}
+          </view>
+        </view>
+        <view class="bz" style="text-algin:right">医生：{{item.bhdoct}} 护士：{{item.counselor}}</view>
+      </view>
+      <!-- <view class="li">
+        <view class="title">处方</view>
+        <view class="text">
+          <view>头孢拉定胶囊</view>
+          <view class="money">
+            <view>￥2.00</view> x1
+          </view>
+        </view>
+        <view class="bz">口服一日三次</view>
+      </view> -->
+      <view class="li">
+          <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+          <view>语音备忘录</view>
+          <view></view>
+          <van-icon name="arrow" />
+          <view class="bz">暂无</view>
+      </view>
+      <view class="li" bindtap="Agreeimggo">
+          <view>知情同意书</view>
+          <view></view>
+          <van-icon name="arrow" />
+      </view>
+      <view class="li">
+        <view class="btn" bindtap="editgo"><van-icon name="records" size="36rpx" />编辑</view>
+        <!--  bindtap="Pricego" -->
+        <view class="btn"><van-icon name="completed" size="36rpx" />划价</view>
+      </view>
     </view>
   </view>
 </view>

@@ -15,6 +15,8 @@ Page({
     state1: '处理状态',
     state2: '状态',
     state3: '医生',
+    bengindate: '',
+    enddate: '',
     showbottom:false,
     calendarConfig: {
       // 配置内置主题
@@ -46,6 +48,11 @@ Page({
   },
   afterTapDay(e) {
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
+
+    this.setData({
+      bengindate: e.detail.year + '/' + e.detail.month + '/' + e.detail.day,
+      enddate: e.detail.year + '/' + e.detail.month + '/' + e.detail.day
+    })
     this.onClose()
   },
   del(){
@@ -92,18 +99,23 @@ Page({
   getdata() {
     let self = this
     wx.request({
-      url: getApp().data.API+'/order.json',
-      headers: {
-        'Content-Type': 'application/json'
+      url: getApp().data.APIS + '/schedule/scscheduleday',
+      method: 'post',
+      data: {
+        bengindate: self.data.bengindate,
+        enddate: self.data.enddate
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
+        console.log(res)
+        if (res.data.info == 'ok') {
           self.setData({
-            order_arr: res.data.order_arr,
+            arr: res.data.list.studylist
           })
         }
-      },
+      }
     })
   },
   /**
@@ -114,6 +126,14 @@ Page({
     this.setData({ title:options.title})
     wx.setNavigationBarTitle({
       title: options.title
+    })
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    this.setData({
+      bengindate: year + '/' + month + '/' + day,
+      enddate: year + '/' + month + '/' + day
     })
     this.getdata()
   },
