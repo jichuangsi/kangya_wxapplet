@@ -1,0 +1,21 @@
+<!--pages/apply/index.wxml-->
+<view class="apply">
+  <view class="h3">康牙牙医-看牙无忧分期申请</view>
+  <view class="box">
+    <view class="ipt">
+     <view class="left">管家号</view>
+     <view style="margin-left:20rpx">366925</view>
+    </view>
+    <view class="ipt">
+     <view class="left">手机号</view>
+     <input placeholder="请输入诊所绑定手机号"></input>
+    </view>
+    <view class="ipt">
+     <view class="left">验证码</view>
+     <input placeholder="请输入验证码"></input>
+     <view class="green" bindtap="getcode" wx:if="{{timestate}}">获取验证码</view>
+     <view bindtap="getcode" wx:if="{{!timestate}}">{{time}}</view>
+    </view>
+  </view>
+  <view class="btn">立即报名</view>
+</view>

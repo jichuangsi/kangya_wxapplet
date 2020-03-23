@@ -18,6 +18,8 @@ Page({
     payment: '',
     first:'',
     last:'',
+    first_z: 0,
+    repeat_z: 0,
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
@@ -28,6 +30,7 @@ Page({
     clinicid:'',
     bengindate: '',
     enddate: '',
+    user:false
   },
   onClickLeft() {
     wx.navigateBack({
@@ -212,7 +215,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log(JSON.parse(options.user))
     this.pieShow()
 
     let a = new Date()
@@ -223,7 +226,8 @@ Page({
     let prevPage = pages[pages.length - 2];  //上一个页面
     this.setData({
       nav_num: options.state,
-      clinicid: prevPage.data.Hospital_arr[0].clinicid,
+      user: options.user?JSON.parse(options.user):'',
+      clinicid: options.user ? JSON.parse(options.user).clinicuniqueid: prevPage.data.Hospital_arr[0].clinicid,
       time: year + '年' + month + '月' + day + '日',
       bengindate: year + '-' + month + '-' + day,
       enddate: year + '-' + month + '-' + day

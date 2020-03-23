@@ -1,0 +1,17 @@
+<!--pages/Sound/index.wxml-->
+<view class="Sound">
+  <view class="quan" bindtap="click">
+    <view class="btn">
+      <van-icon name="play" size="88rpx" wx:if="{{state == 0}}" />
+      <van-icon name="pause" size="88rpx" wx:if="{{state == 1}}" />
+    </view>
+  </view>
+  <view class="text">{{text}}</view>
+  <view class="time">剩余<van-count-down class="control-count-down" time="{{ time }}" /></view>
+  <!-- <audio  src="{{src}}" id="myAudio" ></audio>
+  <view class="playbtn {{path!=''?'blue':''}}" bindtap="play">
+      <van-icon name="play" size="88rpx" wx:if="{{playstate == 0}}" />
+      <van-icon name="pause" size="88rpx" wx:if="{{playstate == 1}}" />
+  </view> -->
+  <view class="btn" bindtap="btn">完成</view>
+</view>

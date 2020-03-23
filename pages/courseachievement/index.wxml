@@ -1,0 +1,17 @@
+<!--pages/courseachievement/index.wxml-->
+<view class="courseachievement">
+  <scroll-view scroll-y="true" style="height: 100vh;" bindscrolltolower="uptouch">
+    <view class="center">
+      <view class="li" wx:for="{{arr}}">
+        <view class="left">
+          <view>{{item.priceman}}</view>
+          <view>{{user.name}} {{item.billdate}}</view>
+        </view>
+        <view class="right">
+          <view>+{{item.payfeetotal}}</view>
+          <view>欠{{item.arrearagemoney}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

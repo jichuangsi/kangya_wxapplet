@@ -22,6 +22,11 @@ Page({
       url: '../Managementedit/index?title=确认内容',
     })
   },
+  Soundgo() {
+    wx.navigateTo({
+      url: '../Sound/index',
+    })
+  },
   Agreeimggo() {
     wx.navigateTo({
       url: '../Agreeimg/index',
@@ -32,9 +37,9 @@ Page({
       url: '../Managementedit/index?title=修改处置',
     })
   },
-  Pricego() {
+  Pricego(e) {
     wx.navigateTo({
-      url: '../Price/index',
+      url: '../Price/index?title=划价&&item=' + JSON.stringify(e.currentTarget.dataset.item),
     })
   },
   getdata() {
@@ -51,6 +56,14 @@ Page({
       },
       success: function (res) {
         console.log(res)
+        for(let i = 0;i<res.data.list.studylist.length;i++){
+          if (res.data.list.studylist[i].handlelist){
+            res.data.list.studylist[i].allfee = 0
+            for (let j = 0; j < res.data.list.studylist[i].handlelist.length; j++) {
+              res.data.list.studylist[i].allfee += Number(res.data.list.studylist[i].handlelist[j].billnumber) * res.data.list.studylist[i].handlelist[j].fee.indexOf(',') != '-1' ? Number(res.data.list.studylist[i].handlelist[j].fee.split(',')[0] + res.data.list.studylist[i].handlelist[j].fee.split(',')[1]) : Number(res.data.list.studylist[i].handlelist[j].fee)
+            }
+          }
+        }
         if (res.data.info == 'ok') {
           self.setData({
             arr : res.data.list.studylist

@@ -71,3 +71,27 @@
   padding: 20rpx;
   box-sizing: border-box;
 }
+.center .center_bottom {
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  box-sizing: border-box;
+  display: flex;
+  background-color: #fff;
+}
+.center .center_center {
+  background-color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.center .center_bottom view {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 86rpx;
+}
+.center .center_bottom view van-icon {
+  margin-right: 10rpx;
+}

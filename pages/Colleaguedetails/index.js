@@ -31,6 +31,17 @@ Page({
       url: '../chat/index?title=百慕大',
     })
   },
+  iphoneclick() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.user.phone //仅为示例，并非真实的电话号码
+    })
+  },
+  achievementgo() {
+    let user = JSON.stringify(this.data.user)
+    wx.navigateTo({
+      url: '../achievement/index?user=' + user +'&&state=0',
+    })
+  },
   // getdata() {
   //   let self = this
   //   wx.request({

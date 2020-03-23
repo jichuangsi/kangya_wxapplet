@@ -81,3 +81,11 @@ van-cell .check {
 .positional .li .text{
   color: #16c7ae;
 }
+.btn {
+  line-height: 86rpx;
+  width: 100%;
+  background-color: #16c7ae;
+  color: #fff;
+  text-align: center;
+  margin-top: 20rpx;
+}

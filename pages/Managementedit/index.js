@@ -30,6 +30,11 @@ Page({
       url: '../programme/index',
     })
   },
+  Soundgo() {
+    wx.navigateTo({
+      url: '../Sound/index',
+    })
+  },
   Agreeimggo() {
     wx.navigateTo({
       url: '../Agreeimg/index',

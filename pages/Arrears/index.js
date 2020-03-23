@@ -15,6 +15,7 @@ Page({
     pageIndex: '',
     pageCount: '',
     clinicid:'',
+    customerid:'',
     name:''
   },
   onClickLeft() {
@@ -45,26 +46,17 @@ Page({
       this.getdata()
     }
   },
+  chargego(e){
+    this.setData({
+      customerid: e.currentTarget.dataset.item.customerid,
+      clinicid: e.currentTarget.dataset.item.clinicid,
+    })
+    wx.navigateTo({
+      url: '../charge/index',
+    })
+  },
   getdata() {
     let self = this
-    // wx.request({
-    //   url: getApp().data.APIS + '/patient/SelBillinfo',
-    //   method: 'post',
-    //   data: {
-    //     clinicid: self.data.clinicid,
-    //     pageno: self.data.pageIndex,
-    //     pagesize:20
-    //   },
-    //   success: function (res) {
-    //     console.log(res)
-    //     if (res.data.info == 'ok') {
-    //       self.setData({
-    //         Hospital_arr: res.data.list
-    //       })
-    //     }
-    //   }
-    // })
-
     wx.request({
       url: getApp().data.APIS + '/patient/SelBillinfo',
       method: 'post',

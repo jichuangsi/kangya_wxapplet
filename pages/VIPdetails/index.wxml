@@ -1,0 +1,121 @@
+<!--pages/VIPdetails/index.wxml-->
+<view class="VIPdetails">
+  <view class="center">
+      <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
+        <van-tab title="会员卡详情" name="会员卡详情">
+          <view class="xian"></view>
+          <view class="box">
+            <view class="box_li">
+              <image src="../../images/clinic_operate_icon_spending.png"></image>
+              <view class="message">
+                <view>15,193.50</view>
+                <view>当前余额</view>
+              </view>
+            </view>
+            <view class="box_li">
+              <image src="../../images/clinic_operate_icon_spending.png"></image>
+              <view class="message">
+                <view>15,193.50</view>
+                <view>本金金额</view>
+              </view>
+            </view>
+            <view class="box_li">
+              <image src="../../images/clinic_operate_icon_spending.png"></image>
+              <view class="message">
+                <view>15,193.50</view>
+                <view>累计消费</view>
+              </view>
+            </view>
+            <view class="box_li">
+              <image src="../../images/clinic_operate_icon_spending.png"></image>
+              <view class="message">
+                <view>15,193.50</view>
+                <view>赠送金额</view>
+              </view>
+            </view>
+            <view class="box_li">
+              <image src="../../images/clinic_operate_icon_spending.png"></image>
+              <view class="message">
+                <view>15,193.50</view>
+                <view>累计充值</view>
+              </view>
+            </view>
+            <view class="box_li">
+              <image src="../../images/clinic_operate_icon_spending.png"></image>
+              <view class="message">
+                <view>15,193.50</view>
+                <view>积分</view>
+              </view>
+            </view>
+          </view>
+          <view class="xian"></view>
+          <view class="text_box">
+            <view class="h3">基础权益</view>
+            <view class="yh">
+              <view class="left">1.0折</view>
+              <view class="right">
+                <view>整单收费单</view>
+                <view>永久有效</view>
+              </view>
+            </view>
+          </view>
+          <view class="xian"></view>
+          <view class="text_box">
+            <view class="h3">开卡赠送</view>
+            <view class="p">1,000积分</view>
+            <view class="p">2,000元金额</view>
+          </view>
+          <view class="xian"></view>
+          <view class="text_box">
+            <view class="h3">积分说明</view>
+          </view>
+          <view class="xian"></view>
+          <view class="text_box">
+            <view class="h3">适用门诊</view>
+            <view class="p">广州大一口腔门诊</view>
+            <view class="p">广州市海珠区</view>
+          </view>
+          <view class="xian"></view>
+          <view class="text_box">
+            <view class="h3">会员卡说明</view>
+            <view class="p">1.请在结账前出示此卡；</view>
+            <view class="p">2.此卡可享受会员优惠待遇；</view>
+            <view class="p">3.此卡不得购买产品，不得与其他优惠同时使用；</view>
+            <view class="p">4.此卡一经售出，概不兑现。如有遗失，请及时挂失；</view>
+            <view class="p">5.本店保留此卡法律范围内得最终解释权</view>
+          </view>
+          <view class="xian"></view>
+          <view class="li">
+            <view>有效期</view>
+            <view>永久有效</view>
+          </view>
+          <view class="li">
+            <view>持卡人</view>
+            <view>tests</view>
+          </view>
+        </van-tab>
+        <van-tab title="交易记录" name="交易记录">
+          <view class="xian"></view>
+          <view class="record_li">
+            <view class="left">
+              <view><van-icon name="diamond-o" />广州大一口腔门诊</view>
+              <view>2020-03-15 15:30</view>
+            </view>
+            <view class="right">
+              <view><view class="red">-5.50</view>支出</view>
+              <view><view class="red">-1.00</view>赠金</view>
+            </view>
+          </view>
+        </van-tab>
+        <van-tab title="关联患者" name="关联患者">
+          <view class="xian"></view>
+            <view class="patient_li" bindtap="Patientdetailsgo">
+              <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+              <view class="user">
+              asa
+              </view>
+            </view>
+        </van-tab>
+      </van-tabs>
+  </view>
+</view>

@@ -10,7 +10,7 @@
   </view>
   <scroll-view scroll-y="true" style="height: 100vh;" bindscrolltolower="uptouch">
     <view class="center">
-      <view class="li" wx:for="{{arr}}">
+      <view class="li" wx:for="{{arr}}" bindtap="chargego" data-item="item">
         <view class="left">
           <view>{{name}}</view>
           <view>{{item.billdoct}} {{item.billdate}}</view>

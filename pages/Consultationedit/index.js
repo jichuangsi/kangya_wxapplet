@@ -41,6 +41,11 @@ Page({
       })
     }
   },
+  Soundgo() {
+    wx.navigateTo({
+      url: '../Sound/index',
+    })
+  },
   checkclick(e) {
     this.setData({ check_text: e.currentTarget.dataset.text })
   },

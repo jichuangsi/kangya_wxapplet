@@ -25,7 +25,7 @@
       <view>{{doctor_name}}</view>
       <van-icon name="arrow" />
     </view>
-    <view class="box"data-text="回访类型" bindtap="Patienteditgo">
+    <view class="box" data-text="回访类型" bindtap="Patienteditgo">
       <van-icon name="tosend" />
       <view class="text">回访类型</view>
       <view>{{visittype}}</view>
@@ -59,13 +59,13 @@
     </view>
     <view class="bz" data-text="添加回访结果" data-btn="1" data-textstate="1" bindtap="Patienteditgo">{{visitresult==''?'未填写回访结果信息':visitresult}}</view>
     <view class="xian"></view>
-    <view class="box" data-text="语音备忘录" bindtap="Patienteditgo">
+    <view class="box" bindtap="Soundgo">
       <van-icon name="tosend" />
       <view class="text">语音备忘录</view>
       <view></view>
       <van-icon name="arrow" />
     </view>
-    <view class="bz" data-text="语音备忘录" bindtap="Patienteditgo">暂无</view>
+    <view class="bz" bindtap="Soundgo">暂无</view>
     <view class="xian"></view>
     <view class="btn" bindtap="onClickRight">完成</view>
   </view>

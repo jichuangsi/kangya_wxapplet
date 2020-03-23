@@ -31,7 +31,7 @@ Page({
   },
   iphoneclick(){
     wx.makePhoneCall({
-      phoneNumber: '' //仅为示例，并非真实的电话号码
+      phoneNumber: this.data.patdetails.phone //仅为示例，并非真实的电话号码
     })
   },
   delwx() {
@@ -67,6 +67,14 @@ Page({
   Patienteditgo() {
     wx.navigateTo({
       url: '../Patientedit/index?title=编辑分组',
+    })
+  },
+  editgo(e) {
+    let btn = e.currentTarget.dataset.btn ? '&&btnstate=1' : ''
+    let iptstate = e.currentTarget.dataset.iptstate ? '&&iptstate=1' : ''
+    let textstate = e.currentTarget.dataset.textstate ? '&&textstate=1' : ''
+    wx.navigateTo({
+      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + iptstate + btn + textstate
     })
   },
   getdata(){

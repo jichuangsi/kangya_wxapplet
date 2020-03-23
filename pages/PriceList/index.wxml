@@ -21,7 +21,7 @@
   </view>
   <view class="Worryfree" wx:if="{{title=='看牙无忧'}}">
     <image src="{{LookTeethimg}}"></image>
-    <view class="btn">
+    <view class="btn" bindtap="applygo">
       立即申请
     </view>
   </view>

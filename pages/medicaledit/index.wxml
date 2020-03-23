@@ -20,7 +20,7 @@
       <view class="text">病历模板</view>
     </view>
     <view class="xian"></view>
-    <view class="box">
+    <view class="box" bindtap="Soundgo">
       <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
       <view class="text">语音备忘录</view>
       <view></view>

@@ -73,7 +73,12 @@ Page({
     wx.navigateTo({
       url: '../Colleague/index?state=3',
     })
-  }, 
+  },
+  Soundgo() {
+    wx.navigateTo({
+      url: '../Sound/index',
+    })
+  },
   ygo() {
     wx.navigateTo({
       url: '../Tooth/index',

@@ -1,11 +1,11 @@
 <!--pages/Mydataedit/index.wxml-->
 <view class="Mydataedit">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft"
       bind:click-right="onClickRight"  >
       <view slot="right" wx:if="{{title!='选择职称'}}">确定</view>
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <input value="{{name}}" placeholder="请输入内容" maxlength="32" wx:if="{{title == '设置姓名'}}"></input>
     <input value="{{sex}}" placeholder="请输入您的年龄" maxlength="3" wx:if="{{title == '设置年龄'}}"></input>
@@ -32,4 +32,5 @@
       </view>
     </view>
   </view>
+  <view class="btn" bind:click-right="onClickRight" wx:if="{{title!='选择职称'}}">确定</view>
 </view>

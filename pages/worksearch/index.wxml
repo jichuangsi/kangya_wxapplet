@@ -1,0 +1,48 @@
+<!--pages/worksearch/index.wxml-->
+<view class="worksearch">
+  <view class="top">
+    <view class="ipt">
+      <van-icon name="search" color="#999"/>
+      <input type="text" value="{{searchtext}}" bindconfirm="searchclick"></input>
+    </view>
+  </view>
+    <view class="nav">
+      <view data-index="1" bindtap="showPopup">{{nav1}}<van-icon name="arrow-down" /></view>
+      <view data-index="2" bindtap="showPopup">{{nav2}}<van-icon name="arrow-down" /></view>
+      <view data-index="3" bindtap="showPopup">{{time}}<van-icon name="arrow-down" /></view>
+    </view>
+    
+      <view class="li_box" wx:if="{{state == 0}}">
+            <view class="li" bindtap="detailsgo" data-item="item" wx:for="{{arr}}">
+              <view class="li_top">
+                <view class="li_left">
+                  <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
+                  <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
+                  <view class="libox">
+                    <view>患者姓名</view>
+                    <view>{{item.name}}</view>
+                  </view>
+                  <view class="libox">
+                    <view>回访人</view>
+                    <view>{{item.visdocname}}</view>
+                  </view>
+                  <view class="libox">
+                    <view>回访日期</view>
+                    <view class="time">{{item.returndate}}</view>
+                  </view>
+                </view>
+                <van-icon name="close" catchtap="del" />
+              </view>
+              <view class="green" style="font-size:46rpx;">{{item.retvisititem}}</view>
+              <view>{{item.remark}}</view>
+            </view>
+          </view>
+    
+  <van-popup show="{{ show }}"
+  position="top"
+    >
+    <view wx:for="{{nav1_arr}}" wx:if="{{nav_num == 1}}" data-text="{{item}}" bindtap="nav1click">{{item}}</view>
+    <view wx:for="{{nav2_arr}}" wx:if="{{nav_num == 2}}" data-text="{{item}}" bindtap="nav2click">{{item}}</view>
+    <calendar  wx:if="{{nav_num == 3}}" calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+  </van-popup>
+</view>

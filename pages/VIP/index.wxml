@@ -1,0 +1,20 @@
+<!--pages/VIP/index.wxml-->
+<view class="VIP">
+  <view class="li" bindtap="VIPdetailsgo">
+    <view class="li_top">
+      <image src="../../images/my_headportrait_male.png"></image>
+      <view class="user">
+        <view class="name">Tests</view>
+        <view class="number">NO:dsdadasddd</view>
+      </view>
+      <view class="message">
+        <view>广州大一口腔门诊</view>
+        <view>大一会员金卡</view>
+      </view>
+    </view>
+    <view class="li_bottom">
+      <view>广州大一口腔门诊</view>
+      <view>永久有效</view>
+    </view>
+  </view>
+</view>

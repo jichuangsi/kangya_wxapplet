@@ -6,7 +6,7 @@
     </van-nav-bar>
   </view> -->
   <view class="center">
-    <view class="box" data-text="语音备忘录" bindtap="editgo">
+    <view class="box" data-text="语音备忘录" bindtap="Soundgo">
         <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
         <view class="text">语音备忘录</view>
         <view></view>

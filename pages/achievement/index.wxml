@@ -10,7 +10,7 @@
     </view>
     </van-nav-bar>
   </view>
-  <view class="center">
+  <view class="center" wx:if="{{!user}}">
     <view class="center_title">我的实收业绩(元)<view class="time">{{time}}</view></view>
     <view class="canvas_box">
       <canvas class="canvas" canvas-id="pieGraph" wx:if="{{check_time}}"></canvas>
@@ -67,6 +67,35 @@
         <view><van-icon name="arrow" /></view>
       </view>
     </navigator>
+  </view>
+  <view class="center" wx:if="{{user}}">
+    <view class="center_title">我的实收业绩(元)<view class="time">{{time}}</view></view>
+    <view class="canvas_box">
+      <canvas class="canvas" canvas-id="pieGraph" wx:if="{{check_time}}"></canvas>
+    </view>
+    <navigator url="/pages/courseachievement/index" hover-class="navigator-hover">
+      <view class="center_top">
+        <view>当前{{user.name}}的实收业绩</view>
+        <view class="num">{{achievement}}</view>
+      </view>
+    </navigator>
+    <view class="xian"></view>
+    <view class="center_li">
+      <view>当前应收</view>
+      <view>{{receivable}}</view>
+    </view>
+    <view class="center_li">
+      <view>当前折扣</view>
+      <view>{{discount}}</view>
+    </view>
+    <view class="center_li">
+      <view>当前初诊</view>
+      <view>{{first_z}}</view>
+    </view>
+    <view class="center_li">
+      <view>当前复诊</view>
+      <view>{{repeat_z}}</view>
+    </view>
   </view>
   <van-popup show="{{ show }}" bind:close="onClose"
   position="top"

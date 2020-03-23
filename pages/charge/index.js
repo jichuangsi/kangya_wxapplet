@@ -42,6 +42,16 @@ Page({
       }
     })
   },
+  Managementgo(){
+    wx.navigateTo({
+      url: '../Management/index',
+    })
+  },
+  Billdetailsgo() {
+    wx.navigateTo({
+      url: '../Billdetails/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

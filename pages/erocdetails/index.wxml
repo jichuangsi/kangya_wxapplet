@@ -11,7 +11,7 @@
         {{time}}
         <van-icon name="arrow-down" />
       </view>
-      <view class="box">
+      <view class="box" data-text="今日初诊成交总额" bindtap="ontitle">
         <view class="boxtop">
         今日初诊成交总额（元）
         </view>
@@ -22,7 +22,7 @@
         昨日 {{Daily.yesterdayincome}} 丨 成交率 0.00%
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日诊疗收入" bindtap="ontitle">
         <view class="boxtop">
         今日诊疗收入（元）
         </view>
@@ -33,7 +33,7 @@
         昨日 {{Daily.yesterdayincome}}
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日现金流入" bindtap="ontitle">
         <view class="boxtop">
         今日现金流入（元）
         </view>
@@ -44,7 +44,7 @@
         昨日 {{Daily.yesterdayincome}}
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日欠款总额" bindtap="ontitle">
         <view class="boxtop">
         今日欠款总额（元）
         </view>
@@ -55,7 +55,7 @@
         昨日 0.00
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日新增预交款总额" bindtap="ontitle">
         <view class="boxtop">
         今日新增预交款总额（元）
         </view>
@@ -66,7 +66,7 @@
         昨日 {{Daily.yesterdayadvancepay}}
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日退款总额" bindtap="ontitle">
         <view class="boxtop">
         今日退款总额（元）
         </view>
@@ -77,7 +77,7 @@
         昨日 0.00
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日预约人数" bindtap="ontitle">
         <view class="boxtop">
         今日预约人数（人次）
         </view>
@@ -88,7 +88,7 @@
         昨日 0
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日初诊人数" bindtap="ontitle">
         <view class="boxtop">
         今日初诊人数（人次）
         </view>
@@ -99,7 +99,7 @@
         昨日 0 丨 初诊率 0.00%
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日复诊人数" bindtap="ontitle">
         <view class="boxtop">
         今日复诊人数（人次）
         </view>
@@ -110,7 +110,7 @@
         昨日 0
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日流失数" bindtap="ontitle">
         <view class="boxtop">
         今日流失数（人次）
         </view>
@@ -121,7 +121,7 @@
         昨日 0 丨 流失率 0.00%
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日新开会员卡数" bindtap="ontitle">
         <view class="boxtop">
         今日新开会员卡数（张）
         </view>
@@ -132,7 +132,7 @@
         昨日 {{Daily.yesterdayvipcardnum}}
         </view>
       </view>
-      <view class="box">
+      <view class="box" data-text="今日会员充值总额" bindtap="ontitle">
         <view class="boxtop">
         今日会员充值总额（元）
         </view>
@@ -191,7 +191,7 @@
           <view>{{attendance.totalfee}}</view>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="初诊人次详情" bindtap="ontitle">
         <view class="libox_title">
           <view>初诊人次 {{attendance_total1.visit}}</view>
           <view>流失人次 {{attendance_total1.lost}}</view>
@@ -200,7 +200,7 @@
           <canvas class="canvas" canvas-id="pieGraphattendance1"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="初诊成交总额" bindtap="ontitle">
         <view class="libox_title">
           <view>初诊成交总额 {{attendance_total1.free}}</view>
         </view>
@@ -208,7 +208,7 @@
           <canvas class="canvas" canvas-id="pieGraphattendance2"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="复诊人次详情" bindtap="ontitle">
         <view class="libox_title">
           <view>复诊人次{{attendance_total2.visit}}</view>
           <view>复诊成交总额 {{attendance_total2.free}}</view>
@@ -217,7 +217,7 @@
           <canvas class="canvas" canvas-id="pieGraphattendance3"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="新诊人次详情" bindtap="ontitle">
         <view class="libox_title">
           <view>新诊人次 {{attendance_total3.visit}}</view>
           <view>流失人次 {{attendance_total3.lost}}</view>
@@ -226,7 +226,7 @@
           <canvas class="canvas" canvas-id="pieGraphattendance4"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="新诊成交总额" bindtap="ontitle">
         <view class="libox_title">
           <view>新诊成交总额 {{attendance_total3.free}}</view>
         </view>
@@ -261,7 +261,7 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="诊所预约人次" bindtap="ontitle">
         <view class="libox_title">
           <view>诊所预约人次 {{order_total1.visit}}</view>
         </view>
@@ -269,7 +269,7 @@
           <canvas class="canvas" canvas-id="pieGraphorder1"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="预约情况占比" bindtap="ontitle">
         <view class="libox_title">
           <view>预约情况占比</view>
         </view>
@@ -277,7 +277,7 @@
           <canvas class="canvas" canvas-id="pieGraphorder2"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="医生预约情况统计" bindtap="ontitle">
         <view class="libox_title">
           <view>医生预约情况统计(人次)</view>
         </view>
@@ -285,7 +285,7 @@
           <canvas class="canvas" canvas-id="pieGraphorder3"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="预约项目统计" bindtap="ontitle">
         <view class="libox_title">
           <view>预约项目统计</view>
         </view>
@@ -293,7 +293,7 @@
           <canvas class="canvas" canvas-id="pieGraphorder4"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="预约初复诊情况" bindtap="ontitle">
         <view class="libox_title">
           <view>预约初复诊情况</view>
         </view>
@@ -301,7 +301,7 @@
           <canvas class="canvas" canvas-id="pieGraphorder5"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="预约到诊和自然到诊情况" bindtap="ontitle">
         <view class="libox_title">
           <view>预约到诊和自然到诊情况</view>
         </view>
@@ -318,7 +318,7 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="总咨询人次" bindtap="ontitle">
         <view class="libox_title">
           <view>总咨询人次</view>
         </view>
@@ -326,7 +326,7 @@
           <canvas class="canvas" canvas-id="pieGraphpower1"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="咨询初诊情况" bindtap="ontitle">
         <view class="libox_title">
           <view>咨询初诊情况</view>
         </view>
@@ -334,7 +334,7 @@
           <canvas class="canvas" canvas-id="pieGraphpower2"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="受理工具分析" bindtap="ontitle">
         <view class="libox_title">
           <view>受理工具分析</view>
         </view>
@@ -342,7 +342,7 @@
           <canvas class="canvas" canvas-id="pieGraphpower3"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="咨询患者来源分析" bindtap="ontitle">
         <view class="libox_title">
           <view>咨询患者来源分析</view>
         </view>
@@ -350,9 +350,9 @@
           <canvas class="canvas" canvas-id="pieGraphpower4"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="咨询项目分析" bindtap="ontitle">
         <view class="libox_title">
-          <view>咨询项目分溪</view>
+          <view>咨询项目分析</view>
         </view>
         <view class="canvas_box">
           <canvas class="canvas" canvas-id="pieGraphpower5"></canvas>
@@ -371,7 +371,7 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="区域分布" bindtap="ontitle">
         <view class="libox_title">
           <view>区域分布</view>
         </view>
@@ -379,7 +379,7 @@
           <canvas class="canvas" canvas-id="pieGraphmarket1"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="年龄分布" bindtap="ontitle">
         <view class="libox_title">
           <view>年龄分布</view>
         </view>
@@ -387,7 +387,7 @@
           <canvas class="canvas" canvas-id="pieGraphmarket2"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="性别分布" bindtap="ontitle">
         <view class="libox_title">
           <view>性别分布</view>
         </view>
@@ -395,7 +395,7 @@
           <canvas class="canvas" canvas-id="pieGraphmarket3"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="患者星级" bindtap="ontitle">
         <view class="libox_title">
           <view>患者星级</view>
         </view>
@@ -403,7 +403,7 @@
           <canvas class="canvas" canvas-id="pieGraphmarket4"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="患者标签" bindtap="ontitle">
         <view class="libox_title">
           <view>患者标签</view>
         </view>
@@ -411,7 +411,7 @@
           <canvas class="canvas" canvas-id="pieGraphmarket5"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="患者就诊项目" bindtap="ontitle">
         <view class="libox_title">
           <view>患者就诊项目</view>
         </view>
@@ -419,7 +419,7 @@
           <canvas class="canvas" canvas-id="pieGraphmarket6"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="来源分析" bindtap="ontitle">
         <view class="libox_title">
           <view>来源分析</view>
         </view>
@@ -427,7 +427,7 @@
           <canvas class="canvas" canvas-id="pieGraphmarket7"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="患者收费分析" bindtap="ontitle">
         <view class="libox_title">
           <view>患者收费分析</view>
         </view>
@@ -435,7 +435,7 @@
           <canvas class="canvas" canvas-id="pieGraphmarket8"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="来店时间段分析" bindtap="ontitle">
         <view class="libox_title">
           <view>来店时间段分析</view>
         </view>
@@ -452,7 +452,7 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="总咨询人数" bindtap="ontitle">
         <view class="libox_title">
           <view>总咨询人数0人</view>
           <view>成交人数0人</view>
@@ -462,7 +462,7 @@
           <canvas class="canvas" canvas-id="pieGraphconsult1"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="成交金额" bindtap="ontitle">
         <view class="libox_title">
           <view>成交金额统计0.00</view>
           <view>客单成交额0.00</view>
@@ -471,7 +471,7 @@
           <canvas class="canvas" canvas-id="pieGraphconsult2"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="咨询成交项目分析" bindtap="ontitle">
         <view class="libox_title">
           <view>咨询成交项目分析</view>
         </view>
@@ -479,7 +479,7 @@
           <canvas class="canvas" canvas-id="pieGraphconsult3"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="咨询师成交分析" bindtap="ontitle">
         <view class="libox_title">
           <view>咨询师成交分析</view>
         </view>
@@ -514,7 +514,7 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="诊疗营业额统计" bindtap="ontitle">
         <view class="libox_title">
           <view>诊疗营业额统计0.00</view>
         </view>
@@ -522,7 +522,7 @@
           <canvas class="canvas" canvas-id="pieGraphconsulting1"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="接诊人次统计" bindtap="ontitle">
         <view class="libox_title">
           <view>接诊人次统计 0</view>
         </view>
@@ -530,7 +530,7 @@
           <canvas class="canvas" canvas-id="pieGraphconsulting2"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="医生接诊人数统计" bindtap="ontitle">
         <view class="libox_title">
           <view>医生接诊人数统计</view>
         </view>
@@ -538,7 +538,7 @@
           <canvas class="canvas" canvas-id="pieGraphconsulting3"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="医生业绩分析" bindtap="ontitle">
         <view class="libox_title">
           <view>医生业绩分析</view>
         </view>
@@ -573,7 +573,7 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="收入分析" bindtap="ontitle">
         <view class="libox_title">
           <view>收入分析</view>
         </view>
@@ -581,7 +581,7 @@
           <canvas class="canvas" canvas-id="pieGraphbusiness1"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="现金流占比情况" bindtap="ontitle">
         <view class="libox_title">
           <view>现金流占比情况</view>
         </view>
@@ -589,7 +589,7 @@
           <canvas class="canvas" canvas-id="pieGraphbusiness2"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="会员卡分析" bindtap="ontitle">
         <view class="libox_title">
           <view>会员卡分析</view>
         </view>
@@ -597,7 +597,7 @@
           <canvas class="canvas" canvas-id="pieGraphbusiness3"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="预交款分析" bindtap="ontitle">
         <view class="libox_title">
           <view>预交款分析</view>
         </view>
@@ -605,7 +605,7 @@
           <canvas class="canvas" canvas-id="pieGraphbusiness4"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="欠款分析" bindtap="ontitle">
         <view class="libox_title">
           <view>欠款分析</view>
         </view>
@@ -613,7 +613,7 @@
           <canvas class="canvas" canvas-id="pieGraphbusiness5"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="折扣免单分析" bindtap="ontitle">
         <view class="libox_title">
           <view>折扣免单分析</view>
         </view>
@@ -621,7 +621,7 @@
           <canvas class="canvas" canvas-id="pieGraphbusiness6"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="零售分析" bindtap="ontitle">
         <view class="libox_title">
           <view>零售分析</view>
         </view>
@@ -638,7 +638,7 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="支出金额统计" bindtap="ontitle">
         <view class="libox_title">
           <view>支出金额统计</view>
           <view>支出总余额{{expenditure_total}}</view>
@@ -647,7 +647,7 @@
           <canvas class="canvas" canvas-id="pieGraphexpenditure1"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="支出分类情况占比" bindtap="ontitle">
         <view class="libox_title">
           <view>支出分类情况占比</view>
         </view>
@@ -655,7 +655,7 @@
           <canvas class="canvas" canvas-id="pieGraphexpenditure2"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="付款方式情况占比" bindtap="ontitle">
         <view class="libox_title">
           <view>付款方式情况占比</view>
         </view>
@@ -672,7 +672,7 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="回访总人数" bindtap="ontitle">
         <view class="libox_title">
           <view>回访总人数0</view>
         </view>
@@ -680,7 +680,7 @@
           <canvas class="canvas" canvas-id="pieGrapvisit1"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="回访类型占比" bindtap="ontitle">
         <view class="libox_title">
           <view>回访类型占比</view>
         </view>
@@ -688,7 +688,7 @@
           <canvas class="canvas" canvas-id="pieGrapvisit2"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="患者回访情况" bindtap="ontitle">
         <view class="libox_title">
           <view>患者回访情况</view>
         </view>
@@ -696,7 +696,7 @@
           <canvas class="canvas" canvas-id="pieGrapvisit3"></canvas>
         </view>
       </view>
-      <view class="li">
+      <view class="li" data-text="回访人数情况" bindtap="ontitle">
         <view>回访人数情况</view>
         <view class="top_li" wx:for="{{visit_rank1}}">
           <view>{{index+1}}</view>
@@ -712,7 +712,7 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="收入总额" bindtap="ontitle">
         <view class="libox_title">
           <view>收入总额</view>
         </view>
@@ -720,7 +720,7 @@
           <canvas class="canvas" canvas-id="pieGraphchain1"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="各诊所收入占比" bindtap="ontitle">
         <view class="libox_title">
           <view>各诊所收入占比</view>
         </view>
@@ -728,7 +728,7 @@
           <canvas class="canvas" canvas-id="pieGraphchain2"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="初诊人次占比" bindtap="ontitle">
         <view class="libox_title">
           <view>初诊人次占比</view>
         </view>
@@ -736,7 +736,7 @@
           <canvas class="canvas" canvas-id="pieGraphchain3"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="复诊人次占比" bindtap="ontitle">
         <view class="libox_title">
           <view>复诊人次占比</view>
         </view>
@@ -744,7 +744,7 @@
           <canvas class="canvas" canvas-id="pieGraphchain4"></canvas>
         </view>
       </view>
-      <view class="libox">
+      <view class="libox" data-text="新诊人次占比" bindtap="ontitle">
         <view class="libox_title">
           <view>新诊人次占比</view>
         </view>
@@ -760,5 +760,27 @@
     bind:close="onClose"
   >
     <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+  </van-popup>
+  
+  <van-popup
+    show="{{ showdata }}"
+    closeable
+    position="bottom"
+    bind:close="onClosedata"
+    custom-style="height: 90%;overflow-y: auto;"
+  >
+    <view class="popup_title">{{popup_title}}</view>
+    <view class="popup_box">
+      <view class="li">
+        <view>病历号</view>
+        <view>患者姓名</view>
+        <view>就诊项目</view>
+        <view>初诊医生</view>
+        <view>初诊时间</view>
+        <view>复诊医生</view>
+        <view>复诊时间</view>
+        <view>成交金额</view>
+      </view>
+    </view>
   </van-popup>
 </view>

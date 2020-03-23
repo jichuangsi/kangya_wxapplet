@@ -33,7 +33,9 @@ Page({
     attendance_rank1: [],
     attendance_rank2: [],
     order_total1:'',
-    expenditure_total:''
+    expenditure_total:'',
+    showdata:false,
+    popup_title:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -45,6 +47,12 @@ Page({
   },
   onClose() {
     this.setData({ show: false });
+  },
+  ontitle(e) {
+    this.setData({ popup_title: e.currentTarget.dataset.text,showdata: true });
+  },
+  onClosedata() {
+    this.setData({ showdata: false });
   },
   checkclick(e){
     console.log(e.currentTarget.dataset.index)

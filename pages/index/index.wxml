@@ -43,7 +43,7 @@
       历史欠款
     </view>
   </view>
-  <van-cell icon="todo-list" color="#01c7b5">
+  <van-cell icon="todo-list" color="#01c7b5" bindtap="Workbenchgo">
   <view slot="title">
     <view class="van-cell-text">我的工作台</view>
   </view>

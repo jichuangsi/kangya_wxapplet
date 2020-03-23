@@ -81,7 +81,10 @@ Page({
        { title: 'RTC', state: 0 }
     ],
 
-    bjfz_arr: ['健康宣教', '最近患者', '治疗完成']
+    bjfz_arr: ['健康宣教', '最近患者', '治疗完成'],
+    activity_arr: [
+      { title: '会员卡活动', state: 0 },
+    ]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -147,11 +150,19 @@ Page({
         Patientlist: list
       })
     } else if (this.data.title == '修改备注') {
-      let list = self.data.prevpage.data.Patientlist
-      list.remarks = self.data.textvalue
-      self.data.prevpage.setData({
-        Patientlist: list
-      })
+      if (self.data.prevpage.data.patdetails){
+        let list = self.data.prevpage.data.patdetails
+        list.remark = self.data.textvalue
+        self.data.prevpage.setData({
+          patdetails: list
+        })
+      }else{
+        let list = self.data.prevpage.data.Patientlist
+        list.remarks = self.data.textvalue
+        self.data.prevpage.setData({
+          Patientlist: list
+        })
+      }
     } else if (this.data.title == '添加身份证') {
       let list = self.data.prevpage.data.informationlist
       list.IDCard = self.data.iptvalue
@@ -269,6 +280,88 @@ Page({
     } else if (this.data.title == '输入预约备注信息') {
       self.data.prevpage.setData({
         orderbz: self.data.textvalue
+      })
+    } else if (this.data.title == '优惠活动') {
+      let list = self.data.prevpage.data.detailed
+      let arr = self.data.activity_arr
+      let arr1 = ''
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].state == 1) {
+          arr1 += arr[i].title + '、'
+        }
+      }
+      list.activity = arr1
+      self.data.prevpage.setData({
+        detailed: list
+      })
+    } else if (this.data.title == '整单折扣') {
+      let list = self.data.prevpage.data.detailed
+      list.discount = self.data.iptvalue
+      list.discountfee = Number(self.data.iptvalue) / 100 * Number(list.discountfee)
+      list.payfeetotal = Number(self.data.iptvalue) / 100 * Number(list.payfeetotal)
+      for (let i = 0; i < list.handlelist.length;i++){
+        list.handlelist[i].discount = self.data.iptvalue
+        list.handlelist[i].discountfee = Number(self.data.iptvalue) / 100 * Number(list.handlelist[i].discountfee)
+        list.handlelist[i].payfeetotal = Number(self.data.iptvalue) / 100 * Number(list.handlelist[i].payfeetotal)
+      }
+      self.data.prevpage.setData({
+        detailed: list
+      })
+    } else if (this.data.title == '优惠后金额') {
+      let list = self.data.prevpage.data.detailed
+      list.discountfee = self.data.iptvalue
+      list.payfeetotal = self.data.iptvalue
+      self.data.prevpage.setData({
+        detailed: list
+      })
+    } else if (this.data.title == '本次收费') {
+      let list = self.data.prevpage.data.detailed
+      list.payfeetotal = self.data.iptvalue
+      self.data.prevpage.setData({
+        detailed: list
+      })
+    } else if (this.data.title == '添加备注') {
+      let list = self.data.prevpage.data.detailed
+      list.remark = self.data.textvalue
+      self.data.prevpage.setData({
+        detailed: list
+      })
+    } else if (this.data.title == '折扣') {
+      let list = self.data.prevpage.data.detailed
+      let index = self.data.prevpage.data.childnum
+      list.discount = ''
+      list.discountfee = list.discountfee - list.handlelist[index].discountfee
+      list.payfeetotal = list.payfeetotal - list.handlelist[index].payfeetotal
+      list.handlelist[index].discount = Number(self.data.iptvalue)
+      list.handlelist[index].discountfee = Number(self.data.iptvalue) / 100 * Number(list.handlelist[index].discountfee)
+      list.handlelist[index].payfeetotal = Number(self.data.iptvalue) / 100 * Number(list.handlelist[index].payfeetotal)
+      list.discountfee = list.discountfee + list.handlelist[index].discountfee
+      list.payfeetotal = list.payfeetotal + list.handlelist[index].payfeetotal
+      self.data.prevpage.setData({
+        detailed: list
+      })
+    } else if (this.data.title == '总价') {
+      let list = self.data.prevpage.data.detailed
+      let index = self.data.prevpage.data.childnum
+      list.discountfee = list.discountfee - list.handlelist[index].discountfee
+      list.payfeetotal = list.payfeetotal - list.handlelist[index].payfeetotal
+      list.handlelist[index].discountfee = Number(self.data.iptvalue)
+      list.handlelist[index].payfeetotal = Number(self.data.iptvalue)
+      list.discountfee = list.discountfee + list.handlelist[index].discountfee
+      list.payfeetotal = list.payfeetotal + list.handlelist[index].payfeetotal
+      self.data.prevpage.setData({
+        detailed: list
+      })
+    } else if (this.data.title == '本次项目收费') {
+      let list = self.data.prevpage.data.detailed
+      let index = self.data.prevpage.data.childnum
+      list.discountfee = list.discountfee - list.handlelist[index].discountfee
+      list.payfeetotal = list.payfeetotal - list.handlelist[index].payfeetotal
+      list.handlelist[index].payfeetotal = Number(self.data.iptvalue)
+      list.discountfee = list.discountfee + list.handlelist[index].discountfee
+      list.payfeetotal = list.payfeetotal + list.handlelist[index].payfeetotal
+      self.data.prevpage.setData({
+        detailed: list
       })
     }
     self.onClickLeft()
@@ -481,6 +574,14 @@ Page({
 
   bjfzclick() {
     this.onClickLeft()
+  },
+
+
+  activityclick(e) {
+    let index = e.currentTarget.dataset.index
+    let arr = this.data.activity_arr
+    arr[index].state = arr[index].state == 0 ? 1 : 0
+    this.setData({ activity_arr: arr })
   },
   /**
    * 生命周期函数--监听页面加载

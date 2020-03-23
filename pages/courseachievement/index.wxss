@@ -1,0 +1,28 @@
+/* pages/courseachievement/index.wxss */
+
+.li {
+  display: flex;
+  justify-content: space-between;
+  line-height: 56rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f2f2f2;
+  background-color: #fff;
+}
+.li .left view:first-child {
+  font-size: 40rpx;
+  height: 40rpx;
+}
+.li .right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.li .right view:first-child {
+  color: #16c7ae;
+}
+.li .right view:last-child {
+  color: orange;
+}

@@ -10,6 +10,10 @@
   </view>
   <view class="center">
     <image src="{{item}}" wx:for="{{arr}}"></image>
+    <view class="none" wx:if="{{arr.length == 0}}">
+      <image src="../../images/none.png"></image>
+      <view>暂时没有数据</view>
+    </view>
   </view>
   
   <van-popup show="{{ show }}" position="bottom" bind:close="onClose">

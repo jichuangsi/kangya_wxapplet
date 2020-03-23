@@ -82,6 +82,7 @@
 .li .title {
   width: 100%;
   margin-bottom: 20rpx;
+  display: flex;
 }
 .li .text {
   width: 100%;
@@ -100,7 +101,7 @@
   font-size: 26rpx;
 }
 .li .btn {
-  width: 50%;
+  flex:1;
   height: 56rpx;
   display: flex;
   justify-content: center;
@@ -108,4 +109,26 @@
 }
 .li .btn .van-icon {
   margin-right: 20rpx;
+}
+.li_left {
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #f2f2f2
+}
+.li_left view {
+  margin-left: 20rpx;
+}
+.orange {
+  color: orange;
+}
+.green {
+  color: #16c7ae;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
 }

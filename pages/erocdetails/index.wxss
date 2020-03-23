@@ -11,6 +11,7 @@
   left: 0rpx;
   z-index: 9;
   width: 100%;
+  
 }
 .top .van-nav-bar {
   vertical-align: middle !important;
@@ -186,4 +187,29 @@
 .canvas {
     width: 600rpx;
     height: 600rpx;
+}
+.title{
+  
+}
+.popup_title {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.popup_box {
+  overflow-x: auto;
+  margin-top: 40rpx;
+}
+.popup_box .li {
+  width: 1400rpx;
+  height: 46rpx;
+  display: flex;
+}
+.popup_box .li view {
+  flex: 1;
+  height: 46rpx;
+  line-height: 46rpx;
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+  white-space:nowrap;
+  background-color: #f2f2f2;
 }

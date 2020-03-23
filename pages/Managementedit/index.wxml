@@ -34,7 +34,7 @@
       </view>
       <view class="bz">口服一日三次</view>
     </view>
-    <view class="li">
+    <view class="li" bindtap="Soundgo">
         <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
         <view class="first">语音备忘录</view>
         <view></view>

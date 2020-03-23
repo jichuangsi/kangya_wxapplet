@@ -1,0 +1,46 @@
+/* pages/apply/index.wxss */
+.apply{
+  width: 100%;
+  height: 100vh;
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+  /* background-color: #f2f2f2; */
+}
+.h3 {
+  text-align: center;
+  margin: 20rpx;
+  font-size: 38rpx;
+  line-height: 56rpx;
+}
+.box {
+  width: 100%;
+  border: 1rpx solid #f2f2f2;
+  border-radius: 10rpx;
+}
+.box .ipt {
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: centerl;
+  /* justify-content: space-between; */
+}
+.box .ipt .left {
+  margin-right: 20rpx;
+}
+.box .ipt input {
+  flex: 1;
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+}
+.green {
+  color: green;
+}
+.btn {
+  width: 100%;
+  line-height: 86rpx;
+  text-align: center;
+  background-color: #16c7ae;
+  color: #fff;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+}

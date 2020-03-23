@@ -1,0 +1,11 @@
+<!--pages/Workbench/index.wxml-->
+<view class="Workbench">
+  <view class="li" wx:for="{{arr}}"> 
+    <image src="{{item.img}}"></image>
+    <view class="text">{{item.title}}</view>
+    <view class="box">
+    <van-icon name="arrow-up" data-index="{{index}}" data-item="{{item}}" bindtap="up"  />
+    <van-icon name="arrow-down" data-index="{{index}}" data-item="{{item}}" bindtap="down"/>
+    </view>
+  </view>
+</view>

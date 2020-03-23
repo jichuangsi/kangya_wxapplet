@@ -124,6 +124,10 @@
       <van-icon name="arrow" />
     </view>
 
+    <view class="li" wx:for="{{activity_arr}}" data-index="{{index}}" wx:if="{{title=='优惠活动'}}" bindtap="activityclick">
+    {{item.title}}
+    <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
+    </view>
     <view class="btn" bindtap="onClickRight" wx:if="{{btnstate}}">确定</view>
   </view>
 </view>

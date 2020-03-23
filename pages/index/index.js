@@ -50,6 +50,11 @@ Page({
       }
     })
   },
+  Workbenchgo() {
+    wx.navigateTo({
+      url: '../Workbench/index',
+    })
+  },
   qrcodego(){
     wx.navigateTo({
       url: '../QRCode/index',

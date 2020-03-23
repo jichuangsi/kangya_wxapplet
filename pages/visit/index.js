@@ -90,7 +90,7 @@ Page({
   },
   searchgo() {
     wx.navigateTo({
-      url: '../friendsearch/index?state=3',
+      url: '../worksearch/index?state=0',
     })
   },
   getdata(){

@@ -6,7 +6,8 @@ Page({
    */
   data: {
     title: '知情同意书',
-    show:false
+    show:false,
+    arr:[]
   },
   onClickLeft() {
     wx.navigateBack({

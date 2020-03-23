@@ -1,0 +1,71 @@
+/* pages/Sound/index.wxss */
+.Sound {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+  padding-top: 60rpx;
+  box-sizing: border-box;
+}
+.quan {
+  width: 300rpx;
+  height: 300rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0rpx auto;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quan .btn {
+  width: 60%;
+  height: 60%;
+  display: block;
+  background-color: #fff;
+  text-align: center;
+  color: #0094ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text {
+  margin: 20rpx auto;
+  text-align: center;
+}
+.playbtn {
+  margin: 20rpx auto;
+  display: flex;
+  justify-content: center;
+}
+.playbtn .van-icon {
+  border: 1rpx solid #999;
+  border-radius: 50%;
+}
+.blue {
+  color: #0094ff;
+  border-color: #0094ff;
+}
+.blue .van-icon {
+  border-color: #0094ff;
+}
+.btn {
+  width: 98%;
+  line-height: 86rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background-color: #16c7ae;
+  color: #fff;
+  margin: 40rpx auto;
+}
+.time {
+  margin: 40rpx;
+  font-size: 38rpx;
+  line-height: 56rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time .van-count-down {
+  font-size: 42rpx;
+  font-weight: 600;
+}

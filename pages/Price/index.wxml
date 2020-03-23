@@ -1,2 +1,153 @@
 <!--pages/Price/index.wxml-->
-<text>pages/Price/index.wxml</text>
+<view class="Price">
+  <view class="center">
+      <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
+        <van-tab title="收费明细" name="收费明细">
+          <view class="li">
+            <view class="text">原价合计</view>
+            <view>￥{{detailed.allfee}}</view>
+          </view>
+          <view class="li" data-text="优惠活动" data-btn="1" bindtap="Patienteditgo">
+            <view class="text">优惠活动</view>
+            <view>{{detailed.activity}}</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="li" data-text="整单折扣" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+            <view class="text">整单折扣</view>
+            <view>{{detailed.discount}}%</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="li" data-text="优惠后金额" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+            <view class="text">优惠后金额</view>
+            <view>￥{{detailed.discountfee}}</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="li" data-text="本次收费" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+            <view class="text">本次收费</view>
+            <view>￥{{detailed.payfeetotal}}</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="xian"></view>
+          <view class="li" bindtap="Colleaguego">
+            <view class="text">助理</view>
+            <view>{{detailed.examdoct}}</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="li" bindtap="Colleaguego">
+            <view class="text">护士</view>
+            <view>{{detailed.counselor}}</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="li" data-text="添加备注" data-btn="1" data-textstate="1" bindtap="Patienteditgo">
+            <view class="bz">备注</view>
+            <view>{{detailed.remark}}</view>
+          </view>
+          <view class="xian"></view>
+          <view class="libox" wx:for="{{detailed.handlelist}}">
+            <view class="li">
+              <view class="text">处置名称</view>
+              <view class="green">{{item.name}}</view>
+            </view>
+            <view class="li">
+              <view class="text">价格</view>
+              <view>￥{{item.fee}}</view>
+            </view>
+            <view class="li">
+              <view class="text">数量</view>
+              <view>{{item.billnumber}}</view>
+            </view>
+            <view class="li" data-text="折扣" data-btn="1" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
+              <view class="text">折扣</view>
+              <view>{{item.discount}}%</view>
+            <van-icon name="arrow" size="36rpx" />
+            </view>
+            <view class="li" data-text="总价" data-btn="1" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
+              <view class="text">总价</view>
+              <view>￥{{item.discountfee}}</view>
+              <van-icon name="arrow" size="36rpx" />
+            </view>
+            <view class="li" data-text="本次项目收费" data-btn="1" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
+              <view class="text">本次收费</view>
+              <view>￥{{item.payfeetotal}}</view>
+              <van-icon name="arrow" size="36rpx" />
+            </view>
+            <view class="li" data-index="{{index}}" bindtap="stateclick">
+              <view class="text">赠送</view>
+              <view>{{item.state?'是':'否'}}</view>
+              <van-icon name="arrow" size="36rpx" />
+            </view>
+            <view class="xian"></view>
+          </view>
+        </van-tab>
+        <van-tab title="分类汇总" name="分类汇总">
+        
+          <view class="li">
+            <view class="text">原价合计</view>
+            <view>￥{{detailed.allfee}}</view>
+          </view>
+          <view class="li" data-text="优惠活动" data-btn="1" bindtap="Patienteditgo">
+            <view class="text">优惠活动</view>
+            <view>{{detailed.activity}}</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="li" data-text="整单折扣" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+            <view class="text">整单折扣</view>
+            <view>{{detailed.discount}}%</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="li" data-text="优惠后金额" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+            <view class="text">优惠后金额</view>
+            <view>￥{{detailed.discountfee}}</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="li" data-text="本次收费" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+            <view class="text">本次收费</view>
+            <view>￥{{detailed.payfeetotal}}</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="xian"></view>
+          <view class="li" bindtap="Colleaguego">
+            <view class="text">助理</view>
+            <view>{{detailed.examdoct}}</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="li" bindtap="Colleaguego">
+            <view class="text">护士</view>
+            <view>{{detailed.counselor}}</view>
+            <van-icon name="arrow" size="36rpx" />
+          </view>
+          <view class="li" data-text="添加备注" data-btn="1" data-textstate="1" bindtap="Patienteditgo">
+            <view class="bz">备注</view>
+            <view>{{detailed.remark}}</view>
+          </view>
+          <view class="xian"></view>
+          <view class="box">
+            <view>收费项目</view>
+            <view>费用(元)</view>
+            <view>收费项目</view>
+            <view>费用(元)</view>
+            <view>拔牙费</view>
+            <view>0.0</view>
+            <view>手术费</view>
+            <view>0.0</view>
+            <view>放射费</view>
+            <view>0.0</view>
+            <view>诊疗费</view>
+            <view>0.0</view>
+            <view>补牙费</view>
+            <view>0.0</view>
+            <view>正畸费</view>
+            <view>0.0</view>
+            <view>修复费</view>
+            <view>0.0</view>
+            <view>其他</view>
+            <view>0.0</view>
+            <view>检查费</view>
+            <view>0.0</view>
+            <view>西药费</view>
+            <view>0.0</view>
+          </view>
+        </van-tab>
+      </van-tabs>
+  </view>
+</view>

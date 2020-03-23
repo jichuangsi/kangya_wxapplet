@@ -21,7 +21,7 @@
             <van-icon name="qr" size="56rpx" />
         </navigator>
       </view>
-      <view class="message">
+      <view class="message" data-text="修改备注" data-btn="1" data-textstate="1"  bindtap="editgo">
         <van-icon name="description" />
         <view class="none">
           {{patdetails.remark}}
@@ -53,6 +53,8 @@
         url="/pages/Consultation/index"/>
         <van-grid-item icon="../../../images/clinic_workbench_icon_operating.png" text="预交款" link-type="navigateTo"
         url="/pages/payment/index"/>
+        <van-grid-item icon="../../../images/clinic_workbench_icon_operating.png" text="会员卡" link-type="navigateTo"
+        url="/pages/VIP/index"/>
       </van-grid>
     </view>
     <view class="center_bottom">

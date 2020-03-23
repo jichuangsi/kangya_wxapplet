@@ -42,7 +42,7 @@
         <view class="text">开单时间</view>
         <view>{{item.billdate}}</view>
       </view>
-      <view class="center_li">
+      <view class="center_li" bindtap="Managementgo">
         <view class="text">处置项目</view>
         <view class="green">{{item.studystatus}}项</view>
         <van-icon name="arrow" size="36rpx" />
@@ -55,7 +55,7 @@
         <view class="text">账单编号</view>
         <view>{{item.billno}}</view>
       </view>
-      <view class="center_li">
+      <view class="center_li" bindtap="Billdetailsgo">
         <view class="text">总费用</view>
         <view class="blue">{{item.totalfee}}</view>
         <van-icon name="arrow" size="36rpx" />
@@ -68,12 +68,12 @@
         <view class="text">折扣率</view>
         <view class="orange">{{item.discount}}%</view>
       </view>
-      <view class="center_li">
+      <view class="center_li" bindtap="Billdetailsgo">
         <view class="text">应收金额</view>
         <view class="blue">{{item.totalfee}}</view>
         <van-icon name="arrow" size="36rpx" />
       </view>
-      <view class="center_li">
+      <view class="center_li" bindtap="Billdetailsgo">
         <view class="text">已收金额</view>
         <view class="green">{{item.totalfee}}</view>
         <van-icon name="arrow" size="36rpx" />

@@ -1,0 +1,122 @@
+<!--pages/Billdetails/index.wxml-->
+<view class="Billdetails">
+  <view class="center">
+      <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
+        <van-tab title="收费明细" name="收费明细">
+          <view class="title">本次费用情况</view>
+          <view class="top_box">
+            <view class="top_li">
+              <view class="blue">65.00</view>
+              <view>本次费用</view>
+            </view>
+            <view class="top_li">
+              <view class="green">6.50</view>
+              <view>应收金额</view>
+            </view>
+            <view class="top_li">
+              <view class="green">6.50</view>
+              <view>已收金额</view>
+            </view>
+            <view class="top_li">
+              <view class="orange">58.50</view>
+              <view>折扣金额</view>
+            </view>
+            <view class="top_li">
+              <view class="green">0.00</view>
+              <view>减免金额</view>
+            </view>
+            <view class="top_li">
+              <view class="red">0.00</view>
+              <view>欠费金额</view>
+            </view>
+          </view>
+          <view class="xian"></view>
+          <view class="libox">
+            <view class="li">
+              <view class="text">处置名称</view>
+              <view class="green">拔乳牙</view>
+            </view>
+            <view class="li">
+              <view class="text">价格</view>
+              <view>￥10.00</view>
+            </view>
+            <view class="li">
+              <view class="text">数量</view>
+              <view>1</view>
+            </view>
+            <view class="li">
+              <view class="text">折扣</view>
+              <view>10%</view>
+            </view>
+            <view class="li">
+              <view class="text">总价</view>
+              <view>￥0.5</view>
+            </view>
+            <view class="li">
+              <view class="text">备注</view>
+              <view>拔牙费</view>
+            </view>
+            <view class="xian"></view>
+          </view>
+        </van-tab>
+        <van-tab title="分类汇总" name="分类汇总">
+          <view class="title">本次费用情况</view>
+          <view class="top_box">
+            <view class="top_li">
+              <view class="blue">65.00</view>
+              <view>本次费用</view>
+            </view>
+            <view class="top_li">
+              <view class="green">6.50</view>
+              <view>应收金额</view>
+            </view>
+            <view class="top_li">
+              <view class="green">6.50</view>
+              <view>已收金额</view>
+            </view>
+            <view class="top_li">
+              <view class="orange">58.50</view>
+              <view>折扣金额</view>
+            </view>
+            <view class="top_li">
+              <view class="green">0.00</view>
+              <view>减免金额</view>
+            </view>
+            <view class="top_li">
+              <view class="red">0.00</view>
+              <view>欠费金额</view>
+            </view>
+          </view>
+          <view class="xian"></view>
+          <view class="box">
+            <view>收费项目</view>
+            <view>费用(元)</view>
+            <view>收费项目</view>
+            <view>费用(元)</view>
+            <view>拔牙费</view>
+            <view>0.0</view>
+            <view>手术费</view>
+            <view>0.0</view>
+            <view>放射费</view>
+            <view>0.0</view>
+            <view>诊疗费</view>
+            <view>0.0</view>
+            <view>补牙费</view>
+            <view>0.0</view>
+            <view>正畸费</view>
+            <view>0.0</view>
+            <view>修复费</view>
+            <view>0.0</view>
+            <view>其他</view>
+            <view>0.0</view>
+            <view>检查费</view>
+            <view>0.0</view>
+            <view>西药费</view>
+            <view>0.0</view>
+            <view>费用合计</view>
+            <view style="width:75%">0.0</view>
+          </view>
+        </van-tab>
+      </van-tabs>
+  </view>
+</view>
