@@ -92,7 +92,7 @@
       </view>
       <view class="center_li">
         <view class="btn hui" wx:if="{{item.arrearagemoney=='0.00'}}">不可分期</view>
-        <view class="btn green" wx:if="{{item.arrearagemoney!='0.00'}}">立即分期</view>
+        <view class="btn green" bindtap="kygo" wx:if="{{item.arrearagemoney!='0.00'}}">立即分期</view>
       </view>
     </view>
   </view>

@@ -3,7 +3,7 @@
   width: 100%;
   height: 100vh;
   background-color: #f2f2f2;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 .top {
   position: fixed;
@@ -83,6 +83,9 @@
   width: 64rpx;
   height: 64rpx;
   margin-right: 20rpx;
+}
+.libox {
+  border-bottom: 20rpx solid #f2f2f2;
 }
 .li {
   padding: 20rpx;

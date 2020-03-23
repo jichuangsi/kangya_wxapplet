@@ -13,10 +13,10 @@
   <view class="center">
     <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable wx:if="{{title=='预约列表'}}">
       <van-tab title="网络预约" name="网络预约">
-        <view class="li_box">
+        <view class="li_box" bindtap="detailsgo" wx:if="{{sas}}">
           <view class="date">2020-02-24</view>
           <view class="li">
-            <view class="time">14:00-15:00 <van-icon name="close" /></view>
+            <view class="time">14:00-15:00 <van-icon name="close" catchtap="del" /></view>
             <view>
               <van-icon name="manager" />空八二
             </view>
@@ -43,7 +43,7 @@
         <view class="li_box">
           <view class="date">2020-02-24</view>
           <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{order_arr}}">
-            <view class="time">{{item.Duration}} <van-icon name="close" catchtap="del" /></view>
+            <view class="time">{{item.time}} <van-icon name="close" catchtap="del" /></view>
             <view>
               <van-icon name="manager" />{{item.Patient_name}}
             </view>

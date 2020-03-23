@@ -52,6 +52,11 @@ Page({
       url: '../Billdetails/index',
     })
   },
+  kygo() {
+    wx.navigateTo({
+      url: '../PriceList/index?title=看牙无忧',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

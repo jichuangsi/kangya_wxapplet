@@ -99,24 +99,33 @@ Page({
   getdata() {
     let self = this
     wx.request({
-      url: getApp().data.APIS + '/schedule/scscheduleday',
-      method: 'post',
-      data: {
-        bengindate: self.data.bengindate,
-        enddate: self.data.enddate
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
-      },
+      url: getApp().data.API + '/order.json',
       success: function (res) {
-        console.log(res)
-        if (res.data.info == 'ok') {
-          self.setData({
-            arr: res.data.list.studylist
-          })
-        }
+        self.setData({
+          order_arr: res.data.order_arr
+        })
       }
     })
+
+    // wx.request({
+    //   url: getApp().data.APIS + '/schedule/scscheduleday',
+    //   method: 'post',
+    //   data: {
+    //     bengindate: self.data.bengindate,
+    //     enddate: self.data.enddate
+    //   },
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+    //   },
+    //   success: function (res) {
+    //     console.log(res)
+    //     if (res.data.info == 'ok') {
+    //       self.setData({
+    //         arr: res.data.list.studylist
+    //       })
+    //     }
+    //   }
+    // })
   },
   /**
    * 生命周期函数--监听页面加载
