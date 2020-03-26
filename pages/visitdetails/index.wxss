@@ -70,6 +70,7 @@
   padding: 20rpx;
   box-sizing: border-box;
   display: flex;
+  align-items: center;
   border-bottom: 1rpx solid #f2f2f2;
 }
 .box .text {
@@ -107,9 +108,14 @@
   box-sizing: border-box;
   border-radius: 46rpx;
 }
+.stateimg {
+  width: 88rpx;
+  height: 78rpx;
+}
 .bz {
   padding: 20rpx;
   box-sizing: border-box;
+  text-indent: 2em;
 }
 .center_bottom {
   width: 100%;
@@ -125,6 +131,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.center_bottom view .van-icon {
+  margin-right: 10rpx;
 }
 .btn {
   width: 100%;

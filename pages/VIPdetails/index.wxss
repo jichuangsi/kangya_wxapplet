@@ -10,21 +10,26 @@
 }
 .box .box_li {
   width: 50%;
-  margin-bottom: 20rpx;
   display: flex;
   align-items: center;
+  /* justify-content: center; */
   padding: 20rpx;
   box-sizing: border-box;
 }
 .box .box_li image {
-  width: 66rpx;
-  height: 66rpx;
+  width: 52rpx;
+  height: 52rpx;
+  margin-right: 20rpx;
 }
 .box .box_li .message {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-left: 20rpx;
+  /* justify-content: center; */
+  /* align-items: center; */
+  font-size: 30rpx;
+}
+.box .box_li .message view:last-child{
+  color: #5d5d5d
 }
 .text_box {
   padding: 20rpx;

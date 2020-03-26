@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    state:0,
     title:'价目表',
     activeKey:'全部',
     check_id: 0,
@@ -130,12 +131,20 @@ Page({
       url: '../apply/index',
     })
   },
+  check_PriceList(){
+    if(this.data.state == 1){
+      wx.navigateBack({
+        delta: 1,
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
-      title: options.title
+      title: options.title,
+      state: options.state
     })
     wx.setNavigationBarTitle({
       title: options.title

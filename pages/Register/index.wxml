@@ -1,0 +1,26 @@
+<!--pages/Register/index.wxml-->
+<view class="Register">
+  <view class="top">
+    <image src="../../images/ky.png"></image>
+  </view>
+  <view class="center">
+    <view class="ipt">
+      <image src="../../images/sj.png"></image>
+      <input value="{{phone}}" bindinput="phonetext" placeholder="输入手机号"></input>
+    </view>
+    <view class="ipt">
+      <image src="../../images/yzm.png"></image>
+      <input value="{{yzm}}" bindinput="yzmtext" placeholder="输入验证码"></input>
+      <view class="right green" bindtap="getcode" wx:if="{{timestate}}">获取验证码</view>
+      <view class="right" bindtap="getcode" wx:if="{{!timestate}}">{{time}}</view>
+    </view>
+    <view class="ipt">
+      <image src="../../images/mima.png"></image>
+      <input value="{{psw}}" bindinput="pswtext" placeholder="输入密码"></input>
+    </view>
+    <view class="xy {{state==0?'check_xy':''}}" bindtap="stateclick">
+    <van-icon name="checked" size="36rpx" />  注册即表示同意<view>《康牙管家服务与用户协议》</view>
+    </view>
+    <view class="btn">注册</view>
+  </view>
+</view>

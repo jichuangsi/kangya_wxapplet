@@ -15,6 +15,8 @@ Page({
     visitcontent: '',
     visitresult: '',
     Voicefile: [],
+    visit:'',
+    patdetails:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -45,9 +47,19 @@ Page({
     })
   },
   iphoneclick() {
+    let self = this
+    console.log(self.data.patdetails)
     wx.makePhoneCall({
-      phoneNumber: '1340000' //仅为示例，并非真实的电话号码
+      phoneNumber: self.data.patdetails != '' ? self.data.patdetails.phone : self.data.visit.phone //仅为示例，并非真实的电话号码
     })
+  },
+  detailsgo(){
+    console.log(this.data.visit)
+    if(this.data.patdetails == ''){
+      wx.navigateTo({
+        url: '../Patientdetails/index?customerid=' + this.data.visit.customerid + '&&clinicid=' + this.data.visit.clinicid,
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -56,8 +68,11 @@ Page({
     wx.setNavigationBarTitle({
       title: '回访详情'
     })
-    console.log(options)
     let item = JSON.parse(options.item)
+    console.log(item)
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    console.log(Page.data)
     this.setData({
       time: item.time,
       Patient_name: item.Patient_name,
@@ -67,6 +82,8 @@ Page({
       visitcontent: item.visitcontent,
       visitresult: item.visitresult,
       Voicefile: item.Voicefile,
+      visit: item,
+      patdetails: Page.data.patdetails ? Page.data.patdetails : ''
     })
   },
 

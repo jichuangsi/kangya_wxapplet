@@ -1,0 +1,39 @@
+<!--pages/M_programmeedit/index.wxml-->
+<view class="M_programmeedit">
+  <view class="li" wx:if="{{state=='治疗中'}}" bindtap="programmego">
+    <view class="text">{{arr.name}}</view>
+    <van-icon name="arrow" size="36rpx" />
+  </view>
+  <view class="li" wx:if="{{state!='治疗中'}}">
+    <view class="text">{{arr.name}}</view>
+  </view>
+  <view class="li">
+    <view>价格</view>
+    <input type="number" value="{{arr.fee}}" disabled="{{state!='治疗中'}}" bindinput="ipt"></input>
+  </view>
+  <view class="li">
+    <view class="text">数量</view>
+    <view class="num_box">
+      <van-icon name="clear" size="36rpx" color="#eb4921" wx:if="{{state=='治疗中'}}" bindtap="delone" />
+      <view>{{arr.billnumber}}</view>
+      <van-icon name="add" size="36rpx" color="#16c7ae" wx:if="{{state=='治疗中'}}" bindtap="addone" />
+    </view>
+  </view>
+  <view class="xian"></view>
+  <view class="li" bindtap="Colleaguego">
+    <view class="text">医生</view>
+    <view>{{arr.bhdoct}}</view>
+    <van-icon name="arrow" size="36rpx" />
+  </view>
+  <view class="li" bindtap="Colleaguego">
+    <view class="text">护士</view>
+    <view>{{arr.counselor}}</view>
+    <van-icon name="arrow" size="36rpx" />
+  </view>
+  <view class="xian"></view>
+  <view class="li">
+    <view class="text">备注</view>
+    <textarea value="{{arr.remark}}" placeholder="请输入备注" bindinput="textipt" maxlength="120"></textarea>
+  </view>
+  <view class="btn" bindtap="btn">完成</view>
+</view>

@@ -1,0 +1,20 @@
+<!--pages/Blankpage/index.wxml-->
+<view class="Blankpage">
+  <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true'>
+    <swiper-item >
+      <image></image>
+    </swiper-item>
+    
+    <swiper-item >
+      <image></image>
+    </swiper-item>
+
+    <swiper-item >
+      <image></image>
+    </swiper-item>
+  </swiper>
+  <view class="btn">
+    <view bindtap="Logingo">登录</view>
+    <view bindtap="Registergo">注册</view>
+  </view>
+</view>

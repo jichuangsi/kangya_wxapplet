@@ -5,6 +5,7 @@
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
   </view> -->
+
   <view class="center">
     <view class="a1" wx:if="{{title=='每日看板'}}">
       <view class="time" bindtap="oneday">
@@ -144,7 +145,7 @@
         </view>
       </view>
       <view class="h3">
-        <image src="../../images/my_icon_Praise.png"></image>
+        <image src="../../../../images/my_icon_Praise.png"></image>
         今日TOP指数
       </view>
       <view class="li">
@@ -191,51 +192,51 @@
           <view>{{attendance.totalfee}}</view>
         </view>
       </view>
-      <view class="libox" data-text="初诊人次详情" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>初诊人次 {{attendance_total1.visit}}</view>
           <view>流失人次 {{attendance_total1.lost}}</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphattendance1"></canvas>
+          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ attendance1 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="初诊成交总额" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>初诊成交总额 {{attendance_total1.free}}</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphattendance2"></canvas>
+          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ attendance2 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="复诊人次详情" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>复诊人次{{attendance_total2.visit}}</view>
           <view>复诊成交总额 {{attendance_total2.free}}</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphattendance3"></canvas>
+          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ attendance3 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="新诊人次详情" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>新诊人次 {{attendance_total3.visit}}</view>
           <view>流失人次 {{attendance_total3.lost}}</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphattendance4"></canvas>
+          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ attendance4 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="新诊成交总额" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>新诊成交总额 {{attendance_total3.free}}</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphattendance5"></canvas>
+          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ attendance5 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
-        <image src="../../images/my_icon_Praise.png"></image>
+        <image src="../../../../images/my_icon_Praise.png"></image>
         今日TOP指数
       </view>
       <view class="li">
@@ -261,52 +262,52 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox" data-text="诊所预约人次" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>诊所预约人次 {{order_total1.visit}}</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphorder1"></canvas>
+          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ order1 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="预约情况占比" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>预约情况占比</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphorder2"></canvas>
+          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ order2 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="医生预约情况统计" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>医生预约情况统计(人次)</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphorder3"></canvas>
+          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ order3 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="预约项目统计" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>预约项目统计</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphorder4"></canvas>
+          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ order4 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="预约初复诊情况" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>预约初复诊情况</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphorder5"></canvas>
+          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ order5 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="预约到诊和自然到诊情况" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>预约到诊和自然到诊情况</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphorder6"></canvas>
+          <ec-canvas id="mychart-dom-graph6" canvas-id="mychart-graph6" ec="{{ order6 }}"></ec-canvas>
         </view>
       </view>
     </view>
@@ -318,48 +319,48 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox" data-text="总咨询人次" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>总咨询人次</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphpower1"></canvas>
+          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ hpower1 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="咨询初诊情况" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>咨询初诊情况</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphpower2"></canvas>
+          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ hpower2 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="受理工具分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>受理工具分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphpower3"></canvas>
+          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ hpower3 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="咨询患者来源分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>咨询患者来源分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphpower4"></canvas>
+          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ hpower4 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="咨询项目分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>咨询项目分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphpower5"></canvas>
+          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ hpower5 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
-        <image src="../../images/my_icon_Praise.png"></image>
+        <image src="../../../../images/my_icon_Praise.png"></image>
         受理人情况
       </view>
     </view>
@@ -371,76 +372,76 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox" data-text="区域分布" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>区域分布</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphmarket1"></canvas>
+          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ market1 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="年龄分布" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>年龄分布</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphmarket2"></canvas>
+          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ market2 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="性别分布" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>性别分布</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphmarket3"></canvas>
+          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ market3 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="患者星级" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>患者星级</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphmarket4"></canvas>
+          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ market4 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="患者标签" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>患者标签</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphmarket5"></canvas>
+          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ market5 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="患者就诊项目" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>患者就诊项目</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphmarket6"></canvas>
+          <ec-canvas id="mychart-dom-graph6" canvas-id="mychart-graph6" ec="{{ market6 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="来源分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>来源分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphmarket7"></canvas>
+          <ec-canvas id="mychart-dom-graph7" canvas-id="mychart-graph7" ec="{{ market7 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="患者收费分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>患者收费分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphmarket8"></canvas>
+          <ec-canvas id="mychart-dom-graph8" canvas-id="mychart-graph8" ec="{{ market8 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="来店时间段分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>来店时间段分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphmarket9"></canvas>
+          <ec-canvas id="mychart-dom-graph9" canvas-id="mychart-graph9" ec="{{ market9 }}"></ec-canvas>
         </view>
       </view>
     </view>
@@ -452,43 +453,43 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox" data-text="总咨询人数" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>总咨询人数0人</view>
           <view>成交人数0人</view>
           <view>未成交人数0人</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphconsult1"></canvas>
+          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ consult1 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="成交金额" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>成交金额统计0.00</view>
           <view>客单成交额0.00</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphconsult2"></canvas>
+          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ consult2 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="咨询成交项目分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>咨询成交项目分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphconsult3"></canvas>
+          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ consult3 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="咨询师成交分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>咨询师成交分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphconsult4"></canvas>
+          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ consult4 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
-        <image src="../../images/my_icon_Praise.png"></image>
+        <image src="../../../../images/my_icon_Praise.png"></image>
         咨询师TOP指数
       </view>
       <view class="li">
@@ -514,40 +515,40 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox" data-text="诊疗营业额统计" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>诊疗营业额统计0.00</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphconsulting1"></canvas>
+          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ consulting1 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="接诊人次统计" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>接诊人次统计 0</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphconsulting2"></canvas>
+          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ consulting2 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="医生接诊人数统计" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>医生接诊人数统计</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphconsulting3"></canvas>
+          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ consulting3 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="医生业绩分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>医生业绩分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphconsulting4"></canvas>
+          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ consulting4 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
-        <image src="../../images/my_icon_Praise.png"></image>
+        <image src="../../../../images/my_icon_Praise.png"></image>
         医生TOP指数
       </view>
       <view class="li">
@@ -573,60 +574,60 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox" data-text="收入分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>收入分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphbusiness1"></canvas>
+          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ business1 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="现金流占比情况" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>现金流占比情况</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphbusiness2"></canvas>
+          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ business2 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="会员卡分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>会员卡分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphbusiness3"></canvas>
+          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ business3 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="预交款分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>预交款分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphbusiness4"></canvas>
+          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ business4 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="欠款分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>欠款分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphbusiness5"></canvas>
+          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ business5 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="折扣免单分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>折扣免单分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphbusiness6"></canvas>
+          <ec-canvas id="mychart-dom-graph6" canvas-id="mychart-graph6" ec="{{ business6 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="零售分析" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>零售分析</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphbusiness7"></canvas>
+          <ec-canvas id="mychart-dom-graph7" canvas-id="mychart-graph7" ec="{{ business7 }}"></ec-canvas>
         </view>
       </view>
     </view>
@@ -638,29 +639,29 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox" data-text="支出金额统计" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>支出金额统计</view>
           <view>支出总余额{{expenditure_total}}</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphexpenditure1"></canvas>
+          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ expenditure1 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="支出分类情况占比" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>支出分类情况占比</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphexpenditure2"></canvas>
+          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ expenditure2 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="付款方式情况占比" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>付款方式情况占比</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphexpenditure3"></canvas>
+          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ expenditure3 }}"></ec-canvas>
         </view>
       </view>
     </view>
@@ -672,28 +673,28 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox" data-text="回访总人数" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>回访总人数0</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGrapvisit1"></canvas>
+          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ visit1 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="回访类型占比" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>回访类型占比</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGrapvisit2"></canvas>
+          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ visit2 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="患者回访情况" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>患者回访情况</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGrapvisit3"></canvas>
+          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ visit3 }}"></ec-canvas>
         </view>
       </view>
       <view class="li" data-text="回访人数情况" bindtap="ontitle">
@@ -712,44 +713,44 @@
         </view>
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
-      <view class="libox" data-text="收入总额" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>收入总额</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphchain1"></canvas>
+          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ chain1 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="各诊所收入占比" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>各诊所收入占比</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphchain2"></canvas>
+          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ chain2 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="初诊人次占比" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>初诊人次占比</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphchain3"></canvas>
+          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ chain3 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="复诊人次占比" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>复诊人次占比</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGraphchain4"></canvas>
+          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ chain4 }}"></ec-canvas>
         </view>
       </view>
-      <view class="libox" data-text="新诊人次占比" bindtap="ontitle">
+      <view class="libox">
         <view class="libox_title">
           <view>新诊人次占比</view>
         </view>
         <view class="canvas_box">
-          <canvas class="canvas" canvas-id="pieGrapchain5"></canvas>
+          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ chain5 }}"></ec-canvas>
         </view>
       </view>
     </view>

@@ -97,6 +97,7 @@
 .bz {
   width: 100%;
   font-size: 26rpx;
+  color: #bababa;
 }
 .btn {
   width: 100%;

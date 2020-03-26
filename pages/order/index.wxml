@@ -13,25 +13,25 @@
   <view class="center">
     <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable wx:if="{{title=='预约列表'}}">
       <van-tab title="网络预约" name="网络预约">
-        <view class="li_box" bindtap="detailsgo" wx:if="{{sas}}">
-          <view class="date">2020-02-24</view>
+        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
+          <view class="date">{{item.scheduletime}}</view>
           <view class="li">
-            <view class="time">14:00-15:00 <van-icon name="close" catchtap="del" /></view>
+            <view class="time">{{item.starttime}}-{{item.starttime}} <van-icon name="close" catchtap="del" /></view>
             <view>
-              <van-icon name="manager" />空八二
+              <van-icon name="manager" size="36rpx" />{{item.name}}
             </view>
             <view>
-              <van-icon name="add-o" />补牙
+              <van-icon name="add-o" size="36rpx" />{{item.items}}
             </view>
             <view>
-              <van-icon name="manager-o" />时代
+              <van-icon name="manager-o" size="36rpx" />{{item.doctorname}}
             </view>
             <view class="bz">
-              <van-icon name="notes-o" />请添加预约备忘
+              <van-icon name="notes-o" size="36rpx" />{{item.remark}}
             </view>
           </view>
         </view>
-        <view class="wu">
+        <view class="wu" wx:if="{{order_arr.length==0}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>
@@ -40,23 +40,27 @@
         </view>
       </van-tab>
       <van-tab title="预约信息" name="预约信息">
-        <view class="li_box">
-          <view class="date">2020-02-24</view>
-          <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{order_arr}}">
-            <view class="time">{{item.time}} <van-icon name="close" catchtap="del" /></view>
+        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
+          <view class="date">{{item.scheduletime}}</view>
+          <view class="li">
+            <view class="time">{{item.starttime}}-{{item.starttime}} <van-icon name="close" catchtap="del" /></view>
             <view>
-              <van-icon name="manager" />{{item.Patient_name}}
+              <van-icon name="manager" size="36rpx" />{{item.name}}
             </view>
             <view>
-              <van-icon name="add-o" />{{item.Matter}}
+              <van-icon name="add-o" size="36rpx" />{{item.items}}
             </view>
             <view>
-              <van-icon name="manager-o" />{{item.doctor_name}}
+              <van-icon name="manager-o" size="36rpx" />{{item.doctorname}}
             </view>
             <view class="bz">
-              <van-icon name="notes-o" />{{item.orderbz}}
+              <van-icon name="notes-o" size="36rpx" />{{item.remark}}
             </view>
           </view>
+        </view>
+        <view class="wu" wx:if="{{order_arr.length==0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
         </view>
         <view class="bottom">
           <view data-index="1" bindtap="numshow">{{state2}}<van-icon name="arrow-down" /></view>
@@ -67,49 +71,45 @@
       </van-tab>
     </van-tabs>
     <view wx:if="{{title=='明日预约'}}">
-        <view class="wu">
-          <image src="../../images/none.png"></image>
-          暂无数据
-        </view>
-        <view class="li_box" wx:if="{{show}}">
-          <view class="date">2020-02-24</view>
-          <view class="li" bindtap="detailgo">
-            <view class="time">14:00-15:00 <van-icon name="close" catchtap="del" /></view>
+        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
+          <view class="date">{{item.scheduletime}}</view>
+          <view class="li">
+            <view class="time">{{item.starttime}}-{{item.starttime}} <van-icon name="close" catchtap="del" /></view>
             <view>
-              <van-icon name="manager" />空八二
+              <van-icon name="manager" size="36rpx" />{{item.name}}
             </view>
             <view>
-              <van-icon name="add-o" />补牙
+              <van-icon name="add-o" size="36rpx" />{{item.items}}
             </view>
             <view>
-              <van-icon name="manager-o" />时代
+              <van-icon name="manager-o" size="36rpx" />{{item.doctorname}}
             </view>
             <view class="bz">
-              <van-icon name="notes-o" />请添加预约备忘
+              <van-icon name="notes-o" size="36rpx" />{{item.remark}}
             </view>
           </view>
         </view>
-    </view>
-    <view wx:if="{{title=='预约'}}">
-        <view class="wu" wx:if="{{show}}">
+        <view class="wu" wx:if="{{order_arr.length==0}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>
-        <view class="li_box">
-          <view class="date">2020-02-24</view>
-          <view class="li" bindtap="detailgo">
-            <view class="time">14:00-15:00 <van-icon name="close" catchtap="del" /></view>
+    </view>
+    <view wx:if="{{title=='预约'}}">
+        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
+          <view class="date">{{item.scheduletime}}</view>
+          <view class="li">
+            <view class="time">{{item.starttime}}-{{item.starttime}} <van-icon name="close" catchtap="del" /></view>
             <view>
-              <van-icon name="manager" />空八二
+              <van-icon name="manager" size="36rpx" />{{item.name}}
             </view>
             <view>
-              <van-icon name="add-o" />补牙
+              <van-icon name="add-o" size="36rpx" />{{item.items}}
             </view>
             <view>
-              <van-icon name="manager-o" />时代
+              <van-icon name="manager-o" size="36rpx" />{{item.doctorname}}
             </view>
             <view class="bz">
-              <van-icon name="notes-o" />请添加预约备忘
+              <van-icon name="notes-o" size="36rpx" />{{item.remark}}
             </view>
           </view>
         </view>

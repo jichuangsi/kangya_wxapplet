@@ -89,6 +89,20 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    if (options.title == '修改咨询') {
+      let item = JSON.parse(options.item)
+      this.setData({
+        time: item.faceconsultdatetime,
+        complaints: '',
+        basicdemand: '',
+        potentialdemand: '',
+        programme: '',
+        record: item.faceconsultmark,
+        proposal: '',
+        communicatetype: item.faceconsulttype,
+        doctor_name: item.facerecordername,
+      })
+    }
   },
   del() {
     Dialog.confirm({

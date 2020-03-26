@@ -17,7 +17,7 @@
     </view>
   </view>
   <view class="center">
-    <view class="li_box" data-index="{{first_index+1}}" bindtap="li_box_click" wx:for="{{grouping_arr}}" wx:for-index="first_index">
+    <view class="li_box" data-index="{{first_index+1}}" data-id="{{item.dictionaryidentity}}" bindtap="li_box_click" wx:for="{{grouping_arr}}" wx:for-index="first_index">
       <view class="title">
         <van-icon name="arrow" />
         <view class="text">{{item.dictionaryname}}</view>
@@ -29,7 +29,16 @@
         <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>
         <view class="right_li">
           <view class="right_li_top">
-            <view>{{item.patientname}}</view>
+            <view>
+              {{item.patientname}}
+              <image wx:if="{{item.diseasehistory!=''}}" src="../../images/patient_icon_history.png"></image>
+              <!-- <image wx:if="{{item.isfirst!='0'}}" src="../../images/patient_icon_lnthe.png"></image> -->
+              <image wx:if="{{item.advancepay!='0.00'}}" src="../../images/patient_icon_money.png"></image>
+              <image wx:if="{{item.debts!='0.00'}}" src="../../images/patient_icon_owe.png"></image>
+              <image wx:if="{{item.img!='0'}}" src="../../images/patient_icon_picture.png"></image>
+              <image wx:if="{{item.isvip!='0'}}" src="../../images/patient_icon_vip.png"></image>
+              <image wx:if="{{item.wechat!='0'}}" src="../../images/wx.png"></image>
+            </view>
             <view class="state" wx:if="{{item.treatment!=''}}">{{item.treatment}}</view>
           </view>
           <view class="right_li_bottom">

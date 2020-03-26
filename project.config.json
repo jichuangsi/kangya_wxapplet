@@ -64,9 +64,16 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/W_address/index",
-					"pathName": "pages/Workbench/index",
+					"name": "pages/Patientdetails/index",
+					"pathName": "pages/Patientdetails/index",
 					"query": "title=每日看板&&state=0",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "pages/component/pages/erocdetails/index",
+					"pathName": "pages/component/pages/erocdetails/index",
+					"query": "title=连锁分析&&state=0",
 					"scene": null
 				}
 			]

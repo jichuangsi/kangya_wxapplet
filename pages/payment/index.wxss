@@ -3,6 +3,8 @@
   width: 100%;
   height: 100vh;
   background-color: #f2f2f2;
+  color: #666;
+  overflow-y: auto;
 }
 .top {
   /* width: 100%;
@@ -85,4 +87,7 @@
   text-indent: 2em;
   color: #c3c3c3;
   font-size: 24rpx;
+}
+.van-icon {
+  margin-right: 10rpx;
 }

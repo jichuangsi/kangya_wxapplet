@@ -9,23 +9,23 @@
     <view class="title">历史费用概况</view>
     <view class="li">
       <view class="libox">
-        <view>{{patientfee.totalfee}}</view>
+        <view>{{sumlist.sumtotal}}</view>
         <view>总费用</view>
       </view>
       <view class="libox">
-        <view>{{patientfee.payment}}</view>
+        <view>{{sumlist.sumpaytotal}}</view>
         <view>已收金额</view>
       </view>
       <view class="libox">
-        <view>{{patientfee.debts}}</view>
+        <view>{{sumlist.sumneedpay}}</view>
         <view>应收金额</view>
       </view>
       <view class="libox">
-        <view class="red">{{patientfee.debts}}</view>
+        <view class="red">{{sumlist.sumdiscountfee}}</view>
         <view>折扣金额</view>
       </view>
       <view class="libox">
-        <view>{{patientfee.debts}}</view>
+        <view>{{sumlist.sumdischargefee}}</view>
         <view>减免金额</view>
       </view>
       <view class="libox">
@@ -33,11 +33,12 @@
         <view>剩余预付款</view>
       </view>
       <view class="libox">
-        <view class="red">{{patientfee.debts}}</view>
+        <view class="red">{{sumlist.sumarrearagemoney}}</view>
         <view>欠款</view>
       </view>
     </view>
     <view class="center_libox" wx:for="{{billinfo}}">
+      <image class="stateimg" src="../../images/details_chargel_icon_pricing.png"></image>
       <view class="center_li">
         <view class="text">开单时间</view>
         <view>{{item.billdate}}</view>

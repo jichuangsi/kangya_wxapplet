@@ -10,7 +10,8 @@ Page({
     arr: [
     ],
     customerid: '',
-    clinicid: ''
+    clinicid: '',
+    patdetails:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -32,9 +33,9 @@ Page({
       url: '../Agreeimg/index',
     })
   },
-  editgo() {
+  editgo(e) {
     wx.navigateTo({
-      url: '../Managementedit/index?title=修改处置',
+      url: '../Managementedit/index?title=修改处置&&item=' + JSON.stringify(e.currentTarget.dataset.item),
     })
   },
   Pricego(e) {
@@ -49,7 +50,7 @@ Page({
       method: 'post',
       data: {
         CustomerID: self.data.customerid,
-        clinicid: self.data.customerid
+        clinicid: self.data.customerid,
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -84,7 +85,8 @@ Page({
     let Page = pages[pages.length - 2];
     this.setData({
       customerid: Page.data.customerid,
-      clinicid: Page.data.clinicid
+      clinicid: Page.data.clinicid,
+        patdetails: Page.data.patdetails
     })
     this.getdata()
   },

@@ -32,9 +32,9 @@ Page({
       // on cancel
     })
   },
-  Consultationgo(){
+  Consultationgo(e){
     wx.navigateTo({
-      url: '../Consultationedit/index?title=修改咨询',
+      url: '../Consultationedit/index?title=修改咨询&&item=' + JSON.stringify(e.currentTarget.dataset.item),
     })
   },
   getdata() {

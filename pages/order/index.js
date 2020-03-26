@@ -23,6 +23,7 @@ Page({
       theme: 'elegant',
       chooseAreaMode: false,
     },
+    patdetails:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -98,40 +99,58 @@ Page({
   },
   getdata() {
     let self = this
-    wx.request({
-      url: getApp().data.API + '/order.json',
-      success: function (res) {
-        self.setData({
-          order_arr: res.data.order_arr
-        })
-      }
-    })
-
     // wx.request({
-    //   url: getApp().data.APIS + '/schedule/scscheduleday',
-    //   method: 'post',
-    //   data: {
-    //     bengindate: self.data.bengindate,
-    //     enddate: self.data.enddate
-    //   },
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded' //修改此处即可
-    //   },
+    //   url: getApp().data.API + '/order.json',
     //   success: function (res) {
-    //     console.log(res)
-    //     if (res.data.info == 'ok') {
-    //       self.setData({
-    //         arr: res.data.list.studylist
-    //       })
-    //     }
+    //     self.setData({
+    //       order_arr: res.data.order_arr
+    //     })
     //   }
     // })
+
+    wx.request({
+      url: getApp().data.APIS + '/schedule/scscheduleday',
+      method: 'post',
+      data: {
+        bengindate: self.data.bengindate,
+        enddate: self.data.enddate
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          for (let i = 0; i < res.data.list.length; i++) {
+            console.log(res.data.list[i].schedule)
+            if (res.data.list[i].schedule){
+              for (let j = 0; j < res.data.list[i].schedule.length;j++){
+                if(self.data.title =='预约'){
+                  if (res.data.list[i].schedule[j].customerid == patdetails.customerid) {
+                    arr.push(res.data.list[i].schedule[j])
+                  }
+                } else {
+                  arr.push(res.data.list[i].schedule[j])
+                }
+              }
+            }
+          }
+          console.log(arr)
+          self.setData({
+            order_arr: arr
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options)
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
     this.setData({ title:options.title})
     wx.setNavigationBarTitle({
       title: options.title
@@ -142,8 +161,10 @@ Page({
     let day = date.getDate();
     this.setData({
       bengindate: year + '/' + month + '/' + day,
-      enddate: year + '/' + month + '/' + day
+      enddate: year + '/' + month + '/' + day,
+      patdetails: Page.data.patdetails
     })
+    console.log(this.data.patdetails)
     this.getdata()
   },
 

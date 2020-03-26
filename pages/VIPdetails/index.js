@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active:'会员卡详情',
+    active: '会员卡详情',
+    customerid: '',
+    clinicid: '',
+    patdetails: '',
+    vipcard: ''
   },
 
   onChange(event) {
@@ -24,6 +28,14 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '患者会员卡'
+    })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    this.setData({
+      customerid: Page.data.customerid ? Page.data.customerid : '',
+      clinicid: Page.data.clinicid ? Page.data.clinicid : '',
+      patdetails: Page.data.patdetails ? Page.data.patdetails : '',
+      vipcard: Page.data.vipcard ? Page.data.vipcard : ''
     })
   },
   /**

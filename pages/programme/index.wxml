@@ -9,47 +9,21 @@
         <van-tab title="处置选择" name="处置选择">
           <view class="box">
             <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
-              <van-sidebar-item title="全部" />
-              <van-sidebar-item title="综合收费" />
-              <van-sidebar-item title="检查" />
-              <van-sidebar-item title="洁治费" />
-              <van-sidebar-item title="西药" />
-              <van-sidebar-item title="诊查费" />
-              <van-sidebar-item title="放射" />
-              <van-sidebar-item title="口内治疗" />
-              <van-sidebar-item title="拔牙费" />
-              <van-sidebar-item title="拔牙" />
-              <van-sidebar-item title="补牙类" />
-              <van-sidebar-item title="手术费" />
-              <van-sidebar-item title="固定修复" />
-              <van-sidebar-item title="根管治疗" />
-              <van-sidebar-item title="牙周治疗" />
-              <van-sidebar-item title="活动修复" />
-              <van-sidebar-item title="正畸费" />
-              <van-sidebar-item title="活动义齿修复" />
-              <van-sidebar-item title="放射费" />
-              <van-sidebar-item title="固定义齿修复" />
-              <van-sidebar-item title="麻药费" />
-              <van-sidebar-item title="种植修复" />
-              <van-sidebar-item title="西药费" />
-              <van-sidebar-item title="正畸" />
-              <van-sidebar-item title="口腔全口洁治" />
-              <van-sidebar-item title="种植牙" />
-              <van-sidebar-item title="其他" />
+              <van-sidebar-item title="{{item}}" name="{{item}}" wx:for="{{PriceList_arr}}" />
             </van-sidebar>
             <view class="libox">
-              <view class="list" wx:for="{{arr}}">
+              <view class="list" wx:for="{{PriceListclick_arr}}">
                 <view class="left">
-                  <view class="title">{{item.title}}</view>
+                  <view class="title">{{item.handlename}}</view>
                   <view class="text">
-                  {{item.text}}
-                  <view class="money">￥{{item.price}}/颗</view>
+                  {{item.feetype}}
+                  <view class="money">￥{{item.handleprice}}/颗</view>
                   </view>
                 </view>
                 <view class="num">
-                  <van-icon name="clear" size="36rpx" color="#eb4921" data-item="{{item}}" data-index="{{index}}" bindtap="delone" wx:if="{{item.num>0}}" />
+                  <van-icon name="clear" size="36rpx" color="#eb4921" data-item="{{item}}" data-index="{{index}}" data-id="{{item.handlesetguid}}" bindtap="delone" wx:if="{{item.num>0}}" />
                   <view wx:if="{{item.num>0}}">{{item.num}}</view>
-                  <van-icon name="add" size="36rpx" color="#16c7ae" data-item="{{item}}" data-index="{{index}}" bindtap="addone" />
+                  <van-icon name="add" size="36rpx" color="#16c7ae" data-item="{{item}}" data-index="{{index}}" data-id="{{item.handlesetguid}}" bindtap="addone" />
                 </view>
               </view>
             </view>
@@ -73,12 +47,12 @@
   <view class="li">
     <view>方案</view><van-icon name="clear" bindtap="delall" />
   </view>
-  <view class="li" wx:for="{{check_arr}}">
+  <view class="li" wx:for="{{check_arr}}" wx:if="{{item.num != 0}}">
     <view>
-      <view>{{item.title}}</view>
-      <view class="text">{{item.text}}</view>
+      <view>{{item.handlename}}</view>
+      <view class="text">{{item.feetype}}</view>
     </view>
-    <view class="money">￥{{item.price}}/颗</view>
+    <view class="money">￥{{item.handleprice}}/颗</view>
     <van-icon name="clear" data-item="{{item}}" data-index="{{index}}" bindtap="delcheckone" />
   </view>
 </van-popup>

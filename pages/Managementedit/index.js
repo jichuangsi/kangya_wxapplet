@@ -8,17 +8,9 @@ Page({
 
   data: {
     title: '处置',
-    arr: [
-      {
-        username: '空白',
-        time: '2020-02-20 17:38',
-        name: '试试',
-        text: '测试'
-        // arr1:[
-        //   { title: '沟通记录', text: '测试' }
-        // ]
-      },
-    ]
+    arr: '',
+    isfirstvisit:0,
+    time:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -27,7 +19,7 @@ Page({
   },
   onClickRight() {
     wx.navigateTo({
-      url: '../programme/index',
+      url: '../programme/index?state=0',
     })
   },
   Soundgo() {
@@ -49,12 +41,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    let myDate = new Date();
     this.setData({
-      title:options.title
+      title:options.title,
+      arr: options.title == '修改处置' ? JSON.parse(options.item) : Page.data.patdetails,
+      isfirstvisit: Page.data.arr.length>0?1:0,
+      time: myDate.getFullYear() + '-' + (myDate.getMonth() + 1) + '-' + myDate.getDate() + ' ' + myDate.getHours() + ':' + myDate.getMinutes()
     })
     wx.setNavigationBarTitle({
       title: options.title
     })
+    console.log(Page.data)
+    console.log(this.data.arr)
   },
   btn(){
     this.onClickLeft()
@@ -65,14 +65,28 @@ Page({
       message: '您确定删除该处置吗？'
     }).then(() => {
       // on confirm
-      wx.navigateBack({
-        delta: 1,
-      })
+      // wx.navigateBack({
+      //   delta: 1,
+      // })
     }).catch(() => {
       // on cancel
     })
   },
-
+  Toothgo(){
+    wx.navigateTo({
+      url: '../Tooth/index',
+    })
+  },
+  Colleaguego() {
+    wx.navigateTo({
+      url: '../Colleague/index?title=医生&&state=2',
+    })
+  },
+  editgo(e) {
+    wx.navigateTo({
+      url: '../M_programmeedit/index?item=' + JSON.stringify(e.currentTarget.dataset.item) + '&&state=' + e.currentTarget.dataset.state,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

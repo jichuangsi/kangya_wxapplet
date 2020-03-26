@@ -8,7 +8,7 @@
   <view class="center">
     <view class="libox" wx:for="{{arr}}">
       <view class="li">
-      <van-icon name="clock-o" />
+      <van-icon name="clock-o" size="36rpx" />
       <view class="text">操作时间</view>
       <view class="time">{{item.updatetime}}</view>
     </view>
@@ -39,7 +39,7 @@
       <view>{{item.advpayman}}</view>
     </view>
     <view class="li">
-      <van-icon name="notes-o" />
+      <van-icon name="notes-o" size="36rpx" />
       <view class="text">备注</view>
       <view class="bz">{{item.advpayremark}}</view>
     </view>

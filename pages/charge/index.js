@@ -9,7 +9,8 @@ Page({
     customerid: '',
     clinicid: '',
     pageIndex:1,
-    patientfee:'',
+    patientfee: '',
+    sumlist: '',
     billinfo:[]
   },
   onClickLeft(){
@@ -36,6 +37,7 @@ Page({
         if (res.data.info == 'ok') {
           self.setData({
             patientfee: res.data.list.patientfee[0],
+            sumlist: res.data.list.sumlist[0],
             billinfo: res.data.list.billinfo
           })
         }

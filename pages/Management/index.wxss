@@ -63,6 +63,11 @@
   height: 56rpx;
   margin-right: 20rpx;
 }
+.li .stateimg {
+  width: 62rpx;
+  height: 62rpx;
+  margin-right: 10rpx;
+}
 .li .name {
   margin-right: 20rpx;
 }
@@ -78,11 +83,20 @@
   flex: 1;
   text-align: right;
   font-size: 28rpx;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
 }
 .li .title {
   width: 100%;
   margin-bottom: 20rpx;
   display: flex;
+  align-items: center;
+}
+.li .title image {
+  width: 38rpx;
+  height: 34rpx;
+  margin-right: 20rpx;
 }
 .li .text {
   width: 100%;
@@ -99,6 +113,8 @@
 .li .bz {
   width: 100%;
   font-size: 26rpx;
+  color: #bababa;
+  margin-top: 20rpx;
 }
 .li .btn {
   flex:1;
@@ -106,6 +122,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.li .btn image {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 10rpx;
 }
 .li .btn .van-icon {
   margin-right: 20rpx;
@@ -115,20 +136,40 @@
   box-sizing: border-box;
   display: flex;
   justify-content: flex-end;
-  background-color: #f2f2f2
+  background-color: #f9f9f9;
+  border-bottom: 1rpx solid #f2f2f2;
+  position: relative
 }
 .li_left view {
   margin-left: 20rpx;
 }
+.li_left .state {
+  width: 140rpx;
+  height: 120rpx;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 .orange {
-  color: orange;
+  color: #e3a840;
 }
 .green {
   color: #16c7ae;
 }
 .red {
-  color: red;
+  color: #e95865;
 }
 .blue {
-  color: blue;
+  color: #289ace;
+}
+.hui {
+  color: #919191;
+}
+.li .blue {
+  color: #289ace;
+  border-color: #289ace;
+}
+.li .red {
+  color: #e95865;
+  border-color: #e95865;
 }

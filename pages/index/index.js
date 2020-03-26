@@ -167,10 +167,11 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
-        console.log(111)
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
+            Worktoday: res.data.list[0].studycount,
+            Tomorroworder: res.data.list[0].netschcount,
           })
         }
       }

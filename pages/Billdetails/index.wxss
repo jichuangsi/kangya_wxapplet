@@ -55,7 +55,7 @@
   background-color: #fff;
 }
 .green {
-  color: green
+  color: #16c7ae
 }
 .blue {
   color: blue

@@ -3,6 +3,7 @@
   width: 100%;
   height: 100vh;
   background-color: #f2f2f2;
+  overflow-y: auto;
 }
 .top .van-nav-bar {
   vertical-align: middle !important;
@@ -70,13 +71,20 @@
   margin-bottom: 20rpx;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1rpx solid #f2f2f2;
 }
 .li .text {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.li .text .van-icon {
+  margin-left: 20rpx;
 }
 .li .money {
+  flex: 1;
+  justify-content: flex-end;
   display: flex;
 }
 .li .money view {
@@ -86,6 +94,10 @@
 .li .bz {
   width: 100%;
   font-size: 26rpx;
+  color: #bababa;
+  margin-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx dashed #bababa;
 }
 .li .btn {
   width: 50%;
@@ -99,6 +111,45 @@
 }
 .li .first {
   flex: 1;
+  margin-bottom: 20rpx;
+  font-size: 36rpx;
+}
+
+.li .title {
+  width: 100%;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.li .title image {
+  width: 38rpx;
+  height: 34rpx;
+  margin-right: 20rpx;
+}
+.li .title .tooth {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.li .check_box {
+  width: 100%;
+  display: flex;
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+}
+.li .check_box .check_li {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.li .check_box .check_li view:first-child {
+  color: #16c7ae;
+}
+.li .check_box .check_li .van-icon {
+  color: #333 !important;
+  margin-left: 10rpx;
 }
 .libox {
   width: 100%;

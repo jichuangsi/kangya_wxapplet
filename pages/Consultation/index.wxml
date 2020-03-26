@@ -9,7 +9,7 @@
     <van-icon name="plus" size="36rpx" />
   </view>
   <view class="center">
-    <view class="libox" wx:for="{{arr}}" bindtap="Consultationgo">
+    <view class="libox" wx:for="{{arr}}" data-item="{{item}}" bindtap="Consultationgo">
       <view class="li">
         <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
         <view class="text">{{patdetails.name}}</view>

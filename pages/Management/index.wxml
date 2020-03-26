@@ -13,11 +13,16 @@
       <view class="li">
         <image class="img" src="../../images/clinic_colleagues_headportrait_male.png"></image>
         <view class="name">{{item.examdoct}}</view>
-        <view class="state">{{item.studystatusname}}</view>
-        <view class="time">{{item.examdate}}</view>
+        <view class="state {{item.studystatusname=='已完成'?'blue':''}} {{item.studystatusname=='待缴费'?'red':''}}">{{item.studystatusname}}</view>
+        <view class="time">
+          <image class="stateimg" src="../../images/details_disposal_icon_boththe.png" wx:if="{{item.isfirstvisit==0}}"></image>
+          <image class="stateimg" src="../../images/details_disposal_icon_visit.png" wx:if="{{item.isfirstvisit==1}}"></image>
+          {{item.examdate}}
+        </view>
       </view>
-      <view class="li" wx:for="{{item.handlelist}}">
+      <view class="li" wx:for="{{item.handlelist}}" wx:if="{{item.handletype==0}}">
         <view class="title">
+          <image src="../../images/details_disposal_icon_teeth.png" wx:if="{{item.lb||item.lt||item.rb||item.rt}}"></image>
           <view wx:if="{{item.lb}}">{{item.lb+','}}</view>
           <view wx:if="{{item.lt}}">{{item.lt+','}}</view>
           <view wx:if="{{item.rb}}">{{item.rb+','}}</view>
@@ -29,31 +34,41 @@
             <view>￥{{item.fee}}</view> x{{item.billnumber}}
           </view>
         </view>
-        <view class="bz" style="text-algin:right">医生：{{item.bhdoct}} 护士：{{item.counselor}}</view>
+        <view class="bz" style="text-align: right;">医生：{{item.bhdoct}} 护士：{{item.counselor}}</view>
       </view>
-      <view class="li" wx:if="{{item.studystatusname != '已完成'}}">
+      <view class="li" wx:for="{{item.handlelist}}" wx:if="{{item.handletype!=0}}">
+        <view class="text">
+          <view>{{item.name}}</view>
+          <view class="money">
+            <view>￥{{item.fee}}</view> x{{item.billnumber}}
+          </view>
+        </view>
+        <view class="bz">{{item.remark}}</view>
+      </view>
+      <view class="li" wx:if="{{item.studystatusname == '治疗中'}}">
           <view>总计</view>
           <view>{{item.allfee}}</view>
       </view>
-      <view class="li" wx:if="{{item.studystatusname == '已完成'}}">
+      <view class="li" wx:if="{{item.studystatusname != '治疗中'}}">
           <view>总计</view>
           <view>{{item.payfeetotal}}</view>
       </view>
-      <view class="li_left" wx:if="{{item.studystatusname == '已完成'}}">
+      <view class="li_left" wx:if="{{item.studystatusname != '治疗中'}}">
           <view class="orange">折扣 ￥{{item.discountfee}}</view>
           <view class="green">减免 ￥0.00</view>
           <view class="hui">已收 ￥{{item.payfeetotal}}</view>
+          <image class="state" wx:if="{{item.studystatusname == '待缴费'}}" src="../../images/details_chargel_icon_pricing.png"></image>
       </view>
-      <view class="li_left" wx:if="{{item.studystatusname == '已完成'}}">
+      <view class="li_left" wx:if="{{item.studystatusname != '治疗中'}}">
           <view class="blue">应收 ￥{{item.payfeetotal}}</view>
           <view class="red">欠费 ￥{{item.arrears}}</view>
       </view>
       <view class="li" bindtap="Soundgo">
-          <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
-          <view>语音备忘录</view>
+          <van-icon name="../../../images/details_disposal_icon_voice.png" />
+          <view style="flex:1">语音备忘录</view>
           <view></view>
           <van-icon name="arrow" />
-          <view class="bz">暂无</view>
+          <view class="bz">暂无录音</view>
       </view>
       <view class="li" bindtap="Agreeimggo">
           <view>知情同意书</view>
@@ -61,9 +76,15 @@
           <van-icon name="arrow" />
       </view>
       <view class="li">
-        <view class="btn" bindtap="editgo"><van-icon name="records" size="36rpx" />编辑</view>
+        <view class="btn" data-item="{{item}}" bindtap="editgo">
+          <image src="../../images/details_disposal_icon_edit.png"></image>
+          编辑
+        </view>
         <!--  bindtap="Pricego" -->
-        <view class="btn" data-item="{{item}}" bindtap="Pricego" wx:if="{{item.studystatusname != '已完成'}}"><van-icon name="completed" size="36rpx" />划价</view>
+        <view class="btn" data-item="{{item}}" bindtap="Pricego" wx:if="{{item.studystatusname == '治疗中'}}">
+          <image src="../../images/price.png"></image>
+          划价
+        </view>
       </view>
     </view>
   </view>

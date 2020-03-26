@@ -60,6 +60,16 @@
 .center .center_top .user_box .user {
   flex: 1;
 }
+.center .center_top .user_box .user .name {
+  display: flex;
+  align-items: center;
+}
+.center .center_top .user_box .user .name image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 5rpx;
+  margin-right: 0rpx;
+}
 .center .center_top .message {
   color: #999;
   display: flex;

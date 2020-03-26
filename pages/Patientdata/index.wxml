@@ -27,6 +27,14 @@
               <van-icon name="arrow" />
             </view>
           </view>
+          <view class="li">
+            <view class="left">
+              病历号
+            </view>
+            <view class="right">
+              <view>{{Patientlist.patient_num}}</view>
+            </view>
+          </view>
           <view class="li" data-text="选择主治医生" bindtap="Colleaguego">
             <view class="left">
               主治医生
@@ -42,8 +50,8 @@
               性别
             </view>
             <view class="right">
-              <view wx:if="{{sex_num == 0 }}">未填写</view>
-              <view wx:if="{{sex_num != 0 }}">{{sex_num==1?'男':'女'}}</view>
+              <view wx:if="{{sex_num == '' }}">未填写</view>
+              <view wx:if="{{sex_num != '' }}">{{sex_num}}</view>
               <van-icon name="arrow" />
             </view>
           </view>
@@ -125,6 +133,22 @@
               <view wx:if="{{Patientlist.Economic == '' }}">未填写</view>
               <view wx:if="{{Patientlist.Economic != '' }}">{{Patientlist.Economic}}</view>
               <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li">
+            <view class="left">
+              会员等级
+            </view>
+            <view class="right">
+              <view>{{Patientlist.vip_star}}</view>
+            </view>
+          </view>
+          <view class="li">
+            <view class="left">
+              会员卡号
+            </view>
+            <view class="right">
+              <view>{{Patientlist.vip_num}}</view>
             </view>
           </view>
           <view class="title">联系方式</view>
@@ -360,12 +384,14 @@
             </view>
           </van-tab>
           <van-tab title="亲友关系" name="亲友关系">
-            <view class="li" wx:for="{{relationship_arr}}" bindtap="Patientdetailsgo">
-              <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+            <view class="li" wx:for="{{relationship_arr}}" data-item="{{item}}" bindtap="Patientdetailsgo">
+              <image src="{{item.friend_img}}" wx:if="{{item.friend_img!=''}}"></image>
+              <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.friend_img==''&&item.sex=='男'}}"></image>
+              <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.friend_img==''&&item.sex=='女'}}"></image>
               <view class="user">
               {{item.name}}
               </view>
-              <view>{{item.relationship}}</view>
+              <view>{{item.prelationtype}}</view>
             </view>
             <view class="relationship_btn" bindtap="relationshipgo">新增关系</view>
           </van-tab>

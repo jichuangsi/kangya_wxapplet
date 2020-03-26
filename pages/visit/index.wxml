@@ -16,15 +16,15 @@
             <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}">
               <view class="li_top">
                 <view class="li_left">
-                  <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
-                  <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
+                  <image src="../../images/my_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
+                  <image src="../../images/my_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
                   <view class="libox">
                     <view>患者姓名</view>
                     <view>{{item.customername}}</view>
                   </view>
                   <view class="libox">
                     <view>回访人</view>
-                    <view>{{item.retvisuser}}</view>
+                    <view>{{item.visdocname}}</view>
                   </view>
                   <view class="libox">
                     <view>回访日期</view>
@@ -32,6 +32,8 @@
                   </view>
                 </view>
                 <van-icon name="close" catchtap="del" />
+                <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state==3||item.returnresult==3}}"></image>
+                <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state==4||item.returnresult==4}}"></image>
               </view>
               <view class="green" style="font-size:46rpx;">{{item.record}}</view>
               <view>{{item.remark}}</view>
@@ -46,11 +48,11 @@
     </view>
     <view wx:if="{{state==1}}">
       <view class="li_box">
-            <view class="li" bindtap="detailsgo" data-item="item" wx:for="{{visit_arr}}">
+            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}">
               <view class="li_top">
                 <view class="li_left">
-                  <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{patdetails.sex == '男'}}"></image>
-                  <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{patdetails.sex == '女'}}"></image>
+                  <image src="../../images/my_headportrait_male.png" wx:if="{{patdetails.sex == '男'}}"></image>
+                  <image src="../../images/my_headportrait_female.png" wx:if="{{patdetails.sex == '女'}}"></image>
                   <view class="libox">
                     <view>患者姓名</view>
                     <view>{{patdetails.name}}</view>
@@ -65,6 +67,8 @@
                   </view>
                 </view>
                 <van-icon name="close" catchtap="del" />
+                <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state==3}}"></image>
+                <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state==4}}"></image>
               </view>
               <view class="green" style="font-size:46rpx;">{{item.retvisititem}}</view>
               <view>{{item.remark}}</view>

@@ -69,6 +69,15 @@
   border-top: 1rpx solid #f2f2f2;
   border-bottom: 1rpx solid #f2f2f2;
   background-color: #fff;
+  position: relative;
+}
+.center_libox .stateimg {
+  width: 168rpx;
+  height: 137rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 .center_libox .center_li{
   display: flex;

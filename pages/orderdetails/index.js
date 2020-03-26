@@ -38,8 +38,9 @@ Page({
     })
   },
   iphoneclick(){
+    let self = this
     wx.makePhoneCall({
-      phoneNumber: '1340000' //仅为示例，并非真实的电话号码
+      phoneNumber: self.data.item.phone //仅为示例，并非真实的电话号码
     })
   },
   /**
@@ -53,6 +54,7 @@ Page({
     this.setData({
       item: item
     })
+    console.log(item)
   },
 
   /**

@@ -1,0 +1,25 @@
+/* pages/Blankpage/index.wxss */
+swiper {
+  height: 86vh;
+}
+image {
+  width: 100%;
+  height: 100%;
+}
+.btn {
+  width: 100%;
+  position: absolute;
+  bottom: 37rpx;
+  padding: 0rpx 34rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.btn view {
+  width: 330rpx;
+  line-height: 92rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 10rpx;
+  background-color: #16c7ae;
+}

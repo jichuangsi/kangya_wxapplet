@@ -73,6 +73,7 @@
 .bz {
   width: 100%;
   font-size: 24rpx;
+  color: #bababa;
 }
 .green {
   color: #16c7ae;

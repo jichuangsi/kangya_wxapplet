@@ -31,7 +31,6 @@
     "pages/Marketing/index",
     "pages/Newslist/index",
     "pages/eroc/index",
-    "pages/erocdetails/index",
     "pages/Colleague/index",
     "pages/Colleaguedetails/index",
     "pages/about/index",
@@ -74,6 +73,7 @@
     "pages/Consultationedit/index",
     "pages/Management/index",
     "pages/Managementedit/index",
+    "pages/M_programmeedit/index",
     "pages/programme/index",
     "pages/Agreeimg/index",
     "pages/Price/index",
@@ -90,6 +90,11 @@
     "pages/Sound/index",
     "pages/worksearch/index",
     "pages/Workbench/index",
+
+    "pages/Blankpage/index",
+    "pages/Login/index",
+    "pages/Reset/index",
+    "pages/Register/index",
 
     "pages/W_index/index",
     "pages/W_team/index",
@@ -120,6 +125,14 @@
     "pages/S_Service/index",
     "pages/S_Assemble/index",
     "pages/S_foot/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/component/",
+      "pages": [
+        "pages/erocdetails/index"
+      ]
+    }
   ],
   "usingComponents": {
     "calendar": "/../calendar/index",

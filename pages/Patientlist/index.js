@@ -40,6 +40,7 @@ Page({
   li_box_click(e){
     console.log(e.currentTarget.dataset.index)
     this.setData({ li_num: this.data.li_num == e.currentTarget.dataset.index ? 0 : e.currentTarget.dataset.index });
+    this.getpatientlist(e.currentTarget.dataset.id)
   },
   onClose() {
     this.setData({ show: false });

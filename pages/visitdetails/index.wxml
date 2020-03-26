@@ -8,10 +8,10 @@
   <view class="center">
     <view class="center_top">
       <!-- <navigator url="/pages/Patientdetails/index" hover-class="navigator-hover"> -->
-      <view class="user_box">
+      <view class="user_box" bindtap="detailsgo">
         <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
         <view class="user">
-          <view class="name">{{Patient_name}}</view>
+          <view class="name">{{patdetails==''?visit.customername:patdetails.name}}</view>
           <view class="state">
             <view> </view>
           </view>
@@ -22,18 +22,18 @@
     <view class="box">
       <van-icon name="tosend" />
       <view class="text">回访时间</view>
-      <view>{{time}}</view>
+      <view>{{visit.returndate}}</view>
     </view>
     <view class="box">
       <van-icon name="tosend" />
       <view class="text">回访人</view>
-      <view>{{doctor_name}}</view>
+      <view>{{visit.visdocname}}</view>
     </view>
     <view class="xian"></view>
     <view class="box">
       <van-icon name="tosend" />
       <view class="text">回访类型</view>
-      <view>{{visittype}}</view>
+      <view>{{visit.returntype}}</view>
     </view>
     <!-- <view class="box_li">
       <view>补牙</view>
@@ -42,20 +42,21 @@
     <view class="box">
       <van-icon name="manager-o" />
       <view class="text">回访状态</view>
-      <view>{{visitstate}}</view>
+      <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{visit.state==3||visit.returnresult==3}}"></image>
+      <image class="stateimg" src="../../images/hf.png" wx:if="{{visit.state==4||visit.returnresult==4}}"></image>
     </view>
     <view class="xian"></view>
     <view class="box">
       <van-icon name="notes-o" />
       <view class="text">回访内容</view>
     </view>
-      <view class="bz">{{visitcontent}}</view>
+      <view class="bz">{{visit.retvisititem}}</view>
     <view class="xian"></view>
     <view class="box">
       <van-icon name="notes-o" />
       <view class="text">回访结果</view>
     </view>
-      <view class="bz">{{visitresult}}</view>
+      <view class="bz">{{visit.remark}}</view>
       <view class="center_bottom">
         <view bindtap="chatgo"><van-icon name="comment-o" size="40rpx"/>通知患者</view>
         <view bindtap="iphoneclick"><van-icon name="phone-o" size="40rpx"/>打电话</view>

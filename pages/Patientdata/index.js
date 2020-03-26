@@ -8,6 +8,7 @@ Page({
   data: {
     title: '患者资料',
     active: '基本信息',
+    customerid:'',
     show: false,
     show_num: 0,
     star_num: 0,
@@ -44,7 +45,10 @@ Page({
       iphone1: '',
       iphone2: '',
       address: '',
-      remarks: ''
+      remarks: '',
+      patient_num:'',
+      vip_star:'',
+      vip_num:''
     },
     informationlist: {
       IDCard: '',
@@ -60,7 +64,6 @@ Page({
       past: '',
       ask: ''
     },
-    patdetails:'',
     relationship_arr:[
       { name: '莫须有', relationship:'同事'}
     ]
@@ -75,9 +78,10 @@ Page({
       active: event.detail.name
     })
   }, 
-  Patientdetailsgo(){
+  Patientdetailsgo(e){
+    let item = e.currentTarget.dataset.item
     wx.navigateTo({
-      url: '../Patientdetails/index',
+      url: '../Patientdetails/index?customerid=' + item.prelationclinicid + '&&clinicid=' + item.clinicid,
     })
   },
   relationshipgo(){
@@ -115,7 +119,7 @@ Page({
     this.setData({ show: false, star_num: e.currentTarget.dataset.index });
   },
   sex(e) {
-    this.setData({ show: false, sex_num: e.currentTarget.dataset.index });
+    this.setData({ show: false, sex_num: e.currentTarget.dataset.index==1?'男':'女' });
   },
   editgo(e) {
     let btn = e.currentTarget.dataset.btn ? '&&btnstate=1' : ''
@@ -151,16 +155,80 @@ Page({
       url: '../Patientinformation/index',
     })
   },
+  getdata(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/qupatientbyid',
+      method: 'post',
+      data: {
+        customerid: self.data.customerid,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            relationship_arr:res.data.list.friend,
+            star_num: res.data.list.patdetails[0].patientstar,
+            sex_num: res.data.list.patdetails[0].sex,
+            check_time: res.data.list.patdetails[0].birthday,
+            check_columns: res.data.list.patdetails[0].comefrom + res.data.list.patdetails[0].comefrom2 + res.data.list.patdetails[0].comefrom3 + res.data.list.patdetails[0].comefrom21 + res.data.list.patdetails[0].comefrom22 + res.data.list.patdetails[0].comefrom23 + res.data.list.patdetails[0].comefrom31 + res.data.list.patdetails[0].comefrom32 + res.data.list.patdetails[0].comefrom33 + res.data.list.patdetails[0].comefrom41 + res.data.list.patdetails[0].comefrom42 + res.data.list.patdetails[0].comefrom43,
+            Patientlist: {
+              name: res.data.list.patdetails[0].name,
+              doctor: res.data.list.patdetails[0].referraldoct,
+              age: res.data.list.patdetails[0].age,
+              check_project: res.data.list.patdetails[0].treatment,
+              check_Occupation: res.data.list.patdetails[0].occupation,
+              check_Education: '',
+              check_ascription1: res.data.list.patdetails[0].phonevestee1,
+              check_ascription2: res.data.list.patdetails[0].phonevestee2,
+              hobby: '',
+              Economic: '',
+              qq: res.data.list.patdetails[0].qq,
+              mailbox: res.data.list.patdetails[0].email,
+              iphone1: res.data.list.patdetails[0].phone,
+              iphone2: res.data.list.patdetails[0].phone1,
+              address: res.data.list.patdetails[0].address,
+              remarks: res.data.list.patdetails[0].remark,
+              patient_num: res.data.list.patdetails[0].patientid,
+              vip_star: res.data.list.patdetails[0].viptype,
+              vip_num: res.data.list.patdetails[0].vipnumber
+            },
+            informationlist: {
+              IDCard: res.data.list.patdetails[0].idno,
+              socialcard: '',
+              Consultant: '',
+              Insurance: '',
+              Introducer: res.data.list.patdetails[0].introducer,
+              powergrid: '',
+              impression: res.data.list.patdetails[0].impressioninfo,
+              Habit: '',
+              experience: res.data.list.patdetails[0].visithistory,
+              allergy: res.data.list.patdetails[0].allergichistory,
+              past: res.data.list.patdetails[0].diseasehistory,
+              ask: ''
+            }
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var pages = getCurrentPages();
+    var Page = pages[pages.length - 2];//
     this.setData({
-      areaList: require("../../data/area.js").default
+      areaList: require("../../data/area.js").default,
+      customerid: Page.data.customerid,
     })
     wx.setNavigationBarTitle({
       title: '患者资料',
     })
+    this.getdata()
   },
 
   /**

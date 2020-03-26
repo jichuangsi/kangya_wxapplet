@@ -10,7 +10,7 @@
       <van-sidebar-item title="{{item}}" name="{{item}}" wx:for="{{PriceList_arr}}" />
     </van-sidebar>
     <view class="right">
-      <view class="list" wx:for="{{PriceListclick_arr}}">
+      <view class="list" wx:for="{{PriceListclick_arr}}" data-item="{{item}}" bindtap="check_PriceList">
         <view class="left">
           <view class="title">{{item.handlename}}</view>
           <view class="text">{{item.feetype}}</view>
