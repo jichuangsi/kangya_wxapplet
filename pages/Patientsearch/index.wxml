@@ -1,0 +1,7 @@
+<!--pages/Patientsearch/index.wxml-->
+<view class="Patientsearch">
+    <view class="ipt">
+      <van-icon name="search" color="#999"/>
+      <input type="text" value="{{searchtext}}" bindconfirm="searchclick"></input>
+    </view>
+</view>

@@ -223,3 +223,42 @@ ec-canvas {
   height: 100%;
   position: relative;
 }
+.month {
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+}
+.month .year {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  line-height: 83rpx;
+  color: #737373;
+}
+.month .now {
+  padding: 0rpx 10rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.month .month_box {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20rpx;
+}
+.month .month_box .month_li {
+  width: 25%;
+  height: 148rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.month .month_box .c_m {
+  background-color: #ebf7f4;
+  color: #45a89e;
+}
+.month .month_box .c_t_m {
+  background-color: #45a89e;
+  color: #fff;
+}

@@ -31,12 +31,17 @@
                     <view class="time">{{item.returndate}}</view>
                   </view>
                 </view>
-                <van-icon name="close" catchtap="del" />
+                <image class="del" src="../../images/del.png" catchtap="del"></image>
                 <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state==3||item.returnresult==3}}"></image>
                 <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state==4||item.returnresult==4}}"></image>
               </view>
-              <view class="green" style="font-size:46rpx;">{{item.record}}</view>
-              <view>{{item.remark}}</view>
+              <view class="green ret">{{item.record}}</view>
+              <view class="f30" wx-if="{{item.remark!=''}}">
+                <image src="../../images/zd.png"></image>
+                <view>{{item.remark}}</view>
+                <image src="../../images/yd.png"></image>
+              </view>
+              <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
             </view>
           </view>
           <view class="bottom">
@@ -51,8 +56,9 @@
             <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}">
               <view class="li_top">
                 <view class="li_left">
-                  <image src="../../images/my_headportrait_male.png" wx:if="{{patdetails.sex == '男'}}"></image>
-                  <image src="../../images/my_headportrait_female.png" wx:if="{{patdetails.sex == '女'}}"></image>
+                  <image src="{{patdetails.picture}}" wx:if="{{patdetails.picture!=''}}"></image>
+                  <image src="../../images/my_headportrait_male.png" wx:if="{{patdetails.sex == '男'&&patdetails.picture==''}}"></image>
+                  <image src="../../images/my_headportrait_female.png" wx:if="{{patdetails.sex == '女'&&patdetails.picture==''}}"></image>
                   <view class="libox">
                     <view>患者姓名</view>
                     <view>{{patdetails.name}}</view>
@@ -66,12 +72,17 @@
                     <view class="time">{{item.returndate}}</view>
                   </view>
                 </view>
-                <van-icon name="close" catchtap="del" />
-                <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state==3}}"></image>
-                <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state==4}}"></image>
+                <image class="del" src="../../images/del.png" catchtap="del"></image>
+                <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state=='3'}}"></image>
+                <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state=='4'}}"></image>
               </view>
-              <view class="green" style="font-size:46rpx;">{{item.retvisititem}}</view>
-              <view>{{item.remark}}</view>
+              <view class="green ret">{{item.retvisititem}}</view>
+              <view class="f30" wx-if="{{item.remark!=''}}">
+                <image src="../../images/zd.png"></image>
+                <view>{{item.remark}}</view>
+                <image src="../../images/yd.png"></image>
+              </view>
+              <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
             </view>
           </view>
     </view>

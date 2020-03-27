@@ -134,6 +134,7 @@ Page({
         },
         success: function (res) {
           console.log(res)
+          console.log(res.data.list[0])
           if (res.data.info == 'ok') {
             self.setData({
               visit_arr: res.data.list

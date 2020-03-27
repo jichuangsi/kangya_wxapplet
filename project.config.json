@@ -6,12 +6,15 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+		"enhance": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-		"nodeModules": true,
+		"nodeModules": false,
 		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -64,16 +67,16 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/Patientdetails/index",
-					"pathName": "pages/Patientdetails/index",
-					"query": "title=每日看板&&state=0",
+					"name": "pages/Patientsearch/index",
+					"pathName": "pages/Patientsearch/index",
+					"query": "title=医患沟通视频",
 					"scene": null
 				},
 				{
 					"id": 2,
-					"name": "pages/component/pages/erocdetails/index",
-					"pathName": "pages/component/pages/erocdetails/index",
-					"query": "title=连锁分析&&state=0",
+					"name": "component/pages/erocdetails/index",
+					"pathName": "component/pages/erocdetails/index",
+					"query": "title=诊疗分析&&state=0",
 					"scene": null
 				}
 			]

@@ -13,7 +13,6 @@
         <view class="user">
           <view class="name">{{patdetails==''?visit.customername:patdetails.name}}</view>
           <view class="state">
-            <view> </view>
           </view>
         </view>
       </view>
@@ -25,7 +24,7 @@
       <view>{{visit.returndate}}</view>
     </view>
     <view class="box">
-      <van-icon name="tosend" />
+        <image src="../../images/4.png"></image>
       <view class="text">回访人</view>
       <view>{{visit.visdocname}}</view>
     </view>

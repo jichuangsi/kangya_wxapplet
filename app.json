@@ -49,6 +49,7 @@
     "pages/AddPatient/index",
     "pages/Patientedit/index",
     "pages/Patientinformation/index",
+    "pages/Patientsearch/index",
     "pages/Patientdata/index",
     "pages/relationship/index",
     "pages/achievementNext/index",
@@ -128,9 +129,9 @@
   ],
   "subPackages": [
     {
-      "root": "pages/component/",
+      "root": "component",
       "pages": [
-        "pages/erocdetails/index"
+        "pages/erocdetails"
       ]
     }
   ],

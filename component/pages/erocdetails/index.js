@@ -1,7 +1,4 @@
 // pages/erocdetails/index.js
-const CHARTS = require('../../../../data/wxcharts-min.js');
-var util = require('../../../../utils/util.js');
-var TIME = util.formatTime(new Date()).split(' ')[0];
 
 import * as echarts from '../../ec-canvas/echarts.js';
 
@@ -12,8 +9,40 @@ Page({
    */
   data: {
     title: '营销',
-    time: TIME,
+    time: 1,
     show: false,
+    month_star: 999,
+    month_end: 999,
+    month_year: 2020,
+    month_arr:[
+      { time: '一月', state: 0 },
+      { time: '二月', state: 0 },
+      { time: '三月', state: 0 },
+      { time: '四月', state: 0 },
+      { time: '五月', state: 0 },
+      { time: '六月', state: 0 },
+      { time: '七月', state: 0 },
+      { time: '八月', state: 0 },
+      { time: '九月', state: 0 },
+      { time: '十月', state: 0 },
+      { time: '十一月', state: 0 },
+      { time: '十二月', state: 0 },
+      { time: '一月', state: 0 },
+      { time: '二月', state: 0 },
+      { time: '三月', state: 0 },
+      { time: '四月', state: 0 },
+      { time: '五月', state: 0 },
+      { time: '六月', state: 0 },
+      { time: '七月', state: 0 },
+      { time: '八月', state: 0 },
+      { time: '九月', state: 0 },
+      { time: '十月', state: 0 },
+      { time: '十一月', state: 0 },
+      { time: '十二月', state: 0 },
+    ],
+    month_year1: 2019,
+    month_arr1: [
+    ],
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
@@ -41,18 +70,6 @@ Page({
     popup_title:'',
 
 
-    // attendance1: '',
-    // attendance2: '',
-    // attendance3: '',
-    // attendance4: '', 
-    // attendance5:'',
-
-    // order1: '',
-    // order2: '',
-    // order3: '',
-    // order4: '',
-    // order5: '',
-    // order6:'',
 
   },
   onClickLeft() {
@@ -62,6 +79,7 @@ Page({
   },
   oneday(){
     this.setData({ show: true });
+
   },
   onClose() {
     this.setData({ show: false });
@@ -75,11 +93,123 @@ Page({
   checkclick(e){
     console.log(e.currentTarget.dataset.index)
     this.setData({ check_num: e.currentTarget.dataset.index });
+    this.doSomeThing()
+    if (e.currentTarget.dataset.index == 1){
+      let date = new Date();
+      this.setData({
+        time: date.getFullYear() + '-01~' + date.getFullYear() + '-12',
+        month_year: date.getFullYear(),
+        month_year1: date.getFullYear()-1,
+        month_star: 12,
+        month_end: 23,
+        month_arr: [
+          { time: '一月', state: 0 },
+          { time: '二月', state: 0 },
+          { time: '三月', state: 0 },
+          { time: '四月', state: 0 },
+          { time: '五月', state: 0 },
+          { time: '六月', state: 0 },
+          { time: '七月', state: 0 },
+          { time: '八月', state: 0 },
+          { time: '九月', state: 0 },
+          { time: '十月', state: 0 },
+          { time: '十一月', state: 0 },
+          { time: '十二月', state: 0 },
+          { time: '一月', state: 1 },
+          { time: '二月', state: 1 },
+          { time: '三月', state: 1 },
+          { time: '四月', state: 1 },
+          { time: '五月', state: 1 },
+          { time: '六月', state: 1 },
+          { time: '七月', state: 1 },
+          { time: '八月', state: 1 },
+          { time: '九月', state: 1 },
+          { time: '十月', state: 1 },
+          { time: '十一月', state: 1 },
+          { time: '十二月', state: 1 },
+        ]
+      })
+    }
+  },
+  monthclick(e){
+    let index = e.currentTarget.dataset.index
+    console.log(index)
+    let arr = this.data.month_arr
+    let star = this.data.month_star
+    let end = this.data.month_end
+    let time_star = ''
+    let time_end = ''
+    if(star==999){
+      arr[index].state = 1
+      star = index
+    } else if (star != 999 && end == 999 && star < index) {
+      for (let i = 0; i < arr.length; i++) {
+        if (i <= index && i >= star) {
+          arr[i].state = 1
+          end = index
+        }
+      }
+      time_star = star < 12 ? this.data.month_year1 + '-' + (star < 10 ? '0' + (star + 1) : star) : this.data.month_year + '-' + ((star - 11) < 10 ? '0' + (star - 11) : star - 11)
+      time_end = end < 12 ? this.data.month_year1 + '-' + (end < 10 ? '0' + (end + 1) : end) : this.data.month_year + '-' + ((end - 11) < 10 ? '0' + (end - 11) : end - 11)
+      this.setData({
+        time: time_star + '~' + time_end,
+        show: false
+      })
+    } else if (star != 999 && end != 999){
+      for (let j = 0; j < arr.length; j++) {
+        arr[j].state = 0
+      }
+      arr[index].state = 1
+      star = index
+      end = 999
+    } else if (star != 999 && star == index && end == 999){
+    } else if (star != 999 && star > index && end == 999) {
+      end = star
+      star = index
+      for (let k = 0; k < arr.length; k++) {
+        if (k >= star && k <= end) {
+          arr[k].state = 1
+        }
+      }
+      time_star = star < 12 ? this.data.month_year1 + '-' + (star < 10 ? '0' + (star + 1) : star) : this.data.month_year + '-' + ((star - 11) < 10 ? '0' + (star - 11) : star - 11)
+      time_end = end < 12 ? this.data.month_year1 + '-' + (end < 10 ? '0' + (end + 1) : end) : this.data.month_year + '-' + ((end - 11) < 10 ? '0' + (end - 11) : end - 11)
+      this.setData({
+        time: time_star + '~' + time_end,
+        show: false
+      })
+    }
+    this.setData({
+      month_star: star,
+      month_end: end,
+      month_arr: arr,
+    })
+  },
+  yearclick(e) {
+    let index = e.currentTarget.dataset.index
+    if(index==0){
+      this.setData({
+        month_year:this.data.month_year-1,
+        month_year1: this.data.month_year1 - 1
+      })
+    } else {
+      this.setData({
+        month_year: this.data.month_year + 1,
+        month_year1: this.data.month_year1 + 1
+      })
+    }
+  },
+  nowclick() {
+    let date = new Date();
+    this.setData({
+      month_year: date.getFullYear(),
+      month_year1: date.getFullYear() - 1
+    })
   },
   doSomeThing() {
     // 调用日历方法
     console.log(this.calendar)
-    this.calendar.enableArea();
+    // this.calendar.enableArea();
+    this.calendar.switchView('week').then(() => { });
   },
   afterTapDay(e) {
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }

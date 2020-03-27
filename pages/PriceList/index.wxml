@@ -26,25 +26,17 @@
     </view>
   </view>
   <view class="doctorvideo" wx:if="{{title=='医患沟通视频'}}">
-    <view class="left">
-      <view class="first" bindtap="first_click" data-id="{{item.id}}" data-index="{{index}}" data-state="{{item.state}}" wx:for="{{videolist_arr}}">
-        <view class="title">
-          <van-icon name="play" color="#666" />
-          {{item.title}}
-        </view>
-        <view class="{{item.state == 0?'second':'second second_check'}}">
-          <view class="{{item.id == check_id?'litext litext_check':'litext'}}" wx:for="{{item.arr}}" data-id="{{item.id}}" catchtap="litextclick">{{item.text}}</view>
-        </view>
-      </view>
-    </view>
+    <van-sidebar active-key="{{ videoKey }}" bind:change="onChangevideo">
+      <van-sidebar-item title="{{item.name}}" name="{{item.name}}" data-item="{{item}}" wx:for="{{videolist_arr}}" />
+    </van-sidebar>
     <view class="right">
       <view class="list" wx:for="{{videolistclick_arr}}">
-        <navigator url="/pages/Videoplay/index?id={{item.id}}&&title={{item.text}}" hover-class="navigator-hover">
+        <navigator url="/pages/Videoplay/index?url={{item.link}}&&title={{item.name}}" hover-class="navigator-hover">
         <view class="img">
-          <image src="{{item.img}}"></image>
+          <image src="{{item.thumb}}"></image>
         </view>
         <view class="text">
-        {{item.text}}
+        {{item.name}}
         </view>
         </navigator>
       </view>

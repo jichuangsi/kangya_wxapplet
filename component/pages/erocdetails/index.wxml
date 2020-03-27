@@ -145,7 +145,7 @@
         </view>
       </view>
       <view class="h3">
-        <image src="../../../../images/my_icon_Praise.png"></image>
+        <image src="../../../images/my_icon_Praise.png"></image>
         今日TOP指数
       </view>
       <view class="li">
@@ -236,7 +236,7 @@
         </view>
       </view>
       <view class="h3">
-        <image src="../../../../images/my_icon_Praise.png"></image>
+        <image src="../../../images/my_icon_Praise.png"></image>
         今日TOP指数
       </view>
       <view class="li">
@@ -360,7 +360,7 @@
         </view>
       </view>
       <view class="h3">
-        <image src="../../../../images/my_icon_Praise.png"></image>
+        <image src="../../../images/my_icon_Praise.png"></image>
         受理人情况
       </view>
     </view>
@@ -489,7 +489,7 @@
         </view>
       </view>
       <view class="h3">
-        <image src="../../../../images/my_icon_Praise.png"></image>
+        <image src="../../../images/my_icon_Praise.png"></image>
         咨询师TOP指数
       </view>
       <view class="li">
@@ -548,7 +548,7 @@
         </view>
       </view>
       <view class="h3">
-        <image src="../../../../images/my_icon_Praise.png"></image>
+        <image src="../../../images/my_icon_Praise.png"></image>
         医生TOP指数
       </view>
       <view class="li">
@@ -705,7 +705,7 @@
         </view>
       </view>
     </view>
-    <view class="a10" wx:if="{{title=='连锁分析'}}">
+    <view class="a11" wx:if="{{title=='连锁分析'}}">
       <view class="center_top">
         <view class="left">
           <view class="{{check_num == 0?'check':''}}" data-index="0" bindtap="checkclick">日</view>
@@ -760,7 +760,23 @@
     position="top"
     bind:close="onClose"
   >
-    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+    <calendar calendarConfig="{{calendarConfig}}" wx:if="{{check_num==0}}" bind:afterTapDay="afterTapDay"></calendar>
+    <view class="month" wx:if="{{check_num==1}}">
+      <view class="year">
+        <van-icon name="arrow-left" size="36rpx" data-index="0" bindtap="yearclick" />
+        <view class="title">{{month_year1}}年</view>
+        <view class="now" bindtap="nowclick">今</view>
+      </view>
+      <view class="month_box">
+        <view class="month_li {{item.state == 1?'c_m':''}} {{month_star == index||month_end == index?'c_t_m':''}}" wx:if="{{index<12}}" data-index="{{index}}" wx:for="{{month_arr}}" bindtap="monthclick">{{item.time}}</view>
+        <view class="year">
+          <view class="now"></view>
+          <view class="title">{{month_year}}年</view>
+          <van-icon name="arrow" size="36rpx" data-index="1" bindtap="yearclick" />
+        </view>
+        <view class="month_li {{item.state == 1?'c_m':''}} {{month_star == index||month_end == index?'c_t_m':''}}" wx:if="{{index>=12}}" data-index="{{index}}" wx:for="{{month_arr}}" bindtap="monthclick">{{item.time}}</view>
+      </view>
+    </view>
   </van-popup>
   
   <van-popup

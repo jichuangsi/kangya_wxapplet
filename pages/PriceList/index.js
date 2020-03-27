@@ -87,15 +87,37 @@ Page({
       })
     }
   },
+  onChangevideo(event){
+    self.getvodnext(event.currentTarget.dataset.item.link)
+  },
   getvod() {
     let self = this
     wx.request({
       url: getApp().data.APIS + '/video/getvod/EOk6llnOcw9X1e4',
       method: 'get',
       success: function (res) {
+        console.log(1)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.getvodnext(res.data.list[0].link)
+          self.setData({
+            videolist_arr:res.data.list
+          })
+        }
+      }
+    })
+  },
+  getvodnext(data) {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + data,
+      method: 'get',
+      success: function (res) {
+        console.log(2)
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
+            videolistclick_arr: res.data.list
           })
         }
       }

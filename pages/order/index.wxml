@@ -16,18 +16,27 @@
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
           <view class="date">{{item.scheduletime}}</view>
           <view class="li">
-            <view class="time">{{item.starttime}}-{{item.starttime}} <van-icon name="close" catchtap="del" /></view>
-            <view>
-              <van-icon name="manager" size="36rpx" />{{item.name}}
+            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" catchtap="del"></image>
             </view>
-            <view>
-              <van-icon name="add-o" size="36rpx" />{{item.items}}
+            <view class="text_li">
+              <image src="../../images/4.png"></image>
+              {{item.name}}
             </view>
-            <view>
-              <van-icon name="manager-o" size="36rpx" />{{item.doctorname}}
+            <view class="text_li">
+              <image src="../../images/3.png"></image>
+              {{item.items}}
             </view>
-            <view class="bz">
-              <van-icon name="notes-o" size="36rpx" />{{item.remark}}
+            <view class="text_li">
+              <image src="../../images/1.png"></image>
+              {{item.doctorname}}
+            </view>
+            <view class="bz text_li">
+              <image src="../../images/2.png"></image>
+              {{item.remark}}
+              <view class="f30" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
+              <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
             </view>
           </view>
         </view>
@@ -43,18 +52,27 @@
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
           <view class="date">{{item.scheduletime}}</view>
           <view class="li">
-            <view class="time">{{item.starttime}}-{{item.starttime}} <van-icon name="close" catchtap="del" /></view>
-            <view>
-              <van-icon name="manager" size="36rpx" />{{item.name}}
+            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" catchtap="del"></image>
             </view>
-            <view>
-              <van-icon name="add-o" size="36rpx" />{{item.items}}
+            <view class="text_li">
+              <image src="../../images/4.png"></image>
+              {{item.name}}
             </view>
-            <view>
-              <van-icon name="manager-o" size="36rpx" />{{item.doctorname}}
+            <view class="text_li">
+              <image src="../../images/3.png"></image>
+              {{item.items}}
             </view>
-            <view class="bz">
-              <van-icon name="notes-o" size="36rpx" />{{item.remark}}
+            <view class="text_li">
+              <image src="../../images/1.png"></image>
+              {{item.doctorname}}
+            </view>
+            <view class="bz text_li">
+              <image src="../../images/2.png"></image>
+              {{item.remark}}
+              <view class="f30" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
+              <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
             </view>
           </view>
         </view>
@@ -74,18 +92,27 @@
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
           <view class="date">{{item.scheduletime}}</view>
           <view class="li">
-            <view class="time">{{item.starttime}}-{{item.starttime}} <van-icon name="close" catchtap="del" /></view>
-            <view>
-              <van-icon name="manager" size="36rpx" />{{item.name}}
+            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" catchtap="del"></image>
             </view>
-            <view>
-              <van-icon name="add-o" size="36rpx" />{{item.items}}
+            <view class="text_li">
+              <image src="../../images/4.png"></image>
+              {{item.name}}
             </view>
-            <view>
-              <van-icon name="manager-o" size="36rpx" />{{item.doctorname}}
+            <view class="text_li">
+              <image src="../../images/3.png"></image>
+              {{item.items}}
             </view>
-            <view class="bz">
-              <van-icon name="notes-o" size="36rpx" />{{item.remark}}
+            <view class="text_li">
+              <image src="../../images/1.png"></image>
+              {{item.doctorname}}
+            </view>
+            <view class="bz text_li">
+              <image src="../../images/2.png"></image>
+              {{item.remark}}
+              <view class="f30" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
+              <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
             </view>
           </view>
         </view>
@@ -98,18 +125,27 @@
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
           <view class="date">{{item.scheduletime}}</view>
           <view class="li">
-            <view class="time">{{item.starttime}}-{{item.starttime}} <van-icon name="close" catchtap="del" /></view>
-            <view>
-              <van-icon name="manager" size="36rpx" />{{item.name}}
+            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" catchtap="del"></image>
             </view>
-            <view>
-              <van-icon name="add-o" size="36rpx" />{{item.items}}
+            <view class="text_li">
+              <image src="../../images/4.png"></image>
+              {{item.name}}
             </view>
-            <view>
-              <van-icon name="manager-o" size="36rpx" />{{item.doctorname}}
+            <view class="text_li">
+              <image src="../../images/3.png"></image>
+              {{item.items}}
             </view>
-            <view class="bz">
-              <van-icon name="notes-o" size="36rpx" />{{item.remark}}
+            <view class="text_li">
+              <image src="../../images/1.png"></image>
+              {{item.doctorname}}
+            </view>
+            <view class="bz text_li">
+              <image src="../../images/2.png"></image>
+              {{item.remark}}
+              <view class="f30" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
+              <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
             </view>
           </view>
         </view>
