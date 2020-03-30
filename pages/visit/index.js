@@ -54,12 +54,40 @@ Page({
     })
     this.onClose()
   },
-  del() {
+  del(e) {
+    let self = this
     Dialog.confirm({
       title: '提示',
       message: '您确定删除这条回访吗？'
     }).then(() => {
       // on confirm
+      wx.request({
+        url: getApp().data.APIS + '/patient/delpatvisit',
+        method: 'post',
+        data: {
+          "visitidentity": e.currentTarget.dataset.item.visitidentity,
+          "customerid": e.currentTarget.dataset.item.customerid
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000
+            })
+            self.getdata()
+          } else {
+            wx.showToast({
+              title: '失败',
+              duration: 2000
+            })
+          }
+        }
+      })
     }).catch(() => {
       // on cancel
     })

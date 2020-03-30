@@ -21,6 +21,10 @@ Page({
       theme: 'elegant',
       chooseAreaMode: false,
     },
+    patient:'',
+    doctor:'',
+    visit:'',
+    visitidentity:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -28,8 +32,42 @@ Page({
     })
   },
   onClickRight() {
-    wx.navigateBack({
-      delta: 1
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/editpatvisit',
+      method: 'post',
+      data: {
+        "customerid": self.data.patient.customerid, 
+        "name": self.data.patient.patientname,
+        "date": self.data.time, 
+        "retvisuser": self.data.doctor.name, 
+        "useridentity": self.data.doctor.doctorid, 
+        "state": self.data.check_text == '已回访'?4:3, 
+        "record": self.data.visitcontent, 
+        "returntype": self.data.visittype, 
+        "remark": self.data.visitresult, 
+        "studyidentity": "", 
+        "visitidentity": self.data.visitidentity, 
+        "clinicid": self.data.patient.clinicuniqueid
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          wx.showToast({
+            title: '成功',
+            icon: 'success',
+            duration: 2000
+          })
+          setTimeout(function () {
+            self.onClickLeft()
+          }, 1000)
+        } else {
+          wx.showToast({
+            title: '失败',
+            duration: 2000
+          })
+        }
+      },
     })
   },
   Patientgo() {
@@ -83,10 +121,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    // console.log(options)
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
     this.setData({
-      title: options.title
+      title: options.title,
     })
+    console.log(1111)
+    console.log(Page.data)
+    if (options.title !='添加回访'){
+      this.setData({
+        patient:{
+          customerid: Page.data.patdetails != '' ? Page.data.patdetails.customerid : Page.data.visit.customerid,
+          name: Page.data.patdetails != '' ? Page.data.patdetails.name : Page.data.visit.customername,
+          clinicuniqueid: Page.data.patdetails != '' ? Page.data.patdetails.clinicuniqueid : Page.data.visit.clinicid,
+        },
+        doctor:{
+          name: Page.data.visit.retvisuser,
+          doctorid: Page.data.visit.useridentity,
+        },
+        check_text: Page.data.visit.retvisrecord,
+        visitcontent: Page.data.visit.retvisititem,
+        visittype: Page.data.visit.returntype,
+        visitresult: Page.data.visit.remark,
+        time: Page.data.visit.returndate,
+        visitidentity: Page.data.visit.visitidentity,
+      })
+    }
     wx.setNavigationBarTitle({
       title: options.title
     })
@@ -103,14 +164,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(this.data.patient)
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**

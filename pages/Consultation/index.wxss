@@ -82,3 +82,7 @@
   flex: none;
   width: 50%;
 }
+.li .del {
+  width: 38rpx;
+  height: 36rpx;
+}

@@ -18,11 +18,15 @@ Page({
     proposal: '',
     communicatetype: '',
     doctor_name: '',
+    consultid:'',
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
       chooseAreaMode: false,
     },
+    doctor:'',
+    doctor1:'',
+    patienta:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -30,8 +34,49 @@ Page({
     })
   },
   onClickRight() {
-    wx.navigateBack({
-      delta: 1
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/SaveConsult',
+      method: 'post',
+      data: {
+        "customerid": self.data.patienta.customerid, 
+        "consultid": self.data.consultid, 
+        "studyid": "438504049288904704", 
+        "faceconsultdatetime": self.data.time, 
+        "consultdoctname": self.data.doctor1.name, 
+        "consultdoctid": self.data.doctor1.doctorid, 
+        "consulttype": self.data.communicatetype, 
+        "consultmemo": self.data.complaints, 
+        "consultresult": self.data.programme, 
+        "consulthandle": self.data.basicdemand, 
+        "consultmark": self.data.record, 
+        "consultpotential": self.data.potentialdemand, 
+        "consultadvice": self.data.proposal, 
+        "recordername": self.data.doctor.name, 
+        "recorderid": self.data.doctor.doctorid, 
+        "transtatus": "1"
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          wx.showToast({
+            title: '成功',
+            icon: 'success',
+            duration: 2000
+          })
+          setTimeout(function () {
+            self.onClickLeft()
+          }, 1000)
+        } else {
+          wx.showToast({
+            title: '失败',
+            duration: 2000
+          })
+        }
+      }
     })
   },
   Patientgo() {
@@ -68,9 +113,10 @@ Page({
     this.onClose()
     console.log(this.data.time)
   },
-  Colleaguego() {
+  Colleaguego(e) {
+    let another = e.currentTarget.dataset.another ?'&&another=1':''
     wx.navigateTo({
-      url: '../Colleague/index?title=医生&&state=2',
+      url: '../Colleague/index?title=医生&&state=2' + another,
     })
   },
   editgo(e) {
@@ -83,15 +129,22 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
     this.setData({
-      title: options.title
+      title: options.title,
+      patienta: Page.data.patdetails
     })
+    console.log(112233)
+    console.log(this.data.patienta)
     wx.setNavigationBarTitle({
       title: options.title
     })
     if (options.title == '修改咨询') {
       let item = JSON.parse(options.item)
+      console.log(item)
       this.setData({
+        consultid: item.consultid,
         time: item.faceconsultdatetime,
         complaints: '',
         basicdemand: '',
@@ -101,16 +154,45 @@ Page({
         proposal: '',
         communicatetype: item.faceconsulttype,
         doctor_name: item.facerecordername,
+        doctor:{
+          name: item.facerecordername,
+        }
       })
     }
   },
   del() {
+    let self = this
     Dialog.confirm({
       title: '提示',
       message: '您确定删除这条咨询吗？'
     }).then(() => {
-      wx.navigateBack({
-        delta: 1,
+      wx.request({
+        url: getApp().data.APIS + '/patient/DelConsult',
+        method: 'post',
+        data: {
+          "consultid": self.data.consultid
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000
+            })
+            setTimeout(function(){
+              self.onClickLeft()
+            },1000)
+          } else {
+            wx.showToast({
+              title: '失败',
+              duration: 2000
+            })
+          }
+        }
       })
       // on confirm
     }).catch(() => {

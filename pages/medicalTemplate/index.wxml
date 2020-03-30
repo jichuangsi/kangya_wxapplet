@@ -6,22 +6,17 @@
   </view> -->
   <view class="center">
     <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
-      <van-sidebar-item title="口腔内科" />
-      <van-sidebar-item title="口腔外科" />
-      <van-sidebar-item title="口腔修复科" />
-      <van-sidebar-item title="口腔正畸科" />
-      <van-sidebar-item title="口腔种植科" />
-      <van-sidebar-item title="口腔保健科" />
+      <van-sidebar-item title="{{item.nodename}}" wx:for="{{arr_title}}" />
     </van-sidebar>
     <view class="list">
-      <view class="li" bindtap="checkclick" data-id="{{item.id}}" wx:for="{{arr}}" 
+      <view class="li" bindtap="checkclick" data-id="{{item.emrtemplateidentity}}" wx:for="{{arr}}" 
        wx:if="{{checkid == ''}}">
         <van-icon name="idcard"/>
-        <view>{{item.title}}</view>
+        <view>{{item.nodename}}</view>
       </view>
-      <view class="li" bindtap="checkgo" data-id="{{item.id}}" data-text="{{item.title}}" wx:for="{{arr1}}" wx:if="{{checkid != ''}}">
+      <view class="li" bindtap="checkgo" data-id="{{item.emrtemplateidentity}}" data-text="{{item.nodename}}" wx:for="{{arr1}}" wx:if="{{checkid != ''}}">
         <van-icon name="orders-o" />
-        <view>{{item.title}}</view>
+        <view>{{item.nodename}}</view>
       </view>
     </view>
   </view>

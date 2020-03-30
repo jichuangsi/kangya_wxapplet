@@ -80,7 +80,7 @@
     <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
     </view>
     <view class="li" wx:for="{{Matter_arr}}" data-index="{{index}}" wx:if="{{title=='选择事项'}}" bindtap="Matterclick">
-    {{item.title}}
+    {{item.scheduleitem}}
     <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
     </view>
     <view class="li" wx:if="{{title=='就诊时长'||title=='上下班时间'}}">

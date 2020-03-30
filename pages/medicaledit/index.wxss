@@ -125,3 +125,35 @@
   box-sizing: border-box;
   z-index: 9;
 }
+.tooth {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.tooth view {
+  width: 50%;
+  padding: 5rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.tooth view:nth-child(1){
+  border-bottom: 1rpx solid #f2f2f2;
+  border-right: 1rpx solid #f2f2f2;
+}
+.tooth view:nth-child(4){
+  border-top: 1rpx solid #f2f2f2;
+  border-left: 1rpx solid #f2f2f2;
+}
+.imgbox {
+  flex: 1;
+  display: flex;
+  height: 60rpx;
+  justify-content: flex-end;
+}
+.imgbox image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+}

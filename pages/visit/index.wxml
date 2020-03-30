@@ -72,7 +72,7 @@
                     <view class="time">{{item.returndate}}</view>
                   </view>
                 </view>
-                <image class="del" src="../../images/del.png" catchtap="del"></image>
+                <image class="del" src="../../images/del.png"  data-item="{{item}}" catchtap="del"></image>
                 <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state=='3'}}"></image>
                 <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state=='4'}}"></image>
               </view>

@@ -80,16 +80,16 @@
       <view>{{communicatetype}}</view>
       <van-icon name="arrow" />
     </view>
-    <view class="box" bindtap="Colleaguego">
+    <view class="box" data-another="1" bindtap="Colleaguego">
       <van-icon name="../../../images/case_icon_nurse_defauit.png" />
       <view class="text">接诊医生</view>
-      <view>{{doctor_name}}</view>
+      <view>{{doctor1.name}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="box" bindtap="Colleaguego">
       <van-icon name="../../../images/returnvisit_icon_personnel_default.png" />
       <view class="text">录入人</view>
-      <view>{{doctor_name}}</view>
+      <view>{{doctor.name}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="xian"></view>

@@ -173,3 +173,25 @@
   color: #e95865;
   border-color: #e95865;
 }
+.li .title .tooth {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.tooth view {
+  width: 50%;
+  padding: 5rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.tooth view:nth-child(1){
+  border-bottom: 1rpx solid #f2f2f2;
+  border-right: 1rpx solid #f2f2f2;
+}
+.tooth view:nth-child(4){
+  border-top: 1rpx solid #f2f2f2;
+  border-left: 1rpx solid #f2f2f2;
+}

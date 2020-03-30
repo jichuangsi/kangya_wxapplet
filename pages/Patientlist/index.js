@@ -73,10 +73,10 @@ Page({
         url: '../Patientdetails/index?customerid=' + e.currentTarget.dataset.customerid + '&&clinicid=' + e.currentTarget.dataset.clinicid,
       })
     }else{
-      console.log(prevPage)
       prevPage.setData({
-        Patient_name: e.currentTarget.dataset.name
+        patient: e.currentTarget.dataset.item
       })
+      console.log(prevPage.data.patient)
       this.onClickLeft()
     }
   },
@@ -87,21 +87,6 @@ Page({
   },
   getdata() {
     let self = this
-    // wx.request({
-    //   url: getApp().data.API+'/Patientlist.json',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data)
-    //     if (res.data.result == 200) {
-    //       self.setData({
-    //         Patientlist_arr: res.data.Patientlist_arr,
-    //       })
-    //     }
-    //   },
-    // })
-
     wx.request({
       url: getApp().data.APIS + '/patient/patientbasegroup',
       method: 'post',

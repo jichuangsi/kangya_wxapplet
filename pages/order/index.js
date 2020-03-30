@@ -23,7 +23,10 @@ Page({
       theme: 'elegant',
       chooseAreaMode: false,
     },
-    patdetails:''
+    patdetails:'',
+    doctor_arr:'',
+    doctorid:'',
+    order_state:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -39,9 +42,11 @@ Page({
     this.setData({ show: false });
   },
   onClickRight() {
+    console.log(this.data.title)
     if(this.data.title == '预约列表'){
       this.setData({ show: true });
     }else{
+      console.log(1122)
       wx.navigateTo({
         url: '../orderedit/index?title=添加预约',
       })
@@ -56,11 +61,40 @@ Page({
     })
     this.onClose()
   },
-  del(){
+  del(e){
+    let self = this
     Dialog.confirm({
       title: '提示',
       message: '您确定删除这条预约吗？'
     }).then(() => {
+      wx.request({
+        url: getApp().data.APIS + '/schedule/sccancelschedule',
+        method: 'post',
+        data: {
+          "scheduleidentity": e.currentTarget.dataset.item.scheduleidentity,
+          "name": e.currentTarget.dataset.item.name, 
+          "lostmemo": ""
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000
+            })
+            self.getdata()
+          } else {
+            wx.showToast({
+              title: '失败',
+              duration: 2000
+            })
+          }
+        }
+      })
       // on confirm
     }).catch(() => {
       // on cancel
@@ -82,7 +116,7 @@ Page({
     this.setData({ state1: e.currentTarget.dataset.text, showbottom: false })
   },
   numclick1(e) {
-    this.setData({ state2: e.currentTarget.dataset.text, showbottom: false })
+    this.setData({ state2: e.currentTarget.dataset.text, showbottom: false, order_state: e.currentTarget.dataset.state })
   },
   numclick2(e) {
     this.setData({ state3: e.currentTarget.dataset.text, showbottom: false })
@@ -99,15 +133,6 @@ Page({
   },
   getdata() {
     let self = this
-    // wx.request({
-    //   url: getApp().data.API + '/order.json',
-    //   success: function (res) {
-    //     self.setData({
-    //       order_arr: res.data.order_arr
-    //     })
-    //   }
-    // })
-
     wx.request({
       url: getApp().data.APIS + '/schedule/scscheduleday',
       method: 'post',
@@ -127,7 +152,7 @@ Page({
             if (res.data.list[i].schedule){
               for (let j = 0; j < res.data.list[i].schedule.length;j++){
                 if(self.data.title =='预约'){
-                  if (res.data.list[i].schedule[j].customerid == patdetails.customerid) {
+                  if (res.data.list[i].schedule[j].customerid == self.data.patdetails.customerid) {
                     arr.push(res.data.list[i].schedule[j])
                   }
                 } else {
@@ -143,6 +168,24 @@ Page({
         }
       }
     })
+
+    wx.request({
+      url: getApp().data.APIS + '/schedule/microlettercondition',
+      method: 'post',
+      data: {
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            doctor_arr: res.data.list.schdoctor
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -151,6 +194,8 @@ Page({
     console.log(options)
     let pages = getCurrentPages();
     let Page = pages[pages.length - 2];
+    console.log(111223)
+    console.log(Page.data)
     this.setData({ title:options.title})
     wx.setNavigationBarTitle({
       title: options.title
@@ -164,7 +209,6 @@ Page({
       enddate: year + '/' + month + '/' + day,
       patdetails: Page.data.patdetails
     })
-    console.log(this.data.patdetails)
     this.getdata()
   },
 

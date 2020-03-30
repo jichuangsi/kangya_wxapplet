@@ -23,7 +23,7 @@
         <view class="text">{{item.dictionaryname}}</view>
         <view class="num">{{item.patsum}}人</view>
       </view>
-      <view class="li" wx:for="{{patient_arr}}" wx:if="{{li_num==first_index+1}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" catchtap="Patientclick">
+      <view class="li" wx:for="{{patient_arr}}" wx:if="{{li_num==first_index+1}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" data-item="{{item}}" catchtap="Patientclick">
         <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
         <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
         <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>

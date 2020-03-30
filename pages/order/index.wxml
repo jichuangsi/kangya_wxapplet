@@ -18,7 +18,7 @@
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
             <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
-            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" catchtap="del"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" data-item="{{item}}" catchtap="del"></image>
             </view>
             <view class="text_li">
               <image src="../../images/4.png"></image>
@@ -49,7 +49,7 @@
         </view>
       </van-tab>
       <van-tab title="预约信息" name="预约信息">
-        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
+        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{state3=='医生'||state3=='全部'||state3==item.doctorname}}">
           <view class="date">{{item.scheduletime}}</view>
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
@@ -160,23 +160,21 @@
   position="bottom"
   custom-style="widht: 100%">
   <view class="popupbox" wx:if="{{num == 0}}">
-    <view catchtap="numclick" data-text="全部">全部</view>
-    <view catchtap="numclick" data-text="待确认">待确认</view>
-    <view catchtap="numclick" data-text="已确认">已确认</view>
-    <view catchtap="numclick" data-text="已取消">已取消</view>
+    <view catchtap="numclick" data-state="" data-text="全部">全部</view>
+    <view catchtap="numclick" data-state="0" data-text="待确认">待确认</view>
+    <view catchtap="numclick" data-state="1" data-text="已确认">已确认</view>
+    <view catchtap="numclick" data-state="2" data-text="已取消">已取消</view>
   </view>
   <view class="popupbox" wx:if="{{num == 1}}">
-    <view catchtap="numclick1" data-text="全部">全部</view>
-    <view catchtap="numclick1" data-text="已预约">已预约</view>
-    <view catchtap="numclick1" data-text="已确认">已确认</view>
-    <view catchtap="numclick1" data-text="已送达">已送达</view>
-    <view catchtap="numclick1" data-text="已流失">已流失</view>
+    <view catchtap="numclick1" data-state="" data-text="全部">全部</view>
+    <view catchtap="numclick1" data-state="0" data-text="已预约">已预约</view>
+    <view catchtap="numclick1" data-state="1" data-text="已确认">已确认</view>
+    <view catchtap="numclick1" data-state="2" data-text="已送达">已送达</view>
+    <view catchtap="numclick1" data-state="3" data-text="已流失">已流失</view>
   </view>
   <view class="popupbox" wx:if="{{num == 2}}">
-    <view catchtap="numclick2" data-text="全部">全部</view>
-    <view catchtap="numclick2" data-text="李青青">李青青</view>
-    <view catchtap="numclick2" data-text="李医生">李医生</view>
-    <view catchtap="numclick2" data-text="莫医生">莫医生</view>
+    <view catchtap="numclick2" data-id="" data-text="全部">全部</view>
+    <view catchtap="numclick2" data-id="{{item.doctorid}}" data-text="{{item.name}}" wx:for="{{doctor_arr}}">{{item.name}}</view>
   </view>
   </van-popup>
   <van-dialog id="van-dialog" />

@@ -22,7 +22,7 @@
   </view>
   <view class="" wx:if="{{title=='影像浏览'}}">
     <view class="img_box">
-      <image src="{{item}}" wx:for="{{img_arr}}"></image>
+      <image src="{{item.url}}" wx:for="{{img_arr}}" data-item="{{item}}" bindtap="imgclick"></image>
     </view>
   </view>
   <view class="li" wx:for="{{gt_arr}}" data-text="{{item}}" wx:if="{{title=='沟通类型'}}" bindtap="gtclick">

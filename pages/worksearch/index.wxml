@@ -13,14 +13,14 @@
     </view>
     
       <view class="li_box" wx:if="{{state == 0}}">
-            <view class="li" bindtap="detailsgo" data-item="item" wx:for="{{arr}}">
+            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{arr}}">
               <view class="li_top">
                 <view class="li_left">
-                  <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
-                  <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
+                  <image src="../../images/my_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
+                  <image src="../../images/my_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
                   <view class="libox">
                     <view>患者姓名</view>
-                    <view>{{item.name}}</view>
+                    <view>{{item.customername}}</view>
                   </view>
                   <view class="libox">
                     <view>回访人</view>
@@ -31,18 +31,54 @@
                     <view class="time">{{item.returndate}}</view>
                   </view>
                 </view>
-                <van-icon name="close" catchtap="del" />
+                <image class="del" src="../../images/del.png" data-item="{{item}}" catchtap="visit_del"></image>
+                <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state==3||item.returnresult==3}}"></image>
+                <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state==4||item.returnresult==4}}"></image>
               </view>
-              <view class="green" style="font-size:46rpx;">{{item.retvisititem}}</view>
-              <view>{{item.remark}}</view>
+              <view class="green ret">{{item.record}}</view>
+              <view class="f30" wx-if="{{item.remark!=''}}">
+                <image src="../../images/zd.png"></image>
+                <view>{{item.remark}}</view>
+                <image src="../../images/yd.png"></image>
+              </view>
+              <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
+            </view>
+      </view>
+      <view class="li_box" wx:if="{{state == 1}}">
+        <view class="order_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
+          <view class="date">{{item.scheduletime}}</view>
+          <view class="li">
+            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" data-item="{{item}}" catchtap="order_del"></image>
+            </view>
+            <view class="text_li">
+              <image src="../../images/4.png"></image>
+              {{item.name}}
+            </view>
+            <view class="text_li">
+              <image src="../../images/3.png"></image>
+              {{item.items}}
+            </view>
+            <view class="text_li">
+              <image src="../../images/1.png"></image>
+              {{item.doctorname}}
+            </view>
+            <view class="bz text_li">
+              <image src="../../images/2.png"></image>
+              {{item.remark}}
+              <view class="f30" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
+              <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
             </view>
           </view>
+        </view>
+      </view>
     
   <van-popup show="{{ show }}"
   position="top"
     >
     <view wx:for="{{nav1_arr}}" wx:if="{{nav_num == 1}}" data-text="{{item}}" bindtap="nav1click">{{item}}</view>
-    <view wx:for="{{nav2_arr}}" wx:if="{{nav_num == 2}}" data-text="{{item}}" bindtap="nav2click">{{item}}</view>
+    <view wx:for="{{nav2_arr}}" wx:if="{{nav_num == 2}}" data-id="{{item.doctorid}}" data-text="{{item.name}}" bindtap="nav2click">{{item.name}}</view>
     <calendar  wx:if="{{nav_num == 3}}" calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
   </van-popup>
 </view>

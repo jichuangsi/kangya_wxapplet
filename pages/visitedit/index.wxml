@@ -10,7 +10,7 @@
     <view class="box" bindtap="Patientgo">
       <van-icon name="contact" />
       <view class="text">患者姓名</view>
-      <view>{{Patient_name}}</view>
+      <view>{{patient.name}}</view>
     </view>
     <view class="xian"></view>
     <view class="box" bindtap="showpoup">
@@ -22,7 +22,7 @@
     <view class="box" bindtap="Colleaguego">
       <van-icon name="contact" />
       <view class="text">回访人</view>
-      <view>{{doctor_name}}</view>
+      <view>{{doctor.name}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="box" data-text="回访类型" bindtap="Patienteditgo">

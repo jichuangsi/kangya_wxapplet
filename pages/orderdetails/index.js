@@ -15,10 +15,39 @@ Page({
     })
   },
   onClickRight(){
+    let self = this
     Dialog.confirm({
       title: '提示',
       message: '您确定删除这条预约吗？'
     }).then(() => {
+      wx.request({
+        url: getApp().data.APIS + '/schedule/sccancelschedule',
+        method: 'post',
+        data: {
+          "scheduleidentity": self.data.item.scheduleidentity,
+          "name": self.data.item.name,
+          "lostmemo": ""
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000
+            })
+            self.onClickLeft()
+          } else {
+            wx.showToast({
+              title: '失败',
+              duration: 2000
+            })
+          }
+        }
+      })
       // on confirm
       wx.navigateBack({
         delta: 1

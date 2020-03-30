@@ -9,7 +9,8 @@ Page({
     title: '病历',
     arr:[],
     name:'',
-    sex:''
+    sex:'',
+    patdetails:'',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -38,20 +39,6 @@ Page({
   },
   getdata(){
     let self = this
-    // wx.request({
-    //   url: getApp().data.API + '/medical.json',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data)
-    //     if (res.data.result == 200) {
-    //       self.setData({
-    //         arr: res.data.arr
-    //       })
-    //     }
-    //   },
-    // })
     wx.request({
       url: getApp().data.APIS + '/patient/medicalrecordinfo',
       method:'post',
@@ -118,7 +105,8 @@ Page({
     console.log(prevPage.data)
     this.setData({
       name: prevPage.data.patdetails.name,
-      sex: prevPage.data.patdetails.sex
+      sex: prevPage.data.patdetails.sex,
+      patdetails: prevPage.data.patdetails
     })
   },
 

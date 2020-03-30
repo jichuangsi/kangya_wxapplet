@@ -11,6 +11,8 @@ Page({
     Patientstate:0,
     scrollTop: 'A',
     project_list: [],
+    pageIndex:1,
+    another:0
   },
   back() {
     wx.navigateBack({
@@ -19,17 +21,7 @@ Page({
   },
   searchclick(e) {
     console.log(e)
-    this.setData({
-      arr: [1], 
-      project_list: [
-        { index: 'A' },
-        { index: 'B' },
-        { index: 'C' },
-        { index: 'D' },
-        { index: 'E' }
-      ]
-    })
-    console.log(this.data.project_list)
+    this.getdoctor(e.detail.value)
   },
   onPageScroll(event) {
     this.setData({
@@ -37,39 +29,59 @@ Page({
     });
   },
   detailsgo(e){
-    console.log(this.data.Patientstate)
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 3]; 
     if (this.data.Patientstate == 0) {
       wx.navigateTo({
-        url: '../Colleaguedetails/index',
+        url: '../Colleaguedetails/index?item=' + JSON.stringify(e.currentTarget.dataset.item),
       })
     } else {
-      let arr;
-      wx.getStorage({
-        key: 'Patientlist',
-        success: function (res) {
-          arr = res.data
-          console.log(arr)
-          console.log(arr.doctor)
-          arr.doctor = e.currentTarget.dataset.name
-          wx.setStorage({
-            key: 'Patientlist',
-            data: arr,
-          })
-          wx.navigateBack({
-            delta: 2
-          })
-        },
+      if (this.data.another == 0) {
+        prevPage.setData({
+          doctor: e.currentTarget.dataset.item
+        })
+      }else{
+        prevPage.setData({
+          doctor1: e.currentTarget.dataset.item
+        })
+      }
+      wx.navigateBack({
+        delta: 2
       })
     }
+  },
+  getdoctor(value) {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/sysset/employeetreelist',
+      method: 'post',
+      data: {
+        pageno: self.data.pageIndex,
+        pagesize: 100,
+        keyword: value
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            project_list: res.data.list
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.state)
+    console.log(options.Patientstate)
     this.setData({
       Patientstate: options.Patientstate ? options.Patientstate : 0,
-      state: options.state ? options.state:0
+      state: options.state ? options.state : 0,
+      another: options.another ? options.another : 0
     })
   },
 

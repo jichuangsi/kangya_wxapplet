@@ -9,12 +9,11 @@ Page({
     title: '病历模板',
     activeKey: 0,
     checkid:'',
+    arr_title:[],
+    all_arr:[],
     arr:[
-      {id:1,title:'粘膜病'},
-      { id: 2, title: '牙周炎' }
     ],
     arr1: [
-      { id: 101, title: '龈乳头炎' }
     ]
   },
   onClickLeft() {
@@ -27,14 +26,67 @@ Page({
     //   icon: 'none',
     //   title: `切换至第${event.detail}项`
     // });checkid
-    this.setData({ checkid: '' })
+    console.log(event.detail)
+    this.setData({
+      arr: this.data.all_arr[event.detail].child,
+      checkid:'',
+    })
   },
   checkclick(e){
     this.setData({ checkid: e.currentTarget.dataset.id})
+    this.getnext()
   },
   checkgo(e) {
     wx.navigateTo({
-      url: '../Templatedetails/index?title=' + e.currentTarget.dataset.text,
+      url: '../Templatedetails/index?title=' + e.currentTarget.dataset.text + '&&id=' + e.currentTarget.dataset.id,
+    })
+  },
+  getdata(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/sysset/getcasetree',
+      method: 'post',
+      data:{
+        "clinicid": "", 
+        "read": 1, 
+        "emrtpl": "emr"
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            arr_title: res.data.list,
+            all_arr: res.data.list,
+            arr: res.data.list[0].child,
+          })
+        }
+      },
+    })
+  },
+  getnext() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/sysset/getcasethirdtree',
+      method: 'post',
+      data: {
+        "emrtemplateidentity": self.data.checkid, 
+        "read": 1, 
+        "emrtpl": "emr"
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            arr1:res.data.list
+          })
+        }
+      },
     })
   },
   /**
@@ -44,6 +96,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '病历模板'
     })
+    this.getdata()
   },
 
   /**

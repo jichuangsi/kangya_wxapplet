@@ -10,13 +10,13 @@
     <view class="box" bindtap="Patientgo">
       <van-icon name="contact" />
       <view class="text">患者姓名</view>
-      <view>{{Patient_name}}</view>
+      <view>{{patient.patientname}}</view>
     </view>
     <view class="xian"></view>
     <view class="box" bindtap="Colleaguego">
       <van-icon name="contact" />
       <view class="text">预约医生</view>
-      <view>{{doctor_name}}</view>
+      <view>{{doctor.name}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="box" bindtap="showpoup">
@@ -44,9 +44,9 @@
       <view></view>
     </view>
     <view class="box_li">
-      <view data-text="初诊" bindtap="checkclick" class="{{check_text=='初诊'?'check':''}}">初诊</view>
-      <view data-text="复诊" bindtap="checkclick" class="{{check_text=='复诊'?'check':''}}">复诊</view>
-      <view data-text="新诊" bindtap="checkclick" class="{{check_text=='新诊'?'check':''}}">新诊</view>
+      <view data-text="0" bindtap="checkclick" class="{{check_num=='0'?'check':''}}">初诊</view>
+      <view data-text="1" bindtap="checkclick" class="{{check_num=='1'?'check':''}}">复诊</view>
+      <view data-text="2" bindtap="checkclick" class="{{check_num=='2'?'check':''}}">新诊</view>
     </view>
     <view class="xian"></view>
     <view class="box" data-text="输入预约备注信息" data-btn="1" data-textstate="1" bindtap="Patienteditgo">

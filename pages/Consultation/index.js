@@ -22,12 +22,39 @@ Page({
       url: '../Consultationedit/index?title=新增咨询',
     })
   },
-  del(){
+  del(e){
+    let self = this
     Dialog.confirm({
       title: '提示',
       message: '您确定删除这条咨询吗？'
     }).then(() => {
       // on confirm
+      wx.request({
+        url: getApp().data.APIS + '/patient/DelConsult',
+        method: 'post',
+        data: {
+          "consultid": e.currentTarget.dataset.item.consultid
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000
+            })
+            self.getdata()
+          } else {
+            wx.showToast({
+              title: '失败',
+              duration: 2000
+            })
+          }
+        }
+      })
     }).catch(() => {
       // on cancel
     })
@@ -69,13 +96,12 @@ Page({
     })
     let pages = getCurrentPages();
     let Page = pages[pages.length - 2];
-
     this.setData({
       customerid: Page.data.customerid,
       clinicid: Page.data.clinicid,
       patdetails: Page.data.patdetails
     })
-    console.log(this.data.patdetails)
+    // console.log(this.data.patdetails)
     this.getdata()
   },
 

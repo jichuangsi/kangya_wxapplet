@@ -9,7 +9,8 @@ Page({
     scrollTop: 'A',
     state:0,
     project_list: [],
-    pageIndex:1
+    pageIndex:1,
+    another:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -28,8 +29,9 @@ Page({
         url: '../friendsearch/index?state=1',
       })
     }else{
+      let another = e.currentTarget.dataset.another ? '&&another=1' : ''
       wx.navigateTo({
-        url: '../friendsearch/index?state=1&&Patientstate=1',
+        url: '../friendsearch/index?state=1&&Patientstate=1' + another,
       })
     }
   },
@@ -47,10 +49,16 @@ Page({
         prevPage.setData({
           Patientlist: list
         })
-      }else if (this.data.state == 2 && this.data.state == 2){
-        prevPage.setData({
-          doctor_name: e.currentTarget.dataset.name
-        })
+      } else if (this.data.state == 2) {
+        if (this.data.another == 0) {
+          prevPage.setData({
+            doctor: e.currentTarget.dataset.item
+          })
+        } else {
+          prevPage.setData({
+            doctor1: e.currentTarget.dataset.item
+          })
+        }
       }
       this.onClickLeft()
     }
@@ -83,7 +91,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       state: options.state ? options.state:0,
-      title: options.title ? options.title :'同事'
+      title: options.title ? options.title :'同事',
+      another: options.another ? options.another:0
     })
     wx.setNavigationBarTitle({
       title: options.title ? options.title : '同事'

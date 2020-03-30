@@ -9,7 +9,7 @@
         <van-tab title="恒牙" name="恒牙">
           <view class="box">
             <view wx:for="{{arr1}}" data-index="{{index}}" bindtap="check1" class="y t{{item.id}} {{item.state==1?'check':''}}">{{item.text}}</view>
-            <view wx:for="{{arr2}}" data-index="{{index}}" bindtap="check1" class="y b{{item.id}} {{item.state==1?'check':''}}">{{item.text}}</view>
+            <view wx:for="{{arr2}}" data-index="{{index}}" bindtap="check2" class="y b{{item.id}} {{item.state==1?'check':''}}">{{item.text}}</view>
           </view>
         </van-tab>
         <van-tab title="乳牙" name="乳牙">

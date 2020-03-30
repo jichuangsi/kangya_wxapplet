@@ -46,12 +46,10 @@ Page({
     })
   },
   imgclick(e){
-    if (this.data.state == 0) {
       wx.previewImage({
         current: e.currentTarget.dataset.item.url, // 当前显示图片的http链接
         urls: [e.currentTarget.dataset.item.url] // 需要预览的图片http链接列表
       })
-    }
   },
   getdata() {
     let self = this
@@ -68,12 +66,43 @@ Page({
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {
+          for (let i = 0; i < res.data.list.imagelist.length;i++){
+            res.data.list.imagelist[i].state = 0
+          }
           self.setData({
             arr: res.data.list.imagelist
           })
         }
       }
     })
+  },
+  check_img(e){
+    let index = e.currentTarget.dataset.index
+    let arr = this.data.arr
+    arr[index].state = arr[index].state == 0 ? 1 : 0
+    this.setData({
+      arr: arr
+    })
+  },
+  btn(){
+    let pages = getCurrentPages();
+    let currPage = pages[pages.length - 3];
+    let prevPage = pages[pages.length - 2]; 
+    let arr = []
+    for(let i = 0;i<this.data.arr.length;i++){
+      if (this.data.arr[i].state == 1){
+        arr.push(this.data.arr[i])
+      }
+    }
+    console.log(currPage.data)
+    console.log(prevPage.data)
+    currPage.setData({
+      img_arr:arr
+    })
+    prevPage.setData({
+      img_arr: arr
+    })
+    this.onClickLeft()
   },
   /**
    * 生命周期函数--监听页面加载

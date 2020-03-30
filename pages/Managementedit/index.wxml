@@ -29,10 +29,10 @@
         <view class="title">
           <image src="../../images/details_disposal_icon_teeth.png"></image>
           <view class="tooth" bindtap="Toothgo">
-            <view wx:if="{{item.lb}}">{{item.lb+','}}</view>
-            <view wx:if="{{item.lt}}">{{item.lt+','}}</view>
-            <view wx:if="{{item.rb}}">{{item.rb+','}}</view>
-            <view wx:if="{{item.rt}}">{{item.rt+','}}</view>
+            <view>{{item.lb}}</view>
+            <view>{{item.lt}}</view>
+            <view>{{item.rb}}</view>
+            <view>{{item.rt}}</view>
           </view>
           <van-icon name="arrow" size="36rpx" />
           <van-icon name="close" size="36rpx" bindtap="del" />
@@ -116,10 +116,10 @@
         <view class="title">
           <image src="../../images/details_disposal_icon_teeth.png"></image>
           <view class="tooth" bindtap="Toothgo">
-            <view wx:if="{{item.lb}}">{{item.lb+','}}</view>
-            <view wx:if="{{item.lt}}">{{item.lt+','}}</view>
-            <view wx:if="{{item.rb}}">{{item.rb+','}}</view>
-            <view wx:if="{{item.rt}}">{{item.rt+','}}</view>
+            <view>{{item.lb}}</view>
+            <view>{{item.lt}}</view>
+            <view>{{item.rb}}</view>
+            <view>{{item.rt}}</view>
           </view>
           <van-icon name="arrow" size="36rpx" />
           <van-icon name="close" size="36rpx" bindtap="del" />
@@ -162,10 +162,10 @@
         <view class="title">
           <image src="../../images/details_disposal_icon_teeth.png"></image>
           <view class="tooth">
-            <view wx:if="{{item.lb}}">{{item.lb+','}}</view>
-            <view wx:if="{{item.lt}}">{{item.lt+','}}</view>
-            <view wx:if="{{item.rb}}">{{item.rb+','}}</view>
-            <view wx:if="{{item.rt}}">{{item.rt+','}}</view>
+            <view>{{item.lb}}</view>
+            <view>{{item.lt}}</view>
+            <view>{{item.rb}}</view>
+            <view>{{item.rt}}</view>
           </view>
         </view>
         <view class="text">

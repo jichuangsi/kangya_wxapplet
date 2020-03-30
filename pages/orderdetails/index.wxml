@@ -55,7 +55,7 @@
         <view bindtap="iphoneclick"><van-icon name="phone-o" size="40rpx"/>打电话</view>
         <view bindtap="editgo"><van-icon name="edit" size="40rpx"/>修改预约</view>
       </view>
-    <view class="btn" bindtap="onClickRight">删除回访</view>
+    <view class="btn" bindtap="onClickRight">删除预约</view>
   </view>
   <van-dialog id="van-dialog" />
 </view>

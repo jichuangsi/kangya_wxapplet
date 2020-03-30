@@ -67,8 +67,8 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/Patientsearch/index",
-					"pathName": "pages/Patientsearch/index",
+					"name": "pages/Patientdetails/index",
+					"pathName": "pages/Patientdetails/index",
 					"query": "title=医患沟通视频",
 					"scene": null
 				},
@@ -77,6 +77,13 @@
 					"name": "component/pages/erocdetails/index",
 					"pathName": "component/pages/erocdetails/index",
 					"query": "title=诊疗分析&&state=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Tooth/index",
+					"pathName": "pages/Tooth/index",
+					"query": "title=医患沟通视频",
 					"scene": null
 				}
 			]

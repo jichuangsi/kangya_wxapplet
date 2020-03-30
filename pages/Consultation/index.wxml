@@ -14,7 +14,7 @@
         <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
         <view class="text">{{patdetails.name}}</view>
         <view class="time">{{item.faceconsultdatetime}}</view>
-        <van-icon name="close" size="36rpx" catchtap="del" />
+        <image class="del" src="../../images/del.png" data-item="{{item}}" catchtap="del"></image>
       </view>
       <view class="li">
         <view class="green">沟通记录</view>

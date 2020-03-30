@@ -76,4 +76,17 @@
   height: 240rpx;
   margin-bottom: 20rpx;
   margin-right: 20rpx;
+  position: relative;
+}
+.center image .van-icon {
+  position: absolute;
+  right: 30rpx;
+  top: 10rpx;
+}
+.btn {
+  width: 100%;
+  line-height: 86rpx;
+  text-align: center;
+  background-color: #16c7ae;
+  color: #fff;
 }

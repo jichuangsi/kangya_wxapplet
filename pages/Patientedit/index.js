@@ -268,10 +268,14 @@ Page({
       })
     } else if (this.data.title == '选择事项') {
       let arr = self.data.Matter_arr
-      let arr1 = []
+      let arr1 = ''
       for(let i =0;i<arr.length;i++){
         if(arr[i].state == 1){
-          arr1.push(arr[i].title)
+          if(arr1 == ''){
+            arr1 = arr[i].scheduleitem
+          }else{
+            arr1 += ',' + arr[i].scheduleitem
+          }
         }
       }
       self.data.prevpage.setData({
@@ -374,61 +378,6 @@ Page({
   textipt(e) {
     this.setData({ textvalue: e.detail.value })
   },
-
-  // nameipt(e){
-  //   this.setData({ name: e.detail.value})
-  // },
-  // ageipt(e) {
-  //   this.setData({ age: e.detail.value })
-  // }, 
-  // hobbyipt(e) {
-  //   this.setData({ hobby: e.detail.value })
-  // },
-  // Economicipt(e) {
-  //   this.setData({ Economic: e.detail.value })
-  // },
-  // qqipt(e) {
-  //   this.setData({ qq: e.detail.value })
-  // },
-  // mailboxipt(e) {
-  //   this.setData({ mailbox: e.detail.value })
-  // },
-  // iphone1ipt(e) {
-  //   this.setData({ iphone1: e.detail.value })
-  // }, 
-  // iphone2ipt(e) {
-  //   this.setData({ iphone2: e.detail.value })
-  // },
-  // addressipt(e) {
-  //   this.setData({ address: e.detail.value })
-  // }, 
-  // remarksipt(e) {
-  //   this.setData({ remarks: e.detail.value })
-  // }, 
-  // IDCardipt(e) {
-  //   this.setData({ IDCard: e.detail.value })
-  // }, 
-  // socialcardipt(e) {
-  //   this.setData({ socialcard: e.detail.value })
-  // },
-  // Introduceript(e) {
-  //   this.setData({ Introducer: e.detail.value })
-  // },
-  // Habitipt(e) {
-  //   this.setData({ Habit: e.detail.value })
-  // },
-  // allergyipt(e) {
-  //   this.setData({ allergy: e.detail.value })
-  // },
-  // pastipt(e) {
-  //   this.setData({ past: e.detail.value })
-  // },
-  // askipt(e) {
-  //   this.setData({ ask: e.detail.value })
-  // },
-  // experienceipt(e) {
-  //   this.setData({ experience: e.detail.value })
-  // },
   projectclick(e){
     let text = e.currentTarget.dataset.text
     let list = this.data.prevpage.data.Patientlist
@@ -591,8 +540,26 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    this.getMatter()
   },
-
+  getMatter() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/schedule/scschduleitemsgroup',
+      method: 'get',
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          for (let i = 0; i < res.data.list[0].item.length;i++){
+            res.data.list[0].item[i].state = 0
+          }
+          self.setData({
+            Matter_arr: res.data.list[0].item
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

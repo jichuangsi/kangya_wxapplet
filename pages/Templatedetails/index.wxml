@@ -6,10 +6,41 @@
   </view> -->
   <view class="center">
     <view class="li">
-      <view class="tab" wx:for="{{arr}}">
-        <view class="left">{{item.title}}</view>
-        <view class="right" wx:if="{{item.text != '影像'}}">{{item.text}}</view>
-        <view class="right" wx:if="{{item.text == '影像'}}">{{item.text}}<van-icon name="arrow" /></view>
+      <view class="tab">
+        <view class="left">主诉</view>
+        <view class="right">{{item.pc}}</view>
+      </view>
+      <view class="tab">
+        <view class="left">现病史</view>
+        <view class="right">{{item.hpi}}</view>
+      </view>
+      <view class="tab">
+        <view class="left">既往史</view>
+        <view class="right">{{item.pi}}</view>
+      </view>
+      <view class="tab">
+        <view class="left">检查</view>
+        <view class="right">{{item.exam}}</view>
+      </view>
+      <view class="tab">
+        <view class="left">辅助检查</view>
+        <view class="right">{{item.ae}}</view>
+      </view>
+      <view class="tab">
+        <view class="left">诊断</view>
+        <view class="right">{{item.dg}}</view>
+      </view>
+      <view class="tab">
+        <view class="left">治疗方案</view>
+        <view class="right">{{item.plan}}</view>
+      </view>
+      <view class="tab">
+        <view class="left">治疗</view>
+        <view class="right">{{item.tr}}</view>
+      </view>
+      <view class="tab">
+        <view class="left">医嘱</view>
+        <view class="right">{{item.da}}</view>
       </view>
     </view>
   </view>

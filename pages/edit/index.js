@@ -15,6 +15,7 @@ Page({
     recordState: false, //录音状态
     content: '',//内容
     prevpage:'',
+    index:'',
     gt_arr: ['咨询沟通', '投诉']
   },
 
@@ -52,28 +53,38 @@ Page({
       })
       self.onClickLeft()
     } else if (this.data.title == '输入检查') {
+      let arr = self.data.prevpage.data.inspect
+      arr[self.data.index].text = self.data.content
       self.data.prevpage.setData({
-        inspect: self.data.content
+        inspect: arr
       })
       self.onClickLeft()
     } else if (this.data.title == '输入辅助检查') {
+      let arr = self.data.prevpage.data.auxiliary
+      arr[self.data.index].text = self.data.content
       self.data.prevpage.setData({
-        auxiliary: self.data.content
+        auxiliary: arr
       })
       self.onClickLeft()
     } else if (this.data.title == '输入诊断') {
+      let arr = self.data.prevpage.data.diagnose
+      arr[self.data.index].text = self.data.content
       self.data.prevpage.setData({
-        diagnose: self.data.content
+        diagnose: arr
       })
       self.onClickLeft()
     } else if (this.data.title == '输入治疗方案') {
+      let arr = self.data.prevpage.data.programme
+      arr[self.data.index].text = self.data.content
       self.data.prevpage.setData({
-        programme: self.data.content
+        programme: arr
       })
       self.onClickLeft()
     } else if (this.data.title == '输入治疗') {
+      let arr = self.data.prevpage.data.treat
+      arr[self.data.index].text = self.data.content
       self.data.prevpage.setData({
-        treat: self.data.content
+        treat: arr
       })
       self.onClickLeft()
     } else if (this.data.title == '输入医嘱') {
@@ -121,6 +132,12 @@ Page({
     }
   },
 
+  imgclick(e) {
+    wx.previewImage({
+      current: e.currentTarget.dataset.item.url, // 当前显示图片的http链接
+      urls: [e.currentTarget.dataset.item.url] // 需要预览的图片http链接列表
+    })
+  },
   gtclick(e) {
     this.data.prevpage.setData({
       communicatetype: e.currentTarget.dataset.text
@@ -131,7 +148,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ title: options.title, content:options.value })
+    this.setData({ title: options.title, content:options.value,index:options.index })
     wx.setNavigationBarTitle({
       title: options.title
     })

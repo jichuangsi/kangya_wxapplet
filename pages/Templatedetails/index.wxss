@@ -84,6 +84,7 @@
 }
 .tab .right {
   padding: 10rpx 20rpx;
+  flex: 1;
 }
 .van-dialog__button {
   flex: none;

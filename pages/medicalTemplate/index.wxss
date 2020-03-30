@@ -52,21 +52,25 @@ van-sidebar {
 }
 .center .list {
   flex: 1;
+  height: 100vh;
+  overflow-y: auto;
   padding: 20rpx;
   box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
 }
 .center .list .li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 20rpx;
   width: 140rpx;
+  height: 200rpx;
+  display: inline-block;
+  vertical-align: middle;
 }
 .center .list .li .van-icon {
   font-size: 60rpx;
   color: #e9730e;
+  width: 140rpx;
+  display: flex;
+  justify-content: center;
+}
+.center .list .li view {
+  text-align: center;
 }

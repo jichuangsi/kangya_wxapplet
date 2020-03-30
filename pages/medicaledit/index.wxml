@@ -76,112 +76,152 @@
     <view class="box title">
       <van-icon name="../../../images/case_icon_check_defauit.png" />
       <view class="text">检查</view>
-      <!-- <view class="del" bindtap="del1" wx:if="{{medical.arr1.length>1}}">
+      <view class="del" data-text="inspect" bindtap="del" wx:if="{{inspect.length!='1'}}">
         <van-icon name="close" color="red" />
         减少
       </view>
-      <view class="add" bindtap="add1">
+      <view class="add" data-text="inspect" bindtap="add">
         <van-icon name="add-o" color="#16c7ae" />
         添加
-      </view> -->
+      </view>
     </view>
-    <view class="box" bindtap="ygo">
-      <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
-      <view class="text">牙位</view>
-      <view></view>
-      <van-icon name="arrow" />
-    </view>
-    <view class="box" data-text="输入检查" data-value="{{inspect}}" bindtap="editgo">
-      <view class="bz" wx:if="{{inspect == ''}}"></view>
-      <view class="bz" wx:if="{{inspect != ''}}">{{inspect}}</view>
+    <view wx:for="{{inspect}}">
+      <view class="box" data-index="{{index}}" data-text="inspect" bindtap="ygo">
+        <view>牙位</view>
+        <view class="text" style="text_aligin:right;">
+        <view class="tooth">
+          <view class="lt">{{item.lt}}</view>
+          <view class="rt">{{item.rt}}</view>
+          <view class="lb">{{item.lb}}</view>
+          <view class="rb">{{item.rb}}</view>
+        </view>
+        </view>
+        <van-icon name="arrow" />
+      </view>
+      <view class="box" data-text="输入检查" data-index="{{index}}" data-value="{{item.text}}" bindtap="editgo">
+        <view class="bz" wx:if="{{item.text == ''}}"></view>
+        <view class="bz" wx:if="{{item.text != ''}}">{{item.text}}</view>
+      </view>
     </view>
     <view class="box title">
       <van-icon name="../../../images/case_icon_auxiliary_defauit.png" />
       <view class="text">辅助检查</view>
-      <!-- <view class="del" bindtap="del1" wx:if="{{medical.arr1.length>1}}">
+      <view class="del" data-text="auxiliary" bindtap="del" wx:if="{{auxiliary.length!='1'}}">
         <van-icon name="close" color="red" />
         减少
       </view>
-      <view class="add" bindtap="add1">
+      <view class="add" data-text="auxiliary" bindtap="add">
         <van-icon name="add-o" color="#16c7ae" />
         添加
-      </view> -->
+      </view>
     </view>
-    <view class="box" bindtap="ygo">
-      <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
-      <view class="text">牙位</view>
-      <view></view>
-      <van-icon name="arrow" />
-    </view>
-    <view class="box" data-text="输入辅助检查" data-value="{{auxiliary}}" bindtap="editgo">
-      <view class="bz" wx:if="{{auxiliary == ''}}"></view>
-      <view class="bz" wx:if="{{auxiliary != ''}}">{{auxiliary}}</view>
+    <view wx:for="{{auxiliary}}">
+      <view class="box" data-index="{{index}}" data-text="auxiliary" bindtap="ygo">
+        <view>牙位</view>
+        <view class="text" style="text_aligin:right;">
+        <view class="tooth">
+          <view class="lt">{{item.lt}}</view>
+          <view class="rt">{{item.rt}}</view>
+          <view class="lb">{{item.lb}}</view>
+          <view class="rb">{{item.rb}}</view>
+        </view>
+        </view>
+        <van-icon name="arrow" />
+      </view>
+      <view class="box" data-text="输入辅助检查" data-index="{{index}}" data-value="{{item.text}}" bindtap="editgo">
+        <view class="bz" wx:if="{{item.text == ''}}"></view>
+        <view class="bz" wx:if="{{item.text != ''}}">{{item.text}}</view>
+      </view>
     </view>
     <view class="box title">
       <van-icon name="../../../images/case_icon_diagnosis_defauit.png" />
       <view class="text">诊断</view>
-      <!-- <view class="del" bindtap="del1" wx:if="{{medical.arr1.length>1}}">
-        <van-icon name="close" color="red" />
-        减少
+        <view class="del" data-text="diagnose" bindtap="del" wx:if="{{diagnose.length!='1'}}">
+          <van-icon name="close" color="red" />
+          减少
+        </view>
+        <view class="add" data-text="diagnose" bindtap="add">
+          <van-icon name="add-o" color="#16c7ae" />
+          添加
+        </view>
+    </view>
+    <view wx:for="{{diagnose}}">
+      <view class="box" data-index="{{index}}" data-text="diagnose" bindtap="ygo">
+        <view>牙位</view>
+        <view class="text" style="text_aligin:right;">
+        <view class="tooth">
+          <view class="lt">{{item.lt}}</view>
+          <view class="rt">{{item.rt}}</view>
+          <view class="lb">{{item.lb}}</view>
+          <view class="rb">{{item.rb}}</view>
+        </view>
+        </view>
+        <van-icon name="arrow" />
       </view>
-      <view class="add" bindtap="add1">
-        <van-icon name="add-o" color="#16c7ae" />
-        添加
-      </view> -->
-    </view>
-    <view class="box" bindtap="ygo">
-      <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
-      <view class="text">牙位</view>
-      <view></view>
-      <van-icon name="arrow" />
-    </view>
-    <view class="box" data-text="输入诊断" data-value="{{diagnose}}" bindtap="editgo">
-      <view class="bz" wx:if="{{diagnose == ''}}"></view>
-      <view class="bz" wx:if="{{diagnose != ''}}">{{diagnose}}</view>
+      <view class="box" data-text="输入诊断" data-index="{{index}}" data-value="{{item.text}}" bindtap="editgo">
+        <view class="bz" wx:if="{{item.text == ''}}"></view>
+        <view class="bz" wx:if="{{item.text != ''}}">{{item.text}}</view>
+      </view>
     </view>
     <view class="box title">
       <van-icon name="../../../images/case_icon_diagnosis_defauit.png" />
       <view class="text">治疗方案</view>
-      <!-- <view class="del" bindtap="del1" wx:if="{{medical.arr1.length>1}}">
-        <van-icon name="close" color="red" />
-        减少
+        <view class="del" data-text="programme" bindtap="del" wx:if="{{programme.length!='1'}}">
+          <van-icon name="close" color="red" />
+          减少
+        </view>
+        <view class="add" data-text="programme" bindtap="add">
+          <van-icon name="add-o" color="#16c7ae" />
+          添加
+        </view>
+    </view>
+    <view wx:for="{{programme}}">
+      <view class="box" data-index="{{index}}" data-text="programme" bindtap="ygo">
+        <view>牙位</view>
+        <view class="text" style="text_aligin:right;">
+        <view class="tooth">
+          <view class="lt">{{item.lt}}</view>
+          <view class="rt">{{item.rt}}</view>
+          <view class="lb">{{item.lb}}</view>
+          <view class="rb">{{item.rb}}</view>
+        </view>
+        </view>
+        <van-icon name="arrow" />
       </view>
-      <view class="add" bindtap="add1">
-        <van-icon name="add-o" color="#16c7ae" />
-        添加
-      </view> -->
-    </view>
-    <view class="box" bindtap="ygo">
-      <van-icon name="../../../images/case_icon_programme_defauit.png" />
-      <view class="text">牙位</view>
-      <view></view>
-      <van-icon name="arrow" />
-    </view>
-    <view class="box" data-text="输入治疗方案" data-value="{{programme}}" bindtap="editgo">
-      <view class="bz" wx:if="{{programme == ''}}"></view>
-      <view class="bz" wx:if="{{programme != ''}}">{{programme}}</view>
+      <view class="box" data-text="输入治疗方案" data-index="{{index}}" data-value="{{item.text}}" bindtap="editgo">
+        <view class="bz" wx:if="{{item.text == ''}}"></view>
+        <view class="bz" wx:if="{{item.text != ''}}">{{item.text}}</view>
+      </view>
     </view>
     <view class="box title">
       <van-icon name="../../../images/case_icon_treatment_defauit.png" />
       <view class="text">治疗</view>
-      <!-- <view class="del" bindtap="del1" wx:if="{{medical.arr1.length>1}}">
-        <van-icon name="close" color="red" />
-        减少
+        <view class="del" data-text="treat" bindtap="del" wx:if="{{treat.length!='1'}}">
+          <van-icon name="close" color="red" />
+          减少
+        </view>
+        <view class="add" data-text="treat" bindtap="add">
+          <van-icon name="add-o" color="#16c7ae" />
+          添加
+        </view>
+    </view>
+    <view wx:for="{{treat}}">
+      <view class="box" data-index="{{index}}" data-text="treat" bindtap="ygo">
+        <view>牙位</view>
+        <view class="text" style="text_aligin:right;">
+        <view class="tooth">
+          <view class="lt">{{item.lt}}</view>
+          <view class="rt">{{item.rt}}</view>
+          <view class="lb">{{item.lb}}</view>
+          <view class="rb">{{item.rb}}</view>
+        </view>
+        </view>
+        <van-icon name="arrow" />
       </view>
-      <view class="add" bindtap="add1">
-        <van-icon name="add-o" color="#16c7ae" />
-        添加
-      </view> -->
-    </view>
-    <view class="box" bindtap="ygo">
-      <van-icon name="../../../images/case_icon_programme_defauit.png" />
-      <view class="text">牙位</view>
-      <view></view>
-      <van-icon name="arrow" />
-    </view>
-    <view class="box" data-text="输入治疗" data-value="{{treat}}" bindtap="editgo">
-      <view class="bz" wx:if="{{treat == ''}}"></view>
-      <view class="bz" wx:if="{{treat != ''}}">{{treat}}</view>
+      <view class="box" data-text="输入治疗" data-index="{{index}}" data-value="{{item.text}}" bindtap="editgo">
+        <view class="bz" wx:if="{{item.text == ''}}"></view>
+        <view class="bz" wx:if="{{item.text != ''}}">{{item.text}}</view>
+      </view>
     </view>
     <view class="xian"></view>
     <view class="box" data-text="输入医嘱" data-value="{{advice}}" bindtap="editgo">
@@ -195,21 +235,23 @@
     <view class="xian"></view>
     <view class="box" data-text="影像浏览" bindtap="editgo">
       <van-icon name="../../../images/case_icon_image_defauit.png" />
-      <view class="text">影像</view>
-      <view></view>
+      <view style="margin-left:20rpx;">影像</view>
+      <view class="imgbox">
+        <image src="{{item.url}}" wx:for="{{img_arr}}"></image>
+      </view>
       <van-icon name="arrow" />
     </view>
     <view class="xian"></view>
-    <view class="box" bindtap="Colleaguego">
+    <view class="box" data-another="1" bindtap="Colleaguego">
       <van-icon name="../../../images/case_icon_doctor_defauit.png" />
       <view class="text">医生</view>
-      <view></view>
+      <view>{{doctor1.name}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="box" bindtap="Colleaguego">
       <van-icon name="../../../images/case_icon_nurse_defauit.png" />
       <view class="text">护士</view>
-      <view></view>
+      <view>{{doctor.name}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="box" bindtap="showpopup">

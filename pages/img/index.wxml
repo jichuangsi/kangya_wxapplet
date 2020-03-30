@@ -1,10 +1,21 @@
 <!--pages/img/index.wxml-->
 <view class="img">
-  <view class="top_right" bindtap="onClickRight">
+  <view class="top_right" bindtap="onClickRight" wx:if="{{title=='影像'}}">
     <van-icon name="eye-o" slot="right" size="36rpx" />
   </view>
-  <view class="center">
-    <image src="{{item.url}}" wx:for="{{arr}}" data-item="{{item}}" bindtap="imgclick"></image>
+  <view class="box" wx:if="{{title=='影像'}}">
+    <view class="center">
+      <image src="{{item.url}}" wx:for="{{arr}}" data-item="{{item}}" bindtap="imgclick"></image>
+    </view>
+  </view>
+  <view class="box" wx:if="{{title=='选择影像'}}">
+    <view class="center">
+      <image src="{{item.url}}" wx:for="{{arr}}" data-item="{{item}}" bindtap="imgclick">
+        <van-icon name="checked" color="#999" size="42rpx" wx:if="{{item.state == 0}}" data-index="{{index}}" catchtap="check_img" />
+        <van-icon name="checked" color="#16c7ae" size="42rpx" wx:if="{{item.state == 1}}" data-index="{{index}}" catchtap="check_img" />
+      </image>
+    </view>
+    <view class="btn" bindtap="btn">完成</view>
   </view>
   <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
     <view class="showpopup">
