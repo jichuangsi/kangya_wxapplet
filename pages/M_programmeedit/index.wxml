@@ -20,14 +20,14 @@
     </view>
   </view>
   <view class="xian"></view>
-  <view class="li" bindtap="Colleaguego">
+  <view class="li" data-another="1" bindtap="Colleaguego">
     <view class="text">医生</view>
     <view>{{arr.bhdoct}}</view>
     <van-icon name="arrow" size="36rpx" />
   </view>
-  <view class="li" bindtap="Colleaguego">
+  <view class="li" data-another="0" bindtap="Colleaguego">
     <view class="text">护士</view>
-    <view>{{arr.counselor}}</view>
+    <view>{{arr.bhnurse}}</view>
     <van-icon name="arrow" size="36rpx" />
   </view>
   <view class="xian"></view>

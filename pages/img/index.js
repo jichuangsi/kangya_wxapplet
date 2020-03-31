@@ -24,6 +24,7 @@ Page({
     this.setData({ show: false });
   },
   pz() {
+    let self = this
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
@@ -31,10 +32,12 @@ Page({
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
         const tempFilePaths = res.tempFilePaths
+        self.addimg(res.tempFilePaths)
       }
     })
   },
   xc() {
+    let self = this
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
@@ -42,6 +45,8 @@ Page({
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
         const tempFilePaths = res.tempFilePaths
+        self.addimg(res.tempFilePaths[0])
+        console.log(res.tempFilePaths)
       }
     })
   },
@@ -50,6 +55,45 @@ Page({
         current: e.currentTarget.dataset.item.url, // 当前显示图片的http链接
         urls: [e.currentTarget.dataset.item.url] // 需要预览的图片http链接列表
       })
+  },
+  addimg(imgname) {
+    let self = this
+    console.log(4456)
+    wx.uploadFile({
+      url: getApp().data.APIS + '/patient/addmediaimage', //仅为示例，非真实的接口地址
+      filePath: imgname,
+      name: 'file',
+      formData: {
+        customerid: self.data.customerid,
+        fileName: imgname
+      },
+      success: function (res) {
+        console.log(res)
+        let data = JSON.parse(res.data)
+        console.log(data)
+        if (data.info == 'ok') {
+          wx.showToast({
+            title: '成功',
+            icon: 'success',
+            duration: 2000
+          })
+          self.getdata()
+        } else {
+          wx.showToast({
+            title: '失败',
+            duration: 2000
+          })
+        }
+        //do something
+      },
+      fail:function(err){
+        console.log(err)
+        wx.showToast({
+          title: '失败',
+          duration: 2000
+        })
+      }
+    })
   },
   getdata() {
     let self = this

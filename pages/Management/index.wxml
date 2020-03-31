@@ -22,12 +22,12 @@
       </view>
       <view class="li" wx:for="{{item.handlelist}}" wx:if="{{item.handletype==0}}">
         <view class="title">
-          <image src="../../images/details_disposal_icon_teeth.png" wx:if="{{item.lb||item.lt||item.rb||item.rt}}"></image>
+          <image src="../../images/details_disposal_icon_teeth.png"></image>
           <view class="tooth">
-            <view>{{item.lb}}</view>
             <view>{{item.lt}}</view>
-            <view>{{item.rb}}</view>
             <view>{{item.rt}}</view>
+            <view>{{item.lb}}</view>
+            <view>{{item.rb}}</view>
           </view>
         </view>
         <view class="text">

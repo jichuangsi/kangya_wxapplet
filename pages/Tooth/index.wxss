@@ -251,3 +251,23 @@
   bottom: 300rpx;
   right:30rpx;
 }
+
+.check_box {
+  width: 100%;
+  display: flex;
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+}
+.check_box .check_li {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.check_box .check_li view:first-child {
+  color: #16c7ae;
+}
+.check_box .check_li .van-icon {
+  color: #333 !important;
+  margin-left: 10rpx;
+}

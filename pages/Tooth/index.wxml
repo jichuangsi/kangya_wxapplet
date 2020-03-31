@@ -20,6 +20,18 @@
         </van-tab>
       </van-tabs>
   </view>
+        <view class="check_box" wx:if="{{state==1}}">
+          <view class="check_li" data-index="0" data-another="1" bindtap="Colleaguego">
+            <view>医生：</view>
+            <view>{{arr.handlelist[0].bhdoct}}</view>
+            <van-icon name="arrow-down" size="36rpx" />
+          </view>
+          <view class="check_li" data-index="0" data-another="0" bindtap="Colleaguego">
+            <view>护士：</view>
+            <view>{{arr.handlelist[0].bhnurse}}</view>
+            <van-icon name="arrow-down" size="36rpx" />
+          </view>
+        </view>
   <view class="btn" bindtap="btn">确认</view>
   <van-dialog id="van-dialog" />
 </view>

@@ -6,7 +6,8 @@ Page({
    */
   data: {
     title:'处方说明',
-    value:''
+    value:'',
+    index:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -15,6 +16,13 @@ Page({
   },
 
   onClickRight() {
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    let arr = Page.data.arr
+    arr[this.data.index].handmark = this.data.value
+    Page.setData({
+      arr:arr
+    })
     wx.navigateBack({
       delta: 1
     })
@@ -29,7 +37,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ value: options.value })
+    this.setData({ value: options.value, index: options.index })
     wx.setNavigationBarTitle({
       title: '处方说明'
     })

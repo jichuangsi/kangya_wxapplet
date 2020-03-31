@@ -248,7 +248,7 @@
       <view>{{doctor1.name}}</view>
       <van-icon name="arrow" />
     </view>
-    <view class="box" bindtap="Colleaguego">
+    <view class="box" data-another="0" bindtap="Colleaguego">
       <van-icon name="../../../images/case_icon_nurse_defauit.png" />
       <view class="text">护士</view>
       <view>{{doctor.name}}</view>

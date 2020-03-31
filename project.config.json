@@ -80,9 +80,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/Tooth/index",
-					"pathName": "pages/Tooth/index",
+					"id": 3,
+					"name": "pages/programme/index",
+					"pathName": "pages/programme/index",
 					"query": "title=医患沟通视频",
 					"scene": null
 				}

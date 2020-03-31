@@ -10,7 +10,9 @@ Page({
     title: '处置',
     arr: '',
     isfirstvisit:0,
-    time:''
+    time: '',
+    patdetails:'',
+    price:'0'
   },
   onClickLeft() {
     wx.navigateBack({
@@ -46,9 +48,11 @@ Page({
     let myDate = new Date();
     this.setData({
       title:options.title,
-      arr: options.title == '修改处置' ? JSON.parse(options.item) : Page.data.patdetails,
+      arr: options.title == '修改处置' ? JSON.parse(options.item) : { handlelist:[]},
+      patdetails: Page.data.patdetails,
       isfirstvisit: Page.data.arr.length>0?1:0,
-      time: myDate.getFullYear() + '-' + (myDate.getMonth() + 1) + '-' + myDate.getDate() + ' ' + myDate.getHours() + ':' + myDate.getMinutes()
+      time: myDate.getFullYear() + '-' + (myDate.getMonth() + 1) + '-' + myDate.getDate() + ' ' + myDate.getHours() + ':' + myDate.getMinutes(),
+      price: options.title == '修改处置' ? JSON.parse(options.item).allfee: '0'
     })
     wx.setNavigationBarTitle({
       title: options.title
@@ -56,8 +60,60 @@ Page({
     console.log(Page.data)
     console.log(this.data.arr)
   },
-  btn(){
-    this.onClickLeft()
+  btn() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/SaveHandleList',
+      method: 'post',
+      data: {
+        study: JSON.stringify(self.data.arr.handlelist),
+        studyidentity: self.data.arr.studyidentity,
+        customerid: self.data.patdetails.customerid,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          wx.showToast({
+            title: '成功',
+            icon: 'success',
+            duration: 2000
+          })
+          setTimeout(function(){
+            self.onClickLeft()
+          },1000)
+          self.getdata()
+        } else {
+          wx.showToast({
+            title: '失败',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+  delone(e) {
+    let self = this
+    let arr = self.data.arr
+    let index = e.currentTarget.dataset.index
+    let price = 0
+    Dialog.confirm({
+      title: '提示',
+      message: '您确定删除该方案吗？'
+    }).then(() => {
+      arr.handlelist.splice(index,1)
+      for (let j = 0; j < arr.handlelist.length; j++) {
+        price += Number(arr.handlelist[j].billnumber) * arr.handlelist[j].fee.indexOf(',') != -1 ? Number(arr.handlelist[j].fee.split(',')[0] + arr.handlelist[j].fee.split(',')[1]) : Number(arr.handlelist[j].fee)
+      }
+      self.setData({
+        arr: arr,
+        price:price
+      })
+    }).catch(() => {
+      // on cancel
+    })
   },
   del() {
     Dialog.confirm({
@@ -72,19 +128,21 @@ Page({
       // on cancel
     })
   },
-  Toothgo(){
+  Toothgo(e) {
     wx.navigateTo({
-      url: '../Tooth/index',
+      url: '../Tooth/index?index=' + e.currentTarget.dataset.index + '&&text=' + e.currentTarget.dataset.text,
     })
   },
-  Colleaguego() {
+  Colleaguego(e) {
+    let another = '&&another=' + e.currentTarget.dataset.another
+    let index = '&&index=' + e.currentTarget.dataset.index
     wx.navigateTo({
-      url: '../Colleague/index?title=医生&&state=2',
+      url: '../Colleague/index?title=医生&&state=4' + another+index,
     })
   },
   editgo(e) {
     wx.navigateTo({
-      url: '../M_programmeedit/index?item=' + JSON.stringify(e.currentTarget.dataset.item) + '&&state=' + e.currentTarget.dataset.state,
+      url: '../M_programmeedit/index?item=' + JSON.stringify(e.currentTarget.dataset.item) + '&&state=' + e.currentTarget.dataset.state +'&&index=' + e.currentTarget.dataset.index,
     })
   },
   /**

@@ -10,6 +10,7 @@ Page({
     state:0,
     text:'',
     index:'',
+    arr:'',
     arr1:[
       { state: 0, text: 8, id: 0 },
       { state: 0, text: 7, id: 1 },
@@ -76,7 +77,17 @@ Page({
       delta: 1
     })
   },
+  Colleaguego(e) {
+    let another = '&&another=' + e.currentTarget.dataset.another
+    let index = '&&index=' + e.currentTarget.dataset.index
+    wx.navigateTo({
+      url: '../Colleague/index?title=医生&&state=4' + another + index,
+    })
+  },
   btn() {
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    let prev1Page = pages[pages.length - 3];
     let arr1 = this.data.arr1
     let arr2 = this.data.arr2
     let arr3 = this.data.arr3
@@ -113,13 +124,37 @@ Page({
         rb += arr4[i].text
       }
     }
-    if(this.data.state == 1){
+    if (this.data.state == 1) {
+      let data_arr = prevPage.data.arr
+      let arr = prev1Page.data.arr
+      let arrdoctor = this.data.arr
+      let price = 0
+      console.log(111)
+      console.log(arr)
+      console.log(data_arr)
+      for (let i = 0; i < data_arr.handlelist.length; i++) {
+        data_arr.handlelist[i].lt = lt
+        data_arr.handlelist[i].rt = rt
+        data_arr.handlelist[i].lb = lb
+        data_arr.handlelist[i].rb = rb
+        data_arr.handlelist[i].bhdoct = arrdoctor.handlelist[0].bhdoct
+        data_arr.handlelist[i].bhdoctidentity = arrdoctor.handlelist[0].bhdoctidentity
+        data_arr.handlelist[i].bhhandlesetidentity = arrdoctor.handlelist[0].bhhandlesetidentity
+        data_arr.handlelist[i].bhnurse = arrdoctor.handlelist[0].bhnurse
+      }
+      arr.handlelist.push(...data_arr.handlelist)
+      console.log(arr)
+      for (let j =0;j< arr.handlelist.length;j++){
+        price += Number(arr.handlelist[j].billnumber) * arr.handlelist[j].fee.indexOf(',') != -1 ? Number(arr.handlelist[j].fee.split(',')[0] + arr.handlelist[j].fee.split(',')[1]) : Number(arr.handlelist[j].fee)
+      }
+      prev1Page.setData({
+        arr: arr,
+        price: price
+      })
       wx.navigateBack({
         delta: 2
       })
     } else {
-      let pages = getCurrentPages();
-      let prevPage = pages[pages.length - 2];
       if (this.data.text == 'inspect'){
         let data_arr = prevPage.data.inspect
         data_arr[this.data.index].lt = lt
@@ -130,7 +165,7 @@ Page({
           inspect: data_arr
         })
       } else if (this.data.text == 'auxiliary') {
-        let data_arr = prevPage.data.inspect
+        let data_arr = prevPage.data.auxiliary
         data_arr[this.data.index].lt = lt
         data_arr[this.data.index].rt = rt
         data_arr[this.data.index].lb = lb
@@ -139,7 +174,7 @@ Page({
           auxiliary: data_arr
         })
       } else if (this.data.text == 'diagnose') {
-        let data_arr = prevPage.data.inspect
+        let data_arr = prevPage.data.diagnose
         data_arr[this.data.index].lt = lt
         data_arr[this.data.index].rt = rt
         data_arr[this.data.index].lb = lb
@@ -148,7 +183,7 @@ Page({
           diagnose: data_arr
         })
       } else if (this.data.text == 'programme') {
-        let data_arr = prevPage.data.inspect
+        let data_arr = prevPage.data.programme
         data_arr[this.data.index].lt = lt
         data_arr[this.data.index].rt = rt
         data_arr[this.data.index].lb = lb
@@ -157,13 +192,22 @@ Page({
           programme: data_arr
         })
       } else if (this.data.text == 'treat') {
-        let data_arr = prevPage.data.inspect
+        let data_arr = prevPage.data.treat
         data_arr[this.data.index].lt = lt
         data_arr[this.data.index].rt = rt
         data_arr[this.data.index].lb = lb
         data_arr[this.data.index].rb = rb
         prevPage.setData({
           treat: data_arr
+        })
+      } else if (this.data.text == 'handlelist') {
+        let data_arr = prevPage.data.arr
+        data_arr.handlelist[this.data.index].lt = lt
+        data_arr.handlelist[this.data.index].rt = rt
+        data_arr.handlelist[this.data.index].lb = lb
+        data_arr.handlelist[this.data.index].rb = rb
+        prevPage.setData({
+          arr: data_arr
         })
       }
       wx.navigateBack({
@@ -216,9 +260,9 @@ Page({
     wx.setNavigationBarTitle({
       title: '标记牙位'
     })
-    console.log(options)
+    console.log(this.data.state)
     let pages = getCurrentPages();
-    let prevPage = options.state ? pages[pages.length - 3] : pages[pages.length - 2];
+    let prevPage = pages[pages.length - 2];
     let item = ''
     console.log(prevPage.data)
     if (options.text == 'inspect') {
@@ -231,7 +275,15 @@ Page({
       item = prevPage.data.programme[options.index]
     } else if (options.text == 'treat') {
       item = prevPage.data.treat[options.index]
+    } else if (options.text == 'handlelist') {
+      item = prevPage.data.arr.handlelist[options.index]
+    } else if (options.state == '1') {
+      item = prevPage.data.arr.handlelist[0]
+      this.setData({
+        arr: prevPage.data.arr
+      })
     }
+    console.log(prevPage.data.arr)
     let arr1 = this.data.arr1
     let arr2 = this.data.arr2
     let arr3 = this.data.arr3

@@ -14,7 +14,7 @@
     <view class="li">
         <view class="first">就诊医生</view>
         <image class="img" src="../../images/clinic_colleagues_headportrait_male.png"></image>
-        <view>{{arr.referraldoct}}</view>
+        <view>{{arr.referraldoct?arr.referraldoct:patdetails.referraldoct}}</view>
     </view>
     <view class="li">
         <view class="first">就诊日期</view>
@@ -28,32 +28,32 @@
       <view class="li" wx:for="{{arr.handlelist}}" wx:if="{{item.handletype==0}}">
         <view class="title">
           <image src="../../images/details_disposal_icon_teeth.png"></image>
-          <view class="tooth" bindtap="Toothgo">
-            <view>{{item.lb}}</view>
+          <view class="tooth" data-index="{{index}}" data-text="handlelist" bindtap="Toothgo">
             <view>{{item.lt}}</view>
-            <view>{{item.rb}}</view>
             <view>{{item.rt}}</view>
+            <view>{{item.lb}}</view>
+            <view>{{item.rb}}</view>
           </view>
           <van-icon name="arrow" size="36rpx" />
-          <van-icon name="close" size="36rpx" bindtap="del" />
+          <van-icon name="close" size="36rpx" data-index="{{index}}" bindtap="delone" />
         </view>
         <view class="text">
           <view>{{item.name}}</view>
           <view class="money">
             <view>￥{{item.fee}}</view> x{{item.billnumber}}
           </view>
-          <van-icon name="edit" size="36rpx" data-item="{{item}}" data-state="{{arr.studystatusname}}" bindtap="editgo" />
+          <van-icon name="edit" size="36rpx" data-item="{{item}}" data-state="治疗中" data-index="{{index}}" bindtap="editgo" />
         </view>
         <view class="bz">备注：{{item.remark}}</view>
         <view class="check_box">
-          <view class="check_li" bindtap="Colleaguego">
+          <view class="check_li" data-index="{{index}}" data-another="1" bindtap="Colleaguego">
             <view>医生：</view>
             <view>{{item.bhdoct}}</view>
             <van-icon name="arrow-down" size="36rpx" />
           </view>
-          <view class="check_li" bindtap="Colleaguego">
+          <view class="check_li" data-index="{{index}}" data-another="0" bindtap="Colleaguego">
             <view>护士：</view>
-            <view>{{item.counselor}}</view>
+            <view>{{item.bhnurse}}</view>
             <van-icon name="arrow-down" size="36rpx" />
           </view>
         </view>
@@ -66,8 +66,8 @@
           <view class="money">
             <view>￥{{item.fee}}</view> x{{item.billnumber}}
           </view>
+          <view class="bz" style="border:none">{{item.remark}}</view>
         </view>
-        <view class="bz" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
       </view>
     </view>
     <view class="li" bindtap="Soundgo">
@@ -85,7 +85,7 @@
     <view class="li">
         <view class="first">总计</view>
         <!-- <view>（共0个）</view> -->
-        <view class="red">￥{{arr.payfeetotal}}</view>
+        <view class="red">￥{{price}}</view>
     </view>
     <view class="li libox">
       <view class="btn" bindtap="btn"><van-icon name="passed" size="36rpx" />确定</view>
@@ -115,32 +115,32 @@
       <view class="li" wx:for="{{arr.handlelist}}" wx:if="{{item.handletype==0}}">
         <view class="title">
           <image src="../../images/details_disposal_icon_teeth.png"></image>
-          <view class="tooth" bindtap="Toothgo">
-            <view>{{item.lb}}</view>
+          <view class="tooth" data-index="{{index}}" data-text="handlelist" bindtap="Toothgo">
             <view>{{item.lt}}</view>
-            <view>{{item.rb}}</view>
             <view>{{item.rt}}</view>
+            <view>{{item.lb}}</view>
+            <view>{{item.rb}}</view>
           </view>
           <van-icon name="arrow" size="36rpx" />
-          <van-icon name="close" size="36rpx" bindtap="del" />
+          <van-icon name="close" size="36rpx" data-index="{{index}}" bindtap="delone" />
         </view>
         <view class="text">
           <view>{{item.name}}</view>
           <view class="money">
             <view>￥{{item.fee}}</view> x{{item.billnumber}}
           </view>
-          <van-icon name="edit" size="36rpx" data-item="{{item}}" data-state="{{arr.studystatusname}}" bindtap="editgo" />
+          <van-icon name="edit" size="36rpx" data-item="{{item}}" data-state="{{arr.studystatusname}}" data-index="{{index}}" bindtap="editgo" />
         </view>
         <view class="bz">备注：{{item.remark}}</view>
         <view class="check_box">
-          <view class="check_li" bindtap="Colleaguego">
+          <view class="check_li" data-index="{{index}}" data-another="1" bindtap="Colleaguego">
             <view>医生：</view>
             <view>{{item.bhdoct}}</view>
             <van-icon name="arrow-down" size="36rpx" />
           </view>
-          <view class="check_li" bindtap="Colleaguego">
+          <view class="check_li" data-index="{{index}}" data-another="0" bindtap="Colleaguego">
             <view>护士：</view>
-            <view>{{item.counselor}}</view>
+            <view>{{item.bhnurse}}</view>
             <van-icon name="arrow-down" size="36rpx" />
           </view>
         </view>
@@ -148,13 +148,13 @@
       <view class="li" bindtap="prescriptiongo">
         <view class="first">处方</view>
         <van-icon name="arrow" size="36rpx" />
-        <view class="text" wx:for="{{arr.handlelist}}" wx:if="{{item.handletype!=0}}">
+        <view class="text"  wx:for="{{arr.handlelist}}" wx:if="{{item.handletype!=0}}">
           <view>{{item.name}}</view>
           <view class="money">
             <view>￥{{item.fee}}</view> x{{item.billnumber}}
           </view>
+          <view class="bz" style="border:none">{{item.remark}}</view>
         </view>
-        <view class="bz" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
       </view>
     </view>
     <view class="box" wx:if="{{arr.studystatusname != '治疗中'}}">
@@ -162,10 +162,10 @@
         <view class="title">
           <image src="../../images/details_disposal_icon_teeth.png"></image>
           <view class="tooth">
-            <view>{{item.lb}}</view>
             <view>{{item.lt}}</view>
-            <view>{{item.rb}}</view>
             <view>{{item.rt}}</view>
+            <view>{{item.lb}}</view>
+            <view>{{item.rb}}</view>
           </view>
         </view>
         <view class="text">
@@ -177,14 +177,14 @@
         </view>
         <view class="bz">备注：{{item.remark}}</view>
         <view class="check_box">
-          <view class="check_li" bindtap="Colleaguego">
+          <view class="check_li">
             <view>医生：</view>
             <view>{{item.bhdoct}}</view>
             <van-icon name="arrow-down" size="36rpx" />
           </view>
-          <view class="check_li" bindtap="Colleaguego">
+          <view class="check_li">
             <view>护士：</view>
-            <view>{{item.counselor}}</view>
+            <view>{{item.bhnurse}}</view>
             <van-icon name="arrow-down" size="36rpx" />
           </view>
         </view>
@@ -196,8 +196,8 @@
           <view class="money">
             <view>￥{{item.fee}}</view> x{{item.billnumber}}
           </view>
+        <view class="bz" style="border:none">{{item.remark}}</view>
         </view>
-        <view class="bz" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
       </view>
     </view>
     <view class="li" bindtap="Soundgo">
@@ -216,7 +216,7 @@
         <view class="first">总计</view>
         <!-- <view>（共0个）</view> -->
         <view class="red" wx:if="{{arr.studystatusname !='治疗中'}}">￥{{arr.payfeetotal}}</view>
-        <view class="red" wx:if="{{arr.studystatusname =='治疗中'}}">￥{{arr.allfee}}</view>
+        <view class="red" wx:if="{{arr.studystatusname =='治疗中'}}">￥{{price}}</view>
     </view>
     <view class="li libox">
       <view class="btn" bindtap="btn"><van-icon name="passed" size="36rpx" />确定</view>

@@ -153,8 +153,20 @@ Page({
       url: '../apply/index',
     })
   },
-  check_PriceList(){
+  check_PriceList(e){
+    let item = e.currentTarget.dataset.item
     if(this.data.state == 1){
+      let pages = getCurrentPages();
+      let Page = pages[pages.length - 2];
+      console.log(Page.data)
+      let arr = Page.data.arr
+      arr.bhuom = item.uom
+      arr.billfeetype = item.feetype
+      arr.fee = item.handleprice
+      arr.name = item.handlename
+      Page.setData({
+        arr:arr
+      })
       wx.navigateBack({
         delta: 1,
       })

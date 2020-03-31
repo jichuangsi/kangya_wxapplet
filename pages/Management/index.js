@@ -86,7 +86,7 @@ Page({
     this.setData({
       customerid: Page.data.customerid,
       clinicid: Page.data.clinicid,
-        patdetails: Page.data.patdetails
+      patdetails: Page.data.patdetails
     })
     this.getdata()
   },

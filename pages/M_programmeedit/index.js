@@ -6,7 +6,8 @@ Page({
    */
   data: {
     arr:'',
-    state:''
+    state:'',
+    index:''
   },
   ipt(e) {
     let arr = this.data.arr
@@ -38,9 +39,10 @@ Page({
       })
     }
   },
-  Colleaguego() {
+  Colleaguego(e) {
+    let another = '&&another=' + e.currentTarget.dataset.another
     wx.navigateTo({
-      url: '../Colleague/index?title=医生&&state=2',
+      url: '../Colleague/index?title=医生&&state=3' + another,
     })
   },
   programmego(){
@@ -49,6 +51,13 @@ Page({
     })
   },
   btn(){
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    let arr = Page.data.arr
+    arr.handlelist[this.data.index] = this.data.arr
+    Page.setData({
+      arr:arr
+    })
     wx.navigateBack({
       delta: 1,
     })
@@ -62,10 +71,11 @@ Page({
     })
     this.setData({
       arr: JSON.parse(options.item),
-      state:options.state
+      state: options.state,
+      index: options.index
     })
     console.log(this.data.arr)
-    console.log(this.data.state)
+    console.log(this.data.index)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

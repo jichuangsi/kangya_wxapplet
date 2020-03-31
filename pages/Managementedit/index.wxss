@@ -34,7 +34,7 @@
   overflow: auto;
 }
 .center {
-  /* margin-bottom: 100rpx; */
+  margin-bottom: 100rpx;
   background-color: #fff;
 }
 .li {
@@ -76,6 +76,7 @@
 .li .text {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 20rpx;
 }

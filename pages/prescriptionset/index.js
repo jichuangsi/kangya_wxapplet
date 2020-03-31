@@ -37,6 +37,29 @@ Page({
       arr: arr2
     })
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/SelDrugList',
+      method: 'post',
+      data: {
+        "condition": ""
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            arr: res.data.list,
+            check_arr: res.data.list,
+          })
+          self.allprice()
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -16,7 +16,9 @@ Page({
     PriceList_arr: [],
     PriceListclick_arr: [],
     all_PriceListclick_arr: [],
-    check_arr:[]
+    check_arr:[],
+    arr:[],
+    arrstate:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -163,6 +165,67 @@ Page({
     })
   },
   next(){
+    console.log(this.data.check_arr)
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    let arr = this.data.arr
+    let arr1 = []
+    for (let i = 0; i < this.data.check_arr.length;i++){
+      if (this.data.check_arr[i].num!=0){
+        arr1.push(
+          {
+          "bhassistant": "", 
+          "bhassistantidentity": "", 
+          "bhbilltype": "0", 
+          "bhdoct": "", 
+          "bhdoctidentity": "", 
+          "bhhandlesetidentity": "", 
+          "bhnurse": "", 
+          "bhuom": this.data.check_arr[i].uom, 
+          "billfeetype": this.data.check_arr[i].feetype, 
+          "billidentity": "", 
+          "billnumber": this.data.check_arr[i].num, 
+          "counselor": "", 
+          "deductid": "", 
+          "deductstatus": "0", 
+          "drugmark": "", 
+          "fee": this.data.check_arr[i].handleprice, 
+          "handleidentity": this.data.check_arr[i].handlesetguid, 
+          "handlenumtotal": "0", 
+          "handletype": 0, 
+          "handmark": "", 
+          "issyndata": "0", 
+          "lb": "", 
+          "lt": "", 
+          "name": this.data.check_arr[i].handlename, 
+          "phdiscount": "", 
+          "phfee": "", 
+          "phhandleid": "", 
+          "phpresent": "", 
+          "rb": "", 
+          "remark": "", 
+          "rt": "", 
+          "unitprice": this.data.check_arr[i].handleprice, 
+          "studyidentity": Page.data.arr.studyidentity, 
+          "customerid": Page.data.patdetails.customerid, 
+          "doctorid": "", 
+          "assistant": "", 
+          "assistantidentity": ""
+          }
+        )
+      }
+    }
+    if (arr1.length != 0) {
+      if (this.data.arrstate == 0) {
+        arr.handlelist.push(...arr1)
+      }else{
+        arr.handlelist = arr1
+      }
+    }
+    console.log(arr)
+    this.setData({
+      arr:arr
+    })
     wx.navigateTo({
       url: '../Tooth/index?state=1'
     })
@@ -208,6 +271,59 @@ Page({
       title:'设置方案'
     })
     this.gethandle()
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    let arr = { handlelist: []}
+    console.log(arr.handlelist.length)
+    if (arr.handlelist.length==0){
+      arr.handlelist = [
+        {
+          "bhassistant": "",
+          "bhassistantidentity": "",
+          "bhbilltype": "0",
+          "bhdoct": "",
+          "bhdoctidentity": "",
+          "bhhandlesetidentity": "",
+          "bhnurse": "",
+          "bhuom": '',
+          "billfeetype": '',
+          "billidentity": "",
+          "billnumber": '',
+          "counselor": "",
+          "deductid": "",
+          "deductstatus": "0",
+          "drugmark": "",
+          "fee": '',
+          "handleidentity": '',
+          "handlenumtotal": "0",
+          "handletype": 0,
+          "handmark": "",
+          "issyndata": "0",
+          "lb": "",
+          "lt": "",
+          "name": '',
+          "phdiscount": "",
+          "phfee": "",
+          "phhandleid": "",
+          "phpresent": "",
+          "rb": "",
+          "remark": "",
+          "rt": "",
+          "unitprice": '',
+          "studyidentity": Page.data.arr.studyidentity,
+          "customerid": Page.data.patdetails.customerid,
+          "doctorid": "",
+          "assistant": "",
+          "assistantidentity": ""
+        }
+      ]
+      this.setData({
+        arrstate:1
+      })
+    }
+    this.setData({
+      arr: arr
+    })
   },
 
   /**

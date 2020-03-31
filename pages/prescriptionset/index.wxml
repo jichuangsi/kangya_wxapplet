@@ -9,10 +9,10 @@
             <view class="libox">
               <view class="list" wx:for="{{arr}}">
                 <view class="left">
-                  <view class="title">{{item.title}}</view>
-                  <view class="price">单价：<input data-index="{{index}}"  data-id="{{item.id}}" value="{{item.price}}" bindinput="ipt"></input>元</view>
-                  <view class="text" data-text="{{item.text}}" bindtap="editgo">
-                  使用方法：{{item.text}}<van-icon name="arrow" />
+                  <view class="title">{{item.handlename}}</view>
+                  <view class="price">单价：<input data-index="{{index}}"  data-id="{{item.handlesetguid}}" value="{{item.handleprice}}" bindinput="ipt"></input>元</view>
+                  <view class="text" data-text="{{item.handmark}}" data-index="{{index}}" bindtap="editgo">
+                  使用方法：{{item.handmark}}<van-icon name="arrow" />
                   </view>
                 </view>
               </view>

@@ -9,23 +9,6 @@
       <van-icon name="search" size="36rpx" />
       搜索
     </view>
-      <!-- <van-index-bar scroll-top="{{ scrollTop }}">
-        <view wx:for="{{project_list}}">
-          <van-index-anchor index="{{item.index}}" />
-          <van-cell>
-            <view class="li" wx:for="{{item.child}}" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="detailsgo">
-              <image src="{{item.img}}" wx:if="{{item.img !=''}}"></image>
-              <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.img ==''&&item.sex==0}}"></image>
-              <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.img ==''&&item.sex==1}}"></image>
-            <view class="user" use-slot>
-              <view class="name">{{item.name}}</view>
-              <view>{{item.position}}</view>
-            </view>
-            </view>
-          </van-cell>
-        </view>
-      </van-index-bar> -->
-      
         <view wx:for="{{project_list}}">
             <view class="li" data-id="{{item.doctorid}}" data-name="{{item.name}}" data-item="{{item}}" catchtap="detailsgo">
               <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex=='男'}}"></image>

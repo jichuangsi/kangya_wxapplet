@@ -10,7 +10,8 @@ Page({
     state:0,
     project_list: [],
     pageIndex:1,
-    another:0
+    another:0,
+    index:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -59,6 +60,32 @@ Page({
             doctor1: e.currentTarget.dataset.item
           })
         }
+      } else if (this.data.state == 3) {
+        let arr = prevPage.data.arr
+        console.log(e.currentTarget.dataset.item)
+        if (this.data.another == 0){
+          arr.bhnurse = e.currentTarget.dataset.item.name
+          arr.bhhandlesetidentity = e.currentTarget.dataset.item.doctorid
+        } else {
+          arr.bhdoct = e.currentTarget.dataset.item.name
+          arr.bhdoctidentity = e.currentTarget.dataset.item.doctorid
+        }
+        prevPage.setData({
+          arr: arr
+        })
+      } else if (this.data.state == 4) {
+        let arr = prevPage.data.arr
+        console.log(this.data.another)
+        if (this.data.another == 0) {
+          arr.handlelist[this.data.index].bhnurse = e.currentTarget.dataset.item.name
+          arr.handlelist[this.data.index].bhhandlesetidentity = e.currentTarget.dataset.item.doctorid
+        } else {
+          arr.handlelist[this.data.index].bhdoct = e.currentTarget.dataset.item.name
+          arr.handlelist[this.data.index].bhdoctidentity = e.currentTarget.dataset.item.doctorid
+        }
+        prevPage.setData({
+          arr: arr
+        })
       }
       this.onClickLeft()
     }
@@ -92,7 +119,8 @@ Page({
     this.setData({
       state: options.state ? options.state:0,
       title: options.title ? options.title :'同事',
-      another: options.another ? options.another:0
+      another: options.another ? options.another:0,
+      index: options.index ? options.index : ''
     })
     wx.setNavigationBarTitle({
       title: options.title ? options.title : '同事'
