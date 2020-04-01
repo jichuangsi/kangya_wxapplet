@@ -4,7 +4,7 @@
     bind:click-right="onClickRight"  >
   </van-nav-bar> -->
   <!-- <live-player id="player" src="https://domain/pull_stream" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 100%; height: 225px;background-color:red" /> -->
-   <video id="myVideo" poster="" src="{{url}}" controls></video>
+   <video id="myVideo" poster="" src="{{item.link}}" controls></video>
    <view class="center" wx:if="{{state==1}}">
     <view class="center_top">
       <view bindtap="loveclick" wx:if="{{lovestate}}">

@@ -12,7 +12,7 @@ Page({
     text:'',
     show: false,
     client: '',
-    url:''
+    item:''
   },
 
 
@@ -42,14 +42,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var pages = getCurrentPages();
+    var Page = pages[pages.length - 2];//
     this.setData({
       title: options.title ? options.title:'',
       state: options.state ? options.state:0,
-      url:options.url
     })
     wx.setNavigationBarTitle({
       title: options.title
     })
+    if(this.data.state == 0){
+      this.setData({
+        item: Page.data.nowitem
+      })
+      wx.setNavigationBarTitle({
+        title: Page.data.nowitem.name
+      })
+    }
+    console.log(options.url)
     console.log(this.data.title)
   },
   loveclick(){

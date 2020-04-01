@@ -30,15 +30,15 @@
       <van-sidebar-item title="{{item.name}}" name="{{item.name}}" data-item="{{item}}" wx:for="{{videolist_arr}}" />
     </van-sidebar>
     <view class="right">
-      <view class="list" wx:for="{{videolistclick_arr}}">
-        <navigator url="/pages/Videoplay/index?url={{item.link}}&&title={{item.name}}" hover-class="navigator-hover">
+      <view class="list" wx:for="{{videolistclick_arr}}" data-item="{{item}}" bindtap="videogo">
+        <!-- <navigator url="/pages/Videoplay/index?url={{item.link}}&&title={{item.name}}" hover-class="navigator-hover"> -->
         <view class="img">
           <image src="{{item.thumb}}"></image>
         </view>
         <view class="text">
         {{item.name}}
         </view>
-        </navigator>
+        <!-- </navigator> -->
       </view>
     </view>
   </view>

@@ -15,6 +15,7 @@ Page({
     all_PriceListclick_arr:[],
     videolist_arr: [],
     videolistclick_arr: [],
+    nowitem:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -171,6 +172,14 @@ Page({
         delta: 1,
       })
     }
+  },
+  videogo(e){
+    this.setData({
+      nowitem: e.currentTarget.dataset.item
+    })
+    wx.navigateTo({
+      url: '../Videoplay/index?state=0',
+    })
   },
   /**
    * 生命周期函数--监听页面加载
