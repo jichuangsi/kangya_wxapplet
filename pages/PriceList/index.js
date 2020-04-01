@@ -89,7 +89,9 @@ Page({
     }
   },
   onChangevideo(event){
-    self.getvodnext(event.currentTarget.dataset.item.link)
+    console.log(this.data.videolist_arr[event.detail].link)
+    
+    this.getvodnext(this.data.videolist_arr[event.detail].link)
   },
   getvod() {
     let self = this
