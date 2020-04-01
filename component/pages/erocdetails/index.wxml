@@ -150,21 +150,21 @@
       </view>
       <view class="li">
         <view>今日销售项目TOP3</view>
-        <view class="top_li" wx:for="{{Daily_rank1}}">
+        <view class="top_li" wx:for="{{Daily_rank1}}" data-text="今日销售项目" data-child="{{item.handlename}}" child_id="{{item.bdhandlesetidentity}}"  bindtap="ontitle">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
         </view>
       </view>
       <view class="li">
         <view>今日医生业绩TOP3</view>
-        <view class="top_li" wx:for="{{Daily_rank2}}">
+        <view class="top_li" wx:for="{{Daily_rank2}}" data-text="今日医生业绩" child_id="{{item.doctorid}}" data-child="{{item.bhdoct}}" bindtap="ontitle">
           <view>{{index+1}}</view>
           <view>{{item.bhdoct}}</view>
         </view>
       </view>
       <view class="li">
         <view>今日咨询师业绩TOP3</view>
-        <view class="top_li" wx:for="{{Daily_rank3}}">
+        <view class="top_li" wx:for="{{Daily_rank3}}" data-text="今日咨询师业绩" data-child="{{item.counselor}}"  bindtap="ontitle">
           <view>{{index+1}}</view>
           <view>{{item.counselor}}</view>
         </view>
@@ -241,14 +241,14 @@
       </view>
       <view class="li">
         <view>项目销售数量TOP10</view>
-        <view class="top_li" wx:for="{{attendance_rank1}}">
+        <view class="top_li" wx:for="{{attendance_rank1}}" data-text="项目销售数量" data-child="{{item.handlename}}" child_id="{{item.bdhandlesetidentity}}" bindtap="ontitle">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
         </view>
       </view>
       <view class="li">
         <view>项目销售金额TOP10</view>
-        <view class="top_li" wx:for="{{attendance_rank2}}">
+        <view class="top_li" wx:for="{{attendance_rank2}}" data-text="项目销售金额" data-child="{{item.handlename}}" child_id="{{item.bdhandlesetidentity}}" bindtap="ontitle">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
         </view>
@@ -776,6 +776,10 @@
         </view>
         <view class="month_li {{item.state == 1?'c_m':''}} {{month_star == index||month_end == index?'c_t_m':''}}" wx:if="{{index>=12}}" data-index="{{index}}" wx:for="{{month_arr}}" bindtap="monthclick">{{item.time}}</view>
       </view>
+      <!-- <view class="btn">
+        <view catchtap="month_btn">确定</view>
+        <view catchtap="onClose">取消</view>
+      </view> -->
     </view>
   </van-popup>
   
@@ -786,17 +790,1046 @@
     bind:close="onClosedata"
     custom-style="height: 90%;overflow-y: auto;"
   >
-    <view class="popup_title">{{popup_title}}</view>
-    <view class="popup_box">
-      <view class="li">
-        <view>病历号</view>
-        <view>患者姓名</view>
-        <view>就诊项目</view>
-        <view>初诊医生</view>
-        <view>初诊时间</view>
-        <view>复诊医生</view>
-        <view>复诊时间</view>
-        <view>成交金额</view>
+    <view class="popup_title">{{popup_title}} {{child_text}}</view>
+    <view class="popup_box" wx:if="{{popup_title=='今日初诊成交总额'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊项目</view>
+          <view>初诊医生</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.firstdealdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.treatment}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="all">
+        <view>总合计</view>
+        <view>{{arr.payfee}}</view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日诊疗收入'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊项目</view>
+          <view>诊疗医生</view>
+          <view>收银员</view>
+          <view>缴费方式</view>
+          <view>缴费时间</view>
+          <view>实收金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.clinicincomedetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.treatment}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.reciver}}</view>
+          <view>{{item.feestyle}}</view>
+          <view>{{item.paydate}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="all">
+        <view>总合计</view>
+        <view>{{arr.payfee}}</view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日现金流入'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>流入类型</view>
+          <view>收银员</view>
+          <view>缴费方式</view>
+          <view>缴费时间</view>
+          <view>流入金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.cashincomedetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.reciver}}</view>
+          <view>{{item.feestyle}}</view>
+          <view>{{item.paydate}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="all">
+        <view>总合计</view>
+        <view>{{arr.payfee}}</view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日欠款总额'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>诊疗医师</view>
+          <view>欠款金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.debtdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.debts}}</view>
+        </view>
+      </view>
+      <view class="all">
+        <view>总合计</view>
+        <view>{{arr.debts}}</view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日新增预交款总额'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>收银员</view>
+          <view>操作方式</view>
+          <view>缴费方式</view>
+          <view>缴费时间</view>
+          <view>预交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.advancepaydetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.advpayman}}</view>
+          <view>{{item.reciver}}</view>
+          <view>{{item.paystyle}}</view>
+          <view>{{item.feestyle}}</view>
+          <view>{{item.paydate}}</view>
+          <view>{{item.advancepay}}</view>
+        </view>
+      </view>
+      <view class="all">
+        <view>总合计</view>
+        <view>{{arr.pageadvancepay}}</view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日退款总额'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>退款金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.refunddetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.advpayman}}</view>
+          <view>{{item.advancepay}}</view>
+        </view>
+      </view>
+      <view class="all">
+        <view>总合计</view>
+        <view>{{arr.pagepayfee}}</view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日预约人数'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>预约项目</view>
+          <view>预约状态</view>
+          <view>预约医生</view>
+          <view>预约时间</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.scheduledetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.items}}</view>
+          <view>{{item.status}}</view>
+          <view>{{item.doctorname}}</view>
+          <view>{{item.starttime}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日初诊人数'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>性别</view>
+          <view>诊疗医生</view>
+          <view>来源</view>
+          <view>初诊时间</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.firstdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.sex}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.examdate}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日复诊人数'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>性别</view>
+          <view>复诊医生</view>
+          <view>复诊时间</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.refraldetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.sex}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.examdate}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日流失数'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>复诊时间</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.lostdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.examdate}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日新开会员卡数'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>会员等级</view>
+          <view>会员卡号</view>
+          <view>开卡人</view>
+          <view>开卡时间</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.vipcarddetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.viptype}}</view>
+          <view>{{item.vipnumber}}</view>
+          <view>{{item.developdoct}}</view>
+          <view>{{item.startdate}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日会员充值总额'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>会员等级</view>
+          <view>会员卡号</view>
+          <view>收银员</view>
+          <view>缴费方式</view>
+          <view>缴费时间</view>
+          <view>充值金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.viprechargedetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.viptype}}</view>
+          <view>{{item.vipnumber}}</view>
+          <view>{{item.relationuser}}</view>
+          <view>{{item.feestyle}}</view>
+          <view>{{item.vipfeedatetime}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日销售项目'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>账单编号</view>
+          <view>开单时间</view>
+          <view>医生</view>
+          <view>咨询师</view>
+          <view>单价</view>
+          <view>数量</view>
+          <view>折扣率</view>
+          <view>总价</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.itemrankdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.billno}}</view>
+          <view>{{item.billdate}}</view>
+          <view>{{item.billdoct}}</view>
+          <view>{{item.counselor}}</view>
+          <view>{{item.handlefee}}</view>
+          <view>{{item.handlenum}}</view>
+          <view>{{item.bddiscount}}</view>
+          <view>{{item.handletotal}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.handletotal}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日医生业绩'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>收费单号</view>
+          <view>收费时间</view>
+          <view>收银员</view>
+          <view>收费金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.doctorrankdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.payno}}</view>
+          <view>{{item.paydate}}</view>
+          <view>{{item.reciver}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='今日咨询师业绩'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>收费单号</view>
+          <view>收费时间</view>
+          <view>收银员</view>
+          <view>收费金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.counselorrankdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.payno}}</view>
+          <view>{{item.paydate}}</view>
+          <view>{{item.reciver}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='初诊人次详情'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊日期</view>
+          <view>就诊医生</view>
+          <view>咨询师</view>
+          <view>成交状态</view>
+          <view>开单金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.studyvisitdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.studydate}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.counselor}}</view>
+          <view>{{item.paystate}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='初诊成交总额'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊日期</view>
+          <view>就诊医生</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.studybargaindetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.studydate}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='复诊人次详情'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊日期</view>
+          <view>就诊医生</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.studybargaindetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.studydate}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='新诊人次详情'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊日期</view>
+          <view>就诊医生</view>
+          <view>咨询师</view>
+          <view>成交状态</view>
+          <view>开单金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.studyvisitdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.studydate}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.counselor}}</view>
+          <view>{{item.paystate}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='新诊成交总额'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊日期</view>
+          <view>就诊医生</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.studybargaindetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.studydate}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='项目销售数量'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>账单编号</view>
+          <view>开单时间</view>
+          <view>医生</view>
+          <view>咨询师</view>
+          <view>单价</view>
+          <view>数量</view>
+          <view>折扣率</view>
+          <view>总价</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.itemrankdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.billno}}</view>
+          <view>{{item.billdate}}</view>
+          <view>{{item.billdoct}}</view>
+          <view>{{item.counselor}}</view>
+          <view>{{item.handlefee}}</view>
+          <view>{{item.handlenum}}</view>
+          <view>{{item.bddiscount}}</view>
+          <view>{{item.handletotal}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.handletotal}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='项目销售金额'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>账单编号</view>
+          <view>开单时间</view>
+          <view>医生</view>
+          <view>咨询师</view>
+          <view>单价</view>
+          <view>数量</view>
+          <view>折扣率</view>
+          <view>总价</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.itemrankdetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.billno}}</view>
+          <view>{{item.billdate}}</view>
+          <view>{{item.billdoct}}</view>
+          <view>{{item.counselor}}</view>
+          <view>{{item.handlefee}}</view>
+          <view>{{item.handlenum}}</view>
+          <view>{{item.bddiscount}}</view>
+          <view>{{item.handletotal}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.handletotal}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='诊所预约人次'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+          <view>预约医生</view>
+          <view>预约时间</view>
+          <view>就诊类型</view>
+          <view>预约项目</view>
+          <view>预约状态</view>
+          <view>预约备注</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.doctorname}}</view>
+          <view>{{item.starttime}}</view>
+          <view>{{item.visitstatus}}</view>
+          <view>{{item.items}}</view>
+          <view>{{item.status}}</view>
+          <view>{{item.remark}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='预约情况占比'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+          <view>预约医生</view>
+          <view>预约时间</view>
+          <view>就诊类型</view>
+          <view>预约项目</view>
+          <view>预约备注</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.doctorname}}</view>
+          <view>{{item.starttime}}</view>
+          <view>{{item.visitstatus}}</view>
+          <view>{{item.items}}</view>
+          <view>{{item.remark}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='医生预约情况统计'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+          <view>预约医生</view>
+          <view>预约时间</view>
+          <view>就诊类型</view>
+          <view>预约项目</view>
+          <view>预约状态</view>
+          <view>预约备注</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.doctorname}}</view>
+          <view>{{item.starttime}}</view>
+          <view>{{item.visitstatus}}</view>
+          <view>{{item.items}}</view>
+          <view>{{item.status}}</view>
+          <view>{{item.remark}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='预约项目统计'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+          <view>预约医生</view>
+          <view>预约时间</view>
+          <view>就诊类型</view>
+          <view>预约项目</view>
+          <view>预约状态</view>
+          <view>预约备注</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.doctorname}}</view>
+          <view>{{item.starttime}}</view>
+          <view>{{item.visitstatus}}</view>
+          <view>{{item.items}}</view>
+          <view>{{item.status}}</view>
+          <view>{{item.remark}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='预约初复诊情况'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+          <view>预约医生</view>
+          <view>预约时间</view>
+          <view>就诊类型</view>
+          <view>预约项目</view>
+          <view>预约状态</view>
+          <view>预约备注</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.doctorname}}</view>
+          <view>{{item.starttime}}</view>
+          <view>{{item.visitstatus}}</view>
+          <view>{{item.items}}</view>
+          <view>{{item.status}}</view>
+          <view>{{item.remark}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='自然到诊'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+          <view>预约医生</view>
+          <view>预约时间</view>
+          <view>就诊类型</view>
+          <view>预约备注</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.doctorname}}</view>
+          <view>{{item.starttime}}</view>
+          <view>{{item.visitstatus}}</view>
+          <view>{{item.remark}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='预约到诊'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+          <view>预约医生</view>
+          <view>预约时间</view>
+          <view>就诊类型</view>
+          <view>预约备注</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.doctorname}}</view>
+          <view>{{item.starttime}}</view>
+          <view>{{item.visitstatus}}</view>
+          <view>{{item.remark}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='咨询情况'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>客户来源</view>
+          <view>客户姓名</view>
+          <view>受理人</view>
+          <view>就诊时间</view>
+          <view>就诊项目</view>
+          <view>就诊医生</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='区域分布'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='年龄分布'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='性别分布'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='患者星级'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='患者就诊项目'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='来源分析'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='来店时间段分析'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>客户来源</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.patname}}</view>
+          <view>{{item.comefrom}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='收入分析'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>支付方式</view>
+          <view>收银员</view>
+          <view>缴费时间</view>
+          <view>就诊项目</view>
+          <view>实收金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.feestyle}}</view>
+          <view>{{item.reciver}}</view>
+          <view>{{item.paydate}}</view>
+          <view>{{item.treatment}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.pagetotal}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='现金流入占比情况'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>收银员</view>
+          <view>缴费方式</view>
+          <view>缴费时间</view>
+          <view>缴费金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.reciver}}</view>
+          <view>{{item.feestyle}}</view>
+          <view>{{item.paydate}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.pagetotal}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='会员卡分析'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>会员等级</view>
+          <view>会员卡号</view>
+          <view>收银员</view>
+          <view>缴费方式</view>
+          <view>缴费时间</view>
+          <view>充值金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.viptype}}</view>
+          <view>{{item.vipnumber}}</view>
+          <view>{{item.relationuser}}</view>
+          <view>{{item.feestyle}}</view>
+          <view>{{item.vipfeedatetime}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.pagetotal}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='预交款分析'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>收银员</view>
+          <view>缴费方式</view>
+          <view>缴费时间</view>
+          <view>预交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.advpayman}}</view>
+          <view>{{item.feestyle}}</view>
+          <view>{{item.paydate}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.pagetotal}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='欠款分析'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>新增应收款</view>
+          <view>今日收款</view>
+          <view>欠款增减</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.payfee}}</view>
+          <view>{{item.paidfee}}</view>
+          <view>{{item.fee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.totalpayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='收入总额'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊日期</view>
+          <view>就诊医生</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.studybargaindetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.studydate}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='各诊所收入占比'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊日期</view>
+          <view>就诊医生</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.studybargaindetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.studydate}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='初诊人次占比'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊日期</view>
+          <view>就诊医生</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.studybargaindetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.studydate}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='复诊人次占比'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊日期</view>
+          <view>就诊医生</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.studybargaindetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.studydate}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='新诊人次占比'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>就诊日期</view>
+          <view>就诊医生</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.studybargaindetail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.studydate}}</view>
+          <view>{{item.examdoct}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.pagepayfee}}</view>
+        </view>
       </view>
     </view>
   </van-popup>

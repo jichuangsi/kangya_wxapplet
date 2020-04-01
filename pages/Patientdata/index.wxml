@@ -7,7 +7,7 @@
   <view class='center'>
       <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
         <van-tab title="基本信息" name="基本信息">
-          <view class="li" data-text="输入姓名" data-btn="1" data-iptstate="1" bindtap="editgo">
+          <view class="li" data-text="输入姓名" data-btn="1" data-iptstate="1" data-value="{{Patientlist.name}}" bindtap="editgo">
             <view class="left">
               姓名
             </view>
@@ -65,7 +65,7 @@
               <van-icon name="arrow" />
             </view>
           </view>
-          <view class="li" data-text="添加年龄" data-btn="1" data-iptstate="1" bindtap="editgo">
+          <view class="li" data-text="添加年龄" data-btn="1" data-iptstate="1" data-value="{{Patientlist.age}}" bindtap="editgo">
             <view class="left">
               年龄
             </view>
@@ -115,7 +115,7 @@
               <van-icon name="arrow" />
             </view>
           </view>
-          <view class="li" data-text="添加兴趣爱好" data-btn="1" data-iptstate="1" bindtap="editgo">
+          <view class="li" data-text="添加兴趣爱好" data-btn="1" data-iptstate="1" data-value="{{Patientlist.hobby}}" bindtap="editgo">
             <view class="left">
               兴趣爱好
             </view>
@@ -125,7 +125,7 @@
               <van-icon name="arrow" />
             </view>
           </view>
-          <view class="li" data-text="添加经济实力" data-btn="1" data-iptstate="1" bindtap="editgo">
+          <view class="li" data-text="添加经济实力" data-btn="1" data-iptstate="1" data-value="{{Patientlist.Economic}}" bindtap="editgo">
             <view class="left">
               经济实力
             </view>
@@ -152,7 +152,7 @@
             </view>
           </view>
           <view class="title">联系方式</view>
-          <view class="li" data-text="添加QQ号码" data-btn="1" data-iptstate="1" bindtap="editgo">
+          <view class="li" data-text="添加QQ号码" data-btn="1" data-iptstate="1" data-value="{{Patientlist.qq}}" bindtap="editgo">
             <view class="left">
               QQ
             </view>
@@ -162,7 +162,7 @@
               <van-icon name="arrow" />
             </view>
           </view>
-          <view class="li" data-text="添加电子邮箱" data-btn="1" data-iptstate="1" bindtap="editgo">
+          <view class="li" data-text="添加电子邮箱" data-btn="1" data-iptstate="1" data-value="{{Patientlist.mailbox}}" bindtap="editgo">
             <view class="left">
               电子邮箱
             </view>
@@ -178,7 +178,7 @@
               <view wx:if="{{Patientlist.check_ascription1 != '' }}">{{Patientlist.check_ascription1}}</view>
               <van-icon name="arrow" />
             </view>
-            <view class="right" data-text="添加电话1" data-btn="1" data-iptstate="1" bindtap="editgo">
+            <view class="right" data-text="添加电话1" data-btn="1" data-iptstate="1" data-value="{{Patientlist.iphone1}}" bindtap="editgo">
               <view wx:if="{{Patientlist.iphone1 == '' }}">输入手机号码</view>
               <view wx:if="{{Patientlist.iphone1 != '' }}">{{Patientlist.iphone1}}</view>
               <van-icon name="arrow" />
@@ -190,7 +190,7 @@
               <view wx:if="{{Patientlist.check_ascription2 != '' }}">{{Patientlist.check_ascription2}}</view>
               <van-icon name="arrow" />
             </view>
-            <view class="right" data-text="添加电话2" data-btn="1" data-iptstate="1" bindtap="editgo">
+            <view class="right" data-text="添加电话2" data-btn="1" data-iptstate="1" data-value="{{Patientlist.iphone2}}" bindtap="editgo">
               <view wx:if="{{Patientlist.iphone2 == '' }}">输入手机号码</view>
               <view wx:if="{{Patientlist.iphone2 != '' }}">{{Patientlist.iphone2}}</view>
               <van-icon name="arrow" />
@@ -207,7 +207,7 @@
               <van-icon name="arrow" />
             </view>
           </view>
-          <view class="li" data-text="修改地址" data-btn="1" data-textstate="1" bindtap="editgo">
+          <view class="li" data-text="修改地址" data-btn="1" data-textstate="1" data-value="{{Patientlist.address}}" bindtap="editgo">
             <view class="left">
               <view wx:if="{{Patientlist.address == '' }}">点击填写详细地址</view>
               <view wx:if="{{Patientlist.address != '' }}">{{Patientlist.address}}</view>
@@ -216,7 +216,7 @@
             </view>
           </view>
           <view class="xian"></view>
-          <view class="li" data-text="修改备注" data-btn="1" data-textstate="1"  bindtap="editgo">
+          <view class="li" data-text="修改备注" data-btn="1" data-textstate="1" data-value="{{Patientlist.remarks}}"  bindtap="editgo">
             <view class="left">
             <view>点击修改备注</view>
             </view>
@@ -225,7 +225,7 @@
               <van-icon name="arrow" />
             </view>
           </view>
-          <view class="li" data-text="修改备注" data-btn="1" data-textstate="1"  bindtap="editgo">
+          <view class="li" data-text="修改备注" data-btn="1" data-textstate="1" data-value="{{Patientlist.remarks}}"  bindtap="editgo">
             <view class="left">
               <view wx:if="{{Patientlist.remarks == '' }}">点击填写备注信息</view>
               <view wx:if="{{Patientlist.remarks != '' }}">{{Patientlist.remarks}}</view>
@@ -237,7 +237,7 @@
           </van-tab>
           <van-tab title="诊所信息" name="诊所信息">
             
-            <view class="li" data-text="添加身份证" data-btn="1" data-iptstate="1" bindtap="editgo">
+            <view class="li" data-text="添加身份证" data-btn="1" data-iptstate="1" data-value="{{Patientlist.IDCard}}" bindtap="editgo">
               <view class="left">
                 身份证号
               </view>
@@ -247,7 +247,7 @@
                 <van-icon name="arrow" />
               </view>
             </view>
-            <view class="li" data-text="添加社保号" data-btn="1" data-iptstate="1" bindtap="editgo">
+            <view class="li" data-text="添加社保号" data-btn="1" data-iptstate="1" data-value="{{Patientlist.socialcard}}" bindtap="editgo">
               <view class="left">
                 社保号
               </view>
@@ -277,7 +277,7 @@
                 <van-icon name="arrow" />
               </view>
             </view>
-            <view class="li" data-text="添加介绍人" data-btn="1" data-iptstate="1" bindtap="editgo">
+            <view class="li" data-text="添加介绍人" data-btn="1" data-iptstate="1" data-value="{{Patientlist.Introducer}}" bindtap="editgo">
               <view class="left">
                 介绍人
               </view>
@@ -308,7 +308,7 @@
               </view>
             </view>
             <view class="xian"></view>
-            <view class="li" data-text="添加洁牙习惯" data-btn="1" data-iptstate="1" bindtap="editgo">
+            <view class="li" data-text="添加洁牙习惯" data-btn="1" data-iptstate="1" data-value="{{Patientlist.Habit}}" bindtap="editgo">
               <view class="left">
                 洁牙习惯
               </view>
@@ -318,7 +318,7 @@
                 <van-icon name="arrow" />
               </view>
             </view>
-            <view class="li" data-text="添加就诊经历" data-btn="1" data-iptstate="1" bindtap="editgo">
+            <view class="li" data-text="添加就诊经历" data-btn="1" data-iptstate="1" data-value="{{Patientlist.experience}}" bindtap="editgo">
               <view class="left">
                 就诊经历
               </view>
@@ -338,7 +338,7 @@
                 <van-icon name="arrow" />
               </view>
             </view>
-            <view class="li" data-text="添加过敏史" data-btn="1" data-textstate="1" bindtap="editgo">
+            <view class="li" data-text="添加过敏史" data-btn="1" data-textstate="1" data-value="{{Patientlist.allergy}}" bindtap="editgo">
               <view class="left">
                 <view wx:if="{{informationlist.allergy == '' }}">点击患者过敏史</view>
                 <view wx:if="{{informationlist.allergy != '' }}">{{informationlist.allergy}}</view>
@@ -356,7 +356,7 @@
                 <van-icon name="arrow" />
               </view>
             </view>
-            <view class="li" data-text="添加既往史" data-btn="1" data-textstate="1" bindtap="editgo">
+            <view class="li" data-text="添加既往史" data-btn="1" data-textstate="1" data-value="{{Patientlist.past}}" bindtap="editgo">
               <view class="left">
                 <view wx:if="{{informationlist.past == '' }}">点击患者既往史</view>
                 <view wx:if="{{informationlist.past != '' }}">{{informationlist.past}}</view>
@@ -365,7 +365,7 @@
               </view>
             </view>
             <view class="xian"></view>
-            <view class="li" data-text="添加顾客要求" data-btn="1" data-textstate="1" bindtap="editgo">
+            <view class="li" data-text="添加顾客要求" data-btn="1" data-textstate="1" data-value="{{Patientlist.ask}}" bindtap="editgo">
               <view class="left">
                 <view>顾客要求</view>
               </view>
@@ -374,7 +374,7 @@
                 <van-icon name="arrow" />
               </view>
             </view>
-            <view class="li" data-text="添加顾客要求" data-btn="1" data-textstate="1" bindtap="editgo">
+            <view class="li" data-text="添加顾客要求" data-btn="1" data-textstate="1" data-value="{{Patientlist.ask}}" bindtap="editgo">
               <view class="left">
                 <view wx:if="{{informationlist.ask == '' }}">点击填写顾客要求信息</view>
                 <view wx:if="{{informationlist.ask != '' }}">{{informationlist.ask}}</view>

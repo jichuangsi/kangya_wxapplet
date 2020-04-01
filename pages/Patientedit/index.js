@@ -97,6 +97,8 @@ Page({
     if (this.data.title == '输入姓名'){
       let list = self.data.prevpage.data.Patientlist
       list.name = self.data.iptvalue
+      console.log(1111)
+      console.log(list)
       self.data.prevpage.setData({
         Patientlist: list
       })
@@ -540,6 +542,16 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    console.log(options.value)
+    if(this.data.iptstate){
+      this.setData({
+        iptvalue:options.value
+      })
+    } else if (this.data.textstate) {
+      this.setData({
+        textvalue: options.value
+      })
+    }
     this.getMatter()
   },
   getMatter() {

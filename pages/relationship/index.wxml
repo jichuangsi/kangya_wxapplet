@@ -8,20 +8,20 @@
   <view class="center">
     <view class="li" bindtap="Patientgo">
       <van-icon name="manager" />
-      <view class="text">亲友关系</view>
-      <view>{{Patient_name}}</view>
-      <van-icon name="arrow" />
+      <view class="text">亲友姓名</view>
+      <view>{{patient.patientname}}</view>
+      <van-icon name="arrow" size="36rpx" />
     </view>
     <view class="li" bindtap="show">
       <van-icon name="apps-o" />
       <view class="text">关系类别</view>
       <view>{{relationship}}</view>
-      <van-icon name="arrow" />
+      <van-icon name="arrow" size="36rpx" />
     </view>
-    <view class="li" bindtap="editgo" data-text="备注信息">
-      <van-icon name="notes-o" />
+    <view class="li">
+      <van-icon name="notes-o" size="36rpx" />
       <view class="text">备注</view>
-      <view class="bz">{{bz}}</view>
+      <textarea value="{{bz}}" placeholder="请输入备注" bindinput="ipt"></textarea>
     </view>
     <view class="btn" bindtap="onClickRight">完成</view>
   </view>

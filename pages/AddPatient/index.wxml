@@ -6,218 +6,218 @@
     </van-nav-bar>    
   </view>  -->
   <view class="center">
-    <view class="li" data-text="输入姓名" bindtap="editgo">
-      <view class="left">
-        姓名
-      </view>
-      <view class="right">
-        <view wx:if="{{Patientlist.name == '' }}">未填写</view>
-        <view wx:if="{{Patientlist.name != '' }}">{{Patientlist.name}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-index="0" bindtap="show">
-      <view class="left">
-        星级等级
-      </view>
-      <view class="right">
-        <view wx:if="{{star_num == 0 }}">未填写</view>
-        <view wx:if="{{star_num != 0 }}">{{star_num}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="选择主治医生" bindtap="Colleaguego">
-      <view class="left">
-        主治医生
-      </view>
-      <view class="right">
-        <view wx:if="{{Patientlist.doctor == '' }}">未填写</view>
-        <view wx:if="{{Patientlist.doctor != '' }}">{{Patientlist.doctor}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li">
-      <view class="left">
-        设为临时病患
-      </view>
-      <view class="right">
-      <van-switch checked="{{ checked }}" active-color="#16c7ae"
+          <view class="li" data-text="输入姓名" data-btn="1" data-iptstate="1" data-value="{{Patientlist.name}}" bindtap="editgo">
+            <view class="left">
+              姓名
+            </view>
+            <view class="right">
+              <view wx:if="{{Patientlist.name == '' }}">未填写</view>
+              <view wx:if="{{Patientlist.name != '' }}">{{Patientlist.name}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-index="0" bindtap="show">
+            <view class="left">
+              星级等级
+            </view>
+            <view class="right">
+              <view wx:if="{{star_num == 0 }}">未填写</view>
+              <view wx:if="{{star_num != 0 }}">{{star_num}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-text="选择主治医生" bindtap="Colleaguego">
+            <view class="left">
+              主治医生
+            </view>
+            <view class="right">
+              <view wx:if="{{Patientlist.doctor == '' }}">未填写</view>
+              <view wx:if="{{Patientlist.doctor != '' }}">{{Patientlist.doctor}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li">
+            <view class="left">
+              设为临时病患
+            </view>
+            <view class="right">
+            <van-switch checked="{{ checked }}" active-color="#16c7ae"
   inactive-color="#f2f2f2" bind:change="onChange" />
-      </view>
-    </view>
-    <view class="li" data-index="1" bindtap="show">
-      <view class="left">
-        性别
-      </view>
-      <view class="right">
-        <view wx:if="{{sex_num == 0 }}">未填写</view>
-        <view wx:if="{{sex_num != 0 }}">{{sex_num==1?'男':'女'}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-index="2" bindtap="show">
-      <view class="left">
-        出生年月
-      </view>
-      <view class="right">
-        <view wx:if="{{check_time == '' }}">未填写</view>
-        <view wx:if="{{check_time != '' }}">{{check_time}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加年龄" bindtap="editgo">
-      <view class="left">
-        年龄
-      </view>
-      <view class="right">
-        <view wx:if="{{Patientlist.age == '' }}">未填写</view>
-        <view wx:if="{{Patientlist.age != '' }}">{{Patientlist.age}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-index="3" bindtap="show">
-      <view class="left">
-        患者来源
-      </view>
-      <view class="right">
-        <view wx:if="{{check_columns == '' }}">未填写</view>
-        <view wx:if="{{check_columns != '' }}">{{check_columns}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="选择项目" bindtap="editgo">
-      <view class="left">
-        就诊项目
-      </view>
-      <view class="right">
-        <view wx:if="{{Patientlist.check_project == '' }}">未填写</view>
-        <view wx:if="{{Patientlist.check_project != '' }}">{{Patientlist.check_project}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="职业模板" bindtap="editgo">
-      <view class="left">
-        职业
-      </view>
-      <view class="right">
-        <view wx:if="{{Patientlist.check_Occupation == '' }}">未填写</view>
-        <view wx:if="{{Patientlist.check_Occupation != '' }}">{{Patientlist.check_Occupation}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="学历模板" bindtap="editgo">
-      <view class="left">
-        学历
-      </view>
-      <view class="right">
-        <view wx:if="{{Patientlist.check_Education == '' }}">未填写</view>
-        <view wx:if="{{Patientlist.check_Education != '' }}">{{Patientlist.check_Education}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加兴趣爱好" bindtap="editgo">
-      <view class="left">
-        兴趣爱好
-      </view>
-      <view class="right">
-        <view wx:if="{{Patientlist.hobby == '' }}">未填写</view>
-        <view wx:if="{{Patientlist.hobby != '' }}">{{Patientlist.hobby}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加经济实力" bindtap="editgo">
-      <view class="left">
-        经济实力
-      </view>
-      <view class="right">
-        <view wx:if="{{Patientlist.Economic == '' }}">未填写</view>
-        <view wx:if="{{Patientlist.Economic != '' }}">{{Patientlist.Economic}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="title">联系方式</view>
-    <view class="li" data-text="添加QQ号码" bindtap="editgo">
-      <view class="left">
-        QQ
-      </view>
-      <view class="right">
-        <view wx:if="{{Patientlist.qq == '' }}">未填写</view>
-        <view wx:if="{{Patientlist.qq != '' }}">{{Patientlist.qq}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加电子邮箱" bindtap="editgo">
-      <view class="left">
-        电子邮箱
-      </view>
-      <view class="right">
-        <view wx:if="{{Patientlist.mailbox == '' }}">未填写</view>
-        <view wx:if="{{Patientlist.mailbox != '' }}">{{Patientlist.mailbox}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li">
-      <view class="left" data-text="添加电话1归属人" bindtap="editgo">
-        <view wx:if="{{Patientlist.check_ascription1 == '' }}">本人</view>
-        <view wx:if="{{Patientlist.check_ascription1 != '' }}">{{Patientlist.check_ascription1}}</view>
-        <van-icon name="arrow" />
-      </view>
-      <view class="right" data-text="添加电话1" bindtap="editgo">
-        <view wx:if="{{Patientlist.iphone1 == '' }}">输入手机号码</view>
-        <view wx:if="{{Patientlist.iphone1 != '' }}">{{Patientlist.iphone1}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li">
-      <view class="left" data-text="添加电话2归属人" bindtap="editgo">
-        <view wx:if="{{Patientlist.check_ascription2 == '' }}">本人</view>
-        <view wx:if="{{Patientlist.check_ascription2 != '' }}">{{Patientlist.check_ascription2}}</view>
-        <van-icon name="arrow" />
-      </view>
-      <view class="right" data-text="添加电话2" bindtap="editgo">
-        <view wx:if="{{Patientlist.iphone2 == '' }}">输入手机号码</view>
-        <view wx:if="{{Patientlist.iphone2 != '' }}">{{Patientlist.iphone2}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="xian"></view>
-    <view class="li">
-      <view class="left">
-        联系地址
-      </view>
-      <view class="right" data-index="4" bindtap="show">
-        <view wx:if="{{check_area == '' }}">点击选择省市区</view>
-        <view wx:if="{{check_area != '' }}">{{check_area}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="修改地址" bindtap="editgo">
-      <view class="left">
-        <view wx:if="{{Patientlist.address == '' }}">点击填写详细地址</view>
-        <view wx:if="{{Patientlist.address != '' }}">{{Patientlist.address}}</view>
-      </view>
-      <view class="right">
-      </view>
-    </view>
-    <view class="xian"></view>
-    <view class="li" data-text="修改备注" bindtap="editgo">
-      <view class="left">
-      <view>点击修改备注</view>
-      </view>
-      <view class="right">
-        <view></view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="修改备注" bindtap="editgo">
-      <view class="left">
-        <view wx:if="{{Patientlist.remarks == '' }}">点击填写备注信息</view>
-        <view wx:if="{{Patientlist.remarks != '' }}">{{Patientlist.remarks}}</view>
-      </view>
-      <view class="right">
-      </view>
-    </view>
-    <view class="xian"></view>
+            </view>
+          </view>
+          <view class="li" data-index="1" bindtap="show">
+            <view class="left">
+              性别
+            </view>
+            <view class="right">
+              <view wx:if="{{sex == '' }}">未填写</view>
+              <view wx:if="{{sex != '' }}">{{sex}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-index="2" bindtap="show">
+            <view class="left">
+              出生年月
+            </view>
+            <view class="right">
+              <view wx:if="{{check_time == '' }}">未填写</view>
+              <view wx:if="{{check_time != '' }}">{{check_time}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-text="添加年龄" data-btn="1" data-iptstate="1" data-value="{{Patientlist.age}}" bindtap="editgo">
+            <view class="left">
+              年龄
+            </view>
+            <view class="right">
+              <view wx:if="{{Patientlist.age == '' }}">未填写</view>
+              <view wx:if="{{Patientlist.age != '' }}">{{Patientlist.age}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-index="3" bindtap="show">
+            <view class="left">
+              患者来源
+            </view>
+            <view class="right">
+              <view wx:if="{{check_columns == '' }}">未填写</view>
+              <view wx:if="{{check_columns != '' }}">{{check_columns}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-text="选择项目" bindtap="editgo">
+            <view class="left">
+              就诊项目
+            </view>
+            <view class="right">
+              <view wx:if="{{Patientlist.check_project == '' }}">未填写</view>
+              <view wx:if="{{Patientlist.check_project != '' }}">{{Patientlist.check_project}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-text="职业模板" bindtap="editgo">
+            <view class="left">
+              职业
+            </view>
+            <view class="right">
+              <view wx:if="{{Patientlist.check_Occupation == '' }}">未填写</view>
+              <view wx:if="{{Patientlist.check_Occupation != '' }}">{{Patientlist.check_Occupation}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-text="学历模板" bindtap="editgo">
+            <view class="left">
+              学历
+            </view>
+            <view class="right">
+              <view wx:if="{{Patientlist.check_Education == '' }}">未填写</view>
+              <view wx:if="{{Patientlist.check_Education != '' }}">{{Patientlist.check_Education}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-text="添加兴趣爱好" data-btn="1" data-iptstate="1" data-value="{{Patientlist.hobby}}" bindtap="editgo">
+            <view class="left">
+              兴趣爱好
+            </view>
+            <view class="right">
+              <view wx:if="{{Patientlist.hobby == '' }}">未填写</view>
+              <view wx:if="{{Patientlist.hobby != '' }}">{{Patientlist.hobby}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-text="添加经济实力" data-btn="1" data-iptstate="1" data-value="{{Patientlist.Economic}}" bindtap="editgo">
+            <view class="left">
+              经济实力
+            </view>
+            <view class="right">
+              <view wx:if="{{Patientlist.Economic == '' }}">未填写</view>
+              <view wx:if="{{Patientlist.Economic != '' }}">{{Patientlist.Economic}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="title">联系方式</view>
+          <view class="li" data-text="添加QQ号码" data-btn="1" data-iptstate="1" data-value="{{Patientlist.qq}}" bindtap="editgo">
+            <view class="left">
+              QQ
+            </view>
+            <view class="right">
+              <view wx:if="{{Patientlist.qq == '' }}">未填写</view>
+              <view wx:if="{{Patientlist.qq != '' }}">{{Patientlist.qq}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-text="添加电子邮箱" data-btn="1" data-iptstate="1" data-value="{{Patientlist.mailbox}}" bindtap="editgo">
+            <view class="left">
+              电子邮箱
+            </view>
+            <view class="right">
+              <view wx:if="{{Patientlist.mailbox == '' }}">未填写</view>
+              <view wx:if="{{Patientlist.mailbox != '' }}">{{Patientlist.mailbox}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li">
+            <view class="left" data-text="添加电话1归属人" bindtap="editgo">
+              <view wx:if="{{Patientlist.check_ascription1 == '' }}">本人</view>
+              <view wx:if="{{Patientlist.check_ascription1 != '' }}">{{Patientlist.check_ascription1}}</view>
+              <van-icon name="arrow" />
+            </view>
+            <view class="right" data-text="添加电话1" data-btn="1" data-iptstate="1" data-value="{{Patientlist.iphone1}}" bindtap="editgo">
+              <view wx:if="{{Patientlist.iphone1 == '' }}">输入手机号码</view>
+              <view wx:if="{{Patientlist.iphone1 != '' }}">{{Patientlist.iphone1}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li">
+            <view class="left" data-text="添加电话2归属人" bindtap="editgo">
+              <view wx:if="{{Patientlist.check_ascription2 == '' }}">本人</view>
+              <view wx:if="{{Patientlist.check_ascription2 != '' }}">{{Patientlist.check_ascription2}}</view>
+              <van-icon name="arrow" />
+            </view>
+            <view class="right" data-text="添加电话2" data-btn="1" data-iptstate="1" data-value="{{Patientlist.iphone2}}" bindtap="editgo">
+              <view wx:if="{{Patientlist.iphone2 == '' }}">输入手机号码</view>
+              <view wx:if="{{Patientlist.iphone2 != '' }}">{{Patientlist.iphone2}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="xian"></view>
+          <view class="li">
+            <view class="left">
+              联系地址
+            </view>
+            <view class="right" data-index="4" bindtap="show">
+              <view wx:if="{{check_area == '' }}">点击选择省市区</view>
+              <view wx:if="{{check_area != '' }}">{{check_area}}</view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-text="修改地址" data-btn="1" data-textstate="1" data-value="{{Patientlist.address}}" bindtap="editgo">
+            <view class="left">
+              <view wx:if="{{Patientlist.address == '' }}">点击填写详细地址</view>
+              <view wx:if="{{Patientlist.address != '' }}">{{Patientlist.address}}</view>
+            </view>
+            <view class="right">
+            </view>
+          </view>
+          <view class="xian"></view>
+          <view class="li" data-text="修改备注" data-btn="1" data-textstate="1" data-value="{{Patientlist.remarks}}"  bindtap="editgo">
+            <view class="left">
+            <view>点击修改备注</view>
+            </view>
+            <view class="right">
+              <view></view>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="li" data-text="修改备注" data-btn="1" data-textstate="1" data-value="{{Patientlist.remarks}}"  bindtap="editgo">
+            <view class="left">
+              <view wx:if="{{Patientlist.remarks == '' }}">点击填写备注信息</view>
+              <view wx:if="{{Patientlist.remarks != '' }}">{{Patientlist.remarks}}</view>
+            </view>
+            <view class="right">
+            </view>
+          </view>
+          <view class="xian"></view>
   </view>
   <view class="center_bottom">
     <view class="left" bindtap="btn">保存并跳过</view>
@@ -239,10 +239,10 @@
     <van-area area-list="{{ areaList }}" value="110101" bind:cancel="onClose" bind:confirm="areaclick" />
   </view>
   <view class="popup_box" wx:if="{{show_num == '1'}}">
-    <view catchtap="sex" data-index="1">
+    <view catchtap="sex" data-index="男">
     男
     </view>
-    <view catchtap="sex" data-index="2">
+    <view catchtap="sex" data-index="女">
     女
     </view>
     <view class="xian"></view>

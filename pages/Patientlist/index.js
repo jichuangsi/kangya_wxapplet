@@ -31,7 +31,7 @@ Page({
   },
   searchgo(){
     wx.navigateTo({
-      url: '../friendsearch/index?state=2',
+      url: '../Patientsearch/index?state='+this.data.state,
     })
   },
   showPopup(e) {

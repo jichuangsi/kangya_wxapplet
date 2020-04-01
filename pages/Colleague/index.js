@@ -30,9 +30,9 @@ Page({
         url: '../friendsearch/index?state=1',
       })
     }else{
-      let another = e.currentTarget.dataset.another ? '&&another=1' : ''
+      let another = this.data.another ? '&&another=1' : ''
       wx.navigateTo({
-        url: '../friendsearch/index?state=1&&Patientstate=1' + another,
+        url: '../friendsearch/index?state=' + this.data.state+'&&Patientstate=1' + another,
       })
     }
   },
@@ -47,6 +47,7 @@ Page({
       if (this.data.state == 1){
         let list = prevPage.data.Patientlist
         list.doctor = e.currentTarget.dataset.name
+        list.doctorid = e.currentTarget.dataset.item.doctorid
         prevPage.setData({
           Patientlist: list
         })

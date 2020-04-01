@@ -52,8 +52,8 @@ Page({
     Chart_arr:[],
     Ranking_arr:[],
     clinicid: '',
-    begindate: TIME,
-    enddate: TIME,
+    begindate: 1,
+    enddate: 1,
     Daily: '',
     Daily_rank1: [],
     Daily_rank2: [],
@@ -68,9 +68,8 @@ Page({
     expenditure_total:'',
     showdata:false,
     popup_title:'',
-
-
-
+    child_text:'',
+    child_id:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -85,8 +84,407 @@ Page({
     this.setData({ show: false });
   },
   ontitle(e) {
-    this.setData({ popup_title: e.currentTarget.dataset.text,showdata: true });
-  },
+    let self = this
+    console.log(e.currentTarget.dataset.text)
+    self.setData({ popup_title: e.currentTarget.dataset.text, child_text: e.currentTarget.dataset.child, child_id: e.currentTarget.dataset.child_id,showdata: true });
+    if (e.currentTarget.dataset.text =='今日初诊成交总额'){
+      wx.request({
+        url: getApp().data.APIS + '/report/firstdealdetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr:res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日诊疗收入') {
+      wx.request({
+        url: getApp().data.APIS + '/report/clinicincomedetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日现金流入') {
+      wx.request({
+        url: getApp().data.APIS + '/report/cashincomedetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日欠款总额') {
+      wx.request({
+        url: getApp().data.APIS + '/report/debtdetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日新增预交款总额') {
+      wx.request({
+        url: getApp().data.APIS + '/report/advancepaydetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日退款总额') {
+      wx.request({
+        url: getApp().data.APIS + '/report/refunddetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日预约人数') {
+      wx.request({
+        url: getApp().data.APIS + '/report/scheduledetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日初诊人数') {
+      wx.request({
+        url: getApp().data.APIS + '/report/firstdetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日复诊人数') {
+      wx.request({
+        url: getApp().data.APIS + '/report/refraldetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日流失数') {
+      wx.request({
+        url: getApp().data.APIS + '/report/lostdetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日新开会员卡数') {
+      wx.request({
+        url: getApp().data.APIS + '/report/vipcarddetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日会员充值总额') {
+      wx.request({
+        url: getApp().data.APIS + '/report/viprechargedetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日销售项目') {
+      wx.request({
+        url: getApp().data.APIS + '/report/itemrankdetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate,
+          bdhandlesetidentity: self.data.child_id
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日医生业绩') {
+      wx.request({
+        url: getApp().data.APIS + '/report/doctorrankdetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate,
+          doctorid: self.data.child_id
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '今日咨询师业绩') {
+      wx.request({
+        url: getApp().data.APIS + '/report/counselorrankdetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate,
+          counselor: self.data.child_text
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '项目销售数量') {
+      wx.request({
+        url: getApp().data.APIS + '/report/itemrankdetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate,
+          bdhandlesetidentity: self.data.child_id
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '项目销售金额') {
+      wx.request({
+        url: getApp().data.APIS + '/report/itemrankdetail',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate,
+          bdhandlesetidentity: self.data.child_id
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    }
+  }, 
   onClosedata() {
     this.setData({ showdata: false });
   },
@@ -94,14 +492,16 @@ Page({
     console.log(e.currentTarget.dataset.index)
     this.setData({ check_num: e.currentTarget.dataset.index });
     this.doSomeThing()
+    let date = new Date();
     if (e.currentTarget.dataset.index == 1){
-      let date = new Date();
       this.setData({
-        time: date.getFullYear() + '-01~' + date.getFullYear() + '-12',
+        time: date.getFullYear() + '/01~' + date.getFullYear() + '/12',
         month_year: date.getFullYear(),
         month_year1: date.getFullYear()-1,
         month_star: 12,
         month_end: 23,
+        begindate: date.getFullYear() + '/01'+'01',
+        enddate: date.getFullYear() + '/12' + '31',
         month_arr: [
           { time: '一月', state: 0 },
           { time: '二月', state: 0 },
@@ -129,7 +529,14 @@ Page({
           { time: '十二月', state: 1 },
         ]
       })
+    }else{
+      this.setData({
+        time: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '~' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
+        begindate: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
+        enddate: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate()
+      })
     }
+    this.getdata()
   },
   monthclick(e){
     let index = e.currentTarget.dataset.index
@@ -149,11 +556,13 @@ Page({
           end = index
         }
       }
-      time_star = star < 12 ? this.data.month_year1 + '-' + (star < 10 ? '0' + (star + 1) : star) : this.data.month_year + '-' + ((star - 11) < 10 ? '0' + (star - 11) : star - 11)
-      time_end = end < 12 ? this.data.month_year1 + '-' + (end < 10 ? '0' + (end + 1) : end) : this.data.month_year + '-' + ((end - 11) < 10 ? '0' + (end - 11) : end - 11)
+      time_star = star < 12 ? this.data.month_year1 + '/' + (star < 10 ? '0' + (star + 1) : star) : this.data.month_year + '/' + ((star - 11) < 10 ? '0' + (star - 11) : star - 11)
+      time_end = end < 12 ? this.data.month_year1 + '/' + (end < 10 ? '0' + (end + 1) : end) : this.data.month_year + '/' + ((end - 11) < 10 ? '0' + (end - 11) : end - 11)
       this.setData({
         time: time_star + '~' + time_end,
-        show: false
+        begindate: time_star + '/01',
+        enddate: time_end + '/31',
+        show:false
       })
     } else if (star != 999 && end != 999){
       for (let j = 0; j < arr.length; j++) {
@@ -171,18 +580,23 @@ Page({
           arr[k].state = 1
         }
       }
-      time_star = star < 12 ? this.data.month_year1 + '-' + (star < 10 ? '0' + (star + 1) : star) : this.data.month_year + '-' + ((star - 11) < 10 ? '0' + (star - 11) : star - 11)
-      time_end = end < 12 ? this.data.month_year1 + '-' + (end < 10 ? '0' + (end + 1) : end) : this.data.month_year + '-' + ((end - 11) < 10 ? '0' + (end - 11) : end - 11)
+      time_star = star < 12 ? this.data.month_year1 + '/' + (star < 10 ? '0' + (star + 1) : star) : this.data.month_year + '/' + ((star - 11) < 10 ? '0' + (star - 11) : star - 11)
+      time_end = end < 12 ? this.data.month_year1 + '/' + (end < 10 ? '0' + (end + 1) : end) : this.data.month_year + '/' + ((end - 11) < 10 ? '0' + (end - 11) : end - 11)
       this.setData({
         time: time_star + '~' + time_end,
-        show: false
+        begindate: time_star+'/01',
+        enddate: time_end + '/31',
+        show:false
       })
     }
     this.setData({
       month_star: star,
       month_end: end,
-      month_arr: arr,
+      month_arr: arr
     })
+  },
+  month_btn(){
+
   },
   yearclick(e) {
     let index = e.currentTarget.dataset.index
@@ -463,6 +877,29 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '初诊人次详情', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/studyvisitdetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                        isfirstvisit:0
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -508,6 +945,29 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '初诊成交总额', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/studybargaindetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                        isfirstvisit: 0
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -606,6 +1066,29 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '复诊人次详情', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/studybargaindetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                        isfirstvisit: 1
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -729,6 +1212,29 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '新诊人次详情', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/studyvisitdetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                        isfirstvisit: 2
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -774,6 +1280,29 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '新诊成交总额', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/studybargaindetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                        isfirstvisit: 2
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -909,6 +1438,28 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '诊所预约人次', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/recodeScheduleDetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -985,7 +1536,33 @@ Page({
 
                   chart.setOption(option);
                   chart.on('click', function (params) {
-                    self.setData({ popup_title: '预约情况占比', showdata: true });
+                    let text = params.name.split('')
+                    let a = text.splice(0,2)
+                    let child_text = a.join('')
+                    self.setData({ popup_title: '预约情况占比', showdata: true, child_text: child_text });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/cusBespeakDetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                        status: child_text
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -1070,7 +1647,31 @@ Page({
 
                   chart.setOption(option);
                   chart.on('click', function (params) {
-                    self.setData({ popup_title: '医生预约情况统计', showdata: true });
+                    let child_text = params.name
+                    self.setData({ popup_title: '医生预约情况统计', showdata: true, child_text: child_text });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/docBespeakDetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                        DoctorName: child_text
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -1151,7 +1752,31 @@ Page({
 
                   chart.setOption(option);
                   chart.on('click', function (params) {
-                    self.setData({ popup_title: '预约项目统计', showdata: true });
+                    let child_text = params.name
+                    self.setData({ popup_title: '预约项目统计', showdata: true, child_text: child_text });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/bespeakItemDetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                        item: child_text
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -1224,7 +1849,33 @@ Page({
 
                   chart.setOption(option);
                   chart.on('click', function (params) {
-                    self.setData({ popup_title: '预约初复诊情况', showdata: true });
+                    let text = params.name.split('')
+                    let a = text.splice(0, 2)
+                    let child_text = a.join('')
+                    self.setData({ popup_title: '预约初复诊情况', showdata: true, child_text: child_text });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/bespeakItemDetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                        VisitStatus: child_text=='初诊'?0:1
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -1256,7 +1907,7 @@ Page({
           let arr1 = []
           if (res.data.list) {
             for (let i = 0; i < res.data.list.length; i++) {
-              arr1.push({ name: res.data.list[i].visitnum + res.data.list[i].num, value: res.data.list[i].num})
+              arr1.push({ name: res.data.list[i].visitnum, value: res.data.list[i].num})
             }
             self.setData({
               order6: {
@@ -1288,7 +1939,30 @@ Page({
 
                   chart.setOption(option);
                   chart.on('click', function (params) {
-                    self.setData({ popup_title: '预约到诊和自然到诊情况', showdata: true });
+                    let child_text = params.name
+                    self.setData({ popup_title: child_text, showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/cBespeakDetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -1380,7 +2054,29 @@ Page({
 
                   chart.setOption(option);
                   chart.on('click', function (params) {
-                    self.setData({ popup_title: '咨询初诊情况', showdata: true });
+                    self.setData({ popup_title: '咨询情况', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/tohosdetail',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -2078,6 +2774,28 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '收入分析', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/businessincomeinfo',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -2141,8 +2859,31 @@ Page({
 
                   chart.setOption(option);
                   chart.on('click', function (params) {
-                    console.log(123)
-                    self.setData({ popup_title: '现金流入占比情况', showdata: true });
+                    let child_text = params.name
+                    self.setData({ popup_title: '现金流入占比情况', showdata: true, child_text: child_text });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/cashincomeinfo',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate,
+                        payname:child_text
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -2224,6 +2965,28 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '会员卡分析', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/vipcard',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -2304,6 +3067,28 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '预交款分析', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/advancepay',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -2385,6 +3170,28 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '欠款分析', showdata: true });
+                    wx.request({
+                      url: getApp().data.APIS + '/report/debtinfo',
+                      method: 'post',
+                      data: {
+                        pageno: 1,
+                        pagesize: 100,
+                        clinicid: self.data.clinicid,
+                        begindate: self.data.begindate,
+                        enddate: self.data.enddate
+                      },
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        if (res.data.info == 'ok') {
+                          self.setData({
+                            arr: res.data.list
+                          })
+                        }
+                      }
+                    })
                   })
                   return chart;
                 }
@@ -2600,6 +3407,28 @@ Page({
                   chart.setOption(option);
                   chart.on('click', function (params) {
                     self.setData({ popup_title: '收入总额', showdata: true });
+                    // wx.request({
+                    //   url: getApp().data.APIS + '/report/debtinfo',
+                    //   method: 'post',
+                    //   data: {
+                    //     pageno: 1,
+                    //     pagesize: 100,
+                    //     clinicid: self.data.clinicid,
+                    //     begindate: self.data.begindate,
+                    //     enddate: self.data.enddate
+                    //   },
+                    //   header: {
+                    //     'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                    //   },
+                    //   success: function (res) {
+                    //     console.log(res)
+                    //     if (res.data.info == 'ok') {
+                    //       self.setData({
+                    //         arr: res.data.list
+                    //       })
+                    //     }
+                    //   }
+                    // })
                   })
                   return chart;
                 }
@@ -2828,8 +3657,12 @@ Page({
   onLoad: function (options) {
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];  //上一个页面
+    let date = new Date()
     this.setData({
       title: options.title,
+      time: options.title == '每日看板' ? date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(): date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '~' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
+      begindate: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
+      enddate: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate()
       // clinicid: prevPage.data.clinicid ? prevPage.data.clinicid:''
     })
     wx.setNavigationBarTitle({

@@ -131,7 +131,7 @@
     {
       "root": "component",
       "pages": [
-        "pages/erocdetails"
+        "pages/erocdetails/index"
       ]
     }
   ],

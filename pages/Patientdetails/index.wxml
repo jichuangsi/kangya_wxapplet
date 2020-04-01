@@ -8,8 +8,9 @@
   <view class="center">
     <view class="center_top">
       <view class="user_box">
-        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{patdetails.sex == '男'}}"></image>
-        <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{patdetails.sex == '女'}}"></image>
+        <image src="{{patdetails.picture}}" wx:if="{{patdetails.picture != ''}}"></image>
+        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{patdetails.sex == '男'&&patdetails.picture == ''}}"></image>
+        <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{patdetails.sex == '女'&&patdetails.picture == ''}}"></image>
         <view class="user">
           <view class="name">
               {{patdetails.name}}
@@ -30,7 +31,7 @@
             <van-icon name="qr" size="56rpx" />
         </navigator>
       </view>
-      <view class="message" data-text="修改备注" data-btn="1" data-textstate="1"  bindtap="editgo">
+      <view class="message" data-text="修改备注" data-btn="1" data-textstate="1" data-value="{{patdetails.remark}}"  bindtap="editgo">
         <van-icon name="description" />
         <view class="none">
           {{patdetails.remark}}

@@ -10,7 +10,7 @@ Page({
     show: false,
     show_num:0,
     star_num: 0,
-    sex_num: 0,
+    sex: '',
     checked: false,
     currentDate: new Date().getTime(),
     minDate: 320049973000,
@@ -30,6 +30,7 @@ Page({
     Patientlist:{
       name:'',
       doctor:'',
+      doctorid:'',
       age:'',
       check_project: '',
       check_Occupation:'',
@@ -43,12 +44,14 @@ Page({
       iphone1:'',
       iphone2:'',
       address: '',
-      remarks: ''
-    }
+      remarks: '',
+      "Province": "",
+      "City": "",
+      "Town": "", 
+    },
+    informationlist:''
   },
   onClickLeft() {
-    wx.clearStorage('Patientlist')
-    wx.clearStorage('informationlist')
     wx.navigateBack({
       delta: 1
     })
@@ -85,12 +88,15 @@ Page({
     this.setData({ show: false, star_num: e.currentTarget.dataset.index });
   },
   sex(e) {
-    this.setData({ show: false, sex_num: e.currentTarget.dataset.index });
+    this.setData({ show: false, sex: e.currentTarget.dataset.index });
   },
   editgo(e) {
-    console.log(e.currentTarget.dataset.text)
+    let btn = e.currentTarget.dataset.btn ? '&&btnstate=1' : ''
+    let iptstate = e.currentTarget.dataset.iptstate ? '&&iptstate=1' : ''
+    let textstate = e.currentTarget.dataset.textstate ? '&&textstate=1' : ''
+    let value = e.currentTarget.dataset.value ? '&&value=' + e.currentTarget.dataset.value : ''
     wx.navigateTo({
-      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text
+      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + iptstate + btn + textstate + value
     })
   },
   Colleaguego(e) {
@@ -109,10 +115,143 @@ Page({
     return Y + M + D;
   },
   areaclick(e) {
-    this.setData({ show: false, check_area: e.detail.values[0].name + e.detail.values[1].name+e.detail.values[2].name});
+    this.setData({ 
+      show: false, 
+      check_area: e.detail.values[0].name + e.detail.values[1].name+e.detail.values[2].name,
+      "Province": e.detail.values[0].name,
+      "City": e.detail.values[1].name,
+      "Town": e.detail.values[2].name,
+    });
   },
-  btn(){
-    this.onClickLeft()
+  btn() {
+    let self = this
+    
+    wx.request({
+      url: getApp().data.APIS + '/patient/addpatient',
+      method: 'post',
+      data: {
+        "clinicid": "",
+        "customerid": "",
+        "customer": JSON.stringify(
+          {
+            "Referral": "",
+            "PatientID": "*(无病历号)",
+            "Name": self.data.Patientlist.name,
+            "Picture": "",
+            "Sex": self.data.sex,
+            "Birthday": self.data.check_time,
+            "Age": self.data.Patientlist.age,
+            "PatientStar": self.data.star_num,
+            "Phone": self.data.Patientlist.iphone1,
+            "PhoneVestee1": self.data.Patientlist.check_ascription1,
+            "Phone1": self.data.Patientlist.iphone2,
+            "WorkPhone": "",
+            "WorkAddress": "",
+            "CommInsurance": "",
+            "CommInsuranceID": "",
+            "PhoneVestee2": self.data.Patientlist.check_ascription2,
+            "ImpressionInfo": self.data.informationlist.impression,
+            "ComeFrom": self.data.check_columns,
+            "ComeFrom2": "",
+            "ComeFrom2pid": "28220801069395242",
+            "ComeFrom3": "",
+            "ComeFrom3pid": "",
+            "ComeFrom21": "",
+            "ComeFrom22": "",
+            "ComeFrom22pid": "",
+            "ComeFrom23": "",
+            "ComeFrom23pid": "",
+            "ComeFrom31": "",
+            "ComeFrom32": "",
+            "ComeFrom32pid": "",
+            "ComeFrom33": "",
+            "ComeFrom33pid": "",
+            "ComeFrom41": "",
+            "ComeFrom42": "",
+            "ComeFrom42pid": "",
+            "ComeFrom43": "",
+            "ComeFrom43pid": "",
+            "IDNo": self.data.informationlist.IDCard,
+            "Introducer": self.data.informationlist.Introducer,
+            "ReferralDoct": self.data.Patientlist.doctor,
+            "ReferralDoctIdentity": self.data.Patientlist.doctorid,
+            "Treatment": self.data.Patientlist.check_project,
+            "Country": "中国",
+            "Province": self.data.Patientlist.Province,
+            "City": self.data.Patientlist.City,
+            "Town": self.data.Patientlist.Town,
+            "Address": self.data.Patientlist.address,
+            "Remark": self.data.Patientlist.remark,
+            "PatGroup": "990001",
+            "PatGroupName": "最近客户",
+            "QQ": self.data.Patientlist.qq,
+            "IntroducerId": "",
+            "IntroducerSource": "1",
+            "Email": self.data.Patientlist.mailbox,
+            "Counselor": "",
+            "Wechat": "",
+            "DiseaseHistory": self.data.informationlist.past,
+            "AllergicHistory": self.data.informationlist.allergy,
+            "VisitHistory": self.data.informationlist.experience,
+            "BrushNum": "",
+            "BrushMin": "",
+            "SmokeNum": "",
+            "Complained": "",
+            "Symptom": "",
+            "InitialJudge": "",
+            "BrushType": "",
+            "Occupation": self.data.Patientlist.check_Occupation,
+            "FirstTimeDoct": "",
+            "OrthodonticNO": "",
+            "YellowCode": "",
+            "keyword1": "",
+            "keyword2": "",
+            "keyword3": "",
+            "keyword4": "",
+            "keyword5": "",
+            "keyword6": "",
+            "keyword7": "",
+            "keyword8": "",
+            "keyword9": "",
+            "keyword10": "",
+            "keyword11": "",
+            "keyword12": "",
+            "keyword13": "",
+            "keyword14": "",
+            "keyword15": "",
+            "keyword16": "",
+            "keyword17": "",
+            "keyword18": "",
+            "keyword19": "",
+            "keyword20": ""
+          }
+        ),
+        "oldcustomer": ""
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          wx.showToast({
+            title: '成功',
+            icon: 'success',
+            duration: 2000
+          })
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1,
+            })
+          },1000)
+        } else {
+          wx.showToast({
+            title: '失败',
+            duration: 2000
+          })
+        }
+      }
+    })
   },
   messagego() {
     wx.navigateTo({
@@ -125,10 +264,6 @@ Page({
   onLoad: function (options) {
     this.setData({
       areaList: require("../../data/area.js").default
-    })
-    wx.setStorage({
-      key: 'Patientlist',
-      data: this.data.Patientlist,
     })
     wx.setNavigationBarTitle({
       title:'添加患者'
@@ -146,15 +281,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let self = this
-    wx.getStorage({
-      key: 'Patientlist',
-      success: function(res) {
-        self.setData({
-          Patientlist: res.data
-        })
-      },
-    })
   },
 
   /**

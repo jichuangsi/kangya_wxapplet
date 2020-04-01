@@ -13,7 +13,15 @@ Page({
       delta: 1
     })
   },
-
+  go(){
+    console.log(1111)
+    wx.navigateTo({
+      url: '../component/pages/erocdetails/index',
+      success: function(res) {console.log(res)},
+      fail: function (res) { console.log(res)},
+      complete: function (res) { console.log(res)},
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

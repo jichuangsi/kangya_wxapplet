@@ -8,7 +8,8 @@ Page({
     title:'新增亲友关系',
     show:false,
     relationship:'',
-    Patient_name:''
+    patient:'',
+    bz:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -32,10 +33,8 @@ Page({
       url: '../Patientlist/index?state=1',
     })
   },
-  editgo(e){
-    wx.navigateTo({
-      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text
-    })
+  ipt(e){
+    console.log(e)
   },
   /**
    * 生命周期函数--监听页面加载

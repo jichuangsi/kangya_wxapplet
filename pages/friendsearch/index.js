@@ -36,14 +36,23 @@ Page({
         url: '../Colleaguedetails/index?item=' + JSON.stringify(e.currentTarget.dataset.item),
       })
     } else {
-      if (this.data.another == 0) {
+      if (this.data.state == 1) {
+        let list = prevPage.data.Patientlist
+        list.doctor = e.currentTarget.dataset.name
+        list.doctorid = e.currentTarget.dataset.item.doctorid
         prevPage.setData({
-          doctor: e.currentTarget.dataset.item
+          Patientlist: list
         })
-      }else{
-        prevPage.setData({
-          doctor1: e.currentTarget.dataset.item
-        })
+      } else {
+        if (this.data.another == 0) {
+          prevPage.setData({
+            doctor: e.currentTarget.dataset.item
+          })
+        } else {
+          prevPage.setData({
+            doctor1: e.currentTarget.dataset.item
+          })
+        }
       }
       wx.navigateBack({
         delta: 2

@@ -6,151 +6,151 @@
     </van-nav-bar>     -->
   <!-- </view>  -->
   <view class="center">
-    <view class="li" data-text="添加身份证" bindtap="editgo">
-      <view class="left">
-        身份证号
-      </view>
-      <view class="right">
-        <view wx:if="{{informationlist.IDCard == '' }}">未填写</view>
-        <view wx:if="{{informationlist.IDCard != '' }}">{{informationlist.IDCard}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加社保号" bindtap="editgo">
-      <view class="left">
-        社保号
-      </view>
-      <view class="right">
-        <view wx:if="{{informationlist.socialcard == '' }}">未填写</view>
-        <view wx:if="{{informationlist.socialcard != '' }}">{{informationlist.socialcard}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加保险类型" bindtap="editgo">
-      <view class="left">
-        保险类型
-      </view>
-      <view class="right">
-        <view wx:if="{{informationlist.Insurance == '' }}">未填写</view>
-        <view wx:if="{{informationlist.Insurance != '' }}">{{informationlist.Insurance}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="咨询师模板" bindtap="editgo">
-      <view class="left">
-        咨询师
-      </view>
-      <view class="right">
-        <view wx:if="{{informationlist.Consultant == '' }}">未填写</view>
-        <view wx:if="{{informationlist.Consultant != '' }}">{{informationlist.Consultant}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加介绍人" bindtap="editgo">
-      <view class="left">
-        介绍人
-      </view>
-      <view class="right">
-        <view wx:if="{{informationlist.Introducer == '' }}">未填写</view>
-        <view wx:if="{{informationlist.Introducer != '' }}">{{informationlist.Introducer}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="编辑电网咨询" bindtap="editgo">
-      <view class="left">
-        电网咨询
-      </view>
-      <view class="right">
-        <view wx:if="{{informationlist.powergrid == '' }}">未填写</view>
-        <view wx:if="{{informationlist.powergrid != '' }}">{{informationlist.powergrid}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="患者印象" bindtap="editgo">
-      <view class="left">
-        患者印象
-      </view>
-      <view class="right">
-        <view wx:if="{{informationlist.impression == '' }}">未填写</view>
-        <view wx:if="{{informationlist.impression != '' }}">{{informationlist.impression}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="xian"></view>
-    <view class="li" data-text="添加洁牙习惯" bindtap="editgo">
-      <view class="left">
-        洁牙习惯
-      </view>
-      <view class="right">
-        <view wx:if="{{informationlist.Habit == '' }}">未填写</view>
-        <view wx:if="{{informationlist.Habit != '' }}">{{informationlist.Habit}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加就诊经历" bindtap="editgo">
-      <view class="left">
-        就诊经历
-      </view>
-      <view class="right">
-        <view wx:if="{{informationlist.experience == '' }}">未填写</view>
-        <view wx:if="{{informationlist.experience != '' }}">{{informationlist.experience}}</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="xian"></view>
-    <view class="li" data-text="过敏史模板" bindtap="editgo">
-      <view class="left">
-        <view>过敏史</view>
-      </view>
-      <view class="right">
-        <view>模板</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加过敏史" bindtap="editgo">
-      <view class="left">
-        <view wx:if="{{informationlist.allergy == '' }}">点击患者过敏史</view>
-        <view wx:if="{{informationlist.allergy != '' }}">{{informationlist.allergy}}</view>
-      </view>
-      <view class="right">
-      </view>
-    </view>
-    <view class="xian"></view>
-    <view class="li" data-text="既往史模板" bindtap="editgo">
-      <view class="left">
-        <view>既往史</view>
-      </view>
-      <view class="right">
-        <view>模板</view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加既往史" bindtap="editgo">
-      <view class="left">
-        <view wx:if="{{informationlist.past == '' }}">点击患者既往史</view>
-        <view wx:if="{{informationlist.past != '' }}">{{informationlist.past}}</view>
-      </view>
-      <view class="right">
-      </view>
-    </view>
-    <view class="xian"></view>
-    <view class="li" data-text="添加顾客要求" bindtap="editgo">
-      <view class="left">
-        <view>顾客要求</view>
-      </view>
-      <view class="right">
-        <view></view>
-        <van-icon name="arrow" />
-      </view>
-    </view>
-    <view class="li" data-text="添加顾客要求" bindtap="editgo">
-      <view class="left">
-        <view wx:if="{{informationlist.ask == '' }}">点击填写顾客要求信息</view>
-        <view wx:if="{{informationlist.ask != '' }}">{{informationlist.ask}}</view>
-      </view>
-      <view class="right">
-      </view>
-    </view>
+            <view class="li" data-text="添加身份证" data-btn="1" data-iptstate="1" data-value="{{informationlist.IDCard}}" bindtap="editgo">
+              <view class="left">
+                身份证号
+              </view>
+              <view class="right">
+                <view wx:if="{{informationlist.IDCard == '' }}">未填写</view>
+                <view wx:if="{{informationlist.IDCard != '' }}">{{informationlist.IDCard}}</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="li" data-text="添加社保号" data-btn="1" data-iptstate="1" data-value="{{informationlist.socialcard}}" bindtap="editgo">
+              <view class="left">
+                社保号
+              </view>
+              <view class="right">
+                <view wx:if="{{informationlist.socialcard == '' }}">未填写</view>
+                <view wx:if="{{informationlist.socialcard != '' }}">{{informationlist.socialcard}}</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="li" data-text="添加保险类型" bindtap="editgo">
+              <view class="left">
+                保险类型
+              </view>
+              <view class="right">
+                <view wx:if="{{informationlist.Insurance == '' }}">未填写</view>
+                <view wx:if="{{informationlist.Insurance != '' }}">{{informationlist.Insurance}}</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="li" data-text="咨询师模板" bindtap="editgo">
+              <view class="left">
+                咨询师
+              </view>
+              <view class="right">
+                <view wx:if="{{informationlist.Consultant == '' }}">未填写</view>
+                <view wx:if="{{informationlist.Consultant != '' }}">{{informationlist.Consultant}}</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="li" data-text="添加介绍人" data-btn="1" data-iptstate="1" data-value="{{informationlist.Introducer}}" bindtap="editgo">
+              <view class="left">
+                介绍人
+              </view>
+              <view class="right">
+                <view wx:if="{{informationlist.Introducer == '' }}">未填写</view>
+                <view wx:if="{{informationlist.Introducer != '' }}">{{informationlist.Introducer}}</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="li" data-text="编辑电网咨询" bindtap="editgo">
+              <view class="left">
+                电网咨询
+              </view>
+              <view class="right">
+                <view wx:if="{{informationlist.powergrid == '' }}">未填写</view>
+                <view wx:if="{{informationlist.powergrid != '' }}">{{informationlist.powergrid}}</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="li" data-text="患者印象" data-btn="1" bindtap="editgo">
+              <view class="left">
+                患者印象
+              </view>
+              <view class="right">
+                <view wx:if="{{informationlist.impression == '' }}">未填写</view>
+                <view wx:if="{{informationlist.impression != '' }}">{{informationlist.impression}}</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="xian"></view>
+            <view class="li" data-text="添加洁牙习惯" data-btn="1" data-iptstate="1" data-value="{{informationlist.Habit}}" bindtap="editgo">
+              <view class="left">
+                洁牙习惯
+              </view>
+              <view class="right">
+                <view wx:if="{{informationlist.Habit == '' }}">未填写</view>
+                <view wx:if="{{informationlist.Habit != '' }}">{{informationlist.Habit}}</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="li" data-text="添加就诊经历" data-btn="1" data-iptstate="1" data-value="{{informationlist.experience}}" bindtap="editgo">
+              <view class="left">
+                就诊经历
+              </view>
+              <view class="right">
+                <view wx:if="{{informationlist.experience == '' }}">未填写</view>
+                <view wx:if="{{informationlist.experience != '' }}">{{informationlist.experience}}</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="xian"></view>
+            <view class="li" data-text="过敏史模板" data-btn="1" bindtap="editgo">
+              <view class="left">
+                <view>过敏史</view>
+              </view>
+              <view class="right">
+                <view>模板</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="li" data-text="添加过敏史" data-btn="1" data-textstate="1" data-value="{{informationlist.allergy}}" bindtap="editgo">
+              <view class="left">
+                <view wx:if="{{informationlist.allergy == '' }}">点击患者过敏史</view>
+                <view wx:if="{{informationlist.allergy != '' }}">{{informationlist.allergy}}</view>
+              </view>
+              <view class="right">
+              </view>
+            </view>
+            <view class="xian"></view>
+            <view class="li" data-text="既往史模板" data-btn="1" bindtap="editgo">
+              <view class="left">
+                <view>既往史</view>
+              </view>
+              <view class="right">
+                <view>模板</view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="li" data-text="添加既往史" data-btn="1" data-textstate="1" data-value="{{informationlist.past}}" bindtap="editgo">
+              <view class="left">
+                <view wx:if="{{informationlist.past == '' }}">点击患者既往史</view>
+                <view wx:if="{{informationlist.past != '' }}">{{informationlist.past}}</view>
+              </view>
+              <view class="right">
+              </view>
+            </view>
+            <view class="xian"></view>
+            <view class="li" data-text="添加顾客要求" data-btn="1" data-textstate="1" data-value="{{informationlist.ask}}" bindtap="editgo">
+              <view class="left">
+                <view>顾客要求</view>
+              </view>
+              <view class="right">
+                <view></view>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view class="li" data-text="添加顾客要求" data-btn="1" data-textstate="1" data-value="{{informationlist.ask}}" bindtap="editgo">
+              <view class="left">
+                <view wx:if="{{informationlist.ask == '' }}">点击填写顾客要求信息</view>
+                <view wx:if="{{informationlist.ask != '' }}">{{informationlist.ask}}</view>
+              </view>
+              <view class="right">
+              </view>
+            </view>
   </view>
   <view class="center_bottom">
     <view class="left" bindtap="back">上一步</view>
