@@ -46,7 +46,7 @@
       </view>
       <view class="li_box" wx:if="{{state == 1}}">
         <view class="order_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
-          <view class="date">{{item.scheduletime}}</view>
+          <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
             <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
@@ -76,9 +76,10 @@
     
   <van-popup show="{{ show }}"
   position="top"
+  bind:close="onClose"
     >
     <view wx:for="{{nav1_arr}}" wx:if="{{nav_num == 1}}" data-text="{{item}}" bindtap="nav1click">{{item}}</view>
-    <view wx:for="{{doctor_arr}}" wx:if="{{nav_num == 2}}" data-id="{{item.doctorid}}" data-text="{{item.name}}" bindtap="nav2click">{{item.name}}</view>
-    <calendar  wx:if="{{nav_num == 3}}" calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+    <view wx:for="{{nav2_arr}}" wx:if="{{nav_num == 2}}" data-id="{{item.doctorid}}" data-text="{{item.name}}" bindtap="nav2click">{{item.name}}</view>
+    <calendar  wx:if="{{nav_num == 3&&show}}" calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
   </van-popup>
 </view>

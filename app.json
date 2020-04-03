@@ -42,7 +42,6 @@
     "pages/feedbackbtn/index",
     "pages/Soundrecord/index",
     "pages/Patientlist/index",
-    "pages/achievement/index",
     "pages/Worktoday/index",
     "pages/Worktodaydetails/index",
     "pages/Patientdetails/index",
@@ -52,7 +51,6 @@
     "pages/Patientsearch/index",
     "pages/Patientdata/index",
     "pages/relationship/index",
-    "pages/achievementNext/index",
     "pages/order/index",
     "pages/orderdetails/index",
     "pages/orderedit/index",
@@ -131,9 +129,14 @@
     {
       "root": "component",
       "pages": [
-        "pages/erocdetails/index"
+        "pages/erocdetails/index",
+        "pages/achievement/index",
+        "pages/achievementNext/index"
       ]
     }
+  ],
+  "navigateToMiniProgramAppIdList": [
+    "wx6692a7dc586f5a61"
   ],
   "usingComponents": {
     "calendar": "/../calendar/index",

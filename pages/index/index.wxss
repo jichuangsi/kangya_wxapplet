@@ -1,6 +1,6 @@
 /**index.wxss**/
 .index {
-  padding-bottom: 100rpx;
+  padding-bottom: 160rpx;
 }
 .namebox {
   width: 100%;

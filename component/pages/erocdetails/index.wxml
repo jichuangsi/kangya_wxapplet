@@ -17,10 +17,10 @@
         今日初诊成交总额（元）
         </view>
         <view class="boxcenter">
-        {{Daily.todayincome}}
+        {{Daily1.todaydeal}}
         </view>
         <view class="boxbottom">
-        昨日 {{Daily.yesterdayincome}} 丨 成交率 0.00%
+        昨日 {{Daily1.yesterdaydeal}} 丨 成交率 {{Daily1.dealrate}}
         </view>
       </view>
       <view class="box" data-text="今日诊疗收入" bindtap="ontitle">
@@ -28,10 +28,10 @@
         今日诊疗收入（元）
         </view>
         <view class="boxcenter">
-        {{Daily.todayincome}}
+        {{Daily3.todayincome}}
         </view>
         <view class="boxbottom">
-        昨日 {{Daily.yesterdayincome}}
+        昨日 {{Daily3.yesterdayincome}}
         </view>
       </view>
       <view class="box" data-text="今日现金流入" bindtap="ontitle">
@@ -50,10 +50,10 @@
         今日欠款总额（元）
         </view>
         <view class="boxcenter">
-        0.00
+        {{Daily4.todaydebts}}
         </view>
         <view class="boxbottom">
-        昨日 0.00
+        昨日 {{Daily4.yesterdaydebts}}
         </view>
       </view>
       <view class="box" data-text="今日新增预交款总额" bindtap="ontitle">
@@ -72,10 +72,10 @@
         今日退款总额（元）
         </view>
         <view class="boxcenter">
-        0.00
+        {{Daily5.todayrefund}}
         </view>
         <view class="boxbottom">
-        昨日 0.00
+        昨日 {{Daily5.yesterdayrefund}}
         </view>
       </view>
       <view class="box" data-text="今日预约人数" bindtap="ontitle">
@@ -83,10 +83,10 @@
         今日预约人数（人次）
         </view>
         <view class="boxcenter">
-        0
+        {{Daily2.totallost}}
         </view>
         <view class="boxbottom">
-        昨日 0
+        昨日 {{Daily2.firstdeal}}
         </view>
       </view>
       <view class="box" data-text="今日初诊人数" bindtap="ontitle">
@@ -94,10 +94,10 @@
         今日初诊人数（人次）
         </view>
         <view class="boxcenter">
-        0
+        {{Daily2.firstvisit}}
         </view>
         <view class="boxbottom">
-        昨日 0 丨 初诊率 0.00%
+        昨日 {{Daily2.yesterdayfirstvisit}} 丨 初诊率 {{Daily2.firstvisitrate}}
         </view>
       </view>
       <view class="box" data-text="今日复诊人数" bindtap="ontitle">
@@ -105,10 +105,10 @@
         今日复诊人数（人次）
         </view>
         <view class="boxcenter">
-        0
+        {{Daily2.refralvisit}}
         </view>
         <view class="boxbottom">
-        昨日 0
+        昨日 {{Daily2.yesterdayrefralvisit}}
         </view>
       </view>
       <view class="box" data-text="今日流失数" bindtap="ontitle">
@@ -116,10 +116,10 @@
         今日流失数（人次）
         </view>
         <view class="boxcenter">
-        0
+        {{Daily2.lostvisitstate}}
         </view>
         <view class="boxbottom">
-        昨日 0 丨 流失率 0.00%
+        昨日 {{Daily2.yesterdaytotallost}} 丨 流失率 {{Daily2.lostvisitrate}}
         </view>
       </view>
       <view class="box" data-text="今日新开会员卡数" bindtap="ontitle">
@@ -760,7 +760,7 @@
     position="top"
     bind:close="onClose"
   >
-    <calendar calendarConfig="{{calendarConfig}}" wx:if="{{check_num==0}}" bind:afterTapDay="afterTapDay"></calendar>
+    <calendar calendarConfig="{{calendarConfig}}" wx:if="{{check_num==0&&show}}" bind:afterTapDay="afterTapDay"></calendar>
     <view class="month" wx:if="{{check_num==1}}">
       <view class="year">
         <van-icon name="arrow-left" size="36rpx" data-index="0" bindtap="yearclick" />

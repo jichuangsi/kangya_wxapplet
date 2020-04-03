@@ -25,6 +25,11 @@
         <view class="text">沟通类型</view>
         <view>{{item.faceconsulttype}}</view>
       </view>
+      <view class="li" wxif="{{item.faceconsultresult!=''}}">
+        <van-icon name="apps-o" color="#16c7ae" size="36rpx" />
+        <view class="text">回访结果</view>
+        <view>{{item.faceconsultresult}}</view>
+      </view>
       <view class="li">
         <van-icon name="manager" color="#16c7ae" size="36rpx" />
         <view class="text">录入人</view>

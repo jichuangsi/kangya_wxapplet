@@ -1,5 +1,5 @@
 // pages/achievement/index.js
-const CHARTS = require('../../data/wxcharts-min.js');
+import * as echarts from '../../ec-canvas/echarts.js';
 
 Page({
 
@@ -30,7 +30,13 @@ Page({
     clinicid:'',
     bengindate: '',
     enddate: '',
-    user:false
+    user:false,
+    attendance1: {
+      lazyLoad: true
+    },
+    attendance2: {
+      lazyLoad: true
+    }
   },
   onClickLeft() {
     wx.navigateBack({
@@ -86,7 +92,7 @@ Page({
       })
       this.doSomeThing()
     }
-    this.calendar.cancelAllSelectedDay()
+    this.calendar.cancelSelectedDates()
   },
   doSomeThing() {
     // 调用日历方法
@@ -116,41 +122,6 @@ Page({
     this.getdata()
   },
 
-
-  pieShow(data) {
-    let pie = {
-      canvasId: 'pieGraph', // canvas-id
-      type: 'area', // 图表类型，可选值为pie, line, column, area, ring
-      width: 330,
-      height: 300,
-      background:'#16c7ae',
-      dataLabel: true,
-      categories: this.data.list,
-      series: [{
-        name:'业绩',
-        data: this.data.list_data,//设置某一个值为null会出现断层
-        format: function (val) {
-          return val.toFixed(2) + '元';
-        }
-      }],
-      yAxis: {
-        title: '成交金额 (元)',
-        format: function (val) {
-          return val.toFixed(2);
-        },
-        fontColor: "#fff",
-        titleFontColor: "#fff",
-        min: 0,
-        gridColor: "#fff"
-      },
-      xAxis: {
-        fontColor: "#fff",
-        titleFontColor: "#fff",
-        gridColor: "#fff"
-      }
-    };
-    new CHARTS(pie);
-  },
   getdata(){
     let self = this
     wx.request({
@@ -184,8 +155,111 @@ Page({
             receivable: res.data.main.baseinfo.needpay,
             discount: res.data.main.baseinfo.dischargefee,
             payment: res.data.main.baseinfo.advpay,
+            attendance1: {
+              onInit: function (canvas, width, height, dpr) {
+                  const chart = echarts.init(canvas, null, {
+                    width: width,
+                    height: height,
+                    devicePixelRatio: dpr // new
+                  });
+                  var option = {
+                    legend: {
+                      y: 'bottom',
+                      data: ['业绩']
+                    },
+                    color: ['#0094ff'],
+                    xAxis: [
+                      {
+                        type: 'category',
+                        boundaryGap: true,
+                        axisLabel: {
+                          show: true,
+                          textStyle: {
+                            color: '#fff'
+                          }
+                        },
+                        data: arr
+                      },
+                    ],
+                    yAxis: [
+                      {
+                        type: 'value',
+                        axisLabel: {
+                          show: true,
+                          textStyle: {
+                            color: '#fff'
+                          }
+                        },
+                        min: 0
+                      }
+                    ],
+                    series: [
+                      {
+                        name: '初诊成交总额',
+                        type: 'line', 
+                        areaStyle: {},
+                        data: arr1
+                      }
+                    ]
+                  };
+                  chart.setOption(option);
+                  return chart;
+                }
+            },
+            attendance2: {
+              onInit: function (canvas, width, height, dpr) {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['业绩']
+                  },
+                  color: ['#0094ff'],
+                  xAxis: [
+                    {
+                      type: 'category',
+                      boundaryGap: true,
+                      axisLabel: {
+                        show: true,
+                        textStyle: {
+                          color: '#fff'
+                        }
+                      },
+                      data: arr
+                    },
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      axisLabel: {
+                        show: true,
+                        textStyle: {
+                          color: '#fff'
+                        }
+                      },
+                      min: 0
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '初诊成交总额',
+                      type: 'line',
+                      areaStyle: {},
+                      data: arr1
+                    }
+                  ]
+                };
+                chart.setOption(option);
+                return chart;
+              }
+            }
           })
-          self.pieShow()
+          console.log(arr)
+          console.log(arr1)
         }
       }
     })
@@ -215,8 +289,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(JSON.parse(options.user))
-    this.pieShow()
 
     let a = new Date()
     let year = a.getFullYear()

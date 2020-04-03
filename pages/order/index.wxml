@@ -14,7 +14,7 @@
     <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable wx:if="{{title=='预约列表'}}">
       <van-tab title="网络预约" name="网络预约">
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
-          <view class="date">{{item.scheduletime}}</view>
+          <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
             <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
@@ -50,7 +50,7 @@
       </van-tab>
       <van-tab title="预约信息" name="预约信息">
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{state3=='医生'||state3=='全部'||state3==item.doctorname}}">
-          <view class="date">{{item.scheduletime}}</view>
+          <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
             <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
@@ -90,7 +90,7 @@
     </van-tabs>
     <view wx:if="{{title=='明日预约'}}">
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
-          <view class="date">{{item.scheduletime}}</view>
+          <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
             <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
@@ -123,7 +123,7 @@
     </view>
     <view wx:if="{{title=='预约'}}">
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
-          <view class="date">{{item.scheduletime}}</view>
+          <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
             <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>

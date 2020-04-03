@@ -51,7 +51,7 @@ Page({
     check_num:0,
     Chart_arr:[],
     Ranking_arr:[],
-    clinicid: '',
+    clinicid: '422063022055030784',
     begindate: 1,
     enddate: 1,
     Daily: '',
@@ -69,7 +69,7 @@ Page({
     showdata:false,
     popup_title:'',
     child_text:'',
-    child_id:''
+    child_id:'',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -500,8 +500,8 @@ Page({
         month_year1: date.getFullYear()-1,
         month_star: 12,
         month_end: 23,
-        begindate: date.getFullYear() + '/01'+'01',
-        enddate: date.getFullYear() + '/12' + '31',
+        begindate: date.getFullYear() + '/01'+'/01',
+        enddate: date.getFullYear() + '/12' + '/31',
         month_arr: [
           { time: '一月', state: 0 },
           { time: '二月', state: 0 },
@@ -621,9 +621,8 @@ Page({
   },
   doSomeThing() {
     // 调用日历方法
-    console.log(this.calendar)
+    // console.log(this.calendar)
     // this.calendar.enableArea();
-    this.calendar.switchView('week').then(() => { });
   },
   afterTapDay(e) {
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
@@ -643,11 +642,121 @@ Page({
       })
       this.onClose()
     }
-    this.getdata()
+    // this.getdata()
     console.log(this.data.time)
   },
   getDaily(){
     let self = this
+    wx.request({
+      url: getApp().data.APIS + '/report/todayfirstdeal',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        clinicid: self.data.clinicid,
+        begindate: self.data.begindate,
+        enddate: self.data.enddate
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            Daily1: res.data.list
+          })
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/todayvisitcount',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        clinicid: self.data.clinicid,
+        begindate: self.data.begindate,
+        enddate: self.data.enddate
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            Daily2: res.data.list
+          })
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/clinicincome',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        clinicid: self.data.clinicid,
+        begindate: self.data.begindate,
+        enddate: self.data.enddate
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            Daily3: res.data.list
+          })
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/totaldebts',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        clinicid: self.data.clinicid,
+        begindate: self.data.begindate,
+        enddate: self.data.enddate
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            Daily4: res.data.list
+          })
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/refund',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        clinicid: self.data.clinicid,
+        begindate: self.data.begindate,
+        enddate: self.data.enddate
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            Daily5: res.data.list
+          })
+        }
+      }
+    })
     wx.request({
       url: getApp().data.APIS + '/report/cashincome',
       method: 'post',
@@ -745,10 +854,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num==0?'day':'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -762,17 +871,14 @@ Page({
         }
       }
     })
-
     wx.request({
       url: getApp().data.APIS + '/report/firstvisit',
       method: 'post',
       data: {
-        pageno: 1,
-        pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -810,11 +916,12 @@ Page({
               arr1[2].data.push(arr1[1].data[k]/res.data.list.firstvisit[k].num)
               total.visit += res.data.list.firstvisit[k].num
             }
-
+            
             self.setData({
               attendance_total1: total,
               attendance1: {
                 onInit: function (canvas, width, height, dpr) {
+                  console.log(787878)
                   const chart = echarts.init(canvas, null, {
                     width: width,
                     height: height,
@@ -984,10 +1091,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -1105,10 +1212,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -1319,10 +1426,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -1347,10 +1454,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -1476,10 +1583,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -1579,10 +1686,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -1688,10 +1795,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -1793,10 +1900,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -1892,10 +1999,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -1981,10 +2088,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2006,10 +2113,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2093,10 +2200,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2118,10 +2225,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2143,10 +2250,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2168,10 +2275,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2195,10 +2302,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2259,10 +2366,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2324,10 +2431,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2389,10 +2496,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2466,10 +2573,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2530,10 +2637,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2611,10 +2718,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2700,10 +2807,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2812,10 +2919,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -2900,10 +3007,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -3002,10 +3109,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -3105,10 +3212,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -3208,10 +3315,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -3242,10 +3349,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -3274,10 +3381,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -3303,10 +3410,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -3338,10 +3445,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -3482,10 +3589,10 @@ Page({
       data: {
         pageno: 1,
         pagesize: 10,
-        clinicid: self.data.clinicid,
-        begindate: self.data.begindate,
-        enddate: self.data.enddate,
-        flag: self.data.check_num == 0 ? 'day' : 'month'
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -3662,8 +3769,8 @@ Page({
       title: options.title,
       time: options.title == '每日看板' ? date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(): date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '~' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
       begindate: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
-      enddate: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate()
-      // clinicid: prevPage.data.clinicid ? prevPage.data.clinicid:''
+      enddate: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
+      // clinicid: prevPage.data.clinicid ? prevPage.data.clinicid :'422063022055030784'
     })
     wx.setNavigationBarTitle({
       title: options.title
@@ -3692,7 +3799,7 @@ Page({
       })
       this.doSomeThing()
     }
-    this.calendar.cancelAllSelectedDay()
+    // this.calendar.cancelSelectedDates()
   },
 
   /**

@@ -1,5 +1,5 @@
 // pages/achievementNext/index.js
-const CHARTS = require('../../data/wxcharts-min.js');
+import * as echarts from '../../ec-canvas/echarts.js';
 Page({
 
   /**
@@ -16,7 +16,16 @@ Page({
     active:'人数统计',
     clinicid: '',
     bengindate: '',
-    enddate: ''
+    enddate: '',
+    attendance1: {
+      lazyLoad: true
+    },
+    attendance2: {
+      lazyLoad: true
+    },
+    attendance3: {
+      lazyLoad: true
+    }
   },
   onClickLeft() {
     wx.navigateBack({
@@ -27,25 +36,6 @@ Page({
     this.setData({
       active: event.detail.name
     })
-  },
-  pieShow(index,data) {
-      let pie = {
-        canvasId: 'pieGraph' + index, // canvas-id
-        type: 'pie', // 图表类型，可选值为pie, line, column, area, ring
-        series: data,
-        width: 380, // 宽度，单位为px
-        height: 300, // 高度，单位为px
-        legend: {
-          orient: 'vertical',
-        }, // 是否显示图表下方各类别的标识
-        dataLabel: true, // 是否在图表中显示数据内容值
-        extra: {
-          pie: {
-            offsetAngle: -90
-          }
-        }
-      };
-      new CHARTS(pie);
   },
   getdata() {
     let self = this
@@ -68,9 +58,43 @@ Page({
             chart_arr1:[
               { name: '初诊', data: res.data.list[0].num },
               { name: '复诊', data: res.data.list[1].num }
-            ]
+            ],
+            attendance1: {
+              onInit: function (canvas, width, height, dpr) {
+                console.log(1123)
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  color: ['#7bb5ed', '#444447', '#f8a45e', '#94ea82'],
+                  series: [
+                    {
+                      name: '访问来源',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: [
+                        { name: '初诊', value: res.data.list[0].num },
+                        { name: '复诊', value: res.data.list[1].num }
+                      ],
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
+                    }
+                  ]
+                };
+                chart.setOption(option);
+                return chart;
+              }
+            },
           })
-          self.pieShow(1, self.data.chart_arr1)
+          // self.pieShow(1, self.data.chart_arr1)
         }
       }
     })
@@ -90,13 +114,43 @@ Page({
         if (res.data.info == 'ok') {
           let arr2 = []
           for(let i = 0;i<res.data.list.length;i++){
-            arr2.push({ name: res.data.list[i].item, data: res.data.list[i].num})
+            arr2.push({ name: res.data.list[i].item, value: res.data.list[i].num})
           }
           self.setData({
-            chart_arr2: arr2
-
+            chart_arr2: arr2,
+            attendance2: {
+              onInit: function (canvas, width, height, dpr) {
+                console.log(1123)
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  color: ['#7bb5ed', '#444447', '#f8a45e', '#94ea82'],
+                  series: [
+                    {
+                      name: '访问来源',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: arr2,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
+                    }
+                  ]
+                };
+                chart.setOption(option);
+                return chart;
+              }
+            },
           })
-          self.pieShow(2, self.data.chart_arr2)
+          // self.pieShow(2, self.data.chart_arr2)
         }
       }
     })
@@ -116,12 +170,43 @@ Page({
         if (res.data.info == 'ok') {
           let arr3 = []
           for (let i = 0; i < res.data.list.length; i++) {
-            arr3.push({ name: res.data.list[i].comefrom, data: Number(res.data.list[i].scount) })
+            arr3.push({ name: res.data.list[i].comefrom, value: Number(res.data.list[i].scount) })
           }
           self.setData({
-            chart_arr3: arr3
+            chart_arr3: arr3,
+            attendance3: {
+              onInit: function (canvas, width, height, dpr) {
+                console.log(1123)
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  color: ['#7bb5ed', '#444447', '#f8a45e', '#94ea82'],
+                  series: [
+                    {
+                      name: '访问来源',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: arr3,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
+                    }
+                  ]
+                };
+                chart.setOption(option);
+                return chart;
+              }
+            },
           })
-          self.pieShow(3, self.data.chart_arr3)
+          // self.pieShow(3, self.data.chart_arr3)
         }
       }
     })

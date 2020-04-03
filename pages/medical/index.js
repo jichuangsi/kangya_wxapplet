@@ -47,17 +47,18 @@ Page({
         // console.log(JSON.parse(res.data.list[11].exam))
         if(res.data.info == 'ok'){
           let arr = res.data.list
-          for(let i = 0;i<arr.length;i++){
-            // console.log(arr[i])
-            if (typeof (arr[i].exam) =='string'){
-              arr[i].exam = JSON.parse(arr[i].exam)
-              if ('items' in arr[i].exam) {
-                self.getdetails(arr[i].mediarecordidentity, arr[i].customerid,i)
+          for (let k = 0; k < arr.length; k++) {
+            if (typeof (arr[k].exam) =='string'){
+              arr[k].exam = JSON.parse(arr[k].exam)
+              if ('items' in arr[k].exam) {
+                self.getdetails(arr[k].mediarecordidentity, arr[k].customerid,k)
               }
+            }else{
+
             }
           }
           self.setData({
-            arr:arr
+            arr: arr
           })
         }
       },
@@ -75,7 +76,7 @@ Page({
       success: function (res) {
         if(res.data.info == 'ok'){
           let arr = self.data.arr
-          arr[index] = res.data.list[0]
+          arr[index].exam = res.data.list[0].exam
           self.setData({
             arr: arr
           })

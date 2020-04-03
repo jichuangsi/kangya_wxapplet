@@ -52,6 +52,11 @@ Page({
       })
     }
   },
+  doSomeThing() {
+    // 调用日历方法
+    console.log(this.calendar)
+    // this.calendar.enableArea();
+  },
   afterTapDay(e) {
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
 
@@ -194,8 +199,6 @@ Page({
     console.log(options)
     let pages = getCurrentPages();
     let Page = pages[pages.length - 2];
-    console.log(111223)
-    console.log(Page.data)
     this.setData({ title:options.title})
     wx.setNavigationBarTitle({
       title: options.title
@@ -207,8 +210,14 @@ Page({
     this.setData({
       bengindate: year + '/' + month + '/' + day,
       enddate: year + '/' + month + '/' + day,
-      patdetails: Page.data.patdetails
+      patdetails: Page.data.patdetails,
+      calendarConfig: {
+        // 配置内置主题
+        theme: 'elegant',
+        chooseAreaMode: false,
+      }
     })
+    this.doSomeThing()
     this.getdata()
   },
 

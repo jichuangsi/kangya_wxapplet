@@ -13,7 +13,7 @@
   <view class="center" wx:if="{{!user}}">
     <view class="center_title">我的实收业绩(元)<view class="time">{{time}}</view></view>
     <view class="canvas_box">
-      <canvas class="canvas" canvas-id="pieGraph" wx:if="{{check_time}}"></canvas>
+      <ec-canvas id="mychart-dom-graph1" wx:if="{{check_time}}" canvas-id="mychart-graph1" ec="{{ attendance1 }}"></ec-canvas>
     </view>
     <view class="center_top">
       <view>当前我的实收业绩</view>
@@ -49,19 +49,19 @@
       <view>{{last}}</view>
     </view>
     <view class="xian"></view>
-    <navigator url="/pages/achievementNext/index?title=就诊患者" hover-class="navigator-hover">
+    <navigator url="/component/pages/achievementNext/index?title=就诊患者" hover-class="navigator-hover">
       <view class="center_li">
         <view>当前就诊患者</view>
         <view><van-icon name="arrow" /></view>
       </view>
     </navigator>
-    <navigator url="/pages/achievementNext/index?title=医生排名" hover-class="navigator-hover">
+    <navigator url="/component/pages/achievementNext/index?title=医生排名" hover-class="navigator-hover">
       <view class="center_li">
         <view>当前医生排名</view>
         <view><van-icon name="arrow" /></view>
       </view>
     </navigator>
-    <navigator url="/pages/achievementNext/index?title=热门项目" hover-class="navigator-hover">
+    <navigator url="/component/pages/achievementNext/index?title=热门项目" hover-class="navigator-hover">
       <view class="center_li">
         <view>当前热门项目</view>
         <view><van-icon name="arrow" /></view>
@@ -71,7 +71,7 @@
   <view class="center" wx:if="{{user}}">
     <view class="center_title">我的实收业绩(元)<view class="time">{{time}}</view></view>
     <view class="canvas_box">
-      <canvas class="canvas" canvas-id="pieGraph" wx:if="{{check_time}}"></canvas>
+      <ec-canvas id="mychart-dom-graph2" wx:if="{{check_time}}" canvas-id="mychart-graph2" ec="{{ attendance2 }}"></ec-canvas>
     </view>
     <navigator url="/pages/courseachievement/index" hover-class="navigator-hover">
       <view class="center_top">
@@ -104,6 +104,6 @@
       <view class="{{check_nav_num==0?'check_n':''}}" bindtap="check_navclick" data-index="0">单次查询</view>
       <view class="{{check_nav_num==1?'check_n':''}}" bindtap="check_navclick" data-index="1">多次查询</view>
     </view>
-    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+    <calendar calendarConfig="{{calendarConfig}}" wx:if="{{show}}" bind:afterTapDay="afterTapDay"></calendar>
   </van-popup>
 </view>

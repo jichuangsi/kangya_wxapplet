@@ -12,6 +12,9 @@
   </view>
   <view class="center">
     <view wx:if="{{state==0}}">
+      <view class="top_time_box">
+        <calendar id="calendar2" calendarConfig="{{calendarConfig2}}" bind:afterTapDay="afterTapDay2" bind:afterCalendarRender="afterCalendarRender2"></calendar>
+      </view>
       <view class="li_box">
             <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}">
               <view class="li_top">
@@ -90,7 +93,7 @@
   <van-popup show="{{ show }}" bind:close="onClose"
   position="top"
   custom-style="widht: 100%">
-    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+    <calendar id="calendar1" calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
   </van-popup>
   <van-popup show="{{ showbottom }}" bind:close="onClosebottom"
   position="bottom"

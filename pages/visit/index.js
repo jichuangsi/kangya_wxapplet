@@ -1,6 +1,8 @@
 // pages/visit/index.js/
 import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog.js';
 
+var today_date = new Date()
+var today_time = today_date.getFullYear() + "-" + (today_date.getMonth() + 1) + "-" + today_date.getDate()
 Page({
 
   /**
@@ -19,11 +21,19 @@ Page({
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
+      defaultDay: today_time,
+      chooseAreaMode: false,
+    },
+    calendarConfig2: {
+      // 配置内置主题
+      theme: 'elegant',
+      defaultDay: today_time,
       chooseAreaMode: false,
     },
     customerid: '',
     clinicid: '',
-    patdetails: ''
+    patdetails: '',
+    date:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -34,6 +44,11 @@ Page({
     this.setData({
       active: event.detail.name
     })
+  }, 
+  doSomeThing() {
+    // 调用日历方法
+    console.log(this.calendar)
+    this.calendar.switchView('week', '#calendar2').then(() => { });
   },
   onClose() {
     this.setData({ show: false });
@@ -48,11 +63,40 @@ Page({
     }
   },
   afterTapDay(e) {
+    let self = this
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
-    this.setData({
-      time: year + '-' + month < 10 ? '0' + month : month + '-' + day < 10 ? '0' + day : day
+    self.setData({
+      time: e.detail.year + '-' + e.detail.month + '-' + e.detail.day
     })
-    this.onClose()
+    self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar2')
+    self.calendar.switchView('month', '#calendar2').then(() => {})
+    self.getdata()
+    self.onClose()
+    setTimeout(function(){
+      self.calendar.switchView('week', '#calendar2').then(() => {})
+    },60)
+  },
+  afterTapDay2(e) {
+    let self = this
+    console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
+    self.setData({
+      time: e.detail.year + '-' + e.detail.month + '-' + e.detail.day,
+      calendarConfig: {
+        // 配置内置主题
+        theme: 'elegant',
+        defaultDay: e.detail.year + '-' + e.detail.month + '-' + e.detail.day,
+        chooseAreaMode: false,
+      }
+    })
+    self.getdata()
+    self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar1')
+    self.calendar.switchView('month', '#calendar2').then(() => { })
+    setTimeout(function () {
+      self.calendar.switchView('week', '#calendar2').then(() => { })
+    }, 60)
+  },
+  afterCalendarRender2() {
+    this.calendar.switchView('week', '#calendar2').then(() => { });
   },
   del(e) {
     let self = this
@@ -185,7 +229,7 @@ Page({
     this.setData({
       customerid: Page.data.customerid ? Page.data.customerid:'',
       clinicid: Page.data.clinicid ? Page.data.clinicid : '',
-      patdetails: Page.data.patdetails ? Page.data.patdetails : ''
+      patdetails: Page.data.patdetails ? Page.data.patdetails : '',
     })
     console.log(this.data.patdetails)
     this.getdata()
@@ -195,7 +239,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log(this.data.visit_arr)
   },
 
   /**

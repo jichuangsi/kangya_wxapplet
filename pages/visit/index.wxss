@@ -56,7 +56,7 @@
   box-sizing: border-box;
   /* background-color: #fff; */
 }
-.date {
+/* .date {
   width: 200rpx;
   height: 56rpx;
   text-align: center;
@@ -65,7 +65,7 @@
   background-color: #c6c6c6;
   color: #fff;
   margin: 20rpx auto;
-}
+} */
 .li {
   padding: 20rpx;
   box-sizing: border-box;
@@ -175,4 +175,7 @@
 .li .li_top .del {
   width: 42rpx;
   height: 38rpx;
+}
+.top_time_box {
+  background-color: #fff;
 }

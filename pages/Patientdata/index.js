@@ -244,23 +244,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let self = this
-    wx.getStorage({
-      key: 'Patientlist',
-      success: function (res) {
-        self.setData({
-          Patientlist: res.data
-        })
-      },
-    })
-    wx.getStorage({
-      key: 'informationlist',
-      success: function (res) {
-        self.setData({
-          informationlist: res.data
-        })
-      },
-    })
   },
 
   /**

@@ -5,6 +5,7 @@
   background-color: #f2f2f2;
   overflow-y: auto;
 }
+/* sss */
 .top {
   /* width: 100%;
   position: fixed;
@@ -13,6 +14,7 @@
   z-index: 9999;
   background-color: #16c7ae !important; */
 }
+/* sss */
 .top .van-nav-bar {
   vertical-align: middle !important;
   background-color: #16c7ae !important;
@@ -56,7 +58,7 @@
   box-sizing: border-box;
   /* background-color: #fff; */
 }
-.date {
+.date_time {
   width: 200rpx;
   height: 38rpx;
   text-align: center;

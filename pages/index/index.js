@@ -29,7 +29,7 @@ Page({
   showPopupleft() {
     this.setData({ showleft: true });
   },
-
+  
   onCloseleft() {
     this.setData({ showleft: false });
   },
@@ -49,6 +49,21 @@ Page({
         })
       }
     })
+  },
+  shopinggo(){
+    wx.navigateToMiniProgram({
+      appId: 'wx6692a7dc586f5a61', // 要跳转的小程序的appid
+      path: 'pages/test/test', // 跳转的目标页面
+      extarData: {
+      },
+      success(res) {
+        console.log(112331)
+        // 打开成功  
+      },
+      fail(err){
+        console.log(err)
+      }
+    }) 
   },
   Workbenchgo() {
     wx.navigateTo({

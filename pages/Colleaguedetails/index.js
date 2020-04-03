@@ -39,7 +39,7 @@ Page({
   achievementgo() {
     let user = JSON.stringify(this.data.user)
     wx.navigateTo({
-      url: '../achievement/index?user=' + user +'&&state=0',
+      url: '../../component/pages/achievement/index?user=' + user +'&&state=0',
     })
   },
   // getdata() {

@@ -145,10 +145,8 @@ Page({
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {
-          let arr = self.data.nav2_arr
-          arr.push(...res.data.list.schdoctor)
           self.setData({
-            nav2_arr: arr
+            nav2_arr: res.data.list.schdoctor
           })
         }
       }
@@ -257,6 +255,7 @@ Page({
     this.setData({
       state:options.state
     })
+    this.getdoctor()
   },
 
   /**

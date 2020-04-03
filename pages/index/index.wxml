@@ -17,7 +17,7 @@
       <view class="itembox">
         <view class="title">{{item.title}}诊所实收业绩(元)</view>
         <view class="detail">
-        <navigator url="/pages/achievement/index?state={{index}}" hover-class="navigator-hover">
+        <navigator url="/component/pages/achievement/index?state={{index}}" hover-class="navigator-hover">
           业绩明细<van-icon name="arrow" />
         </navigator>
         </view>
@@ -103,8 +103,7 @@
     url="/pages/activity/index" wx:if="{{nav_arr[7].state}}"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_operating.png" text="运营中心" link-type="navigateTo"
     url="/pages/eroc/index?title={{name}}" wx:if="{{nav_arr[8].state}}"/>
-    <van-grid-item icon="../../../images/clinic_workbench_icon_mall.png" text="商城" link-type="navigateTo"
-    url="/pages/S_index/index" wx:if="{{nav_arr[9].state}}"/>
+    <van-grid-item icon="../../../images/clinic_workbench_icon_mall.png" text="商城" bind:click="shopinggo" wx:if="{{nav_arr[9].state}}"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_communication.png" text="医患沟通" link-type="navigateTo"
     url="/pages/PriceList/index?title=医患沟通视频" wx:if="{{nav_arr[10].state}}"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_dentist.png" text="看牙无忧" link-type="navigateTo"
