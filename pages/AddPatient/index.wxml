@@ -192,11 +192,11 @@
             </view>
           </view>
           <view class="li" data-text="修改地址" data-btn="1" data-textstate="1" data-value="{{Patientlist.address}}" bindtap="editgo">
-            <view class="left">
-              <view wx:if="{{Patientlist.address == '' }}">点击填写详细地址</view>
-              <view wx:if="{{Patientlist.address != '' }}">{{Patientlist.address}}</view>
+            <view class="bz" wx:if="{{Patientlist.address == '' }}">
+              点击填写详细地址
             </view>
-            <view class="right">
+            <view class="bz" wx:if="{{Patientlist.address != '' }}">
+              {{Patientlist.address}}
             </view>
           </view>
           <view class="xian"></view>
@@ -210,11 +210,11 @@
             </view>
           </view>
           <view class="li" data-text="修改备注" data-btn="1" data-textstate="1" data-value="{{Patientlist.remarks}}"  bindtap="editgo">
-            <view class="left">
-              <view wx:if="{{Patientlist.remarks == '' }}">点击填写备注信息</view>
-              <view wx:if="{{Patientlist.remarks != '' }}">{{Patientlist.remarks}}</view>
+            <view class="bz" wx:if="{{Patientlist.remarks == '' }}">
+              点击填写备注信息
             </view>
-            <view class="right">
+            <view class="bz" wx:if="{{Patientlist.remarks != '' }}">
+              {{Patientlist.remarks}}
             </view>
           </view>
           <view class="xian"></view>

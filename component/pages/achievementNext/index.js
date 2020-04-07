@@ -56,44 +56,11 @@ Page({
           console.log(typeof (res.data.list[0].num))
           self.setData({
             chart_arr1:[
-              { name: '初诊', data: res.data.list[0].num },
-              { name: '复诊', data: res.data.list[1].num }
+              { name: '初诊', value: res.data.list[0].num },
+              { name: '复诊', value: res.data.list[1].num }
             ],
-            attendance1: {
-              onInit: function (canvas, width, height, dpr) {
-                console.log(1123)
-                const chart = echarts.init(canvas, null, {
-                  width: width,
-                  height: height,
-                  devicePixelRatio: dpr // new
-                });
-                var option = {
-                  color: ['#7bb5ed', '#444447', '#f8a45e', '#94ea82'],
-                  series: [
-                    {
-                      name: '访问来源',
-                      type: 'pie',
-                      radius: '55%',
-                      center: ['50%', '60%'],
-                      data: [
-                        { name: '初诊', value: res.data.list[0].num },
-                        { name: '复诊', value: res.data.list[1].num }
-                      ],
-                      emphasis: {
-                        itemStyle: {
-                          shadowBlur: 10,
-                          shadowOffsetX: 0,
-                          shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                      }
-                    }
-                  ]
-                };
-                chart.setOption(option);
-                return chart;
-              }
-            },
           })
+          self.abc()
           // self.pieShow(1, self.data.chart_arr1)
         }
       }
@@ -118,42 +85,13 @@ Page({
           }
           self.setData({
             chart_arr2: arr2,
-            attendance2: {
-              onInit: function (canvas, width, height, dpr) {
-                console.log(1123)
-                const chart = echarts.init(canvas, null, {
-                  width: width,
-                  height: height,
-                  devicePixelRatio: dpr // new
-                });
-                var option = {
-                  color: ['#7bb5ed', '#444447', '#f8a45e', '#94ea82'],
-                  series: [
-                    {
-                      name: '访问来源',
-                      type: 'pie',
-                      radius: '55%',
-                      center: ['50%', '60%'],
-                      data: arr2,
-                      emphasis: {
-                        itemStyle: {
-                          shadowBlur: 10,
-                          shadowOffsetX: 0,
-                          shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                      }
-                    }
-                  ]
-                };
-                chart.setOption(option);
-                return chart;
-              }
-            },
           })
+          self.asd()
           // self.pieShow(2, self.data.chart_arr2)
         }
       }
     })
+
     wx.request({
       url: getApp().data.APIS + '/report/ComeFromTotal',
       method: 'post',
@@ -174,43 +112,106 @@ Page({
           }
           self.setData({
             chart_arr3: arr3,
-            attendance3: {
-              onInit: function (canvas, width, height, dpr) {
-                console.log(1123)
-                const chart = echarts.init(canvas, null, {
-                  width: width,
-                  height: height,
-                  devicePixelRatio: dpr // new
-                });
-                var option = {
-                  color: ['#7bb5ed', '#444447', '#f8a45e', '#94ea82'],
-                  series: [
-                    {
-                      name: '访问来源',
-                      type: 'pie',
-                      radius: '55%',
-                      center: ['50%', '60%'],
-                      data: arr3,
-                      emphasis: {
-                        itemStyle: {
-                          shadowBlur: 10,
-                          shadowOffsetX: 0,
-                          shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                      }
-                    }
-                  ]
-                };
-                chart.setOption(option);
-                return chart;
-              }
-            },
           })
+          self.qwe()
           // self.pieShow(3, self.data.chart_arr3)
         }
       }
     })
   }, 
+  abc() {
+    let self = this
+    self.graph1.init((canvas, width, height, dpr)=> {
+      const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr // new
+      });
+      var option = {
+        color: ['#7bb5ed', '#444447', '#f8a45e', '#94ea82'],
+        series: [
+          {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '60%'],
+            data: self.data.chart_arr1,
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+              }
+            }
+          }
+        ]
+      };
+      chart.setOption(option);
+      return chart;
+    })
+  },
+  asd() {
+    let self = this
+    self.graph2.init((canvas, width, height, dpr) => {
+      const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr // new
+      });
+      var option = {
+        color: ['#7bb5ed', '#444447', '#f8a45e', '#94ea82'],
+        series: [
+          {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '60%'],
+            data: self.data.chart_arr2,
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+              }
+            }
+          }
+        ]
+      };
+      chart.setOption(option);
+      return chart;
+    })
+  },
+  qwe() {
+    let self = this
+    self.graph3.init((canvas, width, height, dpr) => {
+      const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr // new
+      });
+      var option = {
+        color: ['#7bb5ed', '#444447', '#f8a45e', '#94ea82'],
+        series: [
+          {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '60%'],
+            data: self.data.chart_arr3,
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+              }
+            }
+          }
+        ]
+      };
+      chart.setOption(option);
+      return chart;
+    })
+  },
   getdoctorranking() {
     let self = this
     wx.request({
@@ -279,12 +280,21 @@ Page({
     wx.setNavigationBarTitle({
       title:options.title
     })
+    let self = this
     if (options.title == '就诊患者') {
-      this.getdata()
+      let timeout = setInterval(function () {
+        self.graph1 = self.selectComponent('#mychart-dom-graph1');
+        self.graph2 = self.selectComponent('#mychart-dom-graph2');
+        self.graph3 = self.selectComponent('#mychart-dom-graph3');
+         if (self.graph3) {
+           self.getdata()
+           clearInterval(timeout)
+         }
+        }, 100)
     } else if (options.title == '医生排名') {
-      this.getdoctorranking()
+      self.getdoctorranking()
     } else if (options.title == '热门项目') {
-      this.getprojectranking()
+      self.getprojectranking()
     }
   },
 
@@ -292,7 +302,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

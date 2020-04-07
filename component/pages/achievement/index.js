@@ -155,115 +155,13 @@ Page({
             receivable: res.data.main.baseinfo.needpay,
             discount: res.data.main.baseinfo.dischargefee,
             payment: res.data.main.baseinfo.advpay,
-            attendance1: {
-              onInit: function (canvas, width, height, dpr) {
-                  const chart = echarts.init(canvas, null, {
-                    width: width,
-                    height: height,
-                    devicePixelRatio: dpr // new
-                  });
-                  var option = {
-                    legend: {
-                      y: 'bottom',
-                      data: ['业绩']
-                    },
-                    color: ['#0094ff'],
-                    xAxis: [
-                      {
-                        type: 'category',
-                        boundaryGap: true,
-                        axisLabel: {
-                          show: true,
-                          textStyle: {
-                            color: '#fff'
-                          }
-                        },
-                        data: arr
-                      },
-                    ],
-                    yAxis: [
-                      {
-                        type: 'value',
-                        axisLabel: {
-                          show: true,
-                          textStyle: {
-                            color: '#fff'
-                          }
-                        },
-                        min: 0
-                      }
-                    ],
-                    series: [
-                      {
-                        name: '初诊成交总额',
-                        type: 'line', 
-                        areaStyle: {},
-                        data: arr1
-                      }
-                    ]
-                  };
-                  chart.setOption(option);
-                  return chart;
-                }
-            },
-            attendance2: {
-              onInit: function (canvas, width, height, dpr) {
-                const chart = echarts.init(canvas, null, {
-                  width: width,
-                  height: height,
-                  devicePixelRatio: dpr // new
-                });
-                var option = {
-                  legend: {
-                    y: 'bottom',
-                    data: ['业绩']
-                  },
-                  color: ['#0094ff'],
-                  xAxis: [
-                    {
-                      type: 'category',
-                      boundaryGap: true,
-                      axisLabel: {
-                        show: true,
-                        textStyle: {
-                          color: '#fff'
-                        }
-                      },
-                      data: arr
-                    },
-                  ],
-                  yAxis: [
-                    {
-                      type: 'value',
-                      axisLabel: {
-                        show: true,
-                        textStyle: {
-                          color: '#fff'
-                        }
-                      },
-                      min: 0
-                    }
-                  ],
-                  series: [
-                    {
-                      name: '初诊成交总额',
-                      type: 'line',
-                      areaStyle: {},
-                      data: arr1
-                    }
-                  ]
-                };
-                chart.setOption(option);
-                return chart;
-              }
-            }
           })
+          self.abc()
           console.log(arr)
           console.log(arr1)
         }
       }
     })
-
     wx.request({
       url: getApp().data.APIS + '/finance/incomedebts',
       method: 'post',
@@ -285,6 +183,58 @@ Page({
       }
     })
   },
+  abc() {
+    let self = this
+    self.graph1.init((canvas, width, height, dpr) => {
+      const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr // new
+      });
+      var option = {
+        legend: {
+          y: 'bottom',
+          data: ['业绩']
+        },
+        color: ['#0094ff'],
+        xAxis: [
+          {
+            type: 'category',
+            boundaryGap: true,
+            axisLabel: {
+              show: true,
+              textStyle: {
+                color: '#fff'
+              }
+            },
+            data: self.data.list
+          },
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            axisLabel: {
+              show: true,
+              textStyle: {
+                color: '#fff'
+              }
+            },
+            min: 0
+          }
+        ],
+        series: [
+          {
+            name: '初诊成交总额',
+            type: 'line',
+            areaStyle: {},
+            data: self.data.list_data
+          }
+        ]
+      };
+      chart.setOption(option);
+      return chart;
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -299,17 +249,36 @@ Page({
     this.setData({
       nav_num: options.state,
       user: options.user?JSON.parse(options.user):'',
-      clinicid: options.user ? JSON.parse(options.user).clinicuniqueid: prevPage.data.Hospital_arr[0].clinicid,
+      // clinicid: options.user ? JSON.parse(options.user).clinicuniqueid: prevPage.data.Hospital_arr[0].clinicid,
       time: year + '年' + month + '月' + day + '日',
       bengindate: year + '-' + month + '-' + day,
       enddate: year + '-' + month + '-' + day
     })
+    let self = this
     if (options.state == 0) {
-      this.getdata()
+      let timeout = setInterval(function () {
+        self.graph1 = self.selectComponent('#mychart-dom-graph1');
+        if (self.graph1) {
+          self.getdata()
+          clearInterval(timeout)
+        }
+      }, 100)
     } else if (options.state == 1) {
-      this.getdata()
+      let timeout1 = setInterval(function () {
+        self.graph1 = self.selectComponent('#mychart-dom-graph1');
+        if (self.graph1) {
+          self.getdata()
+          clearInterval(timeout1)
+        }
+      }, 100)
     } else if (options.state == 2) {
-      this.getdata()
+      let timeout2 = setInterval(function () {
+        self.graph1 = self.selectComponent('#mychart-dom-graph1');
+        if (self.graph1) {
+          self.getdata()
+          clearInterval(timeout2)
+        }
+      }, 100)
     }
   },
 

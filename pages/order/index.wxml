@@ -49,6 +49,9 @@
         </view>
       </van-tab>
       <van-tab title="预约信息" name="预约信息">
+        <view class="top_time_box">
+          <calendar id="calendar2" calendarConfig="{{calendarConfig2}}" bind:afterTapDay="afterTapDay2" bind:afterCalendarRender="afterCalendarRender2"></calendar>
+        </view>
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{state3=='医生'||state3=='全部'||state3==item.doctorname}}">
           <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
@@ -154,7 +157,7 @@
   <van-popup show="{{ show }}" bind:close="onClose"
   position="top"
   custom-style="widht: 100%">
-    <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+    <calendar id="calendar1" calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
   </van-popup>
   <van-popup show="{{ showbottom }}" bind:close="onClosebottom"
   position="bottom"

@@ -113,6 +113,10 @@
   margin-right: 20rpx;
   text-align: center;
 }
+.top_li .top_text{
+  flex: 1;
+  text-align: right;
+}
 .center_top {
   width: 100%;
   padding: 20rpx;
@@ -159,11 +163,11 @@
   justify-content: center;
   align-items: center;
   font-size: 26rpx;
-  color: goldenrod;
+  color: #daa520;
   border-right: 1rpx solid #f2f2f2;
 }
 .jznav .nav_li:first-child {
-  color: palevioletred;
+  color: #d87093;
 }
 .jznav .nav_li:last-child {
   color: greenyellow;
@@ -310,4 +314,51 @@ ec-canvas {
   border: 1rpx solid orange;
   margin-left: 20rpx;
   background-color: rgba(193, 132, 1, 0.2);
+}
+.popup_nav {
+  display: flex;
+}
+.popup_nav view {
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid transparent;
+}
+.popup_nav .check_popup_nav {
+  border-bottom: 1rpx solid #16c7ae;
+}
+.none_box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+}
+.none_box image {
+  width: 292rpx;
+  height: 236rpx;
+}
+.none_box .text{
+  font-size: 26rpx;
+  color: #999;
+}
+
+.none_box_h3 {
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.none_box_h3 image {
+  width: 146rpx;
+  height: 118rpx;
+}
+.none_box_h3 .text{
+  font-size: 26rpx;
+  color: #999;
 }

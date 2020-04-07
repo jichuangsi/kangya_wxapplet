@@ -122,7 +122,9 @@ van-sidebar {
   background-color: #fff;
 }
 .doctorvideo .right {
-  width: 70%;
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
   padding: 20rpx;
   box-sizing: border-box;
 }
@@ -132,8 +134,8 @@ van-sidebar {
   border-bottom: 1rpx solid #f2f2f2;
 }
 .doctorvideo .right .list .img{
-  width: 100%;
-  height: 240rpx;
+  width: 480rpx;
+  height: 360rpx;
   position: relative;
   margin-bottom: 20rpx;
 }

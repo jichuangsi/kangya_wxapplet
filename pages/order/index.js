@@ -1,6 +1,8 @@
 // pages/order/index.js
 import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog.js';
 
+var today_date = new Date()
+var today_time = today_date.getFullYear() + "-" + (today_date.getMonth() + 1) + "-" + today_date.getDate()
 Page({
 
   /**
@@ -17,10 +19,17 @@ Page({
     state3: '医生',
     bengindate: '',
     enddate: '',
-    showbottom:false,
+    showbottom: false,
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
+      defaultDay: today_time,
+      chooseAreaMode: false,
+    },
+    calendarConfig2: {
+      // 配置内置主题
+      theme: 'elegant',
+      defaultDay: today_time,
       chooseAreaMode: false,
     },
     patdetails:'',
@@ -58,13 +67,36 @@ Page({
     // this.calendar.enableArea();
   },
   afterTapDay(e) {
+    let self = this
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
-
-    this.setData({
-      bengindate: e.detail.year + '/' + e.detail.month + '/' + e.detail.day,
-      enddate: e.detail.year + '/' + e.detail.month + '/' + e.detail.day
+    self.setData({
+      time: e.detail.year + '-' + e.detail.month + '-' + e.detail.day
     })
-    this.onClose()
+    self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar2')
+    self.calendar.switchView('week', '#calendar2').then(() => { })
+    self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar1')
+    self.getdata()
+    self.onClose()
+  },
+  afterTapDay2(e) {
+    let self = this
+    console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
+    self.setData({
+      time: e.detail.year + '-' + e.detail.month + '-' + e.detail.day,
+      calendarConfig: {
+        // 配置内置主题
+        theme: 'elegant',
+        defaultDay: e.detail.year + '-' + e.detail.month + '-' + e.detail.day,
+        chooseAreaMode: false,
+      }
+    })
+    self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar2')
+    self.calendar.switchView('week', '#calendar2').then((res) => { })
+    self.getdata()
+    self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar1')
+  },
+  afterCalendarRender2() {
+    this.calendar.switchView('week', '#calendar2').then(() => { });
   },
   del(e){
     let self = this

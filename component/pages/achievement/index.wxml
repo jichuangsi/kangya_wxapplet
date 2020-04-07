@@ -71,7 +71,7 @@
   <view class="center" wx:if="{{user}}">
     <view class="center_title">我的实收业绩(元)<view class="time">{{time}}</view></view>
     <view class="canvas_box">
-      <ec-canvas id="mychart-dom-graph2" wx:if="{{check_time}}" canvas-id="mychart-graph2" ec="{{ attendance2 }}"></ec-canvas>
+      <ec-canvas id="mychart-dom-graph1" wx:if="{{check_time}}" canvas-id="mychart-graph1" ec="{{ attendance1 }}"></ec-canvas>
     </view>
     <navigator url="/pages/courseachievement/index" hover-class="navigator-hover">
       <view class="center_top">

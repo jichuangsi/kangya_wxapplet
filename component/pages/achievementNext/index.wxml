@@ -7,7 +7,7 @@
   <view class="center">
     <view class="hz" wx:if="{{title=='就诊患者'}}">
       <view class="box">
-        <view class="title">
+        <view class="title" bindtap="aaa">
           初复诊分析
         </view>
         <view class="canvas_box">

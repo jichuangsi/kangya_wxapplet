@@ -22,11 +22,47 @@ Page({
       url: '../medicaledit/index?title=新增病历',
     })
   },
-  del() {
+  qm() {
+    wx.showToast({
+      title: '模板记录不存在',
+      icon: 'none',
+      duration: 1000
+    })
+  },
+  del(e) {
+    let self = this
     Dialog.confirm({
       title: '提示',
       message: '您确定删除这条病历吗？'
     }).then(() => {
+      wx.request({
+        url: getApp().data.APIS + '/patient/delmedicarecord',
+        method: 'post',
+        data: {
+          "mediarecordidentity": e.currentTarget.dataset.item.mediarecordidentity, 
+          "customerid": e.currentTarget.dataset.item.customerid, 
+          "datastatus": "1"
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000
+            })
+            self.getdata()
+          } else {
+            wx.showToast({
+              title: '失败',
+              duration: 2000
+            })
+          }
+        }
+      })
       // on confirm
     }).catch(() => {
       // on cancel

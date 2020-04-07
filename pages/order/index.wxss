@@ -166,3 +166,6 @@
 .bz_text { 
   color: #bababa;
 }
+.top_time_box {
+  background-color: #fff;
+}

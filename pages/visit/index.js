@@ -69,12 +69,10 @@ Page({
       time: e.detail.year + '-' + e.detail.month + '-' + e.detail.day
     })
     self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar2')
-    self.calendar.switchView('month', '#calendar2').then(() => {})
+    self.calendar.switchView('week', '#calendar2').then(() => { })
+    self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar1')
     self.getdata()
     self.onClose()
-    setTimeout(function(){
-      self.calendar.switchView('week', '#calendar2').then(() => {})
-    },60)
   },
   afterTapDay2(e) {
     let self = this
@@ -88,12 +86,10 @@ Page({
         chooseAreaMode: false,
       }
     })
+    self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar2')
+    self.calendar.switchView('week', '#calendar2').then((res) => { })
     self.getdata()
     self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar1')
-    self.calendar.switchView('month', '#calendar2').then(() => { })
-    setTimeout(function () {
-      self.calendar.switchView('week', '#calendar2').then(() => { })
-    }, 60)
   },
   afterCalendarRender2() {
     this.calendar.switchView('week', '#calendar2').then(() => { });

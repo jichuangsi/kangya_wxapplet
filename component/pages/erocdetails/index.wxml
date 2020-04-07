@@ -150,6 +150,10 @@
       </view>
       <view class="li">
         <view>今日销售项目TOP3</view>
+        <view class="none_box_h3" wx:if="{{mr1_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
         <view class="top_li" wx:for="{{Daily_rank1}}" data-text="今日销售项目" data-child="{{item.handlename}}" child_id="{{item.bdhandlesetidentity}}"  bindtap="ontitle">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
@@ -157,6 +161,10 @@
       </view>
       <view class="li">
         <view>今日医生业绩TOP3</view>
+        <view class="none_box_h3" wx:if="{{mr2_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
         <view class="top_li" wx:for="{{Daily_rank2}}" data-text="今日医生业绩" child_id="{{item.doctorid}}" data-child="{{item.bhdoct}}" bindtap="ontitle">
           <view>{{index+1}}</view>
           <view>{{item.bhdoct}}</view>
@@ -164,6 +172,10 @@
       </view>
       <view class="li">
         <view>今日咨询师业绩TOP3</view>
+        <view class="none_box_h3" wx:if="{{mr3_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
         <view class="top_li" wx:for="{{Daily_rank3}}" data-text="今日咨询师业绩" data-child="{{item.counselor}}"  bindtap="ontitle">
           <view>{{index+1}}</view>
           <view>{{item.counselor}}</view>
@@ -179,15 +191,15 @@
         <view class="right" bindtap="oneday">{{time}}</view>
       </view>
       <view class="jznav">
-        <view class="nav_li">
+        <view class="nav_li" data-text="就诊总人数详情" bindtap="charts_popup">
           <view>就诊总人数</view>
           <view>{{attendance.totalvisit}}</view>
         </view>
-        <view class="nav_li">
+        <view class="nav_li" data-text="流失总人数详情" bindtap="charts_popup">
           <view>流失总人数</view>
           <view>{{attendance.totallost}}</view>
         </view>
-        <view class="nav_li">
+        <view class="nav_li" data-text="成交总金额详情" bindtap="charts_popup">
           <view>成交总金额</view>
           <view>{{attendance.totalfee}}</view>
         </view>
@@ -198,7 +210,11 @@
           <view>流失人次 {{attendance_total1.lost}}</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ attendance1 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{attendance1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="attendance-graph1" canvas-id="mychart-graph1" ec="{{ attendance1 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -206,7 +222,11 @@
           <view>初诊成交总额 {{attendance_total1.free}}</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ attendance2 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{attendance2_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="attendance-graph2" canvas-id="mychart-graph2" ec="{{ attendance2 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -215,7 +235,11 @@
           <view>复诊成交总额 {{attendance_total2.free}}</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ attendance3 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{attendance3_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="attendance-graph3" canvas-id="mychart-graph3" ec="{{ attendance3 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -224,7 +248,11 @@
           <view>流失人次 {{attendance_total3.lost}}</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ attendance4 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{attendance4_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="attendance-graph4" canvas-id="mychart-graph4" ec="{{ attendance4 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -232,7 +260,11 @@
           <view>新诊成交总额 {{attendance_total3.free}}</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ attendance5 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{attendance5_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="attendance-graph5" canvas-id="mychart-graph5" ec="{{ attendance5 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
@@ -241,6 +273,10 @@
       </view>
       <view class="li">
         <view>项目销售数量TOP10</view>
+        <view class="none_box_h3" wx:if="{{attendance6_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
         <view class="top_li" wx:for="{{attendance_rank1}}" data-text="项目销售数量" data-child="{{item.handlename}}" child_id="{{item.bdhandlesetidentity}}" bindtap="ontitle">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
@@ -248,6 +284,10 @@
       </view>
       <view class="li">
         <view>项目销售金额TOP10</view>
+        <view class="none_box_h3" wx:if="{{attendance7_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
         <view class="top_li" wx:for="{{attendance_rank2}}" data-text="项目销售金额" data-child="{{item.handlename}}" child_id="{{item.bdhandlesetidentity}}" bindtap="ontitle">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
@@ -267,7 +307,11 @@
           <view>诊所预约人次 {{order_total1.visit}}</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ order1 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{order1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="order-graph1" canvas-id="mychart-graph1" ec="{{ order1 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -275,7 +319,11 @@
           <view>预约情况占比</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ order2 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{order2_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="order-graph2" canvas-id="mychart-graph2" ec="{{ order2 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -283,7 +331,11 @@
           <view>医生预约情况统计(人次)</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ order3 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{order3_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="order-graph3" canvas-id="mychart-graph3" ec="{{ order3 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -291,7 +343,11 @@
           <view>预约项目统计</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ order4 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{order4_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="order-graph4" canvas-id="mychart-graph4" ec="{{ order4 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -299,7 +355,11 @@
           <view>预约初复诊情况</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ order5 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{order5_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="order-graph5" canvas-id="mychart-graph5" ec="{{ order5 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -307,7 +367,11 @@
           <view>预约到诊和自然到诊情况</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph6" canvas-id="mychart-graph6" ec="{{ order6 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{order6_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="order-graph6" canvas-id="mychart-graph6" ec="{{ order6 }}"></ec-canvas>
         </view>
       </view>
     </view>
@@ -324,7 +388,11 @@
           <view>总咨询人次</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ hpower1 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{hpower1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="hpower-graph1" canvas-id="mychart-graph1" ec="{{ hpower1 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -332,7 +400,11 @@
           <view>咨询初诊情况</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ hpower2 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{hpower2_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="hpower-graph2" canvas-id="mychart-graph2" ec="{{ hpower2 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -340,7 +412,11 @@
           <view>受理工具分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ hpower3 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{hpower3_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="hpower-graph3" canvas-id="mychart-graph3" ec="{{ hpower3 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -348,7 +424,11 @@
           <view>咨询患者来源分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ hpower4 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{hpower4_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="hpower-graph4" canvas-id="mychart-graph4" ec="{{ hpower4 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -356,12 +436,27 @@
           <view>咨询项目分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ hpower5 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{hpower5_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="hpower-graph5" canvas-id="mychart-graph5" ec="{{ hpower5 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
         <image src="../../../images/my_icon_Praise.png"></image>
         受理人情况
+      </view>
+      <view class="li">
+        <view class="none_box_h3" wx:if="{{hpower6_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
+        <view class="top_li" wx:for="{{hpower_rank1}}" data-text="受理人详情" data-child="{{item.name}}" child_id="{{item.bdhandlesetidentity}}" bindtap="ontitle">
+          <view>{{index+1}}</view>
+          <view>{{item.name}}</view>
+          <view class="top_text">接待{{item.acount}}人次</view>
+        </view>
       </view>
     </view>
     <view class="a5" wx:if="{{title=='市场分析'}}">
@@ -377,7 +472,11 @@
           <view>区域分布</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ market1 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{market1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="market-graph1" canvas-id="mychart-graph1" ec="{{ market1 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -385,7 +484,11 @@
           <view>年龄分布</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ market2 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{market2_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="market-graph2" canvas-id="mychart-graph2" ec="{{ market2 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -393,7 +496,11 @@
           <view>性别分布</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ market3 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{market3_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="market-graph3" canvas-id="mychart-graph3" ec="{{ market3 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -401,7 +508,11 @@
           <view>患者星级</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ market4 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{market4_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="market-graph4" canvas-id="mychart-graph4" ec="{{ market4 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -409,7 +520,11 @@
           <view>患者标签</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ market5 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{market5_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="market-graph5" canvas-id="mychart-graph5" ec="{{ market5 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -417,7 +532,11 @@
           <view>患者就诊项目</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph6" canvas-id="mychart-graph6" ec="{{ market6 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{market6_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="market-graph6" canvas-id="mychart-graph6" ec="{{ market6 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -425,7 +544,11 @@
           <view>来源分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph7" canvas-id="mychart-graph7" ec="{{ market7 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{market7_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="market-graph7" canvas-id="mychart-graph7" ec="{{ market7 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -433,7 +556,11 @@
           <view>患者收费分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph8" canvas-id="mychart-graph8" ec="{{ market8 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{market8_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="market-graph8" canvas-id="mychart-graph8" ec="{{ market8 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -441,7 +568,11 @@
           <view>来店时间段分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph9" canvas-id="mychart-graph9" ec="{{ market9 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{market9_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="market-graph9" canvas-id="mychart-graph9" ec="{{ market9 }}"></ec-canvas>
         </view>
       </view>
     </view>
@@ -460,7 +591,11 @@
           <view>未成交人数0人</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ consult1 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{consult1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="consult-graph1" canvas-id="mychart-graph1" ec="{{ consult1 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -469,7 +604,11 @@
           <view>客单成交额0.00</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ consult2 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{consult1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="consult-graph2" canvas-id="mychart-graph2" ec="{{ consult2 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -477,7 +616,11 @@
           <view>咨询成交项目分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ consult3 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{consult2_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="consult-graph3" canvas-id="mychart-graph3" ec="{{ consult3 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -485,7 +628,11 @@
           <view>咨询师成交分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ consult4 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{consult4_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="consult-graph4" canvas-id="mychart-graph4" ec="{{ consult4 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
@@ -494,6 +641,10 @@
       </view>
       <view class="li">
         <view>接诊人数TOP5</view>
+        <view class="none_box_h3" wx:if="{{consult5_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
         <view class="top_li" wx:for="{{consult_rank1}}">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
@@ -501,6 +652,10 @@
       </view>
       <view class="li">
         <view>业绩TOP5</view>
+        <view class="none_box_h3" wx:if="{{consult5_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
         <view class="top_li" wx:for="{{consult_rank2}}">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
@@ -520,7 +675,11 @@
           <view>诊疗营业额统计0.00</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ consulting1 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{consulting1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="consulting-graph1" canvas-id="mychart-graph1" ec="{{ consulting1 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -528,7 +687,11 @@
           <view>接诊人次统计 0</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ consulting2 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{consulting2_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="consulting-graph2" canvas-id="mychart-graph2" ec="{{ consulting2 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -536,7 +699,11 @@
           <view>医生接诊人数统计</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ consulting3 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{consulting3_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="consulting-graph3" canvas-id="mychart-graph3" ec="{{ consulting3 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -544,7 +711,11 @@
           <view>医生业绩分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ consulting4 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{consulting4_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="consulting-graph4" canvas-id="mychart-graph4" ec="{{ consulting4 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
@@ -553,6 +724,10 @@
       </view>
       <view class="li">
         <view>接诊人数TOP5</view>
+        <view class="none_box_h3" wx:if="{{consulting5_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
         <view class="top_li" wx:for="{{consulting_rank1}}">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
@@ -560,6 +735,10 @@
       </view>
       <view class="li">
         <view>业绩TOP5</view>
+        <view class="none_box_h3" wx:if="{{consulting6_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
         <view class="top_li" wx:for="{{consulting_rank2}}">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
@@ -579,7 +758,11 @@
           <view>收入分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ business1 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{business1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="business-graph1" canvas-id="mychart-graph1" ec="{{ business1 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -587,7 +770,11 @@
           <view>现金流占比情况</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ business2 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{business2_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="business-graph2" canvas-id="mychart-graph2" ec="{{ business2 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -595,7 +782,11 @@
           <view>会员卡分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ business3 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{business3_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="business-graph3" canvas-id="mychart-graph3" ec="{{ business3 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -603,7 +794,11 @@
           <view>预交款分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ business4 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{business4_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="business-graph4" canvas-id="mychart-graph4" ec="{{ business4 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -611,7 +806,11 @@
           <view>欠款分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ business5 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{business5_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="business-graph5" canvas-id="mychart-graph5" ec="{{ business5 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -619,7 +818,11 @@
           <view>折扣免单分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph6" canvas-id="mychart-graph6" ec="{{ business6 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{business6_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="business-graph6" canvas-id="mychart-graph6" ec="{{ business6 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -627,7 +830,11 @@
           <view>零售分析</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph7" canvas-id="mychart-graph7" ec="{{ business7 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{business7_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="business-graph7" canvas-id="mychart-graph7" ec="{{ business7 }}"></ec-canvas>
         </view>
       </view>
     </view>
@@ -645,7 +852,11 @@
           <view>支出总余额{{expenditure_total}}</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ expenditure1 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{expenditure1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="expenditure-graph1" canvas-id="mychart-graph1" ec="{{ expenditure1 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -653,7 +864,11 @@
           <view>支出分类情况占比</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ expenditure2 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{expenditure2_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="expenditure-graph2" canvas-id="mychart-graph2" ec="{{ expenditure2 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -661,7 +876,11 @@
           <view>付款方式情况占比</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ expenditure3 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{expenditure3_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="expenditure-graph3" canvas-id="mychart-graph3" ec="{{ expenditure3 }}"></ec-canvas>
         </view>
       </view>
     </view>
@@ -678,7 +897,11 @@
           <view>回访总人数0</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ visit1 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{visit1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="visit-graph1" canvas-id="mychart-graph1" ec="{{ visit1 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -686,7 +909,11 @@
           <view>回访类型占比</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ visit2 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{visit2_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="visit-graph2" canvas-id="mychart-graph2" ec="{{ visit2 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -694,11 +921,19 @@
           <view>患者回访情况</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ visit3 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{visit3_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="visit-graph3" canvas-id="mychart-graph3" ec="{{ visit3 }}"></ec-canvas>
         </view>
       </view>
       <view class="li" data-text="回访人数情况" bindtap="ontitle">
         <view>回访人数情况</view>
+        <view class="none_box_h3" wx:if="{{visit4_none}}">
+          <image src="../../../images/charts_none.png"></image>
+          <view class="text">暂无数据</view>
+        </view>
         <view class="top_li" wx:for="{{visit_rank1}}">
           <view>{{index+1}}</view>
           <view>{{item.handlename}}</view>
@@ -718,7 +953,11 @@
           <view>收入总额</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph1" canvas-id="mychart-graph1" ec="{{ chain1 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{chain1_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="chain-graph1" canvas-id="mychart-graph1" ec="{{ chain1 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -726,7 +965,11 @@
           <view>各诊所收入占比</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ chain2 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{chain2_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="chain-graph2" canvas-id="mychart-graph2" ec="{{ chain2 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -734,7 +977,11 @@
           <view>初诊人次占比</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ chain3 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{chain3_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="chain-graph3" canvas-id="mychart-graph3" ec="{{ chain3 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -742,7 +989,11 @@
           <view>复诊人次占比</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph4" canvas-id="mychart-graph4" ec="{{ chain4 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{chain4_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="chain-graph4" canvas-id="mychart-graph4" ec="{{ chain4 }}"></ec-canvas>
         </view>
       </view>
       <view class="libox">
@@ -750,7 +1001,11 @@
           <view>新诊人次占比</view>
         </view>
         <view class="canvas_box">
-          <ec-canvas id="mychart-dom-graph5" canvas-id="mychart-graph5" ec="{{ chain5 }}"></ec-canvas>
+          <view class="none_box" wx:if="{{chain5_none}}">
+            <image src="../../../images/charts_none.png"></image>
+            <view class="text">暂无数据</view>
+          </view>
+          <ec-canvas id="chain-graph5" canvas-id="mychart-graph5" ec="{{ chain5 }}"></ec-canvas>
         </view>
       </view>
     </view>
@@ -1485,6 +1740,33 @@
         </view>
       </view>
     </view>
+    <view class="popup_box" wx:if="{{popup_title=='咨询人次详情'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>客户来源</view>
+          <view>受理时间</view>
+          <view>状态</view>
+          <view>受理人</view>
+          <view>咨询工具</view>
+          <view>受理项目</view>
+          <view>到诊日期</view>
+          <view>客户姓名</view>
+          <view>预约时间</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.comefrom}}</view>
+          <view>{{item.consultdate}}</view>
+          <view wx:if="{{item.consultstatus == 1}}">咨询</view>
+          <view wx:if="{{item.consultstatus != 1}}"></view>
+          <view>{{item.consultusername}}</view>
+          <view>{{item.counselortool}}</view>
+          <view>{{item.consutlitem}}</view>
+          <view>{{item.examdate}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.scheduletime}}</view>
+        </view>
+      </view>
+    </view>
     <view class="popup_box" wx:if="{{popup_title=='咨询情况'}}">
       <view class="list">
         <view class="list_li">
@@ -1497,7 +1779,209 @@
           <view>成交金额</view>
         </view>
         <view class="list_li" wx:for="{{arr}}">
+          <view></view>
+          <view></view>
+          <view></view>
+          <view></view>
+          <view></view>
+          <view></view>
+          <view></view>
         </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='受理工具详情'}}">
+      <view class="popup_nav">
+        <view class="{{popup_num == 0?'check_popup_nav':''}}" data-index="0" catchtap="check_popup">客户来源分析</view>
+        <view class="{{popup_num == 1?'check_popup_nav':''}}" data-index="1" catchtap="check_popup">受理工具分析</view>
+        <view class="{{popup_num == 2?'check_popup_nav':''}}" data-index="2" catchtap="check_popup">受理人情况</view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 0}}">
+        <view class="list_li">
+          <view>客户来源</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.comefromdetail}}">
+          <view>{{item.comefrom}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 1}}">
+        <view class="list_li">
+          <view>受理工具</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.consultitemdetail}}">
+          <view>{{item.consutlitem}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 2}}">
+        <view class="list_li">
+          <view>受理人</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.pagedetails}}">
+          <view>{{item.consultusername}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="all">
+        <view>总合计</view>
+        <view>{{arr.pagepayfeetotal}}</view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='受理项目详情'}}">
+      <view class="popup_nav">
+        <view class="{{popup_num == 0?'check_popup_nav':''}}" data-index="0" catchtap="check_popup">客户来源分析</view>
+        <view class="{{popup_num == 1?'check_popup_nav':''}}" data-index="1" catchtap="check_popup">受理工具分析</view>
+        <view class="{{popup_num == 2?'check_popup_nav':''}}" data-index="2" catchtap="check_popup">受理人情况</view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 0}}">
+        <view class="list_li">
+          <view>客户来源</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.comefromdetail}}">
+          <view>{{item.comefrom}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 1}}">
+        <view class="list_li">
+          <view>受理工具</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.consultitemdetail}}">
+          <view>{{item.consutlitem}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 2}}">
+        <view class="list_li">
+          <view>受理人</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.pagedetails}}">
+          <view>{{item.consultusername}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="all">
+        <view>总合计</view>
+        <view>{{arr.pagepayfeetotal}}</view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='受理人详情'}}">
+      <view class="popup_nav">
+        <view class="{{popup_num == 0?'check_popup_nav':''}}" data-index="0" catchtap="check_popup">客户来源分析</view>
+        <view class="{{popup_num == 1?'check_popup_nav':''}}" data-index="1" catchtap="check_popup">受理工具分析</view>
+        <view class="{{popup_num == 2?'check_popup_nav':''}}" data-index="2" catchtap="check_popup">受理人情况</view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 0}}">
+        <view class="list_li">
+          <view>客户来源</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.comefromdetail}}">
+          <view>{{item.comefrom}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 1}}">
+        <view class="list_li">
+          <view>受理工具</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.consultitemdetail}}">
+          <view>{{item.consutlitem}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 2}}">
+        <view class="list_li">
+          <view>受理人</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.pagedetails}}">
+          <view>{{item.consultusername}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="all">
+        <view>总合计</view>
+        <view>{{arr.pagepayfeetotal}}</view>
       </view>
     </view>
     <view class="popup_box" wx:if="{{popup_title=='区域分布'}}">
@@ -1831,6 +2315,21 @@
           <view>{{arr.pagepayfee}}</view>
         </view>
       </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='就诊总人数详情'}}">
+        <view class="canvas_box">
+          <ec-canvas id="all-graph1" canvas-id="mychart-graph1" ec="{{ all1 }}"></ec-canvas>
+        </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='流失总人数详情'}}">
+        <view class="canvas_box">
+          <ec-canvas id="all-graph2" canvas-id="mychart-graph2" ec="{{ all2 }}"></ec-canvas>
+        </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='成交总金额详情'}}">
+        <view class="canvas_box">
+          <ec-canvas id="all-graph3" canvas-id="mychart-graph3" ec="{{ all3 }}"></ec-canvas>
+        </view>
     </view>
   </van-popup>
 </view>

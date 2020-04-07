@@ -24,7 +24,7 @@
           </view>
           <view class="li" data-text="本次收费" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
             <view class="text">本次收费</view>
-            <view>￥{{detailed.payfeetotal}}</view>
+            <view class="green">￥{{detailed.payfeetotal}}</view>
             <van-icon name="arrow" size="36rpx" />
           </view>
           <view class="xian"></view>
@@ -58,7 +58,7 @@
             </view>
             <view class="li" data-text="折扣" data-btn="1" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
               <view class="text">折扣</view>
-              <view>{{item.discount}}%</view>
+              <view class="orange">{{item.discount}}%</view>
             <van-icon name="arrow" size="36rpx" />
             </view>
             <view class="li" data-text="总价" data-btn="1" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
@@ -102,7 +102,7 @@
           </view>
           <view class="li" data-text="本次收费" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
             <view class="text">本次收费</view>
-            <view>￥{{detailed.payfeetotal}}</view>
+            <view class="green">￥{{detailed.payfeetotal}}</view>
             <van-icon name="arrow" size="36rpx" />
           </view>
           <view class="xian"></view>

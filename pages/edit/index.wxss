@@ -96,13 +96,20 @@ textarea {
   margin: 40rpx auto;
   box-sizing: border-box;
   padding: 20rpx;
+  position: relative;
+  box-shadow:2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 .yuyinBtn:active {
-  background-color: #666;
+  background-color: #999;
+  box-shadow:inset 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 .yuyinBtn image {
-  width: 86rpx;
-  height: 86rpx;
+  width: 56rpx;
+  height: 66rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 .btn {
   width: 100%;

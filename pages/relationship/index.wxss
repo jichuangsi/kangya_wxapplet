@@ -51,9 +51,16 @@
   background-color: #fff;
   border-bottom: 1rpx solid #f2f2f2;
 }
+.li view {
+  color: #666;
+}
+.li .van-icon {
+  color: #333;
+}
 .li .text {
   flex: 1;
   margin-left: 20rpx;
+  color: #000;
 }
 .li .bz {
   width: 100%;

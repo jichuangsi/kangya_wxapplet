@@ -208,11 +208,11 @@
             </view>
           </view>
           <view class="li" data-text="修改地址" data-btn="1" data-textstate="1" data-value="{{Patientlist.address}}" bindtap="editgo">
-            <view class="left">
-              <view wx:if="{{Patientlist.address == '' }}">点击填写详细地址</view>
-              <view wx:if="{{Patientlist.address != '' }}">{{Patientlist.address}}</view>
+            <view class="bz" wx:if="{{Patientlist.address == '' }}">
+              点击填写详细地址
             </view>
-            <view class="right">
+            <view class="bz" wx:if="{{Patientlist.address != '' }}">
+              {{Patientlist.address}}
             </view>
           </view>
           <view class="xian"></view>
@@ -224,13 +224,11 @@
               <view></view>
               <van-icon name="arrow" />
             </view>
-          </view>
-          <view class="li" data-text="修改备注" data-btn="1" data-textstate="1" data-value="{{Patientlist.remarks}}"  bindtap="editgo">
-            <view class="left">
-              <view wx:if="{{Patientlist.remarks == '' }}">点击填写备注信息</view>
-              <view wx:if="{{Patientlist.remarks != '' }}">{{Patientlist.remarks}}</view>
+            <view class="bz" wx:if="{{Patientlist.remarks == '' }}">
+              点击填写备注信息
             </view>
-            <view class="right">
+            <view class="bz" wx:if="{{Patientlist.remarks != '' }}">
+              {{Patientlist.remarks}}
             </view>
           </view>
           <view class="xian"></view>
@@ -339,11 +337,11 @@
               </view>
             </view>
             <view class="li" data-text="添加过敏史" data-btn="1" data-textstate="1" data-value="{{Patientlist.allergy}}" bindtap="editgo">
-              <view class="left">
-                <view wx:if="{{informationlist.allergy == '' }}">点击患者过敏史</view>
-                <view wx:if="{{informationlist.allergy != '' }}">{{informationlist.allergy}}</view>
+              <view class="bz" wx:if="{{informationlist.allergy == '' }}">
+                点击患者过敏史
               </view>
-              <view class="right">
+              <view class="bz" wx:if="{{informationlist.allergy != '' }}">
+                {{informationlist.allergy}}
               </view>
             </view>
             <view class="xian"></view>
@@ -357,11 +355,11 @@
               </view>
             </view>
             <view class="li" data-text="添加既往史" data-btn="1" data-textstate="1" data-value="{{Patientlist.past}}" bindtap="editgo">
-              <view class="left">
-                <view wx:if="{{informationlist.past == '' }}">点击患者既往史</view>
-                <view wx:if="{{informationlist.past != '' }}">{{informationlist.past}}</view>
+              <view class="bz" wx:if="{{informationlist.past == '' }}">
+                点击患者既往史
               </view>
-              <view class="right">
+              <view class="bz" wx:if="{{informationlist.past != '' }}">
+                {{informationlist.past}}
               </view>
             </view>
             <view class="xian"></view>
@@ -375,11 +373,11 @@
               </view>
             </view>
             <view class="li" data-text="添加顾客要求" data-btn="1" data-textstate="1" data-value="{{Patientlist.ask}}" bindtap="editgo">
-              <view class="left">
-                <view wx:if="{{informationlist.ask == '' }}">点击填写顾客要求信息</view>
-                <view wx:if="{{informationlist.ask != '' }}">{{informationlist.ask}}</view>
+              <view class="bz" wx:if="{{informationlist.ask == '' }}">
+                点击填写顾客要求信息
               </view>
-              <view class="right">
+              <view class="bz" wx:if="{{informationlist.ask != '' }}">
+                {{informationlist.ask}}
               </view>
             </view>
           </van-tab>

@@ -6,8 +6,15 @@
   display: flex;
   flex-wrap: wrap;
 }
+.li view {
+  color: #666;
+}
 .li .text {
   flex: 1;
+  color: #000;
+}
+.li .van-icon {
+  color: #333;
 }
 .li view:last-child {
   margin-left: 20rpx;
@@ -35,4 +42,10 @@
 }
 .box view:nth-child(2n){
   background-color: #fff;
+}
+.li .green {
+  color: #16c7ae;
+}
+.li .orange {
+  color: orange;
 }

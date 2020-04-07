@@ -76,14 +76,14 @@
 					"id": 2,
 					"name": "component/pages/erocdetails/index",
 					"pathName": "component/pages/erocdetails/index",
-					"query": "title=就诊分析&state=0",
+					"query": "title=连锁分析&state=0",
 					"scene": null
 				},
 				{
 					"id": 3,
-					"name": "pages/relationship/index",
-					"pathName": "pages/relationship/index",
-					"query": "title=医患沟通视频",
+					"name": "pages/edit/index",
+					"pathName": "pages/edit/index",
+					"query": "title=医患沟通视频&&value=&&index=0",
 					"scene": null
 				},
 				{

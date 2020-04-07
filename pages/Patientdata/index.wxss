@@ -48,6 +48,7 @@
   padding: 20rpx;
   box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1rpx solid #f2f2f2;
@@ -62,6 +63,14 @@
   line-height: 46rpx;
   display: flex;
   align-items: center;
+  color: #999;
+}
+.center .li .bz {
+  width: 100%;
+  color: #999;
+}
+.center .li .right .van-icon {
+  color: #333;
 }
 .center .li .right image {
   width: 46rpx;

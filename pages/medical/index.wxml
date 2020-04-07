@@ -73,7 +73,7 @@
         <view class="user">
           <view bindtap="edit"><van-icon name="edit" />编辑</view>
           <view bindtap="del"><van-icon name="close" />删除</view>
-          <view><van-icon name="records" />签名</view>
+          <view bindtap="qm" data-item="{{item}}"><van-icon name="records" />签名</view>
         </view>
       </view>
       <view wx:if="{{item.exam.Age}}">
