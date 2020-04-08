@@ -55,11 +55,11 @@
   background-color: #fff;
 }
 .green {
-  color: #16c7ae
+  color: #35c068;
 }
 .blue {
-  color: blue
+  color: #5db7e7;
 }
 .red {
-  color: red
+  color: #ff5a5c;
 }

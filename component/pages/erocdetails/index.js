@@ -4391,7 +4391,7 @@ Page({
   getchain(){
     let self = this
     wx.request({
-      url: getApp().data.APIS + '/report/chainclinic',
+      url: getApp().data.APIS + '/report/chainclinicday',
       method: 'post',
       data: {
         pageno: 1,
@@ -4405,22 +4405,22 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
-        console.log(1)
+        console.log(321)
         console.log(res)
         if (res.data.info == 'ok') {
-          if(res.data.list){
+          if (res.data.list) {
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
             let arr = []
-            let arr1 = []
+            let arr1 = [{ name: '总额', type: 'bar', data: [] }]
             let total = 0
-            for(let i = 0;i<res.data.list.length;i++){
-              arr.push(res.data.list[i].clinicname)
-              arr1.push({ name: '', type: 'bar', data: [res.data.list[i].totalfee]})
-              total += res.data.list[i].totalfee
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].date)
+              arr1[0].data.push(res_arr1[i].totalfee)
             }
-            total = [total]
             self.setData({
               chain1_none: false,
-              chain2_none: false,
             })
             chart_chain1()
             function chart_chain1() {
@@ -4447,7 +4447,7 @@ Page({
                         rotate: 40
                       },
                       boundaryGap: true,
-                      data: ['总额']
+                      data: arr
                     }
                   ],
                   yAxis: [
@@ -4457,18 +4457,12 @@ Page({
                       boundaryGap: [0.2, 0.2]
                     }
                   ],
-                  series: [
-                    {
-                      name: '总额',
-                      type: 'bar',
-                      data: total
-                    }
-                  ]
+                  series: arr1
                 };
 
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '收入总额', showdata: true });
+                  // self.setData({ popup_title: '收入总额', showdata: true });
                   // wx.request({
                   //   url: getApp().data.APIS + '/report/debtinfo',
                   //   method: 'post',
@@ -4495,6 +4489,44 @@ Page({
                 return chart;
               })
             }
+          } else {
+            self.setData({
+              chain1_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/chainclinic',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(1)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          if(res.data.list){
+            let arr = []
+            let arr1 = []
+            let total = 0
+            for(let i = 0;i<res.data.list.length;i++){
+              arr1.push({ name: res.data.list[i].clinicname + res.data.list[i].totalfee, value: res.data.list[i].totalfee})
+              total += res.data.list[i].totalfee
+            }
+            total = [total]
+            self.setData({
+              chain2_none: false,
+            })
             chart_chain2()
             function chart_chain2() {
               self.chain_graph2.init(function (canvas, width, height, dpr) {
@@ -4504,28 +4536,23 @@ Page({
                   devicePixelRatio: dpr // new
                 });
                 var option = {
-
-                  grid: {
-                    left: '10%',
-                    right: '10%',
-                    bottom: '10%',
-                    containLabel: true
-                  },
-                  color: ['#cbe7a7'],
-                  xAxis: [
+                  color: ['#f58b91', '#444447', '#f8a45e', '#94ea82'],
+                  series: [
                     {
-                      type: 'category',
-                      boundaryGap: true,
-                      data: arr
-                    },
-                  ],
-                  yAxis: [
-                    {
-                      type: 'value',
-                      min: 0
+                      name: '各诊所收入占比',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: arr1,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
                     }
-                  ],
-                  series: arr1
+                  ]
                 };
                 chart.setOption(option);
                 chart.on('click', function (params) {
@@ -4536,7 +4563,6 @@ Page({
             }
           }else{
             self.setData({
-              chain1_none: true,
               chain2_none: true,
             })
           }
@@ -4568,9 +4594,9 @@ Page({
             let arr3 = []
             for (let i = 0; i < res.data.list.length; i++) {
               arr.push(res.data.list[i].clinicname)
-              arr1.push({ name: '', type: 'bar', data: [res.data.list[i].first] })
-              arr2.push({ name: '', type: 'bar', data: [res.data.list[i].visit] })
-              arr3.push({ name: '', type: 'bar', data: [res.data.list[i].newvisit] })
+              arr1.push({ name: res.data.list[i].clinicname + res.data.list[i].first, value: res.data.list[i].first })
+              arr2.push({ name: res.data.list[i].clinicname + res.data.list[i].visit, value:res.data.list[i].visit })
+              arr3.push({ name: res.data.list[i].clinicname + res.data.list[i].newvisit, value: res.data.list[i].newvisit })
             }
             self.setData({
               chain3_none: false,
@@ -4586,28 +4612,23 @@ Page({
                   devicePixelRatio: dpr // new
                 });
                 var option = {
-
-                  grid: {
-                    left: '10%',
-                    right: '10%',
-                    bottom: '10%',
-                    containLabel: true
-                  },
-                  color: ['#cbe7a7'],
-                  xAxis: [
+                  color: ['#c1d4ff', '#444447', '#f8a45e', '#94ea82'],
+                  series: [
                     {
-                      type: 'category',
-                      boundaryGap: true,
-                      data: arr
-                    },
-                  ],
-                  yAxis: [
-                    {
-                      type: 'value',
-                      min: 0
+                      name: '各诊所收入占比',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: arr1,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
                     }
-                  ],
-                  series: arr1
+                  ]
                 };
                 chart.setOption(option);
                 chart.on('click', function (params) {
@@ -4619,34 +4640,30 @@ Page({
             chart_chain4()
             function chart_chain4() {
               self.chain_graph4.init(function (canvas, width, height, dpr) {
+                console.log(arr2)
                 const chart = echarts.init(canvas, null, {
                   width: width,
                   height: height,
                   devicePixelRatio: dpr // new
                 });
                 var option = {
-
-                  grid: {
-                    left: '10%',
-                    right: '10%',
-                    bottom: '10%',
-                    containLabel: true
-                  },
-                  color: ['#cbe7a7'],
-                  xAxis: [
+                  color: ['#ff9e63', '#444447', '#f8a45e', '#94ea82'],
+                  series: [
                     {
-                      type: 'category',
-                      boundaryGap: true,
-                      data: arr
-                    },
-                  ],
-                  yAxis: [
-                    {
-                      type: 'value',
-                      min: 0
+                      name: '各诊所收入占比',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: arr2,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
                     }
-                  ],
-                  series: arr2
+                  ]
                 };
                 chart.setOption(option);
                 chart.on('click', function (params) {
@@ -4664,28 +4681,23 @@ Page({
                   devicePixelRatio: dpr // new
                 });
                 var option = {
-
-                  grid: {
-                    left: '10%',
-                    right: '10%',
-                    bottom: '10%',
-                    containLabel: true
-                  },
-                  color: ['#cbe7a7'],
-                  xAxis: [
+                  color: ['#94ea82', '#444447', '#f8a45e', '#94ea82'],
+                  series: [
                     {
-                      type: 'category',
-                      boundaryGap: true,
-                      data: arr
-                    },
-                  ],
-                  yAxis: [
-                    {
-                      type: 'value',
-                      min: 0
+                      name: '各诊所收入占比',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: arr3,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
                     }
-                  ],
-                  series: arr3
+                  ]
                 };
                 chart.setOption(option);
                 chart.on('click', function (params) {

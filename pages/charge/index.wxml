@@ -9,23 +9,23 @@
     <view class="title">历史费用概况</view>
     <view class="li">
       <view class="libox">
-        <view>{{sumlist.sumtotal}}</view>
+        <view class="blue">{{sumlist.sumtotal}}</view>
         <view>总费用</view>
       </view>
       <view class="libox">
-        <view>{{sumlist.sumpaytotal}}</view>
+        <view class="green">{{sumlist.sumpaytotal}}</view>
         <view>已收金额</view>
       </view>
       <view class="libox">
-        <view>{{sumlist.sumneedpay}}</view>
+        <view class="blue">{{sumlist.sumneedpay}}</view>
         <view>应收金额</view>
       </view>
       <view class="libox">
-        <view class="red">{{sumlist.sumdiscountfee}}</view>
+        <view class="orange">{{sumlist.sumdiscountfee}}</view>
         <view>折扣金额</view>
       </view>
       <view class="libox">
-        <view>{{sumlist.sumdischargefee}}</view>
+        <view class="green">{{sumlist.sumdischargefee}}</view>
         <view>减免金额</view>
       </view>
       <view class="libox">

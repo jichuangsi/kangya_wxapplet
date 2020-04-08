@@ -81,9 +81,9 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/edit/index",
-					"pathName": "pages/edit/index",
-					"query": "title=医患沟通视频&&value=&&index=0",
+					"name": "pages/Schedulingset/index",
+					"pathName": "pages/Schedulingset/index",
+					"query": "title=prescription&&value=&&index=0",
 					"scene": null
 				},
 				{

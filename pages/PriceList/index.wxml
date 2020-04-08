@@ -15,7 +15,7 @@
           <view class="title">{{item.handlename}}</view>
           <view class="text">{{item.feetype}}</view>
         </view>
-        <view class="money">{{item.handleprice}}</view>
+        <view class="money">￥{{item.handleprice}}/{{item.uom}}</view>
       </view>
     </view>
   </view>

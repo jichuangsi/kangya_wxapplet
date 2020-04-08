@@ -94,16 +94,16 @@
   text-align: center;
 }
 .green {
-  color: green;
+  color: #35c068;
 }
 .blue {
-  color: blue;
+  color: #5db7e7;
 }
 .red {
-  color: red;
+  color: #ff5a5c;
 }
 .orange {
-  color: orange;
+  color: #ff891e;
 }
 .hui {
   color: #333;

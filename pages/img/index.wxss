@@ -57,7 +57,7 @@
   padding: 20rpx;
   position: fixed;
   right: 10rpx;
-  bottom: 10rpx;
+  top: 10rpx;
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;

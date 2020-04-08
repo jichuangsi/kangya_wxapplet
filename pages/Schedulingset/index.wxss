@@ -37,7 +37,7 @@
   box-sizing: border-box;
   position: fixed;
   right: 10rpx;
-  bottom: 10rpx;
+  top: 10rpx;
   border-radius: 10rpx;
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
