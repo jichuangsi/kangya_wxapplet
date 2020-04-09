@@ -14,6 +14,7 @@
 </view>
   <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true'>
     <swiper-item wx:for="{{achievement_arr}}">
+      <canvas canvas-id="canvas{{index}}" class="charts {{chats?'chartsnone':''}}"></canvas>
       <view class="itembox">
         <view class="title">{{item.title}}诊所实收业绩(元)</view>
         <view class="detail">

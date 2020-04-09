@@ -114,7 +114,7 @@ Page({
     })
   },
   Colleaguego(e) {
-    let another = e.currentTarget.dataset.another ? '&&another=1' : ''
+    let another = '&&another='+e.currentTarget.dataset.another
     wx.navigateTo({
       url: '../Colleague/index?title=医生&&state=2' + another,
     })

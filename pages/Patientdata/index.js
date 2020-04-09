@@ -29,6 +29,7 @@ Page({
     check_columns: '',
     areaList: [],
     check_area: '',
+    patdetails:'',
     Patientlist: {
       name: '',
       doctor: '',
@@ -171,6 +172,7 @@ Page({
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
+            patdetails: res.data.list.patdetails[0],
             relationship_arr:res.data.list.friend,
             star_num: res.data.list.patdetails[0].patientstar,
             sex_num: res.data.list.patdetails[0].sex,
@@ -250,14 +252,124 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/addpatient',
+      method: 'post',
+      data: {
+        "customer": JSON.stringify(
+          { 
+            "Clinicuniqueid": self.data.patdetails.clinicuniqueid, 
+            "CustomerID": self.data.patdetails.customerid, 
+            "PatientID": self.data.patdetails.patientid, 
+            "Name": self.data.Patientlist.name, 
+            "Picture": self.data.patdetails.picture, 
+            "Sex": self.data.sex, 
+            "Birthday": self.data.check_time, 
+            "Age": self.data.Patientlist.age,
+            "PatientStar": self.data.star_num,
+            "Phone": self.data.Patientlist.iphone1,
+            "PhoneVestee1": self.data.Patientlist.check_ascription1,
+            "Phone1": self.data.Patientlist.iphone2,
+            "WorkPhone": "",
+            "WorkAddress": "",
+            "CommInsurance": "",
+            "CommInsuranceID": "",
+            "PhoneVestee2": self.data.Patientlist.check_ascription2,
+            "ImpressionInfo": self.data.informationlist.impression,
+            "ComeFrom": self.data.check_columns,
+            "ComeFrom2": "",
+            "ComeFrom2pid": "28220801069395242",
+            "ComeFrom3": "",
+            "ComeFrom3pid": "",
+            "ComeFrom21": "",
+            "ComeFrom22": "",
+            "ComeFrom22pid": "",
+            "ComeFrom23": "",
+            "ComeFrom23pid": "",
+            "ComeFrom31": "",
+            "ComeFrom32": "",
+            "ComeFrom32pid": "",
+            "ComeFrom33": "",
+            "ComeFrom33pid": "",
+            "ComeFrom41": "",
+            "ComeFrom42": "",
+            "ComeFrom42pid": "",
+            "ComeFrom43": "",
+            "ComeFrom43pid": "",
+            "IDNo": self.data.informationlist.IDCard,
+            "Introducer": self.data.informationlist.Introducer,
+            "ReferralDoct": self.data.Patientlist.doctor,
+            "ReferralDoctIdentity": self.data.Patientlist.doctorid,
+            "Treatment": self.data.Patientlist.check_project,
+            "Country": "中国",
+            "Province": self.data.Patientlist.Province,
+            "City": self.data.Patientlist.City,
+            "Town": self.data.Patientlist.Town,
+            "Address": self.data.Patientlist.address,
+            "Remark": self.data.Patientlist.remark,
+            "PatGroup": "990001",
+            "PatGroupName": "最近客户",
+            "QQ": self.data.Patientlist.qq,
+            "IntroducerId": "",
+            "IntroducerSource": "1",
+            "Email": self.data.Patientlist.mailbox,
+            "Counselor": "",
+            "Wechat": "",
+            "DiseaseHistory": self.data.informationlist.past,
+            "AllergicHistory": self.data.informationlist.allergy,
+            "VisitHistory": self.data.informationlist.experience,
+            "BrushNum": "",
+            "BrushMin": "",
+            "SmokeNum": "",
+            "Complained": "",
+            "Symptom": "",
+            "InitialJudge": "",
+            "BrushType": "",
+            "Occupation": self.data.Patientlist.check_Occupation,
+            "FirstTimeDoct": "",
+            "OrthodonticNO": "",
+            "YellowCode": "",
+            "keyword1": "",
+            "keyword2": "",
+            "keyword3": "",
+            "keyword4": "",
+            "keyword5": "",
+            "keyword6": "",
+            "keyword7": "",
+            "keyword8": "",
+            "keyword9": "",
+            "keyword10": "",
+            "keyword11": "",
+            "keyword12": "",
+            "keyword13": "",
+            "keyword14": "",
+            "keyword15": "",
+            "keyword16": "",
+            "keyword17": "",
+            "keyword18": "",
+            "keyword19": "",
+            "keyword20": ""
+          }
+        ),
+        "oldcustomer": JSON.stringify(self.data.patdetails)
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+        } else {
+        }
+      }
+    })
   },
 
   /**

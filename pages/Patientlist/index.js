@@ -9,15 +9,23 @@ Page({
     show:false,
     state:0,
     check_list:0,
-    nav1: '就诊时间',
-    nav2: '患者类型',
+    nav1: '是否欠费',
+    nav2: '就诊项目',
     nav3: '会员等级',
-    nav4: '其他条件',
+    nav4: '咨询师',
+    treatment:'',
+    viptype: '',
+    counselor: '',
+    isfee:'',
     nav_num: 1,
-    nav1_arr: ['全部', '当天就诊', '本周就诊', '本月就诊'],
-    nav2_arr: ['全部', '拔牙', '补牙', '义诊', '活动假牙', '洁牙', '正畸', '种植', '检查'],
-    nav3_arr: ['全部', '金卡会员', '银卡会员', '铜卡会员'],
-    nav4_arr: ['全部', '微信用户', '有病史用户', '有影像用户', '欠款用户', '预付用户'],
+    nav1_arr: ['全部', '是', '否'],
+    nav2_arr: ['全部', '治疗', '修复', '种植', '正畸', '检查', '洗牙', '其他'],
+    nav3_arr: [
+      { viptype:'全部',id:''}
+    ],
+    nav4_arr: [
+      { name: '全部' }
+    ],
     grouping_arr:[],
     patient_arr:[],
     li_num:1,
@@ -46,24 +54,54 @@ Page({
     this.setData({ show: false });
   },
   nav1click(e){
+    let num = ''
+    if (e.currentTarget.dataset.text == '是') {
+      num = 1
+    } else if (e.currentTarget.dataset.text == '否') {
+      num = 0
+    }
     this.setData({
-      nav1: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '就诊时间'
+      nav1: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '是否欠费',
+      isfee: e.currentTarget.dataset.text != '全部' ? num : '',
     })
+    if (e.currentTarget.dataset.text != '全部') {
+      this.checkpatientlist()
+    } else {
+      this.getpatientlist()
+    }
   },
   nav2click(e) {
     this.setData({
-      nav2: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '患者类型'
+      nav2: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '就诊项目',
+      treatment: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '',
     })
+    if (e.currentTarget.dataset.text != '全部') {
+      this.checkpatientlist()
+    } else {
+      this.getpatientlist()
+    }
   },
   nav3click(e) {
     this.setData({
-      nav3: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '会员等级'
+      nav3: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '会员等级',
+      viptype: e.currentTarget.dataset.id
     })
+    if (e.currentTarget.dataset.text != '全部'){
+      this.checkpatientlist()
+    } else {
+      this.getpatientlist()
+    }
   },
   nav4click(e) {
     this.setData({
-      nav4: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '其他条件'
+      nav4: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '咨询师',
+      counselor: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : ''
     })
+    if (e.currentTarget.dataset.text != '全部') {
+      this.checkpatientlist()
+    } else {
+      this.getpatientlist()
+    }
   },
   Patientclick(e){
     let pages = getCurrentPages();
@@ -113,7 +151,7 @@ Page({
       method: 'post',
       data: {
         pageno: self.data.pageIndex,
-        pagesize: '20',
+        pagesize: '100',
         patgroupid: id
       },
       header: {
@@ -129,6 +167,83 @@ Page({
       }
     })
   },
+  checkpatientlist() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/patient/qupatient',
+      method: 'post',
+      data: {
+        pageno: self.data.pageIndex,
+        pagesize: '100',
+        isfee: self.data.isfee,
+        viptype: self.data.viptype,
+        counselor: self.data.counselor,
+        treatment: self.data.treatment
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            patient_arr: res.data.list
+          })
+        }
+      }
+    })
+  },
+  getvipinfolist() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/market/vipinfolist',
+      method: 'post',
+      data: {
+        pageno: self.data.pageIndex,
+        pagesize: '100',
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(4546)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = self.data.nav3_arr
+          arr.push(...res.data.list)
+          self.setData({
+            nav3_arr: arr
+          })
+        }
+      }
+    })
+  },
+
+  getdoctor() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/sysset/employeetreelist',
+      method: 'post',
+      data: {
+        pageno: self.data.pageIndex,
+        pagesize: 20
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(123456)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = self.data.nav4_arr
+          arr.push(...res.data.list)
+          self.setData({
+            nav4_arr:arr
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -138,6 +253,8 @@ Page({
       title: '患者'
     })
     this.getdata()
+    this.getvipinfolist()
+    this.getdoctor()
   },
 
   /**

@@ -27,12 +27,27 @@ Page({
   btn(){
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 3]; 
+    let jc = prevPage.data.inspect
+    let fzjc = prevPage.data.auxiliary
+    let zd = prevPage.data.diagnose
+    let zlfa = prevPage.data.programme
+    let zl = prevPage.data.treat
+    jc[0].text = this.data.item.exam
+    fzjc[0].text = this.data.item.ae
+    zd[0].text = this.data.item.dg
+    zlfa[0].text = this.data.item.plan
+    zl[0].text = this.data.item.tr
     prevPage.setData({
-      complain: item.pc,
-      repetition: item.pc,
-      disease: item.hpi,
-      past: item.pi,
-      advice: item.da,
+      complain: this.data.item.pc,
+      repetition: this.data.item.pc,
+      disease: this.data.item.hpi,
+      past: this.data.item.pi,
+      advice: this.data.item.da,
+      inspect: jc,
+      auxiliary: fzjc,
+      diagnose: zd,
+      programme: zlfa,
+      treat: zl,
     })
     wx.navigateBack({
       delta: 2

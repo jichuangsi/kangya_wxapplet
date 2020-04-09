@@ -100,30 +100,9 @@
     "pages/W_project/index",
     "pages/W_order/index",
     "pages/W_address/index",
-    "pages/W_introduce/index",
+    "pages/W_introduce/index"
     
 
-    "pages/S_index/index",
-    "pages/S_sort/index",
-    "pages/S_shopcart/index",
-    "pages/S_my/index",
-    "pages/S_Productlist/index",
-    "pages/S_Detail/index",
-    "pages/S_seckill/index",
-    "pages/S_spread/index",
-    "pages/S_activity/index",
-    "pages/S_recharge/index",
-    "pages/S_coupon/index",
-    "pages/S_card/index",
-    "pages/S_Settlement/index",
-    "pages/S_address/index",
-    "pages/S_invoice/index",
-    "pages/S_Collection/index",
-    "pages/S_Order/index",
-    "pages/S_Orderdetails/index",
-    "pages/S_Service/index",
-    "pages/S_Assemble/index",
-    "pages/S_foot/index"
   ],
   "subPackages": [
     {

@@ -52,11 +52,15 @@ Page({
           Patientlist: list
         })
       } else if (this.data.state == 2) {
+        console.log(11123)
+        console.log(this.data.another)
         if (this.data.another == 0) {
+          console.log(1321)
           prevPage.setData({
             doctor: e.currentTarget.dataset.item
           })
         } else {
+          console.log(789)
           prevPage.setData({
             doctor1: e.currentTarget.dataset.item
           })

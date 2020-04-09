@@ -1,37 +1,50 @@
 //index.js
 //获取应用实例
 const app = getApp()
+let Charts = require('../../data/wxcharts-min.js');
+
 
 Page({
   data: {
     show: false, 
     name:'广州大一口腔门诊',
-    achievement_arr: [],
+    chats:true,
+    id:'',
+    achievement_arr: [
+      { title: "今日", money: "0.00" },
+      { title: "本月", money: "0.00" },
+      { title: "本年", money: "0.00" }
+    ],
     Hospital_arr: [],
     nav_arr:[],
     moneystatus:false,
     borderstate:false,
     showleft:false,
-    Worktoday: '',
-    Tomorroworder: '',
-    Historyarrears: '',
-    user:''
+    Worktoday: 0,
+    Tomorroworder: 0,
+    Historyarrears: 0,
+    user:'',
+    day_arr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    month_arr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    year_arr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   
   //事件处理函数
   showPopup() {
-    this.setData({ show: true });
+    this.setData({ show: true, chats:false });
+    console.log(this.data.chats)
   },
 
   onClose() {
-    this.setData({ show: false });
+    this.setData({ show: false, chats: true });
+    console.log(this.data.chats)
   },
   showPopupleft() {
-    this.setData({ showleft: true });
+    this.setData({ showleft: true, chats: false });
   },
   
   onCloseleft() {
-    this.setData({ showleft: false });
+    this.setData({ showleft: false, chats: true });
   },
   moneystatusclick(){
     console.log(this.data.moneystatus)
@@ -57,7 +70,6 @@ Page({
       extarData: {
       },
       success(res) {
-        console.log(112331)
         // 打开成功  
       },
       fail(err){
@@ -74,7 +86,7 @@ Page({
     wx.navigateTo({
       url: '../QRCode/index',
     })
-    this.setData({ showleft: false });
+    this.setData({ showleft: false, chats: true });
   },
   Worktodaygo(){
     wx.navigateTo({
@@ -85,19 +97,19 @@ Page({
     wx.navigateTo({
       url: '../AddPatient/index',
     })
-    this.setData({ showleft: false });
+    this.setData({ showleft: false, chats: true });
   },
   addordergo(){
     wx.navigateTo({
       url: '../orderedit/index?title=添加预约',
     })
-    this.setData({ showleft: false });
+    this.setData({ showleft: false, chats: true });
   },
   addvisitgo() {
     wx.navigateTo({
       url: '../visitedit/index?title=添加回访',
     })
-    this.setData({ showleft: false });
+    this.setData({ showleft: false, chats: true });
   },
   ordergo(){
     wx.navigateTo({
@@ -111,7 +123,7 @@ Page({
   },
   Hospital_click(e){
     console.log(e.currentTarget.dataset.name)
-    this.setData({ name: e.currentTarget.dataset.name})
+    this.setData({ name: e.currentTarget.dataset.name, id: e.currentTarget.dataset.id })
   },
   getdata(){
     let self = this
@@ -121,7 +133,8 @@ Page({
         console.log(res)
         if(res.data.info == 'ok'){
           self.setData({
-            Hospital_arr:res.data.list
+            Hospital_arr:res.data.list,
+            id: res.data.list[0].clinicid
           })
           let date = new Date();
           let year = date.getFullYear();
@@ -130,6 +143,7 @@ Page({
           let bengindate= year + '/' + month + '/' +'01'
           let enddate = year + '/' + month+1 + '/' + '01'
           self.getswiper(res.data.list[0].clinicid, bengindate, enddate)
+          self.getcharts(res.data.list[0].clinicid)
         }
       }
     })
@@ -202,7 +216,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
-        console.log(111)
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
@@ -210,6 +223,211 @@ Page({
         }
       }
     })
+  },
+  getcharts(id){
+    let self = this
+    let date = new Date()
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    console.log(day)
+    wx.request({
+      url: getApp().data.APIS + '/report/chainclinicday',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        "data[clinicid]": id,
+        "data[begindate]": year +'/'+ month+'/01',
+        "data[enddate]": year + '/' + month + '/31',
+        "data[flag]": ''
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          if (res.data.list) {
+            let a_arr = self.data.achievement_arr
+            let price = 0
+            let arr = self.data.day_arr
+            let arr1 = self.data.month_arr
+            for (let i = 0; i < res.data.list.length; i++) {
+              if (res.data.list[i].date.split('-')[2] == day){
+                arr[day - 1] = res.data.list[i].totalfee
+                a_arr[0].money = res.data.list[i].totalfee
+              }
+              arr1[Number(res.data.list[i].date.split('-')[2]) - 1] = res.data.list[i].totalfee
+              price += res.data.list[i].totalfee
+            }
+            a_arr[1].money = price
+            self.setData({
+              day_arr: arr,
+              month_arr: arr1,
+              achievement_arr: a_arr
+            })
+            for(let j = 0;j<arr.length;j++){
+              if (arr[j] > 0) {
+                self.getdaycharts()
+              }
+            }
+            for (let k = 0; k < arr1.length; k++) {
+              if (arr1[k] > 0) {
+                self.getmonthcharts()
+              }
+            }
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/chainclinicday',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        "data[clinicid]": id,
+        "data[begindate]": year + '/1/1',
+        "data[enddate]": year+1 + '/1/1',
+        "data[flag]": 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          if (res.data.list) {
+            let y_arr = self.data.achievement_arr
+            let y_price = 0
+            let arr2 = self.data.year_arr
+            for (let i = 0; i < res.data.list.length; i++) {
+              arr2[Number(res.data.list[i].date.split('-0')[1]) - 1] = res.data.list[i].totalfee
+              y_price += res.data.list[i].totalfee
+            }
+            y_arr[2].money = y_price
+            self.setData({
+              year_arr: arr2,
+              achievement_arr: y_arr
+            })
+            for (let q = 0; q < arr2.length; q++) {
+              if (arr2[q] > 0) {
+                self.getyearcharts()
+              }
+            }
+          }
+        }
+      }
+    })
+  },
+  getdaycharts(){
+    let self =this
+    new Charts({
+      canvasId: 'canvas0',
+      type: 'area',
+      categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
+      series: [{
+        name: '',
+        data: self.data.day_arr,
+        color: '#02ada0',
+        format: function (val) {
+          return '';
+        }
+      }],
+      background: 'transparent',
+      legend: false,
+      dataPointShape:false,
+      xAxis: {
+        fontColor: 'transparent',
+        gridColor: 'transparent',
+        format: function (val) {
+          return '';
+        }
+      },
+      yAxis: {
+        disabled: false,
+        min: 0,
+        gridColor: 'transparent',
+        format: function (val) {
+          return '';
+        }
+      },
+      width: 440,
+      height: 220
+    });
+  },
+  getmonthcharts() {
+    let self = this
+    new Charts({
+      canvasId: 'canvas1',
+      type: 'area',
+      categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
+      series: [{
+        name: '',
+        data: self.data.month_arr,
+        color: '#02ada0',
+        format: function (val) {
+          return '';
+        }
+      }],
+      background: 'transparent',
+      legend: false,
+      dataPointShape: false,
+      xAxis: {
+        fontColor: 'transparent',
+        gridColor: 'transparent',
+        format: function (val) {
+          return '';
+        }
+      },
+      yAxis: {
+        disabled: false,
+        min: 0,
+        gridColor: 'transparent',
+        format: function (val) {
+          return '';
+        }
+      },
+      width: 440,
+      height: 220
+    });
+  },
+  getyearcharts() {
+    let self = this
+    new Charts({
+      canvasId: 'canvas2',
+      type: 'area',
+      categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+      series: [{
+        name: '',
+        data: self.data.year_arr,
+        color: '#02ada0',
+        format: function (val) {
+          return '';
+        }
+      }],
+      background: 'transparent',
+      legend: false,
+      dataPointShape: false,
+      xAxis: {
+        fontColor: 'transparent',
+        gridColor: 'transparent',
+        format: function (val) {
+          return '';
+        }
+      },
+      yAxis: {
+        disabled: false,
+        min: 0,
+        gridColor: 'transparent',
+        format: function (val) {
+          return '';
+        }
+      },
+      width: 440,
+      height: 220
+    });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -228,10 +446,6 @@ Page({
         // console.log(res.data)
         if (res.data.result == 200){
           self.setData({
-            achievement_arr: res.data.achievement_arr,
-            Worktoday: res.data.Today,
-            Tomorroworder: res.data.Tomorrow,
-            Historyarrears: res.data.History,
             nav_arr: res.data.nav_arr
           })
         }

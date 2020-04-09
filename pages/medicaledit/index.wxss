@@ -97,6 +97,7 @@
   width: 100%;
   padding: 20rpx;
   box-sizing: border-box;
+  color: #666;
 }
 .box .del {
   display: flex;

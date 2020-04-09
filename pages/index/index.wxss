@@ -32,7 +32,23 @@ swiper{
   font-size: 32rpx;
 }
 .itembox {
-  position: relative;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  background-color: transparent;
+}
+.charts {
+  width: 750rpx;
+  height: 0rpx;
+  position: absolute;
+  left: -20rpx;
+  top: 0rpx;
+  background-color: transparent !important;
+}
+.chartsnone {
+  height: 400rpx;
 }
 .itembox .title {
   position: absolute;

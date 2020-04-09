@@ -77,6 +77,7 @@ Page({
             icon: 'success',
             duration: 2000
           })
+          self.onClose()
           self.getdata()
         } else {
           wx.showToast({
