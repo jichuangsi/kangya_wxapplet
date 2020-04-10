@@ -86,3 +86,16 @@
   width: 38rpx;
   height: 36rpx;
 }
+.wu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 30rpx;
+  margin-top: 60rpx;
+}
+.wu image {
+  width: 213rpx;
+  height: 170rpx;
+}

@@ -6,6 +6,8 @@
     <van-icon name="plus" slot="right" size="36rpx" wx:if="{{title!='预约列表'}}" />
     </van-nav-bar>
   </view> -->
+  
+
   <view class="top_right" bindtap="onClickRight">
     <van-icon name="calender-o" size="36rpx" wx:if="{{title=='预约列表'}}" />
     <van-icon name="plus" size="36rpx" wx:if="{{title!='预约列表'}}" />
@@ -151,6 +153,10 @@
               <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
             </view>
           </view>
+        </view>
+        <view class="wu" wx:if="{{order_arr.length==0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
         </view>
     </view>
   </view>

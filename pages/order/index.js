@@ -63,7 +63,7 @@ Page({
   },
   doSomeThing() {
     // 调用日历方法
-    console.log(this.calendar)
+    // console.log(this.calendar)
     // this.calendar.enableArea();
   },
   afterTapDay(e) {
@@ -96,7 +96,9 @@ Page({
     self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar1')
   },
   afterCalendarRender2() {
-    this.calendar.switchView('week', '#calendar2').then(() => { });
+    if (this.data.title == '预约列表'){
+      this.calendar.switchView('week', '#calendar2').then(() => { });
+    }
   },
   del(e){
     let self = this
@@ -186,6 +188,7 @@ Page({
           let arr = []
           for (let i = 0; i < res.data.list.length; i++) {
             console.log(res.data.list[i].schedule)
+            console.log(11111)
             if (res.data.list[i].schedule){
               for (let j = 0; j < res.data.list[i].schedule.length;j++){
                 if(self.data.title =='预约'){
@@ -242,12 +245,7 @@ Page({
     this.setData({
       bengindate: year + '/' + month + '/' + day,
       enddate: year + '/' + month + '/' + day,
-      patdetails: Page.data.patdetails,
-      calendarConfig: {
-        // 配置内置主题
-        theme: 'elegant',
-        chooseAreaMode: false,
-      }
+      patdetails: Page.data.patdetails
     })
     this.doSomeThing()
     this.getdata()

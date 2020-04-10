@@ -20,7 +20,8 @@
     </view>
   </view>
   <view class="Worryfree" wx:if="{{title=='看牙无忧'}}">
-    <image src="{{LookTeethimg}}"></image>
+    <image class="img1" src="../../images/kytop.jpg"></image>
+    <image class="img2" src="../../images/kybottom.jpg"></image>
     <view class="btn" bindtap="applygo">
       立即申请
     </view>

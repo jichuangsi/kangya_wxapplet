@@ -8,41 +8,45 @@
   <view class="center">
     <view class="libox" wx:for="{{arr}}">
       <view class="li">
-      <van-icon name="clock-o" size="36rpx" />
-      <view class="text">操作时间</view>
-      <view class="time">{{item.updatetime}}</view>
-    </view>
-    <view class="nav">
-      <view class="navbox">
-        <view>{{item.advancepayin}}</view>
-        <view>收入</view>
+        <van-icon name="clock-o" size="36rpx" />
+        <view class="text">操作时间</view>
+        <view class="time">{{item.updatetime}}</view>
       </view>
-      <view class="navbox">
-        <view class="red">{{item.advancepayout}}</view>
-        <view>支出</view>
+      <view class="nav">
+        <view class="navbox">
+          <view>{{item.advancepayin}}</view>
+          <view>收入</view>
+        </view>
+        <view class="navbox">
+          <view class="red">{{item.advancepayout}}</view>
+          <view>支出</view>
+        </view>
+        <view class="navbox">
+          <view class="blue">{{item.advancepaytotal}}</view>
+          <view>余额</view>
+        </view>
       </view>
-      <view class="navbox">
-        <view class="blue">{{item.advancepaytotal}}</view>
-        <view>余额</view>
+      <view class="li">
+        <view class="text">操作</view>
+        <view class="green">{{item.paystyle}}</view>
+      </view>
+      <view class="li">
+        <view class="text">收费方式</view>
+        <view>{{item.feestyle}}</view>
+      </view>
+      <view class="li">
+        <view class="text">经手人</view>
+        <view>{{item.advpayman}}</view>
+      </view>
+      <view class="li">
+        <van-icon name="notes-o" size="36rpx" />
+        <view class="text">备注</view>
+        <view class="bz">{{item.advpayremark}}</view>
       </view>
     </view>
-    <view class="li">
-      <view class="text">操作</view>
-      <view class="green">{{item.paystyle}}</view>
-    </view>
-    <view class="li">
-      <view class="text">收费方式</view>
-      <view>{{item.feestyle}}</view>
-    </view>
-    <view class="li">
-      <view class="text">经手人</view>
-      <view>{{item.advpayman}}</view>
-    </view>
-    <view class="li">
-      <van-icon name="notes-o" size="36rpx" />
-      <view class="text">备注</view>
-      <view class="bz">{{item.advpayremark}}</view>
-    </view>
-    </view>
+        <view class="wu" wx:if="{{arr.length==0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
   </view>
 </view>

@@ -68,9 +68,9 @@ Page({
       // on cancel
     })
   },
-  edit() {
+  edit(e) {
     wx.navigateTo({
-      url: '../medicaledit/index?title=病历详情',
+      url: '../medicaledit/index?title=病历详情&&index=' + e.currentTarget.dataset.index,
     })
   },
   getdata(){

@@ -33,6 +33,11 @@
               </navigator>
               </view>
           </view>
+          
+        <view class="wu">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
           </van-tab>
           <van-tab title="未使用" name="未使用">
           <view class="list">
@@ -41,6 +46,11 @@
               </navigator>
               </view>
           </view>
+          
+        <view class="wu">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
           </van-tab>
           <van-tab title="已使用" name="已使用">
           <view class="list">
@@ -49,6 +59,11 @@
               </navigator>
               </view>
           </view>
+          
+        <view class="wu">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
           </van-tab>
       </van-tabs>
   </view>

@@ -26,7 +26,9 @@ Page({
     user:'',
     day_arr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     month_arr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    year_arr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    year_arr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    power_arr:[],
+    shopshow:''
   },
   
   //事件处理函数
@@ -179,6 +181,7 @@ Page({
           self.setData({
             user:res.data.list[0]
           })
+          self.getrole(res.data.list[0].userid)
         }
       }
     })
@@ -428,6 +431,37 @@ Page({
       width: 440,
       height: 220
     });
+  },
+  getrole(id,role) {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: 'get',
+      data: {
+        plugin: 'getmodulerole',
+        p: id + '|' + (role ? role : '管理员')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let a = ''
+          for(let i = 0; i<res.data.list.length;i++){
+            if (res.data.list[i].groupname.indexOf('app')!=-1){
+              arr.push(res.data.list[i])
+              if (res.data.list[i].code == '10901'){
+                a = res.data.list[i]
+              }
+            }
+          }
+          console.log(arr)
+          self.setData({
+            power_arr:arr,
+            shopshow:a
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载

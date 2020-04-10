@@ -42,3 +42,16 @@
   color: #fff;
   border-radius: 10rpx;
 }
+.wu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 30rpx;
+  padding-top: 60rpx;
+}
+.wu image {
+  width: 213rpx;
+  height: 170rpx;
+}

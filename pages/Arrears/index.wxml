@@ -19,12 +19,16 @@
           <view>欠￥{{item.arrearagemoney}}</view>
         </view>
       </view>
+        <view class="wu" wx:if="{{arr.length == 0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
     </view>
   </scroll-view>
   <van-popup show="{{ show }}"
   position="top"
   bindtap="onClose">
     <view wx:for="{{nav1_arr}}" wx:if="{{nav_num == 1}}" data-text="{{item}}" bindtap="nav1click">{{item}}</view>
-    <view wx:for="{{nav2_arr}}" wx:if="{{nav_num == 2}}" data-text="{{item}}" bindtap="nav2click">{{item}}</view>
+    <view wx:for="{{nav2_arr}}" wx:if="{{nav_num == 2}}" data-text="{{item.name}}" bindtap="nav2click">{{item.name}}</view>
   </van-popup>
 </view>

@@ -76,13 +76,19 @@ van-sidebar {
   color: #16c7ae;
   font-size: 32rpx;
 }
-.Worryfree image {
-  width: 100%;
+.Worryfree .img1 {
+  width: 750rpx;
+  height: 577rpx; 
+}
+.Worryfree .img2 {
+  width: 750rpx;
+  height: 1187rpx; 
+  margin-top: -225rpx;
 }
 .Worryfree .btn {
   width: 98%;
-  height: 66rpx;
-  line-height: 66rpx;
+  height: 86rpx;
+  line-height: 86rpx;
   text-align: center;
   position: fixed;
   bottom: 20rpx;

@@ -45,7 +45,11 @@
                 <image src="../../images/yd.png"></image>
               </view>
               <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
-            </view>
+            </view>    
+        <view class="wu" wx:if="{{visit_arr.length == 0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
           </view>
           <view class="bottom">
             <view data-index="1" bindtap="numshow">{{state2}}<van-icon name="arrow-down" /></view>
@@ -86,7 +90,11 @@
                 <image src="../../images/yd.png"></image>
               </view>
               <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
-            </view>
+            </view> 
+        <view class="wu" wx:if="{{visit_arr.length == 0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
           </view>
     </view>
   </view>

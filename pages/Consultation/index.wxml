@@ -36,6 +36,10 @@
         <view>{{item.facerecordername}}</view>
       </view>
     </view>
+        <view class="wu" wx:if="{{arr.length==0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
   </view>
   <van-dialog id="van-dialog" />
 </view>

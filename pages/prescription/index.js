@@ -11,7 +11,8 @@ Page({
     arr: [
       { title: '甲硝锉片', text: '口服一日三次', num: 0, price: 1.00, id: 101 }, { title: '维生素C片', text: '口服一日三次', num: 0, price: 3.00, id: 102 }, { title: '芬必得', text: '必要时口服', num: 0, price: 2.00, id: 103 },
     ],
-    check_arr:[]
+    check_arr:[],
+    power_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -212,6 +213,11 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title:'设置处方'
+    })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 3];
+    this.setData({
+      power_arr:Page.data.power_arr
     })
     this.getdata()
   },

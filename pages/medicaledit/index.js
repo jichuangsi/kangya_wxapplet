@@ -15,6 +15,7 @@ Page({
     disease: '',
     past: '',
     allergy: '',
+    studyidentity:'',
     inspect: [
       {lt:'',rt:'',lb:'',rb:'',text:''}
     ],
@@ -169,10 +170,10 @@ Page({
         "plan": JSON.stringify(self.data.programme),
         "recordidentity": "", 
         "serverid": "0", 
-        "studyidentity": "433348299364450304", 
+        "studyidentity": self.data.studyidentity, 
         "tr": JSON.stringify(self.data.treat),
         "updatetime": "", 
-        "undefined": "433348299364450304"
+        "undefined": self.data.studyidentity
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -274,38 +275,6 @@ Page({
     }
   },
 
-  // { "ae": [{ "lb": "4B", "lt": "B", "rb": "1", "rt": "3", "text": "66" }, { "lt": "B", "lb": "2", "rt": "B", "rb": "3", "text": "19" }], 
-  // "allergyhistory": "33", 
-  // "assistant": "", 
-  // "assistantidentity": "",
-  // "clinicuniqueid": "", 
-  // "comment": "", 
-  // "customerid": "422770870503276544", 
-  // "da": "1212", 
-  // "datastatus": "1", 
-  // "dg": [{ "lb": "4B", "lt": "B", "rb": "1", "rt": "3", "text": "77" }, { "lt": "", "lb": "5", "rt": "7", "rb": "C7", "text": "18" }], 
-  // "diseasekey": "", 
-  // "doctorid": "422774237507764224", 
-  // "emrversion": "1", 
-  // "exam": [{ "lb": "4B", "lt": "B", "rb": "1", "rt": "3", "text": "44" }, { "lt": "65", "lb": "3", "rt": "D", "rb": "", "text": "55" }], 
-  // "examdate": "2020-01-04 14:59", 
-  // "examdoctor": "李医生", 
-  // "hpi": "22", 
-  // "imglist": [{ "mediaimageidentity": "", "seriesuid": "47959263692763415", "sopuid": "47959264152592980", "studyuid": "47959248021102150", "psrc": "http://139.129.85.215/image/WADO.php?action=LoadImage", "url": "http://139.129.85.215/image/WADO.php?action=LoadImage&StudyUID=47959248021102150&SeriesUID=47959263692763415&SopUID=47959264152592980&t=1575631950&rows=100" }], 
-  // "isfirstvisit": "0", 
-  // "lastoperator": "", 
-  // "mediarecordidentity": "", 
-  // "nurse": "林晓琪", 
-  // "nurseidentity": "422161121828306944", 
-  // "pc": "11", 
-  // "pi": "出美国的", 
-  // "plan": [{ "lb": "4B", "lt": "B", "rb": "1", "rt": "3", "text": "88" }, { "lt": "1", "lb": "", "rt": "", "rb": "4", "text": "17" }],
-  // "recordidentity": "", 
-  // "serverid": "0", 
-  // "studyidentity": "433348299364450304", 
-  // "tr": [{ "lb": "4B", "lt": "B", "rb": "1", "rt": "3", "text": "99" }, { "lt": "3", "lb": "", "rt": "", "rb": "E", "text": "16" }],
-  //  "updatetime": "", 
-  //  "undefined": "433348299364450304" }
 
   /**
    * 生命周期函数--监听页面加载
@@ -320,7 +289,36 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
-    
+    if (options.title == '病历详情'){
+      console.log(11111)
+      console.log(options.index)
+      console.log(prevPage.data.arr[options.index])
+      this.setData({
+        auxiliary: prevPage.data.arr[options.index].ae ? prevPage.data.arr[options.index].ae:this.data.allergy,
+        allergy: prevPage.data.arr[options.index].allergyhistory ? prevPage.data.arr[options.index].allergyhistory : this.data.allergy,
+        advice: prevPage.data.arr[options.index].da ? prevPage.data.arr[options.index].da : this.data.advice,
+        diagnose: prevPage.data.arr[options.index].dg ? prevPage.data.arr[options.index].dg : this.data.diagnose,
+        doctor1:{
+          doctorid: prevPage.data.arr[options.index].doctorid ? prevPage.data.arr[options.index].doctorid : this.data.doctor1.doctorid,
+          name: prevPage.data.arr[options.index].examdoctor ? prevPage.data.arr[options.index].examdoctor : this.data.doctor1.name,
+        },
+        time: prevPage.data.arr[options.index].examdate ? prevPage.data.arr[options.index].examdate : this.data.time,
+        inspect: prevPage.data.arr[options.index].exam ? prevPage.data.arr[options.index].exam : this.data.inspect,
+        disease: prevPage.data.arr[options.index].hpi ? prevPage.data.arr[options.index].hpi : this.data.disease,
+        img_arr: prevPage.data.arr[options.index].imglist ? prevPage.data.arr[options.index].imglist : this.data.img_arr, 
+        check_text: prevPage.data.arr[options.index].isfirstvisit == '0' ? '初诊病历' : '复诊病历',
+        doctor: {
+          doctorid: prevPage.data.arr[options.index].nurseidentity ? prevPage.data.arr[options.index].nurseidentity : this.data.doctor.doctorid,
+          name: prevPage.data.arr[options.index].nurse ? prevPage.data.arr[options.index].nurse : this.data.doctor.name,
+        },
+        complain: prevPage.data.arr[options.index].pc ? prevPage.data.arr[options.index].pc : this.data.complain,
+        repetition: prevPage.data.arr[options.index].pc ? prevPage.data.arr[options.index].pc : this.data.repetition,
+        past: prevPage.data.arr[options.index].pi ? prevPage.data.arr[options.index].pi : this.data.past,
+        programme: prevPage.data.arr[options.index].plan ? prevPage.data.arr[options.index].plan : this.data.programme,
+        studyidentity: prevPage.data.arr[options.index].studyidentity ? prevPage.data.arr[options.index].studyidentity : this.data.studyidentity,
+        treat: prevPage.data.arr[options.index].tr ? prevPage.data.arr[options.index].tr : this.data.treat,
+      })
+    }
   },
 
   /**

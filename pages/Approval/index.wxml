@@ -14,6 +14,10 @@
               </navigator>
               </view>
           </view>
+        <view class="wu">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
           </van-tab>
           <van-tab title="已审批" name="已审批">
           <view class="list">
@@ -22,6 +26,10 @@
               </navigator>
               </view>
           </view>
+        <view class="wu">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
           </van-tab>
       </van-tabs>
     </view>

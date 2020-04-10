@@ -1,6 +1,6 @@
 <!--pages/VIP/index.wxml-->
 <view class="VIP">
-  <view class="li" bindtap="VIPdetailsgo">
+  <view class="li" wx:if="{{patdetails.vipcardidentity}}" bindtap="VIPdetailsgo">
     <image class="bjimg" src="../../images/details_members_icon_background.png"></image>
     <view class="li_top">
       <image src="{{patdetails.picture}}"></image>
@@ -18,5 +18,9 @@
       <view wx:if="{{vipcard.enddate=='0000-00-00'}}">永久有效</view>
       <view wx:if="{{vipcard.enddate!='0000-00-00'}}">{{vipcard.enddate}}</view>
     </view>
+  </view>
+  <view class="wu" wx:if="{{!patdetails.vipcardidentity}}">
+    <image src="../../images/none.png"></image>
+    暂无数据
   </view>
 </view>

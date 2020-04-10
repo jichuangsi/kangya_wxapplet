@@ -55,7 +55,6 @@ Page({
             arr: res.data.list,
             check_arr: res.data.list,
           })
-          self.allprice()
         }
       }
     })
@@ -67,6 +66,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '编辑处方模板'
     })
+    this.getdata()
   },
 
   /**

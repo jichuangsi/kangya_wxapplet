@@ -9,6 +9,7 @@
   position: fixed;
   top: 0rpx;
   left: 0rpx;
+  z-index: 1;
 }
 .top .van-nav-bar {
   vertical-align: middle !important;
@@ -80,4 +81,17 @@ van-popup view {
 .li .right view {
   color: orange;
   font-size: 36rpx;
+}
+.wu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 30rpx;
+  margin-top: 60rpx;
+}
+.wu image {
+  width: 213rpx;
+  height: 170rpx;
 }

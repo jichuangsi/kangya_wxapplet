@@ -68,10 +68,14 @@
         </view>
         <view class="tab">
           <view class="left">影像</view>
-          <view class="right"></view>
+          <view class="right">
+            <view class="imgbox">
+              <image src="{{item.url}}" wx:for="{{item.imglist}}"></image>
+            </view>
+          </view>
         </view>
         <view class="user">
-          <view bindtap="edit"><van-icon name="edit" />编辑</view>
+          <view data-index="{{index}}" bindtap="edit"><van-icon name="edit" />编辑</view>
           <view bindtap="del"><van-icon name="close" />删除</view>
           <view bindtap="qm" data-item="{{item}}"><van-icon name="records" />签名</view>
         </view>
@@ -157,132 +161,10 @@
         </view>
       </view>
     </view>
-    <!-- <view class="li">
-      <view class="li_top">
-        <image src="../../images/my_headportrait_male.png"></image>
-        <view class="name">试试</view>
-        <view class="state">风险评估</view>
-        <view class="time">2020-02-03</view>
-      </view>
-      <view class="user">
-        <view>患者姓名</view>
-        <view>空白</view>
-        <view>性别</view>
-        <view>{{item.sex==0?'男':'女'}}</view>
-      </view>
-      <view class="canvas_box">
-        <canvas class="canvas" canvas-id="pieGraph"></canvas>
-      </view>
-      <view class="tab">
-        <view class="left w50">复诊时间</view>
-        <view class="right">建议复诊12个月</view>
-      </view>
-      <view class="tab">
-        <view class="left w50">年龄</view>
-        <view class="right">44</view>
-      </view>
-      <view class="tab">
-        <view class="left w50">牙齿及种植体数目</view>
-        <view class="right">32</view>
-      </view>
-      <view class="tab">
-        <view class="left w50">每颗牙/种植体检查位点数</view>
-        <view class="right">2</view>
-      </view>
-      <view class="tab">
-        <view class="left w50">探诊出血阳性为点数</view>
-        <view class="right">0</view>
-      </view>
-      <view class="tab">
-        <view class="left w50">探诊深度>=5mm位点数</view>
-        <view class="right">0</view>
-      </view>
-      <view class="tab">
-        <view class="left w50">牙槽骨丧失百分比</view>
-        <view class="right">0%</view>
-      </view>
-      <view class="tab">
-        <view class="left w50">缺失牙齿数目</view>
-        <view class="right">0</view>
-      </view>
-      <view class="tab">
-        <view class="left w50">全身状况/遗传</view>
-        <view class="right">否</view>
-      </view>
-      <view class="tab">
-        <view class="left w50">环境</view>
-        <view class="right">不吸烟</view>
-      </view>
-    </view>
-    <view class="li">
-      <view class="li_top">
-        <image src="../../images/my_headportrait_male.png"></image>
-        <view class="name">试试</view>
-        <view class="state">风险评估</view>
-        <view class="time">2020-02-03</view>
-      </view>
-      <view class="user">
-        <view>患者姓名</view>
-        <view>空白</view>
-        <view>性别</view>
-        <view>{{item.sex==0?'男':'女'}}</view>
-      </view>
-      <view class="canvas_box" wx:if="{{false}}">
-        <canvas class="canvas" canvas-id="pieGraph"></canvas>
-      </view>
-      <view class="tab">
-        <view class="left">修复病例评估</view>
-        <view class="right">后部区域多单位修复体</view>
-      </view>
-      <view class="tab">
-        <view class="left">界定</view>
-        <view class="right">两颗种植体修复最多三颗天然牙</view>
-      </view>
-      <view class="tab">
-        <view class="left">颌间距离</view>
-        <view class="right">≥8mm或≤16mm</view>
-      </view>
-      <view class="tab">
-        <view class="left">近远中径</view>
-        <view class="right">对应缺失牙的解剖间隙+/-1mm</view>
-      </view>
-      <view class="tab">
-        <view class="left">he/咬合</view>
-        <view class="right">不规则，无需矫正</view>
-      </view>
-      <view class="tab">
-        <view class="left">he/咬合</view>
-        <view class="right">不规则，无需矫正</view>
-      </view>
-      <view class="tab">
-        <view class="left">愈合期间的过度义齿</view>
-        <view class="right">可摘</view>
-      </view>
-      <view class="tab">
-        <view class="left">种植体支持的临时修复体</view>
-        <view class="right">修复体边缘位于龈缘根方≥3mm</view>
-      </view>
-      <view class="tab">
-        <view class="left">副功能咬合</view>
-        <view class="right">有</view>
-      </view>
-      <view class="tab">
-        <view class="left">负荷方案</view>
-        <view class="right">即刻</view>
-      </view>
-      <view class="tab">
-        <view class="left">固位</view>
-        <view class="right">粘结固位,修复体边缘位于龈下>3mm</view>
-      </view>
-      <view class="tab">
-        <view class="left">美学风险</view>
-        <view class="right">高</view>
-      </view>
-      <view class="tab">
-        <view class="left">规范SAC分类</view>
-        <view class="right tab_state">高度复杂</view>
-      </view>
-    </view> -->
+        <view class="wu" wx:if="{{arr.length==0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
   </view>
   <van-dialog id="van-dialog" />
 </view>

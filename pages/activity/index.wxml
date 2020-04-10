@@ -6,4 +6,10 @@
     </van-nav-bar>
   </view> -->
   <view class="top_right" bindtap="onClickRight">推广成果</view>
+  <view class="center">
+        <view class="wu">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
+  </view>
 </view>

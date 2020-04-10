@@ -16,6 +16,7 @@ Page({
     content: '',//内容
     prevpage:'',
     index:'',
+    img_arr:[],
     gt_arr: ['咨询沟通', '投诉']
   },
 
@@ -148,7 +149,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ title: options.title, content:options.value,index:options.index })
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2]; 
+    this.setData({ title: options.title, content: options.value, index: options.index, img_arr: prevPage.data.img_arr })
     wx.setNavigationBarTitle({
       title: options.title
     })

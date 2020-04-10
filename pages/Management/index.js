@@ -11,7 +11,9 @@ Page({
     ],
     customerid: '',
     clinicid: '',
-    patdetails:''
+    patdetails:'',
+    power_arr:[],
+    user:'',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -34,14 +36,32 @@ Page({
     })
   },
   editgo(e) {
-    wx.navigateTo({
-      url: '../Managementedit/index?title=修改处置&&item=' + JSON.stringify(e.currentTarget.dataset.item),
-    })
+    //  && e.currentTarget.dataset.item.doctoridexam == this.data.userid
+    if (this.data.power_arr[42].has || (this.data.power_arr[28].has)) {
+      wx.navigateTo({
+        url: '../Managementedit/index?title=修改处置&&item=' + JSON.stringify(e.currentTarget.dataset.item),
+      })
+    }else{
+      wx.showToast({
+        title: '暂无权限',
+        icon: 'none',
+        duration: 1000
+      })
+    }
   },
   Pricego(e) {
-    wx.navigateTo({
-      url: '../Price/index?title=划价&&item=' + JSON.stringify(e.currentTarget.dataset.item),
-    })
+    //  && e.currentTarget.dataset.item.doctoridexam == this.data.userid
+    if (this.data.power_arr[42].has || (this.data.power_arr[28].has)) {
+      wx.navigateTo({
+        url: '../Price/index?title=划价&&item=' + JSON.stringify(e.currentTarget.dataset.item),
+      })
+    } else {
+      wx.showToast({
+        title: '暂无权限',
+        icon: 'none',
+        duration: 1000
+      })
+    }
   },
   getdata() {
     let self = this
@@ -86,8 +106,11 @@ Page({
     this.setData({
       customerid: Page.data.customerid,
       clinicid: Page.data.clinicid,
-      patdetails: Page.data.patdetails
+      patdetails: Page.data.patdetails,
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
     })
+    console.log(this.data.user)
     this.getdata()
   },
 
@@ -102,7 +125,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

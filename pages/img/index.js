@@ -133,7 +133,7 @@ Page({
     let pages = getCurrentPages();
     let currPage = pages[pages.length - 3];
     let prevPage = pages[pages.length - 2]; 
-    let arr = []
+    let arr = pages[pages.length - 3].img_arr
     for(let i = 0;i<this.data.arr.length;i++){
       if (this.data.arr[i].state == 1){
         arr.push(this.data.arr[i])

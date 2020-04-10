@@ -9,7 +9,7 @@ Page({
     nav1: '就诊项目',
     nav2: '主治医生',
     nav_num: 1,
-    nav1_arr: ['全部', '拔牙', '补牙', '义诊', '活动假牙', '洁牙', '正畸', '种植', '检查'],
+    nav1_arr: ['全部', '治疗', '修复', '种植', '正畸', '检查', '洗牙', '其他'],
     nav2_arr: ['全部', '李青青', '李医生', '莫医生', '伍医生'],
     arr: [],
     pageIndex: '',
@@ -85,7 +85,26 @@ Page({
       }
     })
   },
-
+  getdoctor(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/schedule/microlettercondition',
+      method: 'post',
+      data: {
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            nav2_arr: res.data.list.schdoctor
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -100,6 +119,7 @@ Page({
       name: Page.data.user.name
     })
     this.getdata()
+    this.getdoctor()
   },
 
   /**

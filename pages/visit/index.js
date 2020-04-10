@@ -92,7 +92,9 @@ Page({
     self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar1')
   },
   afterCalendarRender2() {
-    this.calendar.switchView('week', '#calendar2').then(() => { });
+    if (this.data.state == 0) {
+      this.calendar.switchView('week', '#calendar2').then(() => { });
+    }
   },
   del(e) {
     let self = this
