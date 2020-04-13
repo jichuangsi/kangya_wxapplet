@@ -6,9 +6,11 @@
     <van-icon name="plus" slot="right" size="36rpx" wx:if="{{state!=0}}" />
     </van-nav-bar>
   </view> -->
-  <view class="top_right" bindtap="onClickRight">
+  <view class="top_right" bindtap="onClickRight" wx:if="{{state!=0&&(power_arr.code10702.has||power_arr.code10705.has)}}">
+    <van-icon name="plus" size="36rpx" wx:if="{{power_arr.code10703.has||power_arr.code10706.has}}" />
+  </view>
+  <view class="top_right" bindtap="onClickRight" wx:if="{{state==0}}">
     <van-icon name="calender-o" size="36rpx" wx:if="{{state==0}}" />
-    <van-icon name="plus" size="36rpx" wx:if="{{state!=0}}" />
   </view>
   <view class="center">
     <view wx:if="{{state==0}}">
@@ -16,7 +18,7 @@
         <calendar id="calendar2" calendarConfig="{{calendarConfig2}}" bind:afterTapDay="afterTapDay2" bind:afterCalendarRender="afterCalendarRender2"></calendar>
       </view>
       <view class="li_box">
-            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}">
+            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}" wx:if="{{power_arr.code10702.has||power_arr.code10705.has}}">
               <view class="li_top">
                 <view class="li_left">
                   <image src="../../images/my_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
@@ -34,7 +36,7 @@
                     <view class="time">{{item.returndate}}</view>
                   </view>
                 </view>
-                <image class="del" src="../../images/del.png" catchtap="del"></image>
+                <image class="del"  wx:if="{{power_arr.code10704.has||power_arr.code10707.has}}" src="../../images/del.png" catchtap="del"></image>
                 <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state==3||item.returnresult==3}}"></image>
                 <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state==4||item.returnresult==4}}"></image>
               </view>
@@ -46,7 +48,7 @@
               </view>
               <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
             </view>    
-        <view class="wu" wx:if="{{visit_arr.length == 0}}">
+        <view class="wu" wx:if="{{visit_arr.length == 0||(!power_arr.code10702.has||!power_arr.code10705.has)}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>
@@ -60,7 +62,7 @@
     </view>
     <view wx:if="{{state==1}}">
       <view class="li_box">
-            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}">
+            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}"  wx:if="{{power_arr.code10702.has||power_arr.code10705.has}}">
               <view class="li_top">
                 <view class="li_left">
                   <image src="{{patdetails.picture}}" wx:if="{{patdetails.picture!=''}}"></image>
@@ -79,7 +81,7 @@
                     <view class="time">{{item.returndate}}</view>
                   </view>
                 </view>
-                <image class="del" src="../../images/del.png"  data-item="{{item}}" catchtap="del"></image>
+                <image class="del" wx:if="{{power_arr.code10704.has||power_arr.code10707.has}}" src="../../images/del.png"  data-item="{{item}}" catchtap="del"></image>
                 <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state=='3'}}"></image>
                 <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state=='4'}}"></image>
               </view>
@@ -91,7 +93,7 @@
               </view>
               <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
             </view> 
-        <view class="wu" wx:if="{{visit_arr.length == 0}}">
+        <view class="wu" wx:if="{{visit_arr.length == 0||(!power_arr.code10702.has||!power_arr.code10705.has)}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>

@@ -10,7 +10,9 @@ Page({
     title: '咨询',
     arr: [
     ],
-    patdetails:''
+    patdetails: '',
+    power_arr: [],
+    user: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -99,7 +101,9 @@ Page({
     this.setData({
       customerid: Page.data.customerid,
       clinicid: Page.data.clinicid,
-      patdetails: Page.data.patdetails
+      patdetails: Page.data.patdetails,
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
     })
     // console.log(this.data.patdetails)
     this.getdata()

@@ -10,7 +10,9 @@ Page({
     state:0,
     arr:[],
     customerid: '',
-    clinicid:''
+    clinicid: '',
+    power_arr: [],
+    user: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -18,7 +20,14 @@ Page({
     })
   },
   onClickRight() {
-    this.setData({show:true})
+    if (this.data.power_arr.code10302.has) {
+      this.setData({ show: true })
+    }else{
+      wx.showToast({
+        icon:'none',
+        title: '暂无权限',
+      })
+    }
   },
   onClose() {
     this.setData({ show: false });
@@ -163,6 +172,15 @@ Page({
       customerid: Page.data.customerid,
       clinicid: Page.data.clinicid
     })
+    if (!options.title) {
+      console.log(1123456)
+      console.log(Page.data.power_arr)
+      this.setData({
+        power_arr: Page.data.power_arr,
+        user: Page.data.user,
+      })
+    }
+    console.log(this.data.power_arr)
     this.getdata()
   },
 

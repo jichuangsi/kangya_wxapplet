@@ -13,7 +13,7 @@
       <view class="left">
         <view class="time">
           <view>月份</view>
-          <view>3</view>
+          <view>{{month}}</view>
         </view>
       </view>
       <view class="right">

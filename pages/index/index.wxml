@@ -104,7 +104,7 @@
     url="/pages/activity/index" wx:if="{{nav_arr[7].state}}"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_operating.png" text="运营中心" link-type="navigateTo"
     url="/pages/eroc/index?title={{name}}" wx:if="{{nav_arr[8].state}}"/>
-    <van-grid-item icon="../../../images/clinic_workbench_icon_mall.png" text="商城" bind:click="shopinggo" wx:if="{{shopshow.has}}"/>
+    <van-grid-item icon="../../../images/clinic_workbench_icon_mall.png" text="商城" bind:click="shopinggo" wx:if="{{power_arr.code10901.has}}"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_communication.png" text="医患沟通" link-type="navigateTo"
     url="/pages/PriceList/index?title=医患沟通视频" wx:if="{{nav_arr[10].state}}"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_dentist.png" text="看牙无忧" link-type="navigateTo"

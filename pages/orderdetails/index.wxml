@@ -53,9 +53,9 @@
       <view class="center_bottom">
         <view bindtap="chatgo"><van-icon name="comment-o" size="40rpx"/>通知患者</view>
         <view bindtap="iphoneclick"><van-icon name="phone-o" size="40rpx"/>打电话</view>
-        <view bindtap="editgo"><van-icon name="edit" size="40rpx"/>修改预约</view>
+        <view wx:if="{{power_arr.code10603.has||power_arr.code10606.has}}" bindtap="editgo"><van-icon name="edit" size="40rpx"/>修改预约</view>
       </view>
-    <view class="btn" bindtap="onClickRight">删除预约</view>
+    <view class="btn" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" bindtap="onClickRight">删除预约</view>
   </view>
   <van-dialog id="van-dialog" />
 </view>

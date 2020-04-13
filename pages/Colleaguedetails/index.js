@@ -15,7 +15,8 @@ Page({
     position:'',
     name:'',
     nurse:false,
-    user:0
+    user:0,
+    power_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -75,8 +76,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
     this.setData({
-      user: JSON.parse(options.item)
+      user: JSON.parse(options.item),
+      power_arr: Page.data.power_arr ? Page.data.power_arr : '',
     })
     wx.setNavigationBarTitle({
       title: '同事资料'

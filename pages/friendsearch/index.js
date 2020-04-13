@@ -12,7 +12,9 @@ Page({
     scrollTop: 'A',
     project_list: [],
     pageIndex:1,
-    another:0
+    another: 0,
+    power_arr: [],
+    user: '',
   },
   back() {
     wx.navigateBack({
@@ -87,10 +89,14 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.Patientstate)
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
     this.setData({
       Patientstate: options.Patientstate ? options.Patientstate : 0,
       state: options.state ? options.state : 0,
-      another: options.another ? options.another : 0
+      another: options.another ? options.another : 0,
+      power_arr: Page.data.power_arr ? Page.data.power_arr : '',
+      user: Page.data.user ? Page.data.user : '',
     })
   },
 

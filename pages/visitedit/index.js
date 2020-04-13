@@ -133,7 +133,7 @@ Page({
       this.setData({
         patient:{
           customerid: Page.data.patdetails != '' ? Page.data.patdetails.customerid : Page.data.visit.customerid,
-          name: Page.data.patdetails != '' ? Page.data.patdetails.name : Page.data.visit.customername,
+          patientname: Page.data.patdetails != '' ? Page.data.patdetails.name : Page.data.visit.customername,
           clinicuniqueid: Page.data.patdetails != '' ? Page.data.patdetails.clinicuniqueid : Page.data.visit.clinicid,
         },
         doctor:{

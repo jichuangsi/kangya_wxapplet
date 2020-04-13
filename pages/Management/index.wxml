@@ -5,11 +5,11 @@
       <van-icon name="plus" slot="right" size="36rpx" />
     </van-nav-bar>
   </view> -->
-  <view class="top_right" bindtap="onClickRight" wx:if="{{power_arr[28].has}}">
+  <view class="top_right" bindtap="onClickRight" wx:if="{{power_arr.code10102.has}}">
     <van-icon name="plus" size="36rpx" />
   </view>
   <view class="center">
-    <view class="libox" wx:for="{{arr}}" wx:if="{{power_arr[18].has}}">
+    <view class="libox" wx:for="{{arr}}" wx:if="{{power_arr.code10101.has}}">
       <view class="li">
         <image class="img" src="../../images/clinic_colleagues_headportrait_male.png"></image>
         <view class="name">{{item.examdoct}}</view>
@@ -89,7 +89,7 @@
         </view>
       </view>
     </view>
-        <view class="wu" wx:if="{{arr.length==0||!power_arr[18].has}}">
+        <view class="wu" wx:if="{{arr.length==0||!power_arr.code10101.has}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>

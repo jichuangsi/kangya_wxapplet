@@ -16,7 +16,9 @@ Page({
     visitresult: '',
     Voicefile: [],
     visit:'',
-    patdetails:''
+    patdetails: '',
+    power_arr: [],
+    user: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -83,7 +85,9 @@ Page({
       visitresult: item.visitresult,
       Voicefile: item.Voicefile,
       visit: item,
-      patdetails: Page.data.patdetails ? Page.data.patdetails : ''
+      patdetails: Page.data.patdetails ? Page.data.patdetails : '',
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
     })
   },
 

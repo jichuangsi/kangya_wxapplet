@@ -39,7 +39,7 @@
       <van-switch checked="{{ checked }}" active-color="#16c7ae"
   inactive-color="#f2f2f2" bind:change="onChange" /></view>
     </view>
-    <view class="li" bindtap="achievementgo">
+    <view class="li" bindtap="achievementgo" wx:if="{{power_arr.code10803.has||power_arr.code10801.has}}">
       <view>业绩</view>
       <van-icon name="arrow" size="36rpx" />
     </view>    

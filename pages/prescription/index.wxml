@@ -5,7 +5,7 @@
       <van-icon name="setting-o" slot="right" size="36rpx" />
     </van-nav-bar>
   </view> -->
-  <view class="top_right" bindtap="onClickRight" wx:if="{{power_arr[41].has}}">
+  <view class="top_right" bindtap="onClickRight" wx:if="{{power_arr.code10104.has}}">
     <van-icon name="setting-o" size="36rpx" />
   </view>
   <view class="center">

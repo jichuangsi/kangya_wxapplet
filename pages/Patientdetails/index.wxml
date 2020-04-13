@@ -96,7 +96,7 @@
         <van-icon name="edit" />
         编辑分组
       </view>
-      <view bindtap="delPatient">
+      <view bindtap="delPatient" wx:if="{{power_arr.code10004.has||power_arr.code10008.has}}">
         <image src="../../images/returnvisit_icon_thename_default.png"></image>
         删除患者
       </view>

@@ -5,16 +5,16 @@
       <van-icon name="plus" slot="right" size="36rpx" />
     </van-nav-bar>
   </view> -->
-  <view class="top_right" bindtap="onClickRight">
-    <van-icon name="plus" size="36rpx" />
+  <view class="top_right" bindtap="onClickRight" wx:if="{{power_arr.code10502.has}}">
+    <van-icon name="plus" color="#fff" size="36rpx" />
   </view>
   <view class="center">
-    <view class="libox" wx:for="{{arr}}" data-item="{{item}}" bindtap="Consultationgo">
+    <view class="libox" wx:for="{{arr}}" wx:if="{{power_arr.code10501.has}}" data-item="{{item}}" bindtap="Consultationgo">
       <view class="li">
         <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
         <view class="text">{{patdetails.name}}</view>
         <view class="time">{{item.faceconsultdatetime}}</view>
-        <image class="del" src="../../images/del.png" data-item="{{item}}" catchtap="del"></image>
+        <image class="del" src="../../images/del.png" data-item="{{item}}" wx:if="{{power_arr.code10503.has}}"  catchtap="del"></image>
       </view>
       <view class="li">
         <view class="green">沟通记录</view>

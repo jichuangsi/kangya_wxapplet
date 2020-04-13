@@ -37,7 +37,7 @@
         <view>欠款</view>
       </view>
     </view>
-    <view class="center_libox" wx:for="{{billinfo}}">
+    <view class="center_libox" wx:for="{{billinfo}}" wx:if="{{power_arr.code10201.has}}">
       <image class="stateimg" src="../../images/details_chargel_icon_pricing.png"></image>
       <view class="center_li">
         <view class="text">开单时间</view>

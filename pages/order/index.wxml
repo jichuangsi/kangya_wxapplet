@@ -8,19 +8,21 @@
   </view> -->
   
 
-  <view class="top_right" bindtap="onClickRight">
-    <van-icon name="calender-o" size="36rpx" wx:if="{{title=='预约列表'}}" />
-    <van-icon name="plus" size="36rpx" wx:if="{{title!='预约列表'}}" />
+  <view class="top_right" bindtap="onClickRight"  wx:if="{{state!='预约列表'&&(power_arr.code10602.has||power_arr.code10605.has)}}">
+    <van-icon name="plus" size="36rpx" wx:if="{{power_arr.code10603.has||power_arr.code10606.has}}" />
+  </view>
+  <view class="top_right" bindtap="onClickRight" wx:if="{{title=='预约列表'}}">
+    <van-icon name="calender-o" size="36rpx" />
   </view>
   <view class="center">
     <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable wx:if="{{title=='预约列表'}}">
       <van-tab title="网络预约" name="网络预约">
-        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
+        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{power_arr.code10602.has||power_arr.code10605.has}}">
           <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
             <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
-            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" data-item="{{item}}" catchtap="del"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" data-item="{{item}}" catchtap="del"></image>
             </view>
             <view class="text_li">
               <image src="../../images/4.png"></image>
@@ -42,7 +44,7 @@
             </view>
           </view>
         </view>
-        <view class="wu" wx:if="{{order_arr.length==0}}">
+        <view class="wu" wx:if="{{order_arr.length==0||(!power_arr.code10602.has||!power_arr.code10605.has)}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>
@@ -54,12 +56,12 @@
         <view class="top_time_box">
           <calendar id="calendar2" calendarConfig="{{calendarConfig2}}" bind:afterTapDay="afterTapDay2" bind:afterCalendarRender="afterCalendarRender2"></calendar>
         </view>
-        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{state3=='医生'||state3=='全部'||state3==item.doctorname}}">
+        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{state3=='医生'||state3=='全部'||state3==item.doctorname||(power_arr.code10602.has||power_arr.code10605.has)}}">
           <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
             <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
-            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" catchtap="del"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" catchtap="del"></image>
             </view>
             <view class="text_li">
               <image src="../../images/4.png"></image>
@@ -81,7 +83,7 @@
             </view>
           </view>
         </view>
-        <view class="wu" wx:if="{{order_arr.length==0}}">
+        <view class="wu" wx:if="{{order_arr.length==0||(!power_arr.code10602.has||!power_arr.code10605.has)}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>
@@ -94,12 +96,12 @@
       </van-tab>
     </van-tabs>
     <view wx:if="{{title=='明日预约'}}">
-        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
+        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{power_arr.code10602.has||power_arr.code10605.has}}">
           <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
             <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
-            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" catchtap="del"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" catchtap="del"></image>
             </view>
             <view class="text_li">
               <image src="../../images/4.png"></image>
@@ -121,18 +123,18 @@
             </view>
           </view>
         </view>
-        <view class="wu" wx:if="{{order_arr.length==0}}">
+        <view class="wu" wx:if="{{order_arr.length==0||(!power_arr.code10602.has||!power_arr.code10605.has)}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>
     </view>
     <view wx:if="{{title=='预约'}}">
-        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
+        <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{power_arr.code10602.has||power_arr.code10605.has}}">
           <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
             <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
             <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
-            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" catchtap="del"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" catchtap="del"></image>
             </view>
             <view class="text_li">
               <image src="../../images/4.png"></image>
@@ -154,7 +156,7 @@
             </view>
           </view>
         </view>
-        <view class="wu" wx:if="{{order_arr.length==0}}">
+        <view class="wu" wx:if="{{order_arr.length==0||(!power_arr.code10602.has||!power_arr.code10605.has)}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>

@@ -10,7 +10,7 @@
     <view class="box" bindtap="Patientgo">
       <van-icon name="contact" />
       <view class="text">患者姓名</view>
-      <view>{{patient.name}}</view>
+      <view>{{patient.patientname}}</view>
     </view>
     <view class="xian"></view>
     <view class="box" bindtap="showpoup">

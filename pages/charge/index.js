@@ -11,7 +11,9 @@ Page({
     pageIndex:1,
     patientfee: '',
     sumlist: '',
-    billinfo:[]
+    billinfo: [],
+    power_arr: [],
+    user: '',
   },
   onClickLeft(){
     wx.navigateBack({
@@ -70,7 +72,9 @@ Page({
     let Page = pages[pages.length - 2];
     this.setData({
       customerid: Page.data.customerid,
-      clinicid: Page.data.clinicid
+      clinicid: Page.data.clinicid,
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
     })
     this.getdata()
   },

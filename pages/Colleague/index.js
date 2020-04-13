@@ -11,7 +11,9 @@ Page({
     project_list: [],
     pageIndex:1,
     another:0,
-    index:''
+    index: '',
+    power_arr: [],
+    user: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -121,11 +123,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
     this.setData({
       state: options.state ? options.state:0,
       title: options.title ? options.title :'同事',
       another: options.another ? options.another:0,
-      index: options.index ? options.index : ''
+      index: options.index ? options.index : '',
+      power_arr: Page.data.power_arr ? Page.data.power_arr:'',
+      user: Page.data.user ? Page.data.user : '',
     })
     wx.setNavigationBarTitle({
       title: options.title ? options.title : '同事'

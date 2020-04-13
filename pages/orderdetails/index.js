@@ -80,8 +80,12 @@ Page({
       title: '预约详情'
     })
     let item = JSON.parse(options.item)
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
     this.setData({
-      item: item
+      item: item,
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
     })
     console.log(item)
   },

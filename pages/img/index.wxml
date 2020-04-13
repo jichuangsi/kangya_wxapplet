@@ -4,9 +4,9 @@
     <van-icon name="eye-o" slot="right" size="36rpx" />
   </view>
   <view class="box" wx:if="{{title=='影像'}}">
-    <view class="center">
-      <image src="{{item.url}}" wx:for="{{arr}}" data-item="{{item}}" bindtap="imgclick"></image>
-        <view class="wu" wx:if="{{arr.length==0}}">
+    <view class="center" >
+      <image src="{{item.url}}" wx:for="{{arr}}" wx:if="{{power_arr.code10301.has}}" data-item="{{item}}" bindtap="imgclick"></image>
+        <view class="wu" wx:if="{{arr.length==0||!power_arr.code10301.has}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>

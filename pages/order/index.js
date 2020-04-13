@@ -35,7 +35,9 @@ Page({
     patdetails:'',
     doctor_arr:'',
     doctorid:'',
-    order_state:''
+    order_state: '',
+    power_arr: [],
+    user: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -245,7 +247,9 @@ Page({
     this.setData({
       bengindate: year + '/' + month + '/' + day,
       enddate: year + '/' + month + '/' + day,
-      patdetails: Page.data.patdetails
+      patdetails: Page.data.patdetails,
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
     })
     this.doSomeThing()
     this.getdata()

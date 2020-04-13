@@ -33,7 +33,9 @@ Page({
     customerid: '',
     clinicid: '',
     patdetails: '',
-    date:''
+    date: '',
+    power_arr: [],
+    user: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -228,6 +230,8 @@ Page({
       customerid: Page.data.customerid ? Page.data.customerid:'',
       clinicid: Page.data.clinicid ? Page.data.clinicid : '',
       patdetails: Page.data.patdetails ? Page.data.patdetails : '',
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
     })
     console.log(this.data.patdetails)
     this.getdata()

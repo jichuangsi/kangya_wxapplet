@@ -17,7 +17,7 @@
     </view>
   </view>
   <view class="center" wx:if="{{nav1=='是否欠费'&&nav2=='就诊项目'&&nav3=='会员等级'&&nav4=='咨询师'}}">
-    <view class="li_box" data-index="{{first_index+1}}" data-id="{{item.dictionaryidentity}}" bindtap="li_box_click" wx:for="{{grouping_arr}}" wx:for-index="first_index">
+    <view class="li_box" data-index="{{first_index+1}}" data-id="{{item.dictionaryidentity}}" bindtap="li_box_click" wx:for="{{grouping_arr}}" wx:for-index="first_index"  wx:if="{{power_arr.code10006.has}}">
       <view class="title">
         <van-icon name="arrow" />
         <view class="text">{{item.dictionaryname}}</view>
@@ -51,7 +51,7 @@
   </view>
   <view class="center" wx:if="{{nav1!='是否欠费'||nav2!='就诊项目'||nav3!='会员等级'||nav4!='咨询师'}}">
       <view class="li_box">
-        <view class="li" wx:for="{{patient_arr}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" data-item="{{item}}" catchtap="Patientclick">
+        <view class="li" wx:for="{{patient_arr}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" data-item="{{item}}" catchtap="Patientclick"  wx:if="{{power_arr.code10006.has}}">
           <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
           <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
           <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>

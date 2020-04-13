@@ -14,7 +14,10 @@ Page({
     state:0,
     color_arr:[],
     first_index:0,
-    index:0
+    index: 0,
+    power_arr: [],
+    user: '',
+    month:3
   },
   onClickLeft() {
     wx.navigateBack({
@@ -47,6 +50,7 @@ Page({
     }
     this.setData({
       time_arr:arr,
+      month: month
       // data_arr:arr1
     })
     console.log(this.arr1)
@@ -70,9 +74,16 @@ Page({
   },
   stateclick(e) {
     console.log(e)
-    this.setData({
-      state: e.currentTarget.dataset.index
-    })
+    if (this.data.power_arr.code10610.has) {
+      this.setData({
+        state: e.currentTarget.dataset.index
+      })
+    }else{
+      wx.showToast({
+        icon:'none',
+        title: '暂无权限',
+      })
+    }
     console.log(this.data.state)
   },
   colorclick(e) {
@@ -94,10 +105,34 @@ Page({
       arr[this.data.first_index].scheduling[this.data.index].workshiftcolor = ''
       arr[this.data.first_index].scheduling[this.data.index].workshiftname = ''
     }
+    console.log(arr[this.data.first_index])
     this.setData({
       data_arr:arr
     })
+    this.setweek(arr[this.data.first_index], e.currentTarget.dataset.item)
     this.onClose()
+  },
+  setweek(item,item1) {
+    let a = new Date()
+    let year = a.getFullYear()
+    let month = a.getMonth() + 1
+    let time = year + '-' + month + '-' + item.scheduling[this.data.index].workshiftdate
+    wx.request({
+      url: getApp().data.APIS + '/schedule/schedulingset',
+      method: 'post',
+      data: {
+        "worktype": 0, 
+        "scheduling": JSON.stringify([{ "doctorid": item.doctorid, "datestr": time, "workshiftidentity": item1 ? item1.workshiftidentity : '', "revoked": item1 ? 0 : 1 }])
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+        }
+      }
+    })
   },
   getdata(duty){
     let self = this
@@ -164,6 +199,12 @@ Page({
     this.datatime()
     wx.setNavigationBarTitle({
       title:'排班'
+    })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    this.setData({
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
     })
     this.getdata()
   },

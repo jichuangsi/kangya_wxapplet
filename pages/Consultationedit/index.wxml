@@ -95,8 +95,8 @@
     <view class="xian"></view>
     <view class="btn green" wx:if="{{title!='修改咨询'}}" bindtap="onClickRight">完成</view>
     <view class="btn" wx:if="{{title=='修改咨询'}}">
-      <view class="green" bindtap="onClickRight">完成</view>
-      <view bindtap="del">删除</view>
+      <view class="green" bindtap="onClickRight" wx:if="{{power_arr.code10502.has}}">完成</view>
+      <view bindtap="del" wx:if="{{power_arr.code10503.has}}">删除</view>
     </view>
   </view>
   <van-popup show="{{ show }}" bind:close="onClose"

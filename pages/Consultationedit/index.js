@@ -26,7 +26,9 @@ Page({
     },
     doctor:'',
     doctor1:'',
-    patienta:''
+    patienta: '',
+    power_arr: [],
+    user: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -156,7 +158,9 @@ Page({
         doctor_name: item.facerecordername,
         doctor:{
           name: item.facerecordername,
-        }
+        },
+        power_arr: Page.data.power_arr,
+        user: Page.data.user,
       })
     }
   },

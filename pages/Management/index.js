@@ -37,7 +37,7 @@ Page({
   },
   editgo(e) {
     //  && e.currentTarget.dataset.item.doctoridexam == this.data.userid
-    if (this.data.power_arr[42].has || (this.data.power_arr[28].has)) {
+    if (this.data.power_arr.code10103.has || (this.data.power_arr.code10102.has)) {
       wx.navigateTo({
         url: '../Managementedit/index?title=修改处置&&item=' + JSON.stringify(e.currentTarget.dataset.item),
       })
@@ -51,7 +51,7 @@ Page({
   },
   Pricego(e) {
     //  && e.currentTarget.dataset.item.doctoridexam == this.data.userid
-    if (this.data.power_arr[42].has || (this.data.power_arr[28].has)) {
+    if (this.data.power_arr.code10103.has || (this.data.power_arr.code10102.has)) {
       wx.navigateTo({
         url: '../Price/index?title=划价&&item=' + JSON.stringify(e.currentTarget.dataset.item),
       })

@@ -10,7 +10,9 @@ Page({
     arr:[],
     name:'',
     sex:'',
-    patdetails:'',
+    patdetails: '',
+    power_arr: [],
+    user: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -143,7 +145,9 @@ Page({
     this.setData({
       name: prevPage.data.patdetails.name,
       sex: prevPage.data.patdetails.sex,
-      patdetails: prevPage.data.patdetails
+      patdetails: prevPage.data.patdetails,
+      power_arr: prevPage.data.power_arr,
+      user: prevPage.data.user,
     })
   },
 

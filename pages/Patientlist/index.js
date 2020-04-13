@@ -30,7 +30,9 @@ Page({
     patient_arr:[],
     li_num:1,
     pageIndex:1,
-    pagetotal:0
+    pagetotal: 0,
+    power_arr: [],
+    user: ''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -248,7 +250,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ state: options.state ? options.state : 0 })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    this.setData({
+      state: options.state ? options.state : 0,
+      power_arr: Page.data.power_arr,
+      user: Page.data.user
+    })
     wx.setNavigationBarTitle({
       title: '患者'
     })
