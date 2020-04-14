@@ -17,6 +17,15 @@ Page({
     state1: '处理状态',
     state2: '状态',
     state3: '医生',
+    nav1_state: '',
+    nav1_arr: [
+      { id: '', name: '全部' },
+      { id: '1', name: '已预约' },
+      { id: '1', name: '已确定' },
+      { id: '2', name: '已过期' },
+      { id: '3', name: '已到达' },
+      { id: '8', name: '已流失' },
+    ],
     bengindate: '',
     enddate: '',
     showbottom: false,
@@ -157,7 +166,7 @@ Page({
     this.setData({ state1: e.currentTarget.dataset.text, showbottom: false })
   },
   numclick1(e) {
-    this.setData({ state2: e.currentTarget.dataset.text, showbottom: false, order_state: e.currentTarget.dataset.state })
+    this.setData({ state2: e.currentTarget.dataset.text, showbottom: false, nav1_state: e.currentTarget.dataset.id })
   },
   numclick2(e) {
     this.setData({ state3: e.currentTarget.dataset.text, showbottom: false })
@@ -211,6 +220,9 @@ Page({
       }
     })
 
+  },
+  getdoctor() {
+    let self = this
     wx.request({
       url: getApp().data.APIS + '/schedule/microlettercondition',
       method: 'post',
@@ -253,6 +265,7 @@ Page({
     })
     this.doSomeThing()
     this.getdata()
+    this.getdoctor()
   },
 
   /**

@@ -1,4 +1,6 @@
 // pages/worksearch/index.js
+var today_date = new Date()
+var today_time = today_date.getFullYear() + "-" + (today_date.getMonth() + 1) + "-" + today_date.getDate()
 Page({
 
   /**
@@ -9,13 +11,28 @@ Page({
     state:0,
     nav1: '状态',
     nav2: '医生',
-    time:'',
+    nav1_state: '',
+    time: today_time + '~' + today_time,
     nav_num: 1,
-    nav1_arr: ['全部', '已预约', '已确定', '已到达', '已流失'],
+    nav1_arr: [
+      { id: '', name: '全部' },
+      { id: '1', name: '已预约' },
+      { id: '1', name: '已确定' },
+      { id: '2', name: '已过期' },
+      { id: '3', name: '已到达' },
+      { id: '8', name: '已流失' },
+    ],
+    nav3_arr: [
+      { id: '', name: '全部' },
+      { id: '3', name: '待回访' },
+      { id: '4', name: '已回访' },
+      { id: '5', name: '待跟进' },
+    ],
     nav2_arr: ['全部'],
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
+      defaultDay: today_time,
       chooseAreaMode: true,
     },
     show:false,
@@ -23,7 +40,9 @@ Page({
     enddate: '',
     arr:[],
     order_arr:[],
-    doctorid:''
+    doctorid: '',
+    power_arr: [],
+    user: '',
   },
   showPopup(e) {
     this.setData({ show: true, nav_num: e.currentTarget.dataset.index });
@@ -33,16 +52,19 @@ Page({
   },
   nav1click(e) {
     this.setData({
-      nav1: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '状态'
+      nav1: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '状态',
+      nav1_state: e.currentTarget.dataset.id
     })
     this.onClose()
+    this.searchclick()
   },
   nav2click(e) {
     this.setData({
-      nav2: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : '医生',
+      nav2: e.currentTarget.dataset.text != '全部' ? e.currentTarget.dataset.text : this.data.state == 1 ? '医生':'回访人',
       doctorid: e.currentTarget.dataset.doctorid
     })
     this.onClose()
+    this.searchclick()
   },
 
   doSomeThing() {
@@ -53,11 +75,12 @@ Page({
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
     let arr = this.calendar.getSelectedDay()
     this.setData({
-      time:  arr[0].month + '月' + arr[0].day + '日' + '~' +  arr[arr.length - 1].month + '月' + arr[arr.length - 1].day + '日',
+      time: arr[0].year + '-' + arr[0].month + '-' + arr[0].day + '~' + arr[arr.length - 1].year + '-' + arr[arr.length - 1].month + '-' + arr[arr.length - 1].day,
       bengindate: arr[0].year + '-' + arr[0].month + '-' + arr[0].day,
       enddate: arr[arr.length - 1].year + '-' + arr[arr.length - 1].month + '-' + arr[arr.length - 1].day
     })
     this.onClose()
+    this.searchclick()
   },
   getdata(){
     let self = this
@@ -66,16 +89,16 @@ Page({
         url: getApp().data.APIS + '/returnvisit/visitlist',
         method: 'post',
         data: {
-          begindate: self.data.time,
-          enddate: self.data.time,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate,
           visitperson: "",
           impressioninfo: "",
           totalcount: "-1",
           studyitem: "",
           consultname: "",
           pageno: "1",
-          doctorid: "",
-          visitdata: "",
+          doctorid: self.data.doctorid,
+          visitdata: self.data.nav1_state,
           visitpersonname: "全部",
           pagesize: "10",
           clinicid: "",
@@ -97,11 +120,21 @@ Page({
   getorder(){
     let self = this
     wx.request({
-      url: getApp().data.APIS + '/schedule/scscheduleday',
+      url: getApp().data.APIS + '/schedule/scschedulelist',
       method: 'post',
       data: {
-        bengindate: self.data.bengindate,
-        enddate: self.data.enddate
+        "begindate": self.data.bengindate, 
+        "enddate": self.data.enddate, 
+        "pageno": 1, 
+        "pagesize": 20, 
+        "doctorid": self.data.doctorid, 
+        "departmentid": "", 
+        "counselor": "", 
+        "totalcount": -1, 
+        "status": self.data.nav1_state, 
+        "issche": "1",
+        "cancelstatus": "", 
+        "keyword": ""
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -109,21 +142,21 @@ Page({
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {
-          let arr = []
-          for (let i = 0; i < res.data.list.length; i++) {
-            console.log(res.data.list[i].schedule)
-            if (res.data.list[i].schedule) {
-              for (let j = 0; j < res.data.list[i].schedule.length; j++) {
-                if (self.data.title == '预约') {
-                  if (res.data.list[i].schedule[j].customerid == patdetails.customerid) {
-                    arr.push(res.data.list[i].schedule[j])
-                  }
-                } else {
-                  arr.push(res.data.list[i].schedule[j])
-                }
-              }
-            }
-          }
+          let arr = res.data.list
+          // for (let i = 0; i < res.data.list.length; i++) {
+          //   console.log(res.data.list[i].schedule)
+          //   if (res.data.list[i].schedule) {
+          //     for (let j = 0; j < res.data.list[i].schedule.length; j++) {
+          //       if (self.data.title == '预约') {
+          //         if (res.data.list[i].schedule[j].customerid == patdetails.customerid) {
+          //           arr.push(res.data.list[i].schedule[j])
+          //         }
+          //       } else {
+          //         arr.push(res.data.list[i].schedule[j])
+          //       }
+          //     }
+          //   }
+          // }
           console.log(arr)
           self.setData({
             order_arr: arr
@@ -252,8 +285,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
     this.setData({
-      state:options.state
+      state:options.state,
+      nav2: options.state == 1 ? '医生' : '回访人',
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
     })
     this.getdoctor()
   },

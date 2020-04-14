@@ -333,7 +333,7 @@ Page({
       series: [{
         name: '',
         data: self.data.day_arr,
-        color: '#02ada0',
+        color: '#01c7b5',
         format: function (val) {
           return '';
         }
@@ -369,7 +369,7 @@ Page({
       series: [{
         name: '',
         data: self.data.month_arr,
-        color: '#02ada0',
+        color: '#01c7b5',
         format: function (val) {
           return '';
         }
@@ -405,7 +405,7 @@ Page({
       series: [{
         name: '',
         data: self.data.year_arr,
-        color: '#02ada0',
+        color: '#01c7b5',
         format: function (val) {
           return '';
         }

@@ -177,11 +177,7 @@
     <view catchtap="numclick" data-state="2" data-text="已取消">已取消</view>
   </view>
   <view class="popupbox" wx:if="{{num == 1}}">
-    <view catchtap="numclick1" data-state="" data-text="全部">全部</view>
-    <view catchtap="numclick1" data-state="0" data-text="已预约">已预约</view>
-    <view catchtap="numclick1" data-state="1" data-text="已确认">已确认</view>
-    <view catchtap="numclick1" data-state="2" data-text="已送达">已送达</view>
-    <view catchtap="numclick1" data-state="3" data-text="已流失">已流失</view>
+    <view catchtap="numclick1" data-id="{{item.id}}" data-text="{{item.name}}" wx:for="{{nav1_arr}}">{{item.name}}        </view>
   </view>
   <view class="popupbox" wx:if="{{num == 2}}">
     <view catchtap="numclick2" data-id="" data-text="全部">全部</view>

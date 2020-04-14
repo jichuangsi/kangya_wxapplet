@@ -43,7 +43,7 @@
   display: flex;
   border-bottom: 1rpx solid #f2f2f2;
 }
-.nav view {
+.nav .nav_div {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -51,6 +51,7 @@
   padding: 10rpx 0rpx;
   box-sizing: border-box;
   white-space:nowrap;
+  font-size: 26rpx;
 }
 van-popup view {
   line-height: 56rpx;
@@ -246,4 +247,20 @@ margin-top: 5rpx;
   color: #fff;
   margin: 20rpx auto;
   padding: 0rpx 20rpx;
+}
+van-icon {
+  margin-left: 10rpx;
+}
+.wu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 30rpx;
+  margin-top: 60rpx;
+}
+.wu image {
+  width: 213rpx;
+  height: 170rpx;
 }

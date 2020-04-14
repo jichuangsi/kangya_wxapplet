@@ -1,15 +1,17 @@
 <!--index.wxml-->
 <view class="index">
 <view class="namebox" bindtap="showPopup">
-  <van-image
+  <!-- <van-image
   round
   width="68rpx"
   height="68rpx"
-  src="https://img.yzcdn.cn/vant/cat.jpeg"
+  src="../../images/logo.png"
   />
   <view class="name">
     {{name}}
-  </view>
+  </view> -->
+  <image src="../../images/logo.png"></image>
+  <view class="name"></view>
   <van-icon name="plus" catchtap="showPopupleft" />
 </view>
   <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true'>
@@ -87,32 +89,32 @@
   </van-popup>
   <van-grid border="{{borderstate}}">
     <van-grid-item icon="../../../images/clinic_workbench_icon_patient.png" text="患者" link-type="navigateTo"
-    url="/pages/Patientlist/index" wx:if="{{nav_arr[0].state}}" />
+    url="/pages/Patientlist/index" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_reservation.png" text="预约" link-type="navigateTo"
-    url="/pages/order/index?title=预约列表" wx:if="{{nav_arr[1].state}}"/>
+    url="/pages/order/index?title=预约列表" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_returnvisit.png" text="回访" link-type="navigateTo"
-    url="/pages/visit/index?state=0" wx:if="{{nav_arr[2].state}}"/>
+    url="/pages/visit/index?state=0" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_colleague.png" text="同事" link-type="navigateTo"
-    url="/pages/Colleague/index" wx:if="{{nav_arr[3].state}}"/>
+    url="/pages/Colleague/index" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_scheduling.png" text="排班" link-type="navigateTo"
-    url="/pages/Scheduling/index" wx:if="{{nav_arr[4].state}}"/>
+    url="/pages/Scheduling/index" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_website.png" text="微官网" link-type="navigateTo"
-    url="/pages/W_index/index?title={{name}}" wx:if="{{nav_arr[5].state}}"/>
+    url="/pages/W_index/index?title={{name}}" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_marketing.png" text="营销" link-type="navigateTo"
-    url="/pages/Marketing/index" wx:if="{{nav_arr[6].state}}"/>
+    url="/pages/Marketing/index" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_activity.png" text="活动" link-type="navigateTo"
-    url="/pages/activity/index" wx:if="{{nav_arr[7].state}}"/>
+    url="/pages/activity/index" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_operating.png" text="运营中心" link-type="navigateTo"
-    url="/pages/eroc/index?title={{name}}" wx:if="{{nav_arr[8].state}}"/>
-    <van-grid-item icon="../../../images/clinic_workbench_icon_mall.png" text="商城" bind:click="shopinggo" wx:if="{{power_arr.code10901.has}}"/>
+    url="/pages/eroc/index?title={{name}}" />
+    <van-grid-item class="shop" icon="../../../images/kyshop.png" text="康牙商城" bind:click="shopinggo" wx:if="{{power_arr.code10901.has}}"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_communication.png" text="医患沟通" link-type="navigateTo"
-    url="/pages/PriceList/index?title=医患沟通视频" wx:if="{{nav_arr[10].state}}"/>
+    url="/pages/PriceList/index?title=医患沟通视频"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_dentist.png" text="看牙无忧" link-type="navigateTo"
-    url="/pages/PriceList/index?title=看牙无忧" wx:if="{{nav_arr[11].state}}"/>
+    url="/pages/PriceList/index?title=看牙无忧"/>
     <van-grid-item icon="../../../images/clinic_workbench_icon_approval.png" text="审批" link-type="navigateTo"
-    url="/pages/Approval/index" wx:if="{{nav_arr[12].state}}"/>
+    url="/pages/Approval/index" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_price.png" text="价目表" link-type="navigateTo"
-    url="/pages/PriceList/index?title=价目表" wx:if="{{nav_arr[13].state}}"/>
+    url="/pages/PriceList/index?title=价目表"/>
   </van-grid>
     <foot footnum="0"></foot>
 </view>

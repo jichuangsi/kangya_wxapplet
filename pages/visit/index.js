@@ -15,7 +15,14 @@ Page({
     num: 0,
     state:0,
     state2: '状态',
-    state3: '医生',
+    state3: '回访人',
+    nav1_state:'',
+    nav1_arr: [
+      { id: '', name: '全部' },
+      { id: '3', name: '待回访' },
+      { id: '4', name: '已回访' },
+      { id: '5', name: '待跟进' },
+    ],
     time:'',
     showbottom: false,
     calendarConfig: {
@@ -34,6 +41,7 @@ Page({
     clinicid: '',
     patdetails: '',
     date: '',
+    doctor_arr:'',
     power_arr: [],
     user: '',
   },
@@ -149,11 +157,12 @@ Page({
     this.setData({ showbottom: false })
   },
   numclick1(e) {
-    this.setData({ state2: e.currentTarget.dataset.text, showbottom: false })
+    this.setData({ state2: e.currentTarget.dataset.text, showbottom: false, nav1_state: e.currentTarget.dataset.id })
+    this.getdata()
   },
   numclick2(e) {
-    this.setData({ state3: e.currentTarget.dataset.text, showbottom: false })
-    console.log(this.data.state3)
+    this.setData({ state3: e.currentTarget.dataset.text, showbottom: false, doctorid: e.currentTarget.dataset.id })
+    this.getdata()
   },
   addgo() {
     wx.navigateTo({
@@ -180,8 +189,8 @@ Page({
           studyitem: "",
           consultname: "",
           pageno: "1",
-          doctorid: "",
-          visitdata: "",
+          doctorid: self.data.doctorid,
+          visitdata: self.data.nav1_state,
           visitpersonname: "全部",
           pagesize: "10",
           clinicid: "",
@@ -216,6 +225,27 @@ Page({
       })
     }
   },
+
+  getdoctor() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/schedule/microlettercondition',
+      method: 'post',
+      data: {
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            doctor_arr: res.data.list.schdoctor
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -235,6 +265,7 @@ Page({
     })
     console.log(this.data.patdetails)
     this.getdata()
+    this.getdoctor()
   },
 
   /**

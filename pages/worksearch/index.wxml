@@ -7,9 +7,9 @@
     </view>
   </view>
     <view class="nav">
-      <view data-index="1" bindtap="showPopup">{{nav1}}<van-icon name="arrow-down" /></view>
-      <view data-index="2" bindtap="showPopup">{{nav2}}<van-icon name="arrow-down" /></view>
-      <view data-index="3" bindtap="showPopup">{{time}}<van-icon name="arrow-down" /></view>
+      <view class="nav_div" data-index="1" bindtap="showPopup">{{nav1}}<van-icon name="arrow-down" /></view>
+      <view class="nav_div" data-index="2" bindtap="showPopup">{{nav2}}<van-icon name="arrow-down" /></view>
+      <view class="nav_div" data-index="3" bindtap="showPopup">{{time}}<van-icon name="arrow-down" /></view>
     </view>
     
       <view class="li_box" wx:if="{{state == 0}}">
@@ -43,6 +43,10 @@
               </view>
               <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
             </view>
+        <view class="wu" wx:if="{{arr.length == 0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
       </view>
       <view class="li_box" wx:if="{{state == 1}}">
         <view class="order_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
@@ -71,6 +75,10 @@
               <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
             </view>
           </view>
+        </view> 
+        <view class="wu" wx:if="{{order_arr.length == 0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
         </view>
       </view>
     
@@ -78,8 +86,10 @@
   position="top"
   bind:close="onClose"
     >
-    <view wx:for="{{nav1_arr}}" wx:if="{{nav_num == 1}}" data-text="{{item}}" bindtap="nav1click">{{item}}</view>
-    <view wx:for="{{nav2_arr}}" wx:if="{{nav_num == 2}}" data-id="{{item.doctorid}}" data-text="{{item.name}}" bindtap="nav2click">{{item.name}}</view>
+    <view wx:for="{{nav1_arr}}" wx:if="{{nav_num == 1&&state==1}}" data-id="{{item.id}}" data-text="{{item.name}}" bindtap="nav1click">{{item.name}}</view>
+    <view wx:for="{{nav3_arr}}" wx:if="{{nav_num == 1&&state==0}}" data-id="{{item.id}}" data-text="{{item.name}}" bindtap="nav1click">{{item.name}}</view>
+    <view catchtap="nav2click" wx:if="{{nav_num == 2}}" data-id="" data-text="全部">全部</view>
+    <view wx:for="{{nav2_arr}}" wx:if="{{nav_num == 2}}" data-id="{{item.doctorid}}" data-text="{{item.name}}" catchtap="nav2click">{{item.name}}</view>
     <calendar  wx:if="{{nav_num == 3&&show}}" calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
   </van-popup>
 </view>

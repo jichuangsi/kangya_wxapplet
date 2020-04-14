@@ -109,17 +109,11 @@
   position="bottom"
   custom-style="widht: 100%">
   <view class="popupbox" wx:if="{{num == 1}}">
-    <view catchtap="numclick1" data-text="全部">全部</view>
-    <view catchtap="numclick1" data-text="已预约">已预约</view>
-    <view catchtap="numclick1" data-text="已确认">已确认</view>
-    <view catchtap="numclick1" data-text="已送达">已送达</view>
-    <view catchtap="numclick1" data-text="已流失">已流失</view>
+    <view catchtap="numclick1" data-id="{{item.id}}" data-text="{{item.name}}" wx:for="{{nav1_arr}}">{{item.name}}        </view>
   </view>
   <view class="popupbox" wx:if="{{num == 2}}">
-    <view catchtap="numclick2" data-text="全部">全部</view>
-    <view catchtap="numclick2" data-text="李青青">李青青</view>
-    <view catchtap="numclick2" data-text="李医生">李医生</view>
-    <view catchtap="numclick2" data-text="莫医生">莫医生</view>
+    <view catchtap="numclick2" data-id="" data-text="全部">全部</view>
+    <view catchtap="numclick2" data-id="{{item.doctorid}}" data-text="{{item.name}}" wx:for="{{doctor_arr}}">{{item.name}}</view>
   </view>
   </van-popup>
   <van-dialog id="van-dialog" />
