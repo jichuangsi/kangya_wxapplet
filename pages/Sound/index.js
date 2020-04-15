@@ -10,6 +10,7 @@ recorderManager.onStart(() => {
 recorderManager.onFrameRecorded((res) => {
   const { frameBuffer } = res
   console.log('frameBuffer.byteLength', frameBuffer.byteLength)
+  
 })
 
 const options = {
@@ -70,43 +71,65 @@ Page({
         state: 0,
         path: res.tempFilePath
       })
+      wx.getFileSystemManager().readFile({
+        filePath: res.tempFilePath,
+        success: fileStream => {
+        var yourfilename = '45'
+        var fileArray = new Uint8Array(res.data);
+        var start_boundary = '\r\n–yourboundary\r\n' + 'Content - Disposition: form - data; name =“data”; filename = "' + yourfilename+ '"\r\n'+'Content - Type: application / octet - stream' +'\r\n\r\n';
+        var end_boundary = '\r\n–yourboundary–';
+        var startArray = [];
+        for (var i = 0; i < start_boundary.length; i++) {
+          startArray.push(start_boundary.charCodeAt(i));
+        }
+        var endArray = [];
+        for (var i = 0; i < end_boundary.length; i++) {
+          endArray.push(end_boundary.charCodeAt(i));
+        }
+        var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
+      var typedArray = new Uint8Array(totalArray);
+          console.log(totalArray.buffer)
+          wx.request({
+
+            url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/45.txt',
+
+            method: 'PUT',
+            dataType: 'ARRAYBUFFER',
+            header: {
+              'Authorization': 'Basic cHViOnB1YkAxMjM=',
+              'Content-Type': 'multipart/form-data',
+            },
+
+            data: totalArray.buffer,
+
+            processData: false,
+
+            success: function (res) {
+
+              console.log(res);
+              wx.showToast({
+                title: '上传成功',
+              })
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1,
+                })
+              }, 1000)
+            },
+
+            fail: function (err) {
+
+              console.log("失败");
+
+            }
+
+          })
+        }
+      })
+
       console.log(res.tempFilePath.substring(res.tempFilePath.length - 6))
       var file = res.tempFilePath;
-      wx.request({
-
-        url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/45.txt',
-
-        method: 'PUT',
-        dataType:'ARRAYBUFFER',
-        header: {
-          'Authorization': 'Basic cHViOnB1YkAxMjM=',
-          'Content-Type': 'multipart/form-data',
-        },
-
-        data: { 'file': file},
-
-        processData: false,
-
-        success: function (res) {
-
-          console.log(res);
-          wx.showToast({
-            title: '上传成功',
-          })
-          setTimeout(function(){
-            wx.navigateBack({
-              delta: 1,
-            })
-          },1000)
-        },
-
-        fail: function (err) {
-
-          console.log("失败");
-
-        }
-
-      })
+      
 
     })
   },
