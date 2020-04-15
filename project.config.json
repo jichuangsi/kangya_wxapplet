@@ -81,8 +81,8 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/Patientlist/index",
-					"pathName": "pages/Patientlist/index",
+					"name": "pages/Sound/index",
+					"pathName": "pages/Sound/index",
 					"query": "title=prescription&&value=&&index=0",
 					"scene": null
 				},
