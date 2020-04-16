@@ -28,7 +28,8 @@ Page({
     month_arr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     year_arr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     power_arr:[],
-    shopshow:''
+    shopshow:'',
+    yjstate:true
   },
   
   //事件处理函数
@@ -123,6 +124,17 @@ Page({
       url: '../Arrears/index',
     })
   },
+  yjgo(e){
+    if (this.data.power_arr.code10802.has){
+      wx.navigateTo({
+        url: '../../component/pages/achievement/index?state=' + e.currentTarget.dataset.index,
+      })
+    } else {
+      wx.navigateTo({
+        url: '../../component/pages/achievement/index?user=' + this.data.user.userid + '&&state=' + e.currentTarget.dataset.index,
+      })
+    }
+  },
   Hospital_click(e){
     console.log(e.currentTarget.dataset.name)
     this.setData({ name: e.currentTarget.dataset.name, id: e.currentTarget.dataset.id })
@@ -176,11 +188,13 @@ Page({
       url: getApp().data.APIS + '/member/Perinfo',
       method: 'post',
       success: function (res) {
+        console.log(1)
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
             user:res.data.list[0]
           })
+          // self.getrole1(res.data.list[0].userid)
           self.getrole(res.data.list[0].userid)
         }
       }
@@ -432,6 +446,23 @@ Page({
       height: 220
     });
   },
+  getrole1(id, role) {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: 'get',
+      data: {
+        plugin: 'setrole',
+        p: '管理员'
+      },
+      success: function (res) {
+        console.log(2)
+        console.log(res)
+        if (res.data.info == 'ok') {
+        }
+      }
+    })
+  },
   getrole(id,role) {
     let self = this
     wx.request({
@@ -439,9 +470,10 @@ Page({
       method: 'get',
       data: {
         plugin: 'getmodulerole',
-        p: id + '|' + (role ? role : '管理员')
+        p: id + '|' + (role ? role : '咨询员')
       },
       success: function (res) {
+        console.log(2)
         console.log(res)
         if (res.data.info == 'ok') {
           let arr = []
@@ -506,8 +538,15 @@ Page({
           }
           console.log(arr)
           console.log(a)
+          let b = true
+          if (a.code10802.has){
+            b = true
+          } else {
+            b = false
+          }
           self.setData({
             power_arr:a,
+            yjstate: b
           })
         }
       }

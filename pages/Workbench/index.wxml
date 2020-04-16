@@ -1,7 +1,7 @@
 <!--pages/Workbench/index.wxml-->
 <view class="Workbench">
-  <view class="li" wx:for="{{arr}}"> 
-    <image src="{{item.img}}"></image>
+  <view class="li" wx:for="{{arr}}" wx:if="{{(item.title=='康牙商城'&&power_arr.code10901.has)||item.title!='康牙商城'}}"> 
+    <image class="{{item.title=='康牙商城'?'ky':''}}" src="{{item.img}}"></image>
     <view class="text">{{item.title}}</view>
     <view class="box">
     <van-icon name="arrow-up" data-index="{{index}}" data-item="{{item}}" bindtap="up"  />

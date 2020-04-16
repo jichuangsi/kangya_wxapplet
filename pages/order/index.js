@@ -171,10 +171,17 @@ Page({
   numclick2(e) {
     this.setData({ state3: e.currentTarget.dataset.text, showbottom: false })
   },
-  addgo(){
-    wx.navigateTo({
-      url: '../orderedit/index?title=添加预约',
-    })
+  addgo() {
+    if (this.data.power_arr.code10603.has) {
+      wx.navigateTo({
+        url: '../orderedit/index?title=添加预约',
+      })
+    } else {
+      wx.showToast({
+        icon: 'none',
+        title: '暂无权限',
+      })
+    }
   },
   searchgo() {
     wx.navigateTo({

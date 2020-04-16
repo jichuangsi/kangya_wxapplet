@@ -26,10 +26,16 @@ Page({
         title: '微官网'
       }, {
         img: '../../images/clinic_workbench_icon_marketing.png',
+        title: '营销'
+      }, {
+        img: '../../images/clinic_workbench_icon_activity.png',
         title: '活动'
       }, {
         img: '../../images/clinic_workbench_icon_operating.png',
         title: '运营中心'
+      }, {
+        img: '../../images/kyshop.png',
+        title: '康牙商城'
       }, {
         img: '../../images/clinic_workbench_icon_mall.png',
         title: '医患沟通'
@@ -43,7 +49,9 @@ Page({
         img: '../../images/clinic_workbench_icon_price.png',
         title: '价目表'
       },
-    ]
+    ],
+    power_arr: [],
+    user: ''
   },
   up(e){
     let index = e.currentTarget.dataset.index
@@ -75,6 +83,12 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '工作台管理'
+    })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    this.setData({
+      power_arr: Page.data.power_arr,
+      user: Page.data.user
     })
   },
 

@@ -154,3 +154,31 @@ van-sidebar {
   font-size: 36rpx;
   line-height: 56rpx;
 }
+.list_nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+.list_nav view {
+  color: #00AAA4;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+}
+.list_m {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20rpx 0rpx;
+  box-sizing: border-box;
+}
+.list_m view {
+  padding: 3rpx 10rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #f2f2f2;
+  color: #999;
+  margin-left: 10rpx;
+  margin-bottom: 10rpx;
+}
+.list_m .check {
+  color: #00AAA4;
+  border-color: #00AAA4;
+}

@@ -7,23 +7,23 @@
     </van-nav-bar> -->
     <view class="top_right">
       <van-icon class="first_icon" name="search" catchtap="searchgo" size="34rpx"/>
-      <van-icon name="plus" catchtap="addgo"  size="34rpx"/>
+      <van-icon name="plus" catchtap="addgo"  size="34rpx" wx:if="{{power_arr.code10002.has}}"/>
     </view>
     <view class="nav">
       <view data-index="1" bindtap="showPopup">{{nav1}}<van-icon name="arrow-down" /></view>
       <view data-index="2" bindtap="showPopup">{{nav2}}<van-icon name="arrow-down" /></view>
       <view data-index="3" bindtap="showPopup">{{nav3}}<van-icon name="arrow-down" /></view>
-      <view data-index="4"bindtap="showPopup">{{nav4}}<van-icon name="arrow-down" /></view>
+      <view data-index="4" bindtap="showPopup">{{nav4}}<van-icon name="arrow-down" /></view>
     </view>
   </view>
   <view class="center" wx:if="{{nav1=='是否欠费'&&nav2=='就诊项目'&&nav3=='会员等级'&&nav4=='咨询师'}}">
-    <view class="li_box" data-index="{{first_index+1}}" data-id="{{item.dictionaryidentity}}" bindtap="li_box_click" wx:for="{{grouping_arr}}" wx:for-index="first_index"  wx:if="{{power_arr.code10006.has}}">
+    <view class="li_box" data-index="{{first_index+1}}" data-id="{{item.dictionaryidentity}}" bindtap="li_box_click" wx:for="{{grouping_arr}}" wx:for-index="first_index">
       <view class="title">
         <van-icon name="arrow" />
         <view class="text">{{item.dictionaryname}}</view>
-        <view class="num">{{item.patsum}}人</view>
+        <view class="num">{{power_arr.code10006.has?item.patsum:0}}人</view>
       </view>
-      <view class="li" wx:for="{{patient_arr}}" wx:if="{{li_num==first_index+1}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" data-item="{{item}}" catchtap="Patientclick">
+      <view class="li" wx:for="{{patient_arr}}" wx:if="{{li_num==first_index+1&&power_arr.code10006.has}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" data-item="{{item}}" catchtap="Patientclick">
         <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
         <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
         <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>

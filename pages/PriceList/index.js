@@ -15,7 +15,11 @@ Page({
     all_PriceListclick_arr:[],
     videolist_arr: [],
     videolistclick_arr: [],
-    nowitem:''
+    nowitem:'',
+    video_nav:[],
+    videonext_arr:[],
+    next_num: 999,
+    arr_num:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -90,7 +94,13 @@ Page({
   },
   onChangevideo(event){
     console.log(this.data.videolist_arr[event.detail].link)
-    
+    let arr = []
+    arr.push(this.data.videolist_arr[event.detail])
+    this.setData({
+      video_nav: arr,
+      arr_num:1,
+      videonext_arr: []
+    })
     this.getvodnext(this.data.videolist_arr[event.detail].link)
   },
   getvod() {
@@ -103,8 +113,12 @@ Page({
         console.log(res)
         if (res.data.info == 'ok') {
           self.getvodnext(res.data.list[0].link)
+          let arr = []
+          arr.push(res.data.list[0])
           self.setData({
-            videolist_arr:res.data.list
+            videolist_arr:res.data.list,
+            video_nav: arr,
+            arr_num:1
           })
         }
       }
@@ -116,12 +130,33 @@ Page({
       url: getApp().data.APIS + data,
       method: 'get',
       success: function (res) {
-        console.log(2)
+        console.log(223)
         console.log(res)
         if (res.data.info == 'ok') {
-          self.setData({
-            videolistclick_arr: res.data.list
-          })
+          // let arr = []
+          // let arr1 = []
+          // for (let i = 0; i < res.data.list.length;i++){
+          //   if (res.data.list[0].type == 'file') {
+          //     arr.push(res.data.list[i])
+          //   } else {
+          //     arr1.push(res.data.list[i])
+          //   }
+          // }
+          // self.setData({
+          //   videolistclick_arr: arr,
+          //   videonext_arr: arr1
+          // })
+          if (res.data.list[0].type == 'file') {
+            self.setData({
+              videolistclick_arr: res.data.list,
+            })
+          } else {
+            self.setData({
+              videonext_arr: res.data.list,
+              arr_num: self.data.arr_num+1,
+              videolistclick_arr:[]
+            })
+          }
         }
       }
     })
@@ -182,6 +217,40 @@ Page({
     wx.navigateTo({
       url: '../Videoplay/index?state=0',
     })
+  },
+  nav_check(e) {
+    let item = e.currentTarget.dataset.item
+    let index = e.currentTarget.dataset.index
+    let arr = this.data.video_nav
+    arr.splice((index+1),999)
+    this.setData({
+      video_nav: arr,
+      arr_num:index,
+      next_num: 999
+    })
+    this.getvodnext(item.link)
+  },
+  navnext_check(e) {
+    let item = e.currentTarget.dataset.item
+    let index = e.currentTarget.dataset.index
+    let arr = this.data.video_nav
+    // let arr1 = this.data.videonext_arr
+    // for(let i = 0;i<arr1.length;i++){
+    //   if (arr1[i].name == arr[arr.length-1].name){
+    //     arr.splice((arr.length - 1), 1)
+    //   }
+    // }
+    // if (arr.length>1){
+    //   arr.splice((arr.length - 1), 1)
+    // }
+    arr.splice(this.data.arr_num, 1)
+    arr.push(item)
+    console.log(arr)
+    this.setData({
+      video_nav:arr,
+      next_num:index
+    })
+    this.getvodnext(item.link)
   },
   /**
    * 生命周期函数--监听页面加载

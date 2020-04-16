@@ -87,10 +87,9 @@ Page({
           endArray.push(end_boundary.charCodeAt(i));
         }
         var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
-      var typedArray = new Uint8Array(totalArray);
+        var typedArray = new Uint8Array(totalArray);
           console.log(totalArray.buffer)
           wx.request({
-
             url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/45.txt',
 
             method: 'PUT',

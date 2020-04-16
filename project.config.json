@@ -81,9 +81,9 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/Sound/index",
-					"pathName": "pages/Sound/index",
-					"query": "title=prescription&&value=&&index=0",
+					"name": "pages/PriceList/index",
+					"pathName": "pages/PriceList/index",
+					"query": "title=医患沟通视频",
 					"scene": null
 				},
 				{

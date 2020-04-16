@@ -18,11 +18,11 @@
     <swiper-item wx:for="{{achievement_arr}}">
       <canvas canvas-id="canvas{{index}}" class="charts {{chats?'chartsnone':''}}"></canvas>
       <view class="itembox">
-        <view class="title">{{item.title}}诊所实收业绩(元)</view>
+        <view class="title">{{item.title}}{{yjstate?'诊所':'我的'}}实收业绩(元)</view>
         <view class="detail">
-        <navigator url="/component/pages/achievement/index?state={{index}}" hover-class="navigator-hover">
+        <view class="yjgo" data-index="{{index}}" bindtap="yjgo">
           业绩明细<van-icon name="arrow" />
-        </navigator>
+        </view>
         </view>
         <view class="ipt">
           <view class="text">{{moneystatus?item.money:'******'}}</view>
@@ -41,7 +41,7 @@
       <view class="num">{{Tomorroworder}}</view>
       明日预约
     </view>
-    <view class="li" bindtap="Arrearsgo">
+    <view class="li" bindtap="Arrearsgo"  wx:if="{{power_arr.code10801.has}}">
       <view class="num">{{Historyarrears}}</view>
       历史欠款
     </view>
@@ -62,18 +62,19 @@
   </van-popup>
   <van-popup show="{{ showleft }}"
   bindtap="onCloseleft"
-  custom-style="width:auto;top:400rpx;left:600rpx;"
+  custom-style="width:auto;left:500rpx;top:100rpx;"
+  position="top"
   >
     <view class="showli">
-      <view catchtap="addgo">
+      <view catchtap="addgo" wx:if="{{power_arr.code10002.has}}">
         <image src="../../images/clinic_new_icon_patient.png"></image>
         添加患者
       </view>
-      <view catchtap="addordergo">
+      <view catchtap="addordergo" wx:if="{{power_arr.code10603.has}}">
         <image src="../../images/clinic_new_icon_reservation.png"></image>
         添加预约
       </view>
-      <view catchtap="addvisitgo">
+      <view catchtap="addvisitgo" wx:if="{{power_arr.code10703.has}}">
         <image src="../../images/clinic_new_icon_returnvisit.png"></image>
         添加回访
       </view>

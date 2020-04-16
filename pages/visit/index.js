@@ -165,9 +165,16 @@ Page({
     this.getdata()
   },
   addgo() {
-    wx.navigateTo({
-      url: '../visitedit/index?title=添加回访',
-    })
+    if (this.data.power_arr.code10703.has){
+      wx.navigateTo({
+        url: '../visitedit/index?title=添加回访',
+      })
+    }else{
+      wx.showToast({
+        icon:'none',
+        title: '暂无权限',
+      })
+    }
   },
   searchgo() {
     wx.navigateTo({
