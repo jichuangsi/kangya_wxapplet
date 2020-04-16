@@ -129,34 +129,39 @@ Page({
     wx.request({
       url: getApp().data.APIS + data,
       method: 'get',
+      dataType:'json',
       success: function (res) {
         console.log(223)
         console.log(res)
         if (res.data.info == 'ok') {
-          // let arr = []
-          // let arr1 = []
-          // for (let i = 0; i < res.data.list.length;i++){
-          //   if (res.data.list[0].type == 'file') {
-          //     arr.push(res.data.list[i])
-          //   } else {
-          //     arr1.push(res.data.list[i])
-          //   }
-          // }
-          // self.setData({
-          //   videolistclick_arr: arr,
-          //   videonext_arr: arr1
-          // })
-          if (res.data.list[0].type == 'file') {
-            self.setData({
-              videolistclick_arr: res.data.list,
-            })
-          } else {
-            self.setData({
-              videonext_arr: res.data.list,
-              arr_num: self.data.arr_num+1,
-              videolistclick_arr:[]
-            })
+          let arr = []
+          let arr1 = []
+          for (let i = 0; i < res.data.list.length;i++){
+            if (res.data.list[i].type == 'file') {
+              arr.push(res.data.list[i])
+            } else {
+              arr1.push(res.data.list[i])
+            }
           }
+          console.log(arr)
+          console.log(arr1)
+          self.setData({
+            videolistclick_arr: arr,
+            videonext_arr: arr1,
+            arr_num: self.data.arr_num + 1,
+            next_num:999
+          })
+          // if (res.data.list[0].type == 'file') {
+          //   self.setData({
+          //     videolistclick_arr: res.data.list,
+          //   })
+          // } else {
+          //   self.setData({
+          //     videonext_arr: res.data.list,
+          //     arr_num: self.data.arr_num+1,
+          //     videolistclick_arr:[]
+          //   })
+          // }
         }
       }
     })
