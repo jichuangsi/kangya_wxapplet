@@ -65,3 +65,27 @@ canvas {
   top:50%;
   transform: translate(-50%,-50%);
 }
+.user_box {
+  display: flex;
+  align-items: center;
+}
+.user_box image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+.user_box .user {
+  flex: 1;
+}
+.user_box .user .name {
+  display: flex;
+  flex-direction: column;
+}
+.user_box .user .name image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 5rpx;
+  margin-right: 0rpx;
+  border-radius: none;
+}

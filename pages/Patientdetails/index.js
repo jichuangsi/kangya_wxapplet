@@ -15,7 +15,7 @@ Page({
     friend:'',
     power_arr:[],
     user:'',
-    check_num:1
+    check_num:1,
   },
   onClickLeft() {
     wx.navigateBack({

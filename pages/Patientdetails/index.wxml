@@ -22,12 +22,9 @@
               <image wx:if="{{patdetails.isvip!='0'}}" src="../../images/patient_icon_vip.png"></image>
               <image wx:if="{{patdetails.isweixin!='0'}}" src="../../images/wx.png"></image>
           </view>
-          <view class="state">
-            <view> </view>
-          </view>
         </view>
         <van-icon name="ellipsis" slot="right" size="38rpx" style="margin-right:10rpx;padding:20rpx;box-sizing:box-border;" bindtap="onClickRight"/>
-        <navigator url="/pages/QRCode/index?title=患者二维码&&state=0" hover-class="navigator-hover">
+        <navigator url="/pages/QRCode/index?title=患者二维码&&state=1" hover-class="navigator-hover">
             <van-icon name="qr" size="56rpx" />
         </navigator>
       </view>

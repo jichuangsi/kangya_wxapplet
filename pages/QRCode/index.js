@@ -7,7 +7,8 @@ Page({
    */
   data: {
     title:'我的二维码',
-    clinicid:''
+    clinicid:'',
+    state:0
   },
   getqrcode(){
     let self = this
@@ -57,8 +58,14 @@ Page({
       title: options.title
     })
     this.setData({
-      clinicid: prevPage.data.clinicid ? prevPage.data.clinicid:''
+      clinicid: prevPage.data.clinicid ? prevPage.data.clinicid:'',
+      state: options.state
     })
+    if (options.state == 1) {
+      this.setData({
+        patdetails: prevPage.data.patdetails,
+      })
+    }
     this.getqrcode()
   },
 
