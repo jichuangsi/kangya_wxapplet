@@ -1,4 +1,6 @@
 // pages/Patientsearch/index.js
+var today_date = new Date()
+var today_time = today_date.getFullYear() + "-" + (today_date.getMonth() + 1) + "-" + today_date.getDate()
 Page({
 
   /**
@@ -10,7 +12,7 @@ Page({
     nav1_arr: ['全部'],
     doctor_arr:['全部'],
     arr:[],
-    time: '',
+    time: today_time + '~' + today_time,
     nav_num: 1,
     calendarConfig: {
       // 配置内置主题
@@ -20,7 +22,9 @@ Page({
     doctorid:'',
     pageIndex:1,
     searchtext:'',
-    state:0
+    state: 0,
+    power_arr: [],
+    user: ''
   },
   searchclick(e){
     console.log(e)
@@ -73,7 +77,7 @@ Page({
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
     let arr = this.calendar.getSelectedDay()
     this.setData({
-      time: arr[0].month + '月' + arr[0].day + '日' + '~' + arr[arr.length - 1].month + '月' + arr[arr.length - 1].day + '日',
+      time: arr[0].year + '-' + arr[0].month + '-' + arr[0].day + '~' + arr[arr.length - 1].year + '-' + arr[arr.length - 1].month + '-' + arr[arr.length - 1].day,
       bengindate: arr[0].year + '-' + arr[0].month + '-' + arr[0].day,
       enddate: arr[arr.length - 1].year + '-' + arr[arr.length - 1].month + '-' + arr[arr.length - 1].day
     })
@@ -149,8 +153,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
     this.setData({
-      state: options.state
+      state: options.state,
+      power_arr: Page.data.power_arr,
+      user: Page.data.user
     })
     this.getdata()
     this.getdoctor()

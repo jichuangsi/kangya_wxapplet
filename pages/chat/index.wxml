@@ -5,26 +5,234 @@
     <van-icon name="contact" slot="right" />
     </van-nav-bar>
   </view> -->
-  <view class="top_right">
+  <view class="top_right" wx:if="{{state == 0}}">
     <van-icon name="contact" size="36rpx" bindtap="onClickRight" />
   </view>
-  <view class="center">
-      <view class="li {{item.toopenid==newopenid?'li_left':''}}" wx:for="{{arr}}" wx:if="{{item.content!=''}}">
-        <view class="user_img">
-          <image src="{{item.headimgurl}}"></image>
+  <view class="center" bindtap="inputfocus">
+      <view class="li" wx:for="{{arr}}">
+        <view class="li li_left" wx:if="{{item.toopenid!=newopenid}}">
+          <view class="user_img" wx:if="{{item.dxstate == 0||item.dxstate == 3}}">
+            <image src="{{item.headimgurl}}"></image>
+          </view>
+          <view class="user_text">
+            <view class="user_name">{{item.fromusername}}</view>
+            <view class="text" wx:if="{{item.dxstate == 0}}">
+              {{item.content}}
+              <image wx:if="{{item.picurl!=''}}" src="{{item.picurl}}"></image>
+              <view class="dian"></view>
+            </view>
+          </view>
         </view>
-        <view class="user_text">
-          <view class="user_name">{{item.fromusername}}</view>
-          <view class="text" wx:if="{{!item.teshu}}">
-            {{item.content}}
-            <view class="dian"></view>
+        <view class="li li_right" wx:if="{{item.toopenid==newopenid}}">
+          <view class="user_text">
+            <view class="user_name" wx:if="{{item.dxstate == 0||item.dxstate == 3}}">{{item.fromusername}}</view>
+            <view class="text" wx:if="{{item.dxstate == 0}}">
+              {{item.content}}
+              <image wx:if="{{item.picurl!=''}}" src="{{item.picurl}}"></image>
+              <view class="dian1"></view>
+            </view>
+            <view class="text {{item.dxstate != 0?'ts':''}}" wx:if="{{item.dxstate == 1}}">
+              <view class="li_medical">
+                <view class="li_top">
+                  <image src="../../images/my_headportrait_male.png"></image>
+                  <view class="name">{{item.content.docname}}</view>
+                  <view class="time">{{item.content.examdate}}</view>
+                </view>
+                <view class="user">
+                  <view>患者姓名</view>
+                  <view>{{item.content.customername}}</view>
+                  <view>性别</view>
+                  <view>{{item.content.sex}}</view>
+                </view>
+                <view class="tab" wx:if="{{item.content.exam.Age}}">
+                  <image src="../../images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image>
+                </view>
+                <view wx:if="{{item.content.pc!=''}}">
+                  <view class="tab">
+                    <view class="left">{{item.content.isfirstvisit==0?'主诉':'复诉'}}</view>
+                    <view class="right">{{item.content.pc}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left">检查</view>
+                    <view class="right">
+                      <view wx:for="{{item.content.exam.item}}" class="change_box">
+                        <view>牙位</view>
+                        <view class="tooth">
+                          <view class="lt">{{item.LT}}</view>
+                          <view class="rt">{{item.RT}}</view>
+                          <view class="lb">{{item.LB}}</view>
+                          <view class="rb">{{item.RB}}</view>
+                        </view>
+                        <view class="bz">{{item.Text}}</view>
+                      </view>
+                    </view>
+                  </view>
+                  <view class="tab">
+                    <view class="left">治疗</view>
+                    <view class="right">
+                      <view wx:for="{{item.content.tr}}">{{item.content.text}}</view>
+                    </view>
+                  </view>
+                  <view class="tab">
+                    <view class="left">医嘱</view>
+                    <view class="right">{{item.content.da}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left">现病史</view>
+                    <view class="right">{{item.content.hpi}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left">既往史</view>
+                    <view class="right">{{item.content.pi}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left">过敏史</view>
+                    <view class="right">{{item.content.allergyhistory}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left">影像</view>
+                    <view class="right">
+                      <view class="imgbox">
+                        <image src="{{item.content.url}}" wx:for="{{item.content.imglist}}"></image>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view wx:if="{{item.content.exam.Age}}">
+                  <view class="tab">
+                    <view class="left w50">复诊时间</view>
+                    <view class="right">建议复诊{{item.content.exam.ReferralInterval}}个月</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left w50">年龄</view>
+                    <view class="right">{{item.content.exam.Age}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left w50">牙齿及种植体数目</view>
+                    <view class="right">{{item.content.exam.NumberTeeth}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left w50">每颗牙/种植体检查位点数</view>
+                    <view class="right">{{item.content.exam.SitesPer}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left w50">探诊出血阳性为点数</view>
+                    <view class="right">{{item.content.exam.BOP}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left w50">探诊深度>=5mm位点数</view>
+                    <view class="right">{{item.content.exam.PPD}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left w50">牙槽骨丧失百分比</view>
+                    <view class="right">{{item.content.exam.BoneLoss}}%</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left w50">缺失牙齿数目</view>
+                    <view class="right">{{item.content.exam.BoneLoss}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left w50">全身状况/遗传</view>
+                    <view class="right">{{item.content.exam.SystGen==0?'否':'是'}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left w50">环境</view>
+                    <view class="right">{{item.content.exam.Envir==0?'不吸烟':'吸烟'}}</view>
+                  </view>
+                </view>
+                <view wx:if="{{item.content.exam.Mode}}">
+                  <view class="tab">
+                    <view class="left">修复病例评估</view>
+                    <view class="right">{{item.content.exam.Assessment}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left">界定</view>
+                    <view class="right">{{item.content.exam.Defining}}</view>
+                  </view>
+                  <view class="tab" wx:for="{{item.content.exam.Condition}}">
+                    <view class="left">{{item.content.Key}}</view>
+                    <view class="right">{{item.content.Comment}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left">美学风险</view>
+                    <view class="right">{{item.content.exam.EstheticRisk}}</view>
+                  </view>
+                  <view class="tab">
+                    <view class="left">规范SAC分类</view>
+                    <view class="right tab_state {{item.content.exam.Mode=='Prosthetic'?'red':'yellow'}}">{{item.content.exam.SACClassification}}</view>
+                  </view>
+                </view>
+                <view wx:if="{{item.content.exam.item&&item.content.pc==''}}">
+                  <view wx:for="{{item.content.exam.item}}">
+                    <view class="tab">
+                      <view class="left">牙位</view>
+                      <view class="right">{{item.teeth}}</view>
+                    </view>
+                    <view class="tab">
+                      <view class="left">检查项</view>
+                      <view class="right">{{item.itemName}}</view>
+                    </view>
+                    <view class="tab">
+                      <view class="left">备注</view>
+                      <view class="right">{{item.Describe}}</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="text {{item.dxstate != 0?'ts':''}}" wx:if="{{item.dxstate == 2}}" data-item="{{item.content}}" bindtap="videogo">
+              <view>{{item.content.title}}</view>
+              <image class="videoimg" src="{{item.content.picurl}}"></image>
+              <view>{{item.content.desc}}</view>
+            </view>
+            <view class="text" wx:if="{{item.dxstate == 3}}">
+              <view>{{item.content.content}}</view>
+              <view class="dian1"></view>
+            </view>
+          </view>
+          <view class="user_img" wx:if="{{item.dxstate == 0||item.dxstate == 3}}">
+            <image src="../../images/my_headportrait_male.png"></image>
           </view>
         </view>
       </view>
   </view>
     <view class="center_bottom">
-      <input placeholder="来说点什么" value="{{text}}" bindinput="ipttext"></input>
-      <van-icon name="plus" size="56rpx;" color="#c3c3c3" bindtap="showPopup" wx:if="{{text ==''}}"/>
-      <view class="btn" wx:if="{{text !=''}}" bindtap="send">发送</view>
+      <view class="center_bottom_t">
+        <input placeholder="来说点什么" value="{{text}}" bindconfirm="send" bindfocus="inputfocus" bindinput="ipttext"></input>
+        <van-icon name="plus" size="56rpx;" color="#c3c3c3" bindtap="showPopup" wx:if="{{text ==''}}"/>
+        <view class="btn" wx:if="{{text !=''}}" bindtap="send">发送</view>
+      </view>
+      <view class="center_bottom_b" wx:if="{{show}}">
+        <view class="c_bb_li" bindtap="yzgo">
+          <view>
+            <image src="../../images/xx1.png"></image>
+          </view>
+          <view>医嘱</view>
+        </view>
+        <view class="c_bb_li" wx:if="{{power_arr.code10305.has&&state==0}}" bindtap="yxgo">
+          <view>
+            <image src="../../images/xx2.png"></image>
+          </view>
+          <view>影像</view>
+        </view>
+        <view class="c_bb_li" wx:if="{{power_arr.code10407.has&&state==0}}" bindtap="blgo">
+          <view>
+            <image src="../../images/xx3.png"></image>
+          </view>
+          <view>病历</view>
+        </view>
+        <view class="c_bb_li" bindtap="spyzgo">
+          <view>
+            <image src="../../images/xx4.png"></image>
+          </view>
+          <view>视频医嘱</view>
+        </view>
+        <view class="c_bb_li" bindtap="twyzgo">
+          <view>
+            <image src="../../images/xx5.png"></image>
+          </view>
+          <view>图文医嘱</view>
+        </view>
+      </view>
     </view>
 </view>

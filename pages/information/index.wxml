@@ -41,12 +41,12 @@
               </view>
             </view>
           </view>
-          <view class="li">
+          <view class="li" data-item="{{zli[0]}}" data-state="1" bindtap="chatgo">
             <image src="../../images/news_icon_groupchat.png"></image>
             <view class="right">
               <view class="title">
-                <view class="name">康牙牙医演示群</view>
-                <view class="time">中午 1:13</view>
+                <view class="name">{{zli[0].customername}}</view>
+                <view class="time">{{zli[0].submittime}}</view>
               </view>
             </view>
           </view>

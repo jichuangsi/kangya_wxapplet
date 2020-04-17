@@ -24,7 +24,9 @@ Page({
     patient:'',
     doctor:'',
     visit:'',
-    visitidentity:''
+    visitidentity: '',
+    power_arr: [],
+    user: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -71,7 +73,7 @@ Page({
     })
   },
   Patientgo() {
-    if (this.data.title == '添加回访') {
+    if (this.data.title == '添加回访'&&this.data.patient == '') {
       wx.navigateTo({
         url: '../Patientlist/index?state=1',
       })
@@ -126,8 +128,9 @@ Page({
     let Page = pages[pages.length - 2];
     this.setData({
       title: options.title,
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
     })
-    console.log(1111)
     console.log(Page.data)
     if (options.title !='添加回访'){
       this.setData({
@@ -146,6 +149,18 @@ Page({
         visitresult: Page.data.visit.remark,
         time: Page.data.visit.returndate,
         visitidentity: Page.data.visit.visitidentity,
+      })
+    } else if (options.title == '添加回访' && Page.data.patdetails) {
+      this.setData({
+        patient: {
+          customerid: Page.data.patdetails != '' ? Page.data.patdetails.customerid : Page.data.visit.customerid,
+          patientname: Page.data.patdetails != '' ? Page.data.patdetails.name : Page.data.visit.customername,
+          clinicuniqueid: Page.data.patdetails != '' ? Page.data.patdetails.clinicuniqueid : Page.data.visit.clinicid,
+        },
+        doctor: {
+          name: Page.data.patdetails.referraldoct,
+          doctorid: Page.data.patdetails.referraldoctidentity
+        },
       })
     }
     wx.setNavigationBarTitle({

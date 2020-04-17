@@ -81,9 +81,9 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/PriceList/index",
-					"pathName": "pages/PriceList/index",
-					"query": "title=医患沟通视频",
+					"name": "pages/information/index",
+					"pathName": "pages/information/index",
+					"query": "title=test",
 					"scene": null
 				},
 				{
@@ -98,6 +98,13 @@
 					"name": "component/pages/achievementNext/index",
 					"pathName": "component/pages/achievementNext/index",
 					"query": "title=就诊患者",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pages/Patientsearch/index",
+					"pathName": "pages/Patientsearch/index",
+					"query": "title=test",
 					"scene": null
 				}
 			]

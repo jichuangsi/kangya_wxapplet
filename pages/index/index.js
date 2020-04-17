@@ -29,7 +29,8 @@ Page({
     year_arr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     power_arr:[],
     shopshow:'',
-    yjstate:true
+    yjstate:true,
+    clinicid:''
   },
   
   //事件处理函数
@@ -87,7 +88,7 @@ Page({
   },
   qrcodego(){
     wx.navigateTo({
-      url: '../QRCode/index',
+      url: '../QRCode/index?title=诊所二维码&&state=0',
     })
     this.setData({ showleft: false, chats: true });
   },
@@ -148,7 +149,8 @@ Page({
         if(res.data.info == 'ok'){
           self.setData({
             Hospital_arr:res.data.list,
-            id: res.data.list[0].clinicid
+            id: res.data.list[0].clinicid,
+            clinicid: res.data.list[0].clinicid
           })
           let date = new Date();
           let year = date.getFullYear();

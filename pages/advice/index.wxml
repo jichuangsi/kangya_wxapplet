@@ -1,0 +1,16 @@
+<!--pages/advice/index.wxml-->
+<view class="advice">
+  <view class="center" wx:if="{{title == '医嘱消息模板'}}">
+    <van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
+      <van-collapse-item title="{{item.name}}" name="{{index}}" wx:for="{{arr}}">
+        <view class="li" wx:for="{{item.list}}" data-text="{{item.smstemplatecontent}}" bindtap="check">{{item.smstemplatecontent}}</view>
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+  <view class="center" wx:if="{{title != '医嘱消息模板'}}">
+        <view class="wu" wx:if="{{arr.length==0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
+  </view>
+</view>

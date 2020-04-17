@@ -7,9 +7,9 @@
     </view>
   </view>
     <view class="nav">
-      <view data-index="1" bindtap="showPopup">{{nav1}}<van-icon name="arrow-down" /></view>
-      <view data-index="2" bindtap="showPopup">{{nav2}}<van-icon name="arrow-down" /></view>
-      <view data-index="3" bindtap="showPopup">{{time}}<van-icon name="arrow-down" /></view>
+      <view data-index="1" class="nav_div" bindtap="showPopup">{{nav1}}<van-icon name="arrow-down" /></view>
+      <view data-index="2" class="nav_div" bindtap="showPopup">{{nav2}}<van-icon name="arrow-down" /></view>
+      <view data-index="3" class="nav_div" bindtap="showPopup">{{time}}<van-icon name="arrow-down" /></view>
     </view>
     <view class="box">
       <view class="li" wx:for="{{arr}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" data-item="{{item}}" bindtap="Patientclick">
@@ -36,10 +36,14 @@
           </view>
         </view>
       </view>
+        <view class="wu" wx:if="{{arr.length == 0}}">
+          <image src="../../images/none.png"></image>
+          暂无数据
+        </view>
     </view>
   <van-popup show="{{ show }}"
   position="top"
-  bindtap="onClose">
+  bind:close="onClose">
     <view wx:for="{{nav1_arr}}" wx:if="{{nav_num == 1}}" data-text="{{item.dictionaryname}}" bindtap="nav1click">{{item.dictionaryname}}</view>
     <view wx:for="{{doctor_arr}}" wx:if="{{nav_num == 2}}" data-id="{{item.doctorid}}" data-text="{{item.name}}" bindtap="nav2click">{{item.name}}</view>
     <calendar  wx:if="{{nav_num == 3&&show}}" calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>

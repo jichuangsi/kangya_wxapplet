@@ -10,6 +10,7 @@
         <view>广西南宁区</view>
       </view>
     </view>
-    <image class="Code" src="../../images/12.png"></image>
+    <canvas class="canvas-code"canvas-id="myQrcode" style="background:#fff;width: 364rpx;height: 364rpx;"/>
+    <!-- <image class="Code" src="../../images/12.png"></image> -->
   </view>
 </view>

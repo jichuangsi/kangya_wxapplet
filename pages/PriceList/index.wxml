@@ -27,7 +27,7 @@
       立即申请
     </view>
   </view>
-  <view class="doctorvideo" wx:if="{{title=='医患沟通视频'}}">
+  <view class="doctorvideo" wx:if="{{title=='医患沟通视频'||title=='选择视频'}}">
     <van-sidebar active-key="{{ videoKey }}" bind:change="onChangevideo">
       <van-sidebar-item title="{{item.name}}" name="{{item.name}}" data-item="{{item}}" wx:for="{{videolist_arr}}" />
     </van-sidebar>
@@ -38,9 +38,12 @@
       <view class="list_m">
         <view class="{{next_num == index?'check':''}}" wx:for="{{videonext_arr}}" data-index="{{index}}" data-item="{{item}}" bindtap="navnext_check">{{item.name}}</view>
       </view>
-      <view class="list" wx:for="{{videolistclick_arr}}" data-item="{{item}}" bindtap="videogo">
-        <!-- <navigator url="/pages/Videoplay/index?url={{item.link}}&&title={{item.name}}" hover-class="navigator-hover"> -->
+      <view class="list" wx:for="{{videolistclick_arr}}" data-item="{{item}}" data-index="{{index}}" bindtap="videogo">
         <view class="img">
+          <view class="check_video" wx:if="{{title=='选择视频'}}">
+            <van-icon name="checked" color="#999" size="42rpx" wx:if="{{item.check_state == 0}}" />
+            <van-icon name="checked" color="#16c7ae" size="42rpx" wx:if="{{item.check_state == 1}}" />
+          </view>
           <image src="{{item.thumb}}"></image>
         </view>
         <view class="text">
@@ -48,6 +51,7 @@
         </view>
         <!-- </navigator> -->
       </view>
+      <view class="video_btn" bindtap="video_btn">完成</view>
     </view>
   </view>
 </view>

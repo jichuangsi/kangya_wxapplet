@@ -1,0 +1,22 @@
+/* pages/advice/index.wxss */
+.van-collapse-item__content {
+  background-color: #f2f2f2 !important;
+  padding: 0rpx !important;
+}
+.li {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #c9c9c9;
+}
+.wu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 30rpx;
+  margin-top: 60rpx;
+}
+.wu image {
+  width: 213rpx;
+  height: 170rpx;
+}

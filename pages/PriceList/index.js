@@ -137,7 +137,9 @@ Page({
           let arr = []
           let arr1 = []
           for (let i = 0; i < res.data.list.length;i++){
+
             if (res.data.list[i].type == 'file') {
+              res.data.list[i].check_state = 0
               arr.push(res.data.list[i])
             } else {
               arr1.push(res.data.list[i])
@@ -216,12 +218,27 @@ Page({
     }
   },
   videogo(e){
-    this.setData({
-      nowitem: e.currentTarget.dataset.item
-    })
-    wx.navigateTo({
-      url: '../Videoplay/index?state=0',
-    })
+    if (this.data.title == '医患沟通视频'){
+      this.setData({
+        nowitem: e.currentTarget.dataset.item
+      })
+      wx.navigateTo({
+        url: '../Videoplay/index?state=0',
+      })
+    }else{
+      let arr = this.data.videolistclick_arr
+      let index = e.currentTarget.dataset.index
+      for(let i = 0;i<arr.length;i++){
+        if(i == index){
+          arr[i].check_state = 1
+        } else {
+          arr[i].check_state = 0
+        }
+      }
+      this.setData({
+        videolistclick_arr:arr
+      })
+    }
   },
   nav_check(e) {
     let item = e.currentTarget.dataset.item
@@ -257,6 +274,36 @@ Page({
     })
     this.getvodnext(item.link)
   },
+  video_btn() {
+    let arr = this.data.videolistclick_arr
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    let arr1 = {
+      "title":"",
+      "picurl":"",
+      "desc":"",
+      "videoidentity":"",
+      "type":""
+    }
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].check_state == 1) {
+        console.log(arr[i])
+        arr1 = {
+          "title": arr[i].name,
+          "picurl": arr[i].thumb,
+          "desc": "",
+          "videoidentity": arr[i].videoidentity ? arr[i].videoidentity:"36491422938237261",
+          "type": "video"
+        }
+      }
+    }
+    Page.setData({
+      video:arr1
+    })
+    wx.navigateBack({
+      delta: 1,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -270,7 +317,7 @@ Page({
     })
     if (options.title == '价目表') {
       this.gethandle()
-    } else if (options.title == '医患沟通视频') {
+    } else if (options.title == '医患沟通视频' || options.title == '选择视频') {
       this.getvod()
     }
   },

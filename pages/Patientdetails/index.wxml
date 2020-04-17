@@ -27,7 +27,7 @@
           </view>
         </view>
         <van-icon name="ellipsis" slot="right" size="38rpx" style="margin-right:10rpx;padding:20rpx;box-sizing:box-border;" bindtap="onClickRight"/>
-        <navigator url="/pages/QRCode/index?" hover-class="navigator-hover">
+        <navigator url="/pages/QRCode/index?title=患者二维码&&state=0" hover-class="navigator-hover">
             <van-icon name="qr" size="56rpx" />
         </navigator>
       </view>

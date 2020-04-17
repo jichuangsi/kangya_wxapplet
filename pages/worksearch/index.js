@@ -32,7 +32,6 @@ Page({
     calendarConfig: {
       // 配置内置主题
       theme: 'elegant',
-      defaultDay: today_time,
       chooseAreaMode: true,
     },
     show:false,

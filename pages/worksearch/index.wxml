@@ -90,6 +90,6 @@
     <view wx:for="{{nav3_arr}}" wx:if="{{nav_num == 1&&state==0}}" data-id="{{item.id}}" data-text="{{item.name}}" bindtap="nav1click">{{item.name}}</view>
     <view catchtap="nav2click" wx:if="{{nav_num == 2}}" data-id="" data-text="全部">全部</view>
     <view wx:for="{{nav2_arr}}" wx:if="{{nav_num == 2}}" data-id="{{item.doctorid}}" data-text="{{item.name}}" catchtap="nav2click">{{item.name}}</view>
-    <calendar  wx:if="{{nav_num == 3&&show}}" calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
+    <calendar wx:if="{{nav_num == 3&&show}}" calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
   </van-popup>
 </view>

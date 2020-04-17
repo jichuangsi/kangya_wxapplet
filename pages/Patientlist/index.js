@@ -53,6 +53,7 @@ Page({
     this.getpatientlist(e.currentTarget.dataset.id)
   },
   onClose() {
+    console.log(11123)
     this.setData({ show: false });
   },
   nav1click(e){

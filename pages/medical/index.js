@@ -86,6 +86,7 @@ Page({
         if(res.data.info == 'ok'){
           let arr = res.data.list
           for (let k = 0; k < arr.length; k++) {
+            arr[k].check_state = 0
             if (typeof (arr[k].exam) =='string'){
               arr[k].exam = JSON.parse(arr[k].exam)
               if ('items' in arr[k].exam) {
@@ -123,14 +124,70 @@ Page({
       },
     })
   },
-
+  check_medical(e){
+    let arr = this.data.arr
+    let index = e.currentTarget.dataset.index
+    for(let i = 0;i<arr.length;i++){
+      if (i == index) {
+        arr[i].check_state = 1
+      } else {
+        arr[i].check_state = 0
+      }
+    }
+    this.setData({
+      arr:arr
+    })
+  },
+  medical_btn() {
+    let arr = this.data.arr
+    let arr1 = {
+      mediarecordidentity: '',
+      examdoctor: '',
+      examdate: ''
+    }
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].check_state == 1) {
+        arr1 = arr[i]
+      }
+    }
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    prevPage.setData({
+      mediarecordidentity: arr1.mediarecordidentity,
+      examdoctor: arr1.examdoctor,
+      examdate: arr1.examdate
+    })
+    wx.navigateBack({
+      delta: 1,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title:'病历'
+      title: options.title ? options.title:'病历'
     })
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    console.log(prevPage.data)
+    if (options.title) {
+      this.setData({
+        title: options.title,
+        power_arr: prevPage.data.power_arr,
+        user: prevPage.data.user,
+        name: prevPage.data.name,
+        sex: prevPage.data.sex,
+      })
+    } else {
+      this.setData({
+        name: prevPage.data.patdetails.name,
+        sex: prevPage.data.patdetails.sex,
+        patdetails: prevPage.data.patdetails,
+        power_arr: prevPage.data.power_arr,
+        user: prevPage.data.user,
+      })
+    }
     this.getdata()
     // this.pieShow()
   },
@@ -139,16 +196,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let pages = getCurrentPages();
-    let prevPage = pages[pages.length - 2];
-    console.log(prevPage.data)
-    this.setData({
-      name: prevPage.data.patdetails.name,
-      sex: prevPage.data.patdetails.sex,
-      patdetails: prevPage.data.patdetails,
-      power_arr: prevPage.data.power_arr,
-      user: prevPage.data.user,
-    })
   },
 
   /**

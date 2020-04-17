@@ -49,6 +49,7 @@
   border-radius: 10rpx;
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
+  z-index: 19;
 }
 .center {
   padding: 100rpx;
@@ -62,21 +63,65 @@
   left: 0rpx;
   background-color: #fff;
   display: flex;
+  flex-wrap: wrap;
   padding: 20rpx;
   align-items: center;
   box-sizing: border-box;
-  opacity: 0.9;
+  /* opacity: 0.9; */
   z-index: 9;
+}
+.center_bottom_t {
+  width: 100%;
+  border-bottom: 1rpx solid #f2f2f2;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-bottom: 20rpx;
+}
+.center_bottom_b {
+  width: 90%;
+  height: 428rpx;
+  /* display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; */
+  margin: 0 auto;
+  margin-top: 40rpx;
+  /* justify-content: space-between; */
+}
+.c_bb_li {
+  margin-right: 60rpx;
+  margin-bottom: 40rpx;
+  display: inline-block;
+}
+.c_bb_li:nth-child(4n){
+  margin-right: 0rpx;
+}
+.c_bb_li view:first-child{
+  width: 104rpx;
+  height: 104rpx;
+  border: 1rpx solid #939393;
+  display: flex;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.c_bb_li view:first-child image {
+  width: 102rpx;
+  height: 102rpx;
+}
+.c_bb_li view:last-child {
+  text-align: center;
+  margin-top: 16rpx;
 }
 .center_bottom input {
   flex: 1;
-  background-color: #c9c9c9;
+  background-color: #fff;
   line-height: 66rpx;
   height: 66rpx;
   padding: 0rpx 10rpx;
   margin-right: 10rpx;
   box-sizing: border-box;
   border-radius: 5rpx;
+  border-bottom: 1rpx solid #00AAA4;
 }
 .center_bottom .btn {
   background-color: #0094ff;
@@ -100,6 +145,23 @@
 }
 .center .li_left{
   
+}
+.li_right{
+}
+.center .li .li_right .user_text .user_name{
+  text-align: right;
+  margin-right: 20rpx;
+  min-height: 50rpx;
+}
+.center .li .li_right .user_text .text{
+  float: right;
+}
+.center .li .li_right .user_text .dian1{
+  border: 20rpx solid #fff;
+  border-color: #fff transparent transparent transparent;
+  position: absolute;
+  top: 10rpx;
+  right: -20rpx;
 }
 .center .li .user_img {
   width: 60rpx;
@@ -127,13 +189,154 @@
   border-radius: 5rpx;
   max-width: 600rpx;
 }
+.center .li .user_text .ts {
+  width: 100%;
+  max-width: 100%;
+}
 .center .li .user_text .text image {
   max-width: 50%;
 }
 .center .li .user_text .text .dian {
   border: 20rpx solid #fff;
-  border-color: #fff #fff transparent transparent;
+  border-color: #fff transparent transparent transparent;
   position: absolute;
-  top: 20rpx;
+  top: 10rpx;
   left: -20rpx;
+}
+
+
+.li_medical {
+  /* margin-bottom: 20rpx; */
+  /* width: 300rpx; */
+  background-color: #fff;
+  /* border-bottom: 20rpx solid #f2f2f2; */
+  box-sizing: border-box;
+}
+.li_medical .li_top {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.li_medical .li_top image {
+  width: 65rpx;
+  height: 65rpx;
+}
+.li_medical .li_top .name {
+  flex: 1;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.li_medical .li_top .state {
+  padding: 5rpx 20rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  background-color: #df9827;
+  color: #fff;
+  margin-right: 20rpx;
+}
+.li_medical .user {
+  display: flex;
+}
+.li_medical .user view {
+  flex: 1;
+  text-align: center;
+  border-left: 1rpx solid #f2f2f2;
+  /* line-height: 66rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10rpx 0rpx;
+}
+.li_medical .user view .van-icon {
+  margin-right: 20rpx;
+}
+.li_medical .user view:first-child{
+  border: none;
+}
+.li_medical .tab {
+  border: 1rpx solid #f2f2f2;
+  display: flex;
+  line-height: 46rpx;
+}
+.li_medical .tab .left {
+  width: 140rpx;
+  border-right: 1rpx solid #f2f2f2;
+  text-align: center;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+}
+.li_medical .tab .w50 {
+  width: 50%;
+  text-align: left;
+}
+.li_medical .tab .right {
+  flex: 1;
+  padding: 10rpx 20rpx;
+}
+.li_medical .tab_state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.li_medical .red {
+  background-color: red;
+}
+.li_medical .yellow {
+  background-color: yellow;
+}
+.li_medical .van-dialog__button {
+  flex: none;
+  width: 50%;
+}
+.li_medical .change_box {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.li_medical .change_box .tooth {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.li_medical .change_box .tooth view {
+  width: 50%;
+  padding: 5rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.li_medical .change_box .tooth view:nth-child(1){
+  border-bottom: 1rpx solid #f2f2f2;
+  border-right: 1rpx solid #f2f2f2;
+}
+.li_medical .change_box .tooth view:nth-child(4){
+  border-top: 1rpx solid #f2f2f2;
+  border-left: 1rpx solid #f2f2f2;
+}
+.li_medical .change_box .bz {
+  width: 100%;
+  padding: 10rpx 5rpx;
+  line-height: 46rpx;
+  box-sizing: border-box;
+  border-top: 1rpx solid #f2f2f2;
+}
+.li_medical .imgbox {
+  flex: 1;
+  display: flex;
+  height: 60rpx;
+  justify-content: flex-end;
+}
+.li_medical .imgbox image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+}
+
+.center .li .user_text .text .videoimg {
+  width: 100%;
+  max-width: 100%;
 }

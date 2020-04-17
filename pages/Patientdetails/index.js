@@ -14,7 +14,8 @@ Page({
     patdetails:'',
     friend:'',
     power_arr:[],
-    user:''
+    user:'',
+    check_num:1
   },
   onClickLeft() {
     wx.navigateBack({
@@ -111,7 +112,7 @@ Page({
       title: '患者详情',
     })
     var pages = getCurrentPages();
-    var Page = pages[pages.length - 3];//
+    var Page = pages[pages.length - 2];//
     this.setData({
       customerid:options.customerid,
       clinicid:options.clinicid,

@@ -8,6 +8,7 @@ Page({
     title: '影像',
     show: false,
     state:0,
+    msgstate:0,
     arr:[],
     customerid: '',
     clinicid: '',
@@ -138,31 +139,48 @@ Page({
       arr: arr
     })
   },
-  btn(){
+  btn() {
     let pages = getCurrentPages();
-    let currPage = pages[pages.length - 3];
-    let prevPage = pages[pages.length - 2]; 
-    let arr = pages[pages.length - 3].img_arr
-    for(let i = 0;i<this.data.arr.length;i++){
-      if (this.data.arr[i].state == 1){
-        arr.push(this.data.arr[i])
+    let prevPage = pages[pages.length - 2];
+    if (this.data.msgstate == 0) {
+      let currPage = pages[pages.length - 3];
+      let arr = pages[pages.length - 3].img_arr
+      for (let i = 0; i < this.data.arr.length; i++) {
+        if (this.data.arr[i].state == 1) {
+          arr.push(this.data.arr[i])
+        }
       }
+      console.log(currPage.data)
+      console.log(prevPage.data)
+      currPage.setData({
+        img_arr: arr
+      })
+      prevPage.setData({
+        img_arr: arr
+      })
+      this.onClickLeft()
+    } else {
+      let arr1 = []
+      for (let i = 0; i < this.data.arr.length; i++) {
+        if (this.data.arr[i].state == 1) {
+          arr1.push(this.data.arr[i])
+        }
+      }
+      prevPage.setData({
+        img_arr: arr1
+      })
+      this.onClickLeft()
     }
-    console.log(currPage.data)
-    console.log(prevPage.data)
-    currPage.setData({
-      img_arr:arr
-    })
-    prevPage.setData({
-      img_arr: arr
-    })
-    this.onClickLeft()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ title: options.title, state: options.state ? options.state:0 })
+    this.setData({ 
+      title: options.title, 
+      state: options.state ? options.state : 0,
+      msgstate: options.msgstate ? options.msgstate : 0
+    })
     wx.setNavigationBarTitle({
       title: options.title ? options.title :'影像'
     })
@@ -173,7 +191,6 @@ Page({
       clinicid: Page.data.clinicid
     })
     if (!options.title) {
-      console.log(1123456)
       console.log(Page.data.power_arr)
       this.setData({
         power_arr: Page.data.power_arr,

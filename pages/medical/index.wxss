@@ -44,7 +44,7 @@
   border-radius: 10rpx;
 }
 .center {
-  /* margin-bottom: 100rpx; */
+  margin-bottom: 100rpx;
   /* background-color: #fff; */
 }
 .li {
@@ -52,6 +52,7 @@
   background-color: #fff;
   border-bottom: 20rpx solid #f2f2f2;
   box-sizing: border-box;
+  position: relative;
 }
 .li_top {
   display: flex;
@@ -187,4 +188,28 @@
   width: 60rpx;
   height: 60rpx;
   margin-right: 10rpx;
+}
+.check_medical {
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  z-index: 9;
+}
+.medical_box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  background-color: rgba(0, 0, 0, 0.4)
+}
+.medical_btn {
+  width: 100%;
+  line-height: 88rpx;
+  background-color: #16c7ae;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
 }
