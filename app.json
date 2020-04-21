@@ -59,7 +59,6 @@
     "pages/visitdetails/index",
     "pages/visitedit/index",
     "pages/Arrears/index",
-    "pages/medical/index",
     "pages/medicaledit/index",
     "pages/medicalTemplate/index",
     "pages/Templatedetails/index",
@@ -111,7 +110,8 @@
       "pages": [
         "pages/erocdetails/index",
         "pages/achievement/index",
-        "pages/achievementNext/index"
+        "pages/achievementNext/index",
+        "pages/medical/index"
       ]
     }
   ],
@@ -171,7 +171,7 @@
   },
   "plugins": {
     "WechatSI": {
-      "version": "0.3.0",
+      "version": "0.3.3",
       "provider": "wx069ba97219f66d99"
     }
   },

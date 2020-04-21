@@ -81,10 +81,12 @@ Page({
             icon: 'success',
             duration: 2000
           })
+          let pages = getCurrentPages();
+          let Page = pages[pages.length - 2];//
           setTimeout(function(){
             self.onClickLeft()
+            Page.getdata()
           },1000)
-          self.getdata()
         } else {
           wx.showToast({
             title: '失败',

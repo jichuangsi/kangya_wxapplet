@@ -30,9 +30,9 @@ Page({
       url: '../Sound/index',
     })
   },
-  Agreeimggo() {
+  Agreeimggo(e) {
     wx.navigateTo({
-      url: '../Agreeimg/index',
+      url: '../Agreeimg/index?index=' + e.currentTarget.dataset.index,
     })
   },
   editgo(e) {

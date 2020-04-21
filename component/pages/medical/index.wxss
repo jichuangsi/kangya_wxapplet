@@ -42,6 +42,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
   border-radius: 10rpx;
+  z-index: 9;
 }
 .center {
   margin-bottom: 100rpx;
@@ -98,6 +99,7 @@
 .tab {
   border: 1rpx solid #f2f2f2;
   display: flex;
+  flex-wrap: wrap;
   line-height: 46rpx;
 }
 .tab .left {
@@ -114,6 +116,7 @@
 .tab .right {
   flex: 1;
   padding: 10rpx 20rpx;
+  color: #666;
 }
 .tab_state {
   display: flex;
@@ -212,4 +215,25 @@
   position: fixed;
   bottom: 0rpx;
   left: 0rpx;
+}
+.canvas_box {
+  width: 100%;
+  height: 600rpx;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.gl {
+  width: 100%;
+  text-align: center;
+  margin: 20rpx;
+  font-size: 30rpx;
+}
+.hui {
+  color: #999;
 }

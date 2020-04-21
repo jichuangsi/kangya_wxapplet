@@ -1,5 +1,6 @@
 // pages/medical/index.js
-import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog.js';
+import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog.js';
+import * as echarts from '../../ec-canvas/echarts.js';
 Page({
 
   /**
@@ -13,6 +14,7 @@ Page({
     patdetails: '',
     power_arr: [],
     user: '',
+    arr_state:false
   },
   onClickLeft() {
     wx.navigateBack({
@@ -21,7 +23,7 @@ Page({
   },
   onClickRight(){
     wx.navigateTo({
-      url: '../medicaledit/index?title=新增病历',
+      url: '../../../pages/medicaledit/index?title=新增病历',
     })
   },
   qm() {
@@ -72,11 +74,14 @@ Page({
   },
   edit(e) {
     wx.navigateTo({
-      url: '../medicaledit/index?title=病历详情&&index=' + e.currentTarget.dataset.index,
+      url: '../../../pages/medicaledit/index?title=病历详情&&index=' + e.currentTarget.dataset.index,
     })
   },
   getdata(){
     let self = this
+    self.setData({
+      arr_state: false
+    })
     wx.request({
       url: getApp().data.APIS + '/patient/medicalrecordinfo',
       method:'post',
@@ -97,8 +102,10 @@ Page({
             }
           }
           self.setData({
-            arr: arr
+            arr: arr,
+            arr_state:true
           })
+          console.log(self.data.arr)
         }
       },
     })
@@ -119,7 +126,6 @@ Page({
           self.setData({
             arr: arr
           })
-          console.log(self.data.arr)
         }
       },
     })
@@ -161,6 +167,81 @@ Page({
       delta: 1,
     })
   },
+  getcharts(index){
+    let self = this
+    console.log(index + '`````')
+    let BoneLoss = self.data.arr[index].exam.BoneLoss >= 40 ? 100 : self.data.arr[index].exam.BoneLoss
+    let PPD = self.data.arr[index].exam.PPD > 10 ? 10 : self.data.arr[index].exam.PPD
+    let BOP_MAX = self.data.arr[index].exam.NumberTeeth * self.data.arr[index].exam.SitesPer
+    let BOP_BFB = ((self.data.arr[index].exam.BOP / BOP_MAX) * 100).toFixed() +'%'
+    let BOP = (self.data.arr[index].exam.BOP / BOP_MAX) >= 0.4 ? BOP_MAX : self.data.arr[index].exam.BOP
+    let BoneLoss_BFB = (BoneLoss / self.data.arr[index].exam.Age).toFixed(3)
+    let Envir = self.data.arr[index].exam.Envir+1
+    let SystGen = self.data.arr[index].exam.SystGen+1
+    let ToothLoss = self.data.arr[index].exam.ToothLoss >= 10 ? 28 : self.data.arr[index].exam.ToothLoss
+    let ALL = BOP_MAX + 5 + 2 +100 +28 +10
+    let ALL_NUM = BOP + Envir + SystGen + BoneLoss + ToothLoss+PPD
+    let color = ''
+    if ((ALL_NUM / ALL) <= 0.166){
+      color = '#ccff80'
+    } else if ((ALL_NUM / ALL) <= 0.333) {
+      color = '#e6ff80'
+    } else if ((ALL_NUM / ALL) <= 0.5) {
+      color = '#ffff80'
+    } else if ((ALL_NUM / ALL) <= 0.666) {
+      color = '#ffc080'
+    } else if ((ALL_NUM / ALL) > 0.666) {
+      color = '#ffa080'
+    }
+    console.log(SystGen)
+    self.selectComponent('#mychart-dom-graph' + index).init((canvas, width, height, dpr) => {
+      const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr // new
+      });
+      var option = {
+        grid: {
+          left:'60%',
+          width:'100rpx'
+        },
+        radar: {
+          // shape: 'circle',
+          radius:'60%',
+          name: {
+            textStyle: {
+              color: '#333',
+              borderRadius: 3,
+              padding: [3, 5]
+            }
+          },
+          indicator: [
+            { name: '探诊出血阳性位点百分比=' + BOP_BFB, max: BOP_MAX },
+            { name: '环境', max: 5 },
+            { name: '全身状况/遗传', max: 2 },
+            { name: '骨丧失/年龄=' + BoneLoss, max: 100 },
+            { name: '牙齿丧失', max: 28 },
+            { name: '探诊深度≥5mm', max: 10 },
+          ]
+        },
+        color: color,
+        series: [{
+          name: '图表',
+          type: 'radar',
+          areaStyle: {},
+          // areaStyle: {normal: {}},
+          data: [
+            {
+              value: [BOP, Envir, SystGen, BoneLoss, ToothLoss, PPD],
+              name: '图表'
+            }
+          ]
+        }]
+      };
+      chart.setOption(option);
+      return chart;
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -196,6 +277,17 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    let self = this
+    let timeout1 = setInterval(function () {
+      if (self.data.arr.length > 0 || self.data.arr_state) {
+        for (let i = 0; i < self.data.arr.length;i++){
+          if (self.data.arr[i].exam.Age && !self.data.arr[i].exam.Group0){
+            self.getcharts(i)
+          }
+        }
+        clearInterval(timeout1)
+      }
+    }, 100)
   },
 
   /**

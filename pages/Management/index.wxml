@@ -72,7 +72,7 @@
           <van-icon name="arrow" />
           <view class="bz">暂无录音</view>
       </view>
-      <view class="li" bindtap="Agreeimggo">
+      <view class="li" data-index="{{index}}" bindtap="Agreeimggo">
           <view>知情同意书</view>
           <view></view>
           <van-icon name="arrow" />

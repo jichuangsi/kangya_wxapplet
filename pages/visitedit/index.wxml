@@ -49,7 +49,7 @@
       <view>模板</view>
       <van-icon name="arrow" />
     </view>
-    <view class="bz" data-text="添加回访内容" data-btn="1" data-textstate="1"  bindtap="Patienteditgo">{{visitcontent==''?'未填写回访内容信息':visitcontent}}</view>
+    <view class="bz" data-text="添加回访内容" data-btn="1" data-textstate="1" data-value="{{visitcontent}}" bindtap="Patienteditgo">{{visitcontent==''?'未填写回访内容信息':visitcontent}}</view>
     <view class="xian"></view>
     <view class="box" data-text="回访结果模板" bindtap="Patienteditgo">
       <van-icon name="tosend" />
@@ -57,7 +57,7 @@
       <view>模板</view>
       <van-icon name="arrow" />
     </view>
-    <view class="bz" data-text="添加回访结果" data-btn="1" data-textstate="1" bindtap="Patienteditgo">{{visitresult==''?'未填写回访结果信息':visitresult}}</view>
+    <view class="bz" data-text="添加回访结果" data-btn="1" data-textstate="1" data-value="{{visitresult}}" bindtap="Patienteditgo">{{visitresult==''?'未填写回访结果信息':visitresult}}</view>
     <view class="xian"></view>
     <view class="box" bindtap="Soundgo">
       <van-icon name="tosend" />

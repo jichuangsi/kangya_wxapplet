@@ -51,7 +51,7 @@
         <van-grid-item icon="../../../images/news_details_icon_image.png" text="影像" link-type="navigateTo"
         url="/pages/img/index"/>
         <van-grid-item icon="../../../images/news_details_icon_cases.png" text="病历" link-type="navigateTo"
-        url="/pages/medical/index"/>
+        url="/component/pages/medical/index"/>
         <van-grid-item icon="../../../images/news_details_icon_reservation.png" text="预约" link-type="navigateTo"
         url="/pages/order/index?title=预约"/>
         <van-grid-item icon="../../../images/news_details_icon_returnvisit.png" text="回访" link-type="navigateTo"

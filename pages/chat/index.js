@@ -68,7 +68,7 @@ Page({
   blgo() {
     this.inputfocus()
     wx.navigateTo({
-      url: '../medical/index?title=选择病历',
+      url: '../../component/pages/medical/index?title=选择病历',
     })
   },
   spyzgo() {

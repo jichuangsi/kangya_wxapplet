@@ -56,6 +56,7 @@
   padding: 20rpx;
   box-sizing: border-box;
   border-bottom: 1rpx solid #f2f2f2;
+  color: #bababa;
 }
 .li image {
   width: 56rpx;
@@ -65,10 +66,12 @@
   flex: 1;
   margin-left: 20rpx;
   margin-right: 20rpx;
+  color: #333;
 }
 .li .time {
   margin-right: 20rpx;
   font-size: 28rpx;
+  color: #333;
 } 
 .bz {
   width: 100%;

@@ -55,7 +55,7 @@ Page({
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
         const tempFilePaths = res.tempFilePaths
-        self.addimg(res.tempFilePaths[0])
+        self.addimg(res.tempFilePaths)
         console.log(res.tempFilePaths)
       }
     })
@@ -68,43 +68,102 @@ Page({
   },
   addimg(imgname) {
     let self = this
-    console.log(4456)
-    wx.uploadFile({
-      url: getApp().data.APIS + '/patient/addmediaimage', //仅为示例，非真实的接口地址
-      filePath: imgname,
-      name: 'file',
-      formData: {
-        customerid: self.data.customerid,
-        fileName: imgname
-      },
-      success: function (res) {
-        console.log(res)
-        let data = JSON.parse(res.data)
-        console.log(data)
-        if (data.info == 'ok') {
-          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 2000
-          })
-          self.onClose()
-          self.getdata()
-        } else {
-          wx.showToast({
-            title: '失败',
-            duration: 2000
-          })
+    let name = imgname[0].substring(imgname[0].length - 6)
+    wx.getFileSystemManager().readFile({
+      filePath: imgname[0],
+      success: fileStream => {
+        var yourfilename = '45'
+        var fileArray = new Uint8Array(fileStream.data);
+        var start_boundary = '\r\n–yourboundary\r\n' + 'Content - Disposition: form - data; name =“data”; filename = "' + yourfilename + '"\r\n' + 'Content - Type: application / octet - stream' + '\r\n\r\n';
+        var end_boundary = '\r\n–yourboundary–';
+        var startArray = [];
+        for (var i = 0; i < start_boundary.length; i++) {
+          startArray.push(start_boundary.charCodeAt(i));
         }
-        //do something
-      },
-      fail:function(err){
-        console.log(err)
-        wx.showToast({
-          title: '失败',
-          duration: 2000
+        var endArray = [];
+        for (var i = 0; i < end_boundary.length; i++) {
+          endArray.push(end_boundary.charCodeAt(i));
+        }
+        var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
+        var typedArray = new Uint8Array(totalArray);
+        wx.request({
+          url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/' + name,
+
+          method: 'PUT',
+          dataType: 'ARRAYBUFFER',
+          header: {
+            'Authorization': 'Basic cHViOnB1YkAxMjM=',
+            'Content-Type': 'multipart/form-data',
+          },
+
+          data: typedArray.buffer,
+
+          processData: false,
+
+          success: function (res) {
+
+            wx.showToast({
+              title: '上传成功',
+            })
+            self.setData({
+              show: false
+            })
+            self.getdata()
+          },
+
+          fail: function (err) {
+
+            console.log("失败");
+            wx.showToast({
+              icon:'none',
+              title: '上传失败',
+            })
+            self.setData({
+              show:false
+            })
+
+          }
+
         })
       }
     })
+
+    // wx.uploadFile({
+    //   url: getApp().data.APIS + '/patient/addmediaimage', //仅为示例，非真实的接口地址
+    //   filePath: imgname,
+    //   name: 'file',
+    //   formData: {
+    //     customerid: self.data.customerid,
+    //     fileName: imgname
+    //   },
+    //   success: function (res) {
+    //     console.log(res)
+    //     let data = JSON.parse(res.data)
+    //     console.log(data)
+    //     if (data.info == 'ok') {
+    //       wx.showToast({
+    //         title: '成功',
+    //         icon: 'success',
+    //         duration: 2000
+    //       })
+    //       self.onClose()
+    //       self.getdata()
+    //     } else {
+    //       wx.showToast({
+    //         title: '失败',
+    //         duration: 2000
+    //       })
+    //     }
+    //     //do something
+    //   },
+    //   fail:function(err){
+    //     console.log(err)
+    //     wx.showToast({
+    //       title: '失败',
+    //       duration: 2000
+    //     })
+    //   }
+    // })
   },
   getdata() {
     let self = this
@@ -127,6 +186,7 @@ Page({
           self.setData({
             arr: res.data.list.imagelist
           })
+          console.log(self.data.arr)
         }
       }
     })
@@ -144,14 +204,12 @@ Page({
     let prevPage = pages[pages.length - 2];
     if (this.data.msgstate == 0) {
       let currPage = pages[pages.length - 3];
-      let arr = pages[pages.length - 3].img_arr
+      let arr = pages[pages.length - 2].img_arr
       for (let i = 0; i < this.data.arr.length; i++) {
         if (this.data.arr[i].state == 1) {
           arr.push(this.data.arr[i])
         }
       }
-      console.log(currPage.data)
-      console.log(prevPage.data)
       currPage.setData({
         img_arr: arr
       })

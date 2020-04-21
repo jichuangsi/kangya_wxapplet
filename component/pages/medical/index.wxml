@@ -9,20 +9,24 @@
     <van-icon name="plus" size="36rpx" />
   </view>
   <view class="center">
-    <view class="li" wx:for="{{arr}}" wx:if="{{power_arr.code10401.has}}">
+    <view class="li" wx:for="{{arr}}" wx:if="{{power_arr.code10401.has&&!item.exam.Group0}}">
       <view class="li_top">
-        <image src="../../images/my_headportrait_male.png"></image>
+        <image src="../../../images/my_headportrait_male.png"></image>
         <view class="name">{{item.examdoctor}}{{item.emrexamdoct}}</view>
         <view class="time">{{item.examdate}}</view>
       </view>
       <view class="user">
         <view>患者姓名</view>
-        <view>{{name}}</view>
+        <view class="hui">{{name}}</view>
         <view>性别</view>
-        <view>{{sex}}</view>
+        <view class="hui">{{sex}}</view>
       </view>
       <view class="tab" wx:if="{{item.exam.Age}}">
-        <image src="../../images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image>
+        <view class="canvas_box">
+          <ec-canvas id="mychart-dom-graph{{index}}" canvas-id="mychart-graph{{index}}"></ec-canvas>
+        </view>
+        <view class="gl">建议复诊隔离{{item.exam.ReferralInterval}}个月</view>
+        <!-- <image src="../../../images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image> -->
       </view>
       <view wx:if="{{!item.exam.Age&&!item.exam.item&&!item.exam.Mode}}">
         <view class="tab">
@@ -75,9 +79,9 @@
           </view>
         </view>
         <view class="user">
-          <view wx:if="{{power_arr.code10404.has||power_arr.code10401.has}}" data-index="{{index}}" bindtap="edit"><van-icon name="edit" />编辑</view>
-          <view wx:if="{{power_arr.code10403.has||power_arr.code10405.has}}" bindtap="del"><van-icon name="close" />删除</view>
-          <view bindtap="qm" data-item="{{item}}"><van-icon name="records" />签名</view>
+          <view class="hui" wx:if="{{power_arr.code10404.has||power_arr.code10401.has}}" data-index="{{index}}" bindtap="edit"><van-icon name="edit" />编辑</view>
+          <view class="hui" wx:if="{{power_arr.code10403.has||power_arr.code10405.has}}" bindtap="del"><van-icon name="close" />删除</view>
+          <view class="hui" bindtap="qm" data-item="{{item}}"><van-icon name="records" />签名</view>
         </view>
       </view>
       <view wx:if="{{item.exam.Age}}">
@@ -111,7 +115,7 @@
         </view>
         <view class="tab">
           <view class="left w50">缺失牙齿数目</view>
-          <view class="right">{{item.exam.BoneLoss}}</view>
+          <view class="right">{{item.exam.ToothLoss}}</view>
         </view>
         <view class="tab">
           <view class="left w50">全身状况/遗传</view>
@@ -119,7 +123,11 @@
         </view>
         <view class="tab">
           <view class="left w50">环境</view>
-          <view class="right">{{item.exam.Envir==0?'不吸烟':'吸烟'}}</view>
+          <view class="right" wx:if="{{item.exam.Envir==0}}">不吸烟</view>
+          <view class="right" wx:if="{{item.exam.Envir==1}}">已戒烟</view>
+          <view class="right" wx:if="{{item.exam.Envir==2}}">偶尔吸烟</view>
+          <view class="right" wx:if="{{item.exam.Envir==3}}">吸烟</view>
+          <view class="right" wx:if="{{item.exam.Envir==4}}">重度吸烟</view>
         </view>
       </view>
       <view wx:if="{{item.exam.Mode}}">
@@ -162,7 +170,7 @@
       </view>
     </view>
         <view class="wu" wx:if="{{arr.length==0||!power_arr.code10401.has}}">
-          <image src="../../images/none.png"></image>
+          <image src="../../../images/none.png"></image>
           暂无数据
         </view>
   </view>
@@ -175,14 +183,14 @@
     </van-nav-bar>
   </view> -->
   <view class="center">
-    <view class="li" wx:for="{{arr}}" data-index="{{index}}" bindtap="check_medical" wx:if="{{power_arr.code10401.has}}">
+    <view class="li" wx:for="{{arr}}" data-index="{{index}}" bindtap="check_medical" wx:if="{{power_arr.code10401.has&&!item.exam.Group0}}">
       <view class="check_medical">
         <van-icon name="checked" color="#999" size="42rpx" wx:if="{{item.check_state == 0}}" />
         <van-icon name="checked" color="#16c7ae" size="42rpx" wx:if="{{item.check_state == 1}}" />
       </view>
       <view class="medical_box" wx:if="{{item.check_state == 1}}"></view>
       <view class="li_top">
-        <image src="../../images/my_headportrait_male.png"></image>
+        <image src="../../../images/my_headportrait_male.png"></image>
         <view class="name">{{item.examdoctor}}{{item.emrexamdoct}}</view>
         <view class="time">{{item.examdate}}</view>
       </view>
@@ -193,7 +201,7 @@
         <view>{{sex}}</view>
       </view>
       <view class="tab" wx:if="{{item.exam.Age}}">
-        <image src="../../images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image>
+        <image src="../../../images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image>
       </view>
       <view wx:if="{{!item.exam.Age&&!item.exam.item&&!item.exam.Mode}}">
         <view class="tab">
@@ -328,7 +336,7 @@
       </view>
     </view>
         <view class="wu" wx:if="{{arr.length==0||!power_arr.code10401.has}}">
-          <image src="../../images/none.png"></image>
+          <image src="../../../images/none.png"></image>
           暂无数据
         </view>
   </view>

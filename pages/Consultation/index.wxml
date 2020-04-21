@@ -36,7 +36,7 @@
         <view>{{item.facerecordername}}</view>
       </view>
     </view>
-        <view class="wu" wx:if="{{arr.length==0}}">
+        <view class="wu" wx:if="{{arr.length==0||!power_arr.code10501.has}}">
           <image src="../../images/none.png"></image>
           暂无数据
         </view>

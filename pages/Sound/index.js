@@ -52,6 +52,7 @@ Page({
       countDown.pause()
       recorderManager.pause(options)
       recorderManager.onPause((res) => {
+        console.log(111)
         console.log(res)
         self.setData({
           text: '暂停录音',
@@ -71,11 +72,12 @@ Page({
         state: 0,
         path: res.tempFilePath
       })
+      let name = res.tempFilePath.substring(res.tempFilePath.length - 6)
       wx.getFileSystemManager().readFile({
         filePath: res.tempFilePath,
         success: fileStream => {
         var yourfilename = '45'
-        var fileArray = new Uint8Array(res.data);
+          var fileArray = new Uint8Array(fileStream.data);
         var start_boundary = '\r\n–yourboundary\r\n' + 'Content - Disposition: form - data; name =“data”; filename = "' + yourfilename+ '"\r\n'+'Content - Type: application / octet - stream' +'\r\n\r\n';
         var end_boundary = '\r\n–yourboundary–';
         var startArray = [];
@@ -88,9 +90,8 @@ Page({
         }
         var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
         var typedArray = new Uint8Array(totalArray);
-          console.log(totalArray.buffer)
           wx.request({
-            url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/45.txt',
+            url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/' + name,
 
             method: 'PUT',
             dataType: 'ARRAYBUFFER',
@@ -99,7 +100,7 @@ Page({
               'Content-Type': 'multipart/form-data',
             },
 
-            data: totalArray.buffer,
+            data: typedArray.buffer,
 
             processData: false,
 

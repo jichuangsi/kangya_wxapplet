@@ -132,8 +132,9 @@ Page({
   Patienteditgo(e) {
     let btn = e.currentTarget.dataset.btn ? '&&btnstate=1' : ''
     let textstate = e.currentTarget.dataset.textstate ? '&&textstate=1' : ''
+    let value = e.currentTarget.dataset.value ? '&&value=' + e.currentTarget.dataset.value : ''
     wx.navigateTo({
-      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + btn + textstate,
+      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + btn + textstate + value,
     })
   },
   /**
