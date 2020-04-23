@@ -129,8 +129,9 @@ Page({
     let iptstate = e.currentTarget.dataset.iptstate ? '&&iptstate=1' : ''
     let textstate = e.currentTarget.dataset.textstate ? '&&textstate=1' : ''
     let value = e.currentTarget.dataset.value ? '&&value=' + e.currentTarget.dataset.value : ''
+    let typestate = e.currentTarget.dataset.typestate ? '&&typestate=' + e.currentTarget.dataset.typestate : ''
     wx.navigateTo({
-      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + iptstate + btn + textstate + value
+      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + iptstate + btn + textstate + value + typestate
     })
   },
   Colleaguego(e) {

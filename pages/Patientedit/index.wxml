@@ -6,38 +6,10 @@
     </van-nav-bar>    
   </view> -->
   <view class="center">
-    <!-- <input value="{{name}}" maxlength="32" placeholder="请输入内容" bindinput="nameipt" wx:if="{{title=='输入姓名'}}"></input>
-    <input value="{{age}}" maxlength="3" placeholder="请输入您的年龄" bindinput="ageipt"  wx:if="{{title=='添加年龄'}}"></input>
-    <input value="{{hobby}}" maxlength="32" placeholder="请输入内容" bindinput="hobbyipt"  wx:if="{{title=='添加兴趣爱好'}}"></input>
-    <input value="{{Economic}}" maxlength="32" placeholder="请输入内容" bindinput="Economicipt"  wx:if="{{title=='添加经济实力'}}"></input>
-    <input value="{{qq}}" maxlength="32" placeholder="请输入内容" bindinput="qqipt"  wx:if="{{title=='添加QQ号码'}}"></input>
-    <input value="{{mailbox}}" maxlength="32" placeholder="请输入内容" bindinput="mailboxipt"  wx:if="{{title=='添加电子邮箱'}}"></input>
-    <input value="{{iphone1}}" maxlength="32" placeholder="请输入内容" bindinput="iphone1ipt"  wx:if="{{title=='添加电话1'}}"></input>
-    <input value="{{iphone2}}" maxlength="32" placeholder="请输入内容" bindinput="iphone2ipt"  wx:if="{{title=='添加电话2'}}"></input>
-    <textarea value="{{address}}" maxlength="150" placeholder="请输入内容" bindinput="addressipt"  wx:if="{{title=='修改地址'}}"></textarea>
-    <textarea value="{{remarks}}" maxlength="150" placeholder="请输入内容" bindinput="remarksipt"  wx:if="{{title=='修改备注'}}"></textarea>
-    <input value="{{IDCard}}" maxlength="32" placeholder="请输入内容" bindinput="IDCardipt"  wx:if="{{title=='添加身份证'}}"></input>
-    <input value="{{socialcard}}" maxlength="32" placeholder="请输入内容" bindinput="socialcardipt"  wx:if="{{title=='添加社保号'}}"></input>
-    <input value="{{Introducer}}" maxlength="32" placeholder="请输入内容" bindinput="Introduceript"  wx:if="{{title=='添加介绍人'}}"></input>
-    <input value="{{Habit}}" maxlength="32" placeholder="请输入内容" bindinput="Habitipt"  wx:if="{{title=='添加洁牙习惯'}}"></input>
-    <input value="{{experience}}" maxlength="32" placeholder="请输入内容" bindinput="experienceipt"  wx:if="{{title=='添加就诊经历'}}"></input>
-    <textarea value="{{allergy}}" maxlength="150" placeholder="请输入内容" bindinput="allergyipt"  wx:if="{{title=='添加过敏史'}}"></textarea>
-    <textarea value="{{past}}" maxlength="150" placeholder="请输入内容" bindinput="pastipt"  wx:if="{{title=='添加既往史'}}"></textarea>
-    <textarea value="{{ask}}" maxlength="150" placeholder="请输入内容" bindinput="askipt"  wx:if="{{title=='添加顾客要求'}}"></textarea>
-    <textarea value="{{bz}}" maxlength="150" placeholder="请输入内容" bindinput="bzipt"  wx:if="{{title=='备注信息'}}"></textarea>
-    <textarea value="{{yybz}}" maxlength="150" placeholder="请输入内容" bindinput="yybzipt"  wx:if="{{title=='输入预约备注信息'}}"></textarea>
-    <textarea value="{{hfnr}}" maxlength="150" placeholder="请输入内容" bindinput="hfnript"  wx:if="{{title=='添加回访内容'}}"></textarea>
-    <textarea value="{{hfjg}}" maxlength="150" placeholder="请输入内容" bindinput="hfjgipt"  wx:if="{{title=='添加回访结果'}}"></textarea>
-
-    
-    <textarea value="{{kwzs}}" maxlength="150" placeholder="请输入内容" bindinput="kwzsipt"  wx:if="{{title=='请输入客户主诉'}}"></textarea>
-    <textarea value="{{jbxq}}" maxlength="150" placeholder="请输入内容" bindinput="jbxqipt"  wx:if="{{title=='请输入基本需求'}}"></textarea>
-    <textarea value="{{qzxq}}" maxlength="150" placeholder="请输入内容" bindinput="qzxqipt"  wx:if="{{title=='请输入潜在需求'}}"></textarea>
-    <textarea value="{{ysfa}}" maxlength="150" placeholder="请输入内容" bindinput="ysfaipt"  wx:if="{{title=='输入医生方案'}}"></textarea>
-    <textarea value="{{gtjl}}" maxlength="150" placeholder="请输入内容" bindinput="gtjlipt"  wx:if="{{title=='输入沟通记录'}}"></textarea>
-    <textarea value="{{fwjy}}" maxlength="150" placeholder="请输入内容" bindinput="fwjyipt"  wx:if="{{title=='输入服务建议'}}"></textarea> -->
-    <input value="{{iptvalue}}" placeholder="请输入内容" wx:if="{{iptstate}}" bindinput="ipt"></input>
-    <textarea value="{{textvalue}}" maxlength="150" placeholder="请输入内容" bindinput="textipt"  wx:if="{{textstate}}"></textarea>
+    <input value="{{iptvalue}}" placeholder="请输入内容" wx:if="{{iptstate&&!type_state}}" bindinput="ipt"></input>
+    <textarea value="{{textvalue&&!type_state}}" maxlength="150" placeholder="请输入内容" bindinput="textipt"  wx:if="{{textstate}}"></textarea>
+    <input type="number" value="{{iptvalue}}" wx:if="{{iptstate&&type_state}}" placeholder="请输入内容" bindinput="ipt"></input>
+    <textarea value="{{textvalue}}" maxlength="150" placeholder="请输入内容" bindinput="textipt"  wx:if="{{textstate&&type_state}}"></textarea>
 
     <view class="li" wx:for="{{project_arr}}" data-text="{{item}}" wx:if="{{title=='选择项目'}}" bindtap="projectclick">
     {{item}}

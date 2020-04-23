@@ -77,9 +77,9 @@ Page({
       },
       success: function (res) {
         console.log(res)
-        for(let i = 0;i<res.data.list.studylist.length;i++){
+        for (let i = 0; i < res.data.list.studylist.length; i++) {
+          res.data.list.studylist[i].allfee = 0
           if (res.data.list.studylist[i].handlelist){
-            res.data.list.studylist[i].allfee = 0
             for (let j = 0; j < res.data.list.studylist[i].handlelist.length; j++) {
               res.data.list.studylist[i].allfee += Number(res.data.list.studylist[i].handlelist[j].billnumber) * res.data.list.studylist[i].handlelist[j].fee.indexOf(',') != '-1' ? Number(res.data.list.studylist[i].handlelist[j].fee.split(',')[0] + res.data.list.studylist[i].handlelist[j].fee.split(',')[1]) : Number(res.data.list.studylist[i].handlelist[j].fee)
             }

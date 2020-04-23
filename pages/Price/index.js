@@ -23,8 +23,10 @@ Page({
     let btn = e.currentTarget.dataset.btn ? '&&btnstate=1' : ''
     let iptstate = e.currentTarget.dataset.iptstate ? '&&iptstate=1' : ''
     let textstate = e.currentTarget.dataset.textstate ? '&&textstate=1' : ''
+    let value = e.currentTarget.dataset.value ? '&&value=' + e.currentTarget.dataset.value : ''
+    let typestate = e.currentTarget.dataset.typestate ? '&&typestate=' + e.currentTarget.dataset.typestate : ''
     wx.navigateTo({
-      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + iptstate + btn + textstate
+      url: '../Patientedit/index?title=' + e.currentTarget.dataset.text + iptstate + btn + textstate + value + typestate
     })
   },
   Colleaguego() {
@@ -56,16 +58,20 @@ Page({
    */
   onLoad: function (options) {
     let data = JSON.parse(options.item)
+    console.log(data)
     data.discount = 100
     data.activity = ''
     data.remark = ''
     data.discountfee = data.allfee
     data.payfeetotal = data.allfee
-    for (let i = 0; i < data.handlelist.length; i++) {
-      data.handlelist[i].discount = 100
-      data.handlelist[i].state = false
-      data.handlelist[i].discountfee = data.handlelist[i].fee.indexOf(',') != '-1' ? Number(data.handlelist[i].fee.split(',')[0] + data.handlelist[i].fee.split(',')[1]): Number(data.handlelist[i].fee)
-      data.handlelist[i].payfeetotal = data.handlelist[i].fee.indexOf(',') != '-1' ? Number(data.handlelist[i].fee.split(',')[0] + data.handlelist[i].fee.split(',')[1]) : Number(data.handlelist[i].fee)
+    if (data.handlelist){
+      for (let i = 0; i < data.handlelist.length; i++) {
+        data.handlelist[i].discount = 100
+        data.handlelist[i].state = false
+        data.handlelist[i].discountfee = data.handlelist[i].fee.indexOf(',') != '-1' ? Number(data.handlelist[i].fee.split(',')[0] + data.handlelist[i].fee.split(',')[1]) : Number(data.handlelist[i].fee)
+        data.handlelist[i].payfeetotal = data.handlelist[i].fee.indexOf(',') != '-1' ? Number(data.handlelist[i].fee.split(',')[0] + data.handlelist[i].fee.split(',')[1]) : Number(data.handlelist[i].fee)
+      }
+    } else {
     }
     this.setData({
       title:options.title,

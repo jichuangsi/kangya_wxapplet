@@ -8,7 +8,13 @@ Page({
     title: '我的资料',
     show:false,
     text:'头像',
-    areaList:[]
+    areaList:[],
+    name:'',
+    age:'',
+    jc:'',
+    dq:'',
+    xm:[],
+    ll:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -55,9 +61,9 @@ Page({
     this.setData({ show: false });
   },
   editgo(e) {
-    console.log(e.currentTarget.dataset.text)
+    let value = e.currentTarget.dataset.value ? '&&value=' + e.currentTarget.dataset.value : ''
     wx.navigateTo({
-      url: '../Mydataedit/index?title=' + e.currentTarget.dataset.text
+      url: '../Mydataedit/index?title=' + e.currentTarget.dataset.text + value
     })
   },
   /**

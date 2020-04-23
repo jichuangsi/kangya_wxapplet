@@ -65,7 +65,7 @@
               <van-icon name="arrow" />
             </view>
           </view>
-          <view class="li" data-text="添加年龄" data-btn="1" data-iptstate="1" data-value="{{Patientlist.age}}" bindtap="editgo">
+          <view class="li" data-text="添加年龄" data-btn="1" data-typestate="1" data-iptstate="1" data-value="{{Patientlist.age}}" bindtap="editgo">
             <view class="left">
               年龄
             </view>
@@ -136,7 +136,7 @@
             </view>
           </view>
           <view class="title">联系方式</view>
-          <view class="li" data-text="添加QQ号码" data-btn="1" data-iptstate="1" data-value="{{Patientlist.qq}}" bindtap="editgo">
+          <view class="li" data-text="添加QQ号码" data-btn="1" data-typestate="1" data-iptstate="1" data-value="{{Patientlist.qq}}" bindtap="editgo">
             <view class="left">
               QQ
             </view>
@@ -162,7 +162,7 @@
               <view wx:if="{{Patientlist.check_ascription1 != '' }}">{{Patientlist.check_ascription1}}</view>
               <van-icon name="arrow" />
             </view>
-            <view class="right" data-text="添加电话1" data-btn="1" data-iptstate="1" data-value="{{Patientlist.iphone1}}" bindtap="editgo">
+            <view class="right" data-text="添加电话1" data-btn="1" data-typestate="1" data-iptstate="1" data-value="{{Patientlist.iphone1}}" bindtap="editgo">
               <view wx:if="{{Patientlist.iphone1 == '' }}">输入手机号码</view>
               <view wx:if="{{Patientlist.iphone1 != '' }}">{{Patientlist.iphone1}}</view>
               <van-icon name="arrow" />
@@ -174,7 +174,7 @@
               <view wx:if="{{Patientlist.check_ascription2 != '' }}">{{Patientlist.check_ascription2}}</view>
               <van-icon name="arrow" />
             </view>
-            <view class="right" data-text="添加电话2" data-btn="1" data-iptstate="1" data-value="{{Patientlist.iphone2}}" bindtap="editgo">
+            <view class="right" data-text="添加电话2" data-btn="1" data-typestate="1" data-iptstate="1" data-value="{{Patientlist.iphone2}}" bindtap="editgo">
               <view wx:if="{{Patientlist.iphone2 == '' }}">输入手机号码</view>
               <view wx:if="{{Patientlist.iphone2 != '' }}">{{Patientlist.iphone2}}</view>
               <van-icon name="arrow" />

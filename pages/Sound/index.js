@@ -72,7 +72,7 @@ Page({
         state: 0,
         path: res.tempFilePath
       })
-      let name = new Date().getTime() + imgname[0].substring(imgname[0].length - 4)
+      let name = new Date().getTime() + res.tempFilePath.substring(res.tempFilePath.length - 4)
       wx.getFileSystemManager().readFile({
         filePath: res.tempFilePath,
         success: fileStream => {

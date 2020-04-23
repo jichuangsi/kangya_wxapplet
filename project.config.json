@@ -81,8 +81,8 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/img/index",
-					"pathName": "pages/img/index",
+					"name": "pages/Mydata/index",
+					"pathName": "pages/Mydata/index",
 					"query": "title=影像",
 					"scene": null
 				},

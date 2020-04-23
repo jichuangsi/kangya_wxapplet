@@ -12,17 +12,17 @@
             <view>{{detailed.activity}}</view>
             <van-icon name="arrow" size="36rpx" />
           </view>
-          <view class="li" data-text="整单折扣" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+          <view class="li" data-text="整单折扣" data-btn="1" data-typestate="1" data-value="{{detailed.discount}}" data-iptstate="1" bindtap="Patienteditgo">
             <view class="text">整单折扣</view>
             <view>{{detailed.discount}}%</view>
             <van-icon name="arrow" size="36rpx" />
           </view>
-          <view class="li" data-text="优惠后金额" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+          <view class="li" data-text="优惠后金额" data-btn="1" data-typestate="1" data-value="{{detailed.discountfee}}" data-iptstate="1" bindtap="Patienteditgo">
             <view class="text">优惠后金额</view>
             <view>￥{{detailed.discountfee}}</view>
             <van-icon name="arrow" size="36rpx" />
           </view>
-          <view class="li" data-text="本次收费" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+          <view class="li" data-text="本次收费" data-btn="1" data-typestate="1" data-value="{{detailed.payfeetotal}}" data-iptstate="1" bindtap="Patienteditgo">
             <view class="text">本次收费</view>
             <view class="green">￥{{detailed.payfeetotal}}</view>
             <van-icon name="arrow" size="36rpx" />
@@ -38,7 +38,7 @@
             <view>{{detailed.counselor}}</view>
             <van-icon name="arrow" size="36rpx" />
           </view>
-          <view class="li" data-text="添加备注" data-btn="1" data-textstate="1" bindtap="Patienteditgo">
+          <view class="li" data-text="添加备注" data-btn="1" data-textstate="1" data-value="{{detailed.remark}}" bindtap="Patienteditgo">
             <view class="bz">备注</view>
             <view>{{detailed.remark}}</view>
           </view>
@@ -56,17 +56,17 @@
               <view class="text">数量</view>
               <view>{{item.billnumber}}</view>
             </view>
-            <view class="li" data-text="折扣" data-btn="1" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
+            <view class="li" data-text="折扣" data-btn="1" data-typestate="1" data-value="{{item.discount}}" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
               <view class="text">折扣</view>
               <view class="orange">{{item.discount}}%</view>
             <van-icon name="arrow" size="36rpx" />
             </view>
-            <view class="li" data-text="总价" data-btn="1" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
+            <view class="li" data-text="总价" data-btn="1" data-typestate="1" data-value="{{item.discountfee}}" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
               <view class="text">总价</view>
               <view>￥{{item.discountfee}}</view>
               <van-icon name="arrow" size="36rpx" />
             </view>
-            <view class="li" data-text="本次项目收费" data-btn="1" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
+            <view class="li" data-text="本次项目收费" data-btn="1" data-typestate="1" data-value="{{item.payfeetotal}}" data-iptstate="1" data-childnum="{{index}}" bindtap="Patienteditgo">
               <view class="text">本次收费</view>
               <view>￥{{item.payfeetotal}}</view>
               <van-icon name="arrow" size="36rpx" />
@@ -90,17 +90,17 @@
             <view>{{detailed.activity}}</view>
             <van-icon name="arrow" size="36rpx" />
           </view>
-          <view class="li" data-text="整单折扣" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+          <view class="li" data-text="整单折扣" data-btn="1" data-typestate="1" data-value="{{detailed.discount}}" data-iptstate="1" bindtap="Patienteditgo">
             <view class="text">整单折扣</view>
             <view>{{detailed.discount}}%</view>
             <van-icon name="arrow" size="36rpx" />
           </view>
-          <view class="li" data-text="优惠后金额" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+          <view class="li" data-text="优惠后金额" data-btn="1" data-typestate="1" data-value="{{detailed.discountfee}}" data-iptstate="1" bindtap="Patienteditgo">
             <view class="text">优惠后金额</view>
             <view>￥{{detailed.discountfee}}</view>
             <van-icon name="arrow" size="36rpx" />
           </view>
-          <view class="li" data-text="本次收费" data-btn="1" data-iptstate="1" bindtap="Patienteditgo">
+          <view class="li" data-text="本次收费" data-btn="1" data-typestate="1" data-value="{{detailed.payfeetotal}}" data-iptstate="1" bindtap="Patienteditgo">
             <view class="text">本次收费</view>
             <view class="green">￥{{detailed.payfeetotal}}</view>
             <van-icon name="arrow" size="36rpx" />
@@ -116,7 +116,7 @@
             <view>{{detailed.counselor}}</view>
             <van-icon name="arrow" size="36rpx" />
           </view>
-          <view class="li" data-text="添加备注" data-btn="1" data-textstate="1" bindtap="Patienteditgo">
+          <view class="li" data-text="添加备注" data-btn="1" data-value="{{detailed.remark}}" data-textstate="1" bindtap="Patienteditgo">
             <view class="bz">备注</view>
             <view>{{detailed.remark}}</view>
           </view>

@@ -13,7 +13,7 @@ Page({
     textstate:false,
     iptvalue: '',
     textvalue: '',
-
+    type_state:false,
 
     prevpage:'',
     name: '',
@@ -546,11 +546,13 @@ Page({
     console.log(options.value)
     if(this.data.iptstate){
       this.setData({
-        iptvalue:options.value
+        iptvalue:options.value,
+        type_state:options.typestate?true:false
       })
     } else if (this.data.textstate) {
       this.setData({
-        textvalue: options.value
+        textvalue: options.value,
+        type_state: options.typestate ? true : false
       })
     }
     this.getMatter()
