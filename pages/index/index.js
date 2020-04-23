@@ -481,9 +481,9 @@ Page({
           let arr = []
           let a = {
           }
+          let c = {}
           for(let i = 0; i<res.data.list.length;i++){
             if (res.data.list[i].groupname.indexOf('app') != -1) {
-              arr.push(res.data.list[i])
               a = {
                 code10001: a.code10001 ? a.code10001 : res.data.list[res.data.list[i].code.indexOf('10001')!=-1?i:999],
                 code10603: a.code10603 ? a.code10603 : res.data.list[res.data.list[i].code.indexOf('10603')!=-1?i:999],
@@ -536,9 +536,11 @@ Page({
                 code10401: a.code10401 ? a.code10401 : res.data.list[res.data.list[i].code.indexOf('10401')!= -1 ? i : 999],
                 code10003: a.code10003 ? a.code10003 : res.data.list[res.data.list[i].code.indexOf('10003')!= -1 ? i : 999],
               }
+            } else if (res.data.list[i].code == '30000'){
+              c = res.data.list[i]
             }
           }
-          console.log(arr)
+          a.code30000 = c
           console.log(a)
           let b = true
           if (a.code10802.has){

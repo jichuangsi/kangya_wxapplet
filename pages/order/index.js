@@ -47,6 +47,7 @@ Page({
     order_state: '',
     power_arr: [],
     user: '',
+    qx_state:false
   },
   onClickLeft() {
     wx.navigateBack({
@@ -164,12 +165,15 @@ Page({
   },
   numclick(e) {
     this.setData({ state1: e.currentTarget.dataset.text, showbottom: false })
+    this.getdata()
   },
   numclick1(e) {
     this.setData({ state2: e.currentTarget.dataset.text, showbottom: false, nav1_state: e.currentTarget.dataset.id })
+    this.getdata()
   },
   numclick2(e) {
     this.setData({ state3: e.currentTarget.dataset.text, showbottom: false })
+    this.getdata()
   },
   addgo() {
     if (this.data.power_arr.code10603.has) {
@@ -190,6 +194,9 @@ Page({
   },
   getdata() {
     let self = this
+    self.setData({
+      qx_state: false
+    })
     wx.request({
       url: getApp().data.APIS + '/schedule/scscheduleday',
       method: 'post',
@@ -220,6 +227,13 @@ Page({
             }
           }
           console.log(arr)
+          for (let q = 0; q < arr.length; q++) {
+            if (arr[q].doctorid == self.data.user.userid) {
+              self.setData({
+                qx_state: true
+              })
+            }
+          }
           self.setData({
             order_arr: arr
           })

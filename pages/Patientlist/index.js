@@ -32,7 +32,8 @@ Page({
     pageIndex:1,
     pagetotal: 0,
     power_arr: [],
-    user: ''
+    user: '',
+    patient_num:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -137,6 +138,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
       },
       success: function (res) {
+        console.log(555)
         console.log(res)
         if(res.data.info =='ok'){
           self.setData({

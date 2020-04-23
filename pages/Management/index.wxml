@@ -78,7 +78,7 @@
           <van-icon name="arrow" />
       </view>
       <view class="li">
-        <view class="btn" data-item="{{item}}" bindtap="editgo">
+        <view class="btn" wx:if="{{power_arr.code10103||(power_arr.code10102&&user.userid==item.doctoridexam)}}" data-item="{{item}}" bindtap="editgo">
           <image src="../../images/details_disposal_icon_edit.png"></image>
           编辑
         </view>

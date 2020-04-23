@@ -4,7 +4,7 @@
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
   </view> -->
-  <van-grid column-num="3">
+  <van-grid column-num="3" wx:if="{{power_arr.code30000.has}}">
     <van-grid-item icon="../../../images/clinic_operate_icon_kanban.png" text="每日看板" link-type="navigateTo"
     url="/component/pages/erocdetails/index?title=每日看板" />
     <van-grid-item icon="../../../images/clinic_operate_icon_seeadoctor.png" text="就诊分析" link-type="navigateTo"
@@ -28,5 +28,11 @@
     <van-grid-item icon="../../../images/clinic_operate_icon_chain.png" text="连锁分析" link-type="navigateTo"
     url="/component/pages/erocdetails/index?title=连锁分析"/>
   </van-grid>
+  <view class="none" wx:if="{{!power_arr.code30000.has}}">
+    <image src="../../images/qxnone.png"></image>
+    <view>无权限访问或受限</view>
+    <view>你没有权限访问此页面或操作受限</view>
+    <view>请联系超级管理员</view>
+  </view>
 </view>
 

@@ -18,7 +18,7 @@
         <calendar id="calendar2" calendarConfig="{{calendarConfig2}}" bind:afterTapDay="afterTapDay2" bind:afterCalendarRender="afterCalendarRender2"></calendar>
       </view>
       <view class="li_box">
-            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}" wx:if="{{power_arr.code10702.has||power_arr.code10705.has}}">
+            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}" wx:if="{{(power_arr.code10702.has&&user.userid==item.visitidentity)||power_arr.code10705.has}}">
               <view class="li_top">
                 <view class="li_left">
                   <image src="../../images/my_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
@@ -47,11 +47,13 @@
                 <image src="../../images/yd.png"></image>
               </view>
               <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
-            </view>    
-        <view class="wu" wx:if="{{visit_arr.length == 0||(!power_arr.code10702.has||!power_arr.code10705.has)}}">
-          <image src="../../images/none.png"></image>
-          暂无数据
-        </view>
+            </view>
+            <view wx-if="{{visit_arr.length == 0||!power_arr.code10705.has}}">
+              <view class="wu" wx:if="{{visit_arr.length == 0||((power_arr.code10702.has&&!qx_state))}}">
+                <image src="../../images/none.png"></image>
+                暂无数据
+              </view>
+            </view>
           </view>
           <view class="bottom">
             <view data-index="1" bindtap="numshow">{{state2}}<van-icon name="arrow-down" /></view>
@@ -62,7 +64,7 @@
     </view>
     <view wx:if="{{state==1}}">
       <view class="li_box">
-            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}"  wx:if="{{power_arr.code10702.has||power_arr.code10705.has}}">
+            <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}"  wx:if="{{(power_arr.code10702.has&&user.userid==item.visitidentity)||power_arr.code10705.has}}">
               <view class="li_top">
                 <view class="li_left">
                   <image src="{{patdetails.picture}}" wx:if="{{patdetails.picture!=''}}"></image>
@@ -93,10 +95,12 @@
               </view>
               <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
             </view> 
-        <view class="wu" wx:if="{{visit_arr.length == 0||(!power_arr.code10702.has||!power_arr.code10705.has)}}">
-          <image src="../../images/none.png"></image>
-          暂无数据
-        </view>
+            <view wx-if="{{visit_arr.length == 0||!power_arr.code10705.has}}">
+              <view class="wu" wx:if="{{visit_arr.length == 0||((power_arr.code10702.has&&!qx_state))}}">
+                <image src="../../images/none.png"></image>
+                暂无数据
+              </view>
+            </view>
           </view>
     </view>
   </view>

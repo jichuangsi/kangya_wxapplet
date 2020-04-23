@@ -44,6 +44,7 @@ Page({
     doctor_arr:'',
     power_arr: [],
     user: '',
+    qx_state:false
   },
   onClickLeft() {
     wx.navigateBack({
@@ -183,6 +184,9 @@ Page({
   },
   getdata(){
     let self = this
+    self.setData({
+      qx_state: false
+    })
     if(self.data.state == 0){
       wx.request({
         url: getApp().data.APIS + '/returnvisit/visitlist',
@@ -206,6 +210,13 @@ Page({
         success: function (res) {
           console.log(res)
           if (res.data.info == 'ok') {
+            for(let i = 0;i<res.data.list.length;i++){
+              if (res.data.list[i].visitidentity == self.data.user.userid){
+                self.setData({
+                  qx_state:true
+                })
+              }
+            }
             self.setData({
               visit_arr: res.data.list
             })
@@ -224,6 +235,13 @@ Page({
           console.log(res)
           console.log(res.data.list[0])
           if (res.data.info == 'ok') {
+            for (let i = 0; i < res.data.list.length; i++) {
+              if (res.data.list[i].visitidentity == self.data.user.userid) {
+                self.setData({
+                  qx_state: true
+                })
+              }
+            }
             self.setData({
               visit_arr: res.data.list
             })
@@ -270,7 +288,8 @@ Page({
       power_arr: Page.data.power_arr,
       user: Page.data.user,
     })
-    console.log(this.data.patdetails)
+    console.log(this.data.power_arr)
+    console.log(this.data.user)
     this.getdata()
     this.getdoctor()
   },

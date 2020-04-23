@@ -79,8 +79,8 @@
           </view>
         </view>
         <view class="user">
-          <view class="hui" wx:if="{{power_arr.code10404.has||power_arr.code10401.has}}" data-index="{{index}}" bindtap="edit"><van-icon name="edit" />编辑</view>
-          <view class="hui" wx:if="{{power_arr.code10403.has||power_arr.code10405.has}}" bindtap="del"><van-icon name="close" />删除</view>
+          <view class="hui" wx:if="{{power_arr.code10404.has||(power_arr.code10402.has&&user.userid == item.doctorid )}}" data-index="{{index}}" bindtap="edit"><van-icon name="edit" />编辑</view>
+          <view class="hui" wx:if="{{(power_arr.code10403.has&&user.userid == item.doctorid)||power_arr.code10405.has}}" bindtap="del"><van-icon name="close" />删除</view>
           <view class="hui" bindtap="qm" data-item="{{item}}"><van-icon name="records" />签名</view>
         </view>
       </view>
@@ -183,7 +183,7 @@
     </van-nav-bar>
   </view> -->
   <view class="center">
-    <view class="li" wx:for="{{arr}}" data-index="{{index}}" bindtap="check_medical" wx:if="{{power_arr.code10401.has&&!item.exam.Group0}}">
+    <view class="li" wx:for="{{arr}}" data-index="{{index}}" bindtap="check_medical" wx:if="{{power_arr.code10401.has&&!item.exam.Group0&&(power_arr.code10406.has||(power_arr.code10407.has&&item.doctorid==user.userid))}}">
       <view class="check_medical">
         <van-icon name="checked" color="#999" size="42rpx" wx:if="{{item.check_state == 0}}" />
         <van-icon name="checked" color="#16c7ae" size="42rpx" wx:if="{{item.check_state == 1}}" />

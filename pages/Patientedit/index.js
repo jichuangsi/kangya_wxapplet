@@ -48,7 +48,8 @@ Page({
     powergrid_arr: ['林逍麒', '以键'],
     impression_arr: [
       { title: '种植用户',state:0 },
-      { title: '正畸用户', state: 0 }
+      { title: '正畸用户', state: 0 },
+      { title: '老板朋友', state: 0 }
     ],
      allergy_arr: [
       { title: '磺胺', state: 0 },
@@ -586,7 +587,7 @@ Page({
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];//上一个页面
     this.setData({
-      prevpage: prevPage
+      prevpage: prevPage,
     })
   },
 

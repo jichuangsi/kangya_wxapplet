@@ -19,7 +19,9 @@ Page({
       allergy:'',
       past:'',
       ask:''
-    }
+    },
+    power_arr: [],
+    user: ''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -180,6 +182,12 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '填写诊前信息',
+    })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    this.setData({
+      power_arr: Page.data.power_arr,
+      user: Page.data.user
     })
   },
 

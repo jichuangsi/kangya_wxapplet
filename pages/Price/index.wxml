@@ -146,6 +146,8 @@
             <view>0.0</view>
             <view>西药费</view>
             <view>0.0</view>
+            <view>费用合计</view>
+            <view class="hj">0.0</view>
           </view>
         </van-tab>
       </van-tabs>

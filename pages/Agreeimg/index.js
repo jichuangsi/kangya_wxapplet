@@ -54,24 +54,24 @@ Page({
   },
   addimg(imgname) {
     let self = this
-    let name = imgname[0].substring(imgname[0].length - 6)
+    let name = new Date().getTime() + imgname[0].substring(imgname[0].length - 4)
     wx.getFileSystemManager().readFile({
       filePath: imgname[0],
       success: fileStream => {
-        var yourfilename = '45'
-        var fileArray = new Uint8Array(fileStream.data);
-        var start_boundary = '\r\n–yourboundary\r\n' + 'Content - Disposition: form - data; name =“data”; filename = "' + yourfilename + '"\r\n' + 'Content - Type: application / octet - stream' + '\r\n\r\n';
-        var end_boundary = '\r\n–yourboundary–';
-        var startArray = [];
-        for (var i = 0; i < start_boundary.length; i++) {
-          startArray.push(start_boundary.charCodeAt(i));
-        }
-        var endArray = [];
-        for (var i = 0; i < end_boundary.length; i++) {
-          endArray.push(end_boundary.charCodeAt(i));
-        }
-        var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
-        var typedArray = new Uint8Array(totalArray);
+        // var yourfilename = '45'
+        // var fileArray = new Uint8Array(fileStream.data);
+        // var start_boundary = '\r\n–yourboundary\r\n' + 'Content - Disposition: form - data; name =“data”; filename = "' + yourfilename + '"\r\n' + 'Content - Type: application / octet - stream' + '\r\n\r\n';
+        // var end_boundary = '\r\n–yourboundary–';
+        // var startArray = [];
+        // for (var i = 0; i < start_boundary.length; i++) {
+        //   startArray.push(start_boundary.charCodeAt(i));
+        // }
+        // var endArray = [];
+        // for (var i = 0; i < end_boundary.length; i++) {
+        //   endArray.push(end_boundary.charCodeAt(i));
+        // }
+        // var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
+        // var typedArray = new Uint8Array(totalArray);
         wx.request({
           url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/' + name,
 
@@ -82,7 +82,7 @@ Page({
             'Content-Type': 'multipart/form-data',
           },
 
-          data: typedArray.buffer,
+          data: fileStream.data,
 
           processData: false,
 

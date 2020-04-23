@@ -6,7 +6,9 @@ Page({
    */
   data: {
     title: '营销',
-    clinicid:''
+    clinicid: '',
+    power_arr: '',
+    user: '',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -30,7 +32,9 @@ Page({
     let prevPage = pages[pages.length - 2];  //上一个页面
     this.setData({
       title:options.title,
-      clinicid: prevPage.data.Hospital_arr[0].clinicid
+      clinicid: prevPage.data.Hospital_arr[0].clinicid,
+      power_arr: prevPage.data.power_arr,
+      user: prevPage.data.user,
     })
     wx.setNavigationBarTitle({
       title: options.title

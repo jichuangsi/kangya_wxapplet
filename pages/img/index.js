@@ -68,24 +68,27 @@ Page({
   },
   addimg(imgname) {
     let self = this
-    let name = imgname[0].substring(imgname[0].length - 6)
+    let name = new Date().getTime() + imgname[0].substring(imgname[0].length - 4)
     wx.getFileSystemManager().readFile({
       filePath: imgname[0],
       success: fileStream => {
-        var yourfilename = '45'
-        var fileArray = new Uint8Array(fileStream.data);
-        var start_boundary = '\r\n–yourboundary\r\n' + 'Content - Disposition: form - data; name =“data”; filename = "' + yourfilename + '"\r\n' + 'Content - Type: application / octet - stream' + '\r\n\r\n';
-        var end_boundary = '\r\n–yourboundary–';
-        var startArray = [];
-        for (var i = 0; i < start_boundary.length; i++) {
-          startArray.push(start_boundary.charCodeAt(i));
-        }
-        var endArray = [];
-        for (var i = 0; i < end_boundary.length; i++) {
-          endArray.push(end_boundary.charCodeAt(i));
-        }
-        var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
-        var typedArray = new Uint8Array(totalArray);
+        console.log(fileStream)
+        // var blob = new Blob([fileStream.data]);  
+        // console.log(blob)
+        // var yourfilename = '45'
+        // var fileArray = new Uint8Array(fileStream.data);
+        // var start_boundary = '\r\n–yourboundary\r\n' + 'Content - Disposition: form - data; name =“data”; filename = "' + yourfilename + '"\r\n' + 'Content - Type: application / octet - stream' + '\r\n\r\n';
+        // var end_boundary = '\r\n–yourboundary–';
+        // var startArray = [];
+        // for (var i = 0; i < start_boundary.length; i++) {
+        //   startArray.push(start_boundary.charCodeAt(i));
+        // }
+        // var endArray = [];
+        // for (var i = 0; i < end_boundary.length; i++) {
+        //   endArray.push(end_boundary.charCodeAt(i));
+        // }
+        // var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
+        // var typedArray = new Uint8Array(totalArray);
         wx.request({
           url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/' + name,
 
@@ -96,7 +99,7 @@ Page({
             'Content-Type': 'multipart/form-data',
           },
 
-          data: typedArray.buffer,
+          data: fileStream.data,
 
           processData: false,
 
@@ -128,42 +131,6 @@ Page({
       }
     })
 
-    // wx.uploadFile({
-    //   url: getApp().data.APIS + '/patient/addmediaimage', //仅为示例，非真实的接口地址
-    //   filePath: imgname,
-    //   name: 'file',
-    //   formData: {
-    //     customerid: self.data.customerid,
-    //     fileName: imgname
-    //   },
-    //   success: function (res) {
-    //     console.log(res)
-    //     let data = JSON.parse(res.data)
-    //     console.log(data)
-    //     if (data.info == 'ok') {
-    //       wx.showToast({
-    //         title: '成功',
-    //         icon: 'success',
-    //         duration: 2000
-    //       })
-    //       self.onClose()
-    //       self.getdata()
-    //     } else {
-    //       wx.showToast({
-    //         title: '失败',
-    //         duration: 2000
-    //       })
-    //     }
-    //     //do something
-    //   },
-    //   fail:function(err){
-    //     console.log(err)
-    //     wx.showToast({
-    //       title: '失败',
-    //       duration: 2000
-    //     })
-    //   }
-    // })
   },
   getdata() {
     let self = this

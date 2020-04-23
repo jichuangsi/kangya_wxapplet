@@ -49,7 +49,9 @@ Page({
       "City": "",
       "Town": "", 
     },
-    informationlist:''
+    informationlist:'',
+    power_arr: [],
+    user: ''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -262,8 +264,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
     this.setData({
-      areaList: require("../../data/area.js").default
+      areaList: require("../../data/area.js").default,
+      power_arr: Page.data.power_arr,
+      user: Page.data.user
     })
     wx.setNavigationBarTitle({
       title:'添加患者'

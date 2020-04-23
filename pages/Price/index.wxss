@@ -49,3 +49,6 @@
 .li .orange {
   color: orange;
 }
+.box .hj {
+  width: 75%;
+}
