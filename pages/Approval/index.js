@@ -14,6 +14,7 @@ Page({
     })
   },
   onChange(event) {
+    console.log(123)
     this.setData({
       active: event.detail.name
     })

@@ -14,4 +14,10 @@
       <van-icon name="pause" size="88rpx" wx:if="{{playstate == 1}}" />
   </view> -->
   <view class="btn" bindtap="btn">完成</view>
+  <van-overlay show="{{show}}">
+    <view class="box">
+      <van-loading type="spinner" />
+      <view class="text">上传中...</view>
+    </view>
+  </van-overlay>
 </view>

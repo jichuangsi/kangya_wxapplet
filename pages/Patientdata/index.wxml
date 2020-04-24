@@ -4,8 +4,8 @@
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight">
     </van-nav-bar>    
   </view> -->
-  <view class='center'>
-      <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
+  <view class="center">
+      <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="abc" swipeable>
         <van-tab title="基本信息" name="基本信息">
           <view class="li" data-text="输入姓名" data-btn="1" data-iptstate="1" data-value="{{Patientlist.name}}" bindtap="editgo">
             <view class="left">
@@ -382,7 +382,7 @@
             </view>
           </van-tab>
           <van-tab title="亲友关系" name="亲友关系">
-            <view class="li" wx:for="{{relationship_arr}}" data-item="{{item}}" bindtap="Patientdetailsgo">
+            <view class="li" wx:for="{{relationship_arr}}" wx:key="index" data-item="{{item}}" bindtap="Patientdetailsgo">
               <image src="{{item.friend_img}}" wx:if="{{item.friend_img!=''}}"></image>
               <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.friend_img==''&&item.sex=='男'}}"></image>
               <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.friend_img==''&&item.sex=='女'}}"></image>
@@ -391,11 +391,10 @@
               </view>
               <view>{{item.prelationtype}}</view>
             </view>
-            <view class="relationship_btn" bindtap="relationshipgo">新增关系</view>
           </van-tab>
       </van-tabs>
   </view>
-
+  <view class="relationship_btn" bindtap="relationshipgo" wx:if="{{active =='亲友关系'}}">新增关系</view>
 
 
   

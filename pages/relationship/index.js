@@ -9,7 +9,10 @@ Page({
     show:false,
     relationship:'',
     patient:'',
-    bz:''
+    patdetails:'',
+    bz: '',
+    power_arr: [],
+    user: ''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -17,7 +20,35 @@ Page({
     })
   },
   onClickRight() {
-    this.onClickLeft()
+    let self = this
+    if (self.data.patient!=''){
+      wx.request({
+        url: getApp().data.APIS + '/patient/quintroducer',
+        method: 'post',
+        data: {
+          name: self.data.patient.name,
+          qtype: 1,
+          customerid: self.data.patdetails.customerid,
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.onClickLeft()
+            var pages = getCurrentPages();
+            var Page = pages[pages.length - 2];//
+            Page.getdata()
+          }
+        }
+      })
+    }else{
+      wx.showToast({
+        icon:'none',
+        title: '请选择亲友',
+      })
+    }
   },
   show(){
     this.setData({show:true})
@@ -42,6 +73,13 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '新增亲友关系'
+    })
+    var pages = getCurrentPages();
+    var Page = pages[pages.length - 2];//
+    this.setData({
+      power_arr: Page.data.power_arr,
+      user: Page.data.user,
+      patdetails: Page.data.patdetails,
     })
   },
 

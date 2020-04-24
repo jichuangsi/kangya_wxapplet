@@ -32,7 +32,8 @@ Page({
     path: '',
     playstate:0,
     time: 600000,
-    newtime: 600000
+    newtime: 600000,
+    show:false
   },
   click(){
     let self = this
@@ -72,24 +73,13 @@ Page({
         state: 0,
         path: res.tempFilePath
       })
+      self.setData({
+        show: true
+      })
       let name = new Date().getTime() + res.tempFilePath.substring(res.tempFilePath.length - 4)
       wx.getFileSystemManager().readFile({
         filePath: res.tempFilePath,
         success: fileStream => {
-        // var yourfilename = '45'
-        //   var fileArray = new Uint8Array(fileStream.data);
-        // var start_boundary = '\r\n–yourboundary\r\n' + 'Content - Disposition: form - data; name =“data”; filename = "' + yourfilename+ '"\r\n'+'Content - Type: application / octet - stream' +'\r\n\r\n';
-        // var end_boundary = '\r\n–yourboundary–';
-        // var startArray = [];
-        // for (var i = 0; i < start_boundary.length; i++) {
-        //   startArray.push(start_boundary.charCodeAt(i));
-        // }
-        // var endArray = [];
-        // for (var i = 0; i < end_boundary.length; i++) {
-        //   endArray.push(end_boundary.charCodeAt(i));
-        // }
-        // var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
-        // var typedArray = new Uint8Array(totalArray);
           wx.request({
             url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/' + name,
 
@@ -106,6 +96,9 @@ Page({
 
             success: function (res) {
 
+              self.setData({
+                show: false
+              })
               console.log(res);
               wx.showToast({
                 title: '上传成功',
@@ -120,6 +113,14 @@ Page({
             fail: function (err) {
 
               console.log("失败");
+
+              wx.showToast({
+                icon:'none',
+                title: '上传失败',
+              })
+              self.setData({
+                show: false
+              })
 
             }
 

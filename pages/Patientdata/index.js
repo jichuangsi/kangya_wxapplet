@@ -76,10 +76,11 @@ Page({
       delta: 1
     })
   },
-  onChange(event) {
+  abc(event) {
     this.setData({
       active: event.detail.name
     })
+    console.log(this.data.active)
   }, 
   Patientdetailsgo(e){
     let item = e.currentTarget.dataset.item
