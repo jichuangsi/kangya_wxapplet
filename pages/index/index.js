@@ -145,6 +145,7 @@ Page({
     wx.request({
       url: getApp().data.APIS +'/market/massage/BaseData',
       success:function(res){
+        console.log(777)
         console.log(res)
         if(res.data.info == 'ok'){
           self.setData({
@@ -472,7 +473,7 @@ Page({
       method: 'get',
       data: {
         plugin: 'getmodulerole',
-        p: id + '|' + (role ? role : '咨询员')
+        p: id + '|' + (role ? role : '护士')
       },
       success: function (res) {
         console.log(2)

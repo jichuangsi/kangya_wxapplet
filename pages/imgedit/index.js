@@ -1,61 +1,25 @@
-// pages/Newslist/index.js
+// pages/imgedit/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    title: '补牙',
-    News_arr:[],
-    pageIndex:1,
-    pageCount:0,
-    id:''
-  },
-  onClickLeft() {
-    wx.navigateBack({
-      delta: 1
-    })
-  },
-  uptouch() {
-    if (this.data.pageIndex > this.data.pageCount) {
-
-    } else {
-      this.getdata()
-    }
+    item:''
   },
 
-  getdata() {
-    let self = this
-    wx.request({
-      url: getApp().data.APIS + '/svc/a',
-      // url: 'https://kyys.kyawang.com/svc/a',
-      method: 'get',
-      data: {
-        plugin: 'getkd',
-        p: self.data.id
-      },
-      success: function (res) {
-        console.log(res)
-        if (res.data.info == 'ok') {
-          self.setData({
-            News_arr: res.data.list
-          })
-        }
-      }
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      title: options.title,
-      id:options.id
-    })
     wx.setNavigationBarTitle({
-      title: options.title
+      title: '影像'
     })
-    this.getdata()
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    this.setData({
+      item: Page.data.arr[options.index]
+    })
   },
 
   /**

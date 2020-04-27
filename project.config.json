@@ -81,8 +81,8 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/Sound/index",
-					"pathName": "pages/Sound/index",
+					"name": "pages/img/index",
+					"pathName": "pages/img/index",
 					"query": "title=影像",
 					"scene": null
 				},

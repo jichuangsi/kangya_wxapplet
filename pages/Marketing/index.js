@@ -5,14 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: '营销'
+    title: '营销',
+    arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
       delta: 1
     })
   },
-
+  getdata(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      // url:'https://kyys.kyawang.com/svc/a',
+      method:'get',
+      data:{
+        plugin:'getkd',
+        p:'5342517'
+      },
+      success: function (res) {
+        console.log(res)
+        if(res.data.info=='ok'){
+          self.setData({
+            arr:res.data.list
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -26,7 +46,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getdata()
   },
 
   /**

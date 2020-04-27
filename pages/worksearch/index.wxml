@@ -3,7 +3,7 @@
   <view class="top">
     <view class="ipt">
       <van-icon name="search" color="#999"/>
-      <input type="text" value="{{searchtext}}" bindconfirm="searchclick"></input>
+      <input type="text" value="{{searchtext}}" bindinput="ipt" bindconfirm="searchclick"></input>
     </view>
   </view>
     <view class="nav">

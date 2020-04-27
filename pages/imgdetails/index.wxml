@@ -1,0 +1,20 @@
+<!--pages/imgdetails/index.wxml-->
+<view class="imgdetails">
+  <swiper circular current="{{current}}">
+    <swiper-item wx:for="{{arr}}">
+      <image mode='widthFix' src="{{item.url}}"></image>
+      <view class="foot">
+        <view class="f_left">
+          <van-icon data-index="{{index}}" data-item="{{item}}" bindtap="edit" name="edit" size="40rpx" color="#fff" />
+          <van-icon data-index="{{index}}" data-item="{{item}}" bindtap="del" name="delete" size="40rpx" color="#fff" />
+        </view>
+        <view class="f_center">{{index+1}}/{{arr.length}}</view>
+        <view class="f_right">
+          <view></view>
+          <van-icon data-index="{{index}}" data-item="{{item}}" bindtap="keep" name="down" size="40rpx" color="#fff" />
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <van-dialog id="van-dialog" />
+</view>

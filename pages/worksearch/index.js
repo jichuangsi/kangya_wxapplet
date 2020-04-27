@@ -35,13 +35,19 @@ Page({
       chooseAreaMode: true,
     },
     show:false,
-    begindate: '',
-    enddate: '',
+    begindate: today_time,
+    enddate: today_time,
     arr:[],
     order_arr:[],
     doctorid: '',
     power_arr: [],
     user: '',
+  },
+  ipt(e){
+    let text = e.detail.value.replace(/\s*/g, "")
+    this.setData({
+      searchtext: text
+    })
   },
   showPopup(e) {
     this.setData({ show: true, nav_num: e.currentTarget.dataset.index });
@@ -101,7 +107,7 @@ Page({
           visitpersonname: "全部",
           pagesize: "10",
           clinicid: "",
-          patient: ""
+          patient: self.data.searchtext
         },
         success: function (res) {
           console.log(res)
@@ -133,7 +139,7 @@ Page({
         "status": self.data.nav1_state, 
         "issche": "1",
         "cancelstatus": "", 
-        "keyword": ""
+        "keyword": self.data.searchtext
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可

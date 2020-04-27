@@ -10,10 +10,10 @@
   <view class="center">
     <view class="user">
       <view class="userimg">
-      <image src="{{user.img}}"></image>
+      <image src="../../images/my_headportrait_male.png"></image>
       </view>
       <view class="username">
-        <view class="name">{{user.name}}</view>
+        <view class="name">{{name}}</view>
         <view>{{time}}</view>
       </view>
       <view class="state">
@@ -26,9 +26,10 @@
     <view class="title">
       {{title}}
     </view>
-    <view class="textbox" wx:for="{{text_arr}}">
+    <rich-text nodes="{{text_arr}}"></rich-text>
+    <!-- <view class="textbox" wx:for="{{text_arr}}">
       <view class="text" wx:if="{{item.state == 0}}">{{item.text}}</view>
       <image src="{{item.text}}" wx:if="{{item.state == 1}}"></image>
-    </view>
+    </view> -->
   </view>
 </view>

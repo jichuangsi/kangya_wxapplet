@@ -2020,7 +2020,7 @@ Page({
                     y: 'bottom',
                     data: ['新诊人次', '复诊人次', '初诊人次']
                   },
-                  color: ['#7bb5ed', '#414144', '#bfd5ff'],
+                  color: ['#7bb5ed', '#ccff80', '#bfd5ff'],
                   grid: {
                     left: '10%',
                     right: '10%',
@@ -2152,7 +2152,7 @@ Page({
                   devicePixelRatio: dpr // new
                 });
                 var option = {
-                  color: ['#7bb5ed', '#444447', '#f8a45e', '#94ea82'],
+                  color: ['#7bb5ed', '#ccff80', '#f8a45e', '#94ea82'],
                   series: [
                     {
                       name: '访问来源',
@@ -2675,6 +2675,8 @@ Page({
               hpower1_none: false,
             })
             chart_hpower1()
+            console.log(arr)
+            console.log(arr1)
             function chart_hpower1() {
               self.hpower_graph1.init(function (canvas, width, height, dpr) {
                 const chart = echarts.init(canvas, null, {
@@ -2687,7 +2689,7 @@ Page({
                     y: 'bottom',
                     data: ['网络咨询', '电网咨询']
                   },
-                  color: ['#7bb5ed', '#414144', '#bfd5ff'],
+                  color: ['#7bb5ed', '#ccff80', '#bfd5ff'],
                   grid: {
                     left: '10%',
                     right: '10%',
@@ -2876,15 +2878,15 @@ Page({
         if (res.data.info == 'ok') {
           if (res.data.list) {
             let arr = []
-            let arr1 = []
+            let arr1 = [{
+              name: '受理工具详情',
+              type: 'bar',
+              data: []
+            }]
             if (res.data.list) {
               for (let i = 0; i < res.data.list.length; i++) {
                 arr.push(res.data.list[i].dictionaryname)
-                arr1.push({
-                  name: res.data.list[i].dictionaryname,
-                  type: 'bar',
-                  data: [res.data.list[i].num]
-                })
+                arr1[0].data.push(res.data.list[i].num)
               }
               self.setData({
                 hpower3_none: false,
@@ -2900,9 +2902,9 @@ Page({
                   var option = {
                     legend: {
                       y: 'bottom',
-                      data: arr
+                      data: ['受理工具详情'],
                     },
-                    color: ['#7bb5ed', '#414144', '#bfd5ff'],
+                    color: ['#7bb5ed', '#ccff80', '#bfd5ff'],
                     grid: {
                       left: '10%',
                       right: '10%',
@@ -2987,12 +2989,92 @@ Page({
       success: function (res) {
         console.log(4)
         console.log(res)
+        let arr = []
+        let arr1 = [{
+          name: '来源分析',
+          type: 'bar',
+          data: []
+        }]
         if (res.data.info == 'ok') {
           if (res.data.list) {
-
+            for (let i = 0; i < res.data.list.length; i++) {
+              arr.push(res.data.list[i].comefrom)
+              arr1[0].data.push(res.data.list[i].num)
+            }
             self.setData({
               hpower4_none: false,
             })
+            chart_hpower4()
+            function chart_hpower4() {
+              self.hpower_graph4.init(function (canvas, width, height, dpr) {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['来源分析']
+                  },
+                  color: ['#7bb5ed', '#ccff80', '#bfd5ff'],
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0.2, 0.2]
+                    }
+                  ],
+                  series: arr1
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  let child_text = params.name
+                  self.setData({ popup_title: '受理项目详情', showdata: true, child_text: child_text, popup_num: 0 });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/comefromdetail',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      acceptool: self.data.child_text
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
+                })
+                return chart;
+              })
+            }
           } else {
             self.setData({
               hpower4_none: true,
@@ -3022,15 +3104,15 @@ Page({
         if (res.data.info == 'ok') {
           if (res.data.list) {
             let arr = []
-            let arr1 = []
+            let arr1 = [{
+              name: '咨询项目',
+              type: 'bar',
+              data: []
+            }]
             if (res.data.list) {
               for (let i = 0; i < res.data.list.length; i++) {
                 arr.push(res.data.list[i].consutlitem)
-                arr1.push({
-                  name: res.data.list[i].consutlitem,
-                  type: 'bar',
-                  data: [res.data.list[i].acount]
-                })
+                arr1[0].data.push(res.data.list[i].acount)
               }
               self.setData({
                 hpower5_none: false,
@@ -3046,9 +3128,9 @@ Page({
                   var option = {
                     legend: {
                       y: 'bottom',
-                      data: arr
+                      data: ['咨询项目']
                     },
-                    color: ['#7bb5ed', '#414144', '#bfd5ff'],
+                    color: ['#7bb5ed', '#ccff80', '#bfd5ff'],
                     grid: {
                       left: '10%',
                       right: '10%',
@@ -4536,7 +4618,7 @@ Page({
                   devicePixelRatio: dpr // new
                 });
                 var option = {
-                  color: ['#f58b91', '#444447', '#f8a45e', '#94ea82'],
+                  color: ['#f58b91', '#ccff80', '#f8a45e', '#94ea82'],
                   series: [
                     {
                       name: '各诊所收入占比',
@@ -4612,7 +4694,7 @@ Page({
                   devicePixelRatio: dpr // new
                 });
                 var option = {
-                  color: ['#c1d4ff', '#444447', '#f8a45e', '#94ea82'],
+                  color: ['#c1d4ff', '#ccff80', '#f8a45e', '#94ea82'],
                   series: [
                     {
                       name: '各诊所收入占比',
@@ -4647,7 +4729,7 @@ Page({
                   devicePixelRatio: dpr // new
                 });
                 var option = {
-                  color: ['#ff9e63', '#444447', '#f8a45e', '#94ea82'],
+                  color: ['#ff9e63', '#ccff80', '#f8a45e', '#94ea82'],
                   series: [
                     {
                       name: '各诊所收入占比',
@@ -4681,7 +4763,7 @@ Page({
                   devicePixelRatio: dpr // new
                 });
                 var option = {
-                  color: ['#94ea82', '#444447', '#f8a45e', '#94ea82'],
+                  color: ['#94ea82', '#ccff80', '#f8a45e', '#94ea82'],
                   series: [
                     {
                       name: '各诊所收入占比',

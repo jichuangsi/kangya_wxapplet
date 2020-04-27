@@ -315,13 +315,15 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    console.log(1111)
+    console.log(options.title)
+    console.log(options)
     if (options.title == '价目表') {
       this.gethandle()
     } else if (options.title == '医患沟通视频' || options.title == '选择视频') {
       this.getvod()
     }
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -368,6 +370,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/pages/PriceList/index?title='+this.data.title+'&&state='+this.data.state // 路径，传递参数到指定页面。
+    }
   }
 })

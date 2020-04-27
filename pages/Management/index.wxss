@@ -208,3 +208,27 @@
   width: 213rpx;
   height: 170rpx;
 }
+.imgbox {
+  flex: 1;
+  display: flex;
+  height: 60rpx;
+  justify-content: flex-end;
+}
+.imgbox image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+}
+.audiobox {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.audio {
+  background-color: #f8f8f8;
+  border: 1rpx solid #ebebeb;
+  padding: 10rpx;
+  padding-right: 40rpx;
+  box-sizing: border-box;
+}

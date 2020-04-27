@@ -65,6 +65,8 @@
     "pages/edit/index",
     "pages/Tooth/index",
     "pages/img/index",
+    "pages/imgdetails/index",
+    "pages/imgedit/index",
     "pages/charge/index",
     "pages/payment/index",
     "pages/Consultation/index",

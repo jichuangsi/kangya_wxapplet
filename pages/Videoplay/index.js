@@ -42,25 +42,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var pages = getCurrentPages();
-    var Page = pages[pages.length - 2];//
-    this.setData({
-      title: options.title ? options.title:'',
-      state: options.state ? options.state:0,
-    })
-    wx.setNavigationBarTitle({
-      title: options.title
-    })
-    if(this.data.state == 0){
+    if (options.url) {
+      wx.setNavigationBarTitle({
+        title: options.title
+      })
       this.setData({
-        item: Page.data.nowitem
+        item: {
+          link: options.url + '?' + options.url_h + '&files=' + options.files
+        },
+        title: options.title,
+        state: options.state
+      })
+      console.log(this.data.item)
+    } else {
+      var pages = getCurrentPages();
+      var Page = pages[pages.length - 2];//
+      this.setData({
+        state: options.state ? options.state : 0,
       })
       wx.setNavigationBarTitle({
-        title: Page.data.nowitem.name
+        title: options.title
       })
+      if (this.data.state == 0) {
+        this.setData({
+          item: Page.data ? Page.data.nowitem : '',
+          title: Page.data ? Page.data.nowitem.name : ''
+        })
+        wx.setNavigationBarTitle({
+          title: Page.data ? Page.data.nowitem.name : ''
+        })
+      }
     }
-    console.log(options.url)
-    console.log(this.data.title)
+    console.log(options)
   },
   loveclick(){
     this.setData({
@@ -113,6 +126,13 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    console.log(this.data.item.link)
+    let url_q = this.data.item.link.split('?')[0]
+    let url_h = this.data.item.link.split('?')[1]
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/pages/Videoplay/index?title=' + this.data.title + '&&url=' + url_q + '&&state=' + this.data.state + '&&url_h=' + url_h  // 路径，传递参数到指定页面。
+    }
   }
 })

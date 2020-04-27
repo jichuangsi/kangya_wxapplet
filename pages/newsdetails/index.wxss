@@ -77,3 +77,6 @@ button {
 .center image {
   width: 100%;
 }
+rich-text view {
+  line-height: 46rpx;
+}

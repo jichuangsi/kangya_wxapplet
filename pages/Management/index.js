@@ -35,6 +35,9 @@ Page({
       url: '../Agreeimg/index?index=' + e.currentTarget.dataset.index,
     })
   },
+  playaudio(){
+    console.log(123)
+  },
   editgo(e) {
     //  && e.currentTarget.dataset.item.doctoridexam == this.data.userid
     if (this.data.power_arr.code10103.has || (this.data.power_arr.code10102.has)) {

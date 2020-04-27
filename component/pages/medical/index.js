@@ -269,6 +269,7 @@ Page({
         user: prevPage.data.user,
       })
     }
+    console.log(this.data.power_arr)
     this.getdata()
     // this.pieShow()
   },

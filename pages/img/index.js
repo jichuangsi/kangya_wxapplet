@@ -10,6 +10,7 @@ Page({
     state:0,
     msgstate:0,
     arr:[],
+    zsarr:[],
     customerid: '',
     clinicid: '',
     power_arr: [],
@@ -60,11 +61,15 @@ Page({
       }
     })
   },
-  imgclick(e){
-      wx.previewImage({
-        current: e.currentTarget.dataset.item.url, // 当前显示图片的http链接
-        urls: [e.currentTarget.dataset.item.url] // 需要预览的图片http链接列表
-      })
+  imgclick(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '../imgdetails/index?state=1&&time=' + e.currentTarget.dataset.time,
+    })
+      // wx.previewImage({
+      //   current: e.currentTarget.dataset.item.url, // 当前显示图片的http链接
+      //   urls: [e.currentTarget.dataset.item.url] // 需要预览的图片http链接列表
+      // })
   },
   addimg(imgname) {
     let self = this
@@ -73,22 +78,6 @@ Page({
       filePath: imgname[0],
       success: fileStream => {
         console.log(fileStream)
-        // var blob = new Blob([fileStream.data]);  
-        // console.log(blob)
-        // var yourfilename = '45'
-        // var fileArray = new Uint8Array(fileStream.data);
-        // var start_boundary = '\r\n–yourboundary\r\n' + 'Content - Disposition: form - data; name =“data”; filename = "' + yourfilename + '"\r\n' + 'Content - Type: application / octet - stream' + '\r\n\r\n';
-        // var end_boundary = '\r\n–yourboundary–';
-        // var startArray = [];
-        // for (var i = 0; i < start_boundary.length; i++) {
-        //   startArray.push(start_boundary.charCodeAt(i));
-        // }
-        // var endArray = [];
-        // for (var i = 0; i < end_boundary.length; i++) {
-        //   endArray.push(end_boundary.charCodeAt(i));
-        // }
-        // var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
-        // var typedArray = new Uint8Array(totalArray);
         wx.request({
           url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/' + name,
 
@@ -147,11 +136,27 @@ Page({
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {
-          for (let i = 0; i < res.data.list.imagelist.length;i++){
-            res.data.list.imagelist[i].state = 0
+          let arr = res.data.list.imagelist
+          let arr1 = []
+          let arr2 = []
+          for (let i = 0; i < arr.length;i++){
+            arr[i].state = 0
+            if (arr1.indexOf(arr[i].studydatetime.split(' ')[0]) == -1) {
+              arr1.push(arr[i].studydatetime.split(' ')[0])
+            }
           }
+          for (let j = 0; j < arr1.length; j++) {
+            arr2.push({time:arr1[j],child:[]})
+            for (let k = 0; k < arr.length; k++) {
+              if (arr[k].studydatetime.split(' ')[0]==arr1[j]){
+                arr2[j].child.push(arr[k])
+              }
+            }
+          }
+          console.log(arr2)
           self.setData({
-            arr: res.data.list.imagelist
+            arr: arr,
+            zsarr: arr2
           })
           console.log(self.data.arr)
         }
@@ -209,19 +214,19 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title ? options.title :'影像'
     })
-    let pages = getCurrentPages();
-    let Page = pages[pages.length - 2];
-    this.setData({
-      customerid: Page.data.customerid,
-      clinicid: Page.data.clinicid
-    })
-    if (!options.title) {
-      console.log(Page.data.power_arr)
-      this.setData({
-        power_arr: Page.data.power_arr,
-        user: Page.data.user,
-      })
-    }
+    // let pages = getCurrentPages();
+    // let Page = pages[pages.length - 2];
+    // this.setData({
+    //   customerid: Page.data.customerid,
+    //   clinicid: Page.data.clinicid
+    // })
+    // if (!options.title) {
+    //   console.log(Page.data.power_arr)
+    //   this.setData({
+    //     power_arr: Page.data.power_arr,
+    //     user: Page.data.user,
+    //   })
+    // }
     console.log(this.data.power_arr)
     this.getdata()
   },

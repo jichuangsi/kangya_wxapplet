@@ -82,7 +82,9 @@ Page({
     let self = this
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
     self.setData({
-      time: e.detail.year + '-' + e.detail.month + '-' + e.detail.day
+      time: e.detail.year + '-' + e.detail.month + '-' + e.detail.day,
+      bengindate: e.detail.year + '/' + e.detail.month + '/' + e.detail.day,
+      enddate: e.detail.year + '/' + e.detail.month + '/' + e.detail.day
     })
     self.calendar.jump(e.detail.year, e.detail.month, e.detail.day, '#calendar2')
     self.calendar.switchView('week', '#calendar2').then(() => { })
@@ -95,6 +97,8 @@ Page({
     console.log('afterTapDay', e.detail); // => { currentSelect: {}, allSelectedDays: [] }
     self.setData({
       time: e.detail.year + '-' + e.detail.month + '-' + e.detail.day,
+      bengindate: e.detail.year + '/' + e.detail.month + '/' + e.detail.day,
+      enddate: e.detail.year + '/' + e.detail.month + '/' + e.detail.day,
       calendarConfig: {
         // 配置内置主题
         theme: 'elegant',
@@ -165,15 +169,12 @@ Page({
   },
   numclick(e) {
     this.setData({ state1: e.currentTarget.dataset.text, showbottom: false })
-    this.getdata()
   },
   numclick1(e) {
     this.setData({ state2: e.currentTarget.dataset.text, showbottom: false, nav1_state: e.currentTarget.dataset.id })
-    this.getdata()
   },
   numclick2(e) {
     this.setData({ state3: e.currentTarget.dataset.text, showbottom: false })
-    this.getdata()
   },
   addgo() {
     if (this.data.power_arr.code10603.has) {
@@ -197,49 +198,89 @@ Page({
     self.setData({
       qx_state: false
     })
-    wx.request({
-      url: getApp().data.APIS + '/schedule/scscheduleday',
-      method: 'post',
-      data: {
-        bengindate: self.data.bengindate,
-        enddate: self.data.enddate
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
-      },
-      success: function (res) {
-        console.log(res)
-        if (res.data.info == 'ok') {
-          let arr = []
-          for (let i = 0; i < res.data.list.length; i++) {
-            console.log(res.data.list[i].schedule)
-            console.log(11111)
-            if (res.data.list[i].schedule){
-              for (let j = 0; j < res.data.list[i].schedule.length;j++){
-                if(self.data.title =='预约'){
-                  if (res.data.list[i].schedule[j].customerid == self.data.patdetails.customerid) {
-                    arr.push(res.data.list[i].schedule[j])
-                  }
-                } else {
+    if (this.data.title != '预约') {
+      wx.request({
+        url: getApp().data.APIS + '/schedule/scscheduleday',
+        method: 'post',
+        data: {
+          bengindate: self.data.bengindate,
+          enddate: self.data.enddate
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            let arr = []
+            for (let i = 0; i < res.data.list.length; i++) {
+              if (res.data.list[i].schedule) {
+                for (let j = 0; j < res.data.list[i].schedule.length; j++) {
                   arr.push(res.data.list[i].schedule[j])
+                  // if(self.data.title =='预约'){
+                  //   if (res.data.list[i].schedule[j].customerid == self.data.patdetails.customerid) {
+                  //     arr.push(res.data.list[i].schedule[j])
+                  //   }
+                  // } else {
+                  //   arr.push(res.data.list[i].schedule[j])
+                  // }
                 }
               }
             }
-          }
-          console.log(arr)
-          for (let q = 0; q < arr.length; q++) {
-            if (arr[q].doctorid == self.data.user.userid) {
-              self.setData({
-                qx_state: true
-              })
+            console.log(arr)
+            for (let q = 0; q < arr.length; q++) {
+              if (arr[q].doctorid == self.data.user.userid) {
+                self.setData({
+                  qx_state: true
+                })
+              }
             }
+            self.setData({
+              order_arr: arr
+            })
           }
-          self.setData({
-            order_arr: arr
-          })
         }
-      }
-    })
+      })
+    } else {
+      wx.request({
+        url: getApp().data.APIS + '/schedule/scschedulelist',
+        method: 'post',
+        data: {
+          "begindate": self.data.bengindate,
+          "enddate": self.data.enddate,
+          "pageno": 1,
+          "pagesize": 20,
+          "doctorid": '',
+          "departmentid": "",
+          "counselor": "",
+          "totalcount": -1,
+          "status": '',
+          "issche": "1",
+          "cancelstatus": "",
+          "keyword": self.data.patdetails.phone
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            let arr = res.data.list
+            console.log(arr)
+            for (let k = 0; k < arr.length; k++) {
+              if (arr[k].doctorid == self.data.user.userid) {
+                self.setData({
+                  qx_state: true
+                })
+              }
+            }
+            self.setData({
+              order_arr: arr
+            })
+          }
+        }
+      })
+    }
 
   },
   getdoctor() {
