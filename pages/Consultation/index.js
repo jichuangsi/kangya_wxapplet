@@ -24,6 +24,19 @@ Page({
       url: '../Consultationedit/index?title=新增咨询',
     })
   },
+  playaudio(e) {
+    if (!this.audioCtx) {
+      this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.id)
+      this.audioCtx.play()
+    } else {
+      if (e.currentTarget.dataset.id == this.audioCtx.audioId.split('audio')[1]) {
+        this.audioCtx.pause()
+      } else {
+        this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.id)
+        this.audioCtx.play()
+      }
+    }
+  },
   del(e){
     let self = this
     Dialog.confirm({
@@ -63,7 +76,7 @@ Page({
   },
   Consultationgo(e){
     wx.navigateTo({
-      url: '../Consultationedit/index?title=修改咨询&&item=' + JSON.stringify(e.currentTarget.dataset.item),
+      url: '../Consultationedit/index?title=修改咨询&&index=' + e.currentTarget.dataset.index,
     })
   },
   getdata() {
@@ -104,6 +117,7 @@ Page({
       patdetails: Page.data.patdetails,
       power_arr: Page.data.power_arr,
       user: Page.data.user,
+
     })
     // console.log(this.data.patdetails)
     this.getdata()
@@ -127,7 +141,9 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    if (this.audioCtx) {
+      this.audioCtx.pause()
+    }
   },
 
   /**

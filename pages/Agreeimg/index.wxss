@@ -49,6 +49,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
   border-radius: 10rpx;
+  z-index: 9;
 }
 .center {
   /* padding-top: 100rpx; */
@@ -83,4 +84,46 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.imgbox {
+  width: 222rpx;
+  height: 164rpx;
+  margin-bottom: 20rpx;
+  margin-right: 20rpx;
+  position: relative;
+  overflow: hidden;
+}
+.imgbox:nth-child(3n){
+  margin-right: 0rpx;
+}
+.imgbox image {
+  width: 222rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* min-height:100%; */
+  max-height:150%;
+}
+.imgbox .imgstate {
+  position: absolute;
+  bottom: 0rpx;
+  right: 0rpx;
+  font-size: 24rpx;
+  color: #fff;
+  padding-left: 60rpx;
+  padding-right: 10rpx;
+  box-sizing: border-box;
+  line-height: 36rpx;
+  background: -webkit-linear-gradient(left,transparent,rgba(255, 255, 255, 0),#eeca95);
+}
+.imgbox .hui {
+  background: -webkit-linear-gradient(left,transparent,rgba(255, 255, 255, 0),#828282);
+}
+.imgbox .green {
+  background: -webkit-linear-gradient(left,transparent,rgba(255, 255, 255, 0),#3db8a3);
+}
+.imgbox .van-icon {
+  position: absolute;
+  right: 5rpx;
+  top: 5rpx;
 }

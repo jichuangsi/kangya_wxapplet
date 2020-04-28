@@ -209,6 +209,15 @@ Page({
         prevPage.setData({
           arr: data_arr
         })
+      } else if (this.data.state == '2') {
+        let data_arr = prevPage.data.item
+        data_arr.bodyposition.lt = lt
+        data_arr.bodyposition.rt = rt
+        data_arr.bodyposition.lb = lb
+        data_arr.bodyposition.rb = rb
+        prevPage.setData({
+          item: data_arr
+        })
       }
       wx.navigateBack({
         delta: 1
@@ -282,6 +291,8 @@ Page({
       this.setData({
         arr: prevPage.data.arr
       })
+    } else if (options.state == '2') {
+      item = prevPage.data.item.bodyposition
     }
     console.log(prevPage.data.arr)
     let arr1 = this.data.arr1

@@ -75,11 +75,19 @@
         <view class="first">语音备忘录</view>
         <view></view>
         <van-icon name="arrow" />
-        <view class="bz">暂无</view>
+          <view catchtap="playaudio" data-index="{{index}}" class="audiobox" wx:for="{{audio_arr}}" wx:if="{{item.type=='rec'}}">
+            <view class="audio">
+              <van-icon name="volume" size="36rpx" color="#16c7ae" />
+              <audio id="audio{{item.index}}" src="{{item.url}}"></audio> 
+            </view>
+            <van-icon catchtap="deladdon" data-index="{{item.index}}" name="delete" size="36rpx" />
+          </view>
     </view>
     <view class="li" bindtap="Agreeimggo">
         <view class="first">知情同意书</view>
-        <view></view>
+          <view class="imgbox">
+            <image src="{{item.url}}" wx:if="{{item.type=='image'}}" wx:for="{{img_arr}}"></image>
+          </view>
         <van-icon name="arrow" />
     </view>
     <view class="li">
@@ -205,11 +213,19 @@
         <view class="first">语音备忘录</view>
         <view></view>
         <van-icon name="arrow" />
-        <view class="bz">暂无</view>
+          <view catchtap="playaudio" data-index="{{index}}" class="audiobox" wx:for="{{audio_arr}}" wx:if="{{item.type=='rec'}}">
+            <view class="audio">
+              <van-icon name="volume" size="36rpx" color="#16c7ae" />
+              <audio id="audio{{index}}" src="{{item.url}}"></audio> 
+            </view>
+            <van-icon catchtap="deladdon" data-index="{{index}}" name="delete" size="36rpx" />
+          </view>
     </view>
     <view class="li" bindtap="Agreeimggo">
         <view class="first">知情同意书</view>
-        <view></view>
+          <view class="imgbox">
+            <image src="{{item.url}}" wx:if="{{item.type=='image'}}" wx:for="{{img_arr}}"></image>
+          </view>
         <van-icon name="arrow" />
     </view>
     <view class="li">

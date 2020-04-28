@@ -33,6 +33,19 @@ Page({
       duration: 1000
     })
   },
+  playaudio(e) {
+    if (!this.audioCtx) {
+      this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.id)
+      this.audioCtx.play()
+    } else {
+      if (e.currentTarget.dataset.id == this.audioCtx.audioId.split('audio')[1]) {
+        this.audioCtx.pause()
+      } else {
+        this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.id)
+        this.audioCtx.play()
+      }
+    }
+  },
   del(e) {
     let self = this
     Dialog.confirm({

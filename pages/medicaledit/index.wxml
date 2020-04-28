@@ -25,7 +25,13 @@
       <view class="text">语音备忘录</view>
       <view></view>
       <van-icon name="arrow" />
-      <view class="bz">暂无录音</view>
+          <view catchtap="playaudio" data-index="{{index}}" class="audiobox" wx:for="{{addon}}" wx:if="{{item.type=='rec'}}">
+            <view class="audio">
+              <van-icon name="volume" size="36rpx" color="#16c7ae" />
+              <audio id="audio{{index}}" src="{{item.url}}"></audio> 
+            </view>
+            <van-icon catchtap="deladdon" data-index="{{index}}" name="delete" size="36rpx" />
+          </view>
     </view>
     <view class="xian"></view>
     <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入主诉" data-value="{{complain}}" bindtap="editgo">
@@ -267,4 +273,5 @@
   custom-style="widht: 100%">
     <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
   </van-popup>
+  <van-dialog id="van-dialog" />
 </view>

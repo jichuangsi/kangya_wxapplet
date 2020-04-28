@@ -220,6 +220,7 @@
   margin-right: 10rpx;
 }
 .audiobox {
+  margin: 10rpx 0rpx;
   width: 100%;
   position: relative;
   display: flex;
@@ -229,6 +230,16 @@
   background-color: #f8f8f8;
   border: 1rpx solid #ebebeb;
   padding: 10rpx;
-  padding-right: 40rpx;
+  padding-right: 80rpx;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border-radius: 10rpx;
+}
+.audio:active{
+  background-color: #c6c6c6;
+}
+.van-dialog__button {
+  flex: none;
+  width: 50%;
 }

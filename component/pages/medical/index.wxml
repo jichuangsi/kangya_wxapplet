@@ -246,6 +246,17 @@
           <view class="right">{{item.allergyhistory}}</view>
         </view>
         <view class="tab">
+          <view class="left">录音</view>
+          <view class="right">
+          <view catchtap="playaudio" data-id="{{item.id}}" class="audiobox" wx:for="{{item.addon}}" wx:if="{{item.type=='rec'}}">
+            <view class="audio">
+              <van-icon name="volume" size="36rpx" color="#16c7ae" />
+              <audio id="audio{{item.id}}" src="{{item.url}}"></audio> 
+            </view>
+          </view>
+          </view>
+        </view>
+        <view class="tab">
           <view class="left">影像</view>
           <view class="right">
             <view class="imgbox">

@@ -9,7 +9,7 @@
     <van-icon name="plus" color="#fff" size="36rpx" />
   </view>
   <view class="center">
-    <view class="libox" wx:for="{{arr}}" wx:if="{{power_arr.code10501.has}}" data-item="{{item}}" bindtap="Consultationgo">
+    <view class="libox" wx:for="{{arr}}" wx:if="{{power_arr.code10501.has}}" data-index="{{index}}" bindtap="Consultationgo">
       <view class="li">
         <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
         <view class="text">{{patdetails.name}}</view>
@@ -19,6 +19,15 @@
       <view class="li">
         <view class="green">沟通记录</view>
         <view class="bz">{{item.faceconsultmark}}</view>
+      </view>
+      <view class="li" wx:if="{{item.addon}}">
+        <view class="green">语音备忘录</view>
+          <view catchtap="playaudio" data-id="{{item.id}}" class="audiobox" wx:for="{{item.addon}}" wx:if="{{item.type=='rec'}}">
+            <view class="audio">
+              <van-icon name="volume" size="36rpx" color="#16c7ae" />
+              <audio id="audio{{item.id}}" src="{{item.url}}"></audio> 
+            </view>
+          </view>
       </view>
       <view class="li">
         <van-icon name="apps-o" color="#16c7ae" size="36rpx" />

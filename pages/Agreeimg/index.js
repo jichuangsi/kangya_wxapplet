@@ -7,7 +7,11 @@ Page({
   data: {
     title: '知情同意书',
     show:false,
-    img_arr:[]
+    img_arr:[],
+    ly_state: 0,
+    index: 0,
+    arr: '',
+    patdetails: ''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -20,10 +24,9 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
-  imgclick() {
-    wx.previewImage({
-      current: e.currentTarget.dataset.item.url, // 当前显示图片的http链接
-      urls: [e.currentTarget.dataset.item.url] // 需要预览的图片http链接列表
+  imgclick(e) {
+    wx.navigateTo({
+      url: '../imgdetails/index?state=3&&index=' + e.currentTarget.dataset.index,
     })
   },
   pz() {
@@ -58,23 +61,8 @@ Page({
     wx.getFileSystemManager().readFile({
       filePath: imgname[0],
       success: fileStream => {
-        // var yourfilename = '45'
-        // var fileArray = new Uint8Array(fileStream.data);
-        // var start_boundary = '\r\n–yourboundary\r\n' + 'Content - Disposition: form - data; name =“data”; filename = "' + yourfilename + '"\r\n' + 'Content - Type: application / octet - stream' + '\r\n\r\n';
-        // var end_boundary = '\r\n–yourboundary–';
-        // var startArray = [];
-        // for (var i = 0; i < start_boundary.length; i++) {
-        //   startArray.push(start_boundary.charCodeAt(i));
-        // }
-        // var endArray = [];
-        // for (var i = 0; i < end_boundary.length; i++) {
-        //   endArray.push(end_boundary.charCodeAt(i));
-        // }
-        // var totalArray = startArray.concat(Array.prototype.slice.call(fileArray), endArray);
-        // var typedArray = new Uint8Array(totalArray);
         wx.request({
           url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/' + name,
-
           method: 'PUT',
           dataType: 'ARRAYBUFFER',
           header: {
@@ -94,7 +82,19 @@ Page({
             self.setData({
               show: false
             })
-            self.getdata()
+            if(self.data.ly_state==1){
+              let arr = self.data.img_arr
+              arr.push({ type: 'image', url: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name})
+              self.setData({
+                img_arr:arr
+              })
+            } else if (self.data.ly_state == 2) {
+              let arr = self.data.img_arr
+              arr.push({ type: 'image', url: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name })
+              self.setData({
+                img_arr: arr
+              })
+            }
           },
 
           fail: function (err) {
@@ -120,8 +120,39 @@ Page({
     })
     this.onClose()
   },
-  getdata(){
 
+  editManagement() {
+    let self = this
+    console.log(self.data.arr.handlelist)
+    wx.request({
+      url: getApp().data.APIS + '/patient/SaveHandleList',
+      method: 'post',
+      data: {
+        addon: JSON.stringify(self.data.arr.addon),
+        study: JSON.stringify(self.data.arr.handlelist),
+        studyidentity: self.data.arr.studyidentity,
+        customerid: self.data.patdetails.customerid,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          setTimeout(function () {
+            self.pageprev.getdata()
+            wx.navigateBack({
+              delta: 1,
+            })
+          }, 1000)
+        } else {
+          wx.showToast({
+            title: '失败',
+            duration: 2000
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -130,6 +161,30 @@ Page({
     wx.setNavigationBarTitle({
       title: '知情同意书'
     })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    this.pageprev = Page
+    if (options.state == 1) {
+      let arr = []
+      for (let i = 0; i < Page.data.arr[options.index].addon.length;i++){
+        if (Page.data.arr[options.index].addon[i].type =='image'){
+          arr.push(Page.data.arr[options.index].addon[i])
+        }
+      }
+      this.setData({
+        index: options.index,
+        ly_state: options.state,
+        arr: Page.data.arr[options.index],
+        patdetails: Page.data.patdetails,
+        img_arr: arr
+      })
+    } else if (options.state == 2) {
+      console.log(Page.data.img_arr)
+      this.setData({
+        ly_state: options.state,
+        img_arr: Page.data.img_arr
+      })
+    }
   },
 
   /**
@@ -143,21 +198,47 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    if (this.pageprev.title == '处置') {
+      let arr = []
+      let arr1 = this.data.arr
+      let arr2 = []
+      for (let i = 0; i < this.data.arr.addon.length; i++) {
+        if (this.data.arr.addon[i].type == 'rec') {
+          arr.push(this.data.arr.addon[i])
+        }
+      }
+      for (let j = 0; j < this.data.img_arr.length; j++) {
+        arr2.push({ type: 'image', url: this.data.img_arr[j].url })
+      }
+      arr.push(...arr2)
+      arr1.addon = arr
+      this.setData({
+        arr: arr1
+      })
+      this.editManagement()
+    }else if(this.data.ly_state == 2){
+      let arr = []
+      for (let i = 0; i < this.data.img_arr.length;i++){
+        arr.push({ type: 'image', url: this.data.img_arr[i].url })
+      }
+      console.log(arr)
+      this.pageprev.setData({
+        img_arr: arr
+      })
+      console.log(this.pageprev)
+    }
   },
 
   /**

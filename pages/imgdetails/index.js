@@ -9,7 +9,9 @@ Page({
     arr:[],
     index:0,
     current:0,
-    customerid:''
+    customerid: '',
+    clinicid: '',
+    state:0
   },
   edit(e){
     wx.navigateTo({
@@ -95,6 +97,36 @@ Page({
       }).catch(() => {
         // on cancel
       })
+    } else if (self.data.state == 3) {
+      Dialog.confirm({
+        title: '提示',
+        message: '您确定删除这张影像吗？'
+      }).then(() => {
+        let pages = getCurrentPages();
+        let Page = pages[pages.length - 2];
+        let Pageprev = pages[pages.length - 3];
+        let arr1 = Page.data.img_arr
+        arr1.splice(e.currentTarget.dataset.index, 1)
+        Page.setData({
+          img_arr:arr1
+        })
+        Pageprev.setData({
+          img_arr: arr1
+        })
+        if (arr1.length == 0) {
+          wx.navigateBack({
+            delta: 1,
+          })
+        } else {
+          self.setData({
+            arr: arr1,
+            current: 0
+          })
+        }
+        // on confirm
+      }).catch(() => {
+        // on cancel
+      })
     }
   },
   /**
@@ -119,8 +151,20 @@ Page({
       this.setData({
         arr: Page.data.arr,
         customerid: Page.data.customerid,
+        clinicid: Page.data.clinicid,
         index:index,
         current:index-1
+      })
+      console.log(Page.data)
+    } else if (options.state == 2) {
+      this.setData({
+        arr: Page.data.arr,
+        current: options.index
+      })
+    } else if (options.state == 3) {
+      this.setData({
+        arr: Page.data.img_arr,
+        current: options.index
       })
     }
   },

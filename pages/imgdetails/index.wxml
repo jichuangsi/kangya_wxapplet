@@ -3,10 +3,22 @@
   <swiper circular current="{{current}}">
     <swiper-item wx:for="{{arr}}">
       <image mode='widthFix' src="{{item.url}}"></image>
+      <view class="zt_state" wx:if="{{item.bodyposition.lt!=''||item.bodyposition.rt!=''||item.bodyposition.lb!=''||item.bodyposition.rb!=''||item.contentdescription!=''}}">
+        <view class="title" wx:if="{{item.bodyposition.lt!=''||item.bodyposition.rt!=''||item.bodyposition.lb!=''||item.bodyposition.rb!=''}}">牙位</view>
+        <view class="tooth" wx:if="{{item.bodyposition.lt!=''||item.bodyposition.rt!=''||item.bodyposition.lb!=''||item.bodyposition.rb!=''}}">
+          <view class="lt">{{item.bodyposition.lt}}</view>
+          <view class="rt">{{item.bodyposition.rt}}</view>
+          <view class="lb">{{item.bodyposition.lb}}</view>
+          <view class="rb">{{item.bodyposition.rb}}</view>
+        </view>
+        <view class="title" wx:if="{{item.contentdescription!=''}}">备注</view>
+        <view class="bz">{{item.contentdescription}}</view>
+      </view>
       <view class="foot">
         <view class="f_left">
-          <van-icon data-index="{{index}}" data-item="{{item}}" bindtap="edit" name="edit" size="40rpx" color="#fff" />
-          <van-icon data-index="{{index}}" data-item="{{item}}" bindtap="del" name="delete" size="40rpx" color="#fff" />
+          <van-icon wx:if="{{state==1}}" data-index="{{index}}" data-item="{{item}}" bindtap="edit" name="edit" size="40rpx" color="#fff" />
+          <van-icon wx:if="{{state!=2}}" data-index="{{index}}" data-item="{{item}}" bindtap="del" name="delete" size="40rpx" color="#fff" />
+          <view wx:if="{{state!=1}}"></view>
         </view>
         <view class="f_center">{{index+1}}/{{arr.length}}</view>
         <view class="f_right">

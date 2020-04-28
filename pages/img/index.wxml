@@ -5,11 +5,11 @@
   </view>
   <view class="box" wx:if="{{title=='影像'}}">
     <view class="center" >
-      <view class="zsbox" wx:for="{{zsarr}}" wx:for-index="first_index" wx:if="{{!power_arr.code10301.has}}">
+      <view class="zsbox" wx:for="{{zsarr}}" wx:for-index="first_index" wx:if="{{power_arr.code10301.has}}">
         <view class="time">{{item.time}}</view>
         <view class="imgbox" wx:for="{{item.child}}">
           <image src="{{item.url}}" data-time="{{item.studydatetime}}" bindtap="imgclick"></image>
-          <view class="imgstate {{item.title=='治疗后'?'hui':''}} {{item.title=='治疗前'?'green':''}}">{{item.title}}</view>
+          <view wx-if="{{item.title!=''}}" class="imgstate {{item.title=='治疗后'?'hui':''}} {{item.title=='治疗前'?'green':''}}">{{item.title}}</view>
         </view>
       </view>
         <view class="wu" wx:if="{{arr.length==0||!power_arr.code10301.has}}">
@@ -23,11 +23,11 @@
       <view class="bigbox" wx:for="{{arr}}">
         <view class="time">{{item.studydatetime}}</view>
         <view class="imgbox">
-          <image src="{{item.url}}" data-item="{{item}}" bindtap="imgclick">
+          <image src="{{item.url}}" data-index="{{index}}" bindtap="imgclick">
           </image>
             <van-icon name="checked" color="#999" size="42rpx" wx:if="{{item.state == 0}}" data-index="{{index}}" catchtap="check_img" />
             <van-icon name="checked" color="#16c7ae" size="42rpx" wx:if="{{item.state == 1}}" data-index="{{index}}" catchtap="check_img" />
-          <view class="imgstate {{item.title=='治疗后'?'hui':''}} {{item.title=='治疗前'?'green':''}}">{{item.title}}</view>
+          <view wx-if="{{item.title!=''}}" class="imgstate {{item.title=='治疗后'?'hui':''}} {{item.title=='治疗前'?'green':''}}">{{item.title}}</view>
         </view>
       </view>
         <view class="wu" wx:if="{{arr.length==0}}">

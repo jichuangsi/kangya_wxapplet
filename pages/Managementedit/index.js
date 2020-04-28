@@ -12,7 +12,9 @@ Page({
     isfirstvisit:0,
     time: '',
     patdetails:'',
-    price:'0'
+    price: '0',
+    audio_arr:[],
+    img_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -26,18 +28,49 @@ Page({
   },
   Soundgo() {
     wx.navigateTo({
-      url: '../Sound/index',
+      url: '../Sound/index?state=2',
     })
   },
   Agreeimggo() {
     wx.navigateTo({
-      url: '../Agreeimg/index',
+      url: '../Agreeimg/index?state=2',
     })
   },
   prescriptiongo(){
     wx.navigateTo({
       url: '../prescription/index',
     })
+  },
+  deladdon(e) {
+    let self = this
+    Dialog.confirm({
+      title: '提示',
+      message: '您确定删除这录音吗？'
+    }).then(() => {
+      let arr = self.data.audio_arr
+      arr.splice(e.currentTarget.dataset.index,1)
+      self.setData({
+        audio_arr: arr
+      })
+      // on confirm
+    }).catch(() => {
+      // on cancel
+    })
+  },
+  playaudio(e) {
+    console.log(e)
+    console.log(e.currentTarget.dataset.index)
+    if (!this.audioCtx) {
+      this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.index)
+      this.audioCtx.play()
+    } else {
+      if (e.currentTarget.dataset.index == this.audioCtx.audioId.split('audio')[1]) {
+        this.audioCtx.pause()
+      } else {
+        this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.index)
+        this.audioCtx.play()
+      }
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -46,26 +79,43 @@ Page({
     let pages = getCurrentPages();
     let Page = pages[pages.length - 2];//
     let myDate = new Date();
+    let arr1 = []
+    let arr2 = []
+    if (options.title == '修改处置'){
+      for (let i = 0; i < Page.data.arr[options.index].addon.length; i++) {
+        if (Page.data.arr[options.index].addon[i].type == 'image') {
+          arr1.push(Page.data.arr[options.index].addon[i])
+        } else {
+          arr2.push(Page.data.arr[options.index].addon[i])
+        }
+      }
+    }
     this.setData({
       title:options.title,
-      arr: options.title == '修改处置' ? JSON.parse(options.item) : { handlelist:[]},
+      arr: options.title == '修改处置' ? Page.data.arr[options.index] : {handlelist:[]},
+      audio_arr: options.title == '修改处置' ? arr2 : [],
+      img_arr: options.title == '修改处置' ? arr1 : [],
       patdetails: Page.data.patdetails,
       isfirstvisit: Page.data.arr.length>0?1:0,
       time: myDate.getFullYear() + '-' + (myDate.getMonth() + 1) + '-' + myDate.getDate() + ' ' + myDate.getHours() + ':' + myDate.getMinutes(),
-      price: options.title == '修改处置' ? JSON.parse(options.item).allfee: '0'
+      price: options.title == '修改处置' ? Page.data.arr[options.index].allfee: '0'
     })
     wx.setNavigationBarTitle({
       title: options.title
     })
-    console.log(Page.data)
-    console.log(this.data.arr)
+    console.log(Page.data.arr[options.index])
+    console.log(this.data.audio_arr)
+    console.log(this.data.img_arr)
   },
   btn() {
     let self = this
+    let addon = self.data.audio_arr
+    addon.push(...self.data.img_arr)
     wx.request({
       url: getApp().data.APIS + '/patient/SaveHandleList',
       method: 'post',
       data: {
+        addon: JSON.stringify(addon),
         study: JSON.stringify(self.data.arr.handlelist),
         studyidentity: self.data.arr.studyidentity,
         customerid: self.data.patdetails.customerid,
@@ -165,7 +215,9 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    if (this.audioCtx) {
+      this.audioCtx.pause()
+    }
   },
 
   /**

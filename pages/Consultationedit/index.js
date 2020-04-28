@@ -29,6 +29,7 @@ Page({
     patienta: '',
     power_arr: [],
     user: '',
+    addon:[],
   },
   onClickLeft() {
     wx.navigateBack({
@@ -41,6 +42,7 @@ Page({
       url: getApp().data.APIS + '/patient/SaveConsult',
       method: 'post',
       data: {
+        "addon": JSON.stringify(self.data.addon),
         "customerid": self.data.patienta.customerid, 
         "consultid": self.data.consultid, 
         "studyid": "438504049288904704", 
@@ -90,7 +92,7 @@ Page({
   },
   Soundgo() {
     wx.navigateTo({
-      url: '../Sound/index',
+      url: '../Sound/index?state=3',
     })
   },
   checkclick(e) {
@@ -137,13 +139,12 @@ Page({
       title: options.title,
       patienta: Page.data.patdetails
     })
-    console.log(112233)
     console.log(this.data.patienta)
     wx.setNavigationBarTitle({
       title: options.title
     })
     if (options.title == '修改咨询') {
-      let item = JSON.parse(options.item)
+      let item = Page.data.arr[options.index]
       console.log(item)
       this.setData({
         consultid: item.consultid,
@@ -161,7 +162,37 @@ Page({
         },
         power_arr: Page.data.power_arr,
         user: Page.data.user,
+        addon: item.addon ? item.addon:[],
       })
+    }
+  },
+  deladdon(e) {
+    let self = this
+    Dialog.confirm({
+      title: '提示',
+      message: '您确定删除这录音吗？'
+    }).then(() => {
+      let arr = self.data.addon
+      arr.splice(e.currentTarget.dataset.index, 1)
+      self.setData({
+        addon: arr
+      })
+      // on confirm
+    }).catch(() => {
+      // on cancel
+    })
+  },
+  playaudio(e) {
+    if (!this.audioCtx) {
+      this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.index)
+      this.audioCtx.play()
+    } else {
+      if (e.currentTarget.dataset.index == this.audioCtx.audioId.split('audio')[1]) {
+        this.audioCtx.pause()
+      } else {
+        this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.index)
+        this.audioCtx.play()
+      }
     }
   },
   del() {
@@ -222,7 +253,9 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    if (this.audioCtx) {
+      this.audioCtx.pause()
+    }
   },
 
   /**

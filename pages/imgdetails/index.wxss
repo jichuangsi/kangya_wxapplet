@@ -54,3 +54,36 @@ swiper-item {
   flex: none;
   width: 50%;
 }
+.zt_state {
+  width: 100%;
+  position: fixed;
+  bottom: 102rpx;
+  left: 0rpx;
+  color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.zt_state .title {
+  line-height: 56rpx;
+}
+.tooth {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.tooth view {
+  width: 50%;
+  padding: 5rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.tooth view:nth-child(1){
+  border-bottom: 1rpx solid #3a3a3a;
+  border-right: 1rpx solid #3a3a3a;
+}
+.tooth view:nth-child(4){
+  border-top: 1rpx solid #3a3a3a;
+  border-left: 1rpx solid #3a3a3a;
+}

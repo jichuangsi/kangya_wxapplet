@@ -9,8 +9,12 @@
     <van-icon name="plus" slot="right" size="36rpx" />
   </view>
   <view class="center">
-      <image src="{{item.url}}" wx:for="{{img_arr}}" data-item="{{item}}" bindtap="imgclick"></image>
-    <view class="none" wx:if="{{arr.length == 0}}">
+    <view class="imgbox" wx:for="{{img_arr}}">
+      <image src="{{item.url}}" data-index="{{index}}" bindtap="imgclick">
+      </image>
+      <view wx-if="{{item.title!=''}}" class="imgstate {{item.title=='治疗后'?'hui':''}} {{item.title=='治疗前'?'green':''}}">{{item.title}}</view>
+    </view>
+    <view class="none" wx:if="{{img_arr.length == 0}}">
       <image src="../../images/none.png"></image>
       <view>暂时没有数据</view>
     </view>

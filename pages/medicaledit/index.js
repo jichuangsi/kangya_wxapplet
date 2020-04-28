@@ -1,4 +1,5 @@
 // pages/medicaledit/index.js
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog.js';
 Page({
 
   /**
@@ -48,7 +49,7 @@ Page({
     },
     doctor: '',
     doctor1: '',
-    img_arr:''
+    addon:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -122,7 +123,7 @@ Page({
   },
   Soundgo() {
     wx.navigateTo({
-      url: '../Sound/index',
+      url: '../Sound/index?state=3',
     })
   },
   ygo(e) {
@@ -136,12 +137,42 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
+  deladdon(e) {
+    let self = this
+    Dialog.confirm({
+      title: '提示',
+      message: '您确定删除这录音吗？'
+    }).then(() => {
+      let arr = self.data.addon
+      arr.splice(e.currentTarget.dataset.index, 1)
+      self.setData({
+        addon: arr
+      })
+      // on confirm
+    }).catch(() => {
+      // on cancel
+    })
+  },
+  playaudio(e) {
+    if (!this.audioCtx) {
+      this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.index)
+      this.audioCtx.play()
+    } else {
+      if (e.currentTarget.dataset.index == this.audioCtx.audioId.split('audio')[1]) {
+        this.audioCtx.pause()
+      } else {
+        this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.index)
+        this.audioCtx.play()
+      }
+    }
+  },
   btn(){
     let self = this
     wx.request({
       url: getApp().data.APIS + '/patient/insmedicarecord',
       method: 'post',
       data: {
+        "addon": JSON.stringify(self.data.addon),
         "ae": JSON.stringify(self.data.auxiliary),
         "allergyhistory": self.data.allergy, 
         "assistant": "", 
@@ -290,10 +321,10 @@ Page({
       title: options.title
     })
     if (options.title == '病历详情'){
-      console.log(11111)
       console.log(options.index)
       console.log(prevPage.data.arr[options.index])
       this.setData({
+        addon: prevPage.data.arr[options.index].addon ? prevPage.data.arr[options.index].addon:[],
         auxiliary: prevPage.data.arr[options.index].ae ? prevPage.data.arr[options.index].ae:this.data.allergy,
         allergy: prevPage.data.arr[options.index].allergyhistory ? prevPage.data.arr[options.index].allergyhistory : this.data.allergy,
         advice: prevPage.data.arr[options.index].da ? prevPage.data.arr[options.index].da : this.data.advice,

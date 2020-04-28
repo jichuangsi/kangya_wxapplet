@@ -65,17 +65,17 @@
           <view class="blue">应收 ￥{{item.payfeetotal}}</view>
           <view class="red">欠费 ￥{{item.arrears}}</view>
       </view>
-      <view class="li" bindtap="Soundgo">
+      <view class="li" bindtap="Soundgo" data-index="{{index}}">
           <van-icon name="../../../images/details_disposal_icon_voice.png" />
           <view style="flex:1">语音备忘录</view>
           <view></view>
           <van-icon name="arrow" />
-          <view class="bz">暂无录音</view>
-          <view catchtap="playaudio" class="audiobox" wx:for="{{item.addon}}" wx:if="{{item.type=='rec'}}">
+          <view catchtap="playaudio" data-id="{{item.id}}" class="audiobox" wx:for="{{item.addon}}" wx:if="{{item.type=='rec'}}">
             <view class="audio">
-              <view></view>
-              <audio src="{{item.url}}"></audio> 
+              <van-icon name="volume" size="36rpx" color="#16c7ae" />
+              <audio id="audio{{item.id}}" src="{{item.url}}"></audio> 
             </view>
+            <van-icon catchtap="deladdon" data-id="{{item.id}}" name="delete" size="36rpx" />
           </view>
       </view>
       <view class="li" data-index="{{index}}" bindtap="Agreeimggo">
@@ -86,7 +86,7 @@
           <van-icon name="arrow" />
       </view>
       <view class="li">
-        <view class="btn" wx:if="{{power_arr.code10103||(power_arr.code10102&&user.userid==item.doctoridexam)}}" data-item="{{item}}" bindtap="editgo">
+        <view class="btn" wx:if="{{power_arr.code10103||(power_arr.code10102&&user.userid==item.doctoridexam)}}" data-index="{{index}}" bindtap="editgo">
           <image src="../../images/details_disposal_icon_edit.png"></image>
           编辑
         </view>
@@ -102,4 +102,5 @@
           暂无数据
         </view>
   </view>
+  <van-dialog id="van-dialog" />
 </view>

@@ -134,9 +134,8 @@ Page({
   },
 
   imgclick(e) {
-    wx.previewImage({
-      current: e.currentTarget.dataset.item.url, // 当前显示图片的http链接
-      urls: [e.currentTarget.dataset.item.url] // 需要预览的图片http链接列表
+    wx.navigateTo({
+      url: '../imgdetails/index?state=3&&index=' + e.currentTarget.dataset.index,
     })
   },
   gtclick(e) {
@@ -151,6 +150,7 @@ Page({
   onLoad: function (options) {
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2]; 
+    console.log(prevPage.data.img_arr)
     this.setData({ title: options.title, content: options.value, index: options.index, img_arr: prevPage.data.img_arr })
     wx.setNavigationBarTitle({
       title: options.title

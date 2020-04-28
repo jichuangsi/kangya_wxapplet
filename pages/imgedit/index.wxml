@@ -1,3 +1,47 @@
 <!--pages/imgedit/index.wxml-->
 <view class="imgedit">
+  <view class="xian"></view>
+  <view class="tab" bindtap="toothgo">
+    <view class="left">
+    <image mode='widthFix' src="../../images/xx2.png"></image>
+    牙位
+    </view>
+    <view class="right">
+      <view class="change_box">
+        <view class="tooth">
+          <view class="lt">{{item.bodyposition.lt}}</view>
+          <view class="rt">{{item.bodyposition.rt}}</view>
+          <view class="lb">{{item.bodyposition.lb}}</view>
+          <view class="rb">{{item.bodyposition.rb}}</view>
+        </view>
+      </view>
+    </view>
+    <van-icon name="arrow" size="36rpx" />
+  </view>
+  <view class="tab" data-text="治疗状态" bindtap="editgo">
+    <view class="left">
+    <image class="img_te" mode='widthFix' src="../../images/3.png"></image>
+    治疗状态
+    </view>
+    <view class="right" style="text-align: right;">
+    {{item.title}}
+    </view>
+    <van-icon name="arrow" size="36rpx" />
+  </view>
+  <view class="xian"></view>
+  <view class="tab" data-text="输入影像备注" data-btn="1" data-textstate="1" data-value="{{item.contentdescription}}" bindtap="editgo">
+    <view class="left mt">
+    <image class="img_te" mode='widthFix' src="../../images/2.png"></image>
+    备注
+    </view>
+    <view class="right">
+    </view>
+    <view class="bz">
+      <view wx-if="{{item.contentdescription==''}}">输入内容不得超过150字</view>
+      <view wx-if="{{item.contentdescription!=''}}">{{item.contentdescription}}</view>
+    </view>
+  </view>
+  <view class="btn" bindtap="btn">
+    完成
+  </view>
 </view>

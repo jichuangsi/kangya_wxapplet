@@ -7,9 +7,9 @@
   </view> -->
   <view class="center">
     <input value="{{iptvalue}}" placeholder="请输入内容" wx:if="{{iptstate&&!type_state}}" bindinput="ipt"></input>
-    <textarea value="{{textvalue&&!type_state}}" maxlength="150" placeholder="请输入内容" bindinput="textipt"  wx:if="{{textstate}}"></textarea>
+    <textarea value="{{textvalue}}" maxlength="150" placeholder="请输入内容" bindinput="textipt" wx:if="{{textstate&&!type_state}}"></textarea>
     <input type="number" value="{{iptvalue}}" wx:if="{{iptstate&&type_state}}" placeholder="请输入内容" bindinput="ipt"></input>
-    <textarea value="{{textvalue}}" maxlength="150" placeholder="请输入内容" bindinput="textipt"  wx:if="{{textstate&&type_state}}"></textarea>
+    <textarea value="{{textvalue}}" maxlength="150" placeholder="请输入内容" bindinput="textipt" wx:if="{{textstate&&type_state}}"></textarea>
 
     <view class="li" wx:for="{{project_arr}}" data-text="{{item}}" wx:if="{{title=='选择项目'}}" bindtap="projectclick">
     {{item}}
@@ -99,6 +99,11 @@
     <view class="li" wx:for="{{activity_arr}}" data-index="{{index}}" wx:if="{{title=='优惠活动'}}" bindtap="activityclick">
     {{item.title}}
     <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
+    </view>
+    
+      <view class="li" wx:for="{{zlzt_arr}}" data-text="{{item}}" wx:if="{{title=='治疗状态'}}" bindtap="zlztclick">
+      {{item}}
+      <van-icon name="arrow" />
     </view>
     <view class="btn" bindtap="onClickRight" wx:if="{{btnstate}}">确定</view>
   </view>

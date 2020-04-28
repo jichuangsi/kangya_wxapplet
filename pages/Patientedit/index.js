@@ -85,7 +85,9 @@ Page({
     bjfz_arr: ['健康宣教', '最近患者', '治疗完成'],
     activity_arr: [
       { title: '会员卡活动', state: 0 },
-    ]
+    ],
+
+    zlzt_arr: ['清空选项','治疗前', '治疗前', '治疗前', '保持期'],
   },
   onClickLeft() {
     wx.navigateBack({
@@ -370,6 +372,12 @@ Page({
       self.data.prevpage.setData({
         detailed: list
       })
+    } else if (this.data.title == '输入影像备注') {
+      let list = self.data.prevpage.data.item
+      list.contentdescription = self.data.textvalue
+      self.data.prevpage.setData({
+        item: list
+      })
     }
     self.onClickLeft()
   },
@@ -527,6 +535,14 @@ Page({
   bjfzclick() {
     this.onClickLeft()
   },
+  zlztclick(e) {
+    let data = this.data.prevpage.data.item
+    data.title = e.currentTarget.dataset.text != '清空选项' ? e.currentTarget.dataset.text:''
+    this.data.prevpage.setData({
+      item: data
+    })
+    this.onClickLeft()
+  },
 
 
   activityclick(e) {
@@ -554,6 +570,8 @@ Page({
         textvalue: options.value,
         type_state: options.typestate ? true : false
       })
+      console.log(this.data.textstate)
+      console.log(this.data.type_state)
     }
     this.getMatter()
   },

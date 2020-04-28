@@ -63,13 +63,15 @@ Page({
   },
   imgclick(e) {
     console.log(e)
-    wx.navigateTo({
-      url: '../imgdetails/index?state=1&&time=' + e.currentTarget.dataset.time,
-    })
-      // wx.previewImage({
-      //   current: e.currentTarget.dataset.item.url, // 当前显示图片的http链接
-      //   urls: [e.currentTarget.dataset.item.url] // 需要预览的图片http链接列表
-      // })
+    if (this.data.title == '选择影像') {
+      wx.navigateTo({
+        url: '../imgdetails/index?state=2&&index=' + e.currentTarget.dataset.index,
+      })
+    }else{
+      wx.navigateTo({
+        url: '../imgdetails/index?state=1&&time=' + e.currentTarget.dataset.time,
+      })
+    }
   },
   addimg(imgname) {
     let self = this
@@ -174,9 +176,11 @@ Page({
   btn() {
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
+    console.log(this.data.msgstate)
     if (this.data.msgstate == 0) {
       let currPage = pages[pages.length - 3];
-      let arr = pages[pages.length - 2].img_arr
+      let arr = prevPage.data.img_arr
+      console.log(prevPage.data)
       for (let i = 0; i < this.data.arr.length; i++) {
         if (this.data.arr[i].state == 1) {
           arr.push(this.data.arr[i])
@@ -214,19 +218,19 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title ? options.title :'影像'
     })
-    // let pages = getCurrentPages();
-    // let Page = pages[pages.length - 2];
-    // this.setData({
-    //   customerid: Page.data.customerid,
-    //   clinicid: Page.data.clinicid
-    // })
-    // if (!options.title) {
-    //   console.log(Page.data.power_arr)
-    //   this.setData({
-    //     power_arr: Page.data.power_arr,
-    //     user: Page.data.user,
-    //   })
-    // }
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    this.setData({
+      customerid: Page.data.customerid,
+      clinicid: Page.data.clinicid
+    })
+    if (!options.title) {
+      console.log(Page.data.power_arr)
+      this.setData({
+        power_arr: Page.data.power_arr,
+        user: Page.data.user,
+      })
+    }
     console.log(this.data.power_arr)
     this.getdata()
   },

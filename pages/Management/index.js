@@ -1,4 +1,5 @@
 // pages/Management/index.js
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog.js';
 Page({
 
   /**
@@ -25,24 +26,34 @@ Page({
       url: '../Managementedit/index?title=确认内容',
     })
   },
-  Soundgo() {
+  Soundgo(e) {
     wx.navigateTo({
-      url: '../Sound/index',
+      url: '../Sound/index?state=1&&index=' + e.currentTarget.dataset.index,
     })
   },
   Agreeimggo(e) {
     wx.navigateTo({
-      url: '../Agreeimg/index?index=' + e.currentTarget.dataset.index,
+      url: '../Agreeimg/index?state=1&&index=' + e.currentTarget.dataset.index,
     })
   },
-  playaudio(){
-    console.log(123)
+  playaudio(e){
+    if (!this.audioCtx) {
+      this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.id)
+      this.audioCtx.play()
+    }else{
+      if (e.currentTarget.dataset.id == this.audioCtx.audioId.split('audio')[1]) {
+        this.audioCtx.pause()
+      } else {
+        this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.id)
+        this.audioCtx.play()
+      }
+    }
   },
   editgo(e) {
-    //  && e.currentTarget.dataset.item.doctoridexam == this.data.userid
+    //  && e.currentTarget.dataset.index.doctoridexam == this.data.userid
     if (this.data.power_arr.code10103.has || (this.data.power_arr.code10102.has)) {
       wx.navigateTo({
-        url: '../Managementedit/index?title=修改处置&&item=' + JSON.stringify(e.currentTarget.dataset.item),
+        url: '../Managementedit/index?title=修改处置&&index=' + JSON.stringify(e.currentTarget.dataset.index),
       })
     }else{
       wx.showToast({
@@ -65,6 +76,39 @@ Page({
         duration: 1000
       })
     }
+  },
+  deladdon(e){
+    let self = this
+    Dialog.confirm({
+      title: '提示',
+      message: '您确定删除这录音吗？'
+    }).then(() => {
+      wx.request({
+        url: getApp().data.APIS + '/svc/a',
+        method: 'post',
+        data: {
+          plugin: 'deladdon',
+          id: e.currentTarget.dataset.id,
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 1000
+            })
+            self.getdata()
+          }
+        }
+      })
+      // on confirm
+    }).catch(() => {
+      // on cancel
+    })
   },
   getdata() {
     let self = this
@@ -134,7 +178,9 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    if (this.audioCtx){
+      this.audioCtx.pause()
+    }
   },
 
   /**

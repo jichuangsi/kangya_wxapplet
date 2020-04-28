@@ -20,9 +20,15 @@
       </view>
       <view class="btn" wx:if="{{title!='影像浏览'}}" bindtap="onClickRight">确定</view>
   </view>
-  <view class="" wx:if="{{title=='影像浏览'}}">
-    <view class="img_box">
-      <image src="{{item.url}}" wx:for="{{img_arr}}" data-item="{{item}}" bindtap="imgclick"></image>
+  <view class="img_box" wx:if="{{title=='影像浏览'}}">
+    <view class="imgbox" wx:for="{{img_arr}}">
+      <image src="{{item.url}}" data-index="{{index}}" bindtap="imgclick">
+      </image>
+      <view wx-if="{{item.title!=''}}" class="imgstate {{item.title=='治疗后'?'hui':''}} {{item.title=='治疗前'?'green':''}}">{{item.title}}</view>
+    </view>
+    <view class="wu" wx:if="{{img_arr.length==0}}">
+      <image src="../../images/none.png"></image>
+      暂无数据
     </view>
   </view>
   <view class="li" wx:for="{{gt_arr}}" data-text="{{item}}" wx:if="{{title=='沟通类型'}}" bindtap="gtclick">

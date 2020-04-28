@@ -102,8 +102,8 @@
 				},
 				{
 					"id": 6,
-					"name": "pages/Patientsearch/index",
-					"pathName": "pages/Patientsearch/index",
+					"name": "pages/Management/index",
+					"pathName": "pages/Management/index",
 					"query": "title=test",
 					"scene": null
 				}
