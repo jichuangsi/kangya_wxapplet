@@ -82,23 +82,22 @@ Page({
                 title: '上传成功',
               })
               if (self.data.ly_state==1){
-                if (self.data.arr.addon) {
-                  self.data.arr.addon.push({ type: "rec", url: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name})
-                }else{
-                  self.data.arr.addon = [{ type: "rec", url: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name }]
-                }
-                self.editManagement()
+                // if (self.data.arr.addon) {
+                //   self.data.arr.addon.push({ type: "rec", url: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name})
+                // }else{
+                //   self.data.arr.addon = [{ type: "rec", url: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name }]
+                // }
+                // self.editManagement()
+                self.addaudio(name)
               } else if(self.data.ly_state == 2) {
-                let pages = getCurrentPages();
-                let Page = pages[pages.length - 2];//
-                let arr = Page.data.audio_arr
-                arr.push({ type: "rec", url: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name })
-                Page.setData({
-                  audio_arr: arr
-                })
-                wx.navigateBack({
-                  delta: 1,
-                })
+                // let pages = getCurrentPages();
+                // let Page = pages[pages.length - 2];//
+                // let arr = Page.data.audio_arr
+                // arr.push({ type: "rec", url: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name })
+                // Page.setData({
+                //   audio_arr: arr
+                // })
+                self.addaudio(name)
               } else if (self.data.ly_state == 3) {
                 let pages = getCurrentPages();
                 let Page = pages[pages.length - 2];//
@@ -110,6 +109,10 @@ Page({
                 wx.navigateBack({
                   delta: 1,
                 })
+              } else if (self.data.ly_state == 4) {
+                self.addaudio(name)
+              } else if (self.data.ly_state == 5) {
+                self.addaudio(name)
               }
             },
 
@@ -131,17 +134,17 @@ Page({
       
     })
   },
-
-  editManagement() {
+  addaudio(url) {
     let self = this
     wx.request({
-      url: getApp().data.APIS + '/patient/SaveHandleList',
+      url: getApp().data.APIS + '/svc/a',
       method: 'post',
       data: {
-        addon: JSON.stringify(self.data.arr.addon),
-        study: JSON.stringify(self.data.arr.handlelist),
-        studyidentity: self.data.arr.studyidentity,
-        customerid: self.data.patdetails.customerid,
+        plugin:'addon',
+        sid: self.data.ly_state != 4 ? self.data.arr.studyidentity : self.data.arr,
+        pid: self.data.patdetails.patientid,
+        link: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + url,
+        memo:'rec'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -151,12 +154,51 @@ Page({
         if (res.data.info == 'ok') {
           let pages = getCurrentPages();
           let Page = pages[pages.length - 2];//
-          setTimeout(function () {
-            Page.getdata()
-            wx.navigateBack({
-              delta: 1,
+          let Pageprev = pages[pages.length - 3];//
+          if (self.data.ly_state == 1) {
+            setTimeout(function () {
+              Page.getdata()
+              wx.navigateBack({
+                delta: 1,
+              })
+            }, 500)
+          } else if (self.data.ly_state == 2) {
+            let arr = []
+            Pageprev.getdata()
+            Pageprev.data.arr[Page.data.index]
+            for (let i = 0; i < Pageprev.data.arr[Page.data.index].addon.length; i++) {
+              if (Pageprev.data.arr[Page.data.index].addon[i].type == 'rec') {
+                arr.push(Pageprev.data.arr[Page.data.index].addon[i])
+              }
+            }
+            Page.setData({
+              audio_arr:arr
             })
-          }, 1000)
+          } else if (self.data.ly_state == 4) {
+            let arr = []
+            Pageprev.getdata()
+            Pageprev.data.arr[Page.data.index]
+            for (let i = 0; i < Pageprev.data.arr[Page.data.index].addon.length; i++) {
+              if (Pageprev.data.arr[Page.data.index].addon[i].type == 'rec') {
+                arr.push(Pageprev.data.arr[Page.data.index].addon[i])
+              }
+            }
+            Page.setData({
+              addon: arr
+            })
+          } else if (self.data.ly_state == 5) {
+            let arr = []
+            Pageprev.getdata()
+            Pageprev.data.arr[Page.data.index]
+            for (let i = 0; i < Pageprev.data.arr[Page.data.index].addon.length; i++) {
+              if (Pageprev.data.arr[Page.data.index].addon[i].type == 'rec') {
+                arr.push(Pageprev.data.arr[Page.data.index].addon[i])
+              }
+            }
+            Page.setData({
+              addon: arr
+            })
+          }
         } else {
           wx.showToast({
             title: '失败',
@@ -197,12 +239,27 @@ Page({
     } else if (options.state == 2) {
       this.setData({
         ly_state: options.state,
+        arr: Page.data.arr,
+        patdetails: Page.data.patdetails
       })
     } else if (options.state == 3) {
       this.setData({
         ly_state: options.state,
       })
+    } else if (options.state == 4) {
+      this.setData({
+        ly_state: options.state,
+        arr: Page.data.consultid,
+        patdetails: Page.data.patienta
+      })
+    } else if (options.state == 5) {
+      this.setData({
+        ly_state: options.state,
+        arr: Page.data.arr,
+        patdetails: Page.data.patdetails
+      })
     }
+    console.log(this.data.patdetails)
   },
 
   /**

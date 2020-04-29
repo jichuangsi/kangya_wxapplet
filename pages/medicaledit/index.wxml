@@ -30,7 +30,7 @@
               <van-icon name="volume" size="36rpx" color="#16c7ae" />
               <audio id="audio{{index}}" src="{{item.url}}"></audio> 
             </view>
-            <van-icon catchtap="deladdon" data-index="{{index}}" name="delete" size="36rpx" />
+            <van-icon catchtap="deladdon" data-index="{{index}}" data-item="{{item}}" name="delete" size="36rpx" />
           </view>
     </view>
     <view class="xian"></view>

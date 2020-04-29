@@ -49,7 +49,9 @@ Page({
     },
     doctor: '',
     doctor1: '',
-    addon:[]
+    addon:[],
+    arr:[],
+    index:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -122,6 +124,7 @@ Page({
     })
   },
   Soundgo() {
+    let index =  title == '病历详情'?5:3
     wx.navigateTo({
       url: '../Sound/index?state=3',
     })
@@ -148,6 +151,24 @@ Page({
       self.setData({
         addon: arr
       })
+      if (e.currentTarget.dataset.item.id) {
+        wx.request({
+          url: getApp().data.APIS + '/svc/a',
+          method: 'post',
+          data: {
+            plugin: 'deladdon',
+            id: e.currentTarget.dataset.item.id,
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          },
+          success: function (res) {
+            console.log(res)
+            if (res.data.info == 'ok') {
+            }
+          }
+        })
+      }
       // on confirm
     }).catch(() => {
       // on cancel
@@ -324,6 +345,8 @@ Page({
       console.log(options.index)
       console.log(prevPage.data.arr[options.index])
       this.setData({
+        arr: prevPage.data.arr[options.index],
+        index: options.index,
         addon: prevPage.data.arr[options.index].addon ? prevPage.data.arr[options.index].addon:[],
         auxiliary: prevPage.data.arr[options.index].ae ? prevPage.data.arr[options.index].ae:this.data.allergy,
         allergy: prevPage.data.arr[options.index].allergyhistory ? prevPage.data.arr[options.index].allergyhistory : this.data.allergy,

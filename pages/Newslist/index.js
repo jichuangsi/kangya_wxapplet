@@ -104,6 +104,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/pages/Newslist/index?title=' + this.data.title + '&&id=' + this.data.id  // 路径，传递参数到指定页面。
+    }
   }
 })

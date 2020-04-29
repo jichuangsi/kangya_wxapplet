@@ -108,19 +108,48 @@ Page({
         let arr1 = Page.data.img_arr
         arr1.splice(e.currentTarget.dataset.index, 1)
         Page.setData({
-          img_arr:arr1
+          img_arr: arr1
         })
         Pageprev.setData({
           img_arr: arr1
         })
-        if (arr1.length == 0) {
-          wx.navigateBack({
-            delta: 1,
-          })
-        } else {
-          self.setData({
-            arr: arr1,
-            current: 0
+        if (!e.currentTarget.dataset.item.id){
+          if (arr1.length == 0) {
+            wx.navigateBack({
+              delta: 1,
+            })
+          } else {
+            self.setData({
+              arr: arr1,
+              current: 0
+            })
+          }
+        }else{
+          wx.request({
+            url: getApp().data.APIS + '/svc/a',
+            method: 'post',
+            data: {
+              plugin: 'deladdon',
+              id: e.currentTarget.dataset.item.id,
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+            },
+            success: function (res) {
+              console.log(res)
+              if (res.data.info == 'ok') {
+                if (arr1.length == 0) {
+                  wx.navigateBack({
+                    delta: 1,
+                  })
+                } else {
+                  self.setData({
+                    arr: arr1,
+                    current: 0
+                  })
+                }
+              }
+            }
           })
         }
         // on confirm

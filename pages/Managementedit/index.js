@@ -14,7 +14,8 @@ Page({
     patdetails:'',
     price: '0',
     audio_arr:[],
-    img_arr:[]
+    img_arr:[],
+    index:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -27,13 +28,15 @@ Page({
     })
   },
   Soundgo() {
+    let index = this.data.title =='修改处置'?2:3
     wx.navigateTo({
-      url: '../Sound/index?state=2',
+      url: '../Sound/index?state=' + index,
     })
   },
   Agreeimggo() {
+    let index = this.data.title == '修改处置' ? 2 : 3
     wx.navigateTo({
-      url: '../Agreeimg/index?state=2',
+      url: '../Agreeimg/index?state=' + index,
     })
   },
   prescriptiongo(){
@@ -92,6 +95,7 @@ Page({
     }
     this.setData({
       title:options.title,
+      index: options.index,
       arr: options.title == '修改处置' ? Page.data.arr[options.index] : {handlelist:[]},
       audio_arr: options.title == '修改处置' ? arr2 : [],
       img_arr: options.title == '修改处置' ? arr1 : [],

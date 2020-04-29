@@ -30,6 +30,7 @@ Page({
     power_arr: [],
     user: '',
     addon:[],
+    index:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -45,7 +46,6 @@ Page({
         "addon": JSON.stringify(self.data.addon),
         "customerid": self.data.patienta.customerid, 
         "consultid": self.data.consultid, 
-        "studyid": "438504049288904704", 
         "faceconsultdatetime": self.data.time, 
         "consultdoctname": self.data.doctor1.name, 
         "consultdoctid": self.data.doctor1.doctorid, 
@@ -91,8 +91,9 @@ Page({
     }
   },
   Soundgo() {
+    let index = this.data.title == '修改处置' ? 4 : 3
     wx.navigateTo({
-      url: '../Sound/index?state=3',
+      url: '../Sound/index?state='+index,
     })
   },
   checkclick(e) {
@@ -147,6 +148,7 @@ Page({
       let item = Page.data.arr[options.index]
       console.log(item)
       this.setData({
+        index: options.index,
         consultid: item.consultid,
         time: item.faceconsultdatetime,
         complaints: '',
@@ -177,6 +179,24 @@ Page({
       self.setData({
         addon: arr
       })
+      if (e.currentTarget.dataset.item.id){
+        wx.request({
+          url: getApp().data.APIS + '/svc/a',
+          method: 'post',
+          data: {
+            plugin: 'deladdon',
+            id: e.currentTarget.dataset.item.id,
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          },
+          success: function (res) {
+            console.log(res)
+            if (res.data.info == 'ok') {
+            }
+          }
+        })
+      }
       // on confirm
     }).catch(() => {
       // on cancel
