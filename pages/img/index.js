@@ -9,6 +9,7 @@ Page({
     show: false,
     state:0,
     msgstate:0,
+    ly_state:0,
     arr:[],
     zsarr:[],
     customerid: '',
@@ -180,10 +181,12 @@ Page({
     if (this.data.msgstate == 0) {
       let currPage = pages[pages.length - 3];
       let arr = prevPage.data.img_arr
+      let tesu_arr = []
       console.log(prevPage.data)
       for (let i = 0; i < this.data.arr.length; i++) {
         if (this.data.arr[i].state == 1) {
           arr.push(this.data.arr[i])
+          tesu_arr.push(this.data.arr[i])
         }
       }
       currPage.setData({
@@ -192,6 +195,18 @@ Page({
       prevPage.setData({
         img_arr: arr
       })
+      
+      console.log(111)
+      console.log(currPage.data)
+      console.log(this.data.ly_state)
+      if (this.data.ly_state == 2 || this.data.ly_state == 1) {
+        prevPage.setData({
+          tesu: 1,
+          tesu_arr: tesu_arr
+        })
+      } else if (this.data.ly_state == 3){
+
+      }
       this.onClickLeft()
     } else {
       let arr1 = []
@@ -213,7 +228,8 @@ Page({
     this.setData({ 
       title: options.title, 
       state: options.state ? options.state : 0,
-      msgstate: options.msgstate ? options.msgstate : 0
+      msgstate: options.msgstate ? options.msgstate : 0,
+      ly_state: options.ly_state ? options.ly_state : 0
     })
     wx.setNavigationBarTitle({
       title: options.title ? options.title :'影像'
@@ -222,7 +238,7 @@ Page({
     let Page = pages[pages.length - 2];
     this.setData({
       customerid: Page.data.customerid,
-      clinicid: Page.data.clinicid
+      clinicid: Page.data.clinicid,
     })
     if (!options.title) {
       console.log(Page.data.power_arr)

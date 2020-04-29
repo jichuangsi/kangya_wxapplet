@@ -11,7 +11,9 @@ Page({
     ly_state: 0,
     index: 0,
     arr: '',
-    patdetails: ''
+    patdetails: '',
+    tesu:0,
+    tesu_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -88,6 +90,11 @@ Page({
               self.setData({
                 img_arr: arr
               })
+              let pages = getCurrentPages();
+              let Page = pages[pages.length - 2];//
+              Page.setData({
+                img_arr: arr
+              })
             } else {
               self.addaudio(name)
             }
@@ -112,7 +119,7 @@ Page({
   },
   imggo(){
     wx.navigateTo({
-      url: '../img/index?title=选择影像',
+      url: '../img/index?title=选择影像&&ly_state='+this.data.ly_state,
     })
     this.onClose()
   },
@@ -127,8 +134,8 @@ Page({
         plugin: 'addon',
         sid: self.data.arr.studyidentity,
         pid: self.data.patdetails.patientid,
-        link: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + url,
-        memo: 'rec'
+        link: self.data.tesu == 1 ? url:"https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + url,
+        memo: 'image'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' //修改此处即可
@@ -140,32 +147,44 @@ Page({
           let Page = pages[pages.length - 2];//
           let Pageprev = pages[pages.length - 3];//
           if (self.data.ly_state == 1) {
+            let i1 = Page.data.arr[self.data.index].addon.length
             Page.getdata()
-            let arr = Page.data.arr[self.data.index].addon
-            let arr1 = []
-            for (let i = 0; i < arr.length; i++) {
-              if (arr[i].type == 'image') {
-                arr1.push(arr[i])
+            let timeout = setInterval(function(){
+              if (i1 != Page.data.arr[self.data.index].addon.length) {
+                let arr = Page.data.arr[self.data.index].addon
+                let arr1 = []
+                for (let i = 0; i < arr.length; i++) {
+                  if (arr[i].type == 'image') {
+                    arr1.push(arr[i])
+                  }
+                }
+                self.setData({
+                  img_arr: arr1
+                })
+                clearInterval(timeout)
               }
-            }
-            self.setData({
-              img_arr: arr1
-            })
-          } else if (self.data.ly_state == 2){
+            },100)
+          } else if (self.data.ly_state == 2) {
+            let i1 = Pageprev.data.arr[Page.data.index].addon.length
             Pageprev.getdata()
-            let arr = Pageprev.data.arr[Page.data.index].addon
-            let arr1 = []
-            for (let i = 0; i < arr.length; i++) {
-              if (arr[i].type == 'image') {
-                arr1.push(arr[i])
+            let timeout = setInterval(function () {
+              if (i1 != Pageprev.data.arr[Page.data.index].addon.length) {
+                let arr = Pageprev.data.arr[Page.data.index].addon
+                let arr1 = []
+                for (let i = 0; i < arr.length; i++) {
+                  if (arr[i].type == 'image') {
+                    arr1.push(arr[i])
+                  }
+                }
+                Page.setData({
+                  img_arr: arr1
+                })
+                self.setData({
+                  img_arr: arr1
+                })
+                clearInterval(timeout)
               }
-            }
-            Page.setData({
-              img_arr: arr1
-            })
-            self.setData({
-              img_arr: arr1
-            })
+            },100)
           }
         } else {
           wx.showToast({
@@ -186,6 +205,7 @@ Page({
     let pages = getCurrentPages();
     let Page = pages[pages.length - 2];//
     this.pageprev = Page
+    this.page3 = pages[pages.length - 3];
     if (options.state == 1) {
       let arr = []
       for (let i = 0; i < Page.data.arr[options.index].addon.length;i++){
@@ -201,13 +221,19 @@ Page({
         img_arr: arr
       })
     } else if (options.state == 2) {
+      console.log(222)
       this.setData({
         ly_state: options.state,
         img_arr: Page.data.img_arr,
-        arr: Page.data.arr[options.index],
+        arr: Page.data.arr,
         patdetails: Page.data.patdetails,
       })
+    } else if (options.state == 3){
+      this.setData({
+        ly_state: options.state,
+      })
     }
+    console.log(this.data.arr)
   },
 
   /**
@@ -221,6 +247,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(333)
+    console.log(this.data.tesu)
+    if(this.data.tesu == 1){
+      for (let i = 0; i < this.data.tesu_arr.length;i++){
+        this.addaudio(this.data.tesu_arr[i].url)
+      }
+    }
   },
 
   /**
@@ -233,26 +266,14 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    console.log(555555555)
+    console.log(this.data.ly_state)
     if (this.pageprev.title == '处置') {
-      // let arr = []
-      // let arr1 = this.data.arr
-      // let arr2 = []
-      // for (let i = 0; i < this.data.arr.addon.length; i++) {
-      //   if (this.data.arr.addon[i].type == 'rec') {
-      //     arr.push(this.data.arr.addon[i])
-      //   }
-      // }
-      // for (let j = 0; j < this.data.img_arr.length; j++) {
-      //   arr2.push({ type: 'image', url: this.data.img_arr[j].url })
-      // }
-      // arr.push(...arr2)
-      // arr1.addon = arr
-      // this.setData({
-      //   arr: arr1
-      // })
-      // this.editManagement()
-      // this.pageprev.getdata()
+      this.pageprev.getdata()
+    } else if (this.data.ly_state == 2) {
+      this.page3.getdata()
     }else if(this.data.ly_state == 3){
+      console.log(333333333333)
       let arr = []
       for (let i = 0; i < this.data.img_arr.length;i++){
         arr.push({ type: 'image', url: this.data.img_arr[i].url })

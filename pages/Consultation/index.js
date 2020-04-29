@@ -30,7 +30,13 @@ Page({
       this.audioCtx.play()
     } else {
       if (e.currentTarget.dataset.id == this.audioCtx.audioId.split('audio')[1]) {
-        this.audioCtx.pause()
+        if (this.audiopause == 1) {
+          this.audioCtx.play()
+          this.audiopause = 2
+        } else {
+          this.audioCtx.pause()
+          this.audiopause = 1
+        }
       } else {
         this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.id)
         this.audioCtx.play()

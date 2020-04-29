@@ -101,10 +101,10 @@ Page({
               } else if (self.data.ly_state == 3) {
                 let pages = getCurrentPages();
                 let Page = pages[pages.length - 2];//
-                let arr = Page.data.addon
+                let arr = Page.data.audio_arr
                 arr.push({ type: "rec", url: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name })
                 Page.setData({
-                  addon: arr
+                  audio_arr: arr
                 })
                 wx.navigateBack({
                   delta: 1,
@@ -113,6 +113,17 @@ Page({
                 self.addaudio(name)
               } else if (self.data.ly_state == 5) {
                 self.addaudio(name)
+              } else if (self.data.ly_state == 6) {
+                let pages = getCurrentPages();
+                let Page = pages[pages.length - 2];//
+                let arr = Page.data.addon
+                arr.push({ type: "rec", url: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name })
+                Page.setData({
+                  addon: arr
+                })
+                wx.navigateBack({
+                  delta: 1,
+                })
               }
             },
 
@@ -164,40 +175,66 @@ Page({
             }, 500)
           } else if (self.data.ly_state == 2) {
             let arr = []
+            let i1 = Pageprev.data.arr[Page.data.index].addon.length
             Pageprev.getdata()
-            Pageprev.data.arr[Page.data.index]
-            for (let i = 0; i < Pageprev.data.arr[Page.data.index].addon.length; i++) {
-              if (Pageprev.data.arr[Page.data.index].addon[i].type == 'rec') {
-                arr.push(Pageprev.data.arr[Page.data.index].addon[i])
+            let timeout = setInterval(function(){
+              console.log(i1)
+              console.log(Pageprev.data.arr[Page.data.index].addon.length)
+              if (i1 != Pageprev.data.arr[Page.data.index].addon.length){
+                for (let i = 0; i < Pageprev.data.arr[Page.data.index].addon.length; i++) {
+                  if (Pageprev.data.arr[Page.data.index].addon[i].type == 'rec') {
+                    arr.push(Pageprev.data.arr[Page.data.index].addon[i])
+                  }
+                }
+                Page.setData({
+                  audio_arr: arr
+                })
+                clearInterval(timeout)
+                wx.navigateBack({
+                  delta: 1,
+                })
               }
-            }
-            Page.setData({
-              audio_arr:arr
-            })
+            },100)
           } else if (self.data.ly_state == 4) {
             let arr = []
+            let i1 = Pageprev.data.arr[Page.data.index].addon.length
             Pageprev.getdata()
-            Pageprev.data.arr[Page.data.index]
-            for (let i = 0; i < Pageprev.data.arr[Page.data.index].addon.length; i++) {
-              if (Pageprev.data.arr[Page.data.index].addon[i].type == 'rec') {
-                arr.push(Pageprev.data.arr[Page.data.index].addon[i])
+            let timeout = setInterval(function () {
+              if (i1 != Pageprev.data.arr[Page.data.index].addon.length) {
+                for (let i = 0; i < Pageprev.data.arr[Page.data.index].addon.length; i++) {
+                  if (Pageprev.data.arr[Page.data.index].addon[i].type == 'rec') {
+                    arr.push(Pageprev.data.arr[Page.data.index].addon[i])
+                  }
+                }
+                Page.setData({
+                  addon: arr
+                })
+                clearInterval(timeout)
+                wx.navigateBack({
+                  delta: 1,
+                })
               }
-            }
-            Page.setData({
-              addon: arr
-            })
+            }, 100)
           } else if (self.data.ly_state == 5) {
             let arr = []
+            let i1 = Pageprev.data.arr[Page.data.index].addon.length
             Pageprev.getdata()
-            Pageprev.data.arr[Page.data.index]
-            for (let i = 0; i < Pageprev.data.arr[Page.data.index].addon.length; i++) {
-              if (Pageprev.data.arr[Page.data.index].addon[i].type == 'rec') {
-                arr.push(Pageprev.data.arr[Page.data.index].addon[i])
+            let timeout = setInterval(function () {
+              if (i1 != Pageprev.data.arr[Page.data.index].addon.length) {
+                for (let i = 0; i < Pageprev.data.arr[Page.data.index].addon.length; i++) {
+                  if (Pageprev.data.arr[Page.data.index].addon[i].type == 'rec') {
+                    arr.push(Pageprev.data.arr[Page.data.index].addon[i])
+                  }
+                }
+                Page.setData({
+                  addon: arr
+                })
+                clearInterval(timeout)
+                wx.navigateBack({
+                  delta: 1,
+                })
               }
-            }
-            Page.setData({
-              addon: arr
-            })
+            }, 100)
           }
         } else {
           wx.showToast({
@@ -227,9 +264,9 @@ Page({
       format: 'aac',
     }
     this.a = 0
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
     if (options.state == 1) {
-      let pages = getCurrentPages();
-      let Page = pages[pages.length - 2];//
       this.setData({
         index:options.index,
         ly_state:options.state,
@@ -237,11 +274,14 @@ Page({
         patdetails: Page.data.patdetails
       })
     } else if (options.state == 2) {
+      console.log(3333)
+      console.log(Page.data)
       this.setData({
         ly_state: options.state,
         arr: Page.data.arr,
         patdetails: Page.data.patdetails
       })
+      console.log(2222)
     } else if (options.state == 3) {
       this.setData({
         ly_state: options.state,

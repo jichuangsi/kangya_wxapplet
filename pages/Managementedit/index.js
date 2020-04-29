@@ -55,6 +55,27 @@ Page({
       self.setData({
         audio_arr: arr
       })
+      if (e.currentTarget.dataset.item.id) {
+        wx.request({
+          url: getApp().data.APIS + '/svc/a',
+          method: 'post',
+          data: {
+            plugin: 'deladdon',
+            id: e.currentTarget.dataset.item.id,
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          },
+          success: function (res) {
+            console.log(res)
+            if (res.data.info == 'ok') {
+              let pages = getCurrentPages();
+              let Page = pages[pages.length - 2];//
+              Page.getdata()
+            }
+          }
+        })
+      }
       // on confirm
     }).catch(() => {
       // on cancel
@@ -68,7 +89,13 @@ Page({
       this.audioCtx.play()
     } else {
       if (e.currentTarget.dataset.index == this.audioCtx.audioId.split('audio')[1]) {
-        this.audioCtx.pause()
+        if (this.audiopause == 1) {
+          this.audioCtx.play()
+          this.audiopause = 2
+        } else {
+          this.audioCtx.pause()
+          this.audiopause = 1
+        }
       } else {
         this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.index)
         this.audioCtx.play()

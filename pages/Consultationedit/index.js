@@ -91,7 +91,7 @@ Page({
     }
   },
   Soundgo() {
-    let index = this.data.title == '修改处置' ? 4 : 3
+    let index = this.data.title == '修改处置' ? 4 : 6
     wx.navigateTo({
       url: '../Sound/index?state='+index,
     })
@@ -193,6 +193,9 @@ Page({
           success: function (res) {
             console.log(res)
             if (res.data.info == 'ok') {
+              let pages = getCurrentPages();
+              let Page = pages[pages.length - 2];//
+              Page.getdata()
             }
           }
         })
@@ -208,7 +211,13 @@ Page({
       this.audioCtx.play()
     } else {
       if (e.currentTarget.dataset.index == this.audioCtx.audioId.split('audio')[1]) {
-        this.audioCtx.pause()
+        if (this.audiopause == 1) {
+          this.audioCtx.play()
+          this.audiopause = 2
+        } else {
+          this.audioCtx.pause()
+          this.audiopause = 1
+        }
       } else {
         this.audioCtx = wx.createAudioContext('audio' + e.currentTarget.dataset.index)
         this.audioCtx.play()

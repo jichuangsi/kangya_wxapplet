@@ -78,9 +78,9 @@
           <view catchtap="playaudio" data-index="{{index}}" class="audiobox" wx:for="{{audio_arr}}" wx:if="{{item.type=='rec'}}">
             <view class="audio">
               <van-icon name="volume" size="36rpx" color="#16c7ae" />
-              <audio id="audio{{item.index}}" src="{{item.url}}"></audio> 
+              <audio id="audio{{index}}" src="{{item.url}}"></audio> 
             </view>
-            <van-icon catchtap="deladdon" data-index="{{item.index}}" name="delete" size="36rpx" />
+            <van-icon catchtap="deladdon" data-index="{{item.index}}" data-item="{{item}}" name="delete" size="36rpx" />
           </view>
     </view>
     <view class="li" bindtap="Agreeimggo">
@@ -97,7 +97,6 @@
     </view>
     <view class="li libox">
       <view class="btn" bindtap="btn"><van-icon name="passed" size="36rpx" />确定</view>
-      <view class="btn" bindtap="del"><van-icon name="close" color="#eb2c2c" size="36rpx" />删除</view>
     </view>
   </view>
   <view class="center" wx:if="{{title == '修改处置'}}">
@@ -218,7 +217,7 @@
               <van-icon name="volume" size="36rpx" color="#16c7ae" />
               <audio id="audio{{index}}" src="{{item.url}}"></audio> 
             </view>
-            <van-icon catchtap="deladdon" data-index="{{index}}" name="delete" size="36rpx" />
+            <van-icon catchtap="deladdon" data-index="{{index}}" data-item="{{item}}" name="delete" size="36rpx" />
           </view>
     </view>
     <view class="li" bindtap="Agreeimggo">
