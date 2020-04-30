@@ -20,7 +20,8 @@ Page({
       url: getApp().data.APIS + '/patient/getconventemplate',
       method: 'post',
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(1)
@@ -39,7 +40,8 @@ Page({
       url: getApp().data.APIS + '/patient/getgraphiclist',
       method: 'post',
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(1)

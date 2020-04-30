@@ -30,7 +30,8 @@ Page({
     power_arr:[],
     shopshow:'',
     yjstate:true,
-    clinicid:''
+    clinicid:'',
+    logo:''
   },
   
   //事件处理函数
@@ -138,18 +139,33 @@ Page({
   },
   Hospital_click(e){
     console.log(e.currentTarget.dataset.name)
-    this.setData({ name: e.currentTarget.dataset.name, id: e.currentTarget.dataset.id })
+    this.setData({ 
+      name: e.currentTarget.dataset.name, 
+      id: e.currentTarget.dataset.id, 
+      clinicid: e.currentTarget.dataset.id,
+      logo: e.currentTarget.dataset.logo,
+    })
   },
   getdata(){
     let self = this
     wx.request({
-      url: getApp().data.APIS +'/market/massage/BaseData',
+      // /market/massage/BaseData
+      url: getApp().data.APIS +'/svc/a',
+      header: {
+        'token':wx.getStorageSync('token')
+      },
+      data:{
+        plugin:'clientInfo',
+        p:''
+      },
       success:function(res){
         console.log(777)
         console.log(res)
         if(res.data.info == 'ok'){
           self.setData({
-            Hospital_arr:res.data.list,
+            Hospital_arr: res.data.list,
+            name: res.data.list[0].clinicName,
+            logo: res.data.list[0].logo,
             id: res.data.list[0].clinicid,
             clinicid: res.data.list[0].clinicid
           })
@@ -175,6 +191,9 @@ Page({
         bengindate: bengindata,
         enddate: enddate
       },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {
@@ -190,6 +209,9 @@ Page({
     wx.request({
       url: getApp().data.APIS + '/member/Perinfo',
       method: 'post',
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(1)
         console.log(res)
@@ -213,7 +235,8 @@ Page({
         indexlsit: '1,2,3,4,5,6,7,8'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -233,7 +256,8 @@ Page({
         indexlsit: '1,2,3,4,5,6'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -263,7 +287,8 @@ Page({
         "data[flag]": ''
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -313,7 +338,8 @@ Page({
         "data[flag]": 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -458,6 +484,9 @@ Page({
         plugin: 'setrole',
         p: '管理员'
       },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(2)
         console.log(res)
@@ -474,6 +503,9 @@ Page({
       data: {
         plugin: 'getmodulerole',
         p: id + '|' + (role ? role : '护士')
+      },
+      header: {
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(2)
@@ -568,7 +600,8 @@ Page({
     wx.request({
       url: getApp().data.API+'/index.json',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         // console.log(res.data)

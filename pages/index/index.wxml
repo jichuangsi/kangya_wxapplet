@@ -10,8 +10,8 @@
   <view class="name">
     {{name}}
   </view> -->
-  <image src="../../images/logo.png"></image>
-  <view class="name"></view>
+  <image src="{{logo}}"></image>
+  <view class="name">{{name}}</view>
   <van-icon name="plus" catchtap="showPopupleft" />
 </view>
   <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true'>
@@ -55,9 +55,9 @@
   <van-popup show="{{ show }}"
   position="top"
   bindtap="onClose">
-    <view class="Hospital_li" data-name="{{item.clinicname}}" data-id="{{item.clinicid}}" wx:for="{{Hospital_arr}}" bindtap="Hospital_click">
-      <view>{{item.clinicname}}</view>
-      <view>管家号{{item.clinicid}}</view>
+    <view class="Hospital_li" data-logo="{{item.logo}}" data-name="{{item.clinicName}}" data-id="{{item.clinicid}}" wx:for="{{Hospital_arr}}" bindtap="Hospital_click">
+      <view>{{item.clinicName}}</view>
+      <view>管家号{{item.clinicNum}}</view>
     </view>
   </van-popup>
   <van-popup show="{{ showleft }}"

@@ -64,7 +64,8 @@ Page({
             id: e.currentTarget.dataset.item.id,
           },
           header: {
-            'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+            'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+            'token':wx.getStorageSync('token')
           },
           success: function (res) {
             console.log(res)
@@ -152,7 +153,8 @@ Page({
         customerid: self.data.patdetails.customerid,
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)

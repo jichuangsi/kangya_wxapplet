@@ -19,6 +19,9 @@ Page({
         plugin: 'getclinicqrcode',
         p: self.data.clinicid
       },
+      headers: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {

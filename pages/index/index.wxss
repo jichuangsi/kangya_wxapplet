@@ -25,7 +25,9 @@
   color: #01c7b5;
 }
 .namebox image {
-  width: 252rpx;
+  /* width: 252rpx;
+  height: 68rpx; */
+  width: 68rpx;
   height: 68rpx;
 }
 swiper{

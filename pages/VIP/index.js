@@ -25,6 +25,9 @@ Page({
         clinicid: self.data.patdetails.clinicuniqueid,
         vipcardid: self.data.patdetails.vipcardidentity
       },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {

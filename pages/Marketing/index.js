@@ -23,6 +23,9 @@ Page({
         plugin:'getkd',
         p:'5342517'
       },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if(res.data.info=='ok'){

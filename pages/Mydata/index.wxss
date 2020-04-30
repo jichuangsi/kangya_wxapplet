@@ -55,21 +55,27 @@ van-sidebar {
   line-height: 46rpx;
   display: flex;
   align-items: center;
+  color: #bababa;
+}
+.center .li .right .van-icon {
+  color: #333;
 }
 .center .li .right image {
   width: 46rpx;
   height: 46rpx;
+  border-radius: 50%;
 }
 .center .project {
   padding: 20rpx;
   box-sizing: border-box;
   border-bottom: 26rpx solid #999;
+  color: #0ac0a4;
 }
 .center .project .project_li {
   display: inline-block;
-  border: 1rpx solid #f2f2f2;
+  border: 2rpx solid #0ac0a4;
   border-radius: 46rpx;
-  padding: 10rpx;
+  padding: 10rpx 30rpx;
   font-size: 30rpx;
   line-height: 46rpx;
   box-sizing: border-box;

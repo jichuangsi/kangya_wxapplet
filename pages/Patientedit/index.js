@@ -580,6 +580,9 @@ Page({
     wx.request({
       url: getApp().data.APIS + '/schedule/scschduleitemsgroup',
       method: 'get',
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {

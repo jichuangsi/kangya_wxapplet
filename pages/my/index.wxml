@@ -2,11 +2,12 @@
 <view class="content">
   <view class="user" bindtap="mydatago">
     <view class="userImg">
-      <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+      <image wx:if="{{user.picture!=''}}" src="{{user.picture}}"></image>
+      <image wx:if="{{user.picture==''}}" src="../../images/my_headportrait_male.png"></image>
     </view>
     <view class="user_info">
-      <view class="user_phone">13751901925</view>
-      <view class="user_">外科医生</view>
+      <view class="user_phone">{{user.mobile}}</view>
+      <view class="user_">{{user.grade}}</view>
     </view>
     <view class="user_detail">
       <van-icon name="qr" size="56rpx" color="#fff" />

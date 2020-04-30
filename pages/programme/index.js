@@ -235,6 +235,9 @@ Page({
     wx.request({
       url: getApp().data.APIS + '/sysset/gethandle',
       method: 'post',
+      headers: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {

@@ -69,7 +69,8 @@ Page({
             dataType: 'ARRAYBUFFER',
             header: {
               'Authorization': 'Basic cHViOnB1YkAxMjM=',
-              'Content-Type': 'multipart/form-data',
+              'Content-Type': 'multipart/form-data', //修改此处即可
+              'token':wx.getStorageSync('token')
             },
             data: fileStream.data,
             processData: false,
@@ -158,7 +159,8 @@ Page({
         memo:'rec'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)

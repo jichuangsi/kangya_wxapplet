@@ -89,6 +89,7 @@ Page({
           header: {
             'Authorization': 'Basic cHViOnB1YkAxMjM=',
             'Content-Type': 'multipart/form-data',
+            'token':wx.getStorageSync('token')
           },
 
           data: fileStream.data,
@@ -134,7 +135,8 @@ Page({
         clinicid: self.data.clinicid
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)

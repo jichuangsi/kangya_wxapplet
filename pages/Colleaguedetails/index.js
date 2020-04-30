@@ -49,6 +49,7 @@ Page({
   //     url: getApp().data.API+'/Colleaguedetails.json',
   //     headers: {
   //       'Content-Type': 'application/json'
+  //       'token':wx.getStorageSync('token')
   //     },
   //     data:{
   //       id:self.data.id

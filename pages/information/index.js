@@ -59,7 +59,8 @@ Page({
         isshowselectmsg:0
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -94,9 +95,9 @@ Page({
       data: {
         openid: e.currentTarget.dataset.item.openid,
       },
-      // header: {
-      //   'content-type': 'application/x-www-form-urlencoded' //修改此处即可
-      // },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {
@@ -114,6 +115,9 @@ Page({
     wx.request({
       url: getApp().data.APIS + '/member/Perinfo',
       method: 'post',
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(1)
         console.log(res)
@@ -135,6 +139,9 @@ Page({
       data: {
         plugin: 'getmodulerole',
         p: id + '|' + (role ? role : '咨询员')
+      },
+      header: {
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(2)

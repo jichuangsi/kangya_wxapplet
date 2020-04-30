@@ -135,7 +135,8 @@ Page({
         clinicid: self.data.clinicid
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -170,7 +171,8 @@ Page({
         enddate: self.data.enddate,
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -249,7 +251,7 @@ Page({
     this.setData({
       nav_num: options.state,
       user: options.user?JSON.parse(options.user):'',
-      // clinicid: options.user ? JSON.parse(options.user).clinicuniqueid: prevPage.data.Hospital_arr[0].clinicid,
+      clinicid: options.user ? JSON.parse(options.user).clinicuniqueid: prevPage.data.clinicid,
       time: year + '年' + month + '月' + day + '日',
       bengindate: year + '-' + month + '-' + day,
       enddate: year + '-' + month + '-' + day

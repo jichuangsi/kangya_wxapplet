@@ -34,6 +34,9 @@ Page({
         plugin: 'getkd',
         p: self.data.id
       },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {

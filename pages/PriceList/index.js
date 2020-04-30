@@ -57,7 +57,8 @@ Page({
         id: e.currentTarget.dataset.id
       },
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res.data)
@@ -108,6 +109,9 @@ Page({
     wx.request({
       url: getApp().data.APIS + '/video/getvod/EOk6llnOcw9X1e4',
       method: 'get',
+      headers: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(1)
         console.log(res)
@@ -130,6 +134,9 @@ Page({
       url: getApp().data.APIS + data,
       method: 'get',
       dataType:'json',
+      headers: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(223)
         console.log(res)
@@ -173,6 +180,9 @@ Page({
     wx.request({
       url: getApp().data.APIS + '/sysset/gethandle',
       method: 'post',
+      headers: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {
@@ -315,9 +325,6 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
-    console.log(1111)
-    console.log(options.title)
-    console.log(options)
     if (options.title == '价目表') {
       this.gethandle()
     } else if (options.title == '医患沟通视频' || options.title == '选择视频') {

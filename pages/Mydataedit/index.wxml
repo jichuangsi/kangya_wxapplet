@@ -12,7 +12,7 @@
     <textarea value="{{value}}" placeholder="请输入内容" bindinput="ipt" maxlength="150" wx:if="{{title == '编辑个性签名'}}"></textarea>
     <textarea value="{{value}}" placeholder="请输入内容" bindinput="ipt" maxlength="150" wx:if="{{title == '编辑从医履历'}}"></textarea>
     <view class="li_xm" wx:for="{{xm_arr}}" data-index="{{index}}" wx:if="{{title=='添加项目'}}" bindtap="xmclick">
-      {{item.title}}
+      {{item.name}}
       <view class="box {{item.state!=0?'checkbox':''}}"><van-icon name="success" /></view>
     </view>
     <view class="positional" wx:if="{{title == '选择职称'}}">

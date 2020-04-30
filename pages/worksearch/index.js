@@ -109,6 +109,9 @@ Page({
           clinicid: "",
           patient: self.data.searchtext
         },
+        headers: {
+          'token':wx.getStorageSync('token')
+        },
         success: function (res) {
           console.log(res)
           if (res.data.info == 'ok') {
@@ -142,7 +145,8 @@ Page({
         "keyword": self.data.searchtext
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -178,7 +182,8 @@ Page({
       data: {
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -223,7 +228,8 @@ Page({
           "customerid": e.currentTarget.dataset.item.customerid
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -262,7 +268,8 @@ Page({
           "lostmemo": ""
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)

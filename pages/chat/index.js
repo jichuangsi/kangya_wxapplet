@@ -90,9 +90,9 @@ Page({
         content: self.data.text,
         token:''
       },
-      // header: {
-      //   'content-type': 'application/x-www-form-urlencoded' //修改此处即可
-      // },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if(res.data.info == 'ok'){
@@ -121,9 +121,9 @@ Page({
         content: JSON.stringify(self.data.img_arr),
         token: ''
       },
-      // header: {
-      //   'content-type': 'application/x-www-form-urlencoded' //修改此处即可
-      // },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {
@@ -157,7 +157,8 @@ Page({
         describe: ''
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -181,7 +182,8 @@ Page({
         token: ''
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -229,7 +231,8 @@ Page({
         isshowselectmsg: 1
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(1)
@@ -272,9 +275,9 @@ Page({
       data: {
         openid: self.data.openid,
       },
-      // header: {
-      //   'content-type': 'application/x-www-form-urlencoded' //修改此处即可
-      // },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {

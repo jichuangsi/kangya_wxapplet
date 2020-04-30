@@ -26,7 +26,18 @@
     <view class="title">
       {{title}}
     </view>
-    <rich-text nodes="{{text_arr}}"></rich-text>
+    <view class="box">
+      <rich-text nodes="{{text_arr}}"></rich-text>
+    </view>
+    <view class="li" wx:for="{{arr}}" data-id="{{item.id}}" bindtap="tabnews">
+      {{index+1}}、{{item.title}}
+    </view>
+    <view class="show" wx-if="{{show}}">
+      <view class="show_box">
+        <van-loading type="spinner" color="#1989fa" />
+        <view>加载中...</view>
+      </view>
+    </view>
     <!-- <view class="textbox" wx:for="{{text_arr}}">
       <view class="text" wx:if="{{item.state == 0}}">{{item.text}}</view>
       <image src="{{item.text}}" wx:if="{{item.state == 1}}"></image>

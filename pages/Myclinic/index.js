@@ -38,6 +38,9 @@ Page({
     wx.request({
       url: getApp().data.APIS + '/member/mycliniclist',
       method: 'post',
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {

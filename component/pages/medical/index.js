@@ -67,7 +67,8 @@ Page({
           "datastatus": "1"
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -104,6 +105,9 @@ Page({
     wx.request({
       url: getApp().data.APIS + '/patient/medicalrecordinfo',
       method:'post',
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         // console.log(res)
         // console.log(JSON.parse(res.data.list[11].exam))
@@ -137,6 +141,9 @@ Page({
       data:{
         mediarecordidentity: mediarecordidentity,
         customerid: customerid,
+      },
+      header: {
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         if(res.data.info == 'ok'){

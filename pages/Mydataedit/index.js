@@ -90,6 +90,33 @@ Page({
     arr[index].state = arr[index].state == 0 ? 1 : 0
     this.setData({ xm_arr: arr })
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/member/PerItem',
+      method: 'get',
+      header: {
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(1)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          for (let i = 0; i < res.data.list.length;i++){
+            res.data.list[i].state = 0
+            for (let j = 0; j < self.data.xm.length;j++){
+              if (self.data.xm[j] == res.data.list[i].name){
+                res.data.list[i].state = 1
+              }
+            }
+          }
+          self.setData({
+            xm_arr: res.data.list
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -101,6 +128,14 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    if (options.title == '添加项目'){
+      this.getdata()
+      let pages = getCurrentPages();
+      let Page = pages[pages.length - 2];
+      this.setData({
+        xm: Page.data.xm,
+      })
+    }
   },
 
   /**

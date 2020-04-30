@@ -5,6 +5,9 @@ App({
     APIS: 'https://kyys.kyawang.com',
   },
   onLaunch: function () {
+
+    wx.setStorageSync('token', 'cstoken')
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

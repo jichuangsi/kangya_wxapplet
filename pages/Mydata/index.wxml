@@ -11,7 +11,7 @@
         头像
       </view>
       <view class="right">
-        <image src="../../images/my_headportrait_male.png"></image>
+        <image src="{{userimg}}"></image>
         <van-icon name="arrow" />
       </view>
     </view>
@@ -29,7 +29,7 @@
         性别
       </view>
       <view class="right">
-        <view>情选择性别</view>
+        <view>{{sex}}</view>
         <van-icon name="arrow" />
       </view>
     </view>
@@ -94,7 +94,7 @@
         从医履历
       </view>
       <view class="right">
-        <view>编辑个性签名</view>
+        <view></view>
         <van-icon name="arrow" />
       </view>
     </view>
@@ -116,11 +116,11 @@
     <van-area area-list="{{ areaList }}" value="110101" bind:cancel="onClose" bind:confirm="areaclick" />
   </view>
   <view class="sex" wx:if="{{text == '性别'}}">
-    <view>
+    <view data-text="男" catchtap="sexclcik">
     <!-- <image src="../../images/"></image> -->
     男
     </view>
-    <view>
+    <view data-text="女" catchtap="sexclcik">
     女
     </view>
     <view class="xian"></view>

@@ -56,7 +56,8 @@ Page({
       wx.request({
         url: getApp().data.API +'/studynav.json',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json', //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res.data)

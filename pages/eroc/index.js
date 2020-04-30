@@ -32,7 +32,7 @@ Page({
     let prevPage = pages[pages.length - 2];  //上一个页面
     this.setData({
       title:options.title,
-      clinicid: prevPage.data.Hospital_arr[0].clinicid,
+      clinicid: prevPage.data.clinicid,
       power_arr: prevPage.data.power_arr,
       user: prevPage.data.user,
     })

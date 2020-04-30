@@ -167,7 +167,8 @@ Page({
           acceptool: self.data.child_text
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -192,7 +193,8 @@ Page({
           acceptool: self.data.child_text
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -217,7 +219,8 @@ Page({
           acceptool: self.data.child_text
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -256,7 +259,8 @@ Page({
               enddate: self.data.enddate
             },
             header: {
-              'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+              'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+              'token':wx.getStorageSync('token')
             },
             success: function (res) {
               console.log(res)
@@ -344,7 +348,8 @@ Page({
               enddate: self.data.enddate
             },
             header: {
-              'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+              'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+              'token':wx.getStorageSync('token')
             },
             success: function (res) {
               console.log(res)
@@ -432,7 +437,8 @@ Page({
               enddate: self.data.enddate
             },
             header: {
-              'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+              'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+              'token':wx.getStorageSync('token')
             },
             success: function (res) {
               console.log(res)
@@ -525,7 +531,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -548,7 +555,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -571,7 +579,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -594,7 +603,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -617,7 +627,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -640,7 +651,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -663,7 +675,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -686,7 +699,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -709,7 +723,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -732,7 +747,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -755,7 +771,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -778,7 +795,8 @@ Page({
           enddate: self.data.enddate
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -802,7 +820,8 @@ Page({
           bdhandlesetidentity: self.data.child_id
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -826,7 +845,8 @@ Page({
           doctorid: self.data.child_id
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -850,7 +870,8 @@ Page({
           counselor: self.data.child_text
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -874,7 +895,8 @@ Page({
           bdhandlesetidentity: self.data.child_id
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -898,7 +920,8 @@ Page({
           bdhandlesetidentity: self.data.child_id
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -922,7 +945,8 @@ Page({
           acceptool: self.data.child_text
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+          'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res)
@@ -1109,7 +1133,8 @@ Page({
         enddate: self.data.enddate
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1131,7 +1156,8 @@ Page({
         enddate: self.data.enddate
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1153,7 +1179,8 @@ Page({
         enddate: self.data.enddate
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1175,7 +1202,8 @@ Page({
         enddate: self.data.enddate
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1197,7 +1225,8 @@ Page({
         enddate: self.data.enddate
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1219,7 +1248,8 @@ Page({
         enddate: self.data.enddate
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1241,7 +1271,8 @@ Page({
         enddate: self.data.enddate
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1268,7 +1299,8 @@ Page({
         enddate: self.data.enddate
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1295,7 +1327,8 @@ Page({
         enddate: self.data.enddate
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1326,7 +1359,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1347,7 +1381,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(1313)
@@ -1474,7 +1509,8 @@ Page({
                       isfirstvisit: 0
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -1542,7 +1578,8 @@ Page({
                       isfirstvisit: 0
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -1579,7 +1616,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1676,7 +1714,8 @@ Page({
                       isfirstvisit: 1
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -1712,7 +1751,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1838,7 +1878,8 @@ Page({
                       isfirstvisit: 2
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -1906,7 +1947,8 @@ Page({
                       isfirstvisit: 2
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -1943,7 +1985,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -1978,7 +2021,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -2080,7 +2124,8 @@ Page({
                       enddate: self.data.enddate,
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -2116,7 +2161,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -2189,7 +2235,8 @@ Page({
                       status: child_text
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -2225,7 +2272,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -2304,7 +2352,8 @@ Page({
                       DoctorName: child_text
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -2340,7 +2389,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -2415,7 +2465,8 @@ Page({
                       item: child_text
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -2451,7 +2502,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -2520,7 +2572,8 @@ Page({
                       VisitStatus: child_text == '初诊' ? 0 : 1
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -2556,7 +2609,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -2613,7 +2667,8 @@ Page({
                       enddate: self.data.enddate,
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -2651,7 +2706,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(1)
@@ -2741,7 +2797,8 @@ Page({
                       enddate: self.data.enddate,
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -2777,7 +2834,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(2)
@@ -2834,7 +2892,8 @@ Page({
                       enddate: self.data.enddate,
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -2870,7 +2929,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(3)
@@ -2947,7 +3007,8 @@ Page({
                         acceptool: self.data.child_text
                       },
                       header: {
-                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                        'token':wx.getStorageSync('token')
                       },
                       success: function (res) {
                         console.log(res)
@@ -2984,7 +3045,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(4)
@@ -3060,7 +3122,8 @@ Page({
                       acceptool: self.data.child_text
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -3096,7 +3159,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(5)
@@ -3173,7 +3237,8 @@ Page({
                         acceptool: self.data.child_text
                       },
                       header: {
-                        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                        'token':wx.getStorageSync('token')
                       },
                       success: function (res) {
                         console.log(res)
@@ -3210,7 +3275,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(6)
@@ -3244,7 +3310,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -3314,7 +3381,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -3385,7 +3453,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -3456,7 +3525,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -3539,7 +3609,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -3609,7 +3680,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -3696,7 +3768,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(1)
@@ -3794,7 +3867,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -3882,7 +3956,8 @@ Page({
                       enddate: self.data.enddate,
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -3918,7 +3993,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -3976,7 +4052,8 @@ Page({
                       payname: child_text
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -4012,7 +4089,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -4088,7 +4166,8 @@ Page({
                       enddate: self.data.enddate
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -4123,7 +4202,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -4199,7 +4279,8 @@ Page({
                       enddate: self.data.enddate
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -4235,7 +4316,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -4311,7 +4393,8 @@ Page({
                       enddate: self.data.enddate
                     },
                     header: {
-                      'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                      'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                      'token':wx.getStorageSync('token')
                     },
                     success: function (res) {
                       console.log(res)
@@ -4347,7 +4430,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(1)
@@ -4388,7 +4472,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -4420,7 +4505,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -4449,7 +4535,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(1)
@@ -4484,7 +4571,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(321)
@@ -4556,7 +4644,8 @@ Page({
                   //     enddate: self.data.enddate
                   //   },
                   //   header: {
-                  //     'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+                  //     'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+                  //     'token':wx.getStorageSync('token')
                   //   },
                   //   success: function (res) {
                   //     console.log(res)
@@ -4591,7 +4680,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(1)
@@ -4663,7 +4753,8 @@ Page({
         "data[flag]": self.data.check_num == 0 ? '' : 'year'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded' , //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(123)

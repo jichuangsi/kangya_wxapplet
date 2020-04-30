@@ -11,7 +11,9 @@ Page({
     time:'',
     look:'',
     message:'',
-    text_arr:[]
+    text_arr:[],
+    arr:[],
+    show:false
   },
 
   onClickLeft() {
@@ -19,9 +21,21 @@ Page({
       delta: 1
     })
   },
-
+  tabnews(e){
+    this.setData({
+      id: e.currentTarget.dataset.id
+    })
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 60
+    })
+    this.getdata()
+  },
   getdata() {
     let self = this
+    self.setData({
+      show: true
+    })
     wx.request({
       url: getApp().data.APIS + '/svc/a',
       // url: 'https://kyys.kyawang.com/svc/a',
@@ -29,6 +43,9 @@ Page({
       data: {
         plugin: 'getdoc',
         p: self.data.id
+      },
+      header: {
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -38,7 +55,12 @@ Page({
             look: res.data.list[0].hit,
             time: res.data.list[0].version.when,
             name: res.data.list[0].version.by.username,
-            text_arr: res.data.list[0].content
+            text_arr: res.data.list[0].content.replace(/\<img/gi, '<img style="max-width:100%;height:auto"'),
+            arr: res.data.list[0].links,
+            show: false
+          })
+          wx.setNavigationBarTitle({
+            title: res.data.list[0].title
           })
         }
       }

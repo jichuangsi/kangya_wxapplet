@@ -52,6 +52,9 @@ Page({
         "visitidentity": self.data.visitidentity, 
         "clinicid": self.data.patient.clinicuniqueid
       },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {

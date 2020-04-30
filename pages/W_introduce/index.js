@@ -32,6 +32,9 @@ Page({
       method: 'post',
       data: {
       },
+      headers: {
+        'token':wx.getStorageSync('token')
+      },
       success: function (res) {
         console.log(res)
         if (res.data.info == 'ok') {

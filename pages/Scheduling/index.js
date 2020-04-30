@@ -125,7 +125,8 @@ Page({
         "scheduling": JSON.stringify([{ "doctorid": item.doctorid, "datestr": time, "workshiftidentity": item1 ? item1.workshiftidentity : '', "revoked": item1 ? 0 : 1 }])
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)
@@ -152,7 +153,8 @@ Page({
         duty: duty
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' //修改此处即可
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token':wx.getStorageSync('token')
       },
       success: function (res) {
         console.log(res)

@@ -26,7 +26,8 @@ Component({
       wx.request({
         url: getApp().data.API+'/livebroadcast.json',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'token':wx.getStorageSync('token')
         },
         success: function (res) {
           console.log(res.data)
