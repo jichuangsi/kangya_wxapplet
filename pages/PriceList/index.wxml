@@ -44,14 +44,14 @@
             <van-icon name="checked" color="#999" size="42rpx" wx:if="{{item.check_state == 0}}" />
             <van-icon name="checked" color="#16c7ae" size="42rpx" wx:if="{{item.check_state == 1}}" />
           </view>
-          <image src="{{item.thumb}}"></image>
+          <image mode="widthFix" src="{{item.thumb}}"></image>
         </view>
         <view class="text">
         {{item.name}}
         </view>
         <!-- </navigator> -->
       </view>
-      <view class="video_btn" bindtap="video_btn">完成</view>
+      <view wx:if="{{title=='选择视频'}}" class="video_btn" bindtap="video_btn">完成</view>
     </view>
   </view>
 </view>

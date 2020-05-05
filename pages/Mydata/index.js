@@ -49,6 +49,7 @@ Page({
           userimg: res.tempFilePaths,
           show: false
         })
+        self.addimg(res.tempFilePaths)
       }
     })
   },
@@ -64,8 +65,48 @@ Page({
           userimg: res.tempFilePaths,
           show: false
         })
+        self.addimg(res.tempFilePaths)
       }
     })
+  },
+  addimg(imgname) {
+    let self = this
+    let name = new Date().getTime() + imgname[0].substring(imgname[0].length - 4)
+    wx.getFileSystemManager().readFile({
+      filePath: imgname[0],
+      success: fileStream => {
+        console.log(fileStream)
+        wx.request({
+          url: 'https://www.kyawang.com/oc9/remote.php/webdav/rec/' + name,
+          method: 'PUT',
+          dataType: 'ARRAYBUFFER',
+          header: {
+            'Authorization': 'Basic cHViOnB1YkAxMjM=',
+            'Content-Type': 'multipart/form-data',
+            'token': wx.getStorageSync('token')
+          },
+          data: fileStream.data,
+          processData: false,
+          success: function (res) {
+            self.setData({
+              userimg: "https://www.kyawang.com/oc9/index.php/s/sdAqxmkSwWs7WK4/download?path=%2F&files=" + name
+            })
+          },
+
+          fail: function (err) {
+
+            console.log("失败");
+            wx.showToast({
+              icon: 'none',
+              title: '上传失败',
+            })
+
+          }
+
+        })
+      }
+    })
+
   },
   areaclick(e){
     console.log(e.detail.values)
@@ -117,6 +158,7 @@ Page({
     })
     let pages = getCurrentPages();
     let Page = pages[pages.length - 2];
+    this.pagesprev = Page
     this.setData({
       areaList: require("../../data/area.js").default,
       name: Page.data.user.name,
@@ -155,7 +197,31 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/member/ChangePerinfo',
+      method: 'post',
+      data: {
+        picture: self.data.userimg,
+        name: self.data.name,
+        sex: self.data.sex,
+        age: self.data.age,
+        grade: self.data.jc,
+        area: self.data.dq,
+        expert: self.data.xm.join('|'),
+        sign: self.data.qm,
+        exp: self.data.ll,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        if (res.data.info == 'ok') {
+          self.pagesprev.getPerinfo()
+        }
+      }
+    })
   },
 
   /**

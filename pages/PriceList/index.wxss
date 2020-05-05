@@ -150,10 +150,13 @@ van-sidebar {
   height: 360rpx;
   position: relative;
   margin-bottom: 20rpx;
+  overflow: hidden;
 }
 .doctorvideo .right .list .img image{
   width: 100%;
-  height: 100%
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .doctorvideo .right .list .text {
   color: #333;

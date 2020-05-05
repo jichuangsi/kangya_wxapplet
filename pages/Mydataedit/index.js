@@ -61,7 +61,7 @@ Page({
       let arr1 = []
       for (let i = 0; i < arr.length; i++) {
         if (arr[i].state == 1) {
-          arr1.push(arr[i].title)
+          arr1.push(arr[i].name)
         }
       }
       Page.setData({
