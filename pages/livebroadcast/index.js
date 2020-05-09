@@ -9,12 +9,15 @@ Component({
     Notice_arr:[],
     series_arr:[],
     img_arr:[],
+    grid_arr:[],
+    nav_arr:[],
     borderstate: false,
     pageIndex:1,
     pageCount:0
   },
   methods:{
     uptouch() {
+      console.log(4454545)
       if (this.data.pageIndex > this.data.pageCount){
 
       } else {
@@ -24,48 +27,194 @@ Component({
     getdata() {
       let self = this
       wx.request({
-        url: getApp().data.API+'/livebroadcast.json',
-        headers: {
-          'Content-Type': 'application/json',
-          'token':wx.getStorageSync('token')
+        url: getApp().data.APIS + '/svc/a',
+        method: 'get',
+        data: {
+          plugin: 'querydoc',
+          p: JSON.stringify({
+            'labels': '直播',
+            'start': 0,
+            'limit': 4
+          })
+        },
+        header: {
+          'token': wx.getStorageSync('token')
         },
         success: function (res) {
-          console.log(res.data)
-          let arr = self.data.course_arr
-          arr.push(...res.data.course_arr)
-          let index = self.data.pageIndex +1 
-          if (res.data.result == 200) {
+          if (res.data.info == 'ok') {
             self.setData({
-              course_arr: arr,
-              pageIndex: index,
-              pageCount: res.data.pageCount,
-              Notice_arr: res.data.course_arr,
-              series_arr: res.data.course_arr,
-              img_arr:res.data.course_arr
+              nav_arr: res.data.list
             })
           }
-        },
+        }
       })
     },
+    getdata1() {
+      let self = this
+      wx.request({
+        url: getApp().data.APIS + '/svc/a',
+        method: 'get',
+        data: {
+          plugin: 'querydoc',
+          p: JSON.stringify({
+            'labels':'直播,推荐',
+            'start':0,
+            'limit':3
+          })
+        },
+        header: {
+          'token': wx.getStorageSync('token')
+        },
+        success: function (res) {
+          if (res.data.info == 'ok') {
+            for (let i = 0; i < res.data.list.length; i++) {
+              res.data.list[i].content = self.removecode(res.data.list[i].content)
+            }
+            self.setData({
+              Notice_arr:res.data.list
+            })
+          }
+        }
+      })
+    },
+    getdata3() {
+      let self = this
+      wx.request({
+        url: getApp().data.APIS + '/svc/a',
+        method: 'get',
+        data: {
+          plugin: 'querydoc',
+          p: JSON.stringify({
+            'labels': '系列视频',
+            'start': 0,
+            'limit': 3
+          })
+        },
+        header: {
+          'token': wx.getStorageSync('token')
+        },
+        success: function (res) {
+          if (res.data.info == 'ok') {
+            for (let i = 0; i < res.data.list.length; i++) {
+              res.data.list[i].content = self.removecode(res.data.list[i].content)
+            }
+            self.setData({
+              series_arr: res.data.list
+            })
+          }
+        }
+      })
+    }, 
+    getdata4() {
+      let self = this
+        wx.request({
+        url: getApp().data.APIS + '/svc/a',
+        method: 'get',
+        data: {
+          plugin: 'querydoc',
+          p: JSON.stringify({
+            'labels': '单课程',
+            'start': 0,
+            'limit': 3
+          })
+        },
+        header: {
+          'token': wx.getStorageSync('token')
+        },
+        success: function (res) {
+          if (res.data.info == 'ok') {
+            for (let i = 0; i < res.data.list.length; i++) {
+              res.data.list[i].content = self.removecode(res.data.list[i].content)
+            }
+            self.setData({
+              course_arr: res.data.list
+            })
+          }
+        }
+      })
+    },
+    getdata5() {
+      let self = this
+      wx.request({
+        url: getApp().data.APIS + '/svc/a',
+        method: 'get',
+        data: {
+          plugin: 'querydoc',
+          p: JSON.stringify({
+            'labels': '置顶',
+            'start': 0,
+            'limit': 3
+          })
+        },
+        header: {
+          'token': wx.getStorageSync('token')
+        },
+        success: function (res) {
+          console.log(111)
+          console.log(res)
+          console.log(222)
+          if (res.data.info == 'ok') {
+            self.setData({
+              img_arr: res.data.list
+            })
+          }
+        }
+      })
+    }, 
+    getdata2() {
+      let self = this
+      wx.request({
+        url: getApp().data.APIS + '/svc/a',
+        method: 'get',
+        data: {
+          plugin: 'getkd',
+          p: '5342754'
+        },
+        header: {
+          'token': wx.getStorageSync('token')
+        },
+        success: function (res) {
+          if (res.data.info == 'ok') {
+            
+            self.setData({
+              grid_arr:res.data.list
+            })
+            console.log(self.data.grid_arr)
+          }
+        }
+      })
+    },
+    removecodeex(content, s, e) {
+      if (content.indexOf(s) > -1) {
+        return content.split(s)[1].split(e)[0]
+      }
+      return content
+    },
+  removecode(d, s, e) {
+    let self = this
+      var s = s || '//<![CDATA['
+      var e = e || '//]]>'
+      return d.replace(s + self.removecodeex(d, s, e) + e, '')
+    },
   },
-  attached(){
-
-    console.log(111)
+  attached() {
     this.getdata()
+    this.getdata1()
+    this.getdata2()
+    this.getdata3()
+    this.getdata4()
+    this.getdata5()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(111)
-    this.getdata()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log(111)
   },
 
   /**
@@ -93,7 +242,6 @@ Component({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log(456)
   },
 
   /**

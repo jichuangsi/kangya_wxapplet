@@ -13,27 +13,30 @@
     <!-- <van-icon name="ellipsis" size="36rpx" /> -->
   </view>
   <view class="center">
-    <image src="../../images/learning_theme_anchor.png"></image>
+    <!-- <image src="../../images/learning_theme_anchor.png"></image> -->
+    <view class="img_box">
+      <rich-text nodes="{{imgurl}}"></rich-text>
+    </view>
     <view class="title">
-      孙跑名丨年度撒旦撒旦撒大撒大撒
+      {{item.title}}
     </view>
     <view class="text">
-      ·已结束 丨 1279次学习
+      ·{{item.courseInfo.status}} 丨 {{item.hit}}次学习
       <view class="textstate">
           <!-- <view class='p1'>免费</view> -->
-          <view class='p2'>￥59.00</view>
-          <view class='p3'>￥0.00</view>
+          <!-- <view class='p2'>￥59.00</view> -->
+          <view class='p3'>￥{{item.courseInfo.price}}</view>
       </view>
     </view>
     
     <view class="text">
     直播时间
      <view class="textstate">
-      <view class="p4">02月7日 18：00</view>
+      <view class="p4">{{item.version.when}}</view>
      </view>
     </view>
     
-    <navigator url="/pages/synopsis/index?id=1" hover-class="navigator-hover">
+    <!-- <navigator url="/pages/synopsis/index?id=1" hover-class="navigator-hover">
       <view class="text">
         <image src="../../images/5.png"></image>
         乾坤解剖种植
@@ -42,41 +45,35 @@
           <van-icon wx:if="{{love}}" data-state="1" catchtap="loveclick" name="like" color="red"  size="36rpx"/>
         </view>
       </view>
-    </navigator>
+    </navigator> -->
     <view class="xian"></view>
     <view class="box">
       <view class="h3">
       课程简介
       </view>
     </view>
+    <view class="h3_box">
+      <rich-text nodes="{{item.content}}"></rich-text>
+    </view>
     <view class="xian"></view>
     <view class="list">
       <view class="h3">
       更多好课
       </view>
-        <view class="smallbox" wx:for="{{more_arr}}">
-          <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+        <view class="smallbox" wx:for="{{item.links}}">
+          <navigator url="/pages/coursedetails/index?id={{item.id}}" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="{{item.images[0]}}"></image>
             </view>
             <view class="right">
-              <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-              <view class="smallboxtext">02月06日 19：30</view>
-              <view class="smallboxtext">
-                147次学习
-              </view>
-              <view class="money">
-                <view class='p1'>免费</view>
-                <!-- <view class='p2'>￥59.00</view>
-                <view class='p3'>￥0.00</view> -->
-              </view>
+              <view class="smallboxtitle">{{item.title}}</view>
             </view>
           </navigator>
         </view>
     </view>
     <view class="btn">
       <view class="left">
-              <view class='p1'>免费</view>
+              <view class='p3'>￥{{item.courseInfo.price}}</view>
               <!-- <view class='p2'>￥59.00</view>
               <view class='p3'>￥0.00</view> -->
       </view>

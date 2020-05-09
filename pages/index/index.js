@@ -612,7 +612,6 @@ Page({
         }
       },
     })
-
   },
   bindViewTap: function() {
   },

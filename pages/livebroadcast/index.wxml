@@ -1,17 +1,19 @@
 <!--pages/livebroadcast/index.wxml-->
 <view class="livebroadcast">
   <scroll-view scroll-y="true" style="height: 90vh;" bindscrolltolower="uptouch">
-  <view style="background-color: #5fc18d;">
+  <view style="background-color: #16c7ae;">
    <swiper indicator-dots='true' indicator-color='#666' indicator-active-color='#fff' circular='true'>
     <swiper-item wx:for="{{img_arr}}">
-      <navigator>
-        <image src="{{item.img}}"></image>
+      <navigator url="/pages/coursedetails/index?id={{item.id}}" hover-class="navigator-hover">
+        <image mode="widthFix" src="{{item.img[0]}}"></image>
       </navigator>
     </swiper-item>
   </swiper>
   </view>
   <van-grid border="{{borderstate}}">
-    <van-grid-item icon="../../../images/5.png" text="正畸" link-type="navigateTo"
+  <van-grid-item icon="{{item.img[0]}}" wx:for="{{grid_arr}}" text="{{item.title}}" link-type="navigateTo"
+    url="/pages/studynav/index?id={{item.id}}&&state=1&&title={{item.title}}" />
+    <!-- <van-grid-item icon="../../../images/5.png" text="正畸" link-type="navigateTo"
     url="/pages/studynav/index?id=正畸&&state=1" />
     <van-grid-item icon="../../../images/6.png" text="种植" link-type="navigateTo"
     url="/pages/studynav/index?id=种植&&state=1"/>
@@ -26,10 +28,15 @@
     <van-grid-item icon="../../../images/11.png" text="营销" link-type="navigateTo"
     url="/pages/studynav/index?id=营销&&state=1"/>
     <van-grid-item icon="../../../images/12.png" text="耗材教学" link-type="navigateTo"
-    url="/pages/studynav/index?id=耗材教学&&state=1"/>
+    url="/pages/studynav/index?id=耗材教学&&state=1"/> -->
   </van-grid>
   <view class="nav">
-    <navigator url="/pages/studynav/index?id=免费课程&&state=2" hover-class="navigator-hover">
+    <navigator url="/pages/studynav/index?id={{item.id}}&&state=2&&title={{item.title}}" wx:for="{{nav_arr}}" hover-class="navigator-hover">
+      <view class="li">
+      <image src="{{item.img[0]}}"></image>
+      </view>
+    </navigator>
+    <!-- <navigator url="/pages/studynav/index?id=免费课程&&state=2" hover-class="navigator-hover">
     <view class="li">
     <image src="../../images/learning_theme_course-1.png"></image>
     </view>
@@ -48,7 +55,7 @@
     <view class="li" style="background-color: #759cdd;">
       <image src="../../images/learning_theme_lecturer.png"></image>
     </view>
-    </navigator>
+    </navigator> -->
   </view>
   <view class="xian">
   </view>
@@ -57,7 +64,7 @@
       <view class="h3">
       直播预告
       </view>
-      <navigator url="/pages/studynav/index?id=直播预告&&state=2" hover-class="navigator-hover">
+      <navigator url="/pages/studynav/index?title=直播预告&&state=2" hover-class="navigator-hover">
       <view class="all">
       查看全部
       <van-icon name="arrow" />
@@ -66,14 +73,15 @@
     </view>
     <swiper indicator-dots='true' indicator-color='#16c7ae' indicator-active-color='#999' circular='true'>
       <swiper-item wx:for="{{Notice_arr}}">
-    <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
+    <navigator url="/pages/coursedetails/index?id={{item.id}}" hover-class="navigator-hover">
         <view class="smallbox">
           <view class="left">
-            <image src="{{item.img}}"></image>
+            <image mode="widthFix" src="{{item.img[0]}}"></image>
           </view>
           <view class="right">
             <view class="smallboxtitle">{{item.title}}</view>
-            <view class="smallboxtext">{{item.time}}<van-tag type="danger">预告</van-tag></view>
+            <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
+            <!-- <view class="smallboxtext">{{item.time}}<van-tag type="danger">预告</van-tag></view>
             <view class="smallboxtext">
               <van-icon name="clock-o" /> 预告中
             </view>
@@ -82,7 +90,7 @@
               <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
               <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
               <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
-            </view>
+            </view> -->
           </view>
         </view>
         </navigator>
@@ -96,7 +104,7 @@
       <view class="h3">
       系列课
       </view>
-      <navigator url="/pages/studynav/index?id=系列课&&state=2" hover-class="navigator-hover">
+      <navigator url="/pages/studynav/index?title=系列课&&state=2" hover-class="navigator-hover">
       <view class="all">
       查看全部
       <van-icon name="arrow" />
@@ -108,20 +116,11 @@
       <navigator url="/pages/coursedetails/index?id={{item.id}}" hover-class="navigator-hover">
         <view class="smallbox">
           <view class="left">
-            <image src="{{item.img}}"></image>
+            <image mode="widthFix" src="{{item.img[0]}}"></image>
           </view>
           <view class="right">
             <view class="smallboxtitle">{{item.title}}</view>
-            <view class="smallboxtext">{{item.time}}</view>
-            <view class="smallboxtext">
-              已开课{{item.num}}节丨{{item.study}}次学习
-            </view>
-            <view class="money">
-              <view class='p1' wx:if="{{item.state == 0}}">免费</view>
-              <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
-              <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
-              <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
-            </view>
+            <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
           </view>
         </view>
         </navigator>
@@ -135,9 +134,9 @@
       <view class="h3">
       单课程
       </view>
-      <navigator url="/pages/studynav/index?id=正畸&&state=1" hover-class="navigator-hover">
+      <navigator url="/pages/studynav/index?id={{grid_arr[0].id}}&&state=1&&title={{grid_arr[0].title}}" hover-class="navigator-hover">
       <view class="all">
-      查看全部336个
+      查看全部
       <van-icon name="arrow" />
       </view>
       </navigator>
@@ -145,20 +144,11 @@
         <view class="smallbox" wx:for="{{course_arr}}">
         <navigator url="/pages/coursedetails/index?id={{item.id}}" hover-class="navigator-hover">
           <view class="left">
-            <image src="{{item.img}}"></image>
+            <image mode="widthFix" src="{{item.img[0]}}"></image>
           </view>
           <view class="right">
             <view class="smallboxtitle">{{item.title}}</view>
-            <view class="smallboxtext">{{item.time}}</view>
-            <view class="smallboxtext">
-              已开课{{item.num}}节丨{{item.study}}次学习
-            </view>
-            <view class="money">
-              <view class='p1' wx:if="{{item.state == 0}}">免费</view>
-              <view class='p2' wx:if="{{item.state == 1}}">￥{{item.oldprice}}</view>
-              <view class='p3' wx:if="{{item.state == 1}}">￥{{item.newprice}}</view>
-              <view class='p3' wx:if="{{item.state == 2}}">￥{{item.price}}</view>
-            </view>
+            <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
           </view>
           </navigator>
         </view>

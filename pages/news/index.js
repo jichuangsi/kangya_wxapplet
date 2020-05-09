@@ -1,20 +1,79 @@
 // pages/news/index.js
-Page({
+Component({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active:0,
-    first_arr:[1,1]
+    active:'',
+    first_arr:[],
+    grid_arr:[]
   },
-  uptouch(){
+  methods: {
+    uptouch() {
+    },
+    onChange(e){
+      console.log(e)
+      this.getdata1(this.data.grid_arr[e.detail.index].id)
+    },
+    getdata() {
+      let self = this
+      wx.request({
+        url: getApp().data.APIS + '/svc/a',
+        method: 'get',
+        data: {
+          plugin: 'getkd',
+          p: '5342517'
+        },
+        header: {
+          'token': wx.getStorageSync('token')
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+
+            self.setData({
+              grid_arr: res.data.list,
+              active: res.data.list[0].title
+            })
+            self.getdata1(res.data.list[0].id)
+          }
+        }
+      })
+    },
+    getdata1(id) {
+      let self = this
+      wx.request({
+        url: getApp().data.APIS + '/svc/a',
+        method: 'get',
+        data: {
+          plugin: 'getkd',
+          p: id
+        },
+        header: {
+          'token': wx.getStorageSync('token')
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+
+            self.setData({
+              first_arr: res.data.list
+            })
+          }
+        }
+      })
+    },
+  },
+  attached() {
+    console.log(545646)
+    this.getdata()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(111)
+    console.log(45454)
   },
 
   /**

@@ -8,11 +8,12 @@ Page({
     title:'sadds',
     state:0,
     lovestate: false,
-    arr:[1,1,1,1,1,1,1],
+    arr:[],
     text:'',
     show: false,
     client: '',
-    item:''
+    item:'',
+    item_kc:''
   },
 
 
@@ -27,9 +28,7 @@ Page({
     })
   },
   send() {
-    this.setData({
-      text: ''
-    })
+    this.senddata()
   },
   showPopup() {
     this.setData({ show: true });
@@ -37,6 +36,68 @@ Page({
 
   onClose() {
     this.setData({ show: false, text: '' });
+  },
+  getdata(id) {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: 'get',
+      data: {
+        plugin: 'comment',
+        p: JSON.stringify({
+          id: id,
+          start:0,
+          limit:10
+        })
+      },
+      header: {
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          for(let i =0;i<res.data.list[0].length;i++){
+            res.data.list[0][i].version.when = self.myFunction(res.data.list[0][i].version.when)
+          }
+          console.log(res)
+          self.setData({
+            arr: res.data.list[0]
+          })
+        }
+      }
+    })
+  },
+  senddata(id) {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a?plugin=addcomment&p=kyawang',
+      method: 'post',
+      data: {
+        id: self.data.item_kc.id,
+        value:self.data.text
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            text: ''
+          })
+          self.getdata(self.data.item_kc.id)
+        }
+      }
+    })
+  },
+  myFunction(time) {
+    var dateee = new Date(time).toJSON();
+
+    var date = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+
+    return date
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -71,6 +132,11 @@ Page({
         wx.setNavigationBarTitle({
           title: Page.data ? Page.data.nowitem.name : ''
         })
+      } else if (this.data.state == 1){
+        this.setData({
+          item_kc: Page.data.item
+        })
+        this.getdata(Page.data.item.id)
       }
     }
     console.log(options)

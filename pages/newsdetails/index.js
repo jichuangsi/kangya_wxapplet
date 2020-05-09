@@ -51,6 +51,7 @@ Page({
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
+            title: res.data.list[0].title,
             message: res.data.list[0].comment,
             look: res.data.list[0].hit,
             time: res.data.list[0].version.when,

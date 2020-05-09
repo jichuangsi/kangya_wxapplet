@@ -28,6 +28,9 @@ button {
   height: 100%;
   background-color: transparent;
 }
+.h3_box {
+  padding: 0rpx 30rpx;
+}
 .top_right {
   background-color: rgba(0, 0, 0, 0.4);
   padding: 20rpx;
@@ -39,6 +42,11 @@ button {
 }
 .center {
 
+}
+.img_box {
+  width: 100%;
+  max-height:600rpx; 
+  overflow: hidden;
 }
 .center image {
   width: 100%;
@@ -114,6 +122,7 @@ button {
   padding: 20rpx 10rpx;
   box-sizing: border-box;
   margin-bottom: 20rpx;
+  padding-bottom: 30rpx;
 }
 .list .smallbox {
   padding: 10rpx;
@@ -126,6 +135,7 @@ button {
   height: 188rpx;
   margin-right: 10rpx;
   display: inline-block;
+  vertical-align: top;
 }
 .list .smallbox .left image {
   width: 100%;

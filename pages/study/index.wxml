@@ -18,7 +18,7 @@
         <livebroadcast class="livebroadcast"></livebroadcast>
       <!-- </scroll-view> -->
       </swiper-item>
-      <swiper-item>
+      <swiper-item style="overflow:auto;">
         <news class="news"></news>
       </swiper-item>
     </swiper>

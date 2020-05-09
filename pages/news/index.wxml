@@ -1,119 +1,22 @@
 <!--pages/news/index.wxml-->
-<view class="news" style="height:100vh">
-  <van-tabs active="{{ active }}" title-active-color="#16c7ae" line-height="0px">
-  <van-tab title="首页">
-    <view class="list">
-      <view class="smallbox"  wx:for="{{first_arr}}">
-      <navigator url="/pages/newsdetails/index?title=1" hover-class="navigator-hover">
-          <view class="left">
-            <image src="../../images/5.png"></image>
-          </view>
-          <view class="right">
-            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-            <view class="smallboxtext">02月06日 19：30</view>
-            <view class="money">
-              <view class='p4'>2018-2-10</view>
+<view class="news">
+  <scroll-view scroll-y="true" style="height: 90vh;" bindscrolltolower="uptouch">
+    <van-tabs active="{{ active }}" title-active-color="#16c7ae" bind:change="onChange" line-height="0px">
+      <van-tab  title="{{item.title}}" name="{{item.title}}" wx:for="{{grid_arr}}">
+        <view class="list">
+          <view class="smallbox"  wx:for="{{first_arr}}">
+          <navigator url="/pages/newsdetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
+              <view class="left">
+                <image src="{{item.img[0]}}"></image>
+              </view>
+              <view class="right">
+                <view class="smallboxtitle">{{item.title}}</view>
+                <view class="smallboxtext">{{item.content}}</view>
+              </view>
+              </navigator>
             </view>
-          </view>
-          </navigator>
         </view>
-    </view>
-    </van-tab>
-    <van-tab title="新闻">
-    <view class="list">
-      <view class="smallbox"  wx:for="{{first_arr}}">
-          <view class="left">
-            <image src="../../images/5.png"></image>
-          </view>
-          <view class="right">
-            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-            <view class="smallboxtext">02月06日 19：30</view>
-            <view class="money">
-              <view class='p4'>2018-12-10</view>
-            </view>
-          </view>
-        </view>
-    </view>
-    </van-tab>
-    <van-tab title="管理">
-    <view class="list">
-      <view class="smallbox"  wx:for="{{first_arr}}">
-          <view class="left">
-            <image src="../../images/5.png"></image>
-          </view>
-          <view class="right">
-            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-            <view class="smallboxtext">02月06日 19：30</view>
-            <view class="money">
-              <view class='p4'>2018-12-10</view>
-            </view>
-          </view>
-        </view>
-    </view>
-    </van-tab>
-    <van-tab title="口内">
-    <view class="list">
-      <view class="smallbox"  wx:for="{{first_arr}}">
-          <view class="left">
-            <image src="../../images/5.png"></image>
-          </view>
-          <view class="right">
-            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-            <view class="smallboxtext">02月06日 19：30</view>
-            <view class="money">
-              <view class='p4'>2018-12-10</view>
-            </view>
-          </view>
-        </view>
-    </view>
-    </van-tab>
-    <van-tab title="正畸">
-    <view class="list">
-      <view class="smallbox"  wx:for="{{first_arr}}">
-          <view class="left">
-            <image src="../../images/5.png"></image>
-          </view>
-          <view class="right">
-            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-            <view class="smallboxtext">02月06日 19：30</view>
-            <view class="money">
-              <view class='p4'>2018-12-10</view>
-            </view>
-          </view>
-        </view>
-    </view>
-    </van-tab>
-    <van-tab title="修复">
-    <view class="list">
-      <view class="smallbox"  wx:for="{{first_arr}}">
-          <view class="left">
-            <image src="../../images/5.png"></image>
-          </view>
-          <view class="right">
-            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-            <view class="smallboxtext">02月06日 19：30</view>
-            <view class="money">
-              <view class='p4'>2018-12-10</view>
-            </view>
-          </view>
-        </view>
-    </view>
-    </van-tab>
-    <van-tab title="种植">
-    <view class="list">
-      <view class="smallbox"  wx:for="{{first_arr}}">
-          <view class="left">
-            <image src="../../images/5.png"></image>
-          </view>
-          <view class="right">
-            <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>
-            <view class="smallboxtext">02月06日 19：30</view>
-            <view class="money">
-              <view class='p4'>2018-12-10</view>
-            </view>
-          </view>
-        </view>
-    </view>
-    </van-tab>
-</van-tabs>
+        </van-tab>
+    </van-tabs>
+  </scroll-view>
 </view>

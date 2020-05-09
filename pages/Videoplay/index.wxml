@@ -4,20 +4,20 @@
     bind:click-right="onClickRight"  >
   </van-nav-bar> -->
   <!-- <live-player id="player" src="https://domain/pull_stream" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 100%; height: 225px;background-color:red" /> -->
-   <video id="myVideo" poster="" src="{{item.link}}" controls></video>
+   <video id="myVideo" poster="" src="{{item.link?item.link:item_kc.video[0].url}}" controls></video>
    <view class="center" wx:if="{{state==1}}">
     <view class="center_top">
-      <view bindtap="loveclick" wx:if="{{lovestate}}">
+      <view bindtap="loveclick" wx:if="{{item_kc.courseInfo.isForus}}">
         <van-icon name="like" color="red" />
         已关注
       </view>
-      <view bindtap="loveclick" wx:if="{{!lovestate}}">
+      <view bindtap="loveclick" wx:if="{{!item_kc.courseInfo.isForus}}">
         <van-icon name="like-o" />
         关注主播
       </view>
-      <view class="title">·已结束</view>
+      <view class="title">·{{item_kc.courseInfo.status}}</view>
       <view>
-        1505次
+        {{item_kc.hit}}次
         <van-icon name="volume" color="#16c7ae" />
       </view>
     </view>
@@ -27,9 +27,10 @@
           <image src="../../images/my_headportrait_male.png"></image>
         </view>
         <view class="user_text">
-          <view class="user_name">康牙医生</view>
+          <view class="user_name"><view>{{item.version.by.username}}</view> <view class="hui">{{item.rolename}}</view></view>
           <view class="text">
-            欢迎欢迎！！
+            <view class="alt">{{item.title}}</view>
+            <rich-text nodes="{{item.content}}"></rich-text>
             <view class="dian"></view>
           </view>
         </view>
@@ -44,7 +45,7 @@
    </view>
    <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
       <view class="pop_top">
-        <view>讨论(89)</view>
+        <view>讨论({{arr.length}})</view>
         <van-icon name="arrow-down" catchtap="onClose" />
       </view>
     <view class="center_center">
@@ -54,11 +55,11 @@
         </view>
         <view class="user_text">
           <view class="user_name">
-          康牙医生
-          <view class="time">2019-11-28</view>
+          {{item.version.by.username}}
+          <view class="time">{{item.version.when}}</view>
           </view>
           <view class="text">
-            欢迎欢迎！！
+            <rich-text nodes="{{item.content}}"></rich-text>
           </view>
         </view>
       </view>

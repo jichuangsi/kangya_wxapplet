@@ -119,6 +119,9 @@ van-sidebar {
   margin-top: 20rpx;
   border-radius: 5rpx;
 }
+.center_center .li .user_text .text .alt {
+  border-bottom: 1rpx solid #bababa; 
+}
 .center_center .li .user_text .text image {
   max-width: 50%;
 }
@@ -128,6 +131,18 @@ van-sidebar {
   position: absolute;
   top: 20rpx;
   left: -20rpx;
+}
+.center_center .li .user_text .user_name{
+  display: flex;
+}
+.center_center .li .user_text .user_name .time {
+  flex: 1;
+  text-align: right;
+  color: #bababa;
+}
+.center_center .li .user_text .user_name .hui {
+  color: #bababa;
+  margin-left: 10rpx;
 }
 .pop_top {
   display: flex;

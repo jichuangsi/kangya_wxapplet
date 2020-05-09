@@ -102,8 +102,8 @@
 				},
 				{
 					"id": 6,
-					"name": "pages/my/index",
-					"pathName": "pages/my/index",
+					"name": "pages/study/index",
+					"pathName": "pages/study/index",
 					"query": "title=test",
 					"scene": null
 				}
