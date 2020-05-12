@@ -140,3 +140,9 @@ button {
 .lecturer .addbox .ipt van-checkbox .van-checkbox__icon-wrap {
   margin-right: 10rpx;
 }
+.datanone {
+  text-align: center;
+  color: #bababa;
+  line-height: 56rpx;
+  margin-top: 20rpx;
+}

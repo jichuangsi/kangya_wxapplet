@@ -15,14 +15,18 @@ news .list .smallbox{
   position: relative;
 }
 news .list .smallbox .left {
-  display: inline-block;
-  vertical-align: top;
-}
-news .list .smallbox .left image {
   width: 208rpx;
   height: 188rpx;
   display: inline-block;
   vertical-align: top;
+  position: relative;
+}
+news .list .smallbox .left image {
+  width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 news .list .smallbox .right {
   width: 468rpx;
@@ -54,4 +58,10 @@ news .list .smallbox .right .money {
 .p4 {
   font-size: 24rpx;
   color: #999;
+}
+.datanone {
+  text-align: center;
+  color: #bababa;
+  line-height: 56rpx;
+  margin-top: 20rpx;
 }

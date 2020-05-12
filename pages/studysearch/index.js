@@ -7,31 +7,64 @@ Page({
   data: {
     active:'单课程',
     searchtext:'',
-    first_arr:[]
+    first_arr:[],
+    pageIndex:0,
+    pagestate:true
   },
   back(){
     wx.navigateBack({
       delta: 1
     })
   },
+  uptouch(){
+    console.log(this.data.pagestate)
+    if (this.data.pagestate){
+      if (this.data.active == '单课程') {
+        this.getdata4(this.data.searchtext)
+      } else if (this.data.active == '系列课程') {
+        this.getdata3(this.data.searchtext)
+      } else if (this.data.active == '主播') {
+        this.getdata1(this.data.searchtext)
+      }
+    }
+  },
+  ipt(e) {
+    this.setData({
+      searchtext: e.detail.value
+    })
+  },
   searchclick(e){
-    console.log(e.detail.value)
+    this.setData({
+      searchtext: e.detail.value
+    })
     console.log(this.data.searchtext)
     if (this.data.active == '单课程'){
-      this.getdata4(e.detail.value)
+      this.getdata4(this.data.searchtext)
     } else if (this.data.active == '系列课程') {
-      this.getdata3(e.detail.value)
+      this.getdata3(this.data.searchtext)
     } else if (this.data.active == '主播') {
-      this.getdata1(e.detail.value)
+      this.getdata1(this.data.searchtext)
     }
   },
   onChange(event) {
     this.setData({
-      active: event.detail.name
+      active: event.detail.name,
+      first_arr:[],
+      pageIndex:0
     })
+    if (this.data.active == '单课程') {
+      this.getdata4(this.data.searchtext)
+    } else if (this.data.active == '系列课程') {
+      this.getdata3(this.data.searchtext)
+    } else if (this.data.active == '主播') {
+      this.getdata1(this.data.searchtext)
+    }
   },
   getdata1(title) {
     let self = this
+    self.setData({
+      pagestate: false
+    })
     wx.request({
       url: getApp().data.APIS + '/svc/a',
       method: 'get',
@@ -39,7 +72,7 @@ Page({
         plugin: 'querydoc',
         p: JSON.stringify({
           'labels': '直播,推荐',
-          'start': 0,
+          'start': self.data.pageIndex,
           'limit': 10,
           'title': title
         })
@@ -52,15 +85,30 @@ Page({
           for (let i = 0; i < res.data.list.length; i++) {
             res.data.list[i].content = self.removecode(res.data.list[i].content)
           }
+          let arr = self.data.first_arr
+          arr.push(...res.data.list)
           self.setData({
-            first_arr: res.data.list
+            first_arr: arr
           })
+          if (res.data.list.length == 0) {
+            self.setData({
+              pagestate: false
+            })
+          } else {
+            self.setData({
+              pageIndex: self.data.first_arr.length,
+              pagestate: true
+            })
+          }
         }
       }
     })
   },
   getdata3(title) {
     let self = this
+    self.setData({
+      pagestate: false
+    })
     wx.request({
       url: getApp().data.APIS + '/svc/a',
       method: 'get',
@@ -68,7 +116,7 @@ Page({
         plugin: 'querydoc',
         p: JSON.stringify({
           'labels': '系列视频',
-          'start': 0,
+          'start': self.data.pageIndex,
           'limit': 10,
           'title': title
         })
@@ -81,15 +129,30 @@ Page({
           for (let i = 0; i < res.data.list.length; i++) {
             res.data.list[i].content = self.removecode(res.data.list[i].content)
           }
+          let arr = self.data.first_arr
+          arr.push(...res.data.list)
           self.setData({
-            first_arr: res.data.list
+            first_arr: arr
           })
+          if (res.data.list.length == 0) {
+            self.setData({
+              pagestate: false
+            })
+          } else {
+            self.setData({
+              pageIndex: self.data.first_arr.length,
+              pagestate: true
+            })
+          }
         }
       }
     })
   },
   getdata4(title) {
     let self = this
+    self.setData({
+      pagestate: false
+    })
     wx.request({
       url: getApp().data.APIS + '/svc/a',
       method: 'get',
@@ -97,7 +160,7 @@ Page({
         plugin: 'querydoc',
         p: JSON.stringify({
           'labels': '单课程',
-          'start': 0,
+          'start': self.data.pageIndex,
           'limit': 10,
           'title': title
         })
@@ -110,9 +173,21 @@ Page({
           for (let i = 0; i < res.data.list.length; i++) {
             res.data.list[i].content = self.removecode(res.data.list[i].content)
           }
+          let arr = self.data.first_arr
+          arr.push(...res.data.list)
           self.setData({
-            first_arr: res.data.list
+            first_arr: arr
           })
+          if (res.data.list.length == 0) {
+            self.setData({
+              pagestate: false
+            })
+          } else {
+            self.setData({
+              pageIndex: self.data.first_arr.length,
+              pagestate: true
+            })
+          }
         }
       },
       fail:function(err){

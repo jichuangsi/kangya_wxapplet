@@ -7,7 +7,7 @@
           <view class="smallbox"  wx:for="{{first_arr}}">
           <navigator url="/pages/newsdetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
               <view class="left">
-                <image src="{{item.img[0]}}"></image>
+                <image mode="widthFix" src="{{item.img[0]}}"></image>
               </view>
               <view class="right">
                 <view class="smallboxtitle">{{item.title}}</view>
@@ -15,6 +15,7 @@
               </view>
               </navigator>
             </view>
+        <view class="datanone" wx:if="{{!pagestate}}">暂无更多数据</view>
         </view>
         </van-tab>
     </van-tabs>

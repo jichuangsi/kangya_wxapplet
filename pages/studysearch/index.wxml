@@ -1,69 +1,71 @@
 <!--pages/studysearch/index.wxml-->
 <view class="studysearch">
-  <view class="top">
-    <view class="ipt">
-      <van-icon name="search" color="#999"/>
-      <input type="text" value="{{searchtext}}" bindconfirm="searchclick"></input>
+  <scroll-view scroll-y="true" style="height: 100vh;" bindscrolltolower="uptouch">
+    <view class="top">
+      <view class="ipt">
+        <van-icon name="search" color="#999"/>
+        <input type="text" value="{{searchtext}}" bindinput="ipt" bindconfirm="searchclick"></input>
+      </view>
+      <view bindtap="back">取消</view>
     </view>
-    <view bindtap="back">取消</view>
-  </view>
-  <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
-    <van-tab title="单课程" name="单课程">
-      <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
-          <navigator url="/pages/coursedetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
-            <view class="left">
-              <image src="{{item.img[0]}}"></image>
-            </view>
-            <view class="right">
-              <view class="smallboxtitle">{{item.title}}</view>
-              <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
-            </view>
-          </navigator>
+    <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" swipeable>
+      <van-tab title="单课程" name="单课程">
+        <view class="list">
+          <view class="smallbox"  wx:for="{{first_arr}}">
+            <navigator url="/pages/coursedetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
+              <view class="left">
+                <image src="{{item.img[0]}}"></image>
+              </view>
+              <view class="right">
+                <view class="smallboxtitle">{{item.title}}</view>
+                <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
+              </view>
+            </navigator>
+          </view>
+          <view class="wu" wx:if="{{first_arr.length==0}}">
+            <image src="../../images/none.png"></image>
+            暂无数据
+          </view>
         </view>
-        <view class="wu" wx:if="{{first_arr.length==0}}">
-          <image src="../../images/none.png"></image>
-          暂无数据
+        </van-tab>
+        <van-tab title="系列课程" name="系列课程">
+        <view class="list">
+          <view class="smallbox"  wx:for="{{first_arr}}">
+            <navigator url="/pages/coursedetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
+              <view class="left">
+                <image src="{{item.img[0]}}"></image>
+              </view>
+              <view class="right">
+                <view class="smallboxtitle">{{item.title}}</view>
+                <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
+              </view>
+            </navigator>
+          </view>
+          <view class="wu" wx:if="{{first_arr.length==0}}">
+            <image src="../../images/none.png"></image>
+            暂无数据
+          </view>
         </view>
-      </view>
-      </van-tab>
-      <van-tab title="系列课程" name="系列课程">
-      <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
-          <navigator url="/pages/coursedetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
-            <view class="left">
-              <image src="{{item.img[0]}}"></image>
-            </view>
-            <view class="right">
-              <view class="smallboxtitle">{{item.title}}</view>
-              <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
-            </view>
-          </navigator>
+        </van-tab>
+        <van-tab title="主播" name="主播">
+        <view class="list">
+          <view class="smallbox"  wx:for="{{first_arr}}">
+            <navigator url="/pages/coursedetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
+              <view class="left">
+                <image src="{{item.img[0]}}"></image>
+              </view>
+              <view class="right">
+                <view class="smallboxtitle">{{item.title}}</view>
+                <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
+              </view>
+            </navigator>
+          </view>
+          <view class="wu" wx:if="{{first_arr.length==0}}">
+            <image src="../../images/none.png"></image>
+            暂无数据
+          </view>
         </view>
-        <view class="wu" wx:if="{{first_arr.length==0}}">
-          <image src="../../images/none.png"></image>
-          暂无数据
-        </view>
-      </view>
-      </van-tab>
-      <van-tab title="主播" name="主播">
-      <view class="list">
-        <view class="smallbox"  wx:for="{{first_arr}}">
-          <navigator url="/pages/coursedetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
-            <view class="left">
-              <image src="{{item.img[0]}}"></image>
-            </view>
-            <view class="right">
-              <view class="smallboxtitle">{{item.title}}</view>
-              <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
-            </view>
-          </navigator>
-        </view>
-        <view class="wu" wx:if="{{first_arr.length==0}}">
-          <image src="../../images/none.png"></image>
-          暂无数据
-        </view>
-      </view>
-      </van-tab>
-  </van-tabs>
+        </van-tab>
+    </van-tabs>
+  </scroll-view>
 </view>

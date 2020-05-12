@@ -12,16 +12,13 @@ Component({
     grid_arr:[],
     nav_arr:[],
     borderstate: false,
-    pageIndex:1,
-    pageCount:0
+    pageIndex:0,
+    pagestate:true
   },
   methods:{
     uptouch() {
-      console.log(4454545)
-      if (this.data.pageIndex > this.data.pageCount){
-
-      } else {
-        this.getdata()
+      if (this.data.pagestate){
+        this.getdata4()
       }
     },
     getdata() {
@@ -30,18 +27,15 @@ Component({
         url: getApp().data.APIS + '/svc/a',
         method: 'get',
         data: {
-          plugin: 'querydoc',
-          p: JSON.stringify({
-            'labels': '直播',
-            'start': 0,
-            'limit': 4
-          })
+          plugin: 'getkd',
+          p: '5345336'
         },
         header: {
           'token': wx.getStorageSync('token')
         },
         success: function (res) {
           if (res.data.info == 'ok') {
+            console.log(res)
             self.setData({
               nav_arr: res.data.list
             })
@@ -107,6 +101,9 @@ Component({
     }, 
     getdata4() {
       let self = this
+        self.setData({
+          pagestate: false
+        })
         wx.request({
         url: getApp().data.APIS + '/svc/a',
         method: 'get',
@@ -114,7 +111,7 @@ Component({
           plugin: 'querydoc',
           p: JSON.stringify({
             'labels': '单课程',
-            'start': 0,
+            'start': self.data.pageIndex,
             'limit': 3
           })
         },
@@ -126,9 +123,21 @@ Component({
             for (let i = 0; i < res.data.list.length; i++) {
               res.data.list[i].content = self.removecode(res.data.list[i].content)
             }
+            let arr = self.data.course_arr
+            arr.push(...res.data.list)
             self.setData({
-              course_arr: res.data.list
+              course_arr: arr
             })
+            if (res.data.list.length == 0) {
+              self.setData({
+                pagestate: false
+              })
+            } else {
+              self.setData({
+                pageIndex: self.data.course_arr.length,
+                pagestate: true
+              })
+            }
           }
         }
       })

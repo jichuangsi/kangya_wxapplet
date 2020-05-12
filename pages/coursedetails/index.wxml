@@ -63,7 +63,7 @@
         <view class="smallbox" wx:for="{{item.links}}">
           <navigator url="/pages/coursedetails/index?id={{item.id}}" hover-class="navigator-hover">
             <view class="left">
-              <image src="{{item.images[0]}}"></image>
+              <image mode="heightFix" src="{{item.images[0]}}"></image>
             </view>
             <view class="right">
               <view class="smallboxtitle">{{item.title}}</view>

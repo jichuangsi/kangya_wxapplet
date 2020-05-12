@@ -7,13 +7,24 @@ Component({
   data: {
     active:'',
     first_arr:[],
-    grid_arr:[]
+    grid_arr:[],
+    id:'',
+    pageIndex:0,
+    pagestate:true
   },
   methods: {
     uptouch() {
+      if(this.data.pagestate){
+        this.getdata1(this.data.id)
+      }
     },
     onChange(e){
       console.log(e)
+      this.setData({
+        id: this.data.grid_arr[e.detail.index].id,
+        first_arr: [],
+        pageIndex: 0,
+      })
       this.getdata1(this.data.grid_arr[e.detail.index].id)
     },
     getdata() {
@@ -23,18 +34,19 @@ Component({
         method: 'get',
         data: {
           plugin: 'getkd',
-          p: '5342517'
+          p: '5342729'
         },
         header: {
           'token': wx.getStorageSync('token')
         },
         success: function (res) {
+          console.log(11122)
           console.log(res)
           if (res.data.info == 'ok') {
-
             self.setData({
               grid_arr: res.data.list,
-              active: res.data.list[0].title
+              active: res.data.list[0].title,
+              id: res.data.list[0].id
             })
             self.getdata1(res.data.list[0].id)
           }
@@ -43,12 +55,15 @@ Component({
     },
     getdata1(id) {
       let self = this
+      self.setData({
+        pagestate: false
+      })
       wx.request({
         url: getApp().data.APIS + '/svc/a',
         method: 'get',
         data: {
           plugin: 'getkd',
-          p: id
+          p: id+'|'+self.data.pageIndex
         },
         header: {
           'token': wx.getStorageSync('token')
@@ -56,10 +71,23 @@ Component({
         success: function (res) {
           console.log(res)
           if (res.data.info == 'ok') {
-
+            let arr = self.data.first_arr
+            arr.push(...res.data.list)
             self.setData({
-              first_arr: res.data.list
+              first_arr: arr
             })
+            console.log(self.data.first_arr)
+            if (res.data.list.length == 0) {
+              self.setData({
+                pagestate: false
+              })
+            } else {
+              self.setData({
+                pageIndex: self.data.first_arr.length,
+                pagestate: true
+              })
+              console.log(self.data.pageIndex)
+            }
           }
         }
       })

@@ -7,85 +7,85 @@
     <view data-id="2" class="{{tabnum==2?'check':''}}" bindtap="tab">最热课程</view>
     <view data-id="3" class="{{tabnum==3?'check':''}}" bindtap="tab">最新课程</view>
   </van-popup>
-  <!-- <van-nav-bar title="{{active}}" left-text="返回" left-arrow   bind:click-left="onClickLeft" bind:click-right="onClickRight"
-  >
-    <van-icon name="filter-o" slot="right" size="30rpx" wx:if="{{state!=3}}" />
-  </van-nav-bar> -->
-  <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" wx:if="{{state == 1}}">
-    <van-tab title="{{item.title}}" name="{{item.title}}" wx:for="{{grid_arr}}">
-      <view class="list">
-        <view class="smallbox"  wx:for="{{course_arr}}">
-          <navigator url="/pages/coursedetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
-            <view class="left">
-              <image src="{{item.img[0]}}"></image>
+  <scroll-view scroll-y="true" style="height: 100vh;" bindscrolltolower="uptouch">
+    <van-tabs active="{{ active }}" title-active-color="#16c7ae" color="#16c7ae" bind:change="onChange" wx:if="{{state == 1}}">
+      <van-tab title="{{item.title}}" name="{{item.title}}" wx:for="{{grid_arr}}">
+        <view class="list">
+          <view class="smallbox"  wx:for="{{course_arr}}">
+            <navigator url="/pages/coursedetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
+              <view class="left">
+                <image src="{{item.img[0]}}"></image>
+              </view>
+              <view class="right">
+                <view class="smallboxtitle">{{item.title}}</view>
+                <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
+              </view>
+            </navigator>
             </view>
-            <view class="right">
-              <view class="smallboxtitle">{{item.title}}</view>
-              <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
+          <view class="datanone" wx:if="{{!pagestate}}">暂无更多数据</view>
+        </view>
+        </van-tab>
+    </van-tabs>
+    <view wx:if="{{state == 2}}">
+        <view class="list">
+          <view class="smallbox"  wx:for="{{course_arr}}">
+            <navigator url="/pages/coursedetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
+              <view class="left">
+                <image src="{{item.img[0]}}"></image>
+              </view>
+              <view class="right">
+                <view class="smallboxtitle">{{item.title}}</view>
+                <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
+              </view>
+            </navigator>
             </view>
-          </navigator>
-          </view>
-      </view>
-      </van-tab>
-  </van-tabs>
-  <view wx:if="{{state == 2}}">
-      <view class="list">
-        <view class="smallbox"  wx:for="{{course_arr}}">
-          <navigator url="/pages/coursedetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
-            <view class="left">
-              <image src="{{item.img[0]}}"></image>
-            </view>
-            <view class="right">
-              <view class="smallboxtitle">{{item.title}}</view>
-              <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
-            </view>
-          </navigator>
-          </view>
-      </view>
-  </view>
-  <view class="lecturer" wx:if="{{state == 3}}">
-    <view class="addbox">
-      <view class="addtitle">
-        牙医管家学习吧讲师入驻申请
-      </view>
-        <view class="ipt">
-          <view class="iptname">
-          姓名
-          <view>*</view>
-          </view>
-          <input value="{{addname}}"></input>
+          <view class="datanone" wx:if="{{!pagestate}}">暂无更多数据</view>
         </view>
-        <view class="ipt">
-          <view class="iptname">
-          就职机构
-          <view>*</view>
-          </view>
-          <input value="{{addmechanism}}"></input>
-        </view>
-        <view class="ipt">
-          <view class="iptname">
-          课程方向
-          <view>*</view>
-          </view>
-          <van-checkbox-group value="{{ result }}" shape="square" bind:change="addonChange">
-            <van-checkbox name="a">正畸</van-checkbox>
-            <van-checkbox name="b">种植</van-checkbox>
-            <van-checkbox name="c">修复</van-checkbox>
-            <van-checkbox name="d">管理</van-checkbox>
-            <van-checkbox name="e">根管</van-checkbox>
-            <van-checkbox name="f">牙周</van-checkbox>
-            <van-checkbox name="g">其他</van-checkbox>
-            <input value="{{addOther}}"></input>
-          </van-checkbox-group>
-        </view>
-        <view class="ipt">
-          <view class="iptname">
-          手机
-          <view>*</view>
-          </view>
-          <input value="{{addphone}}"></input>
-        </view>
-        <van-button type="primary" block color="blue">提交</van-button>
     </view>
-  </view>
+    <view class="lecturer" wx:if="{{state == 3}}">
+      <view class="addbox">
+        <view class="addtitle">
+          牙医管家学习吧讲师入驻申请
+        </view>
+          <view class="ipt">
+            <view class="iptname">
+            姓名
+            <view>*</view>
+            </view>
+            <input value="{{addname}}"></input>
+          </view>
+          <view class="ipt">
+            <view class="iptname">
+            就职机构
+            <view>*</view>
+            </view>
+            <input value="{{addmechanism}}"></input>
+          </view>
+          <view class="ipt">
+            <view class="iptname">
+            课程方向
+            <view>*</view>
+            </view>
+            <van-checkbox-group value="{{ result }}" shape="square" bind:change="addonChange">
+              <van-checkbox name="a">正畸</van-checkbox>
+              <van-checkbox name="b">种植</van-checkbox>
+              <van-checkbox name="c">修复</van-checkbox>
+              <van-checkbox name="d">管理</van-checkbox>
+              <van-checkbox name="e">根管</van-checkbox>
+              <van-checkbox name="f">牙周</van-checkbox>
+              <van-checkbox name="g">其他</van-checkbox>
+              <input value="{{addOther}}"></input>
+            </van-checkbox-group>
+          </view>
+          <view class="ipt">
+            <view class="iptname">
+            手机
+            <view>*</view>
+            </view>
+            <input value="{{addphone}}"></input>
+          </view>
+          <van-button type="primary" block color="blue">提交</van-button>
+      </view>
+    </view>
+  </scroll-view>
 </view>

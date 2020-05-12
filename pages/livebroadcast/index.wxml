@@ -5,7 +5,7 @@
    <swiper indicator-dots='true' indicator-color='#666' indicator-active-color='#fff' circular='true'>
     <swiper-item wx:for="{{img_arr}}">
       <navigator url="/pages/coursedetails/index?id={{item.id}}" hover-class="navigator-hover">
-        <image mode="widthFix" src="{{item.img[0]}}"></image>
+        <image class="top_img" mode="heightFix" src="{{item.img[0]}}"></image>
       </navigator>
     </swiper-item>
   </swiper>
@@ -142,16 +142,17 @@
       </navigator>
     </view>
         <view class="smallbox" wx:for="{{course_arr}}">
-        <navigator url="/pages/coursedetails/index?id={{item.id}}" hover-class="navigator-hover">
-          <view class="left">
-            <image mode="widthFix" src="{{item.img[0]}}"></image>
-          </view>
-          <view class="right">
-            <view class="smallboxtitle">{{item.title}}</view>
-            <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
-          </view>
+          <navigator url="/pages/coursedetails/index?id={{item.id}}" hover-class="navigator-hover">
+            <view class="left">
+              <image mode="widthFix" src="{{item.img[0]}}"></image>
+            </view>
+            <view class="right">
+              <view class="smallboxtitle">{{item.title}}</view>
+              <rich-text nodes="<div style='display: -webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal !important;-webkit-box-orient:vertical;-webkit-line-clamp:2;'>{{item.content}}</div>"></rich-text>
+            </view>
           </navigator>
         </view>
+        <view class="datanone" wx:if="{{!pagestate}}">暂无更多数据</view>
   </view>
 </scroll-view>
 </view>
