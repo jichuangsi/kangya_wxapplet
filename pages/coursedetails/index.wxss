@@ -45,11 +45,20 @@ button {
 }
 .img_box {
   width: 100%;
-  max-height:600rpx; 
+  height:600rpx; 
   overflow: hidden;
+  position: relative;
+  background-color: #fff;
 }
 .center image {
   width: 100%;
+}
+.img_box image {
+  max-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .center .title {
   font-size: 36rpx;

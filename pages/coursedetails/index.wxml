@@ -15,7 +15,8 @@
   <view class="center">
     <!-- <image src="../../images/learning_theme_anchor.png"></image> -->
     <view class="img_box">
-      <rich-text nodes="{{imgurl}}"></rich-text>
+      <image mode="heightFix" src="{{imgurl}}"></image>
+      <!-- <rich-text nodes="{{imgurl}}"></rich-text> -->
     </view>
     <view class="title">
       {{item.title}}

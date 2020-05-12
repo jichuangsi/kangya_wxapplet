@@ -70,9 +70,10 @@ Page({
           let w = res.data.list[0].content.substring(res.data.list[0].content.indexOf('<h3 id="'), res.data.list[0].content.length-1)
           res.data.list[0].content = res.data.list[0].content.split(w)[0]
           let d = c.replace(/\<img/gi, '<img style="max-width:100%;height:auto"')
+          let f = d.substring(d.indexOf('src="')+5, d.indexOf('" />'))
           res.data.list[0].version.when = self.myFunction(res.data.list[0].version.when)
           self.setData({
-            imgurl :d,
+            imgurl: f,
             item:res.data.list[0],
             collection: res.data.list[0].courseInfo.isForus?1:0
           })
