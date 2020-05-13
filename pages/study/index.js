@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    indexnum: 0
+    indexnum: 0,
+    isOverShare: true
   },
   sss(event){
     console.log(event.detail)
@@ -24,6 +25,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      indexnum: options.num ? options.num:0
+    })
   },
 
   /**
@@ -72,6 +76,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/pages/study/index?num=' + this.data.indexnum  // 路径，传递参数到指定页面。
+    }
   }
 })

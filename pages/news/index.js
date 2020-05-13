@@ -10,7 +10,7 @@ Component({
     grid_arr:[],
     id:'',
     pageIndex:0,
-    pagestate:true
+    pagestate: true
   },
   methods: {
     uptouch() {
@@ -150,6 +150,5 @@ Component({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
   }
 })

@@ -18,8 +18,10 @@ Page({
     nowitem:'',
     video_nav:[],
     videonext_arr:[],
+    videoKey:0,
     next_num: 999,
-    arr_num:0
+    arr_num: 0,
+    isOverShare: true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -94,17 +96,17 @@ Page({
     }
   },
   onChangevideo(event){
-    console.log(this.data.videolist_arr[event.detail].link)
     let arr = []
     arr.push(this.data.videolist_arr[event.detail])
     this.setData({
       video_nav: arr,
       arr_num:1,
-      videonext_arr: []
+      videonext_arr: [],
+      videoKey: event.detail
     })
     this.getvodnext(this.data.videolist_arr[event.detail].link)
   },
-  getvod() {
+  getvod(val) {
     let self = this
     wx.request({
       url: getApp().data.APIS + '/video/getvod/EOk6llnOcw9X1e4',
@@ -116,9 +118,25 @@ Page({
         console.log(1)
         console.log(res)
         if (res.data.info == 'ok') {
-          self.getvodnext(res.data.list[0].link)
           let arr = []
-          arr.push(res.data.list[0])
+          let val_state = false
+          let val_num = 0
+          for(let i=0;i<res.data.list.length;i++){
+            if (val != '' && val == res.data.list[i].name) {
+              val_state = true
+              val_num = i
+            }
+          }
+          if (val_state) {
+            self.getvodnext(res.data.list[val_num].link)
+            arr.push(res.data.list[val_num])
+            self.setData({
+              videoKey: val_num,
+            })
+          } else {
+            self.getvodnext(res.data.list[0].link)
+            arr.push(res.data.list[0])
+          }
           self.setData({
             videolist_arr:res.data.list,
             video_nav: arr,
@@ -328,7 +346,11 @@ Page({
     if (options.title == '价目表') {
       this.gethandle()
     } else if (options.title == '医患沟通视频' || options.title == '选择视频') {
-      this.getvod()
+      if (options.value) {
+        this.getvod(options.value)
+      } else {
+        this.getvod()
+      }
     }
   },
   /**
@@ -342,7 +364,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

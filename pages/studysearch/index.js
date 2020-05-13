@@ -9,7 +9,8 @@ Page({
     searchtext:'',
     first_arr:[],
     pageIndex:0,
-    pagestate:true
+    pagestate: true,
+    isOverShare: true
   },
   back(){
     wx.navigateBack({

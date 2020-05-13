@@ -102,7 +102,9 @@
     "pages/W_project/index",
     "pages/W_order/index",
     "pages/W_address/index",
-    "pages/W_introduce/index"
+    "pages/W_introduce/index",
+
+    "pages/D_index/index"
     
 
   ],
@@ -116,9 +118,6 @@
         "pages/medical/index"
       ]
     }
-  ],
-  "navigateToMiniProgramAppIdList": [
-    "wx6692a7dc586f5a61"
   ],
   "usingComponents": {
     "calendar": "/../calendar/index",

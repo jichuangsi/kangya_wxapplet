@@ -81,9 +81,9 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/img/index",
-					"pathName": "pages/img/index",
-					"query": "title=影像",
+					"name": "pages/study/index",
+					"pathName": "pages/study/index",
+					"query": "",
 					"scene": null
 				},
 				{
@@ -102,8 +102,8 @@
 				},
 				{
 					"id": 6,
-					"name": "pages/study/index",
-					"pathName": "pages/study/index",
+					"name": "pages/D_index/index",
+					"pathName": "pages/D_index/index",
 					"query": "title=test",
 					"scene": null
 				}

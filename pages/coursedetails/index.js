@@ -10,7 +10,9 @@ Page({
     love:false,
     url:'',
     item:'',
-    imgurl:''
+    imgurl:'',
+    id:'',
+    isOverShare:true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -94,7 +96,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      url: this.route
+      url: this.route,
+      id:options.id
     })
     wx.setNavigationBarTitle({
       title:'课程详情'
@@ -113,7 +116,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
@@ -149,17 +151,8 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '康牙医生小程序',
-      path: this.data.url,  // 路径，传递参数到指定页面。
-      imageUrl: '../../imgs/xx.png', // 分享的封面图
-      success: function (res) {
-        // 转发成功
-        console.log("转发成功:" + JSON.stringify(res));
-      },
-      fail: function (res) {
-        // 转发失败
-        console.log("转发失败:" + JSON.stringify(res));
-      }
+      title: this.data.title,
+      path: 'pages/coursedetails/index?id=' + this.data.id,  // 路径，传递参数到指定页面。
     }
   }
 })

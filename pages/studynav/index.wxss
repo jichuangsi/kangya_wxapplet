@@ -51,12 +51,17 @@ button {
 .studynav .list .smallbox .left {
   display: inline-block;
   vertical-align: top;
-}
-.studynav .list .smallbox .left image {
   width: 288rpx;
   height: 188rpx;
-  display: inline-block;
-  vertical-align: top;
+  position: relative;
+  overflow: hidden;
+}
+.studynav .list .smallbox .left image {
+  max-height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 .studynav .list .smallbox .right {
   width: 388rpx;

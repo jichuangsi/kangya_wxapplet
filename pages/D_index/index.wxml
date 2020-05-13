@@ -1,0 +1,44 @@
+<!--pages/W_index/index.wxml-->
+<view class="W_index">
+  <!-- <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view> -->
+  <view class="center">
+    <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true' autoplay='true'>
+      <swiper-item wx:for="{{img_arr}}">
+        <navigator url="/pages/newsdetails/index?title={{item.title}}&&id={{item.id}}" hover-class="navigator-hover">
+          <image mode="heightFix" src="{{item.img[0]}}"></image>
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+  
+  <van-grid column-num="3">
+    <!-- <van-grid-item icon="{{item.image}}" wx:for="{{arr}}" text="{{item.name}}" link-type="navigateTo"
+    url="{{item.value}}" wx:if="{{item.stype=='link'}}" />
+    <van-grid-item icon="{{item.image}}" wx:for="{{arr}}" text="{{item.name}}" link-type="navigateTo"
+    url="/pages/Newslist/index?title={{item.name}}&&id={{item.value}}" wx:if="{{item.stype=='article'}}" />
+    <van-grid-item icon="{{item.image}}" wx:for="{{arr}}" text="{{item.name}}" link-type="navigateTo"
+    url="/pages/studynav/index?title={{item.name}}&&state=2&&id={{item.value}}" wx:if="{{item.stype=='course'}}" />
+    <van-grid-item icon="{{item.image}}" wx:for="{{arr}}" text="{{item.name}}" link-type="navigateTo"
+    url="{{item.value}}" wx:if="{{item.stype=='video'}}" />
+    <van-grid-item icon="{{item.image}}" wx:for="{{arr}}" text="{{item.name}}" link-type="navigateTo"
+    url="{{item.value}}" wx:if="{{item.stype=='link'}}" />
+    <van-grid-item icon="{{item.image}}" wx:for="{{arr}}" text="{{item.name}}" link-type="navigateTo"
+    url="{{item.value}}" wx:if="{{item.stype=='link'}}" /> -->
+    <van-grid-item icon="{{item.image}}" wx:for="{{arr}}" data-item="{{item}}" text="{{item.name}}" bind:click='gridclick'/>
+    <!-- <van-grid-item icon="../../../images/clinic_website_icon_clinic.png" text="诊所介绍" link-type="navigateTo"
+    url="/pages/W_introduce/index?title={{title}}" />
+    <van-grid-item icon="../../../images/clinic_website_icon_team.png" text="医生团队" link-type="navigateTo"
+    url="/pages/W_team/index?title={{title}}"/>
+    <van-grid-item icon="../../../images/clinic_website_icon_treatment.png" text="治疗项目" link-type="navigateTo"
+    url="/pages/W_project/index?title={{title}}"/>
+    <van-grid-item icon="../../../images/clinic_website_icon_reservation.png" text="在线预约" link-type="navigateTo"
+    url="/pages/W_order/index?title={{title}}"/>
+    <van-grid-item icon="../../../images/clinic_website_icon_address.png" text="诊所地址" link-type="navigateTo"
+    url="/pages/W_address/index?title={{title}}"/>
+    <van-grid-item icon="../../../images/clinic_website_icon_telephone.png" text="诊所电话"
+    bind:click='iphoneclick' /> -->
+  </van-grid>
+</view>

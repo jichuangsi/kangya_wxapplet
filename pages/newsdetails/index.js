@@ -13,7 +13,8 @@ Page({
     message:'',
     text_arr:[],
     arr:[],
-    show:false
+    show: false,
+    isOverShare: true
   },
 
   onClickLeft() {

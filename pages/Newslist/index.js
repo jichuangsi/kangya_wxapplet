@@ -9,7 +9,8 @@ Page({
     News_arr:[],
     pageIndex:1,
     pageCount:0,
-    id:''
+    id: '',
+    isOverShare: true
   },
   onClickLeft() {
     wx.navigateBack({

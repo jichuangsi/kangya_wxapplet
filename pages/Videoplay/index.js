@@ -13,7 +13,8 @@ Page({
     show: false,
     client: '',
     item:'',
-    item_kc:''
+    item_kc: '',
+    isOverShare: true
   },
 
 
@@ -54,12 +55,14 @@ Page({
         'token': wx.getStorageSync('token')
       },
       success: function (res) {
+        console.log(getApp().data.APIS)
+        console.log(id)
+        console.log(112335)
         console.log(res)
         if (res.data.info == 'ok') {
           for(let i =0;i<res.data.list[0].length;i++){
             res.data.list[0][i].version.when = self.myFunction(res.data.list[0][i].version.when)
           }
-          console.log(res)
           self.setData({
             arr: res.data.list[0]
           })
@@ -132,11 +135,25 @@ Page({
         wx.setNavigationBarTitle({
           title: Page.data ? Page.data.nowitem.name : ''
         })
-      } else if (this.data.state == 1){
-        this.setData({
-          item_kc: Page.data.item
-        })
-        this.getdata(Page.data.item.id)
+      } else if (this.data.state == 1) {
+        if (Page) {
+          this.setData({
+            item_kc: Page.data.item
+          })
+          this.getdata(Page.data.item.id)
+        } else {
+          console.log(unescape(options.item_video))
+          console.log(unescape(options.item_courseInfo))
+          this.setData({
+            item_kc: {
+              id: options.item_id,
+              video: JSON.parse(unescape(options.item_video)),
+              courseInfo: JSON.parse(unescape(options.item_courseInfo)),
+              hit: options.item_hit,
+            }
+          })
+          this.getdata(options.item_id)
+        }
       }
     }
     console.log(options)
@@ -192,13 +209,24 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    console.log(this.data.item.link)
-    let url_q = this.data.item.link.split('?')[0]
-    let url_h = this.data.item.link.split('?')[1]
-    return {
-      title: this.data.title,
-      desc: '分享页面的内容',
-      path: '/pages/Videoplay/index?title=' + this.data.title + '&&url=' + url_q + '&&state=' + this.data.state + '&&url_h=' + url_h  // 路径，传递参数到指定页面。
+    if(this.data.state == 0){
+      let url_q = this.data.item.link.split('?')[0]
+      let url_h = this.data.item.link.split('?')[1]
+      return {
+        title: this.data.title,
+        desc: '分享页面的内容',
+        path: '/pages/Videoplay/index?title=' + this.data.title + '&&url=' + url_q + '&&state=' + this.data.state + '&&url_h=' + url_h  // 路径，传递参数到指定页面。
+      }
+    } else if (this.data.state == 1) {
+      let item_id = this.data.item_kc.id
+      let item_video = escape(JSON.stringify(this.data.item_kc.video))
+      let item_courseInfo = escape(JSON.stringify(this.data.item_kc.courseInfo))
+      let item_hit = this.data.item_kc.hit
+      return {
+        title: '康牙医生',
+        desc: '分享页面的内容',
+        path: '/pages/Videoplay/index?title=&&state=' + this.data.state + '&&item_id=' + item_id + '&&item_video=' + item_video + '&&item_courseInfo=' + item_courseInfo + '&&item_hit=' + item_hit  // 路径，传递参数到指定页面。
+      }
     }
   }
 })
