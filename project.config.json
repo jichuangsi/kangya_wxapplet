@@ -76,7 +76,7 @@
 					"id": 2,
 					"name": "component/pages/erocdetails/index",
 					"pathName": "component/pages/erocdetails/index",
-					"query": "title=连锁分析&state=0",
+					"query": "title=电网分析&state=0",
 					"scene": null
 				},
 				{

@@ -190,6 +190,8 @@
   width: 100%;
   height: 600rpx;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   position: relative;
 }
@@ -361,4 +363,10 @@ ec-canvas {
 .none_box_h3 .text{
   font-size: 26rpx;
   color: #999;
+}
+.market5_text {
+  width: 100%;
+  text-align: center;
+  line-height: 46rpx;
+  color: #16c7ae;
 }

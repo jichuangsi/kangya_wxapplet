@@ -524,7 +524,7 @@
             <image src="../../../images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
-          <ec-canvas id="market-graph5" canvas-id="mychart-graph5" ec="{{ market5 }}"></ec-canvas>
+          <view class="market5_text" data-text="患者标签" data-child="{{item.item}}" bindtap="ontitle" wx:for="{{market5_arr}}">{{item.item}}</view>
         </view>
       </view>
       <view class="libox">
@@ -849,7 +849,7 @@
       <view class="libox">
         <view class="libox_title">
           <view>支出金额统计</view>
-          <view>支出总余额{{expenditure_total}}</view>
+          <!-- <view>支出总余额{{expenditure_total}}</view> -->
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{expenditure1_none}}">
@@ -1489,6 +1489,7 @@
           <view>客户姓名</view>
           <view>就诊日期</view>
           <view>就诊医生</view>
+          <view>咨询师</view>
           <view>成交金额</view>
         </view>
         <view class="list_li" wx:for="{{arr.studybargaindetail}}">
@@ -1496,6 +1497,7 @@
           <view>{{item.customername}}</view>
           <view>{{item.studydate}}</view>
           <view>{{item.examdoct}}</view>
+          <view>{{item.counselor}}</view>
           <view>{{item.payfee}}</view>
         </view>
         <view class="all">
@@ -1854,6 +1856,71 @@
         <view>{{arr.pagepayfeetotal}}</view>
       </view>
     </view>
+    <view class="popup_box" wx:if="{{popup_title=='咨询客户来源详情'}}">
+      <view class="popup_nav">
+        <view class="{{popup_num == 0?'check_popup_nav':''}}" data-index="0" catchtap="check_popup">客户来源分析</view>
+        <view class="{{popup_num == 1?'check_popup_nav':''}}" data-index="1" catchtap="check_popup">受理工具分析</view>
+        <view class="{{popup_num == 2?'check_popup_nav':''}}" data-index="2" catchtap="check_popup">受理人情况</view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 0}}">
+        <view class="list_li">
+          <view>客户来源</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.comefromdetail}}">
+          <view>{{item.comefrom}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 1}}">
+        <view class="list_li">
+          <view>受理工具</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.consultitemdetail}}">
+          <view>{{item.consutlitem}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="list" wx:if="{{popup_num == 2}}">
+        <view class="list_li">
+          <view>受理人</view>
+          <view>咨询人次</view>
+          <view>预约人次</view>
+          <view>到诊人次</view>
+          <view>成交人次</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.pagedetails}}">
+          <view>{{item.consultusername}}</view>
+          <view>{{item.consultnum}}</view>
+          <view>{{item.schedulenum}}</view>
+          <view>{{item.arrivenum}}</view>
+          <view>{{item.paynum}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+      <view class="all">
+        <view>总合计</view>
+        <view>{{arr.pagepayfeetotal}}</view>
+      </view>
+    </view>
     <view class="popup_box" wx:if="{{popup_title=='受理项目详情'}}">
       <view class="popup_nav">
         <view class="{{popup_num == 0?'check_popup_nav':''}}" data-index="0" catchtap="check_popup">客户来源分析</view>
@@ -1988,13 +2055,27 @@
       <view class="list">
         <view class="list_li">
           <view>病历号</view>
-          <view>客户姓名</view>
+          <view>姓名</view>
+          <view>年龄</view>
+          <view>性别</view>
+          <view>初诊时间</view>
+          <view>初诊医生</view>
           <view>客户来源</view>
+          <view>就诊类别</view>
+          <view>客户星级</view>
+          <view>客户标签</view>
         </view>
-        <view class="list_li" wx:for="{{arr}}">
+        <view class="list_li" wx:for="{{arr.detail}}">
           <view>{{item.patientid}}</view>
-          <view>{{item.patname}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.age}}</view>
+          <view>{{item.sex}}</view>
+          <view>{{item.firstdate}}</view>
+          <view>{{item.firstdoct}}</view>
+          <view>{{item.area}}</view>
           <view>{{item.comefrom}}</view>
+          <view>{{item.patientstar}}</view>
+          <view>{{item.impressioninfo}}</view>
         </view>
       </view>
     </view>
@@ -2002,13 +2083,29 @@
       <view class="list">
         <view class="list_li">
           <view>病历号</view>
-          <view>客户姓名</view>
+          <view>姓名</view>
+          <view>年龄</view>
+          <view>性别</view>
+          <view>初诊时间</view>
+          <view>初诊医生</view>
+          <view>所属区域</view>
           <view>客户来源</view>
+          <view>就诊类别</view>
+          <view>客户星级</view>
+          <view>客户标签</view>
         </view>
-        <view class="list_li" wx:for="{{arr}}">
+        <view class="list_li" wx:for="{{arr.detail}}">
           <view>{{item.patientid}}</view>
-          <view>{{item.patname}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.age}}</view>
+          <view>{{item.sex}}</view>
+          <view>{{item.firstdate}}</view>
+          <view>{{item.firstdoct}}</view>
+          <view>{{item.area}}</view>
+          <view>{{item.treatment}}</view>
           <view>{{item.comefrom}}</view>
+          <view>{{item.patientstar}}</view>
+          <view>{{item.impressioninfo}}</view>
         </view>
       </view>
     </view>
@@ -2016,13 +2113,27 @@
       <view class="list">
         <view class="list_li">
           <view>病历号</view>
-          <view>客户姓名</view>
+          <view>姓名</view>
+          <view>年龄</view>
+          <view>初诊时间</view>
+          <view>初诊医生</view>
+          <view>所属区域</view>
           <view>客户来源</view>
+          <view>就诊类别</view>
+          <view>客户星级</view>
+          <view>客户标签</view>
         </view>
-        <view class="list_li" wx:for="{{arr}}">
+        <view class="list_li" wx:for="{{arr.detail}}">
           <view>{{item.patientid}}</view>
-          <view>{{item.patname}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.age}}</view>
+          <view>{{item.firstdate}}</view>
+          <view>{{item.firstdoct}}</view>
+          <view>{{item.area}}</view>
+          <view>{{item.treatment}}</view>
           <view>{{item.comefrom}}</view>
+          <view>{{item.patientstar}}</view>
+          <view>{{item.impressioninfo}}</view>
         </view>
       </view>
     </view>
@@ -2030,13 +2141,55 @@
       <view class="list">
         <view class="list_li">
           <view>病历号</view>
-          <view>客户姓名</view>
+          <view>姓名</view>
+          <view>年龄</view>
+          <view>性别</view>
+          <view>初诊时间</view>
+          <view>初诊医生</view>
+          <view>所属区域</view>
           <view>客户来源</view>
+          <view>就诊类别</view>
+          <view>客户标签</view>
         </view>
-        <view class="list_li" wx:for="{{arr}}">
+        <view class="list_li" wx:for="{{arr.detail}}">
           <view>{{item.patientid}}</view>
-          <view>{{item.patname}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.age}}</view>
+          <view>{{item.sex}}</view>
+          <view>{{item.firstdate}}</view>
+          <view>{{item.firstdoct}}</view>
+          <view>{{item.area}}</view>
+          <view>{{item.treatment}}</view>
           <view>{{item.comefrom}}</view>
+          <view>{{item.impressioninfo}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='患者标签'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>姓名</view>
+          <view>年龄</view>
+          <view>性别</view>
+          <view>初诊时间</view>
+          <view>初诊医生</view>
+          <view>所属区域</view>
+          <view>客户来源</view>
+          <view>就诊类别</view>
+          <view>客户星级</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.age}}</view>
+          <view>{{item.sex}}</view>
+          <view>{{item.firstdate}}</view>
+          <view>{{item.firstdoct}}</view>
+          <view>{{item.area}}</view>
+          <view>{{item.treatment}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.patientstar}}</view>
         </view>
       </view>
     </view>
@@ -2044,13 +2197,29 @@
       <view class="list">
         <view class="list_li">
           <view>病历号</view>
-          <view>客户姓名</view>
-          <view>客户来源</view>
+          <view>姓名</view>
+          <view>年龄</view>
+          <view>性别</view>
+          <view>初诊时间</view>
+          <view>初诊医生</view>
+          <view>所属区域</view>
+          <!-- <view>客户来源</view> -->
+          <view>就诊类别</view>
+          <view>客户星级</view>
+          <view>客户标签</view>
         </view>
-        <view class="list_li" wx:for="{{arr}}">
+        <view class="list_li" wx:for="{{arr.detail}}">
           <view>{{item.patientid}}</view>
-          <view>{{item.patname}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.age}}</view>
+          <view>{{item.sex}}</view>
+          <view>{{item.firstdate}}</view>
+          <view>{{item.firstdoct}}</view>
+          <view>{{item.area}}</view>
+          <!-- <view>{{item.treatment}}</view> -->
           <view>{{item.comefrom}}</view>
+          <view>{{item.patientstar}}</view>
+          <view>{{item.impressioninfo}}</view>
         </view>
       </view>
     </view>
@@ -2058,13 +2227,57 @@
       <view class="list">
         <view class="list_li">
           <view>病历号</view>
-          <view>客户姓名</view>
+          <view>姓名</view>
+          <view>年龄</view>
+          <view>性别</view>
+          <view>初诊时间</view>
+          <view>初诊医生</view>
+          <view>所属区域</view>
           <view>客户来源</view>
+          <!-- <view>就诊类别</view> -->
+          <view>客户星级</view>
+          <view>客户标签</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.age}}</view>
+          <view>{{item.sex}}</view>
+          <view>{{item.firstdate}}</view>
+          <view>{{item.firstdoct}}</view>
+          <view>{{item.area}}</view>
+          <view>{{item.treatment}}</view>
+          <!-- <view>{{item.comefrom}}</view> -->
+          <view>{{item.patientstar}}</view>
+          <view>{{item.impressioninfo}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='客户收费详情'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>收费时间</view>
+          <view>病历号</view>
+          <view>客户姓名</view>
+          <view>性别</view>
+          <view>手机号</view>
+          <view>收费单号</view>
+          <view>医生</view>
+          <view>金额</view>
         </view>
         <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.paydate}}</view>
           <view>{{item.patientid}}</view>
-          <view>{{item.patname}}</view>
-          <view>{{item.comefrom}}</view>
+          <view>{{item.customername}}</view>
+          <view>{{item.sex}}</view>
+          <view>{{item.phone}}</view>
+          <view>{{item.payno}}</view>
+          <view>{{item.billdoct}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.pagetoatlpayfee}}</view>
         </view>
       </view>
     </view>
@@ -2330,6 +2543,90 @@
         <view class="canvas_box">
           <ec-canvas id="all-graph3" canvas-id="mychart-graph3" ec="{{ all3 }}"></ec-canvas>
         </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='支出金额详情'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>发生时间</view>
+          <view>经手人</view>
+          <view>负责人</view>
+          <view>支出类别</view>
+          <view>支出明细</view>
+          <view>支出金额</view>
+          <view>转账方式</view>
+          <view>备注</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.payoutdate}}</view>
+          <view>{{item.payoutman}}</view>
+          <view>{{item.principal}}</view>
+          <view>{{item.payouttype}}</view>
+          <view>{{item.payoutdetail}}</view>
+          <view>{{item.payoutfee}}</view>
+          <view>{{item.payoutstyle}}</view>
+          <view>{{item.payoutremark}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.totalpayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='支出分类'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>发生时间</view>
+          <view>经手人</view>
+          <view>负责人</view>
+          <view>支出类别</view>
+          <view>支出明细</view>
+          <view>支出金额</view>
+          <view>转账方式</view>
+          <view>备注</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.payoutdate}}</view>
+          <view>{{item.payoutman}}</view>
+          <view>{{item.principal}}</view>
+          <view>{{item.payouttype}}</view>
+          <view>{{item.payoutdetail}}</view>
+          <view>{{item.payoutfee}}</view>
+          <view>{{item.payoutstyle}}</view>
+          <view>{{item.payoutremark}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.totalpayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='付款方式'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>发生时间</view>
+          <view>经手人</view>
+          <view>负责人</view>
+          <view>支出类别</view>
+          <view>支出明细</view>
+          <view>支出金额</view>
+          <view>转账方式</view>
+          <view>备注</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.payoutdate}}</view>
+          <view>{{item.payoutman}}</view>
+          <view>{{item.principal}}</view>
+          <view>{{item.payouttype}}</view>
+          <view>{{item.payoutdetail}}</view>
+          <view>{{item.payoutfee}}</view>
+          <view>{{item.payoutstyle}}</view>
+          <view>{{item.payoutremark}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.totalpayfee}}</view>
+        </view>
+      </view>
     </view>
   </van-popup>
 </view>

@@ -958,6 +958,31 @@ Page({
           }
         }
       })
+    } else if (e.currentTarget.dataset.text == '患者标签') {
+      wx.request({
+        url: getApp().data.APIS + '/report/totalsinfo',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate,
+          impressioninfo: self.data.child_text
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+          'token': wx.getStorageSync('token')
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
     }
   }, 
   onClosedata() {
@@ -1771,16 +1796,16 @@ Page({
             lost: 0,
             free: 0
           }
-          if (res.data.list.newdeal && res.data.list.newlost && res.data.list.newvisit) {
-            let res_arr1 = res.data.list.newdeal.sort(function (a, b) {
+          if (res.data.list.newdeal || res.data.list.newlost || res.data.list.newvisit) {
+            let res_arr1 = res.data.list.newdeal? res.data.list.newdeal.sort(function (a, b) {
+              return new Date(a.studydate).getTime() - new Date(b.studydate).getTime()
+            }) : []
+            let res_arr2 = res.data.list.newlost?res.data.list.newlost.sort(function (a, b) {
               return new Date(a.studydate).getTime() - new Date(b.studydate).getTime();
-            })
-            let res_arr2 = res.data.list.newlost.sort(function (a, b) {
+            }) : []
+            let res_arr3 = res.data.list.newvisit?res.data.list.newvisit.sort(function (a, b) {
               return new Date(a.studydate).getTime() - new Date(b.studydate).getTime();
-            })
-            let res_arr3 = res.data.list.newvisit.sort(function (a, b) {
-              return new Date(a.studydate).getTime() - new Date(b.studydate).getTime();
-            })
+            }): []
             for (let i = 0; i < res_arr1.length; i++) {
               arr.push(res_arr1[i].studydate)
               arr2[0].data.push(res_arr1[i].payfee)
@@ -1812,7 +1837,7 @@ Page({
                 var option = {
                   legend: {
                     y: 'bottom',
-                    data: ['初诊人次', '流失人次', '流失率']
+                    data: ['新诊人次', '流失人次', '流失率']
                   },
                   color: ['#c2d4ff', '#8ca8ec', '#e7bce2'],
                   grid: {
@@ -3109,7 +3134,7 @@ Page({
                 chart.setOption(option);
                 chart.on('click', function (params) {
                   let child_text = params.name
-                  self.setData({ popup_title: '受理项目详情', showdata: true, child_text: child_text, popup_num: 0 });
+                  self.setData({ popup_title: '咨询客户来源详情', showdata: true, child_text: child_text, popup_num: 0 });
                   wx.request({
                     url: getApp().data.APIS + '/report/comefromdetail',
                     method: 'post',
@@ -3355,7 +3380,32 @@ Page({
 
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '区域分布', showdata: true });
+                  let child_text = params.name
+                  self.setData({ popup_title: '区域分布', showdata: true, child_text: child_text });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/totalsinfo',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      area: self.data.child_text
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
                 })
                 return chart;
               })
@@ -3385,14 +3435,19 @@ Page({
         'token':wx.getStorageSync('token')
       },
       success: function (res) {
+        console.log(2)
         console.log(res)
         if (res.data.info == 'ok') {
           let arr = []
           let arr1 = []
           if (res.data.list) {
             arr1=[
-              { name: '17-30岁', value: Number(res.data.list[0].lage) + Number(res.data.list[0].lastage) + Number(res.data.list[0].lsage)},
-              { name: '31-50岁', value: Number(res.data.list[0].mage) + Number(res.data.list[0].sage) + Number(res.data.list[0].smallage) }
+              { name: '未知', value: res.data.list[0].mage},
+              { name: '1-6岁', value: res.data.list[0].sage },
+              { name: '7-16岁', value: res.data.list[0].lastage },
+              { name: '17-30岁', value: res.data.list[0].smallage },
+              { name: '31-51岁', value: res.data.list[0].lsage },
+              { name: '51岁以上', value: res.data.list[0].lage }
             ]
             self.setData({
               market2_none: false,
@@ -3427,7 +3482,47 @@ Page({
 
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '年龄分布', showdata: true });
+                  console.log(params)
+                  let child_text = params.name
+                  let t_age = ''
+                  if (child_text == '未知'){
+                    t_age = '未知'
+                  } else if (child_text == '1-6岁') {
+                    t_age = '0'
+                  } else if (child_text == '7-16岁') {
+                    t_age = '1'
+                  } else if (child_text == '17-30岁') {
+                    t_age = '2'
+                  } else if (child_text == '31-51岁') {
+                    t_age = '3'
+                  } else if (child_text == '51岁以上') {
+                    t_age = '51岁以上'
+                  }
+                  self.setData({ popup_title: '年龄分布', showdata: true, child_text: child_text });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/totalsinfo',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      agename: t_age
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
                 })
                 return chart;
               })
@@ -3462,7 +3557,7 @@ Page({
           if (res.data.list) {
             let arr = ['男', '女', '未知']
             let arr1 = [
-              { name: '性别分布', type: 'bar', data: [res.data.list[0].mcount, res.data.list[0].ncount, res.data.list[0].wcount] }
+              { name: '性别分布', type: 'bar', data: [res.data.list[0].mcount, res.data.list[0].wcount, res.data.list[0].ncount] }
             ]
             self.setData({
               market3_none: false,
@@ -3499,7 +3594,32 @@ Page({
 
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '性别分布', showdata: true });
+                  let child_text = params.name
+                  self.setData({ popup_title: '性别分布', showdata: true, child_text: child_text});
+                  wx.request({
+                    url: getApp().data.APIS + '/report/totalsinfo',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      sex: self.data.child_text
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
                 })
                 return chart;
               })
@@ -3583,7 +3703,34 @@ Page({
 
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '患者星级', showdata: true });
+                  console.log(params)
+                  let index = params.dataIndex
+                  let child_text = params.name
+                  self.setData({ popup_title: '患者星级', showdata: true, child_text: child_text });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/totalsinfo',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      patientstar: self.data.index
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
                 })
                 return chart;
               })
@@ -3591,6 +3738,41 @@ Page({
           } else {
             self.setData({
               market4_none: true,
+            })
+          }
+        }
+      }
+    })
+
+    wx.request({
+      url: getApp().data.APIS + '/report/ImpTotal',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(5)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = []
+          if (res.data.list) {
+            self.setData({
+              market5_none: false,
+              market5_arr:res.data.list
+            })
+          } else {
+            self.setData({
+              market5_none: true,
             })
           }
         }
@@ -3654,7 +3836,32 @@ Page({
 
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '患者就诊项目', showdata: true });
+                  let child_text = params.name
+                  self.setData({ popup_title: '患者就诊项目', showdata: true, child_text: child_text });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/totalsinfo',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      treatment: self.data.child_text
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
                 })
                 return chart;
               })
@@ -3742,7 +3949,32 @@ Page({
 
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '来源分析', showdata: true });
+                  let child_text = params.name
+                  self.setData({ popup_title: '来源分析', showdata: true, child_text: child_text });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/totalsinfo',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      comefrom: self.data.child_text
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
                 })
                 return chart;
               })
@@ -3750,6 +3982,104 @@ Page({
           } else {
             self.setData({
               market7_none: true,
+            })
+          }
+        }
+      }
+    })
+
+
+    wx.request({
+      url: getApp().data.APIS + '/report/comefrompay',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(8)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = []
+          if (res.data.list) {
+            for (let i = 0; i < res.data.list.length; i++) {
+              arr1.push({ name: res.data.list[i].comefrom, value: Number(res.data.list[i].payfee) })
+            }
+            self.setData({
+              market8_none: false,
+            })
+            chart_market8()
+            function chart_market8() {
+              self.market_graph8.init(function (canvas, width, height, dpr) {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  color: ['#89a9ec', '#c0d5ff', '#f8a45e'],
+                  series: [
+                    {
+                      name: '客户收费详情',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: arr1,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  let child_text = params.name
+                  self.setData({ popup_title: '客户收费详情', showdata: true, child_text: child_text });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/comefrompaylist',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      comefrom: self.data.child_text
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              market8_none: true,
             })
           }
         }
@@ -4476,19 +4806,104 @@ Page({
         'token':wx.getStorageSync('token')
       },
       success: function (res) {
+        console.log(1)
         console.log(res)
         if (res.data.info == 'ok') {
           let arr = []
-          let arr1 = []
+          let arr1 = [
+            { name: '支出金额统计', data: [] }]
           if (res.data.list) {
-            // for (let i = 0; i < res.data.list.length; i++) {
-            //   arr1.push({ name: res.data.list[i].area, data: Number(res.data.list[i].scount) })
-            // }
-            // self.pieShow('expenditure1',arr, arr1)
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].date)
+              arr1[0].data.push(Number(res_arr1[i].pfee))
+            }
+            self.setData({
+              expenditure1_none: false
+            })
+            console.log(arr)
+            console.log(arr1)
+            chart_expenditure1()
+            function chart_expenditure1() {
+              self.expenditure_graph1.init(function (canvas, width, height, dpr) {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  color: ['#8ca8ec'],
+
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0.2, 0.2]
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '支出金额统计',
+                      type: 'bar',
+                      data: arr1[0].data
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  self.setData({ popup_title: '支出金额详情', showdata: true });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/payout',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                        console.log(res.data.list)
+                      }
+                    }
+                  })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              expenditure1_none: true
+            })
           }
-          self.setData({
-            expenditure_total: res.data.totalcount
-          })
         }
       }
     })
@@ -4509,15 +4924,81 @@ Page({
         'token':wx.getStorageSync('token')
       },
       success: function (res) {
+        console.log(2)
         console.log(res)
         if (res.data.info == 'ok') {
-          let arr = []
-          let arr1 = []
           if (res.data.list) {
-            // for (let i = 0; i < res.data.list.length; i++) {
-            //   arr1.push({ name: res.data.list[i].area, data: Number(res.data.list[i].scount) })
-            // }
-            // self.pieShow('expenditure1',arr, arr1)
+            let arr1 = []
+            for (let i = 0; i < res.data.list.length; i++) {
+              arr1.push({ name: res.data.list[i].payouttype, value: Number(res.data.list[i].pfee)})
+            }
+            self.setData({
+              expenditure2_none: false
+            })
+            chart_expenditure2()
+            function chart_expenditure2() {
+              self.expenditure_graph2.init(function (canvas, width, height, dpr) {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  color: ['#89a9ec', '#c0d5ff', '#f8a45e'],
+                  series: [
+                    {
+                      name: '支出分类情况占比',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: arr1,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  let child_text = params.name
+                  self.setData({ popup_title: '支出分类', showdata: true, child_text: child_text });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/payout',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      payouttype: child_text
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              expenditure2_none: true
+            })
           }
         }
       }
@@ -4539,16 +5020,83 @@ Page({
         'token':wx.getStorageSync('token')
       },
       success: function (res) {
-        console.log(1)
+        console.log(3)
         console.log(res)
+
         if (res.data.info == 'ok') {
-          let arr = []
-          let arr1 = []
           if (res.data.list) {
-            // for (let i = 0; i < res.data.list.length; i++) {
-            //   arr1.push({ name: res.data.list[i].area, data: Number(res.data.list[i].scount) })
-            // }
-            // self.pieShow('expenditure1',arr, arr1)
+            let arr1 = []
+            for (let i = 0; i < res.data.list.length; i++) {
+              arr1.push({ name: res.data.list[i].payoutstyle, value: Number(res.data.list[i].pfee) })
+            }
+            self.setData({
+              expenditure3_none: false
+            })
+            console.log(arr1)
+            chart_expenditure3()
+            function chart_expenditure3() {
+              self.expenditure_graph3.init(function (canvas, width, height, dpr) {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  color: ['#89a9ec', '#c0d5ff', '#f8a45e'],
+                  series: [
+                    {
+                      name: '付款方式情况占比',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: arr1,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  let child_text = params.name
+                  self.setData({ popup_title: '付款方式', showdata: true, child_text: child_text });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/payout',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      payouttype: child_text
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              expenditure3_none: true
+            })
           }
         }
       }
@@ -4728,7 +5276,7 @@ Page({
                 };
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '各诊所收入占比', showdata: true });
+                  // self.setData({ popup_title: '各诊所收入占比', showdata: true });
                 })
                 return chart;
               })
@@ -4805,7 +5353,7 @@ Page({
                 };
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '初诊人次占比', showdata: true });
+                  // self.setData({ popup_title: '初诊人次占比', showdata: true });
                 })
                 return chart;
               })
@@ -4840,7 +5388,7 @@ Page({
                 };
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '复诊人次占比', showdata: true });
+                  // self.setData({ popup_title: '复诊人次占比', showdata: true });
                 })
                 return chart;
               })
@@ -4874,7 +5422,7 @@ Page({
                 };
                 chart.setOption(option);
                 chart.on('click', function (params) {
-                  self.setData({ popup_title: '新诊人次占比', showdata: true });
+                  // self.setData({ popup_title: '新诊人次占比', showdata: true });
                 })
                 return chart;
               })
