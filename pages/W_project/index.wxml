@@ -6,10 +6,10 @@
   </view> -->
   <view class="center">
     <view class="li" wx:for="{{arr}}">
-      <image src="{{item.img}}"></image>
-      <view>{{item.title}}</view>
-      <view class="money">￥{{item.price}}</view>
-      <view class="btn" data-id="{{item.id}}" bindtap="W_ordergo">预约治疗</view>
+      <image src="{{item.mainpic}}"></image>
+      <view>{{item.servicesname}}</view>
+      <view class="money">￥{{item.servicesprice}}</view>
+      <view class="btn" data-item="{{item}}" bindtap="W_ordergo">预约治疗</view>
     </view>
   </view>
 </view>

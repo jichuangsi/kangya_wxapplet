@@ -12,7 +12,9 @@ Page({
       { img: '', title: '牙齿矫正', price: '0', id: 1 },
       { img: '', title: '根管治疗', price: '0', id: 2 },
       { img: '', title: '牙齿美容', price: '0', id: 3 }
-    ]
+    ],
+    clinicid: '',
+    isOverShare: true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -25,24 +27,47 @@ Page({
       phoneNumber: e.currentTarget.dataset.iphone //仅为示例，并非真实的电话号码
     })
   },
-  W_ordergo() {
+  W_ordergo(e) {
+    let item = e.currentTarget.dataset.item
     wx.navigateTo({
-      url: '../W_order/index?title=' + this.data.title,
+      url: '../W_order/index?title=' + this.data.title + '&&servicesname=' + item.servicesname + '&&weiwebserviceidentity=' + item.weiwebserviceidentity,
+    })
+  },
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/VWeb/ServerGet',
+      method: 'post',
+      data: {
+        "clinicid": self.data.clinicid,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(111)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            arr: res.data.list
+          })
+        }
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ title: options.title })
+    this.setData({
+      title: options.title,
+      clinicid: options.id ? options.id : '422063022055030784'
+    })
     wx.setNavigationBarTitle({
       title: options.title
     })
-    var pages = getCurrentPages();
-    var prevPage = pages[pages.length - 2];  //上一个页面
-    this.setData({
-      arr: prevPage.data.project_arr
-    })
+    this.getdata()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -90,6 +115,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/pages/W_project/index?title=' + this.data.title + '&&id=' + this.data.clinicid  // 路径，传递参数到指定页面。
+    }
   }
 })

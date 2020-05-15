@@ -7,16 +7,9 @@ Page({
   data: {
     title: '康牙医生',
     img_arr:['','',''],
-    clinic_phone:'',
-    clinic_name: '',
-    clinic_address: '',
-    contacts: '',
-    phone: '',
-    time: '',
-    bz: '',
-    follownum: '',
-    doctor_arr: '',
-    project_arr: '',
+    clinicid:'',
+    clinic_phone: '',
+    isOverShare: true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -32,36 +25,53 @@ Page({
   getdata(){
     let self = this
     wx.request({
-      url: getApp().data.API+'/W_index.json',
-      headers: {
-        'Content-Type': 'application/json',
-        'token':wx.getStorageSync('token')
+      url: getApp().data.APIS + '/VWeb/BannerGet',
+      method: 'post',
+      data: {
+        "clinicid": self.data.clinicid,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
       },
       success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
+        console.log(111)
+        console.log(res)
+        if (res.data.info == 'ok') {
           self.setData({
-            img_arr: res.data.img_arr,
-            clinic_phone: res.data.clinic_phone,
-            clinic_name: res.data.clinic_name,
-            clinic_address: res.data.clinic_address,
-            contacts: res.data.contacts,
-            phone: res.data.phone,
-            time: res.data.time,
-            bz: res.data.bz,
-            follownum: res.data.follownum,
-            doctor_arr: res.data.doctor_arr,
-            project_arr: res.data.project_arr,
+            img_arr:res.data.list
           })
         }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/VWeb/ClinicGet',
+      method: 'post',
+      data: {
+        "clinicid": self.data.clinicid,
       },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            clinic_phone: res.data.list[0].phone
+          })
+        }
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ title: options.title })
+    this.setData({
+      title: options.title,
+      clinicid: options.id ? options.id : '422063022055030784'
+    })
     wx.setNavigationBarTitle({
       title: options.title
     })
@@ -114,6 +124,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/pages/W_index/index?title=' + this.data.title + '&&id=' + this.data.clinicid  // 路径，传递参数到指定页面。
+    }
   }
 })

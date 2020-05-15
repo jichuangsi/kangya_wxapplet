@@ -47,6 +47,20 @@ Page({
           console.log(err)
         }
       }) 
+    } else if (stype == 'api') {
+      console.log(item.value.page + '&&id' + item.value.p.clinicid)
+      let url_id = item.value.page.indexOf('?') != -1 ? '&&id=' + item.value.p.clinicid : '?id=' + item.value.p.clinicid
+      wx.navigateTo({
+        url: '/' + item.value.page + url_id + '&&rw_url=' + item.value.url,
+      })
+    } else if (stype == 'article1') {
+      wx.navigateTo({
+        url: '/pages/newsdetails/index?title=' + item.name + '&&id=' + item.value,
+      })
+    } else if (stype == 'course1') {
+      wx.navigateTo({
+        url: '/pages/coursedetails/index?id=' + item.value,
+      })
     }
   },
   getdata(){

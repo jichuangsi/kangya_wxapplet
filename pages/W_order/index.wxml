@@ -44,7 +44,7 @@
     <view class="li">
       <van-icon name="../../../images/subscribe_icon_remarks_defauit.png" />
       <view class="text">病情描述</view>
-      <textarea value="{{bz}}" bindinput="bzipt" placeholder="病情描述..."></textarea>
+      <textarea wx:if="{{!show}}" value="{{bz}}" bindinput="bzipt" placeholder="病情描述..."></textarea>
     </view>
     <view class="xian"></view>
   </view>

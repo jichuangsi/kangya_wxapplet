@@ -100,7 +100,7 @@
     <van-grid-item icon="../../../images/clinic_workbench_icon_scheduling.png" text="排班" link-type="navigateTo"
     url="/pages/Scheduling/index" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_website.png" text="微官网" link-type="navigateTo"
-    url="/pages/W_index/index?title={{name}}" />
+    url="/pages/W_index/index?title={{name}}&&id={{id}}" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_marketing.png" text="营销" link-type="navigateTo"
     url="/pages/Marketing/index" />
     <van-grid-item icon="../../../images/clinic_workbench_icon_activity.png" text="活动" link-type="navigateTo"

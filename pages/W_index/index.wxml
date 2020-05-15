@@ -7,22 +7,22 @@
   <view class="center">
     <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true' autoplay='true'>
       <swiper-item wx:for="{{img_arr}}">
-        <image src="{{item}}"></image>
+        <image src="{{item.picurl}}"></image>
       </swiper-item>
     </swiper>
   </view>
   
   <van-grid column-num="3">
     <van-grid-item icon="../../../images/clinic_website_icon_clinic.png" text="诊所介绍" link-type="navigateTo"
-    url="/pages/W_introduce/index?title={{title}}" />
+    url="/pages/W_introduce/index?title={{title}}&&id={{clinicid}}" />
     <van-grid-item icon="../../../images/clinic_website_icon_team.png" text="医生团队" link-type="navigateTo"
-    url="/pages/W_team/index?title={{title}}"/>
+    url="/pages/W_team/index?title={{title}}&&id={{clinicid}}"/>
     <van-grid-item icon="../../../images/clinic_website_icon_treatment.png" text="治疗项目" link-type="navigateTo"
-    url="/pages/W_project/index?title={{title}}"/>
+    url="/pages/W_project/index?title={{title}}&&id={{clinicid}}"/>
     <van-grid-item icon="../../../images/clinic_website_icon_reservation.png" text="在线预约" link-type="navigateTo"
-    url="/pages/W_order/index?title={{title}}"/>
+    url="/pages/W_order/index?title={{title}}&&id={{clinicid}}"/>
     <van-grid-item icon="../../../images/clinic_website_icon_address.png" text="诊所地址" link-type="navigateTo"
-    url="/pages/W_address/index?title={{title}}"/>
+    url="/pages/W_address/index?title={{title}}&&id={{clinicid}}"/>
     <van-grid-item icon="../../../images/clinic_website_icon_telephone.png" text="诊所电话"
     bind:click='iphoneclick' />
   </van-grid>

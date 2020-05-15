@@ -57,11 +57,16 @@
   flex-wrap: wrap;
   border-bottom: 1rpx solid #f2f2f2
 }
+.li view:last-child{
+  color: #bababa;
+}
 .bz {
   width: 100%;
+  color: #bababa;
+  text-indent: 20rpx;
 }
 .green {
-  color: #16c7ae;
+  color: #16c7ae !important;
 }
 .btn {
   width: 100%;

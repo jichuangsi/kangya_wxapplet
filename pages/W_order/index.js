@@ -65,11 +65,11 @@ Page({
       });
     } else if (this.data.check_num == 2) {
       this.setData({
-        columns: this.data.columns_project
+        columns: this.data.columns_project_value
       });
     } else if (this.data.check_num == 3) {
       this.setData({
-        columns: this.data.columns_doctor
+        columns: this.data.columns_doctor_value
       });
     }
   },
@@ -114,14 +114,72 @@ Page({
     var s = date.getSeconds();
     return Y + M + D;
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/VWeb/ServerGet',
+      method: 'post',
+      data: {
+        "clinicid": self.data.clinicid,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(111)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          for(let i = 0;i<res.data.list.length;i++){
+            arr.push(res.data.list[i].servicesname)
+          }
+          self.setData({
+            columns_project: res.data.list,
+            columns_project_value:arr
+          })
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/VWeb/DoctorGet',
+      method: 'post',
+      data: {
+        "clinicid": self.data.clinicid,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(111)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          for (let i = 0; i < res.data.list.length; i++) {
+            arr.push(res.data.list[i].doctorname)
+          }
+          self.setData({
+            columns_doctor: res.data.list,
+            columns_doctor_value: arr
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ title: options.title })
+    this.setData({ 
+      title: options.title,
+      check_doctor: options.doctorname ? options.doctorname : '',
+      check_project: options.servicesname ? options.servicesname : ''
+    })
     wx.setNavigationBarTitle({
       title: options.title
     })
+    this.getdata()
   },
 
   /**

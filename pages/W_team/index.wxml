@@ -6,14 +6,14 @@
   </view> -->
   <view class="center">
     <view class="libox" wx:for="{{doctor_arr}}">
-      <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.img!=''}}"></image>
-      <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.img!=''&&item.sex==0}}"></image>
-      <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.img!=''&&item.sex==1}}"></image>
+      <view class="imgbox">
+        <image mode="widthFix" src="{{item.photo}}"></image>
+      </view>
       <view class="box">
-        <view class="name">{{item.doctor_name}}</view>
-        <view>{{item.position}}</view>
-        <view class="text">{{item.bz}}</view>
-        <view class="state" bindtap="W_ordergo">立即预约</view>
+        <view class="name">{{item.doctorname}}</view>
+        <view>{{item.jobtitle}}</view>
+        <view class="text">{{item.brief}}</view>
+        <view class="state" data-item="{{item}}" bindtap="W_ordergo">立即预约</view>
       </view>
     </view>
   </view>
