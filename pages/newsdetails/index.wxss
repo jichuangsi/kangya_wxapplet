@@ -44,6 +44,8 @@ button {
   width: 60rpx;
   height: 60rpx;
   margin-right: 10rpx;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .center .user .userimg image {
   width: 100%;
@@ -64,8 +66,9 @@ button {
   margin: 0 10rpx;
 }
 .center .title {
-  font-size: 30rpx;
+  font-size: 38rpx;
   line-height: 46rpx;
+  font-weight: 600;
   margin-bottom: 10rpx;
 }
 .center .text {

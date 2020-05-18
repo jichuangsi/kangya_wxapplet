@@ -8,16 +8,16 @@
     <view class="box" bindtap="getQRCode">
     <image src="../../images/clinic_new_icon_qrcode.png"></image>
     <view class="text">
-    牙医管家PC的关联二维码
+    康牙医生PC的关联二维码
     </view>
     <view class="text1">扫一扫关联诊所</view>
     </view>
     <view class="box" bindtap="goclinic">
     <image src="../../images/clinic_new_icon_qrcode.png"></image>
     <view class="text">
-    仅限牙医管家PC专业版用户
+    仅限康牙医生PC专业版用户
     </view>
-    <view class="text1">输入管家号、姓名、密码</view>
+    <view class="text1">输入诊所号、姓名、密码</view>
     <view class="text1">关联诊所</view>
     </view>
   </view>

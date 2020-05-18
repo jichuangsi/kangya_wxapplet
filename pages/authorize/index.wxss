@@ -1,0 +1,15 @@
+/* pages/authorize/index.wxss */
+.box {
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.text {
+  line-height: 188rpx;
+  font-size: 38rpx;
+  font-weight: 600;
+  text-align: center;
+}

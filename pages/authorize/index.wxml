@@ -1,0 +1,7 @@
+<!--pages/authorize/index.wxml-->
+<view class="authorize">
+  <view class="box">
+    <view class="text">是否授权登录</view>
+    <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">确定</button>
+  </view>
+</view>

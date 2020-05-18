@@ -10,7 +10,7 @@
   <view class="center">
     <view class="user">
       <view class="userimg">
-      <image src="../../images/my_headportrait_male.png"></image>
+      <image src="{{userimg}}"></image>
       </view>
       <view class="username">
         <view class="name">{{name}}</view>

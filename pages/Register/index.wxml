@@ -19,7 +19,7 @@
       <input value="{{psw}}" bindinput="pswtext" placeholder="输入密码"></input>
     </view>
     <view class="xy {{state==0?'check_xy':''}}" bindtap="stateclick">
-    <van-icon name="checked" size="36rpx" />  注册即表示同意<view>《康牙管家服务与用户协议》</view>
+    <van-icon name="checked" size="36rpx" />  注册即表示同意<view>《康牙医生服务与用户协议》</view>
     </view>
     <view class="btn">注册</view>
   </view>

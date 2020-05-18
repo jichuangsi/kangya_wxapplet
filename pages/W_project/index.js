@@ -27,6 +27,12 @@ Page({
       phoneNumber: e.currentTarget.dataset.iphone //仅为示例，并非真实的电话号码
     })
   },
+  go(e){
+    let item = escape(JSON.stringify(e.currentTarget.dataset.item))
+    wx.navigateTo({
+      url: '../W_projectdetails/index?title=' + this.data.title + '&&item=' + item,
+    })
+  },
   W_ordergo(e) {
     let item = e.currentTarget.dataset.item
     wx.navigateTo({

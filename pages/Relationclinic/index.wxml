@@ -1,9 +1,9 @@
 <!--pages/Relationclinic/index.wxml-->
 <view class="Relationclinic">
-  <view class="top">
+  <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
-  </view>
+  </view> -->
   <view class="center">
     <view class="ipt">
       <van-icon name="home-o" />
@@ -11,11 +11,11 @@
     </view>
     <view class="ipt">
       <van-icon name="user-o" />
-      <input value="{{name}}" placeholder="诊所员工姓名" bindinput="iptname"></input>
+      <input value="{{name}}" placeholder="诊所员工手机号" bindinput="iptname"></input>
     </view>
     <view class="ipt">
       <van-icon name="bag" />
-      <input value="{{psw}}" password="{{pswstate}}" placeholder="密码（6-16）位" bindinput="iptpsw"></input>
+      <input value="{{psw}}" password="{{pswstate}}" placeholder="密码" bindinput="iptpsw"></input>
       <van-icon wx-if="{{!pswstate}}" name="eye-o" data-id="0" bindtap="pswcheck"/>
       <van-icon wx-if="{{pswstate}}" name="closed-eye" data-id="1" bindtap="pswcheck"/>
     </view>

@@ -4177,8 +4177,8 @@ Page({
       }
     })
   },
-  getconsult(){
-
+  getconsult() {
+    let self = this
   },
   getconsulting() {
 

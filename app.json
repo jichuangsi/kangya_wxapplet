@@ -97,9 +97,12 @@
     "pages/Reset/index",
     "pages/Register/index",
 
+    "pages/authorize/index",
+
     "pages/W_index/index",
     "pages/W_team/index",
     "pages/W_project/index",
+    "pages/W_projectdetails/index",
     "pages/W_order/index",
     "pages/W_address/index",
     "pages/W_introduce/index",

@@ -57,7 +57,7 @@
   bindtap="onClose">
     <view class="Hospital_li" data-logo="{{item.logo}}" data-name="{{item.clinicName}}" data-id="{{item.clinicid}}" wx:for="{{Hospital_arr}}" bindtap="Hospital_click">
       <view>{{item.clinicName}}</view>
-      <view>管家号{{item.clinicNum}}</view>
+      <view>诊所号{{item.clinicNum}}</view>
     </view>
   </van-popup>
   <van-popup show="{{ showleft }}"

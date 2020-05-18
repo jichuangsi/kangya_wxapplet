@@ -5,11 +5,11 @@
     </van-nav-bar>
   </view> -->
   <view class="center">
-    <view class="li" wx:for="{{arr}}">
+    <view class="li" wx:for="{{arr}}" data-item="{{item}}" bindtap="go">
       <image src="{{item.mainpic}}"></image>
       <view>{{item.servicesname}}</view>
       <view class="money">￥{{item.servicesprice}}</view>
-      <view class="btn" data-item="{{item}}" bindtap="W_ordergo">预约治疗</view>
+      <view class="btn" data-item="{{item}}" catchtap="W_ordergo">预约治疗</view>
     </view>
   </view>
 </view>

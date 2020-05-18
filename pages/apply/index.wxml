@@ -3,7 +3,7 @@
   <view class="h3">康牙牙医-看牙无忧分期申请</view>
   <view class="box">
     <view class="ipt">
-     <view class="left">管家号</view>
+     <view class="left">诊所号</view>
      <view style="margin-left:20rpx">366925</view>
     </view>
     <view class="ipt">

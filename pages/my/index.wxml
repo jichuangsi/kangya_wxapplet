@@ -46,7 +46,7 @@
       <navigator url="/pages/about/index" hover-class="navigator-hover">
         <view class="user_clinic">
           <image src="../../images/my_icon_housekeeper.png"></image>
-          <view class="clinic">关于牙医管家</view>
+          <view class="clinic">关于康牙医生</view>
         </view>
       </navigator>
       <navigator url="/pages/feedback/index" hover-class="navigator-hover">

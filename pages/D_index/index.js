@@ -8,6 +8,8 @@ Page({
     title: '康牙医生',
     arr:[],
     img_arr:['','',''],
+    doctorid: '',
+    isOverShare: true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -70,8 +72,9 @@ Page({
       method: 'get',
       data: {
         plugin:'gethomedoc',
-        p:5996551
+        p:self.data.doctorid
       },
+      // 5996551
       header: {
         'token': wx.getStorageSync('token')
       },
@@ -92,7 +95,7 @@ Page({
       method: 'get',
       data: {
         plugin: 'getkd',
-        p: 5996551
+        p: self.data.doctorid
       },
       header: {
         'token': wx.getStorageSync('token')
@@ -102,7 +105,11 @@ Page({
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
-            img_arr: res.data.list
+            img_arr: res.data.list,
+            title: res.data.list[0].title
+          })
+          wx.setNavigationBarTitle({
+            title: res.data.list[0].title
           })
         }
       }
@@ -112,7 +119,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ title: '康牙医生' })
+    this.setData({ title: '康牙医生',doctorid:options.doctorid })
     wx.setNavigationBarTitle({
       title: '康牙医生'
     })
@@ -162,10 +169,14 @@ Page({
 
   },
 
-  /**
+  /**doctor
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/pages/D_index/index?title=' + this.data.title + '&&doctorid=' + this.data.doctorid  // 路径，传递参数到指定页面。
+    }
   }
 })

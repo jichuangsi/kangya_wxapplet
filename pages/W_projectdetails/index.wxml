@@ -1,0 +1,22 @@
+<!--pages/W_projectdetails/index.wxml-->
+<view class="W_projectdetails">
+  <view class="center">
+    <view class="project">
+      <view class="li">
+        <image mode="widthFix" src="{{item.mainpic}}"></image>
+        <view class="project_text">
+          <view>{{item.servicesname}}</view>
+          <view class="money">￥{{item.servicesprice}}</view>
+        </view>
+      </view>
+    </view>
+  <view class="xian"></view>
+  <view class="introduce">
+    <view class="title">项目介绍</view>
+    <view class="text">
+      {{item.introduction}}
+    </view>
+  </view>
+  </view>
+  <view class="btn" catchtap="W_ordergo">预约治疗</view>
+</view>

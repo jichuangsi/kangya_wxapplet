@@ -45,7 +45,7 @@
     <view class="lecturer" wx:if="{{state == 3}}">
       <view class="addbox">
         <view class="addtitle">
-          牙医管家学习吧讲师入驻申请
+          康牙医生学习吧讲师入驻申请
         </view>
           <view class="ipt">
             <view class="iptname">

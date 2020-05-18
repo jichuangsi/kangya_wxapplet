@@ -7,6 +7,7 @@ Page({
   data: {
     title:"断牙重接",
     id:0,
+    userimg:'',
     name:'',
     time:'',
     look:'',
@@ -57,6 +58,7 @@ Page({
             look: res.data.list[0].hit,
             time: res.data.list[0].version.when,
             name: res.data.list[0].version.by.username,
+            userimg: res.data.list[0].version.by.profilePicture.path,
             text_arr: res.data.list[0].content.replace(/\<img/gi, '<img style="max-width:100%;height:auto"'),
             arr: res.data.list[0].links,
             show: false
