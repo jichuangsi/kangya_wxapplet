@@ -79,10 +79,15 @@ Page({
         'token': wx.getStorageSync('token')
       },
       success: function (res) {
+        console.log(2)
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
-            arr: res.data.list[0].content
+            arr: res.data.list[0].content,
+            title: res.data.list[0].title
+          })
+          wx.setNavigationBarTitle({
+            title: res.data.list[0].title
           })
         }
       }
@@ -105,11 +110,7 @@ Page({
         console.log(res)
         if (res.data.info == 'ok') {
           self.setData({
-            img_arr: res.data.list,
-            title: res.data.list[0].title
-          })
-          wx.setNavigationBarTitle({
-            title: res.data.list[0].title
+            img_arr: res.data.list
           })
         }
       }
