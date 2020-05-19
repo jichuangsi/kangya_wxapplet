@@ -14,8 +14,6 @@ App({
         //获取当前页面的对象
         view = pages[pages.length - 1],
         data;
-
-      console.log(view)
       if (view) {
         data = view.data;
         console.log('是否重写分享方法', data.isOverShare);
@@ -30,25 +28,23 @@ App({
           }
         }
       }
-      wx.getSetting({
-        success: result => {
-          console.log(result.authSetting['scope.userInfo'])
-          if (page_arr.indexOf(view.route)!=-1) {
-            console.log(321)
-          }else{
-            wx.setStorage({
-              key: "CurrentPage",
-              data: view.route
-            })
-            if (!result.authSetting['scope.userInfo']) {
-            } else {
-              self.signin()
-            }
+    })
+    wx.getSetting({
+      success: result => {
+        if (page_arr.indexOf(wx.getLaunchOptionsSync().path) != -1) {
+          console.log(321)
+        } else {
+          wx.setStorage({
+            key: "CurrentPage",
+            data: wx.getLaunchOptionsSync().path
+          })
+          if (!result.authSetting['scope.userInfo']) {
+          } else {
+            self.signin()
           }
         }
-      })
+      }
     })
-
   },
   signin() {
     //****************************放在初始化界面***************************** */
@@ -58,11 +54,9 @@ App({
       // 调用 login 获取 code
       success: function (res) {
         var code = res.code;
-        console.log(res)
         wx.getUserInfo({
           // 调用 getUserInfo 获取 encryptedData 和 iv
           success: function (res) {
-            console.log(res)
             // success
             xdata.userInfo = res.userInfo;
             var encryptedData = res.encryptedData || 'encry';
