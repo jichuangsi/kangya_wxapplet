@@ -9,14 +9,14 @@
       <view class="title">活动总计</view>
       <view class="box">
         <view class="left">
-         <image src="../../images/activity_popularize_icon_use.png"></image>
+         <image src="https://www.kyawang.com/uploads/images/activity_popularize_icon_use.png"></image>
          <view class="text">
           <view class="num n1">0</view>
           <view>使用人数</view>
          </view>
         </view>
         <view class="right">
-         <image src="../../images/activity_popularize_icon_Receive.png"></image>
+         <image src="https://www.kyawang.com/uploads/images/activity_popularize_icon_Receive.png"></image>
          <view class="text">
           <view class="num n2">0</view>
           <view>领取人数</view>
@@ -35,7 +35,7 @@
           </view>
           
         <view class="wu">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
           </van-tab>
@@ -48,7 +48,7 @@
           </view>
           
         <view class="wu">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
           </van-tab>
@@ -61,7 +61,7 @@
           </view>
           
         <view class="wu">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
           </van-tab>

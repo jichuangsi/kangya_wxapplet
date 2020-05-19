@@ -10,7 +10,7 @@ Page({
     latitude: 23.099994,
     clinicid: '',
     markers: [{
-      iconPath: "../../images/kyshop.png",
+      iconPath: "https://www.kyawang.com/uploads/images/kyshop.png",
       id: 0,
       latitude: 23.099994,
       longitude: 113.324520,
@@ -52,7 +52,7 @@ Page({
             latitude: res.data.list[0].latitude,
             clinic_phone: res.data.list[0].phone,
             markers: [{
-              iconPath: "../../images/kyshop.png",
+              iconPath: "https://www.kyawang.com/uploads/images/kyshop.png",
               id: 0,
               latitude: res.data.list[0].latitude,
               longitude: res.data.list[0].longitude,

@@ -16,8 +16,8 @@
             <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{arr}}">
               <view class="li_top">
                 <view class="li_left">
-                  <image src="../../images/my_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
-                  <image src="../../images/my_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
+                  <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
+                  <image src="https://www.kyawang.com/uploads/images/my_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
                   <view class="libox">
                     <view>患者姓名</view>
                     <view>{{item.customername}}</view>
@@ -31,20 +31,20 @@
                     <view class="time">{{item.returndate}}</view>
                   </view>
                 </view>
-                <image class="del" src="../../images/del.png" data-item="{{item}}" catchtap="visit_del"></image>
-                <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state==3||item.returnresult==3}}"></image>
-                <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state==4||item.returnresult==4}}"></image>
+                <image class="del" src="https://www.kyawang.com/uploads/images/del.png" data-item="{{item}}" catchtap="visit_del"></image>
+                <image class="stateimg" src="https://www.kyawang.com/uploads/images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state==3||item.returnresult==3}}"></image>
+                <image class="stateimg" src="https://www.kyawang.com/uploads/images/hf.png" wx:if="{{item.state==4||item.returnresult==4}}"></image>
               </view>
               <view class="green ret">{{item.record}}</view>
               <view class="f30" wx-if="{{item.remark!=''}}">
-                <image src="../../images/zd.png"></image>
+                <image src="https://www.kyawang.com/uploads/images/zd.png"></image>
                 <view>{{item.remark}}</view>
-                <image src="../../images/yd.png"></image>
+                <image src="https://www.kyawang.com/uploads/images/yd.png"></image>
               </view>
               <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
             </view>
         <view class="wu" wx:if="{{arr.length == 0}}">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
       </view>
@@ -52,24 +52,24 @@
         <view class="order_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}">
           <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
-            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
-            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
-            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" data-item="{{item}}" catchtap="order_del"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_boththe.png"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_visit.png"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="https://www.kyawang.com/uploads/images/del.png" data-item="{{item}}" catchtap="order_del"></image>
             </view>
             <view class="text_li">
-              <image src="../../images/4.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/4.png"></image>
               {{item.name}}
             </view>
             <view class="text_li">
-              <image src="../../images/3.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/3.png"></image>
               {{item.items}}
             </view>
             <view class="text_li">
-              <image src="../../images/1.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/1.png"></image>
               {{item.doctorname}}
             </view>
             <view class="bz text_li">
-              <image src="../../images/2.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/2.png"></image>
               {{item.remark}}
               <view class="f30" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
               <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
@@ -77,7 +77,7 @@
           </view>
         </view> 
         <view class="wu" wx:if="{{order_arr.length == 0}}">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
       </view>

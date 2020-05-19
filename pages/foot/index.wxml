@@ -3,13 +3,13 @@
   <van-tabbar-item>
     <image
       slot="icon"
-      src="../../images/tabbar_clinic_icon_uncheck.png"
+      src="https://www.kyawang.com/uploads/images/tabbar_clinic_icon_uncheck.png"
       mode="aspectFit"
       style="width: 30px; height: 18px;"
     />
     <image
       slot="icon-active"
-      src="../../images/tabbar_clinic_icon_selection.png"
+      src="https://www.kyawang.com/uploads/images/tabbar_clinic_icon_selection.png"
       mode="aspectFit"
       style="width: 30px; height: 18px;"
     />
@@ -18,13 +18,13 @@
   <van-tabbar-item dot="{{state}}">
     <image
       slot="icon"
-      src="../../images/tabbar_news_icon_uncheck.png"
+      src="https://www.kyawang.com/uploads/images/tabbar_news_icon_uncheck.png"
       mode="aspectFit"
       style="width: 30px; height: 18px;"
     />
     <image
       slot="icon-active"
-      src="../../images/tabbar_news_icon_selection.png"
+      src="https://www.kyawang.com/uploads/images/tabbar_news_icon_selection.png"
       mode="aspectFit"
       style="width: 30px; height: 18px;"
     />
@@ -33,13 +33,13 @@
   <van-tabbar-item>
     <image
       slot="icon"
-      src="../../images/tabbar_Study_icon_uncheck.png"
+      src="https://www.kyawang.com/uploads/images/tabbar_Study_icon_uncheck.png"
       mode="aspectFit"
       style="width: 30px; height: 18px;"
     />
     <image
       slot="icon-active"
-      src="../../images/tabbar_Study_icon_selection.png"
+      src="https://www.kyawang.com/uploads/images/tabbar_Study_icon_selection.png"
       mode="aspectFit"
       style="width: 30px; height: 18px;"
     />
@@ -48,13 +48,13 @@
   <van-tabbar-item>
     <image
       slot="icon"
-      src="../../images/tabbar_my_icon_uncheck.png"
+      src="https://www.kyawang.com/uploads/images/tabbar_my_icon_uncheck.png"
       mode="aspectFit"
       style="width: 30px; height: 18px;"
     />
     <image
       slot="icon-active"
-      src="../../images/tabbar_my_icon_selection.png"
+      src="https://www.kyawang.com/uploads/images/tabbar_my_icon_selection.png"
       mode="aspectFit"
       style="width: 30px; height: 18px;"
     />

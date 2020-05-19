@@ -5,19 +5,19 @@
   <view class="center">
       <view class="user_box" wx:if="{{state==1}}">
         <image src="{{patdetails.picture}}" wx:if="{{patdetails.picture != ''}}"></image>
-        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{patdetails.sex == '男'&&patdetails.picture == ''}}"></image>
-        <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{patdetails.sex == '女'&&patdetails.picture == ''}}"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{patdetails.sex == '男'&&patdetails.picture == ''}}"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_female.png" wx:if="{{patdetails.sex == '女'&&patdetails.picture == ''}}"></image>
         <view class="user">
           <view class="name">
               <view>{{patdetails.name}}</view>
               <view>
-                <image wx:if="{{patdetails.diseasehistory!=''}}" src="../../images/patient_icon_history.png"></image>
-                <!-- <image wx:if="{{patdetails.isfirst!='0'}}" src="../../images/patient_icon_lnthe.png"></image> -->
-                <image wx:if="{{patdetails.advancepay!='0.00'}}" src="../../images/patient_icon_money.png"></image>
-                <image wx:if="{{patdetails.debts!='0.00'}}" src="../../images/patient_icon_owe.png"></image>
-                <image wx:if="{{patdetails.img!='0'}}" src="../../images/patient_icon_picture.png"></image>
-                <image wx:if="{{patdetails.isvip!='0'}}" src="../../images/patient_icon_vip.png"></image>
-                <image wx:if="{{patdetails.isweixin!='0'}}" src="../../images/wx.png"></image>
+                <image wx:if="{{patdetails.diseasehistory!=''}}" src="https://www.kyawang.com/uploads/images/patient_icon_history.png"></image>
+                <!-- <image wx:if="{{patdetails.isfirst!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_lnthe.png"></image> -->
+                <image wx:if="{{patdetails.advancepay!='0.00'}}" src="https://www.kyawang.com/uploads/images/patient_icon_money.png"></image>
+                <image wx:if="{{patdetails.debts!='0.00'}}" src="https://www.kyawang.com/uploads/images/patient_icon_owe.png"></image>
+                <image wx:if="{{patdetails.img!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_picture.png"></image>
+                <image wx:if="{{patdetails.isvip!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_vip.png"></image>
+                <image wx:if="{{patdetails.isweixin!='0'}}" src="https://www.kyawang.com/uploads/images/wx.png"></image>
               </view>
           </view>
           <view class="state">
@@ -26,6 +26,6 @@
         </view>
       </view>
     <canvas class="canvas-code"canvas-id="myQrcode" style="background:#fff;width: 364rpx;height: 364rpx;"/>
-    <!-- <image class="Code" src="../../images/12.png"></image> -->
+    <!-- <image class="Code" src="https://www.kyawang.com/uploads/images/12.png"></image> -->
   </view>
 </view>

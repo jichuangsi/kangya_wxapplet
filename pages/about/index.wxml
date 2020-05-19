@@ -6,7 +6,7 @@
   </view> -->
   <view class="center">
     <view class="center_top">
-      <image src="../../images/clinic_marketing_icon_whitening.png"></image>
+      <image src="https://www.kyawang.com/uploads/images/clinic_marketing_icon_whitening.png"></image>
       <view>v4.12.1.6</view>
     </view>
     <navigator url="/pages/aboutdetails/index?title=新功能介绍" hover-class="navigator-hover">

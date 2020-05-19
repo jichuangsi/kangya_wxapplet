@@ -9,12 +9,12 @@
     <view class="center_top">
       <navigator url="/pages/Patientdetails/index" hover-class="navigator-hover">
       <view class="user_box">
-        <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png"></image>
         <view class="user">
           <view class="name">{{item.name}}</view>
           <view class="state">
-            <image wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
-            <image wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
+            <image wx:if="{{item.visitstatus!='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_boththe.png"></image>
+            <image wx:if="{{item.visitstatus=='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_visit.png"></image>
           </view>
         </view>
         <van-icon name="arrow"size="56rpx" />

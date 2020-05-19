@@ -11,18 +11,18 @@
   <view class="center">
     <view class="libox" wx:for="{{arr}}" wx:if="{{power_arr.code10101.has}}">
       <view class="li">
-        <image class="img" src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <image class="img" src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png"></image>
         <view class="name">{{item.examdoct}}</view>
         <view class="state {{item.studystatusname=='已完成'?'blue':''}} {{item.studystatusname=='待缴费'?'red':''}}">{{item.studystatusname}}</view>
         <view class="time">
-          <image class="stateimg" src="../../images/details_disposal_icon_boththe.png" wx:if="{{item.isfirstvisit==0}}"></image>
-          <image class="stateimg" src="../../images/details_disposal_icon_visit.png" wx:if="{{item.isfirstvisit==1}}"></image>
+          <image class="stateimg" src="https://www.kyawang.com/uploads/images/details_disposal_icon_boththe.png" wx:if="{{item.isfirstvisit==0}}"></image>
+          <image class="stateimg" src="https://www.kyawang.com/uploads/images/details_disposal_icon_visit.png" wx:if="{{item.isfirstvisit==1}}"></image>
           {{item.examdate}}
         </view>
       </view>
       <view class="li" wx:for="{{item.handlelist}}" wx:if="{{item.handletype==0}}">
         <view class="title">
-          <image src="../../images/details_disposal_icon_teeth.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/details_disposal_icon_teeth.png"></image>
           <view class="tooth">
             <view>{{item.lt}}</view>
             <view>{{item.rt}}</view>
@@ -59,14 +59,14 @@
           <view class="orange">折扣 ￥{{item.discountfee}}</view>
           <view class="green">减免 ￥0.00</view>
           <view class="hui">已收 ￥{{item.payfeetotal}}</view>
-          <image class="state" wx:if="{{item.studystatusname == '待缴费'}}" src="../../images/details_chargel_icon_pricing.png"></image>
+          <image class="state" wx:if="{{item.studystatusname == '待缴费'}}" src="https://www.kyawang.com/uploads/images/details_chargel_icon_pricing.png"></image>
       </view>
       <view class="li_left" wx:if="{{item.studystatusname != '治疗中'}}">
           <view class="blue">应收 ￥{{item.payfeetotal}}</view>
           <view class="red">欠费 ￥{{item.arrears}}</view>
       </view>
       <view class="li" bindtap="Soundgo" data-index="{{index}}">
-          <van-icon name="../../../images/details_disposal_icon_voice.png" />
+          <van-icon name="https://www.kyawang.com/uploads/images/details_disposal_icon_voice.png" />
           <view style="flex:1">语音备忘录</view>
           <view></view>
           <van-icon name="arrow" />
@@ -87,18 +87,18 @@
       </view>
       <view class="li">
         <view class="btn" wx:if="{{power_arr.code10103||(power_arr.code10102&&user.userid==item.doctoridexam)}}" data-index="{{index}}" bindtap="editgo">
-          <image src="../../images/details_disposal_icon_edit.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/details_disposal_icon_edit.png"></image>
           编辑
         </view>
         <!--  bindtap="Pricego" -->
         <view class="btn" data-item="{{item}}" bindtap="Pricego" wx:if="{{item.studystatusname == '治疗中'}}">
-          <image src="../../images/price.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/price.png"></image>
           划价
         </view>
       </view>
     </view>
         <view class="wu" wx:if="{{arr.length==0||!power_arr.code10101.has}}">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
   </view>

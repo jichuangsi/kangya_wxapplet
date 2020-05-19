@@ -6,7 +6,7 @@
   </view> -->
   <view class="center">
     <view class="li">
-      <van-icon name="../../../images/returnvisit_icon_personnel_default.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/returnvisit_icon_personnel_default.png" />
       <view>姓名</view>
       <input value="{{name}}" bindinput="nameipt" placeholder="姓名"></input>
     </view>
@@ -17,32 +17,32 @@
     </view>
     <view class="xian"></view>
     <view class="li" bindtap="showpoup" data-index="0">
-      <van-icon name="../../../images/returnvisit_icon_date_default.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/returnvisit_icon_date_default.png" />
       <view>预约日期</view>
       <view class="text fr">{{check_time}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="li" bindtap="showpoup" data-index="1">
-      <van-icon name="../../../images/subscribe_icon_dater_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/subscribe_icon_dater_defauit.png" />
       <view>选择时段</view>
       <view class="text fr">{{check_timeslot}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="li" bindtap="showpoup" data-index="2">
-      <van-icon name="../../../images/subscribe_icon_matter_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/subscribe_icon_matter_defauit.png" />
       <view>选择治疗项目</view>
       <view class="text fr">{{check_project}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="li" bindtap="showpoup" data-index="3">
-      <van-icon name="../../../images/subscribe_icon_doctor_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/subscribe_icon_doctor_defauit.png" />
       <view>选择医生</view>
       <view class="text fr">{{check_doctor}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="xian"></view>
     <view class="li">
-      <van-icon name="../../../images/subscribe_icon_remarks_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/subscribe_icon_remarks_defauit.png" />
       <view class="text">病情描述</view>
       <textarea wx:if="{{!show}}" value="{{bz}}" bindinput="bzipt" placeholder="病情描述..."></textarea>
     </view>

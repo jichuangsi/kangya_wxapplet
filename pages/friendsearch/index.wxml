@@ -12,7 +12,7 @@
   </view>
   <view class="center">
     <view class="li" wx:for="{{arr}}" wx:if="{{state==0}}">
-      <image src="../../images/11.png"></image>
+      <image src="https://www.kyawang.com/uploads/images/11.png"></image>
       <view class="right">
         <view class="title">
           <view class="name">A</view>
@@ -22,8 +22,8 @@
     </view>
       <view wx:for="{{project_list}}" wx:if="{{state == 1}}">
             <view class="li" data-id="{{item.doctorid}}" data-name="{{item.name}}" data-item="{{item}}" catchtap="detailsgo">
-              <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex=='男'}}"></image>
-              <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex=='女'}}"></image>
+              <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex=='男'}}"></image>
+              <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex=='女'}}"></image>
               <view class="user" use-slot>
                 <view class="name">{{item.name}}</view>
                 <view>{{item.duty}}</view>

@@ -1,9 +1,9 @@
 // pages/erocdetails/index.js
 
 import * as echarts from '../../ec-canvas/echarts.js';
-
+// let echarts = require("../../ec-canvas/echarts.js")
+  // <script src ="../../ec-canvas/echarts.js"></script>
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -969,6 +969,31 @@ Page({
           begindate: self.data.begindate,
           enddate: self.data.enddate,
           impressioninfo: self.data.child_text
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+          'token': wx.getStorageSync('token')
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.info == 'ok') {
+            self.setData({
+              arr: res.data.list
+            })
+          }
+        }
+      })
+    } else if (e.currentTarget.dataset.text == '咨询师咨询详情') {
+      wx.request({
+        url: getApp().data.APIS + '/report/acceptedtotalsinfo',
+        method: 'post',
+        data: {
+          pageno: 1,
+          pagesize: 100,
+          clinicid: self.data.clinicid,
+          begindate: self.data.begindate,
+          enddate: self.data.enddate,
+          counselor: self.data.child_text
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded', //修改此处即可
@@ -4179,9 +4204,1141 @@ Page({
   },
   getconsult() {
     let self = this
+    wx.request({
+      url: getApp().data.APIS + '/report/consulttotal',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = [
+            { name: '咨询人数', data: [] },
+            { name: '未成交人数', data: [] },
+            { name: '成交率', data: [] }
+          ]
+          let total = {
+            scount: 0,
+            ccount: 0,
+            wcount: 0,
+            chance: 0
+          }
+          if (res.data.list) {
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].date)
+              arr1[0].data.push(res_arr1[i].scount)
+              arr1[1].data.push(res_arr1[i].scount-res_arr1[i].ccount)
+              arr1[2].data.push(res_arr1[i].ccount / res_arr1[i].scount)*100
+              total.scount += res_arr1[i].scount
+              total.ccount += res_arr1[i].ccount
+            }
+            total.wcount = total.scount - total.ccount
+            total.chance = (Math.round((total.ccount / total.scount) * 10000) / 100)+'%'
+            console.log(arr1)
+            console.log(total)
+            chart_consult1()
+            self.setData({
+              consult_total1: total,
+              consult1_none: false,
+            })
+            function chart_consult1() {
+              self.consult_graph1.init((canvas, width, height, dpr) => {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['咨询人数', '未成交人数', '成交率']
+                  },
+                  color: ['#c2d4ff', '#8ca8ec', '#e7bce2'],
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      boundaryGap: true,
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0, 1]
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '咨询人数',
+                      type: 'bar',
+                      data: arr1[0].data
+                    },
+                    {
+                      name: '未成交人数',
+                      type: 'bar',
+                      data: arr1[1].data
+                    },
+                    {
+                      name: '成交率',
+                      type: 'line',
+                      data: arr1[2].data
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  self.setData({ popup_title: '咨询人数详情', showdata: true, child_text: '' });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/consulttotalinfo',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              consult1_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/consmoneytotal',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = [
+            { name: '咨询成交金额', data: [] },
+            { name: '客单成交额', data: [] }
+          ]
+          let total = {
+            zxmoney: 0,
+            kdmoney: 0,
+          }
+          if (res.data.list) {
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].date)
+              arr1[0].data.push(res_arr1[i].payfee)
+              arr1[1].data.push(res_arr1[i].cpayfee)
+              total.zxmoney += res_arr1[i].payfee
+              total.kdmoney += res_arr1[i].cpayfee
+            }
+            console.log(arr1)
+            console.log(total)
+            chart_consult2()
+            self.setData({
+              consult_total2: total,
+              consult2_none: false,
+            })
+            function chart_consult2() {
+              self.consult_graph2.init((canvas, width, height, dpr) => {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['咨询成交金额', '客单成交额']
+                  },
+                  color: ['#c2d4ff', '#e7bce2'],
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      boundaryGap: true,
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0, 1]
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '咨询成交金额',
+                      type: 'bar',
+                      data: arr1[0].data
+                    },
+                    {
+                      name: '客单成交额',
+                      type: 'line',
+                      data: arr1[1].data
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  self.setData({ popup_title: '咨询成交金额详情', showdata: true, child_text: '' });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/consulttotalinfo',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      treatment: "0"
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              consult2_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/itemstotal',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = [
+            { name: '成交人次', data: [] },
+            { name: '成交金额', data: [] }
+          ]
+          let total = {
+            zxmoney: 0,
+            kdmoney: 0,
+          }
+          if (res.data.list) {
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].treatment)
+              arr1[0].data.push(res_arr1[i].count)
+              arr1[1].data.push(res_arr1[i].payfee)
+            }
+            chart_consult3()
+            self.setData({
+              consult_total3: total,
+              consult3_none: false,
+            })
+            function chart_consult3() {
+              self.consult_graph3.init((canvas, width, height, dpr) => {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['成交人次', '成交金额']
+                  },
+                  color: ['#c2d4ff', '#0094ff'],
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      boundaryGap: true,
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0, 1]
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '成交人次',
+                      type: 'bar',
+                      data: arr1[0].data
+                    },
+                    {
+                      name: '成交金额',
+                      type: 'bar',
+                      data: arr1[1].data
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  let child_text = params.name
+                  self.setData({ popup_title: '咨询成交项目', showdata: true, child_text: child_text });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/itemstotalsinfo',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      treatment: self.data.child_text
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              consult3_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/acceptedtotal',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = [
+            { name: '接诊人数', data: [] },
+            { name: '成交人数', data: [] },
+            { name: '金额', data: [] }
+          ]
+          if (res.data.list) {
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].counselor)
+              arr1[0].data.push(res_arr1[i].scount)
+              arr1[1].data.push(res_arr1[i].ccount)
+              arr1[2].data.push(res_arr1[i].payfee)
+            }
+            chart_consult4()
+            self.setData({
+              consult4_none: false,
+            })
+            function chart_consult4() {
+              self.consult_graph4.init((canvas, width, height, dpr) => {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['接诊人数', '成交人数','金额']
+                  },
+                  color: ['#c2d4ff', '#e4ff57','#9d9be5'],
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      boundaryGap: true,
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0, 1]
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '接诊人数',
+                      type: 'bar',
+                      data: arr1[0].data
+                    },
+                    {
+                      name: '成交人数',
+                      type: 'bar',
+                      data: arr1[1].data
+                    },
+                    {
+                      name: '金额',
+                      type: 'bar',
+                      data: arr1[2].data
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  let child_text = params.name
+                  self.setData({ popup_title: '咨询师成交统计', showdata: true, child_text: child_text });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/acceptedtotalsinfo',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      counselor: self.data.child_text
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                      }
+                    }
+                  })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              consult4_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/docreceivetotal',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(1111)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          if (res.data.list) {
+            self.setData({
+              consult_rank1:res.data.list,
+              consult5_none: false,
+            })
+          } else {
+            self.setData({
+              consult5_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/docachievetotal',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(1111)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          if (res.data.list) {
+            self.setData({
+              consult_rank2: res.data.list,
+              consult6_none: false,
+            })
+          } else {
+            self.setData({
+              consult6_none: true,
+            })
+          }
+        }
+      }
+    })
   },
   getconsulting() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/report/Achievement',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = [
+            { name: '诊疗营业额', data: [] },
+          ]
+          let total = {
+            fee: 0,
+          }
+          if (res.data.list) {
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].date)
+              arr1[0].data.push(res_arr1[i].payfee)
+              total.fee += res_arr1[i].payfee
+            }
+            chart_consulting1()
+            self.setData({
+              consulting_total1: total,
+              consulting1_none: false,
+            })
+            function chart_consulting1() {
+              self.consulting_graph1.init((canvas, width, height, dpr) => {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['诊疗营业额']
+                  },
+                  color: ['#f48cd8', '#c2d4ff', '#e7bce2'],
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      boundaryGap: true,
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0, 1]
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '诊疗营业额',
+                      type: 'line',
+                      data: arr1[0].data
+                    }
+                  ]
+                };
 
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  // self.setData({ popup_title: '咨询人数详情', showdata: true, child_text: '' });
+                  // wx.request({
+                  //   url: getApp().data.APIS + '/report/consultingtotalinfo',
+                  //   method: 'post',
+                  //   data: {
+                  //     pageno: 1,
+                  //     pagesize: 100,
+                  //     clinicid: self.data.clinicid,
+                  //     begindate: self.data.begindate,
+                  //     enddate: self.data.enddate,
+                  //   },
+                  //   header: {
+                  //     'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                  //     'token': wx.getStorageSync('token')
+                  //   },
+                  //   success: function (res) {
+                  //     console.log(res)
+                  //     if (res.data.info == 'ok') {
+                  //       self.setData({
+                  //         arr: res.data.list
+                  //       })
+                  //     }
+                  //   }
+                  // })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              consulting1_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/CusVisit',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = [
+            { name: '人次', data: [] },
+          ]
+          let total = {
+            num: 0,
+          }
+          if (res.data.list) {
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].date)
+              arr1[0].data.push(res_arr1[i].num)
+              total.num += res_arr1[i].num
+            }
+            chart_consulting2()
+            self.setData({
+              consulting_total2: total,
+              consulting2_none: false,
+            })
+            function chart_consulting2() {
+              self.consulting_graph2.init((canvas, width, height, dpr) => {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['人次']
+                  },
+                  color: ['#fcd973', '#c2d4ff', '#e7bce2'],
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      boundaryGap: true,
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0, 1]
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '人次',
+                      type: 'line',
+                      data: arr1[0].data
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  // self.setData({ popup_title: '咨询人数详情', showdata: true, child_text: '' });
+                  // wx.request({
+                  //   url: getApp().data.APIS + '/report/consultingtotalinfo',
+                  //   method: 'post',
+                  //   data: {
+                  //     pageno: 1,
+                  //     pagesize: 100,
+                  //     clinicid: self.data.clinicid,
+                  //     begindate: self.data.begindate,
+                  //     enddate: self.data.enddate,
+                  //   },
+                  //   header: {
+                  //     'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                  //     'token': wx.getStorageSync('token')
+                  //   },
+                  //   success: function (res) {
+                  //     console.log(res)
+                  //     if (res.data.info == 'ok') {
+                  //       self.setData({
+                  //         arr: res.data.list
+                  //       })
+                  //     }
+                  //   }
+                  // })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              consulting2_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/DocVisit',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = [
+            { name: '人数', data: [] },
+          ]
+          if (res.data.list) {
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].expectdoct)
+              arr1[0].data.push(res_arr1[i].num)
+            }
+            chart_consulting3()
+            self.setData({
+              consulting3_none: false,
+            })
+            function chart_consulting3() {
+              self.consulting_graph3.init((canvas, width, height, dpr) => {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['人数']
+                  },
+                  color: ['#4295ff', '#c2d4ff', '#e7bce2'],
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      boundaryGap: true,
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0, 1]
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '人数',
+                      type: 'bar',
+                      data: arr1[0].data
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  // self.setData({ popup_title: '咨询人数详情', showdata: true, child_text: '' });
+                  // wx.request({
+                  //   url: getApp().data.APIS + '/report/consultingtotalinfo',
+                  //   method: 'post',
+                  //   data: {
+                  //     pageno: 1,
+                  //     pagesize: 100,
+                  //     clinicid: self.data.clinicid,
+                  //     begindate: self.data.begindate,
+                  //     enddate: self.data.enddate,
+                  //   },
+                  //   header: {
+                  //     'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                  //     'token': wx.getStorageSync('token')
+                  //   },
+                  //   success: function (res) {
+                  //     console.log(res)
+                  //     if (res.data.info == 'ok') {
+                  //       self.setData({
+                  //         arr: res.data.list
+                  //       })
+                  //     }
+                  //   }
+                  // })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              consulting3_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/DocAchievement',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = [
+            { name: '营业额', data: [] },
+          ]
+          if (res.data.list) {
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].doctorname)
+              arr1[0].data.push(res_arr1[i].payfee)
+            }
+            chart_consulting4()
+            self.setData({
+              consulting4_none: false,
+            })
+            function chart_consulting4() {
+              self.consulting_graph4.init((canvas, width, height, dpr) => {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['营业额']
+                  },
+                  color: ['#ff84de', '#c2d4ff', '#e7bce2'],
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      boundaryGap: true,
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0, 1]
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '营业额',
+                      type: 'bar',
+                      data: arr1[0].data
+                    }
+                  ]
+                };
+
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  // self.setData({ popup_title: '咨询营业额详情', showdata: true, child_text: '' });
+                  // wx.request({
+                  //   url: getApp().data.APIS + '/report/consultingtotalinfo',
+                  //   method: 'post',
+                  //   data: {
+                  //     pageno: 1,
+                  //     pagesize: 100,
+                  //     clinicid: self.data.clinicid,
+                  //     begindate: self.data.begindate,
+                  //     enddate: self.data.enddate,
+                  //   },
+                  //   header: {
+                  //     'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                  //     'token': wx.getStorageSync('token')
+                  //   },
+                  //   success: function (res) {
+                  //     console.log(res)
+                  //     if (res.data.info == 'ok') {
+                  //       self.setData({
+                  //         arr: res.data.list
+                  //       })
+                  //     }
+                  //   }
+                  // })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              consulting4_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/DocVisitRank',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(1111)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          if (res.data.list) {
+            self.setData({
+              consulting_rank1: res.data.list,
+              consulting5_none: false,
+            })
+          } else {
+            self.setData({
+              consulting5_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/DocAchievementRank',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(1111)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          if (res.data.list) {
+            self.setData({
+              consulting_rank2: res.data.list,
+              consulting6_none: false,
+            })
+          } else {
+            self.setData({
+              consulting6_none: true,
+            })
+          }
+        }
+      }
+    })
   },
   getbusiness() {
     let self = this
@@ -5102,8 +6259,325 @@ Page({
       }
     })
   },
-  getvisit(){
+  getvisit() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/report/visitpatientday',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          let arr = []
+          let arr1 = [
+            { name: '人数', data: [] },
+          ]
+          let total = {
+            num: 0,
+          }
+          if (res.data.list) {
+            let res_arr1 = res.data.list.sort(function (a, b) {
+              return new Date(a.date).getTime() - new Date(b.date).getTime();
+            })
+            for (let i = 0; i < res_arr1.length; i++) {
+              arr.push(res_arr1[i].date)
+              arr1[0].data.push(res_arr1[i].typesum)
+              total.num += Number(res_arr1[i].typesum)
+            }
+            chart_visit1()
+            self.setData({
+              visit_total1: total,
+              visit1_none: false,
+            })
+            console.log(total)
+            function chart_visit1() {
+              self.visit_graph1.init((canvas, width, height, dpr) => {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  legend: {
+                    y: 'bottom',
+                    data: ['人数']
+                  },
+                  color: ['#3c9ef4', '#c2d4ff', '#e7bce2'],
+                  grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '10%',
+                    containLabel: true
+                  },
+                  xAxis: [
+                    {
+                      type: 'category',
+                      "axisLabel": {
+                        interval: 0,
+                        rotate: 40
+                      },
+                      boundaryGap: true,
+                      data: arr
+                    }
+                  ],
+                  yAxis: [
+                    {
+                      type: 'value',
+                      min: 0,
+                      boundaryGap: [0, 1]
+                    }
+                  ],
+                  series: [
+                    {
+                      name: '人数',
+                      type: 'bar',
+                      data: arr1[0].data
+                    }
+                  ]
+                };
 
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  // self.setData({ popup_title: '咨询人数详情', showdata: true, child_text: '' });
+                  // wx.request({
+                  //   url: getApp().data.APIS + '/report/visittotalinfo',
+                  //   method: 'post',
+                  //   data: {
+                  //     pageno: 1,
+                  //     pagesize: 100,
+                  //     clinicid: self.data.clinicid,
+                  //     begindate: self.data.begindate,
+                  //     enddate: self.data.enddate,
+                  //   },
+                  //   header: {
+                  //     'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                  //     'token': wx.getStorageSync('token')
+                  //   },
+                  //   success: function (res) {
+                  //     console.log(res)
+                  //     if (res.data.info == 'ok') {
+                  //       self.setData({
+                  //         arr: res.data.list
+                  //       })
+                  //     }
+                  //   }
+                  // })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              visit1_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/visitpatienttype',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      }, 
+      success: function (res) {
+        console.log(res)
+        if (res.data.info == 'ok') {
+          if (res.data.list) {
+            let arr1 = []
+            for (let i = 0; i < res.data.list.length; i++) {
+              arr1.push({ name: res.data.list[i].returntype + res.data.list[i].typesum + '人', value: res.data.list[i].typesum })
+            }
+            self.setData({
+              visit2_none: false,
+            })
+            chart_visit2()
+            function chart_visit2() {
+              self.visit_graph2.init(function (canvas, width, height, dpr) {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  color: ['#71e38f', '#8bdee7', '#daaff4', '#94ea82'],
+                  series: [
+                    {
+                      name: '回访类型占比',
+                      type: 'pie',
+                      radius: ['50%', '30%'],
+                      center: ['50%', '60%'],
+                      data: arr1,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
+                    }
+                  ]
+                };
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  // self.setData({ popup_title: '回访类型占比', showdata: true });
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              visit2_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/visitpatientstate',
+      method: 'post',
+      data: {
+        pageno: 1,
+        pagesize: 10,
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(1)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          if (res.data.list) {
+            let arr1 = []
+            for (let i = 0; i < res.data.list.length; i++) {
+              arr1.push({ name: res.data.list[i].state + res.data.list[i].typesum + '人', value: res.data.list[i].typesum })
+            }
+            self.setData({
+              visit3_none: false,
+            })
+            chart_visit3()
+            function chart_visit3() {
+              self.visit_graph3.init(function (canvas, width, height, dpr) {
+                const chart = echarts.init(canvas, null, {
+                  width: width,
+                  height: height,
+                  devicePixelRatio: dpr // new
+                });
+                var option = {
+                  color: ['#fac596', '#8bdee7', '#daaff4', '#94ea82'],
+                  series: [
+                    {
+                      name: '患者回访情况',
+                      type: 'pie',
+                      radius: '55%',
+                      center: ['50%', '60%'],
+                      data: arr1,
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
+                    }
+                  ]
+                };
+                chart.setOption(option);
+                chart.on('click', function (params) {
+                  self.setData({ popup_title: '患者回访详情', showdata: true });
+                  wx.request({
+                    url: getApp().data.APIS + '/report/visitstatelist',
+                    method: 'post',
+                    data: {
+                      pageno: 1,
+                      pagesize: 100,
+                      clinicid: self.data.clinicid,
+                      begindate: self.data.begindate,
+                      enddate: self.data.enddate,
+                      patientkind: "",
+                      comefrom: "",
+                      visittype: "visit",
+                      num: ""
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+                      'token': wx.getStorageSync('token')
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      if (res.data.info == 'ok') {
+                        self.setData({
+                          arr: res.data.list
+                        })
+                        console.log(res.data.list)
+                      }
+                    }
+                  })
+                })
+                return chart;
+              })
+            }
+          } else {
+            self.setData({
+              visit3_none: true,
+            })
+          }
+        }
+      }
+    })
+    wx.request({
+      url: getApp().data.APIS + '/report/visitpatient',
+      method: 'post',
+      data: {
+        "data[clinicid]": self.data.clinicid,
+        "data[begindate]": self.data.begindate,
+        "data[enddate]": self.data.enddate,
+        "data[flag]": self.data.check_num == 0 ? '' : 'year'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        'token': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(1111)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          if (res.data.list) {
+            self.setData({
+              visit_rank1: res.data.list,
+              visit4_none: false,
+            })
+          } else {
+            self.setData({
+              visit4_none: true,
+            })
+          }
+        }
+      }
+    })
   },
   getchain(){
     let self = this
@@ -5570,6 +7044,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];  //上一个页面
     let date = new Date()

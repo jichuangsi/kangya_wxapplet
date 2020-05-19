@@ -24,7 +24,7 @@
     <view class="center_center">
       <view class="li" wx:for="{{arr}}">
         <view class="user_img">
-          <image src="../../images/my_headportrait_male.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
         </view>
         <view class="user_text">
           <view class="user_name"><view>{{item.version.by.username}}</view> <view class="hui">{{item.rolename}}</view></view>
@@ -51,7 +51,7 @@
     <view class="center_center">
       <view class="li" wx:for="{{arr}}">
         <view class="user_img">
-          <image src="../../images/my_headportrait_male.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
         </view>
         <view class="user_text">
           <view class="user_name">

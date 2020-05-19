@@ -21,11 +21,11 @@
     </view>
     </navigator>
     <button bindtap="getQRCode">
-      <image src="../../images/news_icon_groupchat.png"></image>
+      <image src="https://www.kyawang.com/uploads/images/news_icon_groupchat.png"></image>
       扫一扫
     </button>
     <button bindtap="goQRCode">
-      <image src="../../images/news_icon_groupchat.png"></image>
+      <image src="https://www.kyawang.com/uploads/images/news_icon_groupchat.png"></image>
       我的二维码
     </button>
   </view>

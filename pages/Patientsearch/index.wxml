@@ -13,20 +13,20 @@
     </view>
     <view class="box">
       <view class="li" wx:for="{{arr}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" data-item="{{item}}" bindtap="Patientclick">
-        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
-        <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
-        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>
         <view class="right_li">
           <view class="right_li_top">
             <view>
               {{item.patientname}}
-              <image wx:if="{{item.diseasehistory!=''}}" src="../../images/patient_icon_history.png"></image>
-              <!-- <image wx:if="{{item.isfirst!='0'}}" src="../../images/patient_icon_lnthe.png"></image> -->
-              <image wx:if="{{item.advancepay!='0.00'}}" src="../../images/patient_icon_money.png"></image>
-              <image wx:if="{{item.debts!='0.00'}}" src="../../images/patient_icon_owe.png"></image>
-              <image wx:if="{{item.img!='0'}}" src="../../images/patient_icon_picture.png"></image>
-              <image wx:if="{{item.isvip!='0'}}" src="../../images/patient_icon_vip.png"></image>
-              <image wx:if="{{item.wechat!='0'}}" src="../../images/wx.png"></image>
+              <image wx:if="{{item.diseasehistory!=''}}" src="https://www.kyawang.com/uploads/images/patient_icon_history.png"></image>
+              <!-- <image wx:if="{{item.isfirst!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_lnthe.png"></image> -->
+              <image wx:if="{{item.advancepay!='0.00'}}" src="https://www.kyawang.com/uploads/images/patient_icon_money.png"></image>
+              <image wx:if="{{item.debts!='0.00'}}" src="https://www.kyawang.com/uploads/images/patient_icon_owe.png"></image>
+              <image wx:if="{{item.img!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_picture.png"></image>
+              <image wx:if="{{item.isvip!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_vip.png"></image>
+              <image wx:if="{{item.wechat!='0'}}" src="https://www.kyawang.com/uploads/images/wx.png"></image>
             </view>
             <view class="state" wx:if="{{item.treatment!=''}}">{{item.treatment}}</view>
           </view>
@@ -37,7 +37,7 @@
         </view>
       </view>
         <view class="wu" wx:if="{{arr.length == 0}}">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
     </view>

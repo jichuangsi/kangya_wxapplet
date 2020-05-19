@@ -5,7 +5,7 @@
   round
   width="68rpx"
   height="68rpx"
-  src="../../images/logo.png"
+  src="https://www.kyawang.com/uploads/images/logo.png"
   />
   <view class="name">
     {{name}}
@@ -67,54 +67,54 @@
   >
     <view class="showli">
       <view catchtap="addgo" wx:if="{{power_arr.code10002.has}}">
-        <image src="../../images/clinic_new_icon_patient.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_new_icon_patient.png"></image>
         添加患者
       </view>
       <view catchtap="addordergo" wx:if="{{power_arr.code10603.has}}">
-        <image src="../../images/clinic_new_icon_reservation.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_new_icon_reservation.png"></image>
         添加预约
       </view>
       <view catchtap="addvisitgo" wx:if="{{power_arr.code10703.has}}">
-        <image src="../../images/clinic_new_icon_returnvisit.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_new_icon_returnvisit.png"></image>
         添加回访
       </view>
       <view catchtap="qrcodego">
-        <image src="../../images/clinic_new_icon_qrcode.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_new_icon_qrcode.png"></image>
         诊所二维码
       </view>
       <view catchtap="saoclick">
-        <image src="../../images/clinic_new_icon_scan.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_new_icon_scan.png"></image>
         扫一扫
       </view>
     </view>
   </van-popup>
   <van-grid border="{{borderstate}}">
-    <van-grid-item icon="../../../images/clinic_workbench_icon_patient.png" text="患者" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_patient.png" text="患者" link-type="navigateTo"
     url="/pages/Patientlist/index" />
-    <van-grid-item icon="../../../images/clinic_workbench_icon_reservation.png" text="预约" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_reservation.png" text="预约" link-type="navigateTo"
     url="/pages/order/index?title=预约列表" />
-    <van-grid-item icon="../../../images/clinic_workbench_icon_returnvisit.png" text="回访" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_returnvisit.png" text="回访" link-type="navigateTo"
     url="/pages/visit/index?state=0" />
-    <van-grid-item icon="../../../images/clinic_workbench_icon_colleague.png" text="同事" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_colleague.png" text="同事" link-type="navigateTo"
     url="/pages/Colleague/index" />
-    <van-grid-item icon="../../../images/clinic_workbench_icon_scheduling.png" text="排班" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_scheduling.png" text="排班" link-type="navigateTo"
     url="/pages/Scheduling/index" />
-    <van-grid-item icon="../../../images/clinic_workbench_icon_website.png" text="微官网" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_website.png" text="微官网" link-type="navigateTo"
     url="/pages/W_index/index?title={{name}}&&id={{id}}" />
-    <van-grid-item icon="../../../images/clinic_workbench_icon_marketing.png" text="营销" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_marketing.png" text="营销" link-type="navigateTo"
     url="/pages/Marketing/index" />
-    <van-grid-item icon="../../../images/clinic_workbench_icon_activity.png" text="活动" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_activity.png" text="活动" link-type="navigateTo"
     url="/pages/activity/index" />
-    <van-grid-item icon="../../../images/clinic_workbench_icon_operating.png" text="运营中心" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_operating.png" text="运营中心" link-type="navigateTo"
     url="/pages/eroc/index?title={{name}}" />
-    <van-grid-item class="shop" icon="../../../images/kyshop.png" text="康牙商城" bind:click="shopinggo" wx:if="{{power_arr.code10901.has}}"/>
-    <van-grid-item icon="../../../images/clinic_workbench_icon_communication.png" text="医患沟通" link-type="navigateTo"
+    <van-grid-item class="shop" icon="https://www.kyawang.com/uploads/images/kyshop.png" text="康牙商城" bind:click="shopinggo" wx:if="{{power_arr.code10901.has}}"/>
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_communication.png" text="医患沟通" link-type="navigateTo"
     url="/pages/PriceList/index?title=医患沟通视频"/>
-    <van-grid-item icon="../../../images/clinic_workbench_icon_dentist.png" text="看牙无忧" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_dentist.png" text="看牙无忧" link-type="navigateTo"
     url="/pages/PriceList/index?title=看牙无忧"/>
-    <van-grid-item icon="../../../images/clinic_workbench_icon_approval.png" text="审批" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_approval.png" text="审批" link-type="navigateTo"
     url="/pages/Approval/index" />
-    <van-grid-item icon="../../../images/clinic_workbench_icon_price.png" text="价目表" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_price.png" text="价目表" link-type="navigateTo"
     url="/pages/PriceList/index?title=价目表"/>
   </van-grid>
     <foot footnum="0"></foot>

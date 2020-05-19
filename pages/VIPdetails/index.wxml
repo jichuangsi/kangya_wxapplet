@@ -6,42 +6,42 @@
           <view class="xian"></view>
           <view class="box">
             <view class="box_li">
-              <image src="../../images/vip3.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/vip3.png"></image>
               <view class="message">
                 <view>{{vipcard.current}}</view>
                 <view>当前余额</view>
               </view>
             </view>
             <view class="box_li">
-              <image src="../../images/vip6.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/vip6.png"></image>
               <view class="message">
                 <view>{{vipcard.deposit}}</view>
                 <view>本金金额</view>
               </view>
             </view>
             <view class="box_li">
-              <image src="../../images/vip4.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/vip4.png"></image>
               <view class="message">
                 <view>{{vipcard.totalpay}}</view>
                 <view>累计消费</view>
               </view>
             </view>
             <view class="box_li">
-              <image src="../../images/vip2.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/vip2.png"></image>
               <view class="message">
                 <view>{{vipcard.bonus}}</view>
                 <view>赠送金额</view>
               </view>
             </view>
             <view class="box_li">
-              <image src="../../images/vip5.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/vip5.png"></image>
               <view class="message">
                 <view>{{vipcard.totalrecharge}}</view>
                 <view>累计充值</view>
               </view>
             </view>
             <view class="box_li">
-              <image src="../../images/vip1.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/vip1.png"></image>
               <view class="message">
                 <view>{{vipcard.totalintegral}}</view>
                 <view>积分</view>
@@ -111,7 +111,7 @@
         <van-tab title="关联患者" name="关联患者">
           <view class="xian"></view>
             <view class="patient_li" bindtap="Patientdetailsgo">
-              <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png"></image>
               <view class="user">
               asa
               </view>

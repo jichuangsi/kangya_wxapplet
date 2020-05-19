@@ -11,7 +11,7 @@
       <view class="li">
         <view class="title">为什么新注册账户这样</view>
         <view class="user_text">
-          <image src="../../images/my_headportrait_male.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
           <view class="name">抗压那就</view>
           <view class="time">2019-11-8 12:30:21</view>
           <view class="state">

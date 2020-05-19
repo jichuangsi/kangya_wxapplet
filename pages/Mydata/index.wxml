@@ -117,7 +117,7 @@
   </view>
   <view class="sex" wx:if="{{text == '性别'}}">
     <view data-text="男" catchtap="sexclcik">
-    <!-- <image src="../../images/"></image> -->
+    <!-- <image src="https://www.kyawang.com/uploads/images/"></image> -->
     男
     </view>
     <view data-text="女" catchtap="sexclcik">

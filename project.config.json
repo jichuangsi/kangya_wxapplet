@@ -76,7 +76,7 @@
 					"id": 2,
 					"name": "component/pages/erocdetails/index",
 					"pathName": "component/pages/erocdetails/index",
-					"query": "title=咨询分析&state=0",
+					"query": "title=回访分析&state=0",
 					"scene": null
 				},
 				{

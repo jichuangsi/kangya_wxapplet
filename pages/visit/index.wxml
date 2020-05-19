@@ -21,8 +21,8 @@
             <view class="li" bindtap="detailsgo" data-item="{{item}}" wx:for="{{visit_arr}}" wx:if="{{(power_arr.code10702.has&&user.userid==item.visitidentity)||power_arr.code10705.has}}">
               <view class="li_top">
                 <view class="li_left">
-                  <image src="../../images/my_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
-                  <image src="../../images/my_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
+                  <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
+                  <image src="https://www.kyawang.com/uploads/images/my_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
                   <view class="libox">
                     <view>患者姓名</view>
                     <view>{{item.customername}}</view>
@@ -36,21 +36,21 @@
                     <view class="time">{{item.returndate}}</view>
                   </view>
                 </view>
-                <image class="del"  wx:if="{{power_arr.code10704.has||power_arr.code10707.has}}" src="../../images/del.png" catchtap="del"></image>
-                <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state==3||item.returnresult==3}}"></image>
-                <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state==4||item.returnresult==4}}"></image>
+                <image class="del"  wx:if="{{power_arr.code10704.has||power_arr.code10707.has}}" src="https://www.kyawang.com/uploads/images/del.png" catchtap="del"></image>
+                <image class="stateimg" src="https://www.kyawang.com/uploads/images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state==3||item.returnresult==3}}"></image>
+                <image class="stateimg" src="https://www.kyawang.com/uploads/images/hf.png" wx:if="{{item.state==4||item.returnresult==4}}"></image>
               </view>
               <view class="green ret">{{item.record}}</view>
               <view class="f30" wx-if="{{item.remark!=''}}">
-                <image src="../../images/zd.png"></image>
+                <image src="https://www.kyawang.com/uploads/images/zd.png"></image>
                 <view>{{item.remark}}</view>
-                <image src="../../images/yd.png"></image>
+                <image src="https://www.kyawang.com/uploads/images/yd.png"></image>
               </view>
               <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
             </view>
             <view wx-if="{{visit_arr.length == 0||!power_arr.code10705.has}}">
               <view class="wu" wx:if="{{visit_arr.length == 0||((power_arr.code10702.has&&!qx_state))}}">
-                <image src="../../images/none.png"></image>
+                <image src="https://www.kyawang.com/uploads/images/none.png"></image>
                 暂无数据
               </view>
             </view>
@@ -68,8 +68,8 @@
               <view class="li_top">
                 <view class="li_left">
                   <image src="{{patdetails.picture}}" wx:if="{{patdetails.picture!=''}}"></image>
-                  <image src="../../images/my_headportrait_male.png" wx:if="{{patdetails.sex == '男'&&patdetails.picture==''}}"></image>
-                  <image src="../../images/my_headportrait_female.png" wx:if="{{patdetails.sex == '女'&&patdetails.picture==''}}"></image>
+                  <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png" wx:if="{{patdetails.sex == '男'&&patdetails.picture==''}}"></image>
+                  <image src="https://www.kyawang.com/uploads/images/my_headportrait_female.png" wx:if="{{patdetails.sex == '女'&&patdetails.picture==''}}"></image>
                   <view class="libox">
                     <view>患者姓名</view>
                     <view>{{patdetails.name}}</view>
@@ -83,21 +83,21 @@
                     <view class="time">{{item.returndate}}</view>
                   </view>
                 </view>
-                <image class="del" wx:if="{{power_arr.code10704.has||power_arr.code10707.has}}" src="../../images/del.png"  data-item="{{item}}" catchtap="del"></image>
-                <image class="stateimg" src="../../images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state=='3'}}"></image>
-                <image class="stateimg" src="../../images/hf.png" wx:if="{{item.state=='4'}}"></image>
+                <image class="del" wx:if="{{power_arr.code10704.has||power_arr.code10707.has}}" src="https://www.kyawang.com/uploads/images/del.png"  data-item="{{item}}" catchtap="del"></image>
+                <image class="stateimg" src="https://www.kyawang.com/uploads/images/details_returnvisit_icon_did notreturn.png" wx:if="{{item.state=='3'}}"></image>
+                <image class="stateimg" src="https://www.kyawang.com/uploads/images/hf.png" wx:if="{{item.state=='4'}}"></image>
               </view>
               <view class="green ret">{{item.retvisititem}}</view>
               <view class="f30" wx-if="{{item.remark!=''}}">
-                <image src="../../images/zd.png"></image>
+                <image src="https://www.kyawang.com/uploads/images/zd.png"></image>
                 <view>{{item.remark}}</view>
-                <image src="../../images/yd.png"></image>
+                <image src="https://www.kyawang.com/uploads/images/yd.png"></image>
               </view>
               <view class="bz f30" wx-if="{{item.remark==''}}">点击添加回访结果</view>
             </view> 
             <view wx-if="{{visit_arr.length == 0||!power_arr.code10705.has}}">
               <view class="wu" wx:if="{{visit_arr.length == 0||((power_arr.code10702.has&&!qx_state))}}">
-                <image src="../../images/none.png"></image>
+                <image src="https://www.kyawang.com/uploads/images/none.png"></image>
                 暂无数据
               </view>
             </view>

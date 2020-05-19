@@ -9,18 +9,18 @@
     <view class="center_top">
       <view class="user_box">
         <image src="{{patdetails.picture}}" wx:if="{{patdetails.picture != ''}}"></image>
-        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{patdetails.sex == '男'&&patdetails.picture == ''}}"></image>
-        <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{patdetails.sex == '女'&&patdetails.picture == ''}}"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{patdetails.sex == '男'&&patdetails.picture == ''}}"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_female.png" wx:if="{{patdetails.sex == '女'&&patdetails.picture == ''}}"></image>
         <view class="user">
           <view class="name">
               {{patdetails.name}}
-              <image wx:if="{{patdetails.diseasehistory!=''}}" src="../../images/patient_icon_history.png"></image>
-              <!-- <image wx:if="{{patdetails.isfirst!='0'}}" src="../../images/patient_icon_lnthe.png"></image> -->
-              <image wx:if="{{patdetails.advancepay!='0.00'}}" src="../../images/patient_icon_money.png"></image>
-              <image wx:if="{{patdetails.debts!='0.00'}}" src="../../images/patient_icon_owe.png"></image>
-              <image wx:if="{{patdetails.img!='0'}}" src="../../images/patient_icon_picture.png"></image>
-              <image wx:if="{{patdetails.isvip!='0'}}" src="../../images/patient_icon_vip.png"></image>
-              <image wx:if="{{patdetails.isweixin!='0'}}" src="../../images/wx.png"></image>
+              <image wx:if="{{patdetails.diseasehistory!=''}}" src="https://www.kyawang.com/uploads/images/patient_icon_history.png"></image>
+              <!-- <image wx:if="{{patdetails.isfirst!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_lnthe.png"></image> -->
+              <image wx:if="{{patdetails.advancepay!='0.00'}}" src="https://www.kyawang.com/uploads/images/patient_icon_money.png"></image>
+              <image wx:if="{{patdetails.debts!='0.00'}}" src="https://www.kyawang.com/uploads/images/patient_icon_owe.png"></image>
+              <image wx:if="{{patdetails.img!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_picture.png"></image>
+              <image wx:if="{{patdetails.isvip!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_vip.png"></image>
+              <image wx:if="{{patdetails.isweixin!='0'}}" src="https://www.kyawang.com/uploads/images/wx.png"></image>
           </view>
         </view>
         <van-icon name="ellipsis" slot="right" size="38rpx" style="margin-right:10rpx;padding:20rpx;box-sizing:box-border;" bindtap="onClickRight"/>
@@ -42,25 +42,25 @@
     </van-cell>
     <view class="center_center">
       <van-grid border="{{borderstate}}">
-        <van-grid-item icon="../../../images/news_details_icon_data.png" text="资料" link-type="navigateTo"
+        <van-grid-item icon="https://www.kyawang.com/uploads/images/news_details_icon_data.png" text="资料" link-type="navigateTo"
         url="/pages/Patientdata/index" />
-        <van-grid-item icon="../../../images/news_details_icon_disposal.png" text="处置" link-type="navigateTo"
+        <van-grid-item icon="https://www.kyawang.com/uploads/images/news_details_icon_disposal.png" text="处置" link-type="navigateTo"
         url="/pages/Management/index"/>
-        <van-grid-item icon="../../../images/news_details_icon_charge.png" text="收费" link-type="navigateTo"
+        <van-grid-item icon="https://www.kyawang.com/uploads/images/news_details_icon_charge.png" text="收费" link-type="navigateTo"
         url="/pages/charge/index"/>
-        <van-grid-item icon="../../../images/news_details_icon_image.png" text="影像" link-type="navigateTo"
+        <van-grid-item icon="https://www.kyawang.com/uploads/images/news_details_icon_image.png" text="影像" link-type="navigateTo"
         url="/pages/img/index"/>
-        <van-grid-item icon="../../../images/news_details_icon_cases.png" text="病历" link-type="navigateTo"
+        <van-grid-item icon="https://www.kyawang.com/uploads/images/news_details_icon_cases.png" text="病历" link-type="navigateTo"
         url="/component/pages/medical/index"/>
-        <van-grid-item icon="../../../images/news_details_icon_reservation.png" text="预约" link-type="navigateTo"
+        <van-grid-item icon="https://www.kyawang.com/uploads/images/news_details_icon_reservation.png" text="预约" link-type="navigateTo"
         url="/pages/order/index?title=预约"/>
-        <van-grid-item icon="../../../images/news_details_icon_returnvisit.png" text="回访" link-type="navigateTo"
+        <van-grid-item icon="https://www.kyawang.com/uploads/images/news_details_icon_returnvisit.png" text="回访" link-type="navigateTo"
         url="/pages/visit/index?state=1"/>
-        <van-grid-item icon="../../../images/news_details_icon_consulting.png" text="咨询" link-type="navigateTo"
+        <van-grid-item icon="https://www.kyawang.com/uploads/images/news_details_icon_consulting.png" text="咨询" link-type="navigateTo"
         url="/pages/Consultation/index"/>
-        <van-grid-item icon="../../../images/clinic_workbench_icon_operating.png" text="预交款" link-type="navigateTo"
+        <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_operating.png" text="预交款" link-type="navigateTo"
         url="/pages/payment/index"/>
-        <van-grid-item icon="../../../images/news_details_icon_members.png" text="会员卡" link-type="navigateTo"
+        <van-grid-item icon="https://www.kyawang.com/uploads/images/news_details_icon_members.png" text="会员卡" link-type="navigateTo"
         url="/pages/VIP/index"/>
       </van-grid>
     </view>
@@ -94,7 +94,7 @@
         编辑分组
       </view>
       <view bindtap="delPatient" wx:if="{{power_arr.code10004.has||power_arr.code10008.has}}">
-        <image src="../../images/returnvisit_icon_thename_default.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/returnvisit_icon_thename_default.png"></image>
         删除患者
       </view>
     </view>

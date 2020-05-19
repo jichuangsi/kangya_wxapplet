@@ -13,17 +13,17 @@
   </view>
   
   <van-grid column-num="3">
-    <van-grid-item icon="../../../images/clinic_website_icon_clinic.png" text="诊所介绍" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_website_icon_clinic.png" text="诊所介绍" link-type="navigateTo"
     url="/pages/W_introduce/index?title={{title}}&&id={{clinicid}}" />
-    <van-grid-item icon="../../../images/clinic_website_icon_team.png" text="医生团队" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_website_icon_team.png" text="医生团队" link-type="navigateTo"
     url="/pages/W_team/index?title={{title}}&&id={{clinicid}}"/>
-    <van-grid-item icon="../../../images/clinic_website_icon_treatment.png" text="治疗项目" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_website_icon_treatment.png" text="治疗项目" link-type="navigateTo"
     url="/pages/W_project/index?title={{title}}&&id={{clinicid}}"/>
-    <van-grid-item icon="../../../images/clinic_website_icon_reservation.png" text="在线预约" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_website_icon_reservation.png" text="在线预约" link-type="navigateTo"
     url="/pages/W_order/index?title={{title}}&&id={{clinicid}}"/>
-    <van-grid-item icon="../../../images/clinic_website_icon_address.png" text="诊所地址" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_website_icon_address.png" text="诊所地址" link-type="navigateTo"
     url="/pages/W_address/index?title={{title}}&&id={{clinicid}}"/>
-    <van-grid-item icon="../../../images/clinic_website_icon_telephone.png" text="诊所电话"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_website_icon_telephone.png" text="诊所电话"
     bind:click='iphoneclick' />
   </van-grid>
 </view>

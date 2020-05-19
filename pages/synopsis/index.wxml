@@ -7,7 +7,7 @@
   </van-nav-bar>
   <view class="center">
     <view class="topbox">
-      <image src="../../images/10.png"></image>
+      <image src="https://www.kyawang.com/uploads/images/10.png"></image>
       <view class="message">
         <view class="name">石医牙学院</view>
         <view>关注 2 丨 粉丝 360</view>
@@ -32,7 +32,7 @@
         <view class="smallbox" wx:for="{{more_arr}}">
           <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
             <view class="left">
-              <image src="../../images/5.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/5.png"></image>
             </view>
             <view class="right">
               <view class="smallboxtitle">孙跑名丨年度撒旦撒旦撒大撒大撒</view>

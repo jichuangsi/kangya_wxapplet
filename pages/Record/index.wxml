@@ -12,7 +12,7 @@
             <view class="text">共关注了2个主播</view>
             <view class="smallbox"  wx:for="{{first_arr}}">
               <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
-                <image src="../../images/5.png"></image>
+                <image src="https://www.kyawang.com/uploads/images/5.png"></image>
                 <view class="title">亚视口腔学院</view>
                 <view class="text">
                   <van-icon name="like" color="" />
@@ -28,7 +28,7 @@
             <view class="smallbox"  wx:for="{{first_arr}}">
               <navigator url="/pages/coursedetails/index?id=1" hover-class="navigator-hover">
                 <view class="left">
-                  <image src="../../images/learning_theme_anchor.png"></image>
+                  <image src="https://www.kyawang.com/uploads/images/learning_theme_anchor.png"></image>
                 </view>
                 <view class="right">
                   <view class="smallboxtitle">自体骨肉成骨肉，即可拔牙</view>
@@ -45,7 +45,7 @@
             <view class="smallbox"  wx:for="{{first_arr}}">
               <navigator url="/pages/Videoplay/index?state=1" hover-class="navigator-hover">
                 <view class="left">
-                  <image src="../../images/learning_theme_anchor.png"></image>
+                  <image src="https://www.kyawang.com/uploads/images/learning_theme_anchor.png"></image>
                 </view>
                 <view class="right">
                   <view class="smallboxtitle">自体骨肉成骨肉，即可拔牙</view>
@@ -60,7 +60,7 @@
             <view class="smallbox"  wx:for="{{first_arr}}">
               <navigator url="/pages/Videoplay/index?state=1" hover-class="navigator-hover">
                 <view class="left">
-                  <image src="../../images/learning_theme_anchor.png"></image>
+                  <image src="https://www.kyawang.com/uploads/images/learning_theme_anchor.png"></image>
                 </view>
                 <view class="right">
                   <view class="smallboxtitle">自体骨肉成骨肉，即可拔牙</view>

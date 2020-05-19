@@ -8,9 +8,9 @@
     <view class="center">
         <view class="li_box">
           <view class="li" wx:for="{{arr}}">
-            <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex !='男'&&item.sex !='女'}}"></image>
-            <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex =='男'}}"></image>
-            <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex =='女'}}"></image>
+            <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex !='男'&&item.sex !='女'}}"></image>
+            <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex =='男'}}"></image>
+            <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex =='女'}}"></image>
             <view class="right_li">
               <view class="right_li_top">
                 <view>{{item.name}}</view>
@@ -23,7 +23,7 @@
             </view>
           </view>
         <view class="wu" wx:if="{{arr.length == 0}}">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
         </view>

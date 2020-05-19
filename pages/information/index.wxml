@@ -23,7 +23,7 @@
       <swiper-item>
         <view class="center">
           <view class="li" bindtap="remindgo" data-text="系统消息">
-            <image src="../../images/news_icon_system.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/news_icon_system.png"></image>
             <view class="right">
               <view class="title">
                 <view class="name">系统消息</view>
@@ -33,7 +33,7 @@
             </view>
           </view>
           <view class="li" bindtap="remindgo" data-text="康牙牙医提醒">
-            <image src="../../images/news_icon_housekeeper.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/news_icon_housekeeper.png"></image>
             <view class="right">
               <view class="title">
                 <view class="name">康牙牙医提醒</view>
@@ -42,7 +42,7 @@
             </view>
           </view>
           <view class="li" data-item="{{zli[0]}}" data-state="1" bindtap="chatgo">
-            <image src="../../images/news_icon_groupchat.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/news_icon_groupchat.png"></image>
             <view class="right">
               <view class="title">
                 <view class="name">{{zli[0].customername}}</view>

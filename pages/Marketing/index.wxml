@@ -7,23 +7,23 @@
   <van-grid column-num="3">
   <van-grid-item wx:for="{{arr}}" icon="{{item.img[0]}}" text="{{item.title}}" link-type="navigateTo"
     url="/pages/Newslist/index?title={{item.title}}&&id={{item.id}}" />
-    <!-- <van-grid-item icon="../../../images/clinic_marketing_icon_fillings.png" text="补牙" link-type="navigateTo"
+    <!-- <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_marketing_icon_fillings.png" text="补牙" link-type="navigateTo"
     url="/pages/Newslist/index?title=补牙" />
-    <van-grid-item icon="../../../images/clinic_marketing_icon_fixed.png" text="固定修复" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_marketing_icon_fixed.png" text="固定修复" link-type="navigateTo"
     url="/pages/Newslist/index?title=固定修复"/>
-    <van-grid-item icon="../../../images/clinic_marketing_icon_orthodontic.png" text="正畸" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_marketing_icon_orthodontic.png" text="正畸" link-type="navigateTo"
     url="/pages/Newslist/index?title=正畸"/>
-    <van-grid-item icon="../../../images/clinic_marketing_icon_planting.png" text="种植牙" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_marketing_icon_planting.png" text="种植牙" link-type="navigateTo"
     url="/pages/Newslist/index?title=种植牙"/>
-    <van-grid-item icon="../../../images/clinic_marketing_icon_exelcymosis.png" text="拔牙" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_marketing_icon_exelcymosis.png" text="拔牙" link-type="navigateTo"
     url="/pages/Newslist/index?title=拔牙"/>
-    <van-grid-item icon="../../../images/clinic_marketing_icon_activity.png" text="活动修复" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_marketing_icon_activity.png" text="活动修复" link-type="navigateTo"
     url="/pages/Newslist/index?title=活动修复"/>
-    <van-grid-item icon="../../../images/clinic_marketing_icon_periodontal.png" text="牙周治疗" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_marketing_icon_periodontal.png" text="牙周治疗" link-type="navigateTo"
     url="/pages/Newslist/index?title=牙周治疗"/>
-    <van-grid-item icon="../../../images/clinic_marketing_icon_whitening.png" text="冷光美白" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_marketing_icon_whitening.png" text="冷光美白" link-type="navigateTo"
     url="/pages/Newslist/index?title=冷光美白"/>
-    <van-grid-item icon="../../../images/clinic_marketing_icon_scaleteeth.png" text="洗牙" link-type="navigateTo"
+    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_marketing_icon_scaleteeth.png" text="洗牙" link-type="navigateTo"
     url="/pages/Newslist/index?title=洗牙"/> -->
   </van-grid>
 </view>

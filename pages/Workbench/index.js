@@ -7,46 +7,46 @@ Page({
   data: {
     arr:[
       {
-        img:'../../images/clinic_workbench_icon_patient.png',
+        img:'https://www.kyawang.com/uploads/images/clinic_workbench_icon_patient.png',
         title:'患者'
       }, {
-        img: '../../images/clinic_workbench_icon_reservation.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_reservation.png',
         title: '预约'
       }, {
-        img: '../../images/clinic_workbench_icon_returnvisit.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_returnvisit.png',
         title: '回访'
       }, {
-        img: '../../images/clinic_workbench_icon_colleague.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_colleague.png',
         title: '同事'
       }, {
-        img: '../../images/clinic_workbench_icon_scheduling.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_scheduling.png',
         title: '排班'
       }, {
-        img: '../../images/clinic_workbench_icon_website.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_website.png',
         title: '微官网'
       }, {
-        img: '../../images/clinic_workbench_icon_marketing.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_marketing.png',
         title: '营销'
       }, {
-        img: '../../images/clinic_workbench_icon_activity.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_activity.png',
         title: '活动'
       }, {
-        img: '../../images/clinic_workbench_icon_operating.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_operating.png',
         title: '运营中心'
       }, {
-        img: '../../images/kyshop.png',
+        img: 'https://www.kyawang.com/uploads/images/kyshop.png',
         title: '康牙商城'
       }, {
-        img: '../../images/clinic_workbench_icon_mall.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_mall.png',
         title: '医患沟通'
       }, {
-        img: '../../images/clinic_workbench_icon_dentist.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_dentist.png',
         title: '看牙无忧'
       }, {
-        img: '../../images/clinic_workbench_icon_approval.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_approval.png',
         title: '审批'
       }, {
-        img: '../../images/clinic_workbench_icon_price.png',
+        img: 'https://www.kyawang.com/uploads/images/clinic_workbench_icon_price.png',
         title: '价目表'
       },
     ],

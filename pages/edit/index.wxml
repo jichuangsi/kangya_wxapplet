@@ -12,7 +12,7 @@
   <view class="center" wx:if="{{title!='影像浏览'&&title!='沟通类型'}}">
     <textarea value="{{content}}" maxlength="1000" placeholder="请输入内容" bindinput="conInput"></textarea>
       <view class="yuyinBtn {{recordState == true ? 'yuyinBtnBg':''}}" bindtouchstart="touchStart" bindtouchend="touchEnd">
-        <image src="../../images/returnvisit_icon_memo_default.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/returnvisit_icon_memo_default.png"></image>
       </view>
   <!-- 开始语音 弹出语音图标表示正在录音 -->
       <view class="yy_text" wx:if="{{recordState == true}}">
@@ -27,7 +27,7 @@
       <view wx-if="{{item.title!=''}}" class="imgstate {{item.title=='治疗后'?'hui':''}} {{item.title=='治疗前'?'green':''}}">{{item.title}}</view>
     </view>
     <view class="wu" wx:if="{{img_arr.length==0}}">
-      <image src="../../images/none.png"></image>
+      <image src="https://www.kyawang.com/uploads/images/none.png"></image>
       暂无数据
     </view>
   </view>

@@ -11,7 +11,7 @@
   <view class="center">
     <view class="li" wx:for="{{arr}}" wx:if="{{power_arr.code10401.has&&!item.exam.Group0}}">
       <view class="li_top">
-        <image src="../../../images/my_headportrait_male.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
         <view class="name">{{item.examdoctor}}{{item.emrexamdoct}}</view>
         <view class="time">{{item.examdate}}</view>
       </view>
@@ -26,7 +26,7 @@
           <ec-canvas id="mychart-dom-graph{{index}}" canvas-id="mychart-graph{{index}}"></ec-canvas>
         </view>
         <view class="gl">建议复诊隔离{{item.exam.ReferralInterval}}个月</view>
-        <!-- <image src="../../../images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image> -->
+        <!-- <image src="https://www.kyawang.com/uploads/images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image> -->
       </view>
       <view wx:if="{{!item.exam.Age&&!item.exam.item&&!item.exam.Mode}}">
         <view class="tab">
@@ -170,7 +170,7 @@
       </view>
     </view>
         <view class="wu" wx:if="{{arr.length==0||!power_arr.code10401.has}}">
-          <image src="../../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
   </view>
@@ -190,7 +190,7 @@
       </view>
       <view class="medical_box" wx:if="{{item.check_state == 1}}"></view>
       <view class="li_top">
-        <image src="../../../images/my_headportrait_male.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
         <view class="name">{{item.examdoctor}}{{item.emrexamdoct}}</view>
         <view class="time">{{item.examdate}}</view>
       </view>
@@ -201,7 +201,7 @@
         <view>{{sex}}</view>
       </view>
       <view class="tab" wx:if="{{item.exam.Age}}">
-        <image src="../../../images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image>
+        <image src="https://www.kyawang.com/uploads/images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image>
       </view>
       <view wx:if="{{!item.exam.Age&&!item.exam.item&&!item.exam.Mode}}">
         <view class="tab">
@@ -347,7 +347,7 @@
       </view>
     </view>
         <view class="wu" wx:if="{{arr.length==0||!power_arr.code10401.has}}">
-          <image src="../../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
   </view>

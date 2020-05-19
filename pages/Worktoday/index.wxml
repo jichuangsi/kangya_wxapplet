@@ -7,49 +7,49 @@
   <view class="center">
     <navigator url="/pages/Worktodaydetails/index?title=预约未到" hover-class="navigator-hover">
       <view class="li">
-        <image src="../../images/clinic_today_icon_reservation.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_today_icon_reservation.png"></image>
         <view class="title">预约未到</view>
         <view class="text">{{arr[0]}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=待分诊" hover-class="navigator-hover">
       <view class="li">
-        <image src="../../images/clinic_workbench_icon_reservation.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_workbench_icon_reservation.png"></image>
         <view class="title">待分诊</view>
         <view class="text">{{arr[1]}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=待接诊/治疗中" hover-class="navigator-hover">
       <view class="li">
-        <image src="../../images/clinic_today_icon_pay.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_today_icon_pay.png"></image>
         <view class="title">待接诊/治疗中</view>
         <view class="text">{{arr[2]}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=待缴费" hover-class="navigator-hover">
       <view class="li">
-        <image src="../../images/clinic_today_icon_complete.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_today_icon_complete.png"></image>
         <view class="title">待缴费</view>
         <view class="text">{{arr[3]}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=已完成" hover-class="navigator-hover">
       <view class="li">
-        <image src="../../images/clinic_today_icon_deal.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_today_icon_deal.png"></image>
         <view class="title">已完成</view>
         <view class="text">{{arr[4]}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=已缴费" hover-class="navigator-hover">
       <view class="li">
-        <image src="../../images/clinic_workbench_icon_returnvisit.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_workbench_icon_returnvisit.png"></image>
         <view class="title">已缴费</view>
         <view class="text">{{arr[5]}}人<van-icon name="arrow" /></view>
       </view>
     </navigator>
     <navigator url="/pages/Worktodaydetails/index?title=今日生日" hover-class="navigator-hover">
       <view class="li">
-        <image src="../../images/clinic_today_icon_birthday.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_today_icon_birthday.png"></image>
         <view class="title">今日生日</view>
         <view class="text">0人<van-icon name="arrow" /></view>
       </view>

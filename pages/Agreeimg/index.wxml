@@ -15,7 +15,7 @@
       <view wx-if="{{item.title!=''}}" class="imgstate {{item.title=='治疗后'?'hui':''}} {{item.title=='治疗前'?'green':''}}">{{item.title}}</view>
     </view>
     <view class="none" wx:if="{{img_arr.length == 0}}">
-      <image src="../../images/none.png"></image>
+      <image src="https://www.kyawang.com/uploads/images/none.png"></image>
       <view>暂时没有数据</view>
     </view>
   </view>

@@ -20,24 +20,24 @@
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{(power_arr.code10602.has&&user.userid==item.doctorid)||power_arr.code10605.has}}">
           <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
-            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
-            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
-            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" data-item="{{item}}" catchtap="del"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_boththe.png"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_visit.png"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="https://www.kyawang.com/uploads/images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" data-item="{{item}}" catchtap="del"></image>
             </view>
             <view class="text_li">
-              <image src="../../images/4.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/4.png"></image>
               {{item.name}}
             </view>
             <view class="text_li">
-              <image src="../../images/3.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/3.png"></image>
               {{item.items}}
             </view>
             <view class="text_li">
-              <image src="../../images/1.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/1.png"></image>
               {{item.doctorname}}
             </view>
             <view class="bz text_li">
-              <image src="../../images/2.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/2.png"></image>
               {{item.remark}}
               <view class="f30" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
               <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
@@ -46,7 +46,7 @@
         </view>
         <view wx-if="{{order_arr.length == 0||!power_arr.code10605.has}}">
           <view class="wu" wx:if="{{order_arr.length==0||((power_arr.code10602.has&&!qx_state))}}">
-            <image src="../../images/none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/none.png"></image>
             暂无数据
           </view>
         </view>
@@ -62,24 +62,24 @@
           <view wx:if="{{state3=='医生'||state3=='全部'||state3==item.doctorname}}">
             <view class="date_time">{{item.scheduletime}}</view>
               <view class="li">
-                <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
-                <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
-                <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" catchtap="del"></image>
+                <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_boththe.png"></image>
+                <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_visit.png"></image>
+                <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="https://www.kyawang.com/uploads/images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" catchtap="del"></image>
                 </view>
                 <view class="text_li">
-                  <image src="../../images/4.png"></image>
+                  <image src="https://www.kyawang.com/uploads/images/4.png"></image>
                   {{item.name}}
                 </view>
                 <view class="text_li">
-                  <image src="../../images/3.png"></image>
+                  <image src="https://www.kyawang.com/uploads/images/3.png"></image>
                   {{item.items}}
                 </view>
                 <view class="text_li">
-                  <image src="../../images/1.png"></image>
+                  <image src="https://www.kyawang.com/uploads/images/1.png"></image>
                   {{item.doctorname}}
                 </view>
                 <view class="bz text_li">
-                  <image src="../../images/2.png"></image>
+                  <image src="https://www.kyawang.com/uploads/images/2.png"></image>
                   {{item.remark}}
                   <view class="f30" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
                   <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
@@ -89,7 +89,7 @@
         </view>
         <view wx-if="{{order_arr.length == 0||!power_arr.code10605.has}}">
           <view class="wu" wx:if="{{order_arr.length==0||((power_arr.code10602.has&&!qx_state))}}">
-            <image src="../../images/none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/none.png"></image>
             暂无数据
           </view>
         </view>
@@ -105,24 +105,24 @@
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{(power_arr.code10602.has&&user.userid==item.doctorid)||power_arr.code10605.has}}">
           <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
-            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
-            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
-            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" catchtap="del"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_boththe.png"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_visit.png"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="https://www.kyawang.com/uploads/images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" catchtap="del"></image>
             </view>
             <view class="text_li">
-              <image src="../../images/4.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/4.png"></image>
               {{item.name}}
             </view>
             <view class="text_li">
-              <image src="../../images/3.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/3.png"></image>
               {{item.items}}
             </view>
             <view class="text_li">
-              <image src="../../images/1.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/1.png"></image>
               {{item.doctorname}}
             </view>
             <view class="bz text_li">
-              <image src="../../images/2.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/2.png"></image>
               {{item.remark}}
               <view class="f30" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
               <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
@@ -131,7 +131,7 @@
         </view>
         <view wx-if="{{order_arr.length == 0||!power_arr.code10605.has}}">
           <view class="wu" wx:if="{{order_arr.length==0||((power_arr.code10602.has&&!qx_state))}}">
-            <image src="../../images/none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/none.png"></image>
             暂无数据
           </view>
         </view>
@@ -140,24 +140,24 @@
         <view class="li_box" data-item="{{item}}" bindtap="detailsgo" wx:for="{{order_arr}}" wx:if="{{(power_arr.code10602.has&&user.userid==item.doctorid)||power_arr.code10605.has}}">
           <view class="date_time">{{item.scheduletime}}</view>
           <view class="li">
-            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="../../images/details_disposal_icon_boththe.png"></image>
-            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="../../images/details_disposal_icon_visit.png"></image>
-            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="../../images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" catchtap="del"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus!='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_boththe.png"></image>
+            <image class="stateimg" wx:if="{{item.visitstatus=='1'}}" src="https://www.kyawang.com/uploads/images/details_disposal_icon_visit.png"></image>
+            <view class="time text_li">{{item.starttime}}-{{item.starttime}} <view style="color:#7a7a7a">({{item.duration}}m)</view> <van-icon class="z" name="clock" color="#16c7ae" size="36rpx" /><image class="del" src="https://www.kyawang.com/uploads/images/del.png" wx:if="{{power_arr.code10604.has||power_arr.code10607.has}}" catchtap="del"></image>
             </view>
             <view class="text_li">
-              <image src="../../images/4.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/4.png"></image>
               {{item.name}}
             </view>
             <view class="text_li">
-              <image src="../../images/3.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/3.png"></image>
               {{item.items}}
             </view>
             <view class="text_li">
-              <image src="../../images/1.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/1.png"></image>
               {{item.doctorname}}
             </view>
             <view class="bz text_li">
-              <image src="../../images/2.png"></image>
+              <image src="https://www.kyawang.com/uploads/images/2.png"></image>
               {{item.remark}}
               <view class="f30" wx:if="{{item.remark!=''}}">{{item.remark}}</view>
               <view class="f30 bz_text" wx:if="{{item.remark==''}}">请添加预约备忘</view>
@@ -166,7 +166,7 @@
         </view>
         <view wx-if="{{order_arr.length == 0||!power_arr.code10605.has}}">
           <view class="wu" wx:if="{{order_arr.length==0||((power_arr.code10602.has&&!qx_state))}}">
-            <image src="../../images/none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/none.png"></image>
             暂无数据
           </view>
         </view>

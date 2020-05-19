@@ -6,14 +6,14 @@
   </view> -->
   <view class="center">
     <view class="box" bindtap="getQRCode">
-    <image src="../../images/clinic_new_icon_qrcode.png"></image>
+    <image src="https://www.kyawang.com/uploads/images/clinic_new_icon_qrcode.png"></image>
     <view class="text">
     康牙医生PC的关联二维码
     </view>
     <view class="text1">扫一扫关联诊所</view>
     </view>
     <view class="box" bindtap="goclinic">
-    <image src="../../images/clinic_new_icon_qrcode.png"></image>
+    <image src="https://www.kyawang.com/uploads/images/clinic_new_icon_qrcode.png"></image>
     <view class="text">
     仅限康牙医生PC专业版用户
     </view>

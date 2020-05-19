@@ -15,7 +15,7 @@
               </view>
           </view>
         <view class="wu">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
           </van-tab>
@@ -27,7 +27,7 @@
               </view>
           </view>
         <view class="wu">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
           </van-tab>

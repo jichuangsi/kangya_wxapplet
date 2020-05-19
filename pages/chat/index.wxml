@@ -34,7 +34,7 @@
             <view class="text {{item.dxstate != 0?'ts':''}}" wx:if="{{item.dxstate == 1}}">
               <view class="li_medical">
                 <view class="li_top">
-                  <image src="../../images/my_headportrait_male.png"></image>
+                  <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
                   <view class="name">{{item.content.docname}}</view>
                   <view class="time">{{item.content.examdate}}</view>
                 </view>
@@ -45,7 +45,7 @@
                   <view>{{item.content.sex}}</view>
                 </view>
                 <view class="tab" wx:if="{{item.content.exam.Age}}">
-                  <image src="../../images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image>
+                  <image src="https://www.kyawang.com/uploads/images/charts.png" style="width:680rpx;height:666rpx;margin:10rpx auto;"></image>
                 </view>
                 <view wx:if="{{item.content.pc!=''}}">
                   <view class="tab">
@@ -191,7 +191,7 @@
             </view>
           </view>
           <view class="user_img" wx:if="{{item.dxstate == 0||item.dxstate == 3}}">
-            <image src="../../images/my_headportrait_male.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
           </view>
         </view>
       </view>
@@ -205,31 +205,31 @@
       <view class="center_bottom_b" wx:if="{{show}}">
         <view class="c_bb_li" bindtap="yzgo">
           <view>
-            <image src="../../images/xx1.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/xx1.png"></image>
           </view>
           <view>医嘱</view>
         </view>
         <view class="c_bb_li" wx:if="{{power_arr.code10305.has&&state==0}}" bindtap="yxgo">
           <view>
-            <image src="../../images/xx2.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/xx2.png"></image>
           </view>
           <view>影像</view>
         </view>
         <view class="c_bb_li" wx:if="{{power_arr.code10407.has&&state==0}}" bindtap="blgo">
           <view>
-            <image src="../../images/xx3.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/xx3.png"></image>
           </view>
           <view>病历</view>
         </view>
         <view class="c_bb_li" bindtap="spyzgo">
           <view>
-            <image src="../../images/xx4.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/xx4.png"></image>
           </view>
           <view>视频医嘱</view>
         </view>
         <view class="c_bb_li" bindtap="twyzgo">
           <view>
-            <image src="../../images/xx5.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/xx5.png"></image>
           </view>
           <view>图文医嘱</view>
         </view>

@@ -3,7 +3,7 @@
   <view class="user" bindtap="mydatago">
     <view class="userImg">
       <image wx:if="{{user.picture!=''}}" src="{{user.picture}}"></image>
-      <image wx:if="{{user.picture==''}}" src="../../images/my_headportrait_male.png"></image>
+      <image wx:if="{{user.picture==''}}" src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
     </view>
     <view class="user_info">
       <view class="user_phone">{{user.mobile}}</view>
@@ -18,25 +18,25 @@
     <view class="item">
       <navigator url="/pages/Myclinic/index" hover-class="navigator-hover">
         <view class="user_clinic">
-          <image src="../../images/my_icon_clinic.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/my_icon_clinic.png"></image>
           <view class="clinic">我的诊所</view>
         </view>
       </navigator>
       <navigator url="/pages/Record/index?title=我的关注" hover-class="navigator-hover">
         <view class="user_clinic ">
-          <image src="../../images/my_icon_follow.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/my_icon_follow.png"></image>
           <view class="clinic">我的关注</view>
         </view>
       </navigator>
       <navigator url="/pages/Record/index?title=购买记录" hover-class="navigator-hover">
         <view class="user_clinic">
-          <image src="../../images/my_icon_buy.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/my_icon_buy.png"></image>
           <view class="clinic">购买记录</view>
         </view>
       </navigator>
       <navigator url="/pages/Record/index?title=学习记录" hover-class="navigator-hover">
         <view class="user_clinic">
-          <image src="../../images/my_icon_learning.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/my_icon_learning.png"></image>
           <view class="clinic">学习记录</view>
         </view>
       </navigator>
@@ -45,19 +45,19 @@
     <view class="item">
       <navigator url="/pages/about/index" hover-class="navigator-hover">
         <view class="user_clinic">
-          <image src="../../images/my_icon_housekeeper.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/my_icon_housekeeper.png"></image>
           <view class="clinic">关于康牙医生</view>
         </view>
       </navigator>
       <navigator url="/pages/feedback/index" hover-class="navigator-hover">
       <view class="user_clinic">
-        <image src="../../images/my_icon_opinion.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/my_icon_opinion.png"></image>
         <view class="clinic">意见反馈</view>
       </view>
       </navigator>
       <navigator url="/pages/set/index" hover-class="navigator-hover">
       <view class="user_clinic">
-        <image src="../../images/my_icon_setup.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/my_icon_setup.png"></image>
         <view class="clinic">设置</view>
       </view>
       </navigator>

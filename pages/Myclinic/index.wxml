@@ -9,7 +9,7 @@
   <view class="top_right" bindtap="onClickRight"><van-icon name="plus" size="36rpx"/></view>
   <view class="center">
     <view class="li" wx:for="{{arr}}">
-      <image src="../../images/clinic_website_icon_clinic.png"></image>
+      <image src="https://www.kyawang.com/uploads/images/clinic_website_icon_clinic.png"></image>
       <view class="name">
         {{item.name}}
       </view>

@@ -223,11 +223,11 @@
 }
 .popup_box .list_li view {
   /* flex: 1; */
-  min-width: 300rpx;
+  min-width: 260rpx;
   height: 56rpx;
   line-height: 56rpx;
   padding: 0rpx 20rpx;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   white-space:nowrap;
   border-right: 1rpx solid #f2f2f2;
   border-bottom: 1rpx solid #f2f2f2;

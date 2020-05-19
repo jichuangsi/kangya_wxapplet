@@ -41,9 +41,7 @@ App({
               data: view.route
             })
             if (!result.authSetting['scope.userInfo']) {
-              console.log(11231)
             } else {
-              console.log(wx.getStorageSync('CurrentPage'))
               self.signin()
             }
           }

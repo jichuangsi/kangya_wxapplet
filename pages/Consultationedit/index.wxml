@@ -7,7 +7,7 @@
   </view> -->
   <view class="center">
     <view class="box" data-text="语音备忘录" bindtap="Soundgo">
-        <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+        <van-icon name="https://www.kyawang.com/uploads/images/case_icon_ memorial_defauit.png" />
         <view class="text">语音备忘录</view>
         <view></view>
         <van-icon name="arrow" />
@@ -21,7 +21,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" data-text="输入客户主诉" data-value="{{complaints}}" bindtap="editgo">
-        <van-icon name="../../../images/returnvisit_icon_content_default.png" />
+        <van-icon name="https://www.kyawang.com/uploads/images/returnvisit_icon_content_default.png" />
         <view class="text">客户主诉</view>
         <view></view>
         <van-icon name="arrow" />
@@ -30,7 +30,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" data-text="输入基本需求" data-value="{{basicdemand}}" bindtap="editgo">
-        <van-icon name="../../../images/returnvisit_icon_content_default.png" />
+        <van-icon name="https://www.kyawang.com/uploads/images/returnvisit_icon_content_default.png" />
         <view class="text">基本需求</view>
         <view></view>
         <van-icon name="arrow" />
@@ -39,7 +39,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" data-text="输入潜在需求" data-value="{{potentialdemand}}" bindtap="editgo">
-        <van-icon name="../../../images/case_icon_programme_defauit.png" />
+        <van-icon name="https://www.kyawang.com/uploads/images/case_icon_programme_defauit.png" />
         <view class="text">潜在需求</view>
         <view></view>
         <van-icon name="arrow" />
@@ -48,7 +48,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" data-text="输入医生方案" data-value="{{programme}}" bindtap="editgo">
-        <van-icon name="../../../images/case_icon_programme_defauit.png" />
+        <van-icon name="https://www.kyawang.com/uploads/images/case_icon_programme_defauit.png" />
         <view class="text">医生方案</view>
         <view></view>
         <van-icon name="arrow" />
@@ -57,7 +57,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" data-text="输入沟通记录" data-value="{{record}}" bindtap="editgo">
-        <van-icon name="../../../images/returnvisit_icon_result_default.png" />
+        <van-icon name="https://www.kyawang.com/uploads/images/returnvisit_icon_result_default.png" />
         <view class="text">沟通记录</view>
         <view></view>
         <van-icon name="arrow" />
@@ -66,7 +66,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" data-text="输入服务建议" data-value="{{proposal}}" bindtap="editgo">
-        <van-icon name="../../../images/case_icon_mainsuitl_defauit.png" />
+        <van-icon name="https://www.kyawang.com/uploads/images/case_icon_mainsuitl_defauit.png" />
         <view class="text">服务建议</view>
         <view></view>
         <van-icon name="arrow" />
@@ -81,19 +81,19 @@
       <van-icon name="arrow" />
     </view>
     <view class="box" data-text="沟通类型" bindtap="editgo">
-      <van-icon name="../../../images/returnvisit_icon_type_default.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/returnvisit_icon_type_default.png" />
       <view class="text">沟通类型</view>
       <view>{{communicatetype}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="box" data-another="1" bindtap="Colleaguego">
-      <van-icon name="../../../images/case_icon_nurse_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_nurse_defauit.png" />
       <view class="text">接诊医生</view>
       <view>{{doctor1.name}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="box" bindtap="Colleaguego">
-      <van-icon name="../../../images/returnvisit_icon_personnel_default.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/returnvisit_icon_personnel_default.png" />
       <view class="text">录入人</view>
       <view>{{doctor.name}}</view>
       <van-icon name="arrow" />

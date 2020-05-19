@@ -7,7 +7,7 @@
   </view> -->
   <view class="center">
     <view class="box">
-      <van-icon name="../../../images/case_icon_type_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_type_defauit.png" />
       <view class="text">病历类型</view>
       <view></view>
     </view>
@@ -21,7 +21,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" bindtap="Soundgo">
-      <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_ memorial_defauit.png" />
       <view class="text">语音备忘录</view>
       <view></view>
       <van-icon name="arrow" />
@@ -35,14 +35,14 @@
     </view>
     <view class="xian"></view>
     <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入主诉" data-value="{{complain}}" bindtap="editgo">
-      <van-icon name="../../../images/case_icon_mainsuitl_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_mainsuitl_defauit.png" />
       <view class="text">主诉</view>
       <view></view>
       <view class="bz" wx:if="{{complain == ''}}">请输入主诉内容</view>
       <view class="bz" wx:if="{{complain != ''}}">{{complain}}</view>
     </view>
     <view class="box" wx:if="{{check_text=='复诊病历'}}" data-text="输入复诉" data-value="{{repetition}}" bindtap="editgo">
-      <van-icon name="../../../images/case_icon_mainsuitl_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_mainsuitl_defauit.png" />
       <view class="text">复诉</view>
       <view></view>
       <view class="bz" wx:if="{{repetition == ''}}">请输入复诉内容</view>
@@ -50,7 +50,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入现病史" data-value="{{disease}}" bindtap="editgo">
-      <van-icon name="../../../images/case_icon_hpi_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_hpi_defauit.png" />
       <view class="text">现病史</view>
       <view></view>
       <view class="bz" wx:if="{{disease == ''}}">请输入现病史</view>
@@ -58,7 +58,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入既往史" data-value="{{past}}" bindtap="editgo">
-      <van-icon name="../../../images/case_icon_hpi_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_hpi_defauit.png" />
       <view class="text">既往史</view>
       <view></view>
       <view class="bz" wx:if="{{past == ''}}">请输入既往史</view>
@@ -66,7 +66,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" wx:if="{{check_text=='初诊病历'}}" data-text="输入过敏史" data-value="{{allergy}}" bindtap="editgo">
-      <van-icon name="../../../images/case_icon_pasthistoryi_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_pasthistoryi_defauit.png" />
       <view class="text">过敏史</view>
       <view></view>
       <view class="bz" wx:if="{{allergy == ''}}">请输入过敏史</view>
@@ -74,13 +74,13 @@
     </view>
     <view class="xian"></view>
     <view class="box">
-      <van-icon name="../../../images/case_icon_synchronous_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_synchronous_defauit.png" />
       <view class="text">同步牙位</view>
       <van-switch checked="{{ checked }}" active-color="#16c7ae"
   inactive-color="#f2f2f2" bind:change="onChange" />
     </view>
     <view class="box title">
-      <van-icon name="../../../images/case_icon_check_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_check_defauit.png" />
       <view class="text">检查</view>
       <view class="del" data-text="inspect" bindtap="del" wx:if="{{inspect.length!='1'}}">
         <van-icon name="close" color="red" />
@@ -110,7 +110,7 @@
       </view>
     </view>
     <view class="box title">
-      <van-icon name="../../../images/case_icon_auxiliary_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_auxiliary_defauit.png" />
       <view class="text">辅助检查</view>
       <view class="del" data-text="auxiliary" bindtap="del" wx:if="{{auxiliary.length!='1'}}">
         <van-icon name="close" color="red" />
@@ -140,7 +140,7 @@
       </view>
     </view>
     <view class="box title">
-      <van-icon name="../../../images/case_icon_diagnosis_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_diagnosis_defauit.png" />
       <view class="text">诊断</view>
         <view class="del" data-text="diagnose" bindtap="del" wx:if="{{diagnose.length!='1'}}">
           <van-icon name="close" color="red" />
@@ -170,7 +170,7 @@
       </view>
     </view>
     <view class="box title">
-      <van-icon name="../../../images/case_icon_diagnosis_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_diagnosis_defauit.png" />
       <view class="text">治疗方案</view>
         <view class="del" data-text="programme" bindtap="del" wx:if="{{programme.length!='1'}}">
           <van-icon name="close" color="red" />
@@ -200,7 +200,7 @@
       </view>
     </view>
     <view class="box title">
-      <van-icon name="../../../images/case_icon_treatment_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_treatment_defauit.png" />
       <view class="text">治疗</view>
         <view class="del" data-text="treat" bindtap="del" wx:if="{{treat.length!='1'}}">
           <van-icon name="close" color="red" />
@@ -231,7 +231,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" data-text="输入医嘱" data-value="{{advice}}" bindtap="editgo">
-      <van-icon name="../../../images/case_icon_programme_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_programme_defauit.png" />
       <view class="text">医嘱</view>
       <view></view>
       <van-icon name="arrow" />
@@ -240,7 +240,7 @@
     </view>
     <view class="xian"></view>
     <view class="box" data-text="影像浏览" bindtap="editgo">
-      <van-icon name="../../../images/case_icon_image_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_image_defauit.png" />
       <view style="margin-left:20rpx;">影像</view>
       <view class="imgbox">
         <image src="{{item.url}}" wx:for="{{img_arr}}"></image>
@@ -249,13 +249,13 @@
     </view>
     <view class="xian"></view>
     <view class="box" data-another="1" bindtap="Colleaguego">
-      <van-icon name="../../../images/case_icon_doctor_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_doctor_defauit.png" />
       <view class="text">医生</view>
       <view>{{doctor1.name}}</view>
       <van-icon name="arrow" />
     </view>
     <view class="box" data-another="0" bindtap="Colleaguego">
-      <van-icon name="../../../images/case_icon_nurse_defauit.png" />
+      <van-icon name="https://www.kyawang.com/uploads/images/case_icon_nurse_defauit.png" />
       <view class="text">护士</view>
       <view>{{doctor.name}}</view>
       <van-icon name="arrow" />

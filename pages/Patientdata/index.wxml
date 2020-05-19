@@ -384,8 +384,8 @@
           <van-tab title="亲友关系" name="亲友关系">
             <view class="li" wx:for="{{relationship_arr}}" wx:key="index" data-item="{{item}}" bindtap="Patientdetailsgo">
               <image src="{{item.friend_img}}" wx:if="{{item.friend_img!=''}}"></image>
-              <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.friend_img==''&&item.sex=='男'}}"></image>
-              <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.friend_img==''&&item.sex=='女'}}"></image>
+              <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.friend_img==''&&item.sex=='男'}}"></image>
+              <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.friend_img==''&&item.sex=='女'}}"></image>
               <view class="user">
               {{item.name}}
               </view>

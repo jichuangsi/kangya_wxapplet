@@ -23,7 +23,7 @@
             </navigator>
           </view>
           <view class="wu" wx:if="{{first_arr.length==0}}">
-            <image src="../../images/none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/none.png"></image>
             暂无数据
           </view>
         </view>
@@ -42,7 +42,7 @@
             </navigator>
           </view>
           <view class="wu" wx:if="{{first_arr.length==0}}">
-            <image src="../../images/none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/none.png"></image>
             暂无数据
           </view>
         </view>
@@ -61,7 +61,7 @@
             </navigator>
           </view>
           <view class="wu" wx:if="{{first_arr.length==0}}">
-            <image src="../../images/none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/none.png"></image>
             暂无数据
           </view>
         </view>

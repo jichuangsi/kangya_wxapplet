@@ -21,8 +21,8 @@
     </view>
   </view>
   <view class="Worryfree" wx:if="{{title=='看牙无忧'}}">
-    <image class="img1" src="../../images/kytop.jpg"></image>
-    <image class="img2" src="../../images/kybottom.jpg"></image>
+    <image class="img1" src="https://www.kyawang.com/uploads/images/kytop.jpg"></image>
+    <image class="img2" src="https://www.kyawang.com/uploads/images/kybottom.jpg"></image>
     <view class="btn" bindtap="applygo">
       立即申请
     </view>

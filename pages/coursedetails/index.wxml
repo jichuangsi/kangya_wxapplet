@@ -13,7 +13,7 @@
     <!-- <van-icon name="ellipsis" size="36rpx" /> -->
   </view>
   <view class="center">
-    <!-- <image src="../../images/learning_theme_anchor.png"></image> -->
+    <!-- <image src="https://www.kyawang.com/uploads/images/learning_theme_anchor.png"></image> -->
     <view class="img_box">
       <image mode="heightFix" src="{{imgurl}}"></image>
       <!-- <rich-text nodes="{{imgurl}}"></rich-text> -->
@@ -39,7 +39,7 @@
     
     <!-- <navigator url="/pages/synopsis/index?id=1" hover-class="navigator-hover">
       <view class="text">
-        <image src="../../images/5.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/5.png"></image>
         乾坤解剖种植
         <view class="textstate">
           <van-icon wx:if="{{!love}}" data-state="0" catchtap="loveclick" name="like-o" size="36rpx" />

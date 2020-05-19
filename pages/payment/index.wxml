@@ -45,7 +45,7 @@
       </view>
     </view>
         <view class="wu" wx:if="{{arr.length==0}}">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
   </view>

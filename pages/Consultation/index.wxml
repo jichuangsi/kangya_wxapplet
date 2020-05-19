@@ -11,10 +11,10 @@
   <view class="center">
     <view class="libox" wx:for="{{arr}}" wx:if="{{power_arr.code10501.has}}" data-index="{{index}}" bindtap="Consultationgo">
       <view class="li">
-        <image src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png"></image>
         <view class="text">{{patdetails.name}}</view>
         <view class="time">{{item.faceconsultdatetime}}</view>
-        <image class="del" src="../../images/del.png" data-item="{{item}}" wx:if="{{power_arr.code10503.has}}"  catchtap="del"></image>
+        <image class="del" src="https://www.kyawang.com/uploads/images/del.png" data-item="{{item}}" wx:if="{{power_arr.code10503.has}}"  catchtap="del"></image>
       </view>
       <view class="li">
         <view class="green">沟通记录</view>
@@ -46,7 +46,7 @@
       </view>
     </view>
         <view class="wu" wx:if="{{arr.length==0||!power_arr.code10501.has}}">
-          <image src="../../images/none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/none.png"></image>
           暂无数据
         </view>
   </view>

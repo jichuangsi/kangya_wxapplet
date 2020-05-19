@@ -4,6 +4,7 @@ const app = getApp()
 let Charts = require('../../data/wxcharts-min.js');
 
 
+
 Page({
   data: {
     show: false, 

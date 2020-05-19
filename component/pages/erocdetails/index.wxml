@@ -1,5 +1,6 @@
 <!--pages/erocdetails/index.wxml-->
 
+<!-- <script type='text/javascript' src="http://echarts.baidu.com/build/dist/echarts.js"></script> -->
 <view class="erocdetails">
   <!-- <view class="top">
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
@@ -145,13 +146,13 @@
         </view>
       </view>
       <view class="h3">
-        <image src="../../../images/my_icon_Praise.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/my_icon_Praise.png"></image>
         今日TOP指数
       </view>
       <view class="li">
         <view>今日销售项目TOP3</view>
         <view class="none_box_h3" wx:if="{{mr1_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
         <view class="top_li" wx:for="{{Daily_rank1}}" data-text="今日销售项目" data-child="{{item.handlename}}" child_id="{{item.bdhandlesetidentity}}"  bindtap="ontitle">
@@ -162,7 +163,7 @@
       <view class="li">
         <view>今日医生业绩TOP3</view>
         <view class="none_box_h3" wx:if="{{mr2_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
         <view class="top_li" wx:for="{{Daily_rank2}}" data-text="今日医生业绩" child_id="{{item.doctorid}}" data-child="{{item.bhdoct}}" bindtap="ontitle">
@@ -173,7 +174,7 @@
       <view class="li">
         <view>今日咨询师业绩TOP3</view>
         <view class="none_box_h3" wx:if="{{mr3_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
         <view class="top_li" wx:for="{{Daily_rank3}}" data-text="今日咨询师业绩" data-child="{{item.counselor}}"  bindtap="ontitle">
@@ -211,7 +212,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{attendance1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="attendance-graph1" canvas-id="mychart-graph1" ec="{{ attendance1 }}"></ec-canvas>
@@ -223,7 +224,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{attendance2_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="attendance-graph2" canvas-id="mychart-graph2" ec="{{ attendance2 }}"></ec-canvas>
@@ -236,7 +237,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{attendance3_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="attendance-graph3" canvas-id="mychart-graph3" ec="{{ attendance3 }}"></ec-canvas>
@@ -249,7 +250,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{attendance4_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="attendance-graph4" canvas-id="mychart-graph4" ec="{{ attendance4 }}"></ec-canvas>
@@ -261,20 +262,20 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{attendance5_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="attendance-graph5" canvas-id="mychart-graph5" ec="{{ attendance5 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
-        <image src="../../../images/my_icon_Praise.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/my_icon_Praise.png"></image>
         今日TOP指数
       </view>
       <view class="li">
         <view>项目销售数量TOP10</view>
         <view class="none_box_h3" wx:if="{{attendance6_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
         <view class="top_li" wx:for="{{attendance_rank1}}" data-text="项目销售数量" data-child="{{item.handlename}}" child_id="{{item.bdhandlesetidentity}}" bindtap="ontitle">
@@ -285,7 +286,7 @@
       <view class="li">
         <view>项目销售金额TOP10</view>
         <view class="none_box_h3" wx:if="{{attendance7_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
         <view class="top_li" wx:for="{{attendance_rank2}}" data-text="项目销售金额" data-child="{{item.handlename}}" child_id="{{item.bdhandlesetidentity}}" bindtap="ontitle">
@@ -308,7 +309,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{order1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="order-graph1" canvas-id="mychart-graph1" ec="{{ order1 }}"></ec-canvas>
@@ -320,7 +321,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{order2_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="order-graph2" canvas-id="mychart-graph2" ec="{{ order2 }}"></ec-canvas>
@@ -332,7 +333,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{order3_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="order-graph3" canvas-id="mychart-graph3" ec="{{ order3 }}"></ec-canvas>
@@ -344,7 +345,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{order4_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="order-graph4" canvas-id="mychart-graph4" ec="{{ order4 }}"></ec-canvas>
@@ -356,7 +357,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{order5_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="order-graph5" canvas-id="mychart-graph5" ec="{{ order5 }}"></ec-canvas>
@@ -368,7 +369,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{order6_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="order-graph6" canvas-id="mychart-graph6" ec="{{ order6 }}"></ec-canvas>
@@ -389,7 +390,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{hpower1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="hpower-graph1" canvas-id="mychart-graph1" ec="{{ hpower1 }}"></ec-canvas>
@@ -401,7 +402,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{hpower2_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="hpower-graph2" canvas-id="mychart-graph2" ec="{{ hpower2 }}"></ec-canvas>
@@ -413,7 +414,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{hpower3_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="hpower-graph3" canvas-id="mychart-graph3" ec="{{ hpower3 }}"></ec-canvas>
@@ -425,7 +426,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{hpower4_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="hpower-graph4" canvas-id="mychart-graph4" ec="{{ hpower4 }}"></ec-canvas>
@@ -437,19 +438,19 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{hpower5_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="hpower-graph5" canvas-id="mychart-graph5" ec="{{ hpower5 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
-        <image src="../../../images/my_icon_Praise.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/my_icon_Praise.png"></image>
         受理人情况
       </view>
       <view class="li">
         <view class="none_box_h3" wx:if="{{hpower6_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
         <view class="top_li" wx:for="{{hpower_rank1}}" data-text="受理人详情" data-child="{{item.name}}" child_id="{{item.bdhandlesetidentity}}" bindtap="ontitle">
@@ -473,7 +474,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{market1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="market-graph1" canvas-id="mychart-graph1" ec="{{ market1 }}"></ec-canvas>
@@ -485,7 +486,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{market2_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="market-graph2" canvas-id="mychart-graph2" ec="{{ market2 }}"></ec-canvas>
@@ -497,7 +498,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{market3_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="market-graph3" canvas-id="mychart-graph3" ec="{{ market3 }}"></ec-canvas>
@@ -509,7 +510,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{market4_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="market-graph4" canvas-id="mychart-graph4" ec="{{ market4 }}"></ec-canvas>
@@ -521,7 +522,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{market5_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <view class="market5_text" data-text="患者标签" data-child="{{item.item}}" bindtap="ontitle" wx:for="{{market5_arr}}">{{item.item}}</view>
@@ -533,7 +534,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{market6_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="market-graph6" canvas-id="mychart-graph6" ec="{{ market6 }}"></ec-canvas>
@@ -545,7 +546,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{market7_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="market-graph7" canvas-id="mychart-graph7" ec="{{ market7 }}"></ec-canvas>
@@ -557,7 +558,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{market8_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="market-graph8" canvas-id="mychart-graph8" ec="{{ market8 }}"></ec-canvas>
@@ -569,7 +570,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{market9_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="market-graph9" canvas-id="mychart-graph9" ec="{{ market9 }}"></ec-canvas>
@@ -586,13 +587,13 @@
       </view>
       <view class="libox">
         <view class="libox_title">
-          <view>总咨询人数0人</view>
-          <view>成交人数0人</view>
-          <view>未成交人数0人</view>
+          <view>总咨询人数{{consult_total1.scount}}人</view>
+          <view>成交人数{{consult_total1.ccount}}人</view>
+          <view>未成交人数{{consult_total1.wcount}}人</view>
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{consult1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="consult-graph1" canvas-id="mychart-graph1" ec="{{ consult1 }}"></ec-canvas>
@@ -600,12 +601,12 @@
       </view>
       <view class="libox">
         <view class="libox_title">
-          <view>成交金额统计0.00</view>
-          <view>客单成交额0.00</view>
+          <view>成交金额统计{{consult_total2.zxmoney}}</view>
+          <view>客单成交额{{consult_total2.kdmoney}}</view>
         </view>
         <view class="canvas_box">
-          <view class="none_box" wx:if="{{consult1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+          <view class="none_box" wx:if="{{consult2_none}}">
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="consult-graph2" canvas-id="mychart-graph2" ec="{{ consult2 }}"></ec-canvas>
@@ -616,8 +617,8 @@
           <view>咨询成交项目分析</view>
         </view>
         <view class="canvas_box">
-          <view class="none_box" wx:if="{{consult2_none}}">
-            <image src="../../../images/charts_none.png"></image>
+          <view class="none_box" wx:if="{{consult3_none}}">
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="consult-graph3" canvas-id="mychart-graph3" ec="{{ consult3 }}"></ec-canvas>
@@ -629,36 +630,38 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{consult4_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="consult-graph4" canvas-id="mychart-graph4" ec="{{ consult4 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
-        <image src="../../../images/my_icon_Praise.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/my_icon_Praise.png"></image>
         咨询师TOP指数
       </view>
       <view class="li">
         <view>接诊人数TOP5</view>
         <view class="none_box_h3" wx:if="{{consult5_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
-        <view class="top_li" wx:for="{{consult_rank1}}">
+        <view class="top_li" wx:for="{{consult_rank1}}" data-text="咨询师咨询详情" data-child="{{item.counselor}}" bindtap="ontitle">
           <view>{{index+1}}</view>
-          <view>{{item.handlename}}</view>
+          <view>{{item.counselor}}</view>
+          <view class="top_text">{{item.scount}}</view>
         </view>
       </view>
       <view class="li">
         <view>业绩TOP5</view>
         <view class="none_box_h3" wx:if="{{consult5_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
-        <view class="top_li" wx:for="{{consult_rank2}}">
+        <view class="top_li" wx:for="{{consult_rank2}}" data-text="咨询师咨询详情" data-child="{{item.counselor}}" bindtap="ontitle">
           <view>{{index+1}}</view>
-          <view>{{item.handlename}}</view>
+          <view>{{item.counselor}}</view>
+          <view class="top_text">{{item.payfee}}</view>
         </view>
       </view>
     </view>
@@ -672,11 +675,11 @@
       </view>
       <view class="libox">
         <view class="libox_title">
-          <view>诊疗营业额统计0.00</view>
+          <view>诊疗营业额统计 {{consulting_total1.fee}}</view>
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{consulting1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="consulting-graph1" canvas-id="mychart-graph1" ec="{{ consulting1 }}"></ec-canvas>
@@ -684,11 +687,11 @@
       </view>
       <view class="libox">
         <view class="libox_title">
-          <view>接诊人次统计 0</view>
+          <view>接诊人次统计 {{consulting_total2.num}}</view>
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{consulting2_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="consulting-graph2" canvas-id="mychart-graph2" ec="{{ consulting2 }}"></ec-canvas>
@@ -700,7 +703,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{consulting3_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="consulting-graph3" canvas-id="mychart-graph3" ec="{{ consulting3 }}"></ec-canvas>
@@ -712,36 +715,38 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{consulting4_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="consulting-graph4" canvas-id="mychart-graph4" ec="{{ consulting4 }}"></ec-canvas>
         </view>
       </view>
       <view class="h3">
-        <image src="../../../images/my_icon_Praise.png"></image>
+        <image src="https://www.kyawang.com/uploads/images/my_icon_Praise.png"></image>
         医生TOP指数
       </view>
       <view class="li">
         <view>接诊人数TOP5</view>
         <view class="none_box_h3" wx:if="{{consulting5_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
         <view class="top_li" wx:for="{{consulting_rank1}}">
           <view>{{index+1}}</view>
-          <view>{{item.handlename}}</view>
+          <view>{{item.expectdoct}}</view>
+          <view class="top_text">{{item.num}}</view>
         </view>
       </view>
       <view class="li">
         <view>业绩TOP5</view>
         <view class="none_box_h3" wx:if="{{consulting6_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
         <view class="top_li" wx:for="{{consulting_rank2}}">
           <view>{{index+1}}</view>
-          <view>{{item.handlename}}</view>
+          <view>{{item.doctorname}}</view>
+          <view class="top_text">{{item.payfee}}</view>
         </view>
       </view>
     </view>
@@ -759,7 +764,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{business1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="business-graph1" canvas-id="mychart-graph1" ec="{{ business1 }}"></ec-canvas>
@@ -771,7 +776,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{business2_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="business-graph2" canvas-id="mychart-graph2" ec="{{ business2 }}"></ec-canvas>
@@ -783,7 +788,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{business3_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="business-graph3" canvas-id="mychart-graph3" ec="{{ business3 }}"></ec-canvas>
@@ -795,7 +800,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{business4_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="business-graph4" canvas-id="mychart-graph4" ec="{{ business4 }}"></ec-canvas>
@@ -807,7 +812,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{business5_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="business-graph5" canvas-id="mychart-graph5" ec="{{ business5 }}"></ec-canvas>
@@ -819,7 +824,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{business6_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="business-graph6" canvas-id="mychart-graph6" ec="{{ business6 }}"></ec-canvas>
@@ -831,7 +836,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{business7_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="business-graph7" canvas-id="mychart-graph7" ec="{{ business7 }}"></ec-canvas>
@@ -853,7 +858,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{expenditure1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="expenditure-graph1" canvas-id="mychart-graph1" ec="{{ expenditure1 }}"></ec-canvas>
@@ -865,7 +870,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{expenditure2_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="expenditure-graph2" canvas-id="mychart-graph2" ec="{{ expenditure2 }}"></ec-canvas>
@@ -877,7 +882,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{expenditure3_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="expenditure-graph3" canvas-id="mychart-graph3" ec="{{ expenditure3 }}"></ec-canvas>
@@ -894,11 +899,11 @@
       </view>
       <view class="libox">
         <view class="libox_title">
-          <view>回访总人数0</view>
+          <view>回访总人数 {{visit_total1.num}}</view>
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{visit1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="visit-graph1" canvas-id="mychart-graph1" ec="{{ visit1 }}"></ec-canvas>
@@ -910,7 +915,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{visit2_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="visit-graph2" canvas-id="mychart-graph2" ec="{{ visit2 }}"></ec-canvas>
@@ -922,21 +927,22 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{visit3_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="visit-graph3" canvas-id="mychart-graph3" ec="{{ visit3 }}"></ec-canvas>
         </view>
       </view>
-      <view class="li" data-text="回访人数情况" bindtap="ontitle">
+      <view class="li" data-text="回访人数情况">
         <view>回访人数情况</view>
         <view class="none_box_h3" wx:if="{{visit4_none}}">
-          <image src="../../../images/charts_none.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
           <view class="text">暂无数据</view>
         </view>
         <view class="top_li" wx:for="{{visit_rank1}}">
           <view>{{index+1}}</view>
-          <view>{{item.handlename}}</view>
+          <view>{{item.retvisuser}}</view>
+          <view class="top_text">{{item.typesum}}</view>
         </view>
       </view>
     </view>
@@ -954,7 +960,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{chain1_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="chain-graph1" canvas-id="mychart-graph1" ec="{{ chain1 }}"></ec-canvas>
@@ -966,7 +972,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{chain2_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="chain-graph2" canvas-id="mychart-graph2" ec="{{ chain2 }}"></ec-canvas>
@@ -978,7 +984,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{chain3_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="chain-graph3" canvas-id="mychart-graph3" ec="{{ chain3 }}"></ec-canvas>
@@ -990,7 +996,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{chain4_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="chain-graph4" canvas-id="mychart-graph4" ec="{{ chain4 }}"></ec-canvas>
@@ -1002,7 +1008,7 @@
         </view>
         <view class="canvas_box">
           <view class="none_box" wx:if="{{chain5_none}}">
-            <image src="../../../images/charts_none.png"></image>
+            <image src="https://www.kyawang.com/uploads/images/charts_none.png"></image>
             <view class="text">暂无数据</view>
           </view>
           <ec-canvas id="chain-graph5" canvas-id="mychart-graph5" ec="{{ chain5 }}"></ec-canvas>
@@ -2625,6 +2631,152 @@
         <view class="all">
           <view>总合计</view>
           <view>{{arr.total.totalpayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='咨询人数详情'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>患者姓名</view>
+          <view>就诊项目</view>
+          <view>接诊医生</view>
+          <view>接诊时间</view>
+          <view>就诊类别</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.treatment}}</view>
+          <view>{{item.counselor}}</view>
+          <view>{{item.triagetime}}</view>
+          <view>{{item.isfirstvisit==1?'复诊':'初诊'}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='咨询成交金额详情'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>患者姓名</view>
+          <view>就诊项目</view>
+          <view>接诊医生</view>
+          <view>接诊时间</view>
+          <view>就诊类别</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.treatment}}</view>
+          <view>{{item.counselor}}</view>
+          <view>{{item.triagetime}}</view>
+          <view>{{item.isfirstvisit==1?'复诊':'初诊'}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='咨询成交项目'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>患者姓名</view>
+          <view>接诊医生</view>
+          <view>接诊时间</view>
+          <view>就诊类别</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.counselor}}</view>
+          <view>{{item.triagetime}}</view>
+          <view>{{item.isfirstvisit==1?'复诊':'初诊'}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.totalpayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='咨询师成交统计'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>患者姓名</view>
+          <view>就诊项目</view>
+          <view>接诊时间</view>
+          <view>就诊类别</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.treatment}}</view>
+          <view>{{item.triagetime}}</view>
+          <view>{{item.isfirstvisit==1?'复诊':'初诊'}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.totalpayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='咨询师咨询详情'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>病历号</view>
+          <view>患者姓名</view>
+          <view>就诊项目</view>
+          <view>接诊时间</view>
+          <view>就诊类别</view>
+          <view>成交金额</view>
+        </view>
+        <view class="list_li" wx:for="{{arr.detail}}">
+          <view>{{item.patientid}}</view>
+          <view>{{item.name}}</view>
+          <view>{{item.treatment}}</view>
+          <view>{{item.triagetime}}</view>
+          <view>{{item.isfirstvisit==1?'复诊':'初诊'}}</view>
+          <view>{{item.payfee}}</view>
+        </view>
+        <view class="all">
+          <view>总合计</view>
+          <view>{{arr.total.totalpayfee}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="popup_box" wx:if="{{popup_title=='患者回访详情'}}">
+      <view class="list">
+        <view class="list_li">
+          <view>患者姓名</view>
+          <view>病历号</view>
+          <view>手机号</view>
+          <view>性别</view>
+          <view>患者来源</view>
+          <view>就诊项目</view>
+          <view>已回访次数</view>
+          <view>待回访次数</view>
+          <view>待跟进次数</view>
+          <view>复诊时间</view>
+          <view>初诊时间</view>
+        </view>
+        <view class="list_li" wx:for="{{arr}}">
+          <view>{{item.customername}}</view>
+          <view>{{item.patientid}}</view>
+          <view>{{item.phone}}</view>
+          <view>{{item.sex}}</view>
+          <view>{{item.comefrom}}</view>
+          <view>{{item.patientkind}}</view>
+          <view>{{item.visit}}</view>
+          <view>{{item.tovisit}}</view>
+          <view>{{item.novisit}}</view>
+          <view>{{item.referraldate}}</view>
+          <view>{{item.firstdate}}</view>
         </view>
       </view>
     </view>

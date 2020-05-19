@@ -24,20 +24,20 @@
         <view class="num">{{power_arr.code10006.has?item.patsum:0}}人</view>
       </view>
       <view class="li" wx:for="{{patient_arr}}" wx:if="{{li_num==first_index+1&&(power_arr.code10006.has||item.referraldoctidentity==user.userid)}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" data-item="{{item}}" catchtap="Patientclick">
-        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
-        <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
-        <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
+        <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>
         <view class="right_li">
           <view class="right_li_top">
             <view>
               {{item.patientname}}
-              <image wx:if="{{item.diseasehistory!=''}}" src="../../images/patient_icon_history.png"></image>
-              <!-- <image wx:if="{{item.isfirst!='0'}}" src="../../images/patient_icon_lnthe.png"></image> -->
-              <image wx:if="{{item.advancepay!='0.00'}}" src="../../images/patient_icon_money.png"></image>
-              <image wx:if="{{item.debts!='0.00'}}" src="../../images/patient_icon_owe.png"></image>
-              <image wx:if="{{item.img!='0'}}" src="../../images/patient_icon_picture.png"></image>
-              <image wx:if="{{item.isvip!='0'}}" src="../../images/patient_icon_vip.png"></image>
-              <image wx:if="{{item.wechat!='0'}}" src="../../images/wx.png"></image>
+              <image wx:if="{{item.diseasehistory!=''}}" src="https://www.kyawang.com/uploads/images/patient_icon_history.png"></image>
+              <!-- <image wx:if="{{item.isfirst!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_lnthe.png"></image> -->
+              <image wx:if="{{item.advancepay!='0.00'}}" src="https://www.kyawang.com/uploads/images/patient_icon_money.png"></image>
+              <image wx:if="{{item.debts!='0.00'}}" src="https://www.kyawang.com/uploads/images/patient_icon_owe.png"></image>
+              <image wx:if="{{item.img!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_picture.png"></image>
+              <image wx:if="{{item.isvip!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_vip.png"></image>
+              <image wx:if="{{item.wechat!='0'}}" src="https://www.kyawang.com/uploads/images/wx.png"></image>
             </view>
             <view class="state" wx:if="{{item.treatment!=''}}">{{item.treatment}}</view>
           </view>
@@ -52,20 +52,20 @@
   <view class="center" wx:if="{{nav1!='是否欠费'||nav2!='就诊项目'||nav3!='会员等级'||nav4!='咨询师'}}">
       <view class="li_box">
         <view class="li" wx:for="{{patient_arr}}" data-name="{{item.name}}" data-customerid="{{item.customerid}}" data-clinicid="{{item.clinicid}}" data-item="{{item}}" catchtap="Patientclick"  wx:if="{{power_arr.code10006.has}}">
-          <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
-          <image src="../../images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
-          <image src="../../images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>
+          <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex == '男'}}"></image>
+          <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_female.png" wx:if="{{item.sex == '女'}}"></image>
+          <image src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png" wx:if="{{item.sex != '男'&&item.sex != '女'}}"></image>
           <view class="right_li">
             <view class="right_li_top">
               <view>
                 {{item.patientname}}
-                <image wx:if="{{item.diseasehistory!=''}}" src="../../images/patient_icon_history.png"></image>
-                <!-- <image wx:if="{{item.isfirst!='0'}}" src="../../images/patient_icon_lnthe.png"></image> -->
-                <image wx:if="{{item.advancepay!='0.00'}}" src="../../images/patient_icon_money.png"></image>
-                <image wx:if="{{item.debts!='0.00'}}" src="../../images/patient_icon_owe.png"></image>
-                <image wx:if="{{item.img!='0'}}" src="../../images/patient_icon_picture.png"></image>
-                <image wx:if="{{item.isvip!='0'}}" src="../../images/patient_icon_vip.png"></image>
-                <image wx:if="{{item.wechat!='0'}}" src="../../images/wx.png"></image>
+                <image wx:if="{{item.diseasehistory!=''}}" src="https://www.kyawang.com/uploads/images/patient_icon_history.png"></image>
+                <!-- <image wx:if="{{item.isfirst!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_lnthe.png"></image> -->
+                <image wx:if="{{item.advancepay!='0.00'}}" src="https://www.kyawang.com/uploads/images/patient_icon_money.png"></image>
+                <image wx:if="{{item.debts!='0.00'}}" src="https://www.kyawang.com/uploads/images/patient_icon_owe.png"></image>
+                <image wx:if="{{item.img!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_picture.png"></image>
+                <image wx:if="{{item.isvip!='0'}}" src="https://www.kyawang.com/uploads/images/patient_icon_vip.png"></image>
+                <image wx:if="{{item.wechat!='0'}}" src="https://www.kyawang.com/uploads/images/wx.png"></image>
               </view>
               <view class="state" wx:if="{{item.treatment!=''}}">{{item.treatment}}</view>
             </view>

@@ -13,7 +13,7 @@
     </view>
     <view class="li">
         <view class="first">就诊医生</view>
-        <image class="img" src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <image class="img" src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png"></image>
         <view>{{arr.referraldoct?arr.referraldoct:patdetails.referraldoct}}</view>
     </view>
     <view class="li">
@@ -27,7 +27,7 @@
       </view>
       <view class="li" wx:for="{{arr.handlelist}}" wx:if="{{item.handletype==0}}">
         <view class="title">
-          <image src="../../images/details_disposal_icon_teeth.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/details_disposal_icon_teeth.png"></image>
           <view class="tooth" data-index="{{index}}" data-text="handlelist" bindtap="Toothgo">
             <view>{{item.lt}}</view>
             <view>{{item.rt}}</view>
@@ -71,7 +71,7 @@
       </view>
     </view>
     <view class="li" bindtap="Soundgo">
-        <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+        <van-icon name="https://www.kyawang.com/uploads/images/case_icon_ memorial_defauit.png" />
         <view class="first">语音备忘录</view>
         <view></view>
         <van-icon name="arrow" />
@@ -107,7 +107,7 @@
     </view>
     <view class="li">
         <view class="first">就诊医生</view>
-        <image class="img" src="../../images/clinic_colleagues_headportrait_male.png"></image>
+        <image class="img" src="https://www.kyawang.com/uploads/images/clinic_colleagues_headportrait_male.png"></image>
         <view>{{arr.examdoct}}</view>
     </view>
     <view class="li">
@@ -121,7 +121,7 @@
       </view>
       <view class="li" wx:for="{{arr.handlelist}}" wx:if="{{item.handletype==0}}">
         <view class="title">
-          <image src="../../images/details_disposal_icon_teeth.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/details_disposal_icon_teeth.png"></image>
           <view class="tooth" data-index="{{index}}" data-text="handlelist" bindtap="Toothgo">
             <view>{{item.lt}}</view>
             <view>{{item.rt}}</view>
@@ -167,7 +167,7 @@
     <view class="box" wx:if="{{arr.studystatusname != '治疗中'}}">
       <view class="li" wx:for="{{arr.handlelist}}" wx:if="{{item.handletype==0}}">
         <view class="title">
-          <image src="../../images/details_disposal_icon_teeth.png"></image>
+          <image src="https://www.kyawang.com/uploads/images/details_disposal_icon_teeth.png"></image>
           <view class="tooth">
             <view>{{item.lt}}</view>
             <view>{{item.rt}}</view>
@@ -208,7 +208,7 @@
       </view>
     </view>
     <view class="li" bindtap="Soundgo">
-        <van-icon name="../../../images/case_icon_ memorial_defauit.png" />
+        <van-icon name="https://www.kyawang.com/uploads/images/case_icon_ memorial_defauit.png" />
         <view class="first">语音备忘录</view>
         <view></view>
         <van-icon name="arrow" />

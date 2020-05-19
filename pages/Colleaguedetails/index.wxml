@@ -6,8 +6,8 @@
   </view> -->
   <view class="center">
     <view class="center_top">
-      <image src="../../images/my_headportrait_male.png" wx:if="{{user.sex=='男'}}"></image>
-      <image src="../../images/my_headportrait_female.png" wx:if="{{user.sex=='女'}}"></image>
+      <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png" wx:if="{{user.sex=='男'}}"></image>
+      <image src="https://www.kyawang.com/uploads/images/my_headportrait_female.png" wx:if="{{user.sex=='女'}}"></image>
       <view class="name">{{user.name}}</view>
       <view>{{user.duty}}</view>
     </view>
