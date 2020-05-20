@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title:"断牙重接",
+    title:"加载中",
     id:0,
     userimg:'',
     name:'',
