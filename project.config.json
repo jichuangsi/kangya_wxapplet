@@ -22,7 +22,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.4",
@@ -81,8 +82,8 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/my/index",
-					"pathName": "pages/my/index",
+					"name": "pages/blank/index",
+					"pathName": "pages/blank/index",
 					"query": "",
 					"scene": null
 				},

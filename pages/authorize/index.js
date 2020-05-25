@@ -12,8 +12,8 @@ Page({
     if (res.detail.errMsg =='getUserInfo:fail auth deny'){
 
     }else{
-      wx.navigateBack({
-        delta: 1,
+      wx.redirectTo({
+        url: '/'+wx.getStorageSync('CurrentPage'),
       })
     }
   },
@@ -21,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.hideHomeButton()
   },
 
   /**

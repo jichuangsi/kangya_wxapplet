@@ -32,6 +32,9 @@
        <view wx:if="{{user.remark == ''}}">未填写</view>
        <view wx:if="{{user.remark != ''}}">{{user.remark}}</view>
     </view>
+    <view class="li" wx:if="{{user.duty == '医生'}}" bindtap="doctorshow">
+       <view>医生个人主页</view>
+    </view>
     <view class="xian"></view>
     <view class="li" wx:if="{{user.duty == '护士'}}">
        <view>设置为我的护士</view>
@@ -54,5 +57,15 @@
       </view>
     </view>
   </view>
-
+  <van-dialog
+    use-slot
+    title=""
+    show="{{ show }}"
+    bind:confirm="doctorshow"
+  >
+    <view class="imgbox">
+      <image src="http://qr.liantu.com/api.php?text=https://open.weixin.qq.com/sns/getexpappinfo?appid=wxc34210c312dd9e56&path=pages%2FD_index%2Findex.html?doctorid={{user.homepage}}#wechat-redirect"></image>
+      <image class="decorate" src="https://www.kyawang.com/uploads/images/border.png"></image>
+    </view>
+  </van-dialog>
 </view>

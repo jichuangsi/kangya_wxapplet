@@ -107,6 +107,7 @@
     "pages/W_address/index",
     "pages/W_introduce/index",
 
+
     "pages/D_index/index"
     
 
@@ -181,6 +182,5 @@
       "provider": "wx069ba97219f66d99"
     }
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

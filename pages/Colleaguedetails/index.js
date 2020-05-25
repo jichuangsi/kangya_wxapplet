@@ -16,7 +16,8 @@ Page({
     name:'',
     nurse:false,
     user:0,
-    power_arr:[]
+    power_arr:[],
+    show:false
   },
   onClickLeft() {
     wx.navigateBack({
@@ -29,7 +30,7 @@ Page({
   },
   chatgo(){
     wx.navigateTo({
-      url: '../chat/index?title=百慕大',
+      url: '../chat/index?title='+this.user.name,
     })
   },
   iphoneclick() {
@@ -41,6 +42,11 @@ Page({
     let user = JSON.stringify(this.data.user)
     wx.navigateTo({
       url: '../../component/pages/achievement/index?user=' + user +'&&state=0',
+    })
+  },
+  doctorshow(){
+    this.setData({
+      show:!this.data.show
     })
   },
   // getdata() {

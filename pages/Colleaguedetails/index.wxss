@@ -95,3 +95,29 @@
 .center .center_bottom view van-icon {
   margin-right: 10rpx;
 }
+.imgbox {
+  width: 500rpx;
+  height: 500rpx;
+  position: relative;
+  margin: 30rpx auto;
+}
+.imgbox image {
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.imgbox .decorate {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  transform: translate(0%,0%);
+}
+.van-dialog__button {
+  flex: none;
+  width: 100%;
+}
