@@ -7,6 +7,7 @@ Page({
   data: {
     title:'',
     id:'',
+    url:'',
     isOverShare:true
   },
   go(){
@@ -57,7 +58,7 @@ Page({
           ctx.drawImage(imgPath, 0, 0, imgW, imgH)
 
           wx.getImageInfo({
-            src: 'http://qr.liantu.com/api.php?text=https://open.weixin.qq.com/sns/getexpappinfo?appid=wxc34210c312dd9e56&path=pages%2FD_index%2Findex.html?doctorid='+that.data.id+'#wechat-redirect', // 二维码图片的路径
+            src: 'http://qr.liantu.com/api.php?text='+that.data.url, // 二维码图片的路径
             success: function(res) {
               console.log(" 绘制二维码》》》", res)
               // 绘制二维码
@@ -138,7 +139,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       title:options.title,
-      id:options.id
+      id:options.id,
+      url:encodeURIComponent('https://open.weixin.qq.com/sns/getexpappinfo?appid=wxc34210c312dd9e56&path=pages%2FD_index%2Findex.html?doctorid='+options.id+'#wechat-redirect')
     })
   },
 

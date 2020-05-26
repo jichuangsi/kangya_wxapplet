@@ -1,7 +1,7 @@
 <!--pages/D_QRCode/index.wxml-->
 <view class="D_QRCode">
   <view class="imgbox" bindtap="go">
-    <image src="http://qr.liantu.com/api.php?text=https://open.weixin.qq.com/sns/getexpappinfo?appid=wxc34210c312dd9e56&path=pages%2FD_index%2Findex.html?doctorid={{id}}#wechat-redirect"></image>
+    <image src="http://qr.liantu.com/api.php?text={{url}}"></image>
     <image class="decorate" src="https://www.kyawang.com/uploads/images/border.png"></image>
   </view>
   <button bindtap="baocun">保存图片</button>
