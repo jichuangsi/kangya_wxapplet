@@ -17,7 +17,8 @@ Page({
     nurse:false,
     user:0,
     power_arr:[],
-    show:false
+    show:false,
+    isOverShare:false
   },
   onClickLeft() {
     wx.navigateBack({
@@ -88,6 +89,7 @@ Page({
     this.setData({
       user: JSON.parse(options.item),
       power_arr: Page.data.power_arr ? Page.data.power_arr : '',
+      isOverShare:JSON.parse(options.item).homepage!=''?true:false
     })
     wx.setNavigationBarTitle({
       title: '同事资料'
@@ -141,6 +143,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "医生二维码",
+      desc: '分享页面的内容',
+      path: '/pages/D_QRCode/index?title=医生二维码' + '&&id=' + this.data.user.homepage  // 路径，传递参数到指定页面。
+    }
   }
 })

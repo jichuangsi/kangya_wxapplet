@@ -126,13 +126,16 @@ Page({
     })
     this.getdata()
     this.getimg()
+    console.log(111)
+    console.log(options.doctorid)
+    console.log(2222)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.hideHomeButton()
   },
 
   /**

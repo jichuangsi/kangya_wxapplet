@@ -107,6 +107,7 @@
     "pages/W_address/index",
     "pages/W_introduce/index",
 
+    "pages/D_QRCode/index",
 
     "pages/D_index/index"
     

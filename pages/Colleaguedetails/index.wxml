@@ -32,7 +32,7 @@
        <view wx:if="{{user.remark == ''}}">未填写</view>
        <view wx:if="{{user.remark != ''}}">{{user.remark}}</view>
     </view>
-    <view class="li" wx:if="{{user.duty == '医生'}}" bindtap="doctorshow">
+    <view class="li" wx:if="{{user.homepage != ''}}" bindtap="doctorshow">
        <view>医生个人主页</view>
     </view>
     <view class="xian"></view>
