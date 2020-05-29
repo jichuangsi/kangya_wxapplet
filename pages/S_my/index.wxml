@@ -1,0 +1,81 @@
+<!--pages/S_my/index.wxml-->
+<view class="S_my">
+  <!-- <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view> -->
+  <view class="center">
+    <view class="center_top">
+      <image src="../../images/my_headportrait_male.png"></image>
+      <view class="user">
+        <view class="name">账户：1344875454</view>
+        <view>会员ID：258566</view>
+        <view>会员有效期：2020-12-31</view>
+      </view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+    <view class="box mt">
+      <view class="box_top">
+        <view class="left">我的钱包</view>
+        <view bindtap="S_rechargego">预付优惠</view>
+      </view>
+      <view class="box_bottom">
+        <view class="box_li" bindtap="S_rechargego">
+          <view>0.00</view>
+          <view>余额</view>
+        </view>
+        <view class="box_li" bindtap="S_cardgo">
+          <view>18</view>
+          <view>卡券包</view>
+        </view>
+      </view>
+    </view>
+    <view class="box">
+      <view class="box_top">
+        <view class="left">我的订单</view>
+        <view bindtap="S_Ordergo">全部订单</view>
+        <van-icon name="arrow" size="36rpx" bindtap="S_Ordergo" />
+      </view>
+      <view class="box_bottom" border="{{borderstate}}">
+        <van-grid column-num="5">
+          <van-grid-item icon="credit-pay" text="待付款" link-type="navigateTo"
+    url="/pages/S_Order/index?title=待付款"  />
+          <van-grid-item icon="free-postage" text="待发货" link-type="navigateTo"
+    url="/pages/S_Order/index?title=待发货"  />
+          <van-grid-item icon="logistics" text="待收货" link-type="navigateTo"
+    url="/pages/S_Order/index?title=待收货"  />
+          <van-grid-item icon="completed" text="已完成" link-type="navigateTo"
+    url="/pages/S_Order/index?title=已完成"  />
+          <van-grid-item icon="after-sale" text="退款/售后" link-type="navigateTo"
+    url="/pages/S_Service/index?state=0"  />
+        </van-grid>
+      </view>
+    </view>
+    <view class="box">
+      <view class="box_top">
+        <view class="left">我的服务</view>
+      </view>
+      <view class="box_bottom" border="{{borderstate}}">
+        <van-grid>
+          <van-grid-item icon="../../../images/my_service_icon_address.png" text="收货地址" link-type="navigateTo"
+    url="/pages/S_address/index" />
+    <van-grid-item icon="../../../images/my_service_icon_collection.png" text="我的收藏" link-type="navigateTo"
+    url="/pages/S_Collection/index" />
+    <van-grid-item icon="../../../images/my_service_icon_assemble.png" text="我的拼团" link-type="navigateTo"
+    url="/pages/S_Assemble/index" />
+    <van-grid-item icon="../../../images/my_service_icon_consumables.png" text="送TA耗材券" link-type="navigateTo"
+    url="/pages/S_spread/index?state=0" />
+    <van-grid-item icon="../../../images/my_service_icon_customerservice.png" text="联系客服" bind:click="kfclick" />
+    <van-grid-item icon="../../../images/my_service_icon_coupon.png" text="领券中心" link-type="navigateTo"
+    url="/pages/S_coupon/index" />
+    <van-grid-item icon="../../../images/my_service_icon_prepaid.png" text="预付中心" link-type="navigateTo"
+    url="/pages/S_recharge/index" />
+    <van-grid-item icon="../../../images/my_service_icon_coupon-1.png" text="预付赠券" link-type="navigateTo"
+    url="/pages/S_spread/index?state=2" />
+        </van-grid>
+      </view>
+    </view>
+  </view>
+  <van-dialog id="van-dialog" />
+  <S_foot footnum="3"></S_foot>
+</view>

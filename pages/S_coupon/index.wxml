@@ -1,0 +1,34 @@
+<!--pages/S_coupon/index.wxml-->
+<view class="S_coupon">
+  <!-- <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view> -->
+  <view class="center">
+    
+    <view class="nav">
+      <view class="nav_li {{nav_num==index?'check':''}}" wx:for="{{nav_arr}}" bindtap="navclick" data-index="{{index}}">
+        {{item.title}}
+      </view>
+    </view>
+
+    <view class="yh">
+        <view class="yh_li" wx:for="{{yh_arr}}">
+          <view class="left">
+              <view><view>￥</view>{{item.price}}</view>
+              <view>满{{item.m_price}}可用</view>
+          </view>
+          <view class="right">
+            <view class="right_top">
+              <view class="state">{{item.title}}</view> <view>{{item.text}}</view>
+            </view>
+            <view class="right_bottom">
+              <view>·不可叠加使用</view>
+              <view>·{{item.time}}</view>
+            </view>
+            <view class="right_state" data-index="{{index}}" bindtap="btnclick">{{item.state==0?'立即领取':'立即使用'}}</view>
+          </view>
+        </view>
+    </view>
+  </view>
+</view>

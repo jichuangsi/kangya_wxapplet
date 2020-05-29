@@ -1,0 +1,5 @@
+<!--pages/S_spread/index.wxml-->
+<view class="S_spread">
+  <view class="center">
+  </view>
+</view>

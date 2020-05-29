@@ -1,0 +1,203 @@
+<!--pages/S_Detail/index.wxml-->
+<view class="S_Detail"> 
+  <!-- <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view> -->
+  <view class="center">
+    <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true'>
+      <swiper-item wx:for="{{img_arr}}">
+        <image src="{{item}}"></image>
+      </swiper-item>
+    </swiper>
+    <view class="pt" wx:if="{{check_title =='拼团专区' }}">
+      <view class="left">
+        <view class="money">
+            <view class="new">￥{{price}}</view>
+            <view class="old">￥{{assemble_price}}</view>
+          </view>
+          <view class="left_bottom">
+            <view>{{assemble_number}}人团</view>
+            <view>已拼{{assemble_num}}件</view>
+          </view>
+      </view>
+      <view class="right">库存充足</view>
+    </view>
+    <view class="qg" wx:if="{{check_title =='抢购' }}">
+      <view class="left">
+        <view class="money">
+            <view class="new">￥{{price}}</view>
+            <view class="old">￥{{old_price}}</view>
+          </view>
+      </view>
+      <view class="right">
+        <view wx:if="{{buystate == 1}}">活动已结束</view>
+        <view wx:if="{{buystate == 0}}">距离结束还剩：</view>
+        <van-count-down time="{{ time }}"  wx:if="{{buystate == 0}}"/>
+      </view>
+    </view>
+    <view class="li">
+      <view class="left">
+        <view class="text">{{commodity_title}}</view>
+          <view class="money" wx:if="{{check_title =='' }}">
+            <view class="new">￥{{price}}</view>
+            <view class="old">￥{{old_price}}</view>
+          </view>
+      </view>
+      <van-icon name="share" size="36rpx" />
+    </view>
+    <view class="nav_title">
+      <view><van-icon name="certificate" />正品保障</view>
+      <view><van-icon name="after-sale" />假一赔十</view>
+      <view><van-icon name="logistics" />快递到货</view>
+    </view>
+    <view class="xian"></view>
+    <view class="text_box" data-index="0" bindtap="showpopup" wx:if="{{check_title!='抢购'}}">
+      <view>优惠</view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+    <view class="xian"></view>
+    <view class="text_box" data-index="1" bindtap="showpopup" wx:if="{{check_title!='拼团专区'}}">
+      <view>选择型号规格</view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+    <view class="text_box" bindtap="ptclcik" wx:if="{{check_title=='拼团专区'}}">
+      <view>拼团规则</view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+    <view class="text_box" wx:if="{{check_title=='拼团专区'}}">
+      <view class="box_pt">
+        <van-icon name="shopping-cart-o" size="36rpx"/>
+        团长开团
+      </view>
+      <van-icon name="arrow" />
+      <view class="box_pt">
+        <van-icon name="friends-o" size="36rpx"/>
+        邀请好友
+      </view>
+      <van-icon name="arrow" size="36rpx"/>
+      <view class="box_pt">
+        <van-icon name="passed" size="36rpx"/>
+        拼团成功
+      </view>
+      <van-icon name="arrow" />
+      <view class="box_pt" >
+        <van-icon name="logistics" size="36rpx"/>
+        等待发货
+      </view>
+    </view>
+    <view class="xian"></view>
+    <van-tabs active="{{ active }}" bind:change="onChange">
+      <van-tab title="图文详情" name="图文详情">
+        <view class="text" wx:for="{{details_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
+        <image src="{{item.text}}" wx:for="{{details_text}}" wx:if="{{item.state==1}}"></image>
+      </van-tab>
+      <van-tab title="注册证查询" name="注册证查询">
+        <view class="text" wx:for="{{prove_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
+        <image src="{{item.text}}" wx:for="{{prove_text}}" wx:if="{{item.state==1}}"></image>
+      </van-tab>
+      <van-tab title="售后保证" name="售后保证">
+        <view class="text" wx:for="{{ensure_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
+        <image src="{{item.text}}" wx:for="{{ensure_text}}" wx:if="{{item.state==1}}"></image>
+      </van-tab>
+    </van-tabs>
+  </view>
+  <view class="bottom" wx:if="{{check_title==''}}">
+    <view bindtap="sygo">
+      <van-icon name="wap-home-o" size="36rpx" />
+      首页
+    </view>
+    <view bindtap="love">
+      <van-icon name="star-o" size="36rpx" wx:if="{{!star}}" />
+      <van-icon name="star" color="yellow" size="36rpx" wx:if="{{star}}" />
+      收藏
+    </view>
+    <view bindtap="gwgo">
+      <van-icon name="cart-o" size="36rpx" />
+      购物车
+    </view>
+    <view class="red1" bindtap="gwclick">加入购物车</view>
+    <view class="red" bindtap="gwclick">立即购买</view>
+  </view>
+  <view class="bottom" wx:if="{{check_title=='抢购'}}">
+    <view bindtap="sygo">
+      <van-icon name="wap-home-o" size="36rpx" />
+      首页
+    </view>
+    <view bindtap="gwgo">
+      <van-icon name="cart-o" size="36rpx" />
+      购物车
+    </view>
+    <view class="red1" wx:if="{{buystate == 1}}">活动已结束</view>
+    <view class="red1" bindtap="gwclick" wx:if="{{buystate == 0}}">加入购物车</view>
+    <view class="red" bindtap="gwclick" wx:if="{{buystate == 0}}">立即抢购</view>
+  </view>
+  
+  <view class="bottom" wx:if="{{check_title=='拼团专区'}}">
+    <view class="red1" bindtap="gwclick">
+      单独购买
+      <view>￥{{price}}</view>
+    </view>
+    <view class="red" bindtap="gwclick">
+      发起拼团
+      <view>￥{{assemble_price}}</view>
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+  <van-dialog id="van-dialog" />
+  
+  <van-popup
+  show="{{ show }}"
+  position="bottom"
+  custom-style="width:100%;height:60%;"
+  bind:close="onClose"
+  closeable
+  >
+    <view class="yh" wx:if="{{show_num==0}}">
+      <view class="yh_title">可领取优惠券</view>
+      <view class="yh_li" wx:for="{{yh_arr}}">
+        <view class="left">
+            <view><view>￥</view>{{item.price}}</view>
+            <view>满{{item.m_price}}可用</view>
+        </view>
+        <view class="right">
+          <view class="right_top">
+            <view class="state">{{item.title}}</view> <view>{{item.text}}</view>
+          </view>
+          <view class="right_bottom">
+            <view>·不可叠加使用</view>
+            <view>·{{item.time}}</view>
+          </view>
+          <view class="right_state">{{item.state==0?'立即领取':'立即使用'}}</view>
+        </view>
+      </view>
+      <view class="yh_btn">确定</view>
+    </view>
+    <view class="gg" wx:if="{{show_num==1}}">
+      <view class="li">
+        <image src=""></image>
+        <view class="left">
+            <view class="money">
+              <view class="new">￥36.00</view>
+              <view class="old">￥26.00</view>
+            </view>
+          <view class="text">已选择{{check_gg}},数量:{{check_num}}</view>
+        </view>
+      </view>
+      <view class="gg_li_box">
+        <view class="yh_title">型号</view>
+        <view wx:for="{{gg_arr}}" ><view class="gg_li {{item.title==check_gg?'check_gg':''}}" bindtap="ggclick" data-text="{{item.title}}">{{item.title}}</view></view>
+      </view>
+      <view class="gg_num">
+        <view class="gg_num_title">数量</view>
+        <van-icon name="clear" color="{{gg_min>=check_num?'#c3c3c3':'red'}}"  bindtap="delone" />
+        <view class="num">{{check_num}}</view>
+        <van-icon name="add" color="#16c7ae" bindtap="addone" />
+      </view>
+      <view class="gg_btn">
+        <view class="red1" bindtap="gg_btn" wx:if="{{check_title==''}}">加入购物车</view>
+        <view class="red" bindtap="buy_btn">立即购买</view>
+      </view>
+    </view>
+  </van-popup>
+</view>

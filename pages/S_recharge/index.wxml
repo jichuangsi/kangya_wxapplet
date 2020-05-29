@@ -1,0 +1,77 @@
+<!--pages/S_recharge/index.wxml-->
+<view class="S_recharge">
+  <!-- <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view> -->
+  <view class="center" wx:if="{{state == 0}}">
+    <view class="center_top">
+      <view class="first">{{money_state?money:'***'}}<van-icon name="{{money_state?'eye-o':'closed-eye'}}" bindtap="moneyclick" size="36rpx"/></view>
+      <view class="jy" bindtap="btn1">交易记录</view>
+    </view>
+    <view class="title">余额预付</view>
+    <view class="djbox">
+      <view class="dj_title">
+        代金券
+      </view>
+      <view class="dj_li" wx:for="{{cash_arr}}">
+        <view class="left">
+          <view class="state">代金券</view>
+          <view>{{item.oldprice}}元</view>
+          <view class="time">有效期:{{item.time}}</view>
+        </view>
+        <view class="right">
+          <view class="btn" data-index="{{index}}" bindtap="btn2">立即抢购</view>
+          <view>￥{{item.newprice}}元</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="center" wx:if="{{state == 1}}">
+    <van-tabs active="{{active}}">
+      <van-tab title="全部" name="全部">
+        <view class="li" wx:for="{{budget_arr}}">
+          <view class="left">
+            <view>{{item.title}}</view>
+            <view class="time">{{item.time}}</view>
+          </view>
+          <view class="{{item.budget == 0?'green':'red'}}">{{item.budgetmoney}}</view>
+        </view>
+      </van-tab>
+      <van-tab title="收入" name="收入">
+        <view class="li" wx:for="{{budget_arr}}">
+          <view class="left">
+            <view>{{item.title}}</view>
+            <view class="time">{{item.time}}</view>
+          </view>
+          <view class="{{item.budget == 0?'green':'red'}}">{{item.budgetmoney}}</view>
+        </view>
+      </van-tab>
+      <van-tab title="支出" name="支出">
+        <view class="li" wx:for="{{budget_arr}}">
+          <view class="left">
+            <view>{{item.title}}</view>
+            <view class="time">{{item.time}}</view>
+          </view>
+          <view class="{{item.budget == 0?'green':'red'}}">{{item.budgetmoney}}</view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+  <view class="center" wx:if="{{state == 2}}">
+    <view class="center_top">
+    </view>
+    <view class="text_box">
+      <view class="box">
+        <view>￥{{cash_arr[check_index].newprice}}</view>
+        <view>{{cash_arr[check_index].newprice}}代{{cash_arr[check_index].oldprice}}元券</view>
+      </view>
+      <view class="title_state">
+        <view>代金券</view><view>{{cash_arr[check_index].newprice}}代{{cash_arr[check_index].oldprice}}元券</view>
+      </view>
+      <view class="text" wx:for="{{cash_arr[check_index].text_arr}}" wx:if="{{item.state == 0}}">{{item.title}}</view>
+      <image src="{{item.text}}" wx:for="{{cash_arr[check_index].text_arr}}" wx:if="{{item.state == 1}}"></image>
+      <view class="btn">立即支付</view>
+    </view>
+  </view>
+</view>

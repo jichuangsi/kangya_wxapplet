@@ -1,0 +1,42 @@
+<!--pages/S_seckill/index.wxml-->
+<view class="S_seckill">
+  <!-- <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view> -->
+    <view class="nav">
+      <view class="nav_li {{nav_num==index?'check':''}}" wx:for="{{nav_arr}}" bindtap="navclick" data-index="{{index}}">
+        <view>{{item.time}}</view>
+        <view wx:if="{{item.state == 0}}">即将开抢</view>
+        <view wx:if="{{item.state == 1}}">已结束</view>
+        <view wx:if="{{item.state == 2}}">正在疯抢</view>
+      </view>
+    </view>
+  <view class="center">
+    <view class="timebox" wx:if="{{nav_arr[nav_num].state != 0}}">
+        <view class="time_li" wx:if="{{nav_arr[nav_num].state == 1}}">
+          <view>{{nav_arr[nav_num].time}}</view>
+          <view>活动已结束</view>
+        </view>
+        <view class="time_li" wx:if="{{nav_arr[nav_num].state == 2}}">
+          <view>{{nav_arr[nav_num].time}} 正在疯抢</view>
+          <van-count-down time="{{ time }}"/>
+        </view>
+    </view>
+    <view class="libox" wx:if="{{nav_arr[nav_num].state != 0}}">
+      <view class="li" wx:for="{{arr}}">
+        <navigator url="/pages/S_Detail/index?id={{item.id}}&&title=抢购&&buystate={{item.state}}" hover-class="navigator-hover">
+          <image src="{{item.img}}"></image>
+          <view class="right">
+            <view class="text">{{item.title}}</view>
+            <view class="money">
+              <view class="new">￥{{item.price}}</view>
+              <view class="old">￥{{item.oldprice}}</view>
+            </view>
+            <view class="btn {{item.state==0?'':'hui'}}">{{item.state==0?'立即抢购':'活动已结束'}}</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>

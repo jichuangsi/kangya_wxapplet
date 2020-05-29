@@ -1,0 +1,114 @@
+<!--pages/S_shopcart/index.wxml-->
+<view class="S_shopcart">
+  <view class="top">
+    <!-- <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar> -->
+    <view class="top_title">
+      <van-icon name="shop-o" size="36rpx" />
+      <view class="text">康牙医生商城</view>
+      <view class="top_btn" data-index="1" bindtap="edit" wx:if="{{del_state==0}}">编辑商品</view>
+      <view class="top_btn" data-index="0" bindtap="edit" wx:if="{{del_state==1}}">完成</view>
+    </view>
+  </view>
+  <view class="center">
+    <view class="nav" bindtap="S_coupongo">
+      <van-icon name="coupon" size="36rpx" color="red" />
+      <view class="text">先领卷再下单 让购物更轻松</view>
+      <view>领卷中心</view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+    <view class="libox" wx:for="{{arr}}" wx:for-index="first_index">
+        <!-- <view class="title">
+          <view class="state">{{item.state}}</view>
+          <view class="text">{{item.title}}</view>
+          <view>去凑单</view>
+          <van-icon name="arrow" size="36rpx" />
+        </view> -->
+      <view class="li" wx:for="{{item.child}}">
+          <view class="left">
+            <van-icon name="checked" wx:if="{{item.state == 0}}" data-index="{{index}}" data-first_index="{{first_index}}" bindtap="check"/>
+            <van-icon name="checked" color="#16c7ae" wx:if="{{item.state == 1}}" data-index="{{index}}" data-first_index="{{first_index}}" bindtap="check"/>
+          </view>
+          <view class="right">
+            <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
+              <!-- <van-cell-group> -->
+                <van-card
+                  num="{{item.num}}"
+                  price="{{item.price}}"
+                  title="{{item.title}}"
+                  thumb="{{ item.img }}"
+                  thumb-link="/pages/S_Detail/index?id={{item.id}}"
+                  link-type="navigateTo"
+                >
+                  <view slot="tags">
+                    <view class="tag">{{item.tags}}</view>
+                  </view>
+                  <view slot="footer" class="carbox">
+                    <view class="carbtn" wx:if="{{item.min<item.num}}"  data-index="{{index}}" data-first_index="{{first_index}}" bindtap="delone">-</view>
+                    <view class="carbtn hui" wx:if="{{item.min>=item.num}}">-</view>
+                    <view class="carbtn" data-index="{{index}}" data-first_index="{{first_index}}" data-item="{{item}}" bindtap="addone">+</view>
+                  </view>
+                </van-card>
+              <!-- </van-cell-group> -->
+              <view slot="right" class="del" bindtap="del">删除</view>
+            </van-swipe-cell>
+          </view>
+        </view>
+    </view>
+    
+    <!-- <view class="Invalid">
+      <view class="title">
+        <view>失效商品{{Invalid_arr.length-1}}件</view>
+        <view bindtap="delInvalid">清空失效产品</view>
+      </view>
+      <view class="li" wx:for="{{Invalid_arr}}">
+          <view class="left">
+            <view class="Invalid_text">失效</view>
+          </view>
+          <view class="right">
+                <van-card
+                  title="{{item.title}}"
+                  thumb="{{ item.img }}"
+                  thumb-link="/pages/S_Detail/index?id={{item.id}}"
+                  link-type="navigateTo"
+                >
+                  <view slot="tags">
+                    <view class="tag">{{item.tags}}</view>
+                  </view>
+                  <view slot="footer" class="carbox">
+                      <view class="alike" bindtap="alike">找相似</view>
+                  </view>
+                </van-card>
+          </view>
+        </view>
+    </view>
+
+    <view class="love">
+      <view class="title">猜你喜欢</view>
+      <view class="love_libox">
+        <view class="love_li" wx:for="{{love_arr}}">
+          <navigator url="/pages/S_Detail/index?id={{item.id}}" hover-class="navigator-hover">
+          <image src="{{item.img}}"></image>
+          <view class="text">{{item.title}}</view>
+          <view class="money">
+            <view class="new">￥{{item.price}}</view>
+            <view class="old">￥{{item.oldprice}}</view>
+          </view>
+          </navigator>
+        </view>
+      </view>
+    </view> -->
+  </view>
+  <view class="bottom_btn">
+    <view class="bottom_btn_left" bindtap="allcheck">
+      <van-icon name="checked" wx:if="{{allstate == 0}}"/>
+      <van-icon name="checked" color="#16c7ae" wx:if="{{allstate == 1}}"/>
+      <view>全选</view>
+    </view>
+    <view class="text" wx:if="{{del_state==0}}">合计:￥{{all_price}}</view>
+    <view class="btn" wx:if="{{del_state==0}}" bindtap="S_Settlementgo">结算({{all_num}})</view>
+    <view class="bottom_delbtn" wx:if="{{del_state==1}}" bindtap="del">删除</view>
+  </view>
+  <van-dialog id="van-dialog" />
+  <S_foot footnum="2"></S_foot>
+</view>

@@ -63,6 +63,10 @@ Page({
       wx.navigateTo({
         url: '/pages/coursedetails/index?id=' + item.value,
       })
+    } else if (stype == 'cart') {
+      wx.navigateTo({
+        url: '/pages/S_Productlist/index?title='+ item.name +'&&id=' + item.value,
+      })
     }
   },
   getdata(){

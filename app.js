@@ -4,7 +4,7 @@ App({
     API: 'http://kangya.sample.jichuangsi.com',
     APIS: 'https://kyys.kyawang.com'
   },
-  onLaunch: function () {
+  onLaunch: function (option) {
     let a = 1
     let self = this
     let page_arr = ['pages/my/index', 'pages/Relation/index', 'pages/Relationclinic/index', 'pages/authorize/index', 'pages/D_index/index', 'pages/information/index', 'pages/study/index', 'pages/news/index', 'pages/newsdetails/index', 'pages/studynav/index', 'pages/studysearch/index', 'pages/QRCode/index', 'pages/friendsearch/index', 'pages/PriceList/index', 'pages/Pricesearch/index', 'pages/addfriend/index', 'pages/Videoplay/index', 'pages/Mydata/index', 'pages/Mydataedit/index', 'pages/Myclinic/index', 'pages/Record/index', 'pages/Approval/index', 'pages/Newslist/index', 'pages/about/index', 'pages/aboutdetails/index', 'pages/set/index', 'pages/setdetails/index', 'pages/feedback/index', 'pages/feedbackdetails/index', 'pages/feedbackbtn/index', 'pages/W_index/index', 'pages/W_team/index', 'pages/W_project/index', 'pages/W_projectdetails/index', 'pages/W_order/index', 'pages/W_address/index', 'pages/W_introduce/index', 'pages/Colleaguedetails/index', 'pages/D_QRCode/index']
@@ -30,11 +30,11 @@ App({
             };
           }
           if(wx.getStorageSync('token')==''&&page_arr.indexOf(view.route) == -1&&a==2){
-            self.signin()
+            // self.signin()
           }
         }else{
           if(wx.getStorageSync('token')==''&&page_arr.indexOf(view.route) == -1&&a==2){
-            self.signin()
+            // self.signin()
           }
         }
       }
@@ -53,7 +53,7 @@ App({
               url: '/pages/authorize/index',
             })
           } else {
-            self.signin()
+            // self.signin()
             a = 2
           }
         }
@@ -71,6 +71,7 @@ App({
         wx.getUserInfo({
           // 调用 getUserInfo 获取 encryptedData 和 iv
           success: function (res) {
+            console.log(res)
             // success
             xdata.userInfo = res.userInfo;
             var encryptedData = res.encryptedData || 'encry';

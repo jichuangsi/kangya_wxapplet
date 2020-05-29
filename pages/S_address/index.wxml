@@ -1,0 +1,62 @@
+<!--pages/S_address/index.wxml-->
+<view class="S_address">
+  <!-- <view class="top">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
+    </van-nav-bar>
+  </view> -->
+  <view class="center" wx:if="{{state == 0}}">
+    <view class="box" wx:for="{{address_arr}}">
+      <view class="user">
+        <view class="user_top">
+          <view>{{item.name}}</view>
+          <view>{{item.phone}}</view>
+        </view>
+        <view class="user_bottom">
+          <view class="state">{{item.address_state}}</view>
+          <view>{{item.address}}</view>
+        </view>
+      </view>
+      <van-icon name="edit" size="36rpx" bindtap="stateclick"/>
+    </view>
+    <view class="btn bottom" bindtap="stateclick">
+      <van-icon name="plus" />
+      新增收货地址
+    </view>
+  </view>
+  <view class="center" wx:if="{{state == 1}}">
+    <view class="li">
+      <view class="title">收货人</view>
+      <input placeholder="请输入收货人姓名"></input>
+    </view>
+    <view class="li">
+      <view class="title">手机号码</view>
+      <input placeholder="请输入收货人手机号码"></input>
+    </view>
+    <view class="li" bindtap="showpopup">
+      <view class="title">所在城市</view>
+      <view class="text">请选择城市</view>
+      <van-icon name="arrow" size="36rpx" />
+    </view>
+    <view class="li">
+      <view class="title">收货地址</view>
+      <input placeholder="请输入详细的收货地址"></input>
+    </view>
+    <view class="li">
+      <view class="title">地址类型</view>
+      <view class="text">
+        <view class="{{check_num==index?'check':''}}" wx:for="{{arr}}" data-index="{{index}}" bindtap="check_click">{{item}}</view>
+      </view>
+    </view>
+    <view class="li">
+      <view class="title">设为默认地址</view>
+      <van-switch checked="{{ checked }}" bind:change="onChange" />
+    </view>
+    <view class="btn mt" bindtap="btn">保存收货地址</view>
+  </view>
+  
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+  <view class="area">
+    <van-area area-list="{{ areaList }}" value="110101" bind:cancel="onClose" bind:confirm="areaclick" />
+  </view>
+</van-popup>
+</view>
