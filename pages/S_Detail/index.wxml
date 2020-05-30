@@ -105,14 +105,15 @@
       </van-tab>
     </van-tabs>
   </view>
-  <view class="bottom" wx:if="{{check_title==''}}">
+  <view class="bottom">
     <view bindtap="sygo">
       <van-icon name="wap-home-o" size="36rpx" />
       首页
     </view>
     <view bindtap="love">
-      <van-icon name="star" color="yellow" size="36rpx" wx:if="{{star_show}}" />
+      <!-- <van-icon name="plus" wx:if="{{star_show}}" /> -->
       <van-icon name="star-o" size="36rpx" wx:if="{{!star_show}}" />
+      <van-icon name="star" color="yellow" size="36rpx" wx:if="{{star_show}}" />
       收藏
     </view>
     <view bindtap="gwgo">

@@ -54,11 +54,34 @@ Page({
     })
   },
   love(){
-    console.log(1123)
-    this.setData({
-      star_show:this.data.star_show?false:true
-    })
-    console.log(this.data.star_show)
+    let arr = wx.getStorageSync('lovelist')?JSON.parse(wx.getStorageSync('lovelist')):[]
+    let arr1 = wx.getStorageSync('loveidlist')?JSON.parse(wx.getStorageSync('loveidlist')):[]
+    let arr2 = this.data.item.goods
+    console.log(arr1.indexOf(this.data.item.goods.id))
+    if(arr1.indexOf(this.data.item.goods.id)==-1){
+      arr2.state = 0
+      arr1.push(this.data.item.goods.id)
+      arr.push(arr2)
+      wx.setStorageSync('lovelist', JSON.stringify(arr))
+      wx.setStorageSync('loveidlist', JSON.stringify(arr1))
+      this.setData({
+        star_show:true
+      })
+      Toast('收藏成功~');
+    }else{
+      for(let i =0;i<arr1.length;i++){
+        if(arr1[i]==this.data.item.goods.id){
+          arr1.splice(i,1)
+          arr.splice(i,1)
+        }
+      }
+      Toast('取消收藏~');
+      wx.setStorageSync('lovelist', JSON.stringify(arr))
+      wx.setStorageSync('loveidlist', JSON.stringify(arr1))
+      this.setData({
+        star_show:false
+      })
+    }
   },
   sygo(){
     wx.navigateTo({
@@ -206,10 +229,13 @@ Page({
             arr.push(res.data.goods[key])
           }
         }
-
+        let arr1 = wx.getStorageSync('loveidlist')?JSON.parse(wx.getStorageSync('loveidlist')):[]
+        console.log(arr1)
+        console.log(res.data.goods.id)
         self.setData({
           item:res.data,
-          img_arr:arr
+          img_arr:arr,
+          star_show:arr1.indexOf(res.data.goods.id)!=-1?true:false
         })
       }
     });
@@ -227,7 +253,8 @@ Page({
         console.log(666)
         console.log(res)
         let data = res.data
-        data.image = data.image.replace(/\<img/gi, '<img style="max-width:100%;height:auto"')
+        data.image = data.image.replace(/style=/gi, 'style1=')
+        data.image = data.image.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block"')
         self.setData({
           cpdeatil:data
         })
@@ -250,6 +277,7 @@ Page({
     // this.getdata(options.id)
     this.getdetail(options.id)
     this.getuser()
+
   },
 
   /**

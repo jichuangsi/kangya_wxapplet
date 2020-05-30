@@ -111,8 +111,8 @@
 				},
 				{
 					"id": 7,
-					"name": "pages/S_sort/index",
-					"pathName": "pages/S_sort/index",
+					"name": "pages/S_index/index",
+					"pathName": "pages/S_index/index",
 					"query": "doctorid=5996551",
 					"scene": null
 				},

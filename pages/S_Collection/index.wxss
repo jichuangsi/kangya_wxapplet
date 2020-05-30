@@ -93,10 +93,14 @@
   align-items: center;
   color: #fff;
   background-color: red;
+  font-size: 30rpx;
 }
 .van-dialog__button {
   flex: none;
   width: 50%;
+}
+.right {
+  flex: 1;
 }
 .carbox {
   height: 46rpx;

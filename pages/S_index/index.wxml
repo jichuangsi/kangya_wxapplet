@@ -43,9 +43,12 @@
       url="/pages/S_spread/index?state=0"/> -->
     </van-grid>
     <view class="activity">
-      <van-grid border="{{borderstate}}">
-        <van-grid-item icon="{{item.image}}" wx:for="{{activityactivity_arr}}" data-item="{{item}}" text="{{item.name}}" bind:click='gridclick'/>
-      </van-grid>
+      <view class="activity_li" wx:for="{{activity_arr}}" data-item="{{item}}" bindtap='gridclick'>
+        <image mode="heightFix" src="{{item.image}}"></image>
+      </view>
+      <!-- <van-grid column-num="3">
+        <van-grid-item icon="{{item.image}}" wx:for="{{activityactivity_arr}}" data-item="{{item}}" bind:click='gridclick'/>
+      </van-grid> -->
       <!-- <view class="activity_li" wx:for="{{activity_arr}}">
         <navigator url="/pages/S_Productlist/index?title=活动&&activity={{item.id}}" hover-class="navigator-hover">
           <image src="{{item.img}}"></image>
@@ -111,9 +114,9 @@
         </navigator> -->
       </view>
       
-      <navigator url="/pages/S_Productlist/index?title=全部商品" hover-class="navigator-hover">
+      <!-- <navigator url="/pages/S_Productlist/index?title=全部商品" hover-class="navigator-hover">
         <image class="nav_img" src="../../images/learning_theme_timelimit.png"></image>
-      </navigator>
+      </navigator> -->
 
     <!-- <view class="all" wx:for="{{all_arr}}">
       <view class="all_title">

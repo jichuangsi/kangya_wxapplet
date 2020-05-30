@@ -11,7 +11,7 @@
   </view>
   <view class="center">
       <view class="li" wx:for="{{Invalid_arr}}">
-          <view class="left" wx:if="{{del_state==1}}">
+          <view class="left">
             <van-icon name="checked" wx:if="{{item.state == 0}}" data-index="{{index}}" data-first_index="{{first_index}}" bindtap="check"/>
             <van-icon name="checked" color="#16c7ae" wx:if="{{item.state == 1}}" data-index="{{index}}" data-first_index="{{first_index}}" bindtap="check"/>
           </view>
@@ -19,21 +19,22 @@
             <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
               <!-- <van-cell-group> -->
                 <van-card
-                  title="{{item.title}}"
-                  thumb="{{ item.img }}"
-                  price="{{item.price}}"
+                  price="{{user.vip!=''?item.vipPrice:item.promotionPrice}}"
+                  origin-price="{{item.price}}"
+                  title="{{item.name}}"
+                  thumb="{{ item.imageOne }}"
                   thumb-link="/pages/S_Detail/index?id={{item.id}}"
                   link-type="navigateTo"
                 >
                   <view slot="tags">
-                    <view class="tag">{{item.tags}}</view>
+                    <view class="tag">{{item.size}}</view>
                   </view>
-                  <view slot="footer" class="carbox">
+                  <!-- <view slot="footer" class="carbox">
                       <view class="alike" bindtap="alike">找相似</view>
-                  </view>
+                  </view> -->
                 </van-card>
               <!-- </van-cell-group> -->
-              <view slot="right" class="del" bindtap="del">取消收藏</view>
+              <view slot="right" class="del" data-index="{{index}}" bindtap="del">取消收藏</view>
             </van-swipe-cell>
           </view>
         </view>

@@ -47,7 +47,8 @@ Page({
         oldprice: 46.00,
         tags: '红',
       }
-    ]
+    ],
+    user:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -86,7 +87,7 @@ Page({
       let arr = this.data.arr
       let arr1 = JSON.parse(JSON.stringify(this.data.arr))
       arr1[0].child = []
-      if(!e.currentTarget.dataset.index){
+      if(!e.currentTarget.dataset.index&&e.currentTarget.dataset.index!=0){
         for(let i = 0;i<arr[0].child.length;i++){
           if(arr[0].child[i].state != 1){
             arr1[0].child.push(arr[0].child[i])
@@ -202,6 +203,26 @@ Page({
       },
     })
   },
+  getuser(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: "get",
+      data: {
+        "plugin":'getcartuserinfo'
+      },
+      header: {
+        "token": wx.getStorageSync("token")
+      },
+      success: function(res) {
+        console.log(54361)
+        console.log(res)
+        self.setData({
+          user:res.data.list[0]
+        })
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -215,6 +236,8 @@ Page({
     this.setData({
       arr:arr
     })
+    this.allcheck()
+    this.getuser()
     console.log(this.data.arr)
   },
 

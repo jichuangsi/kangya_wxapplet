@@ -26,7 +26,8 @@ Page({
         tags: '红',
         state: 0
       }
-    ]
+    ],
+    user:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -38,11 +39,36 @@ Page({
       del_state: e.currentTarget.dataset.index
     })
   },
-  del() {
+  del(e) {
+    console.log(e.currentTarget.dataset.index)
+    let arr = wx.getStorageSync('lovelist')?JSON.parse(wx.getStorageSync('lovelist')):[]
+    let arr1 = wx.getStorageSync('loveidlist')?JSON.parse(wx.getStorageSync('loveidlist')):[]
+    let arr2 = []
     Dialog.confirm({
       title: '标题',
       message: '您确定要取消收藏吗？'
     }).then(() => {
+      if(e.currentTarget.dataset.index==0||e.currentTarget.dataset.index){
+        arr1.splice(e.currentTarget.dataset.index,1)
+        arr.splice(e.currentTarget.dataset.index,1)
+      }else{
+        for(let i =0;i<this.data.Invalid_arr.length;i++){
+          if(this.data.Invalid_arr[i].state!=1){
+            arr2.push(this.data.Invalid_arr[i])
+          }
+        }
+        arr = []
+        arr1 = []
+        for(let j =0;j<arr2.length;j++){
+          arr.push(arr2[j])
+          arr1.push(arr2[j].id)
+        }
+      }
+      this.setData({
+        Invalid_arr:arr
+      })
+      wx.setStorageSync('lovelist', JSON.stringify(arr))
+      wx.setStorageSync('loveidlist', JSON.stringify(arr1))
       // on confirm
     }).catch(() => {
       // on cancel
@@ -61,7 +87,7 @@ Page({
   allcheck() {
     let arr1 = this.data.Invalid_arr
     for (let i = 0; i < arr1.length; i++) {
-      arr1[i].state = arr1[i].state == 0 ? 1 : 0
+      arr1[i].state = this.data.allstate == 0 ? 1 : 0
     }
     this.setData({
       Invalid_arr: arr1
@@ -74,6 +100,7 @@ Page({
     let a = true
     for (let i = 0; i < arr1.length; i++) {
         if (arr1[i].state == 1) {
+
           arr2.push(arr1[i])
         } else {
           a = false
@@ -101,7 +128,26 @@ Page({
       },
     })
   },
-
+  getuser(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: "get",
+      data: {
+        "plugin":'getcartuserinfo'
+      },
+      header: {
+        "token": wx.getStorageSync("token")
+      },
+      success: function(res) {
+        console.log(54361)
+        console.log(res)
+        self.setData({
+          user:res.data.list[0]
+        })
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -109,7 +155,10 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
-    this.getdata()
+    this.getuser()
+    this.setData({
+      Invalid_arr : wx.getStorageSync('lovelist')?JSON.parse(wx.getStorageSync('lovelist')):[]
+    })
   },
 
   /**
