@@ -7,7 +7,7 @@
   <view class="center">
     <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true'>
       <swiper-item wx:for="{{img_arr}}">
-        <image src="{{item}}"></image>
+        <image class="topimg" mode="heightFix" src="{{item}}"></image>
       </swiper-item>
     </swiper>
     <view class="pt" wx:if="{{check_title =='拼团专区' }}">
@@ -38,13 +38,15 @@
     </view>
     <view class="li">
       <view class="left">
-        <view class="text">{{commodity_title}}</view>
+        <view class="text">{{item.goods.name}}</view>
           <view class="money" wx:if="{{check_title =='' }}">
-            <view class="new">￥{{price}}</view>
-            <view class="old">￥{{old_price}}</view>
+            <!-- <view class="new">￥{{price}}</view>
+            <view class="old">￥{{old_price}}</view> -->
+            <view class="new">￥{{user.vip!=''?item.goods.vipPrice:item.goods.promotionPrice}}</view>
+            <view class="old">￥{{item.goods.price}}</view>
           </view>
       </view>
-      <van-icon name="share" size="36rpx" />
+      <!-- <van-icon name="share" size="36rpx" /> -->
     </view>
     <view class="nav_title">
       <view><van-icon name="certificate" />正品保障</view>
@@ -52,10 +54,10 @@
       <view><van-icon name="logistics" />快递到货</view>
     </view>
     <view class="xian"></view>
-    <view class="text_box" data-index="0" bindtap="showpopup" wx:if="{{check_title!='抢购'}}">
+    <!-- <view class="text_box" data-index="0" bindtap="showpopup" wx:if="{{check_title!='抢购'}}">
       <view>优惠</view>
       <van-icon name="arrow" size="36rpx" />
-    </view>
+    </view> -->
     <view class="xian"></view>
     <view class="text_box" data-index="1" bindtap="showpopup" wx:if="{{check_title!='拼团专区'}}">
       <view>选择型号规格</view>
@@ -89,16 +91,17 @@
     <view class="xian"></view>
     <van-tabs active="{{ active }}" bind:change="onChange">
       <van-tab title="图文详情" name="图文详情">
-        <view class="text" wx:for="{{details_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
-        <image src="{{item.text}}" wx:for="{{details_text}}" wx:if="{{item.state==1}}"></image>
+        <rich-text nodes="{{cpdeatil.image}}"></rich-text>
+        <!-- <view class="text" wx:for="{{details_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
+        <image src="{{item.text}}" wx:for="{{details_text}}" wx:if="{{item.state==1}}"></image> -->
       </van-tab>
       <van-tab title="注册证查询" name="注册证查询">
-        <view class="text" wx:for="{{prove_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
-        <image src="{{item.text}}" wx:for="{{prove_text}}" wx:if="{{item.state==1}}"></image>
+        <view class="text" wx:if="{{item.goods.registerNumber!=''}}">注册证号：{{item.goods.registerNumber}}</view>
+        <!-- <image src="{{item.text}}" wx:for="{{prove_text}}" wx:if="{{item.state==1}}"></image> -->
       </van-tab>
       <van-tab title="售后保证" name="售后保证">
-        <view class="text" wx:for="{{ensure_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
-        <image src="{{item.text}}" wx:for="{{ensure_text}}" wx:if="{{item.state==1}}"></image>
+        <!-- <view class="text" wx:for="{{ensure_text}}" wx:if="{{item.state==0}}">{{item.text}}</view>
+        <image src="{{item.text}}" wx:for="{{ensure_text}}" wx:if="{{item.state==1}}"></image> -->
       </van-tab>
     </van-tabs>
   </view>
@@ -108,8 +111,8 @@
       首页
     </view>
     <view bindtap="love">
-      <van-icon name="star-o" size="36rpx" wx:if="{{!star}}" />
-      <van-icon name="star" color="yellow" size="36rpx" wx:if="{{star}}" />
+      <van-icon name="star-o" size="36rpx" wx:if="{{!star_show}}" />
+      <!-- <van-icon name="star" color="yellow" size="36rpx" wx:if="{{star_show}}" /> -->
       收藏
     </view>
     <view bindtap="gwgo">
@@ -175,19 +178,24 @@
     </view>
     <view class="gg" wx:if="{{show_num==1}}">
       <view class="li">
-        <image src=""></image>
+        <image src="{{item.goods.imageOne}}"></image>
         <view class="left">
+            <view>{{item.goods.name}}</view>
+            <view class="specs">规格：{{item.goods.size}}</view>
             <view class="money">
-              <view class="new">￥36.00</view>
-              <view class="old">￥26.00</view>
+              <!-- <view class="new">￥36.00</view>
+              <view class="old">￥26.00</view> -->
+            <view class="new">￥{{user.vip!=''?item.goods.vipPrice:item.goods.promotionPrice}}</view>
+            <view class="old">￥{{item.goods.price}}</view>
             </view>
-          <view class="text">已选择{{check_gg}},数量:{{check_num}}</view>
+            <!-- 已选择{{check_gg}} -->
+          <view class="text">数量:{{check_num}}</view>
         </view>
       </view>
-      <view class="gg_li_box">
+      <!-- <view class="gg_li_box">
         <view class="yh_title">型号</view>
         <view wx:for="{{gg_arr}}" ><view class="gg_li {{item.title==check_gg?'check_gg':''}}" bindtap="ggclick" data-text="{{item.title}}">{{item.title}}</view></view>
-      </view>
+      </view> -->
       <view class="gg_num">
         <view class="gg_num_title">数量</view>
         <van-icon name="clear" color="{{gg_min>=check_num?'#c3c3c3':'red'}}"  bindtap="delone" />

@@ -34,12 +34,23 @@ Page({
     searchhis:[],
     searchhot:[],
     index:1,
-    searchshow:false
+    searchshow:false,
+    brand_carr:[],
+    isOverShare: true,
+    sort:'',
+    scorll_state:true,
+    scorll_h:0
   },
   onClickLeft() {
     wx.navigateBack({
       delta: 1
     })
+  },
+  uptouch(){
+    if(this.data.searchshow&&this.data.scorll_state){
+      console.log(123)
+      this.search(this.data.sort)
+    }
   },
   searchipt(e){
     console.log(e)
@@ -49,12 +60,14 @@ Page({
   },
   lowipt(e) {
     this.setData({
-      lowprice: e.detail.value
+      lowprice: e.detail.value,
+      price:999
     })
   },
   highipt(e) {
     this.setData({
-      highprice: e.detail.value
+      highprice: e.detail.value,
+      price:999
     })
   },
   searchenter(){
@@ -85,6 +98,13 @@ Page({
         let index = self.data.index
         if(res.data.list[0].msg!='not found'){
           arr.content.push(...res.data.list[0].content)
+          self.setData({
+            scorll_state:true
+          })
+        }else{
+          self.setData({
+            scorll_state:false
+          })
         }
         index = self.data.index+1
         self.setData({
@@ -118,14 +138,16 @@ Page({
       this.setData({
         a1: this.data.a1?false:true,
         a2:true,
-        index:1
+        index:1,
+        sort : this.data.a1?'sale_i%20desc':'sale_i%20asc'
       })
       sort = this.data.a1?'sale_i%20desc':'sale_i%20asc'
     } else if (e.currentTarget.dataset.index == this.data.nav_num && this.data.nav_num == 2) {
       this.setData({
         a1:true,
         a2: this.data.a2 ? false : true,
-        index:1
+        index:1,
+        sort : this.data.a2?'price_f%20desc':'price_f%20asc'
       })
       sort = this.data.a2?'price_f%20desc':'price_f%20asc'
     }
@@ -153,6 +175,9 @@ Page({
         })
       }else if(e.currentTarget.dataset.index==0){
         this.getcartdoc(this.data.id)
+        this.setData({
+          sort:''
+        })
       }
     }
   },
@@ -165,7 +190,6 @@ Page({
       rev = -1;
     }
     return function(a, b) {
-      console.log(a[attr])
       a = a[attr][attr1];
       b = b[attr][attr1];
       if (a < b) {
@@ -204,12 +228,14 @@ Page({
     let arr = this.data.brand
     arr[index].state = arr[index].state == 0 ? 1 : 0
     this.setData({
-      brand: arr
+      brand: arr,
     })
   }, 
   priceclick(e) {
     this.setData({
-      price: e.currentTarget.dataset.index
+      price: e.currentTarget.dataset.index,
+      lowprice:e.currentTarget.dataset.index==5?2001:this.data.price_arr[e.currentTarget.dataset.index].split('-')[0],
+      highprice:e.currentTarget.dataset.index==5?'':this.data.price_arr[e.currentTarget.dataset.index].split('-')[1]
     })
   },
   cz(){
@@ -225,6 +251,25 @@ Page({
     })
   },
   sxbtn (){
+    console.log(this.data.list_arr1)
+    let arr1 = []
+    for(let i = 0;i<this.data.brand.length;i++){
+      if(this.data.brand[i].state==1){
+        arr1.push(this.data.brand[i].id)
+      }
+    }
+    let arr2 = JSON.parse(JSON.stringify(this.data.list_arr1))
+    if(arr1.length>0){
+      arr2.content = []
+      for(let j = 0;j<this.data.list_arr1.content.length;j++){
+        if(arr1.indexOf(this.data.list_arr1.content[j].goodinfo.brand_id)!=-1){
+          arr2.content.push(this.data.list_arr1.content[j])
+        }
+      }
+    }
+    this.setData({
+      list_arr:arr2,
+    })
     this.onClose()
   },
   listate(){
@@ -300,6 +345,7 @@ Page({
             }
           }
           self.setData({
+            list_arr1:res.data.list[0],
             list_arr:res.data.list[0],
             brand :arr
           })
@@ -350,11 +396,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // console.log(wx.getSystemInfoSync().windowHeight-180)
     this.setData({
       check_title:options.title,
       search_state:options.search?options.search:0,
       brandstate: options.brand ? options.brand:'',
-      id:options.id
+      id:options.id,
+      scorll_h:wx.getSystemInfoSync().windowHeight-90
     })
     wx.setNavigationBarTitle({
       title: '商城'
@@ -413,6 +461,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    let id = this.data.id?'&&id='+this.data.id:''
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/pages/S_index/index?title=商城&&search='+this.data.search_state+id  // 路径，传递参数到指定页面。
+    }
   }
 })

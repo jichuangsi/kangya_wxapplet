@@ -1,5 +1,6 @@
 // pages/S_shopcart/index.js
 import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
 Page({
 
   /**
@@ -62,7 +63,7 @@ Page({
     let first_index = e.currentTarget.dataset.first_index
     let index = e.currentTarget.dataset.index
     let arr1 = this.data.arr
-    arr1[first_index].child[index].num = arr1[first_index].child[index].num - 1
+    arr1[first_index].child[index].buynum = arr1[first_index].child[index].buynum - 1
     this.setData({
       arr: arr1
     })
@@ -71,16 +72,38 @@ Page({
     let first_index = e.currentTarget.dataset.first_index
     let index = e.currentTarget.dataset.index
     let arr1 = this.data.arr
-    arr1[first_index].child[index].num = arr1[first_index].child[index].num+1
+    arr1[first_index].child[index].buynum = arr1[first_index].child[index].buynum+1
     this.setData({
       arr:arr1
     })
   },
-  del(){
+  del(e){
+    console.log(e.currentTarget.dataset.index)
     Dialog.confirm({
       title: '标题',
       message: '您确定要删除所选商品吗？'
     }).then(() => {
+      let arr = this.data.arr
+      let arr1 = JSON.parse(JSON.stringify(this.data.arr))
+      arr1[0].child = []
+      if(!e.currentTarget.dataset.index){
+        for(let i = 0;i<arr[0].child.length;i++){
+          if(arr[0].child[i].state != 1){
+            arr1[0].child.push(arr[0].child[i])
+          }
+        }
+      }else{
+        arr[0].child.splice(e.currentTarget.dataset.index,1)
+        arr1 = arr
+      }
+      // console.log(arr1)
+      wx.setStorageSync('buylist', JSON.stringify(arr1[0].child))
+      this.setData({
+        arr:arr1,
+        del_state:0
+      })
+      this.all()
+      Toast('删除成功')
       // on confirm
     }).catch(() => {
       // on cancel
@@ -128,8 +151,8 @@ Page({
       for(let j =0;j<arr1[i].child.length;j++){
         if(arr1[i].child[j].state == 1){
           arr2.push(arr1[i].child[j])
-          num += arr1[i].child[j].num
-          price += arr1[i].child[j].num * arr1[i].child[j].price
+          num += arr1[i].child[j].buynum
+          price += arr1[i].child[j].buynum * arr1[i].child[j].price
         }else{
           a = false
         }
@@ -139,7 +162,7 @@ Page({
         check_arr: arr2,
         all_num:num,
         all_price:price,
-        allstate:a?1:0
+        allstate:a&&arr1[0].child.length>0?1:0
     })
   },
   alike(){
@@ -154,9 +177,9 @@ Page({
   },
   S_Settlementgo(){
     if(this.data.all_price>0){
-      wx.navigateTo({
-        url: '../S_Settlement/index',
-      })
+      // wx.navigateTo({
+      //   url: '../S_Settlement/index',
+      // })
     }
   },
 
@@ -186,7 +209,13 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
-    this.getdata()
+    // this.getdata()
+    let arr = this.data.arr
+    arr[0].child = wx.getStorageSync('buylist')?JSON.parse(wx.getStorageSync('buylist')):[]
+    this.setData({
+      arr:arr
+    })
+    console.log(this.data.arr)
   },
 
   /**

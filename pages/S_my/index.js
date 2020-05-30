@@ -7,7 +7,8 @@ Page({
    */
   data: {
     title: '商城',
-    borderstate:false
+    borderstate:false,
+    user:'',
   },
   onClickLeft() {
     wx.navigateBack({
@@ -40,6 +41,26 @@ Page({
     });
   },
 
+  getuser(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: "get",
+      data: {
+        "plugin":'getcartuserinfo'
+      },
+      header: {
+        "token": wx.getStorageSync("token")
+      },
+      success: function(res) {
+        console.log(54361)
+        console.log(res)
+        self.setData({
+          user:res.data.list[0]
+        })
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -47,6 +68,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    this.getuser()
   },
 
   /**

@@ -137,6 +137,9 @@
   align-items: center;
   justify-content: center;
 }
+.li .right {
+  flex: 1;
+}
 .van-card {
   background-color: #fff !important;
 }

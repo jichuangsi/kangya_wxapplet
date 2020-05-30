@@ -30,11 +30,11 @@ App({
             };
           }
           if(wx.getStorageSync('token')==''&&page_arr.indexOf(view.route) == -1&&a==2){
-            // self.signin()
+            self.signin()
           }
         }else{
           if(wx.getStorageSync('token')==''&&page_arr.indexOf(view.route) == -1&&a==2){
-            // self.signin()
+            self.signin()
           }
         }
       }
@@ -53,7 +53,7 @@ App({
               url: '/pages/authorize/index',
             })
           } else {
-            // self.signin()
+            self.signin()
             a = 2
           }
         }

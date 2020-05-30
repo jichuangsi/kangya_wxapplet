@@ -92,6 +92,7 @@
 }
 .center {
   padding: 120rpx 20rpx;
+  padding-bottom: 20rpx;
   box-sizing: border-box;
   /* background-color: #fff; */
 }

@@ -10,7 +10,7 @@ Page({
     title:'商城',
     id:0,
     commodity_title:"",
-    star:false,
+    star_show:false,
     active:'图文详情',
     show_num:0,
     show:false,
@@ -30,8 +30,8 @@ Page({
       { state: 0, title: '1付加厚型10.8g,尺寸7.5' }
     ],
     check_gg: '',
-    check_num: 30,
-    gg_min:30,
+    check_num: 1,
+    gg_min:1,
     price: 334.00,
     old_price:360.00,
     assemble_price:270.00,
@@ -43,7 +43,10 @@ Page({
     details_text: '',
     prove_text: '',
     ensure_text: '',
-    user:''
+    user:'',
+    item:'',
+    cpdeatil:'',
+    isOverShare: true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -51,9 +54,11 @@ Page({
     })
   },
   love(){
+    console.log(1123)
     this.setData({
-      star:this.data.star?false:true
+      star_show:this.data.star_show?false:true
     })
+    console.log(this.data.star_show)
   },
   sygo(){
     wx.navigateTo({
@@ -108,6 +113,12 @@ Page({
   },
   gg_btn() {
     Toast('加入购物车成功~');
+    let arr = wx.getStorageSync('buylist')?JSON.parse(wx.getStorageSync('buylist')):[]
+    let arr1 = this.data.item.goods
+    arr1.buynum = this.data.check_num
+    arr1.state = 0
+    arr.push(arr1)
+    wx.setStorageSync('buylist', JSON.stringify(arr))
     this.onClose()
   },
   buy_btn() {
@@ -174,22 +185,55 @@ Page({
       }
     });
   },
-  // getdetail(id){
-  //   let self = this
-  //   wx.request({
-  //     url: 'https://mini.kyawang.com/product_detail.html?id='+id,
-  //     method: "get",
-  //     data: {
-  //     },
-  //     header: {
-  //       "token": wx.getStorageSync("token")
-  //     },
-  //     success: function(res) {
-  //       console.log(888)
-  //       console.log(res)
-  //     }
-  //   });
-  // },
+  getdetail(id){
+    let self = this
+    wx.request({
+      url: 'https://mini.kyawang.com/SSM/goods/selectGoodsDetailById',
+      method: "POST",
+      data: {
+        gid:id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        "token": wx.getStorageSync("token")
+      },
+      success: function(res) {
+        console.log(888)
+        console.log(res)
+        let arr = []
+        for(let key in res.data.goods){
+          if(key.indexOf('image')!=-1&&key!='imageUrl'){
+            arr.push(res.data.goods[key])
+          }
+        }
+
+        self.setData({
+          item:res.data,
+          img_arr:arr
+        })
+      }
+    });
+    wx.request({
+      url: 'https://mini.kyawang.com/SSM/goods/selectGoodsByDescription',
+      method: "POST",
+      data: {
+        gid:id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', //修改此处即可
+        "token": wx.getStorageSync("token")
+      },
+      success: function(res) {
+        console.log(666)
+        console.log(res)
+        let data = res.data
+        data.image = data.image.replace(/\<img/gi, '<img style="max-width:100%;height:auto"')
+        self.setData({
+          cpdeatil:data
+        })
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -203,8 +247,8 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
-    this.getdata(options.id)
-    // this.getdetail(options.id)
+    // this.getdata(options.id)
+    this.getdetail(options.id)
     this.getuser()
   },
 
@@ -254,6 +298,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/pages/S_index/index?title=商城&&id='+this.data.id  // 路径，传递参数到指定页面。
+    }
   }
 })
