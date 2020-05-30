@@ -73,7 +73,8 @@
               <van-cell-group>
                 <van-card
                   num="{{item.buynum}}"
-                  price="{{item.price}}"
+                  price="{{user.vip!=''?item.vipPrice:item.promotionPrice}}"
+                  origin-price="{{item.price}}"
                   title="{{item.name}}"
                   thumb="{{ item.imageOne }}"
                   thumb-link="/pages/S_Detail/index?id={{item.id}}"

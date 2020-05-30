@@ -61,7 +61,7 @@
         </navigator>
       </view>
       <view class="assemble_li" wx:for="{{assemble_arr.content}}">
-        <navigator url="/pages/S_Detail/index?id={{item.value}}&&title={{assemble_arr.title}}" hover-class="navigator-hover">
+        <navigator url="/pages/S_Detail/index?id={{item.value}}" hover-class="navigator-hover">
           <image mode="heightFix" src="{{item.image}}"></image>
           <view class="text">{{item.name}}</view>
           <view class="money">
@@ -92,7 +92,7 @@
         </swiper> -->
         <view class="Promotion_libox">
               <view class="Promotion_li" wx:for="{{Promotion_list.content}}">
-                <navigator url="/pages/S_Detail/index?id={{item.value}}&&title={{assemble_arr.title}}" hover-class="navigator-hover">
+                <navigator url="/pages/S_Detail/index?id={{item.value}}" hover-class="navigator-hover">
                   <image mode="heightFix" src="{{item.image}}"></image>
                   <view class="money">
                     <view class="new">￥{{user.vip!=''?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>

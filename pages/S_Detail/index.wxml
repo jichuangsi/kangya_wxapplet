@@ -111,8 +111,8 @@
       首页
     </view>
     <view bindtap="love">
+      <van-icon name="star" color="yellow" size="36rpx" wx:if="{{star_show}}" />
       <van-icon name="star-o" size="36rpx" wx:if="{{!star_show}}" />
-      <!-- <van-icon name="star" color="yellow" size="36rpx" wx:if="{{star_show}}" /> -->
       收藏
     </view>
     <view bindtap="gwgo">
