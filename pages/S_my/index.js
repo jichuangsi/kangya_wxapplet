@@ -17,13 +17,16 @@ Page({
   },
   S_rechargego(){
     wx.navigateTo({
-      url: '../S_recharge/index',
+      url: '../authorize/index',
     })
   },
   S_cardgo() {
     wx.navigateTo({
       url: '../S_card/index',
     })
+    // wx.navigateTo({
+    //   url: '../S_coupon/index',
+    // })
   },
   S_Ordergo() {
     wx.navigateTo({
@@ -60,6 +63,7 @@ Page({
         })
       }
     });
+  });
   },
   /**
    * 生命周期函数--监听页面加载

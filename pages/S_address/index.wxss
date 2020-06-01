@@ -73,7 +73,7 @@
   margin-top: 20rpx;
 }
 .box .user .user_bottom .state {
-  background-color: red;
+  background-color: #fa5151;
   color: #fff;
   padding: 0rpx 5rpx;
   box-sizing: border-box;
@@ -85,8 +85,16 @@
   line-height: 76rpx;
   display: flex;
   justify-content: center;
-  background-color: #0094ff;
+  background-color: #29d;
   color: #fff;
+  text-align: center;
+  letter-spacing: 5rpx;
+}
+.mt view:first-child{
+  background-color: #fa5151;
+}
+.mt view {
+  flex: 1;
 }
 .bottom {
   position: absolute;
@@ -117,7 +125,7 @@
   margin-right: 20rpx;
 }
 .li .text .check {
-  background-color: red;
+  background-color: #fa5151;
   color: #fff;
 }
 .li input {

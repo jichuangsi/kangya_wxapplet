@@ -7,11 +7,9 @@ Page({
   data: {
     title: '商城',
     nav_arr: [
-      { title: '全场券', state: 0 },
-      { title: '拼团券', state: 0 },
-      { title: '商品券', state: 0 },
-      { title: '品类券', state: 0 },
-      { title: '品牌券', state: 0 },
+      { title: '代金券', state: 0 },
+      { title: '满减劵', state: 0 },
+      { title: '运费券', state: 0 },
     ],
     nav_num: 0,
     yh_arr: [
@@ -44,33 +42,39 @@ Page({
         yh_arr:arr
       })
     }else{
-      if (this.data.nav_num == 1){
-        wx.navigateTo({
-          url: '../S_Productlist/index?title==拼团专区',
-        })
-      }else{
-        wx.navigateTo({
-          url: '../S_Productlist/index',
-        })
-      }
+      wx.navigateTo({
+        url: '../S_Productlist/index?id=5996910',
+      })
+      // if (this.data.nav_num == 1){
+      //   wx.navigateTo({
+      //     url: '../S_Productlist/index',
+      //   })
+      // }else{
+      //   wx.navigateTo({
+      //     url: '../S_Productlist/index',
+      //   })
+      // }
     }
   },
   getdata() {
     let self = this
     wx.request({
-      url: getApp().data.API+'/S_card.json',
-      headers: {
-        'Content-Type': 'application/json'
+      url: getApp().data.APIS + '/svc/a',
+      method: "get",
+      data: {
+        "plugin":'getfree'
       },
-      success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
-          self.setData({
-            yh_arr: res.data.yh_arr
-          })
-        }
+      header: {
+        "token": wx.getStorageSync("token")
       },
-    })
+      success: function(res) {
+        console.log(54361)
+        console.log(res)
+        self.setData({
+          yh_arr:res.data.list
+        })
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面加载

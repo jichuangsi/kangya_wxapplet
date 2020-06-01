@@ -13,18 +13,19 @@
     </view>
 
     <view class="yh">
-        <view class="yh_li" wx:for="{{yh_arr}}">
+        <view class="yh_li" wx:for="{{yh_arr}}" wx:if="{{nav_num+1==item.stype}}">
           <view class="left">
               <view><view>￥</view>{{item.price}}</view>
               <view>满{{item.m_price}}可用</view>
           </view>
           <view class="right">
             <view class="right_top">
-              <view class="state">{{item.title}}</view> <view>{{item.text}}</view>
+              <view class="state">{{item.name}}</view>
             </view>
             <view class="right_bottom">
               <view>·不可叠加使用</view>
-              <view>·{{item.time}}</view>
+              <view>·开始时间：{{item.sdate}}</view>
+              <view>·结束时间：{{item.edate}}</view>
             </view>
             <view class="right_state" data-index="{{index}}" bindtap="btnclick">{{item.state==0?'立即领取':'立即使用'}}</view>
           </view>

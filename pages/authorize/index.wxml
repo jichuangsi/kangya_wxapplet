@@ -1,7 +1,12 @@
 <!--pages/authorize/index.wxml-->
 <view class="authorize">
   <view class="box">
-    <view class="text">是否授权登录</view>
-    <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">确定</button>
+    <view class="xian"></view>
+    <view class="text">该小程序将获取以下授权：</view>
+    <view class="zc">· 获得您的公开信息（昵称、头像等）</view>
+    <view class="btn">
+      <button class="cancel" bindtap="back">拒绝</button>
+      <button class="confirm" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">确定</button>
+    </view>
   </view>
 </view>

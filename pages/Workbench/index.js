@@ -88,7 +88,8 @@ Page({
     let Page = pages[pages.length - 2];//
     this.setData({
       power_arr: Page.data.power_arr,
-      user: Page.data.user
+      user: Page.data.user,
+      arr:Page.data.worker_nav
     })
   },
 

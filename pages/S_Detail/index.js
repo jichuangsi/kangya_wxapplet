@@ -84,12 +84,12 @@ Page({
     }
   },
   sygo(){
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../S_index/index',
     })
   },
   gwgo() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../S_shopcart/index',
     })
   },

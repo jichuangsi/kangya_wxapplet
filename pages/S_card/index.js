@@ -7,7 +7,7 @@ Page({
 
   data: {
     title: '商城',
-    state:0,
+    state:1,
     active:'未使用',
     yh_arr: [
       {
@@ -66,19 +66,22 @@ Page({
   getdata() {
     let self = this
     wx.request({
-      url: getApp().data.API+'/S_card.json',
-      headers: {
-        'Content-Type': 'application/json'
+      url: getApp().data.APIS + '/svc/a',
+      method: "get",
+      data: {
+        "plugin":'getfree'
       },
-      success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
-          self.setData({
-            yh_arr: res.data.yh_arr,
-          })
-        }
+      header: {
+        "token": wx.getStorageSync("token")
       },
-    })
+      success: function(res) {
+        console.log(54361)
+        console.log(res)
+        self.setData({
+          yh_arr:res.data.list
+        })
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面加载

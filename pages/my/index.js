@@ -1,7 +1,8 @@
 // pages/lzq/index.js
 Page({
   data: {
-    user:''
+    user:'',
+    tokenState:true
   },
   getPerinfo() {
     let self = this
@@ -22,6 +23,11 @@ Page({
       }
     })
   },
+  logingo(){
+    wx.navigateTo({
+      url: '../authorize/index',
+    })
+  },
   mydatago(){
     wx.navigateTo({
       url: '../Mydata/index',
@@ -32,6 +38,9 @@ Page({
    */
   onLoad: function (options) {
     this.getPerinfo()
+    this.setData({
+      tokenState:wx.getStorageSync('token')?false:true
+    })
   },
 
   /**

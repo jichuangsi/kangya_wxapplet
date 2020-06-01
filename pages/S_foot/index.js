@@ -24,19 +24,19 @@ Component({
     onChange(event) {
       this.setData({ active: event.detail });
       if (event.detail == 0) {
-        wx.navigateTo({
+        wx.redirectTo({
           url: '../S_index/index'
         })
       } else if (event.detail == 1) {
-        wx.navigateTo({
+        wx.redirectTo({
           url: '../S_sort/index'
         })
       } else if (event.detail == 2) {
-        wx.navigateTo({
+        wx.redirectTo({
           url: '../S_shopcart/index'
         })
       } else if (event.detail == 3) {
-        wx.navigateTo({
+        wx.redirectTo({
           url: '../S_my/index'
         })
       }

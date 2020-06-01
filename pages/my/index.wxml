@@ -1,6 +1,6 @@
 <!--pages/lzq/index.wxml-->
 <view class="content">
-  <view class="user" bindtap="mydatago">
+  <view class="user" bindtap="mydatago" wx:if="{{!tokenState}}">
     <view class="userImg">
       <image wx:if="{{user.picture!=''}}" src="{{user.picture}}"></image>
       <image wx:if="{{user.picture==''}}" src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
@@ -11,6 +11,17 @@
     </view>
     <view class="user_detail">
       <van-icon name="qr" size="56rpx" color="#fff" />
+      <van-icon name="arrow" size="32rpx" color="#fff" />
+    </view>
+  </view>
+  <view class="user" bindtap="logingo" wx:if="{{tokenState}}">
+    <view class="userImg">
+      <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
+    </view>
+    <view class="user_info">
+      <view class="user_phone">登录</view>
+    </view>
+    <view class="user_detail">
       <van-icon name="arrow" size="32rpx" color="#fff" />
     </view>
   </view>

@@ -32,7 +32,8 @@ Page({
     shopshow:'',
     yjstate:true,
     clinicid:'',
-    logo:''
+    logo:'',
+    worker_nav:[]
   },
   
   //事件处理函数
@@ -239,6 +240,29 @@ Page({
           let enddate = year + '/' + month+1 + '/' + '01'
           self.getswiper(res.data.list[0].clinicid, bengindate, enddate)
           self.getcharts(res.data.list[0].clinicid)
+        }
+      }
+    })
+  },
+  getnav() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method:'get',
+      data:{
+        plugin: 'gethomedf',
+        p: '1'
+      },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(512346)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          self.setData({
+            worker_nav:res.data.list[0]
+          })
         }
       }
     })
@@ -659,6 +683,7 @@ Page({
     self.getdata()
     self.getPerinfo()
     self.gettotal()
+    self.getnav()
     wx.request({
       url: getApp().data.API+'/index.json',
       headers: {

@@ -177,11 +177,19 @@ Page({
     })
   },
   S_Settlementgo(){
-    if(this.data.all_price>0){
-      // wx.navigateTo({
-      //   url: '../S_Settlement/index',
-      // })
+    let arr = this.data.arr[0].child
+    let arr1 = []
+    for(let i =0;i<arr.length;i++){
+      console.log(arr[i])
+      if(arr[i].state==1){
+        arr1.push(arr[i])
+      }
     }
+    // if(this.data.all_price>0){
+    //   wx.navigateTo({
+    //     url: '../S_Settlement/index',
+    //   })
+    // }
   },
 
   getdata() {
@@ -238,7 +246,13 @@ Page({
     })
     this.allcheck()
     this.getuser()
-    console.log(this.data.arr)
+
+    // let arr1 = JSON.parse(wx.getStorageSync('buylist'))
+    // let obj = {}
+    // for(let i = 0;i<arr1.length;i++){
+    //   obj[arr1[i].id] = arr1[i].buynum
+    // }
+    // console.log(obj)
   },
 
   /**

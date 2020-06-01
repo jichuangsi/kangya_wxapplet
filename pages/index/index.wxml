@@ -89,7 +89,9 @@
     </view>
   </van-popup>
   <van-grid border="{{borderstate}}">
-    <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_patient.png" text="患者" link-type="navigateTo"
+    <van-grid-item icon="{{item.url}}" text="{{item.name}}" link-type="navigateTo"
+    url="{{item.link}}" wx:for="{{worker_nav}}" />
+    <!-- <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_patient.png" text="患者" link-type="navigateTo"
     url="/pages/Patientlist/index" />
     <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_reservation.png" text="预约" link-type="navigateTo"
     url="/pages/order/index?title=预约列表" />
@@ -107,7 +109,6 @@
     url="/pages/activity/index" />
     <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_operating.png" text="运营中心" link-type="navigateTo"
     url="/pages/eroc/index?title={{name}}" />
-    <!-- bind:click="shopinggo"  -->
     <van-grid-item class="shop" icon="https://www.kyawang.com/uploads/images/kyshop.png" text="康牙商城" wx:if="{{power_arr.code10901.has}}" link-type="navigateTo"  url="/pages/S_index/index"/>
     <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_communication.png" text="医患沟通" link-type="navigateTo"
     url="/pages/PriceList/index?title=医患沟通视频"/>
@@ -116,7 +117,7 @@
     <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_approval.png" text="审批" link-type="navigateTo"
     url="/pages/Approval/index" />
     <van-grid-item icon="https://www.kyawang.com/uploads/images/clinic_workbench_icon_price.png" text="价目表" link-type="navigateTo"
-    url="/pages/PriceList/index?title=价目表"/>
+    url="/pages/PriceList/index?title=价目表"/> -->
   </van-grid>
     <foot footnum="0"></foot>
 </view>

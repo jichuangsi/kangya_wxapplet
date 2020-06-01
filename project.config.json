@@ -83,8 +83,8 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/blank/index",
-					"pathName": "pages/blank/index",
+					"name": "pages/my/index",
+					"pathName": "pages/my/index",
 					"query": "",
 					"scene": null
 				},
@@ -111,8 +111,8 @@
 				},
 				{
 					"id": 7,
-					"name": "pages/S_index/index",
-					"pathName": "pages/S_index/index",
+					"name": "pages/S_shopcart/index",
+					"pathName": "pages/S_shopcart/index",
 					"query": "doctorid=5996551",
 					"scene": null
 				},

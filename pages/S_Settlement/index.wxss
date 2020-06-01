@@ -75,7 +75,7 @@
   margin-top: 20rpx;
 }
 .box .user .user_bottom .state {
-  background-color: red;
+  background-color: #fa5151;
   color: #fff;
   padding: 0rpx 5rpx;
   box-sizing: border-box;
@@ -131,14 +131,14 @@
   padding: 10rpx 20rpx;
   box-sizing: border-box;
   color: #fff;
-  background-color: red;
+  background-color: #fa5151;
   border-radius: 5rpx;
 }
 .bottom_btn .bottom_delbtn{
   padding: 10rpx 20rpx;
   box-sizing: border-box;
   color: red;
-  border: 1rpx solid red;
+  border: 1rpx solid #fa5151;
   border-radius: 5rpx;
 }
 .yh {
@@ -193,7 +193,7 @@
 .yh .yh_li .right .right_top .state {
   padding: 2rpx 10rpx;
   background-color: pink;
-  color: red;
+  color: #fa5151;
 }
 .yh .yh_li .right .right_bottom {
   font-size: 26rpx;
@@ -214,7 +214,7 @@
   line-height: 66rpx;
   text-align: center;
   color: #fff;
-  background-color: red;
+  background-color: #fa5151;
   border-radius: 66rpx;
   position: absolute;
   bottom: 20rpx;
@@ -222,5 +222,5 @@
   transform: translateX(-50%);
 }
 .red {
-  color: red;
+  color: #fa5151;
 }
