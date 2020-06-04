@@ -197,14 +197,16 @@ Page({
   },
   checkAddress(e){
     console.log(e.currentTarget.dataset.item)
-    let pages = getCurrentPages();
-    let Page = pages[pages.length - 2];//
-    Page.setData({
-      address_arr:e.currentTarget.dataset.item
-    })
-    wx.navigateBack({
-      delta: 1
-    })
+    if(this.data.check_state==1){
+      let pages = getCurrentPages();
+      let Page = pages[pages.length - 2];//
+      Page.setData({
+        address_arr:e.currentTarget.dataset.item
+      })
+      wx.navigateBack({
+        delta: 1
+      })
+    }
   },
   // formatDuring(mss){
   //   var days = parseInt(mss / (1000 * 60 * 60 * 24));

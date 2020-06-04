@@ -42,7 +42,8 @@
   overflow: auto;
 }
 .center {
-  padding: rpx 0rpx;
+  padding: 0rpx 0rpx;
+  padding-bottom: 60rpx;
   box-sizing: border-box;
 }
 .center_top {

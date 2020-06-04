@@ -16,7 +16,7 @@
           <view>{{item.address}}</view>
         </view>
       </view>
-      <van-icon name="edit" size="36rpx" data-item="{{item}}" bindtap="stateclick"/>
+      <van-icon name="edit" size="36rpx" data-item="{{item}}" catchtap="stateclick"/>
     </view>
     <view class="btn bottom" bindtap="stateclick">
       <van-icon name="plus" />

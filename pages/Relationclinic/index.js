@@ -106,9 +106,9 @@ Page({
                       //   delta: 1,
                       // })
                       setTimeout(function(){
-                        wx.redirectTo({
-                          url: '../my/index'
-                        })
+                        wx.navigateBack({
+                            delta: 2,
+                          })
                       },500)
                     }else{
                       wx.showToast({

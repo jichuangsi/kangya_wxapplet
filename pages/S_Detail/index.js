@@ -139,9 +139,21 @@ Page({
     Toast('加入购物车成功~');
     let arr = wx.getStorageSync('buylist')?JSON.parse(wx.getStorageSync('buylist')):[]
     let arr1 = this.data.item.goods
-    arr1.buynum = this.data.check_num
-    arr1.state = 0
-    arr.push(arr1)
+    let state = false
+    for(let i = 0;i<arr.length;i++){
+      if(arr[i].id==arr1.id){
+        arr[i].buynum += this.data.check_num
+        state = true
+      }
+    }
+    if(!state){
+      arr1.buynum = this.data.check_num
+      arr1.state = 0
+      arr.push(arr1)
+    }
+    // arr1.buynum = this.data.check_num
+    // arr1.state = 0
+    // arr.push(arr1)
     wx.setStorageSync('buylist', JSON.stringify(arr))
     this.onClose()
   },

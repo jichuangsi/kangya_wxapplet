@@ -11,12 +11,12 @@
       </view>
       <view class="user" wx:if="{{address_arr.name}}">
         <view class="user_top">
-          <view>李清琴</view>
-          <view>13754064182</view>
+          <view>{{address_arr.name}}</view>
+          <view>{{address_arr.phone}}</view>
         </view>
         <view class="user_bottom">
-          <view class="state">住宅</view>
-          <view>广东省广州市荔湾区</view>
+          <view class="state">{{address_arr.addresstype}}</view>
+          <view>{{address_arr.address}}</view>
         </view>
       </view>
       <van-icon name="arrow" />

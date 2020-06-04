@@ -115,11 +115,11 @@
       </view> -->
       <view class="li">
         <view>快递单号</view>
-        <view>{{item.shippingCode}}</view>
+        <view>{{item.shippingCode==null?'':item.shippingCode}}</view>
       </view>
       <view class="li">
         <view>配送方式</view>
-        <view>{{item.shippingName}}</view>
+        <view>{{item.shippingName==null?'':item.shippingCode}}</view>
       </view>
       <view class="li">
         <view>订单备注</view>

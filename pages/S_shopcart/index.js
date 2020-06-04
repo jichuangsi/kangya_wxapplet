@@ -190,13 +190,19 @@ Page({
       }
     }
     if(this.data.all_price>0){
-      this.setData({
-        order_arr:arr1,
-        surplus_arr:arr2
-      })
-      wx.navigateTo({
-        url: '../S_Settlement/index?state=1',
-      })
+      if(wx.getStorageSync('token')){
+        this.setData({
+          order_arr:arr1,
+          surplus_arr:arr2
+        })
+        wx.navigateTo({
+          url: '../S_Settlement/index?state=1',
+        })
+      }else{
+        wx.navigateTo({
+          url: '../authorize/index',
+        })
+      }
     }
   },
 
