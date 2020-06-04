@@ -45,7 +45,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
-    this.getdata()
+    // this.getdata()
   },
 
   /**

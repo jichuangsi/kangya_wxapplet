@@ -48,7 +48,9 @@ Page({
         tags: '红',
       }
     ],
-    user:''
+    user:'',
+    order_arr:[],
+    surplus_arr:[]
   },
   onClickLeft() {
     wx.navigateBack({
@@ -179,17 +181,23 @@ Page({
   S_Settlementgo(){
     let arr = this.data.arr[0].child
     let arr1 = []
+    let arr2 = []
     for(let i =0;i<arr.length;i++){
-      console.log(arr[i])
       if(arr[i].state==1){
         arr1.push(arr[i])
+      }else{
+        arr2.push(arr[i])
       }
     }
-    // if(this.data.all_price>0){
-    //   wx.navigateTo({
-    //     url: '../S_Settlement/index',
-    //   })
-    // }
+    if(this.data.all_price>0){
+      this.setData({
+        order_arr:arr1,
+        surplus_arr:arr2
+      })
+      wx.navigateTo({
+        url: '../S_Settlement/index?state=1',
+      })
+    }
   },
 
   getdata() {

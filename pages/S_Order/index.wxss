@@ -74,3 +74,10 @@ van-card {
   flex: none;
   width: 50%;
 }
+van-sticky {
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+  top: 0rpx;
+  left: 0rpx;
+}

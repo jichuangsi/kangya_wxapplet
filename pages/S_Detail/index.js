@@ -46,7 +46,8 @@ Page({
     user:'',
     item:'',
     cpdeatil:'',
-    isOverShare: true
+    order_arr:[],
+    // isOverShare: true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -145,6 +146,18 @@ Page({
     this.onClose()
   },
   buy_btn() {
+    console.log(this.data.item)
+    let item = this.data.item.goods
+    item.buynum = this.data.check_num
+    let arr = []
+    arr.push(item)
+    this.setData({
+      order_arr:arr
+    })
+    console.log(this.data.order_arr)
+    wx.navigateTo({
+      url: '../S_Settlement/index?state=0',
+    })
     this.onClose()
   },
   ptclcik(){

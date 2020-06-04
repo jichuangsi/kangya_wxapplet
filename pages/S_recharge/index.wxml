@@ -6,10 +6,10 @@
   </view> -->
   <view class="center" wx:if="{{state == 0}}">
     <view class="center_top">
-      <view class="first">{{money_state?money:'***'}}<van-icon name="{{money_state?'eye-o':'closed-eye'}}" bindtap="moneyclick" size="36rpx"/></view>
+      <view class="first">{{money_state?user.remain:'***'}}<van-icon name="{{money_state?'eye-o':'closed-eye'}}" bindtap="moneyclick" size="36rpx"/></view>
       <view class="jy" bindtap="btn1">交易记录</view>
     </view>
-    <view class="title">余额预付</view>
+    <!-- <view class="title">余额预付</view>
     <view class="djbox">
       <view class="dj_title">
         代金券
@@ -25,7 +25,7 @@
           <view>￥{{item.newprice}}元</view>
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
   <view class="center" wx:if="{{state == 1}}">
     <van-tabs active="{{active}}">

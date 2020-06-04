@@ -97,14 +97,19 @@ Page({
                       xdata.access_token = res.data.list[0].token;
                       wx.setStorageSync('token', res.data.list[0].token)
                       
-                      let pages = getCurrentPages()
-                      //获取当前页面的对象
-                      let view = pages[pages.length - 1]
-                      view.onLoad()
+                      // let pages = getCurrentPages()
+                      // //获取当前页面的对象
+                      // let view = pages[pages.length - 1]
+                      // view.onLoad()
 
-                      wx.navigateBack({
-                        delta: 1,
-                      })
+                      // wx.navigateBack({
+                      //   delta: 1,
+                      // })
+                      setTimeout(function(){
+                        wx.redirectTo({
+                          url: '../my/index'
+                        })
+                      },500)
                     }else{
                       wx.showToast({
                         title: '登录失败',

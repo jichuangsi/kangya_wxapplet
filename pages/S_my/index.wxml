@@ -39,16 +39,17 @@
       <view class="box_bottom" border="{{borderstate}}">
         <van-grid column-num="5">
           <van-grid-item icon="credit-pay" text="待付款" link-type="navigateTo"
-    url="/pages/S_Order/index?title=待付款" info="{{user.topay}}"  />
+    url="/pages/S_Order/index?title=0" info="{{user.topay}}"  />
           <van-grid-item icon="free-postage" text="待发货" link-type="navigateTo"
-    url="/pages/S_Order/index?title=待发货" info="{{user.tosend}}"  />
+    url="/pages/S_Order/index?title=1" info="{{user.tosend}}"  />
           <van-grid-item icon="logistics" text="待收货" link-type="navigateTo"
-    url="/pages/S_Order/index?title=待收货" info="{{user.toget}}"  />
+    url="/pages/S_Order/index?title=2" info="{{user.toget}}"  />
           <van-grid-item icon="completed" text="已完成" link-type="navigateTo"
-    url="/pages/S_Order/index?title=已完成" info="{{user.complete}}"  />
+    url="/pages/S_Order/index?title=3" info="{{user.complete}}"  />
           <van-grid-item icon="after-sale" text="退款/售后" link-type="navigateTo"
-    url="/pages/S_Service/index?state=0" info="{{user.return}}"  />
+    url="/pages/S_Order/index?title=4" info="{{user.return}}"  />
         </van-grid>
+        <!-- /pages/S_Service/index?state=0 -->
       </view>
     </view>
     <view class="box">

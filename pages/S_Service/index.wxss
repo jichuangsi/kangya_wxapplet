@@ -138,12 +138,12 @@ van-card {
 }
 .btn {
   border: 20rpx solid #f2f2f2;
-  background-color: red;
+  background-color: #fa5151;
   color: #fff;
   box-sizing: border-box;
   margin-top: 40rpx;
   text-align: center;
-  line-height: 66rpx;
+  line-height: 76rpx;
 }
 .ipt {
   padding: 20rpx;
@@ -206,7 +206,7 @@ van-card {
   position: relative;
 }
 .ipt .img .img_box .none {
-  background-color: red;
+  background-color: #fa5151;
   line-height: normal;
   color: #fff;
   border-radius: 50%;

@@ -23,7 +23,8 @@ Page({
     area_text:'',
     user:'',
     user_id:'',
-    edit_state:false
+    edit_state:false,
+    check_state:0
   },
   onClickLeft() {
     wx.navigateBack({
@@ -194,6 +195,17 @@ Page({
       }
     });
   },
+  checkAddress(e){
+    console.log(e.currentTarget.dataset.item)
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    Page.setData({
+      address_arr:e.currentTarget.dataset.item
+    })
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   // formatDuring(mss){
   //   var days = parseInt(mss / (1000 * 60 * 60 * 24));
   //   var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -206,7 +218,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      areaList: require("../../data/area.js").default
+      areaList: require("../../data/area.js").default,
+      check_state:options.check==1?1:0
     })
     console.log(this.data.areaList)
     wx.setNavigationBarTitle({

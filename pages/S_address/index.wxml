@@ -5,7 +5,7 @@
     </van-nav-bar>
   </view> -->
   <view class="center" wx:if="{{state == 0}}">
-    <view class="box" wx:for="{{address_arr}}">
+    <view class="box" wx:for="{{address_arr}}" data-item="{{item}}" bindtap="checkAddress">
       <view class="user">
         <view class="user_top">
           <view>{{item.name}}</view>

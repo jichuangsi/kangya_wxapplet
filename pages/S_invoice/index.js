@@ -7,7 +7,7 @@ Page({
   data: {
     title: '商城',
     check_num: 0,
-    arr: ['电子发票', '不开发票'],
+    arr: ['不开发票', '普通发票', '增值税发票'],
     radio: '1',
     checked: false
   },
@@ -31,6 +31,11 @@ Page({
     this.setData({ checked: detail });
   },
   btn(){
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    Page.setData({
+      invoice_id:this.data.check_num
+    })
     wx.navigateBack({
       delta: 1,
     })

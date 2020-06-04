@@ -12,7 +12,8 @@ Page({
     active:'全部',
     cash_arr:[],
     budget_arr:[],
-    check_index:0
+    check_index:0,
+    user:''
   },
   onClickLeft() {
     if (this.data.state==0){
@@ -41,27 +42,27 @@ Page({
       check_index: e.currentTarget.dataset.index
     })
   },
-  getdata() {
-    let self = this
-    wx.request({
-      url: getApp().data.API+'/S_recharge.json',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
-          self.setData({
-            money: res.data.money,
-            cash_arr: res.data.cash_arr,
-            assemble_arr: res.data.assemble_arr,
-            budget_arr: res.data.budget_arr
-          })
-          console.log(self.data.budget_arr)
-        }
-      },
-    })
-  },
+  // getdata() {
+  //   let self = this
+  //   wx.request({
+  //     url: getApp().data.API+'/S_recharge.json',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     success: function (res) {
+  //       console.log(res.data)
+  //       if (res.data.result == 200) {
+  //         self.setData({
+  //           money: res.data.money,
+  //           cash_arr: res.data.cash_arr,
+  //           assemble_arr: res.data.assemble_arr,
+  //           budget_arr: res.data.budget_arr
+  //         })
+  //         console.log(self.data.budget_arr)
+  //       }
+  //     },
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -69,7 +70,12 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
-    this.getdata()
+    // this.getdata()
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    this.setData({
+      user:Page.data.user
+    })
   },
 
   /**

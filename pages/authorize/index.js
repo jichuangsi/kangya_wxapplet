@@ -67,9 +67,20 @@ Page({
                     //   title: '登录成功',
                     //   icon: 'success'
                     // });
-                    xdata.access_token = res.data.list[0].token;
+                    // xdata.access_token = res.data.list[0].token;
                     wx.setStorageSync('token', res.data.list[0].token)
-                    self.view.onLoad()
+                    // self.view.onLoad()
+                    
+                      let pages = getCurrentPages()
+                      //获取当前页面的对象
+                      let view = pages[pages.length - 1]
+                      view.onLoad()
+
+                      setTimeout(function(){
+                        wx.navigateBack({
+                          delta: 1,
+                        })
+                      },500)
                   }
                 } else {
                   // 如果没有注册调用注册接口
@@ -104,6 +115,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.signin()
   },
 
   /**

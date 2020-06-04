@@ -6,7 +6,10 @@
   </view> -->
   <view class="center">
     <view class="box" bindtap="S_addressgo">
-      <view class="user">
+      <view class="check_address" wx:if="{{!address_arr.name}}">
+        <view>选择收货地址</view>
+      </view>
+      <view class="user" wx:if="{{address_arr.name}}">
         <view class="user_top">
           <view>李清琴</view>
           <view>13754064182</view>
@@ -22,58 +25,63 @@
       <view class="li">
         <view class="title">商品信息</view>
       </view>
-      <view class="li">
+      <view class="li" wx:for="{{arr}}">
         <van-card
-          num="2"
-          price="2.00"
-          desc="描述信息"
-          title="商品标题"
-          thumb="../../../images/my_service_icon_collection.png"
+          num="{{item.buynum}}"
+          price="{{user.vip!=''?item.vipPrice:item.promotionPrice}}"
+          origin-price="{{item.price}}"
+          title="{{item.name}}"
+          thumb="{{ item.imageOne }}"
+          thumb-link="/pages/S_Detail/index?id={{item.id}}"
+          link-type="navigateTo"
         />
       </view>
       <view class="li">
         <view class="title">商品总额</view>
-        <view>￥4.00</view>
+        <view>￥{{all_price}}</view>
       </view>
-      <view class="li">
+      <!-- <view class="li">
         <view class="title">促销</view>
         <view>无</view>
-      </view>
+      </view> -->
       <view class="li" bindtap="showpopup">
         <view class="title">优惠券</view>
-        <view>没有可用优惠券</view>
+        <view wx:if="{{check_yh==''}}">选择优惠券</view>
+        <view wx:if="{{check_yh!=''}}">{{check_yh.price}}</view>
         <van-icon name="arrow" size="36rpx" />
       </view>
-      <view class="li">
+      <!-- <view class="li">
         <view class="title">优惠券</view>
         <view>没有可用代金券</view>
-      </view>
+      </view> -->
       <view class="li" bindtap="S_invoicego">
         <view class="title">发票</view>
-        <view>不开发票</view>
+        <view wx:if="{{invoice_id==0}}">不开发票</view>
+        <view wx:if="{{invoice_id==1}}">普通发票</view>
+        <view wx:if="{{invoice_id==2}}">增值税发票</view>
         <van-icon name="arrow" size="36rpx" />
       </view>
-      <view class="li">
+      <!-- <view class="li">
         <view class="title">配送费</view>
         <view>￥0.00</view>
+      </view> -->
+      <view class="li">
+        <view style="color:#333">订单备注</view>
+        <input placeholder="选填:请先和商家协商一致" bindinput="messageipt"></input>
       </view>
       <view class="li">
-        <view>订单备注</view>
-        <input placeholder="选填:请先和商家协商一致"></input>
-      </view>
-      <view class="li">
-        <view class="right">合计:￥4.00</view>
+        <view class="right">合计:￥{{price}}</view>
       </view>
     </view>
     <view class="box">
       <view class="li">
         <view class="title">请选择支付方式</view>
       </view>
-      <view class="li" bindtap="S_rechargego">
+      <!-- <view class="li" bindtap="S_rechargego">
         <view class="title">余额支付</view>
         <view>余额不足，去预付</view>
         <van-icon name="arrow" size="36rpx" />
-      </view>
+      </view> -->
       <view class="li">
         <view class="title">微信支付</view>
         <van-icon name="checked" size="36rpx" color="red" />
@@ -81,8 +89,8 @@
     </view>
   </view>
   <view class="bottom_btn">
-    <view class="text">合计:<view class="red">￥4.00</view></view>
-    <view class="btn" bindtap="btn">确认支付</view>
+    <view class="text">合计:<view class="red">￥{{price}}</view></view>
+    <view class="btn" bindtap="btn">生成订单</view>
   </view>
 
   
@@ -95,21 +103,24 @@
   >
     <view class="yh">
       <view class="yh_title">可领取优惠券</view>
-      <view class="yh_li" wx:for="{{yh_arr}}">
-        <view class="left">
-            <view><view>￥</view>{{item.price}}</view>
-            <view>满{{item.m_price}}可用</view>
-        </view>
-        <view class="right">
-          <view class="right_top">
-            <view class="state">{{item.title}}</view> <view>{{item.text}}</view>
-          </view>
-          <view class="right_bottom">
-            <view>·不可叠加使用</view>
-            <view>·{{item.time}}</view>
-          </view>
-          <view class="right_state">{{item.state==0?'立即领取':'立即使用'}}</view>
-        </view>
+      <view class="yh_box">
+              <view class="yh_li" wx:for="{{yh_arr}}" wx:if="{{item.state==0&&all_price>item.m_price}}">
+                <view class="left">
+                    <view><view>￥</view>{{item.price}}</view>
+                    <view>满{{item.m_price}}可用</view>
+                </view>
+                <view class="right">
+                  <view class="right_top">
+                    <view class="state">{{item.name}}</view>
+                  </view>
+                  <view class="right_bottom">
+                    <view>·不可叠加使用</view>
+                    <view>·开始时间：{{item.sdate}}</view>
+                    <view>·结束时间：{{item.edate}}</view>
+                  </view>
+                  <view class="right_state" data-item="{{item}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="checkyh">立即使用</view>
+                </view>
+              </view>
       </view>
       <view class="yh_btn">确定</view>
     </view>

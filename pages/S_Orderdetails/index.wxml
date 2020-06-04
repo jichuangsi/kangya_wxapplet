@@ -4,78 +4,86 @@
     <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft">
     </van-nav-bar>
   </view> -->
-  <view class="center" wx:if="{{state==1}}">
+  <view class="center">
     <view class="center_top">
-      订单已完成
+      <view wx:if="{{state==0}}">订单待付款</view>
+      <view wx:if="{{state==1}}">订单待发货</view>
+      <view wx:if="{{state==2}}">订单待收货</view>
+      <view wx:if="{{state==3}}">订单已完成</view>
+      <view wx:if="{{state==4}}">退款售后</view>
     </view>
-    <view class="wl" bindtap="stateclick2">
+    <!-- <view class="wl" bindtap="stateclick2">
       <van-icon name="logistics" size="36rpx" />
       <view class="text">
         <view>客户已签收</view>
         <view class="time">2020-02-19 15:00</view>
       </view>
       <van-icon name="arrow" />
-    </view>
+    </view> -->
     <view class="wl white">
       <van-icon name="wap-home-o" size="36rpx" />
       <view class="text">
-        <view>李清琴 13448644</view>
-        <view>广州市荔湾区</view>
+        <view>{{item.receiverRealName}} {{item.receiverPhone}}</view>
+        <view>{{item.receiverAddress}}</view>
       </view>
     </view>
     <view class="box">
       <view class="li">
         <view>商品信息</view>
       </view>
-          <view class="li">
+          <view class="li" wx:for="{{check_item.detail}}">
             <van-card
-              num="2"
-              price="2.00"
-              desc="描述信息"
-              title="商品标题"
-              thumb="../../../images/my_service_icon_consumables.png"
+                num="{{item.goodinfo.num}}"
+                price="{{item.goodinfo.actualPay}}"
+                desc="{{item.goodinfo.size}}"
+                title="{{item.name}}"
+                thumb="{{item.image}}"
+                link-type="navigateTo"
+                thumb-link="/pages/S_Detail/index?id={{items.value}}"
               >
             <view slot="footer" class="fb">
-              <view class="mini" bindtap="shgo">申请售后</view>
+              <!-- <view class="mini" bindtap="shgo" wx:if="{{state!=0}}">申请售后</view> -->
             </view>
             </van-card>
           </view>
       <view class="li">
         <view>商品总额</view>
-        <view>￥4.00</view>
+        <view>￥{{item.totalPay}}</view>
       </view>
-      <view class="li">
+      <!-- <view class="li">
         <view>促销</view>
         <view>￥0.00</view>
-      </view>
+      </view> -->
       <view class="li">
         <view>优惠券</view>
-        <view>￥0.00</view>
+        <view>￥{{item.promotionalDiscount}}</view>
       </view>
       <view class="li">
         <view>配送费</view>
-        <view>￥0.00</view>
+        <view>￥{{item.postFee}}</view>
       </view>
-      <view class="li">
+      <!-- <view class="li">
         <view>合计</view>
         <view>￥4.00</view>
-      </view>
+      </view> -->
       <view class="li right">
         <view>订单支付明细</view>
       </view>
       <view class="li">
         <view>代金券</view>
-        <view>￥0.00</view>
+        <view>￥{{item.moneyDiscount}}</view>
       </view>
       <view class="li">
         <view>实付款</view>
-        <view>￥4.00</view>
+        <view>￥{{item.actualPay}}</view>
       </view>
     </view>
     <view class="box">
       <view class="li">
         <view>发票：</view>
-        <view>不开发票</view>
+        <view wx:if="{{item.invoiceType=='0'}}">不开发票</view>
+        <view wx:if="{{item.invoiceType=='1'}}">普通发票</view>
+        <view wx:if="{{item.invoiceType=='2'}}">增值税发票</view>
       </view>
     </view>
     <view class="box">
@@ -84,37 +92,45 @@
       </view>
       <view class="li">
         <view>订单号</view>
-        <view>3323121151515</view>
+        <view>{{item.orderNumber}}</view>
       </view>
       <view class="li">
         <view>创建信息</view>
-        <view>2002-02-19 15:00</view>
+        <view>{{item.createDate}}</view>
       </view>
       <view class="li">
         <view>支付方式</view>
-        <view>微信支付</view>
+        <view wx:if="{{item.payChannels==1}}">支付宝支付</view>
+        <view wx:if="{{item.payChannels==2}}">微信支付</view>
+        <view wx:if="{{item.payChannels==3}}">余额支付</view>
+        <view wx:if="{{item.payChannels==4}}">组合支付</view>
       </view>
-      <view class="li">
+      <!-- <view class="li">
         <view>发货时间</view>
         <view>2002-02-16 15:00</view>
       </view>
       <view class="li">
         <view>成交时间</view>
         <view>2002-02-19 15:00</view>
+      </view> -->
+      <view class="li">
+        <view>快递单号</view>
+        <view>{{item.shippingCode}}</view>
       </view>
       <view class="li">
         <view>配送方式</view>
-        <view>包邮</view>
+        <view>{{item.shippingName}}</view>
       </view>
       <view class="li">
         <view>订单备注</view>
-        <view>请付出库单</view>
+        <view>{{item.message}}</view>
       </view>
     </view>
-    <view class="li right bottom">
-      <view bindtap="del">删除订单</view>
+    <view class="li right bottom" wx:if="{{state==0}}">
+      <!-- <view bindtap="del">删除订单</view>
       <view bindtap="stateclick">电子三证</view>
-      <view bindtap="S_invoicego">申请开票</view>
+      <view bindtap="S_invoicego">申请开票</view> -->
+      <view class="btn" bindtap="btn">去付款</view>
     </view>
   </view>
   <view class="center" wx:if="{{state==2}}">

@@ -43,7 +43,7 @@ Page({
     all_arr: [],
     brand_arr:[],
     user:'',
-    isOverShare: true
+    // isOverShare: true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -305,6 +305,9 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    if(options.saler_id){
+      wx.setStorageSync('saler_id', options.saler_id)
+    }
     // this.getdata()
     this.getuser()
     this.getbanner()

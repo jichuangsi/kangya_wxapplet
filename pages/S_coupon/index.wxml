@@ -27,7 +27,9 @@
               <view>·开始时间：{{item.sdate}}</view>
               <view>·结束时间：{{item.edate}}</view>
             </view>
-            <view class="right_state" data-index="{{index}}" bindtap="btnclick">{{item.state==0?'立即领取':'立即使用'}}</view>
+            <view class="right_state" data-index="{{index}}" wx:if="{{item.state==0}}" bindtap="btnclick">立即使用</view>
+            <view class="right_state hui" data-index="{{index}}" wx:if="{{item.state==1}}">已使用</view>
+            <view class="right_state hui" data-index="{{index}}" wx:if="{{item.state==2}}">已过期</view>
           </view>
         </view>
     </view>

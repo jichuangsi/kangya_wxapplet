@@ -17,7 +17,7 @@ Page({
   },
   S_rechargego(){
     wx.navigateTo({
-      url: '../authorize/index',
+      url: '../S_recharge/index',
     })
   },
   S_cardgo() {
@@ -30,7 +30,7 @@ Page({
   },
   S_Ordergo() {
     wx.navigateTo({
-      url: '../S_Order/index?title=全部',
+      url: '../S_Order/index?title=0',
     })
   },
   kfclick(){
@@ -63,7 +63,6 @@ Page({
         })
       }
     });
-  });
   },
   /**
    * 生命周期函数--监听页面加载

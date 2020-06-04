@@ -36,7 +36,7 @@ Page({
     index:1,
     searchshow:false,
     brand_carr:[],
-    isOverShare: true,
+    // isOverShare: true,
     sort:'',
     scorll_state:true,
     scorll_h:0

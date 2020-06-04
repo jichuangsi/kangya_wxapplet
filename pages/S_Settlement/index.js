@@ -7,21 +7,29 @@ Page({
   data: {
     title: '商城',
     show: false,
+    state:0,
     yh_arr: [
-      {
-        state: 0,
-        price: 20,
-        m_price: 299,
-        time: '2020-02-26至2020-03-01',
-        title: '拼团券',
-        text: '限拼团可用'
-      }
     ],
+    address_arr:{},
+    yh_id:'',
+    check_yh:'',
+    invoice_id:0,
+    message:'',
+    arr:[],
+    user:'',
+    all_price:0,
+    price:0,
+    check_obj:'',
+    saler_id:''
   },
   onClickLeft() {
     wx.navigateBack({
       delta: 1
     })
+  },
+  messageipt(e){
+    console.log(e)
+
   },
   S_rechargego(){
     wx.navigateTo({
@@ -30,7 +38,7 @@ Page({
   }, 
   S_addressgo() {
     wx.navigateTo({
-      url: '../S_address/index',
+      url: '../S_address/index?check=1',
     })
   },
   S_invoicego() {
@@ -48,6 +56,84 @@ Page({
       show: false
     })
   },
+  getdata() {
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: "get",
+      data: {
+        "plugin":'getfree'
+      },
+      header: {
+        "token": wx.getStorageSync("token")
+      },
+      success: function(res) {
+        console.log(res)
+        self.setData({
+          yh_arr:res.data.list
+        })
+      }
+    });
+  },
+  checkyh(e){
+    let price = Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price)>0?Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price):0
+    this.setData({
+      yh_id:e.currentTarget.dataset.id,
+      check_yh:e.currentTarget.dataset.item,
+      show:false,
+      price:price
+    })
+  },
+  btn(){
+    let self = this
+    console.log(self.data.address_arr)
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: "post",
+      data: {
+        "plugin":'addcartorder',
+        "goods":JSON.stringify(self.data.check_obj),
+        "pay":JSON.stringify({
+          'moneyId':self.data.yh_id,
+          'postFeeId':null,
+          'saler_id':self.data.saler_id,
+          'isProof':'0',
+          'addressid':self.data.address_arr.id,
+          'invoiceType':self.data.invoice_id,
+          'feetype':self.data.user.remain
+        })
+      },
+      header: {
+        "token": wx.getStorageSync("token"),
+        'content-type': 'application/x-www-form-urlencoded'
+
+      },
+      success: function(res) {
+        console.log(res)
+        if(res.data.info=='ok'){
+          wx.showToast({
+            icon:'success',
+            title: '生成订单成功',
+            complete:function(){
+              wx.redirectTo({
+                url: '../S_my/index',
+              })
+            }
+          })
+          if(self.data.state == 1){
+            let pages = getCurrentPages();
+            let Page = pages[pages.length - 2];//
+            wx.setStorageSync('buylist', JSON.stringify(Page.data.surplus_arr))
+          }
+        }else{
+          wx.showToast({
+            icon:'none',
+            title: '生成订单失败',
+          })
+        }
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -55,6 +141,62 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    let pages = getCurrentPages();
+  	let Page = pages[pages.length - 2];//
+    this.setData({
+      state:options.state==1?1:0,
+      arr:Page.data.order_arr,
+      saler_id:wx.getStorageSync('saler_id')
+    })
+    console.log(this.data.arr)
+    this.getdata()
+    this.getuser()
+  },
+  getuser(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: "get",
+      data: {
+        "plugin":'getcartuserinfo'
+      },
+      header: {
+        "token": wx.getStorageSync("token")
+      },
+      success: function(res) {
+        console.log(res)
+        let price = 0
+        let obj = {}
+        for(let i = 0;i<self.data.arr.length;i++){
+          price += res.data.list[0].vip!=''?(Number(self.data.arr[i].vipPrice)*Number(self.data.arr[i].buynum)):(Number(self.data.arr[i].promotionPrice)*Number(self.data.arr[i].buynum))
+          obj[self.data.arr[i].id]=self.data.arr[i].buynum
+        }
+        console.log(obj)
+        self.setData({
+          user:res.data.list[0],
+          all_price:price,
+          price:price,
+          check_obj:obj
+        })
+      }
+    });
+    
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: "get",
+      data: {
+        "plugin":'getaddr'
+      },
+      header: {
+        "token": wx.getStorageSync("token")
+      },
+      success: function(res) {
+        console.log(res)
+        self.setData({
+          address_arr:res.data.list[0]
+        })
+      }
+    });
   },
 
   /**

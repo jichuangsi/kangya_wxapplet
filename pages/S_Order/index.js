@@ -7,8 +7,13 @@ Page({
    */
   data: {
     title: '商城',
-    active: '全部',
-    order_arr:[]
+    active: '待付款',
+    check_num:0,
+    order_arr:[],
+    pageIndex:0,
+    user:'',
+    scorllshow:true,
+    check_item:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -16,10 +21,14 @@ Page({
     })
   },
   onChange(event) {
+    console.log(event)
     this.setData({
-      active: event.detail.name
+      pageIndex:0,
+      order_arr:[],
+      check_num: event.detail.index,
+      scorllshow:true
     })
-    this.getdata(event.detail.name)
+    this.getdata(event.detail.index)
   },
   del() {
     Dialog.confirm({
@@ -31,47 +40,95 @@ Page({
       // on cancel
     });
   },
-  S_invoicego(){
+  S_Servicego(){
     wx.navigateTo({
-      url: '../S_invoice/index',
+      url: '../S_Service/index?state=1',
     })
   },
-  S_Orderdetailsgo() {
+  S_Orderdetailsgo(e) {
+    this.setData({
+      check_item:e.currentTarget.dataset.item
+    })
     wx.navigateTo({
-      url: '../S_Orderdetails/index?state=0',
+      url: '../S_Orderdetails/index?state='+this.data.check_num+'&&id='+e.currentTarget.dataset.id,
     })
   },
-  getdata(text) {
+  getuser(){
     let self = this
     wx.request({
-      url: getApp().data.API+'/S_Order.json',
-      headers: {
-        'Content-Type': 'application/json'
+      url: getApp().data.APIS + '/svc/a',
+      method: "get",
+      data: {
+        "plugin":'getcartuserinfo'
       },
-      data:{
-        text: text
+      header: {
+        "token": wx.getStorageSync("token")
       },
-      success: function (res) {
-        console.log(res.data)
-        if (res.data.result == 200) {
+      success: function(res) {
+        console.log(res)
+        self.setData({
+          user:res.data.list[0]
+        })
+      }
+    });
+  },
+  uptouch(){
+    console.log(123)
+    if(this.data.scorllshow){
+      this.getdata(this.data.check_num)
+    } 
+  },
+  getdata(number) {
+    let self = this
+    let index = Number(number) + 1
+    wx.request({
+      url: getApp().data.APIS +"/svc/a",
+        method: "get",
+        data: {
+          "plugin": 'getcartorderlist',
+          "p": {
+            start:self.data.pageIndex,
+            status:index
+          }
+        },
+        header: {
+          "token": wx.getStorageSync("token")
+        },
+        success: function(res) {
+          console.log(54361)
+          console.log(res)
+          let num = self.data.pageIndex + res.data.list[0].length
+          let arr = self.data.order_arr
+          for(let i = 0;i<res.data.list[0].length;i++){
+            res.data.list[0][i].actualPay = 0
+            res.data.list[0][i].num = 0
+            for(let j = 0;j<res.data.list[0][i].detail.length;j++){
+              res.data.list[0][i].actualPay += res.data.list[0][i].detail[j].goodinfo.actualPay
+              res.data.list[0][i].num += res.data.list[0][i].detail[j].goodinfo.num
+            }
+          }
+          arr.push(...res.data.list[0])
           self.setData({
-            order_arr: res.data.order_arr
+            pageIndex:num,
+            order_arr:arr,
+            scorllshow:res.data.list[0].length==0?false:true
           })
         }
-      },
-    })
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
-      active: options.title
+      active: Number(options.title),
+      check_num:options.title
     })
     wx.setNavigationBarTitle({
       title: '商城'
     })
     this.getdata(options.title)
+    this.getuser()
   },
 
   /**

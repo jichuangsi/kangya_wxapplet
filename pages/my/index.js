@@ -41,6 +41,9 @@ Page({
     this.setData({
       tokenState:wx.getStorageSync('token')?false:true
     })
+    console.log(123456789)
+    console.log(this.data.tokenState)
+    console.log(987654321)
   },
 
   /**

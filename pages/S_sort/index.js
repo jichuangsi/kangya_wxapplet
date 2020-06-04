@@ -7,7 +7,7 @@ Page({
   data: {
     title: '商城',
     arr:[],
-    isOverShare: true
+    // isOverShare: true
   },
   onClickLeft() {
     wx.navigateBack({

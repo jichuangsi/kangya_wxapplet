@@ -11,7 +11,7 @@
         <view class="{{check_num==index?'check':''}}" wx:for="{{arr}}" data-index="{{index}}" bindtap="check_click">{{item}}</view>
       </view>
     </view>
-    <view class="li" wx:if="{{check_num == 0}}">
+    <!-- <view class="li" wx:if="{{check_num == 0}}">
       <view class="title">抬头类型</view>
       <view class="text">
         <van-radio-group value="{{ radio }}" bind:change="onChange">
@@ -31,7 +31,7 @@
     <view class="li" wx:if="{{check_num == 0}}">
       <view class="title">设为默认发票抬头</view>
       <van-switch checked="{{ checked }}" bind:change="onChange1" />
-    </view>
+    </view> -->
     <view class="btn mt" bindtap="btn">确定</view>
   </view>
 </view>

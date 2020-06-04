@@ -13,8 +13,17 @@
       </swiper-item>
     </swiper>
   </view>
-  
+  <!-- ="{{item.style=='open-type'}}" -->
   <van-grid column-num="3">
-    <van-grid-item icon="{{item.image}}" wx:for="{{arr}}" data-item="{{item}}" text="{{item.name}}" bind:click='gridclick'/>
+    <van-grid-item class="te" icon="{{item.image}}" wx:for="{{arr}}" use-slot data-item="{{item}}" text="{{item.name}}" bind:click='gridclick'>
+      <view class="solt" wx:if="{{item.stype!='open-type'}}">
+        <image src="{{item.image}}" />
+        <view>{{item.name}}</view>
+      </view>
+      <button class="solt" open-type="contact" wx:if="{{item.stype=='open-type'}}">
+        <image src="{{item.image}}" />
+        <view>{{item.name}}</view>
+      </button>
+    </van-grid-item>
   </van-grid>
 </view>
