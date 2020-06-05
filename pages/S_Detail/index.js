@@ -158,19 +158,23 @@ Page({
     this.onClose()
   },
   buy_btn() {
-    console.log(this.data.item)
-    let item = this.data.item.goods
-    item.buynum = this.data.check_num
-    let arr = []
-    arr.push(item)
-    this.setData({
-      order_arr:arr
-    })
-    console.log(this.data.order_arr)
-    wx.navigateTo({
-      url: '../S_Settlement/index?state=0',
-    })
-    this.onClose()
+    if(wx.getStorageSync('token')){
+      let item = this.data.item.goods
+      item.buynum = this.data.check_num
+      let arr = []
+      arr.push(item)
+      this.setData({
+        order_arr:arr
+      })
+      wx.navigateTo({
+        url: '../S_Settlement/index?state=0',
+      })
+      this.onClose()
+    }else{
+      wx.navigateTo({
+        url: '../authorize/index',
+      })
+    }
   },
   ptclcik(){
     Dialog.alert({

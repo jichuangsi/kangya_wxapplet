@@ -73,7 +73,7 @@ Page({
                     
                       let pages = getCurrentPages()
                       //获取当前页面的对象
-                      let view = pages[pages.length - 1]
+                      let view = pages[pages.length - 2]
                       view.onLoad()
 
                       setTimeout(function(){

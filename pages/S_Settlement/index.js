@@ -86,7 +86,6 @@ Page({
   },
   btn(){
     let self = this
-    console.log(self.data.address_arr)
     wx.request({
       url: getApp().data.APIS + '/svc/a',
       method: "post",
@@ -111,20 +110,72 @@ Page({
       success: function(res) {
         console.log(res)
         if(res.data.info=='ok'){
-          wx.showToast({
-            icon:'success',
-            title: '生成订单成功',
-            complete:function(){
-              wx.redirectTo({
-                url: '../S_my/index',
-              })
-            }
-          })
+          // wx.showToast({
+          //   icon:'success',
+          //   title: '生成订单成功',
+          // })
           if(self.data.state == 1){
             let pages = getCurrentPages();
             let Page = pages[pages.length - 2];//
             wx.setStorageSync('buylist', JSON.stringify(Page.data.surplus_arr))
           }
+          wx.request({
+            url: getApp().data.APIS + "/lab/pay/",
+            method: "POST",
+            data: {
+              "token": wx.getStorageSync("token"),"orderId":res.data.list[0].orderId
+            },
+            header: {
+              "content-type": "application/json"
+            },
+            success: function(e) {
+              console.log(788)
+              console.log(e)
+              // 签权调起支付 
+              if(!e.data.data){
+                wx.showToast({
+                  title: '支付失败',
+                  icon: 'none',
+                  complete:function(){
+                    wx.navigateTo({
+                      url: '../S_Order/index?title=0',
+                    })
+                  }
+                })
+              }
+              wx.requestPayment({
+                'timeStamp': e.data.data.timeStamp,
+                'nonceStr': e.data.data.nonceStr,
+                'package': e.data.data.package,
+                'signType': e.data.data.signType,
+                'paySign': e.data.data.paySign,
+                'success': function(res) {
+                  console.log(res, "成功")
+                  wx.showToast({
+                    title: '支付成功',
+                    icon: 'success',
+                    complete:function(){
+                      wx.navigateTo({
+                        url: '../S_Order/index?title=0',
+                      })
+                    }
+                  })
+                },
+                'fail': function(res) {
+                  console.log("支付失败", res)
+                  wx.showToast({
+                    title: '支付失败',
+                    icon: 'none',
+                    complete:function(){
+                      wx.navigateTo({
+                        url: '../S_Order/index?title=0',
+                      })
+                    }
+                  })
+                },
+              })
+            }
+          })
         }else{
           wx.showToast({
             icon:'none',
@@ -210,7 +261,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

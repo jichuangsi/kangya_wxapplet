@@ -16,7 +16,7 @@
             <view class="li" wx:for="{{items.detail}}">
               <van-card
                 num="{{item.goodinfo.num}}"
-                price="{{item.goodinfo.actualPay}}"
+                price="{{item.goodinfo.price}}"
                 desc="{{item.goodinfo.size}}"
                 title="{{item.name}}"
                 thumb="{{item.image}}"
@@ -24,7 +24,7 @@
                 thumb-link="/pages/S_Detail/index?id={{items.value}}"
                             />
             </view>
-            <view class="li right">共{{items.num}}件商品，总价￥{{items.actualPay}}</view>
+            <view class="li right">共{{items.num}}件商品，总价￥{{items.total}}</view>
             <view class="li right">
               <!-- <view bindtap="del">删除订单</view> -->
               <view bindtap="S_Orderdetailsgo" data-item="{{items}}" data-id="{{items.id}}">订单详情</view>
@@ -41,7 +41,7 @@
             <view class="li" wx:for="{{items.detail}}">
               <van-card
                 num="{{item.goodinfo.num}}"
-                price="{{item.goodinfo.actualPay}}"
+                price="{{item.goodinfo.price}}"
                 desc="{{item.goodinfo.size}}"
                 title="{{item.name}}"
                 thumb="{{item.image}}"
@@ -49,8 +49,7 @@
                 thumb-link="/pages/S_Detail/index?id={{items.value}}"
                             />
             </view>
-            <view class="li right">共{{items.num}}件商品，总价￥{{items.actualPay}}</view>
-            <view>{{items.actualPay}}</view>
+            <view class="li right">共{{items.num}}件商品，总价￥{{items.total}}</view>
             <view class="li right">
               <!-- <view bindtap="del">删除订单</view> -->
               <view bindtap="S_Orderdetailsgo" data-item="{{items}}" data-id="{{items.id}}">订单详情</view>
@@ -67,7 +66,7 @@
             <view class="li" wx:for="{{items.detail}}">
               <van-card
                 num="{{item.goodinfo.num}}"
-                price="{{item.goodinfo.actualPay}}"
+                price="{{item.goodinfo.price}}"
                 desc="{{item.goodinfo.size}}"
                 title="{{item.name}}"
                 thumb="{{item.image}}"
@@ -75,7 +74,7 @@
                 thumb-link="/pages/S_Detail/index?id={{items.value}}"
                             />
             </view>
-            <view class="li right">共{{items.num}}件商品，总价￥{{items.actualPay}}</view>
+            <view class="li right">共{{items.num}}件商品，总价￥{{items.total}}</view>
             <view class="li right">
               <!-- <view bindtap="del">删除订单</view> -->
               <view bindtap="S_Orderdetailsgo" data-item="{{items}}" data-id="{{items.id}}">订单详情</view>
@@ -92,7 +91,7 @@
             <view class="li" wx:for="{{items.detail}}">
               <van-card
                 num="{{item.goodinfo.num}}"
-                price="{{item.goodinfo.actualPay}}"
+                price="{{item.goodinfo.price}}"
                 desc="{{item.goodinfo.size}}"
                 title="{{item.name}}"
                 thumb="{{item.image}}"
@@ -100,7 +99,7 @@
                 thumb-link="/pages/S_Detail/index?id={{items.value}}"
                             />
             </view>
-            <view class="li right">共{{items.num}}件商品，总价￥{{items.actualPay}}</view>
+            <view class="li right">共{{items.num}}件商品，总价￥{{items.total}}</view>
             <view class="li right">
               <!-- <view bindtap="del">删除订单</view> -->
               <view bindtap="S_Orderdetailsgo" data-item="{{items}}" data-id="{{items.id}}">订单详情</view>
@@ -117,7 +116,7 @@
             <view class="li" wx:for="{{items.detail}}">
               <van-card
                 num="{{item.goodinfo.num}}"
-                price="{{item.goodinfo.actualPay}}"
+                price="{{item.goodinfo.price}}"
                 desc="{{item.goodinfo.size}}"
                 title="{{item.name}}"
                 thumb="{{item.image}}"
@@ -125,7 +124,7 @@
                 thumb-link="/pages/S_Detail/index?id={{items.value}}"
                             />
             </view>
-            <view class="li right">共{{items.num}}件商品，总价￥{{items.actualPay}}</view>
+            <view class="li right">共{{items.num}}件商品，总价￥{{items.total}}</view>
             <view class="li right">
               <!-- <view bindtap="del">删除订单</view> -->
               <view bindtap="S_Orderdetailsgo" data-item="{{items}}" data-id="{{items.id}}">订单详情</view>

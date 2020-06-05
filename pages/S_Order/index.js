@@ -102,9 +102,11 @@ Page({
           for(let i = 0;i<res.data.list[0].length;i++){
             res.data.list[0][i].actualPay = 0
             res.data.list[0][i].num = 0
+            res.data.list[0][i].total = 0
             for(let j = 0;j<res.data.list[0][i].detail.length;j++){
               res.data.list[0][i].actualPay += res.data.list[0][i].detail[j].goodinfo.actualPay
               res.data.list[0][i].num += res.data.list[0][i].detail[j].goodinfo.num
+              res.data.list[0][i].total += res.data.list[0][i].detail[j].goodinfo.total
             }
           }
           arr.push(...res.data.list[0])
@@ -129,6 +131,9 @@ Page({
     })
     this.getdata(options.title)
     this.getuser()
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];//
+    this.pagepre = Page
   },
 
   /**
@@ -149,14 +154,22 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    // if(this.data.arr.length==0){
+    //   wx.redirectTo({
+    //     url: '../S_my/index',
+    //   })
+    // }
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    if(this.pagepre.route=='pages/S_Settlement/index'){
+      wx.navigateBack({
+        delta: 1,
+      })
+    }
   },
 
   /**
