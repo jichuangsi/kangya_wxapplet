@@ -74,7 +74,7 @@ Page({
     data.user_id = self.data.user_id
     wx.request({
       url: getApp().data.APIS + '/svc/a',
-      method: "get",
+      method: "post",
       data: {
         "plugin":self.data.edit_state?'updateaddr':'addaddr',
         "data":JSON.stringify(data)
