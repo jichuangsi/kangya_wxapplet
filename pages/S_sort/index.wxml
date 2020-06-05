@@ -14,8 +14,17 @@
     <view class="title">全部分类</view>
     
   <van-grid border="{{borderstate}}" column-num="3">
-    <van-grid-item icon="{{item.image}}" wx:for="{{arr}}" text="{{item.name}}" link-type="navigateTo"
-    url="/pages/S_Productlist/index?id={{item.value}}" />
+    <!-- <van-grid-item icon="{{item.image}}" wx:for="{{arr}}" data-item="{{item}}" text="{{item.name}}" bind:click='gridclick' /> -->
+    <van-grid-item class="te" icon="{{item.image}}" use-slot wx:for="{{arr}}" data-item="{{item}}" text="{{item.name}}" bind:click='gridclick'>
+      <view class="solt" wx:if="{{item.stype!='open-type'}}">
+        <image src="{{item.image}}" />
+        <view>{{item.name}}</view>
+      </view>
+      <button class="solt" open-type="contact" wx:if="{{item.stype=='open-type'}}">
+        <image src="{{item.image}}" />
+        <view>{{item.name}}</view>
+      </button>
+    </van-grid-item>
     <!-- <van-grid-item icon="../../../images/fennel_dentistry_icon_default.png" text="预防齿科" link-type="navigateTo"
     url="/pages/S_Productlist/index?sort=预防齿科" />
     <van-grid-item icon="../../../images/fennel_chairside_icon_default.png" text="椅旁材料" link-type="navigateTo"

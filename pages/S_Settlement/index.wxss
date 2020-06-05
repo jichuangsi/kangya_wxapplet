@@ -90,10 +90,14 @@
 .li{
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   padding: 20rpx 0rpx;
   box-sizing: border-box;
   border-bottom: 1rpx solid #f2f2f2;
   color: #bababa;
+}
+.bz {
+  width: 100%;
 }
 .li .title {
   flex: 1;

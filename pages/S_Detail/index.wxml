@@ -117,7 +117,7 @@
       收藏
     </view>
     <view bindtap="gwgo">
-      <van-icon name="cart-o" size="36rpx" />
+      <van-icon name="cart-o" size="36rpx" info="{{cartnum}}" />
       购物车
     </view>
     <view class="red1" bindtap="gwclick">加入购物车</view>
@@ -129,7 +129,7 @@
       首页
     </view>
     <view bindtap="gwgo">
-      <van-icon name="cart-o" size="36rpx" />
+      <van-icon name="cart-o" size="36rpx" info="{{cartnum}}" />
       购物车
     </view>
     <view class="red1" wx:if="{{buystate == 1}}">活动已结束</view>

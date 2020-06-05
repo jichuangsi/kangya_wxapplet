@@ -82,15 +82,26 @@
         <view>余额不足，去预付</view>
         <van-icon name="arrow" size="36rpx" />
       </view> -->
-      <view class="li">
+      <view class="li" data-index="0" bindtap="paystype">
         <view class="title">微信支付</view>
-        <van-icon name="checked" size="36rpx" color="red" />
+        <van-icon name="checked" size="36rpx" color="{{feetype==0?'red':'#bababa'}}" />
+      </view>
+      <view class="li" data-index="2" bindtap="paystype">
+        <view class="title">余额支付</view>
+        <van-icon name="checked" size="36rpx" color="{{feetype==2?'red':'#bababa'}}" />
+      </view>
+      <view class="li" data-index="1" bindtap="paystype">
+        <view class="title">公司转账</view>
+        <van-icon name="checked" size="36rpx" color="{{feetype==1?'red':'#bababa'}}" />
+        <view class="bz">
+          <view wx:for="{{company}}">{{item}}</view>
+        </view>
       </view>
     </view>
   </view>
   <view class="bottom_btn">
     <view class="text">合计:<view class="red">￥{{price}}</view></view>
-    <view class="btn" bindtap="btn">生成订单</view>
+    <view class="btn" bindtap="btn">确定支付</view>
   </view>
 
   

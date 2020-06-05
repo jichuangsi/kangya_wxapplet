@@ -20,7 +20,9 @@ Page({
     all_price:0,
     price:0,
     check_obj:'',
-    saler_id:''
+    saler_id:'',
+    feetype:0,
+    company:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -28,8 +30,28 @@ Page({
     })
   },
   messageipt(e){
-    console.log(e)
-
+    this.setData({
+      message:e.detail.value
+    })
+  },
+  paystype(e){
+    let index = e.currentTarget.dataset.index
+    if(index=='2'){
+      if(Number(this.data.user.remain)>=Number(this.data.price)){
+        this.setData({
+          feetype:index
+        })
+      }else{
+        wx.showToast({
+          title: '余额不足',
+          icon:'none'
+        })
+      }
+    }else{
+      this.setData({
+        feetype:index
+      })
+    }
   },
   S_rechargego(){
     wx.navigateTo({
@@ -74,6 +96,23 @@ Page({
         })
       }
     });
+    wx.request({
+      url: getApp().data.APIS +"/svc/a",
+      method: "get",
+      data: {
+          "plugin": 'getcompanyaccount'
+      },
+      header: {
+        "token": wx.getStorageSync("token")
+      },
+      success: function(res) {
+        console.log(5888)
+        let arr = res.data.list[0].msg.split('\n')
+        self.setData({
+          company:arr
+        })
+      }
+  });
   },
   checkyh(e){
     let price = Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price)>0?Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price):0
@@ -99,7 +138,7 @@ Page({
           'isProof':'0',
           'addressid':self.data.address_arr.id,
           'invoiceType':self.data.invoice_id,
-          'feetype':self.data.user.remain
+          'feetype':self.data.feetype
         })
       },
       header: {

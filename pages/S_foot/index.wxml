@@ -30,7 +30,7 @@
     />
     分类
   </van-tabbar-item>
-  <van-tabbar-item>
+  <van-tabbar-item info="{{cartnum}}">
     <image
       slot="icon"
       src="https://www.kyawang.com/uploads/images/shoppingcart_tabbar_icon_unselected.png"

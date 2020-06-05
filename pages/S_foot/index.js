@@ -6,7 +6,8 @@ Component({
    */
   data: {
     active: 0,
-    state: false
+    state: false,
+    cartnum:0
   },
   properties: {
     footnum: {
@@ -18,7 +19,7 @@ Component({
    * 生命周期函数--监听页面加载
    */
   attached: function () {
-    this.setData({ active: this.data.footnum });
+    this.setData({ active: this.data.footnum,cartnum:wx.getStorageSync('buylist')?JSON.parse(wx.getStorageSync('buylist')).length:0 });
   },
   methods: {
     onChange(event) {

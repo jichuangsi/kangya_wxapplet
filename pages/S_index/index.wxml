@@ -24,7 +24,16 @@
       <view><van-icon name="logistics" />快递到货</view>
     </view>
     <van-grid border="{{borderstate}}">
-      <van-grid-item icon="{{item.image}}" wx:for="{{nav_arr}}" data-item="{{item}}" text="{{item.name}}" bind:click='gridclick'/>
+      <van-grid-item class="te" icon="{{item.image}}" use-slot wx:for="{{nav_arr}}" data-item="{{item}}" text="{{item.name}}" bind:click='gridclick'>
+        <view class="solt" wx:if="{{item.stype!='open-type'}}">
+          <image src="{{item.image}}" />
+          <view>{{item.name}}</view>
+        </view>
+        <button class="solt" open-type="contact" wx:if="{{item.stype=='open-type'}}">
+          <image src="{{item.image}}" />
+          <view>{{item.name}}</view>
+        </button>
+      </van-grid-item>
       <!-- <van-grid-item icon="../../../images/homepage_goods_icon.png" text="全部商品" link-type="navigateTo"
       url="/pages/S_Productlist/index?title=全部商品" />
       <van-grid-item icon="../../../images/homepage_seckill_icon.png" text="限时秒杀" link-type="navigateTo"

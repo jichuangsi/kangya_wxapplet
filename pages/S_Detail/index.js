@@ -47,6 +47,7 @@ Page({
     item:'',
     cpdeatil:'',
     order_arr:[],
+    cartnum:0
     // isOverShare: true
   },
   onClickLeft() {
@@ -298,7 +299,8 @@ Page({
     this.setData({
       check_title:options.title,
       buystate: options.buystate,
-      id:options.id
+      id:options.id,
+      cartnum:wx.getStorageSync('buylist')?JSON.parse(wx.getStorageSync('buylist')).length:0
     })
     wx.setNavigationBarTitle({
       title: '商城'
