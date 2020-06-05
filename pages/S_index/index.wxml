@@ -77,7 +77,7 @@
           <image mode="heightFix" src="{{item.image}}"></image>
           <view class="text">{{item.name}}</view>
           <view class="money">
-            <view class="new">￥{{user.vip!=''?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+            <view class="new">￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
             <view class="old">￥{{item.goodinfo.price}}</view>
           </view>
         </navigator>
@@ -107,7 +107,7 @@
                 <navigator url="/pages/S_Detail/index?id={{item.value}}" hover-class="navigator-hover">
                   <image mode="heightFix" src="{{item.image}}"></image>
                   <view class="money">
-                    <view class="new">￥{{user.vip!=''?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+                    <view class="new">￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
                     <view class="old">￥{{item.goodinfo.price}}</view>
                   </view>
                 </navigator>
@@ -117,7 +117,7 @@
           <image mode="heightFix" src="{{item.image}}"></image>
           <view class="text">{{item.name}}</view>
           <view class="money">
-            <view class="new">￥{{user.vip!=''?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+            <view class="new">￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
             <view class="old">￥{{item.goodinfo.price}}</view>
           </view>
         </navigator> -->
@@ -163,7 +163,7 @@
           <image mode="widthFix" src="{{item.image}}"></image>
           <view class="text">{{item.name}}</view>
           <view class="money">
-            <view class="new">￥{{user.vip!=''?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+            <view class="new">￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
             <view class="old">￥{{item.goodinfo.price}}</view>
           </view>
         </navigator>

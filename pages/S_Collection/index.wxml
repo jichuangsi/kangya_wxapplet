@@ -19,7 +19,7 @@
             <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
               <!-- <van-cell-group> -->
                 <van-card
-                  price="{{user.vip!=''?item.vipPrice:item.promotionPrice}}"
+                  price="{{user.vip!=''&&user.vip?item.vipPrice:item.promotionPrice}}"
                   origin-price="{{item.price}}"
                   title="{{item.name}}"
                   thumb="{{ item.imageOne }}"

@@ -42,7 +42,7 @@
           <view class="money" wx:if="{{check_title =='' }}">
             <!-- <view class="new">￥{{price}}</view>
             <view class="old">￥{{old_price}}</view> -->
-            <view class="new">￥{{user.vip!=''?item.goods.vipPrice:item.goods.promotionPrice}}</view>
+            <view class="new">￥{{user.vip!=''&&user.vip?item.goods.vipPrice:item.goods.promotionPrice}}</view>
             <view class="old">￥{{item.goods.price}}</view>
           </view>
       </view>
@@ -186,7 +186,7 @@
             <view class="money">
               <!-- <view class="new">￥36.00</view>
               <view class="old">￥26.00</view> -->
-            <view class="new">￥{{user.vip!=''?item.goods.vipPrice:item.goods.promotionPrice}}</view>
+            <view class="new">￥{{user.vip!=''&&user.vip?item.goods.vipPrice:item.goods.promotionPrice}}</view>
             <view class="old">￥{{item.goods.price}}</view>
             </view>
             <!-- 已选择{{check_gg}} -->

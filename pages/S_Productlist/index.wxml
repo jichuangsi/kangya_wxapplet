@@ -41,7 +41,7 @@
             <view class="right">
               <view class="text">{{item.name}}</view>
               <view class="money">
-                <view class="new">￥{{user.vip!=''?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+                <view class="new">￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
                 <view class="old">￥{{item.goodinfo.price}}</view>
               </view>
             </view>

@@ -9,8 +9,8 @@
       <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
       <view class="user">
         <view class="name">账户：{{user.name}}</view>
-        <view>会员ID：{{user.vip}}</view>
-        <view>会员有效期：{{user.vipdate}}</view>
+        <view>会员ID：{{user.vip!=null?item.vip:''}}</view>
+        <view>会员有效期：{{user.vipdate!=null?item.vipdate:''}}</view>
       </view>
       <van-icon name="arrow" size="36rpx" />
     </view>
@@ -21,7 +21,7 @@
       </view>
       <view class="box_bottom">
         <view class="box_li" bindtap="S_rechargego">
-          <view>{{user.remain}}</view>
+          <view>{{user.remain!=null?item.remain:''}}</view>
           <view>余额</view>
         </view>
         <view class="box_li" bindtap="S_cardgo">
