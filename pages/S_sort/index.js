@@ -95,6 +95,9 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    if(options.saler_id){
+      wx.setStorageSync('saler_id', options.saler_id)
+    }
     this.getsort()
   },
 

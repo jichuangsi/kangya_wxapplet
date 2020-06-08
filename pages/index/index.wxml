@@ -1,20 +1,11 @@
 <!--index.wxml-->
 <view class="index">
-<view class="namebox" bindtap="showPopup">
-  <!-- <van-image
-  round
-  width="68rpx"
-  height="68rpx"
-  src="https://www.kyawang.com/uploads/images/logo.png"
-  />
-  <view class="name">
-    {{name}}
-  </view> -->
+<view class="namebox" bindtap="showPopup" wx:if="{{tokenState}}">
   <image src="{{logo}}"></image>
   <view class="name">{{name}}</view>
   <van-icon name="plus" catchtap="showPopupleft" />
 </view>
-  <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true'>
+  <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true' wx:if="{{tokenState}}">
     <swiper-item wx:for="{{achievement_arr}}">
       <canvas canvas-id="canvas{{index}}" class="charts {{chats?'chartsnone':''}}"></canvas>
       <view class="itembox">
@@ -32,7 +23,7 @@
       </view>
     </swiper-item>
   </swiper>
-  <view class="nav">
+  <view class="nav"  wx:if="{{tokenState}}">
     <view class="li" bindtap="Worktodaygo">
       <view class="num">{{Worktoday}}</view>
       今日工作
@@ -46,6 +37,14 @@
       历史欠款
     </view>
   </view>
+    <swiper class="notoken" indicator-dots='true' indicator-color='#fff' indicator-active-color='#00aaa4' circular='true' autoplay='true' wx:if="{{!tokenState}}">
+      <swiper-item wx:for="{{banner_arr}}">
+        <navigator url="/pages/S_Detail/index?id={{item.value}}" hover-class="navigator-hover">
+          <image class="top_img" mode="heightFix" src="{{item.image}}"></image>
+        </navigator>
+      </swiper-item>
+    </swiper>
+
   <van-cell icon="todo-list" color="#01c7b5" bindtap="Workbenchgo">
   <view slot="title">
     <view class="van-cell-text">我的工作台</view>

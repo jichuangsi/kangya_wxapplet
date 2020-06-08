@@ -113,15 +113,15 @@
     <view bindtap="love">
       <!-- <van-icon name="plus" wx:if="{{star_show}}" /> -->
       <van-icon name="star-o" size="36rpx" wx:if="{{!star_show}}" />
-      <van-icon name="star" color="yellow" size="36rpx" wx:if="{{star_show}}" />
+      <van-icon name="star" color="#00aaa4" size="36rpx" wx:if="{{star_show}}" />
       收藏
     </view>
     <view bindtap="gwgo">
       <van-icon name="cart-o" size="36rpx" info="{{cartnum}}" />
       购物车
     </view>
-    <view class="red1" bindtap="gwclick">加入购物车</view>
-    <view class="red" bindtap="gwclick">立即购买</view>
+    <view class="ylv" bindtap="gwclick">加入购物车</view>
+    <view class="lv" bindtap="gwclick">立即购买</view>
   </view>
   <view class="bottom" wx:if="{{check_title=='抢购'}}">
     <view bindtap="sygo">
@@ -204,8 +204,8 @@
         <van-icon name="add" color="#16c7ae" bindtap="addone" />
       </view>
       <view class="gg_btn">
-        <view class="red1" bindtap="gg_btn" wx:if="{{check_title==''}}">加入购物车</view>
-        <view class="red" bindtap="buy_btn">立即购买</view>
+        <view class="ylv" bindtap="gg_btn" wx:if="{{check_title==''}}">加入购物车</view>
+        <view class="lv" bindtap="buy_btn">立即购买</view>
       </view>
     </view>
   </van-popup>

@@ -128,3 +128,12 @@ van-card {
   bottom: 0rpx;
   left: 0rox;
 }
+.tebox .li {
+  flex-wrap: wrap;
+  margin-top: 40rpx;
+}
+.tebox .bz{
+  width: 100%;
+  text-indent: 2em;
+  color: #999;
+}

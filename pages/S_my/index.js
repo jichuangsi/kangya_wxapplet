@@ -9,6 +9,7 @@ Page({
     title: '商城',
     borderstate:false,
     user:'',
+    tokenState:false
   },
   onClickLeft() {
     wx.navigateBack({
@@ -32,6 +33,13 @@ Page({
     wx.navigateTo({
       url: '../S_Order/index?title=0',
     })
+  },
+  logingo(){
+    if(!this.data.tokenState){
+      wx.navigateTo({
+        url: '../authorize/index',
+      })
+    }
   },
   kfclick(){
     Dialog.confirm({
@@ -70,6 +78,9 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '商城'
+    })
+    this.setData({
+      tokenState:wx.getStorageSync('token')?true:false
     })
     this.getuser()
   },

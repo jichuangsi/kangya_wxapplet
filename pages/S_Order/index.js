@@ -123,13 +123,13 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      active: Number(options.title),
-      check_num:options.title
+      active: options.title?Number(options.title):0,
+      check_num:options.title?options.title:0
     })
     wx.setNavigationBarTitle({
       title: '商城'
     })
-    this.getdata(options.title)
+    this.getdata(options.title?options.title:0)
     this.getuser()
     let pages = getCurrentPages();
     let Page = pages[pages.length - 2];//

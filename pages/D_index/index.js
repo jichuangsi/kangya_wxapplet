@@ -128,6 +128,30 @@ Page({
     wx.setNavigationBarTitle({
       title: '康牙医生'
     })
+    if(wx.getStorageSync('token')){
+      if(!wx.getStorageSync('clinicid')){
+        wx.request({
+          // /market/massage/BaseData
+          url: getApp().data.APIS +'/svc/a',
+          header: {
+            'token':wx.getStorageSync('token')
+          },
+          data:{
+            plugin:'clientInfo',
+            p:''
+          },
+          success:function(res){
+            if(res.data.info == 'ok'){
+              wx.setStorageSync('clinicid', res.data.list[0].clinicid)
+            }
+          }
+        })
+      }
+    }else{
+      wx.navigateTo({
+        url: '../authorize/index',
+      })
+    }
     this.getdata()
     this.getimg()
     console.log(111)

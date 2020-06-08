@@ -54,7 +54,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       title: options.title,
-      clinicid: options.id ? options.id : '422063022055030784',
+      clinicid: wx.getStorageSync('clinicid') ? wx.getStorageSync('clinicid') : '',
       rw_url: options.rw_url ? options.rw_url : ''
     })
     console.log(this.data.rw_url)

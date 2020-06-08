@@ -283,7 +283,7 @@ Page({
               assemble_arr: res.data.list[0]
             })
           }else if(res.data.list[0].title == '促销单品'){
-            res.data.list[0].content.splice(6,999999999)
+            // res.data.list[0].content.splice(6,999999999)
             self.setData({
               Promotion_list: res.data.list[0]
             })
@@ -322,7 +322,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    getCurrentPages().splice(1,9999)
+    
   },
 
   /**

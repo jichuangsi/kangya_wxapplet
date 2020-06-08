@@ -112,7 +112,7 @@ Page({
           company:arr
         })
       }
-  });
+    });
   },
   checkyh(e){
     let price = Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price)>0?Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price):0
@@ -125,6 +125,13 @@ Page({
   },
   btn(){
     let self = this
+    if(!self.data.address_arr){
+      wx.showToast({
+        title: '请选择收货地址',
+        icon:'none'
+      })
+      return
+    }
     wx.request({
       url: getApp().data.APIS + '/svc/a',
       method: "post",
@@ -258,10 +265,10 @@ Page({
         let price = 0
         let obj = {}
         for(let i = 0;i<self.data.arr.length;i++){
-          price += res.data.list[0].vip!=''?(Number(self.data.arr[i].vipPrice)*Number(self.data.arr[i].buynum)):(Number(self.data.arr[i].promotionPrice)*Number(self.data.arr[i].buynum))
+          price += res.data.list[0].vip!=''&&res.data.list[0].vip?(Number(self.data.arr[i].vipPrice)*Number(self.data.arr[i].buynum)):(Number(self.data.arr[i].promotionPrice)*Number(self.data.arr[i].buynum))
           obj[self.data.arr[i].id]=self.data.arr[i].buynum
         }
-        console.log(obj)
+        console.log(price)
         self.setData({
           user:res.data.list[0],
           all_price:price,

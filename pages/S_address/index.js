@@ -80,7 +80,8 @@ Page({
         "data":JSON.stringify(data)
       },
       header: {
-        "token": wx.getStorageSync("token")
+        "token": wx.getStorageSync("token"),
+        'content-type': 'application/x-www-form-urlencoded'
       },
       success: function(res) {
         console.log(777)

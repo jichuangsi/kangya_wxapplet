@@ -12,21 +12,7 @@ Page({
     all_price: 0.00,
     allstate: 0,
     check_arr: [],
-    Invalid_arr: [
-      {
-        img: '../../../images/my_service_icon_prepaid.png',
-        title: 'VOCO/我和 PRovicl氢氧化钙临时观桥粘接剂',
-        price: 36.00,
-        tags: '红',
-        state: 0
-      }, {
-        img: '../../../images/my_service_icon_prepaid.png',
-        title: 'VOCO/我和 PRovicl氢氧化钙临时观桥粘接剂',
-        price: 36.00,
-        tags: '红',
-        state: 0
-      }
-    ],
+    Invalid_arr: [],
     user:''
   },
   onClickLeft() {

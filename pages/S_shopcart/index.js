@@ -50,7 +50,8 @@ Page({
     ],
     user:'',
     order_arr:[],
-    surplus_arr:[]
+    surplus_arr:[],
+    isIphoneX:false
   },
   onClickLeft() {
     wx.navigateBack({
@@ -70,6 +71,7 @@ Page({
     this.setData({
       arr: arr1
     })
+    this.all()
   },
   addone(e){
     let first_index = e.currentTarget.dataset.first_index
@@ -79,6 +81,7 @@ Page({
     this.setData({
       arr:arr1
     })
+    this.all()
   },
   del(e){
     console.log(e.currentTarget.dataset.index)
@@ -146,6 +149,7 @@ Page({
   },
   all(){
     let arr1 = this.data.arr
+    console.log(arr1)
     let arr2 = []
     let num = 0
     let price = 0
@@ -155,12 +159,13 @@ Page({
         if(arr1[i].child[j].state == 1){
           arr2.push(arr1[i].child[j])
           num += arr1[i].child[j].buynum
-          price += arr1[i].child[j].buynum * arr1[i].child[j].price
+          price += arr1[i].child[j].buynum * (this.data.user.vip!=''&& this.data.user.vip?Number(arr1[i].child[j].vipPrice):Number(arr1[i].child[j].promotionPrice))
         }else{
           a = false
         }
       }
     }
+    price = Math.floor(price * 100) / 100
     this.setData({
         check_arr: arr2,
         all_num:num,
@@ -267,6 +272,17 @@ Page({
     //   obj[arr1[i].id] = arr1[i].buynum
     // }
     // console.log(obj)
+    wx.getSystemInfo({
+      success: res =>{
+        console.log(res)
+        let modelmes = res.model;
+        if(modelmes.search('iPhone X') != -1){
+            this.setData({
+              isIphoneX:true
+            })
+          }
+        }
+      })
   },
 
   /**

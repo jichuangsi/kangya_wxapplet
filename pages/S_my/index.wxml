@@ -5,12 +5,15 @@
     </van-nav-bar>
   </view> -->
   <view class="center">
-    <view class="center_top">
+    <view class="center_top" bindtap="logingo">
       <image src="https://www.kyawang.com/uploads/images/my_headportrait_male.png"></image>
-      <view class="user">
-        <view class="name">账户：{{user.name}}</view>
+      <view class="user" wx:if="{{tokenState}}">
+        <view class="name">账户：{{user.vip!=null?user.name:''}}</view>
         <view>会员ID：{{user.vip!=null?item.vip:''}}</view>
         <view>会员有效期：{{user.vipdate!=null?item.vipdate:''}}</view>
+      </view>
+      <view class="user" wx:if="{{!tokenState}}">
+        <view>登录</view>
       </view>
       <van-icon name="arrow" size="36rpx" />
     </view>

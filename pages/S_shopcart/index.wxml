@@ -139,10 +139,10 @@
       </view>
     </view> -->
   </view>
-  <view class="bottom_btn">
+  <view class="bottom_btn {{isIphoneX?'bot':''}}">
     <view class="bottom_btn_left" bindtap="allcheck">
       <van-icon name="checked" wx:if="{{allstate == 0}}"/>
-      <van-icon name="checked" color="#16c7ae" wx:if="{{allstate == 1}}"/>
+      <van-icon name="checked" color="#00aaa4" wx:if="{{allstate == 1}}"/>
       <view>全选</view>
     </view>
     <view class="text" wx:if="{{del_state==0}}">合计:￥{{all_price}}</view>

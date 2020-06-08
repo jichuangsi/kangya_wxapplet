@@ -176,6 +176,9 @@
   left: 0rpx;
   bottom: 100rpx;
 }
+.bot {
+  bottom: 168rpx;
+}
 .bottom_btn .text {
   flex: 1;
   text-align: right;
@@ -189,7 +192,7 @@
   padding: 10rpx 20rpx;
   box-sizing: border-box;
   color: #fff;
-  background-color: red;
+  background-color: #00aaa4;
   border-radius: 5rpx;
 }
 .bottom_btn .bottom_delbtn{

@@ -69,8 +69,8 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/Patientdetails/index",
-					"pathName": "pages/Patientdetails/index",
+					"name": "pages/W_index/index",
+					"pathName": "pages/W_index/index",
 					"query": "title=医患沟通视频",
 					"scene": null
 				},
@@ -127,7 +127,7 @@
 					"id": 9,
 					"name": "pages/S_Order/index",
 					"pathName": "pages/S_Order/index",
-					"query": "state=0&&id=692",
+					"query": "title=0&&id=692",
 					"scene": null
 				}
 			]

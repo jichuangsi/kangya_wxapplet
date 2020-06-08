@@ -11,9 +11,9 @@
     </view>
   </view>
   <view class="center">
-    <swiper indicator-dots='true' indicator-color='#93e3d9' indicator-active-color='#e7eceb' circular='true' autoplay='true'>
+    <swiper indicator-dots='true' indicator-color='#fff' indicator-active-color='#00aaa4' circular='true' autoplay='true'>
       <swiper-item wx:for="{{arr}}">
-        <navigator url="/pages/S_Detail/index?id={{item.id}}" hover-class="navigator-hover">
+        <navigator url="/pages/S_Detail/index?id={{item.value}}" hover-class="navigator-hover">
           <image class="top_img" mode="heightFix" src="{{item.image}}"></image>
         </navigator>
       </swiper-item>
@@ -52,32 +52,30 @@
       url="/pages/S_spread/index?state=0"/> -->
     </van-grid>
     <view class="activity">
-      <view class="activity_li" wx:for="{{activity_arr}}" data-item="{{item}}" bindtap='gridclick'>
-        <image mode="heightFix" src="{{item.image}}"></image>
+      <view class="activity_title">品牌精选</view>
+      <view class="activity_ul">
+        <view class="activity_li" wx:for="{{activity_arr}}" data-item="{{item}}" bindtap='gridclick'>
+          <image mode="widthFix" src="{{item.image}}"></image>
+        </view>
       </view>
-      <!-- <van-grid column-num="3">
-        <van-grid-item icon="{{item.image}}" wx:for="{{activityactivity_arr}}" data-item="{{item}}" bind:click='gridclick'/>
-      </van-grid> -->
-      <!-- <view class="activity_li" wx:for="{{activity_arr}}">
-        <navigator url="/pages/S_Productlist/index?title=活动&&activity={{item.id}}" hover-class="navigator-hover">
-          <image src="{{item.img}}"></image>
-        </navigator>
-      </view> -->
     </view>
     <view class="assemble">
       <view class="assemble_title">
         <view>超值拼团</view>
-        <navigator url="/pages/S_Productlist/index?title={{assemble_arr.title}}&&id={{assemble_arr.id}}" hover-class="navigator-hover">
+        <!-- <navigator url="/pages/S_Productlist/index?title={{assemble_arr.title}}&&id={{assemble_arr.id}}" hover-class="navigator-hover">
           更多
           <van-icon name="arrow" size="32rpx"/>
-        </navigator>
+        </navigator> -->
       </view>
       <view class="assemble_li" wx:for="{{assemble_arr.content}}">
         <navigator url="/pages/S_Detail/index?id={{item.value}}" hover-class="navigator-hover">
           <image mode="heightFix" src="{{item.image}}"></image>
           <view class="text">{{item.name}}</view>
           <view class="money">
-            <view class="new">￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+            <view class="new">
+              <view>￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+              <view class="vip" wx:if="{{user.vip!=''&&user.vip}}">vip专享价</view>
+            </view>
             <view class="old">￥{{item.goodinfo.price}}</view>
           </view>
         </navigator>
@@ -107,7 +105,10 @@
                 <navigator url="/pages/S_Detail/index?id={{item.value}}" hover-class="navigator-hover">
                   <image mode="heightFix" src="{{item.image}}"></image>
                   <view class="money">
-                    <view class="new">￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+                    <view class="new">
+                      <view>￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+                      <view class="vip" wx:if="{{user.vip!=''&&user.vip}}">vip专享价</view>
+                    </view>
                     <view class="old">￥{{item.goodinfo.price}}</view>
                   </view>
                 </navigator>
@@ -163,7 +164,10 @@
           <image mode="widthFix" src="{{item.image}}"></image>
           <view class="text">{{item.name}}</view>
           <view class="money">
-            <view class="new">￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+            <view class="new">
+              <view>￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+              <view class="vip" wx:if="{{user.vip!=''&&user.vip}}">vip专享价</view>
+            </view>
             <view class="old">￥{{item.goodinfo.price}}</view>
           </view>
         </navigator>

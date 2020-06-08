@@ -20,11 +20,11 @@
       </view>
       <van-icon name="arrow" />
     </view> -->
-    <view class="wl white">
+    <view class="wl white" bindtap="AddressGo">
       <van-icon name="wap-home-o" size="36rpx" />
       <view class="text">
-        <view>{{item.receiverRealName}} {{item.receiverPhone}}</view>
-        <view>{{item.receiverAddress}}</view>
+        <view>{{address_arr.name?address_arr.name:item.receiverRealName}} {{address_arr.name?address_arr.phone:item.receiverPhone}}</view>
+        <view>{{address_arr.name?address_arr.address:item.receiverAddress}}</view>
       </view>
     </view>
     <view class="box">
@@ -34,12 +34,12 @@
           <view class="li" wx:for="{{check_item.detail}}">
             <van-card
                 num="{{item.goodinfo.num}}"
-                price="{{item.goodinfo.actualPay}}"
+                price="{{item.goodinfo.price}}"
                 desc="{{item.goodinfo.size}}"
                 title="{{item.name}}"
                 thumb="{{item.image}}"
                 link-type="navigateTo"
-                thumb-link="/pages/S_Detail/index?id={{items.value}}"
+                thumb-link="/pages/S_Detail/index?id={{item.value}}"
               >
             <view slot="footer" class="fb">
               <!-- <view class="mini" bindtap="shgo" wx:if="{{state!=0}}">申请售后</view> -->
@@ -78,12 +78,12 @@
         <view>￥{{item.actualPay}}</view>
       </view>
     </view>
-    <view class="box">
+    <view class="box" bindtap="S_invoicego">
       <view class="li">
         <view>发票：</view>
-        <view wx:if="{{item.invoiceType=='0'}}">不开发票</view>
-        <view wx:if="{{item.invoiceType=='1'}}">普通发票</view>
-        <view wx:if="{{item.invoiceType=='2'}}">增值税发票</view>
+        <view wx:if="{{invoice_id!=''?invoice_id=='0':item.invoiceType=='0'}}">不开发票</view>
+        <view wx:if="{{invoice_id!=''?invoice_id=='1':item.invoiceType=='1'}}">普通发票</view>
+        <view wx:if="{{invoice_id!=''?invoice_id=='2':item.invoiceType=='2'}}">增值税发票</view>
       </view>
     </view>
     <view class="box">
@@ -98,12 +98,13 @@
         <view>创建信息</view>
         <view>{{item.createDate}}</view>
       </view>
-      <view class="li">
+      <view class="li" bindtap="payshow">
         <view>支付方式</view>
-        <view wx:if="{{item.payChannels==1}}">支付宝支付</view>
-        <view wx:if="{{item.payChannels==2}}">微信支付</view>
-        <view wx:if="{{item.payChannels==3}}">余额支付</view>
-        <view wx:if="{{item.payChannels==4}}">组合支付</view>
+        <view wx:if="{{feetype!=''?feetype=='0':item.payChannels==1}}">支付宝支付</view>
+        <view wx:if="{{feetype!=''?feetype=='0':item.payChannels==2}}">微信支付</view>
+        <view wx:if="{{feetype=='1'}}">公司转账</view>
+        <view wx:if="{{feetype!=''?feetype=='2':item.payChannels==3}}">余额支付</view>
+        <view wx:if="{{feetype!=''?feetype=='3':item.payChannels==4}}">组合支付</view>
       </view>
       <!-- <view class="li">
         <view>发货时间</view>
@@ -130,6 +131,7 @@
       <!-- <view bindtap="del">删除订单</view>
       <view bindtap="stateclick">电子三证</view>
       <view bindtap="S_invoicego">申请开票</view> -->
+      <view class="btn" bindtap="editbtn">修改订单</view>
       <view class="btn" bindtap="btn">去付款</view>
     </view>
   </view>
@@ -157,5 +159,38 @@
       </view>
     </view>
   </view>
+   <van-popup
+  show="{{ show }}"
+  position="bottom"
+  custom-style="width:100%;height:60%;"
+  bind:close="onClose"
+  closeable
+  >
+    <view class="box tebox">
+      <view class="li">
+        <view class="title">请选择支付方式</view>
+      </view>
+      <!-- <view class="li" bindtap="S_rechargego">
+        <view class="title">余额支付</view>
+        <view>余额不足，去预付</view>
+        <van-icon name="arrow" size="36rpx" />
+      </view> -->
+      <view class="li" data-index="0" bindtap="paystype">
+        <view class="title">微信支付</view>
+        <van-icon name="checked" size="36rpx" color="{{feetype==0?'red':'#bababa'}}" />
+      </view>
+      <view class="li" data-index="2" bindtap="paystype">
+        <view class="title">余额支付</view>
+        <van-icon name="checked" size="36rpx" color="{{feetype==2?'red':'#bababa'}}" />
+      </view>
+      <view class="li" data-index="1" bindtap="paystype">
+        <view class="title">公司转账</view>
+        <van-icon name="checked" size="36rpx" color="{{feetype==1?'red':'#bababa'}}" />
+        <view class="bz">
+          <view wx:for="{{company}}">{{item}}</view>
+        </view>
+      </view>
+    </view>
+  </van-popup>
   <van-dialog id="van-dialog" />
 </view>

@@ -21,7 +21,7 @@
                 title="{{item.name}}"
                 thumb="{{item.image}}"
                 link-type="navigateTo"
-                thumb-link="/pages/S_Detail/index?id={{items.value}}"
+                thumb-link="/pages/S_Detail/index?id={{item.value}}"
                             />
             </view>
             <view class="li right">共{{items.num}}件商品，总价￥{{items.total}}</view>
@@ -46,7 +46,7 @@
                 title="{{item.name}}"
                 thumb="{{item.image}}"
                 link-type="navigateTo"
-                thumb-link="/pages/S_Detail/index?id={{items.value}}"
+                thumb-link="/pages/S_Detail/index?id={{item.value}}"
                             />
             </view>
             <view class="li right">共{{items.num}}件商品，总价￥{{items.total}}</view>
@@ -71,7 +71,7 @@
                 title="{{item.name}}"
                 thumb="{{item.image}}"
                 link-type="navigateTo"
-                thumb-link="/pages/S_Detail/index?id={{items.value}}"
+                thumb-link="/pages/S_Detail/index?id={{item.value}}"
                             />
             </view>
             <view class="li right">共{{items.num}}件商品，总价￥{{items.total}}</view>
@@ -96,7 +96,7 @@
                 title="{{item.name}}"
                 thumb="{{item.image}}"
                 link-type="navigateTo"
-                thumb-link="/pages/S_Detail/index?id={{items.value}}"
+                thumb-link="/pages/S_Detail/index?id={{item.value}}"
                             />
             </view>
             <view class="li right">共{{items.num}}件商品，总价￥{{items.total}}</view>
@@ -121,7 +121,7 @@
                 title="{{item.name}}"
                 thumb="{{item.image}}"
                 link-type="navigateTo"
-                thumb-link="/pages/S_Detail/index?id={{items.value}}"
+                thumb-link="/pages/S_Detail/index?id={{item.value}}"
                             />
             </view>
             <view class="li right">共{{items.num}}件商品，总价￥{{items.total}}</view>

@@ -94,12 +94,13 @@ swiper{
 .nav_title {
   width: 100%;
   display: flex;
-  padding: 20rpx 60rpx;
+  padding: 20rpx 100rpx;
   justify-content: space-between;
   align-items: center;
   font-size: 24rpx;
   box-sizing: border-box;
   background-color: #fff;
+  color: #666;
 }
 .nav_title view {
   display: flex;
@@ -135,6 +136,16 @@ swiper{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.ylv {
+  flex: 1;
+  background-color: #d4f8e8;
+  color: #00aaa4;
+}
+.lv {
+  flex: 1;
+  background-color: #00aaa4;
+  color: #fff;
 }
 .red1 {
   flex: 1;
@@ -301,7 +312,7 @@ van-tab image {
   height: 100%;
   text-align: center;
   line-height: 86rpx;
-  color: #fff;
+  /* color: #fff; */
 }
 .box_pt {
   display: flex;

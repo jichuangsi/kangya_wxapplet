@@ -33,7 +33,9 @@ Page({
     yjstate:true,
     clinicid:'',
     logo:'',
-    worker_nav:[]
+    worker_nav:[],
+    tokenState:false,
+    banner_arr:[]
   },
   
   //事件处理函数
@@ -208,6 +210,7 @@ Page({
       clinicid: e.currentTarget.dataset.id,
       logo: e.currentTarget.dataset.logo,
     })
+    wx.setStorageSync('clinicid', e.currentTarget.dataset.id)
   },
   getdata(){
     let self = this
@@ -222,8 +225,6 @@ Page({
         p:''
       },
       success:function(res){
-        console.log(777)
-        console.log(res)
         if(res.data.info == 'ok'){
           self.setData({
             Hospital_arr: res.data.list,
@@ -232,6 +233,7 @@ Page({
             id: res.data.list[0].clinicid,
             clinicid: res.data.list[0].clinicid
           })
+          wx.setStorageSync('clinicid', res.data.list[0].clinicid)
           let date = new Date();
           let year = date.getFullYear();
           let month = date.getMonth() + 1;
@@ -675,6 +677,30 @@ Page({
       }
     })
   },
+  getbanner(){
+    let self = this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: 'get',
+      data: {
+        plugin: 'getcartdoc',
+        p: '5996939',
+      },
+      header: {
+        'token':wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(3333)
+        console.log(res)
+        if (res.data.info == 'ok') {
+          // self.getshop()
+          self.setData({
+            banner_arr:res.data.list[0].content
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -684,6 +710,7 @@ Page({
     self.getPerinfo()
     self.gettotal()
     self.getnav()
+    self.getbanner()
     wx.request({
       url: getApp().data.API+'/index.json',
       headers: {
@@ -698,6 +725,9 @@ Page({
           })
         }
       },
+    })
+    self.setData({
+      tokenState:wx.getStorageSync('token')?true:false
     })
   },
   bindViewTap: function() {

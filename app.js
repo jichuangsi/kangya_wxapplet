@@ -61,7 +61,7 @@ App({
     })
   },
   onHide: function(){
-    wx.removeStorageSync('token')
+    // wx.removeStorageSync('token')  
   },
   onShow: function () {
     wx.hideHomeButton()

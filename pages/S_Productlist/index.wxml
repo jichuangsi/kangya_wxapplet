@@ -5,7 +5,7 @@
     </van-nav-bar> -->
     <view class="ipt">
       <van-icon name="search" size="36rpx" />
-      <input placeholder="搜索你想要的商品" value="{{search_text}}" bindinput="searchipt" bindfocus="searchfocus" bindconfirm="searchenter"></input>
+      <input placeholder="搜索你想要的商品" type="text" confirm-type='search' value="{{search_text}}" bindinput="searchipt" bindfocus="searchfocus" bindconfirm="searchenter"></input>
       <view class="btn" bindtap="search" wx:if="{{search_state ==0}}">搜索</view>
       <view class="btn" bindtap="qxsearch" wx:if="{{search_state ==1}}">取消</view>
     </view>

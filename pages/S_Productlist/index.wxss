@@ -197,14 +197,15 @@
 }
 .sx_btn view {
   color: #fff;
-  background-color: #df4545;
+  background-color: #00aaa4;
   width: 200rpx;
   height: 60rpx;
   line-height: 60rpx;
   text-align: center;
 }
 .sx_btn view:first-child {
-  background-color: #4590df;
+  background-color: #d4f8e8;
+  color: #00aaa4;
 }
 .box {
   width: 100%;

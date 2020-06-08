@@ -30,7 +30,8 @@ Page({
     check_time: '',
     check_timeslot: '',
     check_project: '',
-    check_doctor: ''
+    check_doctor: '',
+    doctorid: ''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -38,12 +39,75 @@ Page({
     })
   },
   btn() {
-    Toast('预约成功~');
-    setTimeout(function(){
-      wx.navigateBack({
-        delta: 1,
-      })
-    },1000)
+    var tpl = {
+      'schclinicid': this.data.clinicid,
+      'customerid': '',
+      'name': '',
+      'clinicid': this.data.clinicid,
+      'patientid': '',
+      'phone': '',
+      'wechatid': '',
+      'phone1': '',
+      'phonevestee1': '本人',
+      'phonevestee2': '本人',
+      'age': '',
+      'sex': '',
+      'birthday1': ' --',
+      'openid': '',
+      'ComeFrom': '网络咨询',
+      'ComeFrom2': ' ',
+      'ComeFrom2pid': '网络咨询',
+      'ComeFrom3': '',
+      'ComeFrom3pid': '',
+      'schedule[datestr]': '',
+      'schedule[starttime]': '',
+      'schedule[endtime]': '',
+      'schedule[items]': '',
+      'schedule[doctorid]': '',
+      'schedule[doctorname]': '',
+      'schedule[visitstatus]': ' 1',
+      'schedule[scheduleidentity]': ' ',
+      'schedule[schedulemanid]': '',
+      'schedule[scheduleman]': '',
+      'schedule[remark]': '',
+      'schedule[scServerID]': ''
+    }
+    var d = this.data
+    var xdata = {
+      'schedule[datestr]': d.check_time,
+      'name': d.name,
+      'schedule[remark]':d.bz,
+      'phone': d.iphone,
+      'openid': wx.getStorageSync('token'),
+      'schedule[starttime]': d.check_timeslot.split("~")[0].split(":")[0],
+      'schedule[endtime]': d.check_timeslot.split("~")[1].split(":")[0],
+      'schedule[items]': d.check_project,
+      'schedule[doctorid]': d.doctorid,
+      'schedule[doctorname]': d.check_doctor
+    }
+    for (var o in xdata) {
+      tpl[o] = xdata[o]
+    }
+    console.log(123)
+    console.log(getApp())
+    wx.request({
+      url: getApp().data.APIS + '/schedule/scsaveschedule',
+      method: "post",
+      data: tpl,
+      header: {
+        "token": wx.getStorageSync('token'),
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function(res) {
+        console.log(res)
+        Toast('预约成功~');
+        setTimeout(function() {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 1000)
+      }
+    });
   },
   nameipt(e){
     console.log(e.detail.value)
@@ -84,6 +148,7 @@ Page({
     });
   },
   onConfirm1(event) {
+    console.log(event)
     if(this.data.check_num==1){
       this.setData({
         check_timeslot: event.detail.value,
@@ -97,7 +162,8 @@ Page({
     } else if (this.data.check_num == 3) {
       this.setData({
         check_doctor: event.detail.value,
-        show: false
+        show: false,
+        doctorid:this.data.columns_doctor[event.detail.index].doctorid
       });
     }
   },
@@ -174,10 +240,11 @@ Page({
     this.setData({ 
       title: options.title,
       check_doctor: options.doctorname ? options.doctorname : '',
-      check_project: options.servicesname ? options.servicesname : ''
+      check_project: options.servicesname ? options.servicesname : '',
+      clinicid: wx.getStorageSync('clinicid') ? wx.getStorageSync('clinicid') : ''
     })
     wx.setNavigationBarTitle({
-      title: options.title
+      title: options.title?options.title:''
     })
     this.getdata()
   },
