@@ -12,7 +12,10 @@ Page({
     ],
     address_arr:{},
     yh_id:'',
+    yf_id:'',
     check_yh:'',
+    check_yf:'',
+    quannum:1,
     invoice_id:0,
     message:'',
     arr:[],
@@ -68,9 +71,10 @@ Page({
       url: '../S_invoice/index',
     })
   },
-  showpopup(){
+  showpopup(e){
     this.setData({
-      show:true
+      show:true,
+      quannum:e.currentTarget.dataset.index
     })
   },
   onClose() {
@@ -116,12 +120,20 @@ Page({
   },
   checkyh(e){
     let price = Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price)>0?Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price):0
-    this.setData({
-      yh_id:e.currentTarget.dataset.id,
-      check_yh:e.currentTarget.dataset.item,
-      show:false,
-      price:price
-    })
+    if(this.data.quannum=='1'){
+      this.setData({
+        yh_id:e.currentTarget.dataset.id,
+        check_yh:e.currentTarget.dataset.item,
+        show:false,
+        price:price
+      })
+    }else{
+      this.setData({
+        yf_id:e.currentTarget.dataset.id,
+        check_yf:e.currentTarget.dataset.item,
+        show:false
+      })
+    }
   },
   btn(){
     let self = this
@@ -140,7 +152,7 @@ Page({
         "goods":JSON.stringify(self.data.check_obj),
         "pay":JSON.stringify({
           'moneyId':self.data.yh_id,
-          'postFeeId':null,
+          'postFeeId':self.data.yf_id,
           'saler_id':self.data.saler_id,
           'isProof':'0',
           'addressid':self.data.address_arr.id,
@@ -160,55 +172,41 @@ Page({
           //   icon:'success',
           //   title: '生成订单成功',
           // })
-          if(self.data.state == 1){
-            let pages = getCurrentPages();
-            let Page = pages[pages.length - 2];//
-            wx.setStorageSync('buylist', JSON.stringify(Page.data.surplus_arr))
-          }
-          wx.request({
-            url: getApp().data.APIS + "/lab/pay/",
-            method: "POST",
-            data: {
-              "token": wx.getStorageSync("token"),"orderId":res.data.list[0].orderId
-            },
-            header: {
-              "content-type": "application/json"
-            },
-            success: function(e) {
-              console.log(788)
-              console.log(e)
-              // 签权调起支付 
-              if(!e.data.data){
-                wx.showToast({
-                  title: '支付失败',
-                  icon: 'none',
-                  complete:function(){
-                    wx.navigateTo({
-                      url: '../S_Order/index?title=0',
-                    })
-                  }
+          if(self.data.feetype == 2){
+            if(self.data.state == 1){
+              let pages = getCurrentPages();
+              let Page = pages[pages.length - 2];//
+              wx.setStorageSync('buylist', JSON.stringify(Page.data.surplus_arr))
+            }
+            wx.showToast({
+              title: '生成订单成功',
+              icon: 'success',
+              complete:function(){
+                wx.navigateTo({
+                  url: '../S_Order/index?title=0',
                 })
               }
-              wx.requestPayment({
-                'timeStamp': e.data.data.timeStamp,
-                'nonceStr': e.data.data.nonceStr,
-                'package': e.data.data.package,
-                'signType': e.data.data.signType,
-                'paySign': e.data.data.paySign,
-                'success': function(res) {
-                  console.log(res, "成功")
-                  wx.showToast({
-                    title: '支付成功',
-                    icon: 'success',
-                    complete:function(){
-                      wx.navigateTo({
-                        url: '../S_Order/index?title=0',
-                      })
-                    }
-                  })
-                },
-                'fail': function(res) {
-                  console.log("支付失败", res)
+            })
+          }else{
+            if(self.data.state == 1){
+              let pages = getCurrentPages();
+              let Page = pages[pages.length - 2];//
+              wx.setStorageSync('buylist', JSON.stringify(Page.data.surplus_arr))
+            }
+            wx.request({
+              url: getApp().data.APIS + "/lab/pay/",
+              method: "POST",
+              data: {
+                "token": wx.getStorageSync("token"),"orderId":res.data.list[0].orderId
+              },
+              header: {
+                "content-type": "application/json"
+              },
+              success: function(e) {
+                console.log(788)
+                console.log(e)
+                // 签权调起支付 
+                if(!e.data.data){
                   wx.showToast({
                     title: '支付失败',
                     icon: 'none',
@@ -218,10 +216,41 @@ Page({
                       })
                     }
                   })
-                },
-              })
-            }
-          })
+                }
+                wx.requestPayment({
+                  'timeStamp': e.data.data.timeStamp,
+                  'nonceStr': e.data.data.nonceStr,
+                  'package': e.data.data.package,
+                  'signType': e.data.data.signType,
+                  'paySign': e.data.data.paySign,
+                  'success': function(res) {
+                    console.log(res, "成功")
+                    wx.showToast({
+                      title: '支付成功',
+                      icon: 'success',
+                      complete:function(){
+                        wx.navigateTo({
+                          url: '../S_Order/index?title=0',
+                        })
+                      }
+                    })
+                  },
+                  'fail': function(res) {
+                    console.log("支付失败", res)
+                    wx.showToast({
+                      title: '支付失败',
+                      icon: 'none',
+                      complete:function(){
+                        wx.navigateTo({
+                          url: '../S_Order/index?title=0',
+                        })
+                      }
+                    })
+                  },
+                })
+              }
+            })
+          }
         }else{
           wx.showToast({
             icon:'none',

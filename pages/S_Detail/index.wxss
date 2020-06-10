@@ -398,3 +398,18 @@ van-tab image {
   font-size: 32rpx;
   color: #bababa;
 }
+.details_button {
+  position: fixed;
+  bottom: 168rpx;
+  right: 20rpx;
+  z-index: 9;
+  border-radius: 50%;
+  background: #00aaa4;
+  color: #fff;
+  border-color: #00aaa4;
+}
+button[plain] {
+  background: #00aaa4;
+  color: #fff;
+  border-color: #00aaa4;
+}

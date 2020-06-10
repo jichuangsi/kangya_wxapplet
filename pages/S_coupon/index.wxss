@@ -63,7 +63,7 @@
 }
 .nav .check {
   color: #fff;
-  background-color: #0094ff;
+  background-color: #00aaa4;
   border-radius: 46rpx;
 }
 
@@ -128,7 +128,7 @@
   bottom: 20rpx;
   padding: 5rpx 30rpx;
   border-radius: 46rpx;
-  background-color: #0094ff;
+  background-color: #00aaa4;
   color: #fff;
   font-size: 28rpx;
 }

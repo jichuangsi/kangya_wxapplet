@@ -59,8 +59,8 @@
         <view class="yh">
               <view class="yh_li" wx:for="{{yh_arr}}" wx:if="{{item.state==1}}">
                 <view class="left">
-                    <view><view>￥</view>{{item.price}}</view>
-                    <view>满{{item.m_price}}可用</view>
+                    <view wx:if="{{item.price!=0}}"><view>￥</view>{{item.price}}</view>
+                    <view>{{item.des}}</view>
                 </view>
                 <view class="right">
                   <view class="right_top">

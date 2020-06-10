@@ -219,9 +219,12 @@
   bottom: 20rpx;
   padding: 5rpx 30rpx;
   border-radius: 46rpx;
-  background-color: #0094ff;
+  background-color: #00aaa4;
   color: #fff;
   font-size: 28rpx;
+}
+.yh .yh_li .right .hui {
+  background-color: #bababa;
 }
 .yh_btn {
   width: 80%;

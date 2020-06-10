@@ -56,7 +56,7 @@
       </view> -->
       <view class="li">
         <view>优惠券</view>
-        <view>￥{{item.promotionalDiscount}}</view>
+        <view>￥{{item.moneyDiscountName}}</view>
       </view>
       <view class="li">
         <view>配送费</view>
@@ -70,7 +70,7 @@
         <view>订单支付明细</view>
       </view>
       <view class="li">
-        <view>代金券</view>
+        <view>抵扣</view>
         <view>￥{{item.moneyDiscount}}</view>
       </view>
       <view class="li">
@@ -100,11 +100,10 @@
       </view>
       <view class="li" bindtap="payshow">
         <view>支付方式</view>
-        <view wx:if="{{feetype!=''?feetype=='0':item.payChannels==1}}">支付宝支付</view>
-        <view wx:if="{{feetype!=''?feetype=='0':item.payChannels==2}}">微信支付</view>
-        <view wx:if="{{feetype=='1'}}">公司转账</view>
-        <view wx:if="{{feetype!=''?feetype=='2':item.payChannels==3}}">余额支付</view>
-        <view wx:if="{{feetype!=''?feetype=='3':item.payChannels==4}}">组合支付</view>
+        <view wx:if="{{feetype!=''?feetype=='0':item.payType==0}}">微信支付</view>
+        <view wx:if="{{feetype!=''?feetype=='1':item.payType==1}}">公司转账</view>
+        <view wx:if="{{feetype!=''?feetype=='2':item.payType==2}}">余额支付</view>
+        <view wx:if="{{feetype!=''?feetype=='3':item.payType==3}}">组合支付</view>
       </view>
       <!-- <view class="li">
         <view>发货时间</view>
@@ -127,12 +126,14 @@
         <view>{{item.message}}</view>
       </view>
     </view>
-    <view class="li right bottom" wx:if="{{state==0}}">
+    <view class="li right bottom">
       <!-- <view bindtap="del">删除订单</view>
       <view bindtap="stateclick">电子三证</view>
       <view bindtap="S_invoicego">申请开票</view> -->
-      <view class="btn" bindtap="editbtn">修改订单</view>
-      <view class="btn" bindtap="btn">去付款</view>
+      <button send-message-title="{{title}}" send-message-img="{{image}}" show-message-card="true" send-message-path="pages/S_Orderdetails/index?id={{id}}" class='details_button' open-type='contact' plain>联系在线客服
+      </button>
+      <view wx:if="{{state==0}}" class="btn" bindtap="editbtn">修改订单</view>
+      <view wx:if="{{state==0}}" class="btn" bindtap="btn">去付款</view>
     </view>
   </view>
   <view class="center" wx:if="{{state==2}}">

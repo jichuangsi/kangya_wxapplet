@@ -209,4 +209,7 @@
       </view>
     </view>
   </van-popup>
+  <button send-message-title="{{title}}" send-message-img="{{image}}" show-message-card="true" send-message-path="/pages/S_Detail/index?id={{item.goods.id}}" class='details_button' open-type='contact' plain>
+  <van-icon name="chat-o" size="36rpx" />
+</button>
 </view>

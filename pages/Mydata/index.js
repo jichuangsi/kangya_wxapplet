@@ -149,6 +149,12 @@ Page({
       }
     })
   },
+  outlogin(){
+    wx.removeStorageSync('token')
+    wx.redirectTo({
+      url: '../my/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -166,8 +172,8 @@ Page({
       sex: Page.data.user.sex,
       jc: Page.data.user.grade,
       dq: Page.data.user.area,
-      xm: Page.data.user.expert.split('|'),
-      userimg: Page.data.user.picture
+      userimg: Page.data.user.picture,
+      xm: Page.data.user.expert.split('|')
     })
     this.getdata()
   },

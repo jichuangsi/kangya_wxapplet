@@ -44,10 +44,16 @@
         <view class="title">促销</view>
         <view>无</view>
       </view> -->
-      <view class="li" bindtap="showpopup">
+      <view class="li" data-index="1" bindtap="showpopup">
         <view class="title">优惠券</view>
         <view wx:if="{{check_yh==''}}">选择优惠券</view>
         <view wx:if="{{check_yh!=''}}">{{check_yh.price}}</view>
+        <van-icon name="arrow" size="36rpx" />
+      </view>
+      <view class="li" data-index="2" bindtap="showpopup">
+        <view class="title">运费券</view>
+        <view wx:if="{{check_yh==''}}">选择运费券</view>
+        <view wx:if="{{check_yh!=''}}">{{check_yf.price}}</view>
         <van-icon name="arrow" size="36rpx" />
       </view>
       <!-- <view class="li">
@@ -113,12 +119,12 @@
   closeable
   >
     <view class="yh">
-      <view class="yh_title">可领取优惠券</view>
+      <view class="yh_title">{{quannum==1?'优惠券':'运费券'}}</view>
       <view class="yh_box">
-              <view class="yh_li" wx:for="{{yh_arr}}" wx:if="{{item.state==0&&all_price>item.m_price}}">
+              <view class="yh_li" wx:for="{{yh_arr}}" wx:if="{{item.state==0&&quannum=='1'}}">
                 <view class="left">
-                    <view><view>￥</view>{{item.price}}</view>
-                    <view>满{{item.m_price}}可用</view>
+                    <view wx:if="{{item.price!=0}}"><view>￥</view>{{item.price}}</view>
+                    <view>{{item.des}}</view>
                 </view>
                 <view class="right">
                   <view class="right_top">
@@ -129,11 +135,30 @@
                     <view>·开始时间：{{item.sdate}}</view>
                     <view>·结束时间：{{item.edate}}</view>
                   </view>
-                  <view class="right_state" data-item="{{item}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="checkyh">立即使用</view>
+                  <view wx:if="{{all_price>=item.m_price}}" class="right_state" data-item="{{item}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="checkyh">立即使用</view>
+                  <view wx:if="{{all_price<item.m_price}}" class="right_state hui">不可使用</view>
+                </view>
+              </view>
+              <view class="yh_li" wx:for="{{yh_arr}}" wx:if="{{item.state==0&&quannum=='2'}}">
+                <view class="left">
+                    <view wx:if="{{item.price!=0}}"><view>￥</view>{{item.price}}</view>
+                    <view>{{item.des}}</view>
+                </view>
+                <view class="right">
+                  <view class="right_top">
+                    <view class="state">{{item.name}}</view>
+                  </view>
+                  <view class="right_bottom">
+                    <view>·不可叠加使用</view>
+                    <view>·开始时间：{{item.sdate}}</view>
+                    <view>·结束时间：{{item.edate}}</view>
+                  </view>
+                  <view wx:if="{{all_price>=item.m_price}}" class="right_state" data-item="{{item}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="checkyh">立即使用</view>
+                  <view wx:if="{{all_price<item.m_price}}" class="right_state hui">不可使用</view>
                 </view>
               </view>
       </view>
-      <view class="yh_btn">确定</view>
+      <view class="yh_btn" bindtap="onClose">取消</view>
     </view>
   </van-popup>
 </view>

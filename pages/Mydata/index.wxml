@@ -101,7 +101,7 @@
     <view class="text" data-text="编辑从医履历" data-value="{{ll}}" bindtap="editgo">
      {{ll==''?'请介绍自己的从业经验和特长，以方便患者在微信公众平台了解你。':ll}}
     </view>
-    <view class="btn">
+    <view class="btn" bindtap="outlogin">
        退出登录
     </view>
   </view>

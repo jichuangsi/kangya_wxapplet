@@ -59,7 +59,7 @@
   box-sizing: border-box;
 }
 .center_top {
-  background-color: #0094ff;
+  background-color: #00aaa4;
   padding: 40rpx;
   padding-bottom: 100rpx;
   display: flex;

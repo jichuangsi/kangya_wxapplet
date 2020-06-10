@@ -67,31 +67,36 @@ Page({
   },
   btn(){
     let self = this
-    console.log(self.data.che)
-    let data = self.data.check_address
-    data.address = self.data.area_text+data.address
-    data.addresstype = self.data.check_num
-    data.user_id = self.data.user_id
-    wx.request({
-      url: getApp().data.APIS + '/svc/a',
-      method: "post",
-      data: {
-        "plugin":self.data.edit_state?'updateaddr':'addaddr',
-        "data":JSON.stringify(data)
-      },
-      header: {
-        "token": wx.getStorageSync("token"),
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function(res) {
-        console.log(777)
-        console.log(res)
-        self.setData({
-          state: 0
-        })
-        self.getdata()
-      }
-    });
+    if(wx.getStorageSync('token')){
+      let data = self.data.check_address
+      data.address = self.data.area_text+data.address
+      data.addresstype = self.data.check_num
+      data.user_id = self.data.user_id
+      wx.request({
+        url: getApp().data.APIS + '/svc/a',
+        method: "post",
+        data: {
+          "plugin":self.data.edit_state?'updateaddr':'addaddr',
+          "data":JSON.stringify(data)
+        },
+        header: {
+          "token": wx.getStorageSync("token"),
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function(res) {
+          console.log(777)
+          console.log(res)
+          self.setData({
+            state: 0
+          })
+          self.getdata()
+        }
+      });
+    }else{
+      wx.navigateTo({
+        url: '../authorize/index',
+      })
+    }
     // self.setData({
     //   state: 0
     // })
