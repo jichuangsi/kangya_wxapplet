@@ -113,7 +113,7 @@
     <view class="qx" catchtap="onClose">取消</view>
   </view>
   <view class="area" wx:if="{{text == '地区'}}">
-    <van-area area-list="{{ areaList }}" value="110101" bind:cancel="onClose" bind:confirm="areaclick" />
+    <van-area area-list="{{ areaList }}" value="440000" bind:cancel="onClose" bind:confirm="areaclick" />
   </view>
   <view class="sex" wx:if="{{text == '性别'}}">
     <view data-text="男" catchtap="sexclcik">

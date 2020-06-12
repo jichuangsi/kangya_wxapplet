@@ -2,54 +2,68 @@
 .authorize {
   width: 100%;
   height: 100vh;
-  padding: 20rpx;
+  padding: 40rpx;
   box-sizing: border-box;
 }
-.box {
-  width: 100%;
-  position: fixed;
-  top: 50%;
-  left:   10rpx;
-  transform: translateY(-50%);
-  padding: 20rpx;
-  box-sizing: border-box;
+image {
+  width: 66rpx;
+  height: 66rpx;
+  background-color: #0094ff;
+  margin-right: 20rpx;
 }
-.xian {
-  width: 100%;
-  height: 2rpx;
-  background-color: #bababa;
-  margin-top: 40rpx;
-  margin-bottom: 40rpx;
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+}
+.blod {
+  font-size: 46rpx;
+  line-height: 56rpx;
+  margin-top: 30rpx;
+  margin-bottom: 70rpx;
+  /* font-weight: 600;
+  letter-spacing: 2rpx; */
+}
+.li {
+  display: flex;
+  align-items: flex-start;
+  font-weight: 600;
+  letter-spacing: 2rpx;
 }
 .text {
-  line-height: 56rpx;
-  font-size: 34rpx;
-  letter-spacing: 5rpx;
-  font-weight: 600;
-  /* text-align: center; */
+  margin-left: 20rpx;
 }
 .btn {
-  width: 100%;
-  display: flex;
-  margin-top: 40rpx;
-  box-sizing: border-box;
+  margin-top: 300rpx;
 }
 .btn button {
-  border-radius: 50rpx;
-  padding-left: 100rpx;
-  padding-right: 100rpx;
-  color: #fff;
+  width: 322rpx;
 }
 .cancel {
-  background-color: #999;
+  color: #00AAA4;
 }
 .confirm {
   background-color: #00AAA4;
+  margin-bottom: 25rpx;
+  color: #fff;
 }
-.zc {
-  line-height: 40rpx;
-  font-size: 28rpx;
-  letter-spacing: 2rpx;
+.user {
+  display: flex;
+  align-items: center;
+  border-top: 1rpx solid #f3f3f3;
+  border-bottom: 1rpx solid #f3f3f3;
+  margin-top: 40rpx;
+  padding: 10rpx 0rpx;
+  box-sizing: border-box;
+}
+.l {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 20rpx;
+}
+.r view {
   color: #bababa;
-  text-indent: 2em;
+  font-size: 30rpx;
 }

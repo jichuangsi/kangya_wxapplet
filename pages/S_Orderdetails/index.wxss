@@ -43,7 +43,7 @@
 }
 .center {
   padding: 0rpx 0rpx;
-  padding-bottom: 60rpx;
+  padding-bottom: 80rpx;
   box-sizing: border-box;
 }
 .center_top {
@@ -74,7 +74,7 @@
   line-height: 46rpx;
 }
 .wl .text .time {
-  font-size: 24rpx;
+  font-size: 28rpx;
   margin-top: 10rpx;
 }
 .fb {
@@ -84,7 +84,7 @@
 .mini {
   padding: 5rpx 10rpx;
   border: 1rpx solid #c3c3c3;
-  font-size: 26rpx;
+  font-size: 30rpx;
 }
 .box {
   margin-top: 20rpx;
@@ -98,13 +98,13 @@
   display: flex;
   justify-content: space-between;
   background-color: #fff;
-  font-size: 28rpx;
+  font-size: 32rpx;
 }
 .li_list {
   width: 100%;
   padding: 20rpx 20rpx;
   box-sizing: border-box;
-  font-size: 28rpx;
+  font-size: 32rpx;
   background-color: #fff;
 }
 van-card {
@@ -118,11 +118,11 @@ van-card {
   padding: 2rpx 10rpx;
   border: 1rpx solid #333;
   margin-left: 20rpx;
-  font-size: 26rpx;
+  font-size: 30rpx;
   line-height: 36rpx;
 }
 .right button {
-  font-size: 26rpx;
+  font-size: 30rpx;
   line-height: 36rpx;
   border-radius: 0rpx;
   padding: 2rpx 10rpx;
@@ -145,4 +145,8 @@ van-card {
   width: 100%;
   text-indent: 2em;
   color: #999;
+}
+.red {
+  background-color: #fc3533;
+  color: #fff;
 }

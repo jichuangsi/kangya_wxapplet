@@ -130,6 +130,13 @@
 					"pathName": "pages/S_Order/index",
 					"query": "title=0&&id=692",
 					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "pages/authorize/index",
+					"pathName": "pages/authorize/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

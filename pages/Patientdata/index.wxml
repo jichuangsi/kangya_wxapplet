@@ -410,7 +410,7 @@
     <view class="qx" catchtap="onClose">取消</view>
   </view>
   <view class="area" wx:if="{{text == '0'}}">
-    <van-area area-list="{{ areaList }}" value="110101" bind:cancel="onClose" bind:confirm="areaclick" />
+    <van-area area-list="{{ areaList }}" value="440000" bind:cancel="onClose" bind:confirm="areaclick" />
   </view>
   <view class="popup_box" wx:if="{{show_num == '1'}}">
     <view catchtap="sex" data-index="1">
@@ -439,7 +439,7 @@
   bind:confirm="onConfirm1"
   wx:if="{{show_num == '3'}}"
 />
-    <van-area area-list="{{ areaList }}" value="110101" bind:cancel="onClose" bind:confirm="areaclick" 
+    <van-area area-list="{{ areaList }}" value="440000" bind:cancel="onClose" bind:confirm="areaclick" 
   wx:if="{{show_num == '4'}}"/>
 </van-popup>
 </view>

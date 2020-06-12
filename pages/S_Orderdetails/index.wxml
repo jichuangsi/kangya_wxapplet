@@ -133,7 +133,7 @@
       <button send-message-title="{{title}}" send-message-img="{{image}}" show-message-card="true" send-message-path="pages/S_Orderdetails/index?id={{id}}" class='details_button' open-type='contact' plain>联系在线客服
       </button>
       <view wx:if="{{state==0}}" class="btn" bindtap="editbtn">修改订单</view>
-      <view wx:if="{{state==0}}" class="btn" bindtap="btn">去付款</view>
+      <view wx:if="{{state==0}}" class="btn red" bindtap="btn">去付款</view>
     </view>
   </view>
   <view class="center" wx:if="{{state==2}}">

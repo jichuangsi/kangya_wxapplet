@@ -1,6 +1,28 @@
 <!--pages/authorize/index.wxml-->
 <view class="authorize">
-  <view class="box">
+  <view class="title">
+    <image mode="widthFix" src="https://www.kyawang.com/uploads/images/basicprofile.png"></image>
+    康牙e生申请使用
+  </view>
+  <view class="blod">以下信息</view>
+  <view class="li">
+    <van-icon name="passed" size="36rpx" />
+    <view class="text">您的账号信息（昵称、头像、地区及性别）</view>
+  </view>
+  <view class="user">
+    <view class="l">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="r">
+      <open-data type="userNickName"></open-data>
+      <view>微信个人信息</view>
+    </view>
+  </view>
+  <view class="btn">
+      <button class="confirm" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">同意</button>
+      <button class="cancel" bindtap="back">取消</button>
+  </view>
+  <!-- <view class="box">
     <view class="xian"></view>
     <view class="text">该小程序将获取以下授权：</view>
     <view class="zc">· 获得您的公开信息（昵称、头像等）</view>
@@ -8,5 +30,5 @@
       <button class="cancel" bindtap="back">拒绝</button>
       <button class="confirm" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">确定</button>
     </view>
-  </view>
+  </view> -->
 </view>

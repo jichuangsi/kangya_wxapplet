@@ -214,7 +214,7 @@ Page({
         age: self.data.age,
         grade: self.data.jc,
         area: self.data.dq,
-        expert: self.data.xm.join('|'),
+        expert: self.data.xm?self.data.xm.join('|'):self.data.xm,
         sign: self.data.qm,
         exp: self.data.ll,
       },
