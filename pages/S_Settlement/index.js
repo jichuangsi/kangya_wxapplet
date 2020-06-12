@@ -119,7 +119,7 @@ Page({
     });
   },
   checkyh(e){
-    let price = Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price)>0?Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price):0
+    let price = Number(this.data.price)-Number(e.currentTarget.dataset.item.price)>0?Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price):0
     if(this.data.quannum=='1'){
       this.setData({
         yh_id:e.currentTarget.dataset.id,
@@ -301,7 +301,7 @@ Page({
         self.setData({
           user:res.data.list[0],
           all_price:price,
-          price:price,
+          price:price>149?price:price+12,
           check_obj:obj
         })
       }

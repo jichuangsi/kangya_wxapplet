@@ -199,9 +199,11 @@
       </view> -->
       <view class="gg_num">
         <view class="gg_num_title">数量</view>
-        <van-icon name="clear" color="{{gg_min>=check_num?'#c3c3c3':'red'}}"  bindtap="delone" />
+        <!-- <van-icon name="clear" color="{{gg_min>=check_num?'#c3c3c3':'red'}}"  bindtap="delone" /> -->
+        <view class="delbox {{gg_min>=check_num?'':'delred'}}" bindtap="delone"><van-icon name="cross" size="28rpx" color="#fff" /></view>
         <view class="num">{{check_num}}</view>
-        <van-icon name="add" color="#16c7ae" bindtap="addone" />
+        <view class="addbox" bindtap="addone"><van-icon name="plus" size="28rpx" color="#fff" /></view>
+        <!-- <van-icon name="add" color="#16c7ae" bindtap="addone" /> -->
       </view>
       <view class="gg_btn">
         <view class="ylv" bindtap="gg_btn" wx:if="{{check_title==''}}">加入购物车</view>

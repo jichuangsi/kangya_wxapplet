@@ -6,7 +6,8 @@ Page({
    */
   data: {
     title: '设置',
-    checked:false
+    checked:false,
+    phone:''
   },
   onClickLeft() {
     wx.navigateBack({
@@ -24,6 +25,11 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title:'设置'
+    })
+    let pages = getCurrentPages();
+    let Page = pages[pages.length - 2];
+    this.setData({
+      phone:Page.data.user.mobile
     })
   },
 

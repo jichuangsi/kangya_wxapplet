@@ -110,7 +110,7 @@ Page({
   },
   areaclick(e){
     console.log(e.detail.values)
-    this.setData({ show: false });
+    this.setData({ show: false,dq:e.detail.values[0].name+e.detail.values[1].name+e.detail.values[2].name });
   },
   sexclcik(e){
     this.setData({
@@ -173,7 +173,7 @@ Page({
       jc: Page.data.user.grade,
       dq: Page.data.user.area,
       userimg: Page.data.user.picture,
-      xm: Page.data.user.expert.split('|')
+      xm: Page.data.user.expert.indexOf('|')!=-1?Page.data.user.expert.split('|'):Page.data.user.expert
     })
     this.getdata()
   },

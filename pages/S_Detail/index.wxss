@@ -413,3 +413,16 @@ button[plain] {
   color: #fff;
   border-color: #00aaa4;
 }
+.addbox {
+  padding: 0rpx 30rpx;
+  background-color: #00aaa4;
+  border-radius: 5rpx;
+}
+.delbox {
+  padding: 0rpx 30rpx;
+  background-color: #bababa;
+  border-radius: 5rpx;
+}
+.delred {
+  background-color: red;
+}
