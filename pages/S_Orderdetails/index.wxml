@@ -20,7 +20,7 @@
       </view>
       <van-icon name="arrow" />
     </view> -->
-    <view class="wl white" bindtap="AddressGo">
+    <view class="wl white">
       <van-icon name="wap-home-o" size="36rpx" />
       <view class="text">
         <view>{{address_arr.name?address_arr.name:item.receiverRealName}} {{address_arr.name?address_arr.phone:item.receiverPhone}}</view>
@@ -78,7 +78,7 @@
         <view>￥{{item.actualPay}}</view>
       </view>
     </view>
-    <view class="box" bindtap="S_invoicego">
+    <view class="box">
       <view class="li">
         <view>发票：</view>
         <view wx:if="{{invoice_id!=''?invoice_id=='0':item.invoiceType=='0'}}">不开发票</view>
@@ -98,7 +98,7 @@
         <view>创建信息</view>
         <view>{{item.createDate}}</view>
       </view>
-      <view class="li" bindtap="payshow">
+      <view class="li">
         <view>支付方式</view>
         <view wx:if="{{feetype!=''?feetype=='0':item.payType==0}}">微信支付</view>
         <view wx:if="{{feetype!=''?feetype=='1':item.payType==1}}">公司转账</view>
@@ -127,10 +127,7 @@
       </view>
     </view>
     <view class="li right bottom">
-      <!-- <view bindtap="del">删除订单</view>
-      <view bindtap="stateclick">电子三证</view>
-      <view bindtap="S_invoicego">申请开票</view> -->
-      <button send-message-title="{{title}}" send-message-img="{{image}}" show-message-card="true" send-message-path="pages/S_Orderdetails/index?id={{id}}" class='details_button' open-type='contact' plain>联系在线客服
+      <button send-message-title="{{title}}" send-message-img="{{image}}" show-message-card="true" send-message-path="/pages/S_Orderdetails/index?id={{id}}&&user={{te_user}}&&item={{te_check_item}}" class='details_button' open-type='contact' plain>联系在线客服
       </button>
       <view wx:if="{{state==0}}" class="btn" bindtap="editbtn">重新下单</view>
       <view wx:if="{{state==0}}" class="btn red" bindtap="btn">去付款</view>

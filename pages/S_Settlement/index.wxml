@@ -27,6 +27,7 @@
       </view>
       <view class="li" wx:for="{{arr}}">
         <van-card
+          wx:if="{{!item.goodinfo}}"
           num="{{item.buynum}}"
           price="{{user.vip!=''&&user.vip?item.vipPrice:item.promotionPrice}}"
           origin-price="{{item.price}}"
@@ -34,6 +35,16 @@
           thumb="{{ item.imageOne }}"
           thumb-link="/pages/S_Detail/index?id={{item.id}}"
           link-type="navigateTo"
+        />
+        <van-card
+          wx:if="{{item.goodinfo}}"
+          num="{{item.goodinfo.num}}"
+          price="{{item.goodinfo.price}}"
+          desc="{{item.goodinfo.size}}"
+          title="{{item.name}}"
+          thumb="{{item.image}}"
+          link-type="navigateTo"
+          thumb-link="/pages/S_Detail/index?id={{item.value}}"
         />
       </view>
       <view class="li">

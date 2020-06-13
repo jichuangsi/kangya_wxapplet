@@ -55,7 +55,19 @@ Page({
   },
   sclick(){
     this.setData({
-      state:1
+      state:1,
+      check_tax:{
+        'id':'',
+        'unitName': '',
+        'code': '',
+        'registerAddress': '',
+        'registerPhone': '',
+        'bankName': '',
+        'bankAccount': '',
+        'receiverName': '',
+        'receiverPhone': '',
+        'receiverAddress': ''
+      }
     })
   },
   iptn(e){

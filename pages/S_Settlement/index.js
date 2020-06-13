@@ -120,7 +120,7 @@ Page({
     });
   },
   checkyh(e){
-    let price = Number(this.data.price)-Number(e.currentTarget.dataset.item.price)>0?Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price):0
+    let price = Number(this.data.price)-Number(e.currentTarget.dataset.item.price)>0?Number(this.data.price)-Number(e.currentTarget.dataset.item.price):0
     if(this.data.quannum=='1'){
       this.setData({
         yh_id:e.currentTarget.dataset.id,
@@ -295,9 +295,18 @@ Page({
         console.log(res)
         let price = 0
         let obj = {}
-        for(let i = 0;i<self.data.arr.length;i++){
-          price += res.data.list[0].vip!=''&&res.data.list[0].vip?(Number(self.data.arr[i].vipPrice)*Number(self.data.arr[i].buynum)):(Number(self.data.arr[i].promotionPrice)*Number(self.data.arr[i].buynum))
-          obj[self.data.arr[i].id]=self.data.arr[i].buynum
+        if(self.data.arr[0].goodinfo){
+          for(let i = 0;i<self.data.arr.length;i++){
+            console.log((Number(self.data.arr[i].goodinfo.price)))
+            console.log((Number(self.data.arr[i].goodinfo.num)))
+            price += (Number(self.data.arr[i].goodinfo.price)*Number(self.data.arr[i].goodinfo.num))
+            obj[self.data.arr[i].value]=self.data.arr[i].goodinfo.num
+          }
+        }else{
+          for(let i = 0;i<self.data.arr.length;i++){
+            price += res.data.list[0].vip!=''&&res.data.list[0].vip?(Number(self.data.arr[i].vipPrice)*Number(self.data.arr[i].buynum)):(Number(self.data.arr[i].promotionPrice)*Number(self.data.arr[i].buynum))
+            obj[self.data.arr[i].id]=self.data.arr[i].buynum
+          }
         }
         console.log(price)
         self.setData({
