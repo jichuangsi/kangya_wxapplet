@@ -44,8 +44,8 @@
         <input placeholder="请输入注册地址" value="{{check_tax.registerAddress}}" data-text="registerAddress" bindinput="iptn"></input>
       </view>
       <view class="addli">
-        <view class="title">注册地址</view>
-        <input placeholder="请输入注册电话" value="{{check_tax.registerPhone}}" data-text="registerAddress" bindinput="iptn"></input>
+        <view class="title">注册电话</view>
+        <input placeholder="请输入注册电话" value="{{check_tax.registerPhone}}" data-text="registerPhone" bindinput="iptn"></input>
       </view>
       <view class="addli">
         <view class="title">开户银行</view>
