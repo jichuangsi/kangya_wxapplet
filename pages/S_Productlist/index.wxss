@@ -100,7 +100,7 @@
   margin-top: 20rpx;
 }
 .search_box .h3 {
-  border-left: 1rpx solid red;
+  border-left: 1rpx solid #fc3533;
   margin-bottom: 20rpx;
   text-indent: 20rpx;
 }
@@ -261,7 +261,10 @@
   align-items: center;
 }
 .li .money .new {
-  color: red;
+  font-weight: 600;
+  color: #fc3533;
+  font-size: 32rpx;
+  margin-right: 20rpx;
 }
 .li .money .old {
   color: #999;
@@ -272,7 +275,7 @@
 .li .assemble {
   width: 100%;
   height: 46rpx;
-  border: 2rpx solid red;
+  border: 2rpx solid #fc3533;
   line-height: 46rpx;
   display: flex;
   margin-top: 20rpx;
@@ -284,12 +287,12 @@
 .li .assemble view {
   flex: 1;
   color: #fff;
-  background-color: red;
+  background-color: #fc3533;
   text-align: center;
 }
 .li .assemble view:first-child{
   background-color: #fff;
-  color: red;
+  color: #fc3533;
 }
 .li .assemble_text {
   font-size: 26rpx;
@@ -309,4 +312,12 @@
 .wu image {
   width: 213rpx;
   height: 170rpx;
+}
+.vip {
+  font-size: 24rpx !important;
+  color: #fff;
+  background-color: #fc3533;
+  border-radius: 10rpx;
+  padding: 2rpx 10rpx;
+  font-weight: 500;
 }

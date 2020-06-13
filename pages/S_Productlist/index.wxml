@@ -41,7 +41,10 @@
             <view class="right">
               <view class="text">{{item.name}}</view>
               <view class="money">
-                <view class="new">￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+                <view class="new">
+                  <view>￥{{user.vip!=''&&user.vip?item.goodinfo.vip_price:item.goodinfo.promotion_price}}</view>
+                  <view class="vip" wx:if="{{user.vip!=''&&user.vip}}">vip专享价</view>
+                </view>
                 <view class="old">￥{{item.goodinfo.price}}</view>
               </view>
             </view>
