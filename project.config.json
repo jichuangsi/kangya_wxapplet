@@ -126,8 +126,8 @@
 				},
 				{
 					"id": 9,
-					"name": "pages/S_Order/index",
-					"pathName": "pages/S_Order/index",
+					"name": "pages/S_invoice/index",
+					"pathName": "pages/S_invoice/index",
 					"query": "title=0&&id=692",
 					"scene": null
 				},

@@ -60,15 +60,26 @@
 }
 van-card {
   width: 100%;
+  font-size: 34rpx;
+}
+.van-card {
+  width: 100%;
+  font-size: 28rpx !important;
+  line-height: 34rpx !important;
 }
 .right {
   justify-content: flex-end;
   border: none;
+  font-size: 32rpx;
 }
 .right view {
-  padding: 2rpx 10rpx;
-  border: 1rpx solid #333;
+  padding: 5rpx 10rpx;
+  /* border: 1rpx solid #333; */
   margin-left: 20rpx;
+  font-size: 32rpx;
+  background-color: #00aaa4;
+  color: #fff;
+  box-sizing: border-box;
 }
 .van-dialog__button {
   flex: none;

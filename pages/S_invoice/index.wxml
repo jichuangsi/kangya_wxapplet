@@ -5,33 +5,73 @@
     </van-nav-bar>
   </view> -->
   <view class="center">
-    <view class="li">
+    <view class="li" wx:if="{{state!=1}}">
       <view class="title">发票类型</view>
       <view class="box">
         <view class="{{check_num==index?'check':''}}" wx:for="{{arr}}" data-index="{{index}}" bindtap="check_click">{{item}}</view>
       </view>
     </view>
-    <!-- <view class="li" wx:if="{{check_num == 0}}">
-      <view class="title">抬头类型</view>
-      <view class="text">
-        <van-radio-group value="{{ radio }}" bind:change="onChange">
-          <van-radio name="1">个人</van-radio>
-          <van-radio name="2">企业</van-radio>
-        </van-radio-group>
+    <view class="ul" wx:if="{{state!=1}}">
+      <view class="u_title">选择发票信息</view>
+      <view class="u_li {{taxid==item.id?'check_uli':''}}" data-index="{{index}}" data-item="{{item}}" wx:for="{{tax_arr}}" bindtap="check_li">
+          <view class="user">
+            <view class="user_top">
+              <view>{{item.receiverName}}</view>
+              <view>{{item.receiverPhone}}</view>
+            </view>
+            <view class="user_bottom">
+              <view>{{item.receiverAddress}}</view>
+            </view>
+          </view>
+          <van-icon name="edit" size="36rpx" data-item="{{item}}" catchtap="stateclick"/>
       </view>
     </view>
-    <view class="li" wx:if="{{check_num == 0}}">
-      <view class="title">发票抬头</view>
-      <input placeholder="请输入发票抬头"></input>
+    <view class="addbox" wx:if="{{state==1}}">
+      <view class="addtext">我们会在一个工作日内完成审核</view>
+      <view class="addtext">1）注意有效增值税发票资质仅为一个</view>
+      <view class="addtext red">2）本页面信息仅提供增值税收专用发票-资质审核使用，切勿进行支付相关业务，谨防上当受骗</view>
+      <view class="addtitle">填写增票资质信息</view>
+      <view class="addli">
+        <view class="title">单位名称</view>
+        <input placeholder="请输入单位名称" value="{{check_tax.unitName}}" data-text="unitName" bindinput="iptn"></input>
+      </view>
+      <view class="addli">
+        <view class="title">纳税人识别码</view>
+        <input placeholder="请输入纳税人识别码" value="{{check_tax.code}}" data-text="code" bindinput="iptn"></input>
+      </view>
+      <view class="addli">
+        <view class="title">注册地址</view>
+        <input placeholder="请输入注册地址" value="{{check_tax.registerAddress}}" data-text="registerAddress" bindinput="iptn"></input>
+      </view>
+      <view class="addli">
+        <view class="title">开户银行</view>
+        <input placeholder="请输入开户银行" value="{{check_tax.bankName}}" data-text="bankName" bindinput="iptn"></input>
+      </view>
+      <view class="addli">
+        <view class="title">银行账号</view>
+        <input placeholder="请输入银行账号" value="{{check_tax.bankAccount}}" data-text="bankAccount" bindinput="iptn"></input>
+      </view>
+      <view class="addtitle">增票收票地址</view>
+      <view class="addli">
+        <view class="title">收票人姓名</view>
+        <input placeholder="请输入收票人姓名" value="{{check_tax.receiverName}}" data-text="receiverName" bindinput="iptn"></input>
+      </view>
+      <view class="addli">
+        <view class="title">收票人手机号</view>
+        <input placeholder="请输入收票人手机号" value="{{check_tax.receiverPhone}}" data-text="receiverPhone" bindinput="iptn"></input>
+      </view>
+      <view class="addli">
+        <view class="title">收票人地址</view>
+        <input placeholder="请输入收票人地址" value="{{check_tax.receiverAddress}}" data-text="receiverAddress" bindinput="iptn"></input>
+      </view>
+      <view class="btn mt">
+        <view bindtap="qxbtn">取消</view>
+        <view bindtap="editbtn">保存</view>
+      </view>
     </view>
-    <view class="li" wx:if="{{check_num == 0}}">
-      <view class="title">手机号码</view>
-      <input placeholder="请输入手机号码"></input>
+    <view class="btn mt" wx:if="{{state!=1}}">
+        <view bindtap="sclick">新增发票信息</view>
+        <view bindtap="btn">确定</view>
     </view>
-    <view class="li" wx:if="{{check_num == 0}}">
-      <view class="title">设为默认发票抬头</view>
-      <van-switch checked="{{ checked }}" bind:change="onChange1" />
-    </view> -->
-    <view class="btn mt" bindtap="btn">确定</view>
   </view>
 </view>

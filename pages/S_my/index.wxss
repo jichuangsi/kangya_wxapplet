@@ -127,7 +127,7 @@ van-grid {
   width: 100%;
 }
 van-grid text {
-  font-size: 24rpx;
+  font-size: 28rpx;
 }
 .van-dialog__button {
   flex: none;

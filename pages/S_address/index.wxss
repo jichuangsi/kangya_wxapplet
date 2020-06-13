@@ -85,7 +85,7 @@
   line-height: 76rpx;
   display: flex;
   justify-content: center;
-  background-color: #29d;
+  background-color: #00aaa4;
   color: #fff;
   text-align: center;
   letter-spacing: 5rpx;

@@ -17,6 +17,7 @@ Page({
     check_yf:'',
     quannum:1,
     invoice_id:0,
+    taxid:'',
     message:'',
     arr:[],
     user:'',
@@ -155,6 +156,7 @@ Page({
           'postFeeId':self.data.yf_id,
           'saler_id':self.data.saler_id,
           'isProof':'0',
+          'taxid':self.data.taxid,
           'addressid':self.data.address_arr.id,
           'invoiceType':self.data.invoice_id,
           'feetype':self.data.feetype

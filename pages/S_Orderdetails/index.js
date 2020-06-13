@@ -13,6 +13,7 @@ Page({
     check_item:'',
     address_arr:{},
     invoice_id:'',
+    taxid:'',
     feetype:'',
     show:false,
     company:[],
@@ -64,7 +65,7 @@ Page({
   paystype(e){
     let index = e.currentTarget.dataset.index
     if(index=='2'){
-      if(Number(this.data.user.remain)>=Number(this.data.price)){
+      if(Number(this.data.user.remain)>=Number(this.data.item.actualPay)){
         this.setData({
           feetype:index
         })
@@ -98,6 +99,7 @@ Page({
         console.log(777)
         console.log(res)
         res.data.list[0].createDate = self.getLocalTime(res.data.list[0].createDate)
+        console.log(res.data.list[0].createDate)
         self.setData({
           item:res.data.list[0],
         })
@@ -203,7 +205,8 @@ Page({
           'postFeeId':self.data.item.postFeeId,
           'saler_id':wx.getStorageSync('saler_id'),
           'isProof':'0',
-          'addressid':self.data.address_arr.name?self.data.address_arr.id:'',
+          'taxid':self.data.taxid?self.data.taxid:self.data.item.taxid,
+          'addressid':self.data.address_arr.name?self.data.address_arr.id:self.data.item.postFeeId,
           'invoiceType':self.data.invoice_id==''?self.data.item.invoiceType:self.data.invoice_id,
           'feetype':self.data.feetype==''?self.data.item.payType:self.data.feetype
         })

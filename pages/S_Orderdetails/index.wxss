@@ -43,7 +43,7 @@
 }
 .center {
   padding: 0rpx 0rpx;
-  padding-bottom: 80rpx;
+  padding-bottom: 100rpx;
   box-sizing: border-box;
 }
 .center_top {
@@ -110,23 +110,35 @@
 van-card {
   width: 100%;
 }
+.van-card {
+  width: 100%;
+  font-size: 28rpx !important;
+  line-height: 34rpx !important;
+}
 .right {
   justify-content: flex-end;
   border: none;
 }
-.right view {
-  padding: 2rpx 10rpx;
+.bottom view {
+  padding: 5rpx 10rpx;
   border: 1rpx solid #333;
   margin-left: 20rpx;
-  font-size: 30rpx;
-  line-height: 36rpx;
+  font-size: 34rpx;
+  line-height: 46rpx;
+  background-color: #00aaa4;
+  color: #fff;
+  font-weight: 500;
 }
-.right button {
+.bottom button {
   font-size: 30rpx;
   line-height: 36rpx;
   border-radius: 0rpx;
-  padding: 2rpx 10rpx;
+  padding: 5rpx 10rpx;
   margin-right: 0rpx;
+  font-size: 34rpx;
+  background-color: #00aaa4;
+  color: #fff;
+  font-weight: 500;
 }
 .van-dialog__button {
   flex: none;
@@ -146,7 +158,7 @@ van-card {
   text-indent: 2em;
   color: #999;
 }
-.red {
+.right .red {
   background-color: #fc3533;
   color: #fff;
 }
