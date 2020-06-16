@@ -85,6 +85,7 @@
   align-items: center;
   padding: 20rpx;
   box-sizing: border-box;
+  width: 200rpx;
 }
 .yh .yh_li .left view {
   font-size: 28rpx;
@@ -97,6 +98,9 @@
 }
 .yh .yh_li .left view:first-child view {
   font-size: 26rpx;
+}
+.yh .yh_li .left view:last-child {
+  font-size: 30rpx;
 }
 .yh .yh_li .right {
   flex: 1;

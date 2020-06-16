@@ -76,6 +76,30 @@ Page({
       }
     });
   },
+  lqclick(e){
+    console.log(111)
+    let id = e.currentTarget.dataset.id
+    let self =this
+    wx.request({
+      url: getApp().data.APIS + '/svc/a',
+      method: "post",
+      data: {
+      "plugin":'acceptfree',
+      "id":id
+      },
+      header: {
+      "token": wx.getStorageSync("token"),
+      'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function(res) { 
+        wx.showToast({
+          title: '领取成功',
+          icon:'success'
+        })
+        self.getdata()
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
