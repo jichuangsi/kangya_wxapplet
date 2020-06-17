@@ -58,13 +58,13 @@
       <view class="li" data-index="1" bindtap="showpopup">
         <view class="title">优惠券</view>
         <view wx:if="{{check_yh==''}}">选择优惠券</view>
-        <view wx:if="{{check_yh!=''}}">{{check_yh.price}}</view>
+        <view wx:if="{{check_yh!=''}}">{{check_yh.des}}</view>
         <van-icon name="arrow" size="36rpx" />
       </view>
       <view class="li" data-index="2" bindtap="showpopup">
         <view class="title">运费券</view>
-        <view wx:if="{{check_yh==''}}">选择运费券</view>
-        <view wx:if="{{check_yh!=''}}">{{check_yf.price}}</view>
+        <view wx:if="{{check_yf==''}}">未满149元需另付运费12元</view>
+        <view wx:if="{{check_yf!=''}}">{{check_yf.des}}</view>
         <van-icon name="arrow" size="36rpx" />
       </view>
       <!-- <view class="li">
@@ -86,9 +86,9 @@
         <view style="color:#333">订单备注</view>
         <input placeholder="选填:请先和商家协商一致" bindinput="messageipt"></input>
       </view>
-      <view class="li">
+      <!-- <view class="li">
         <view>未满149元需另付运费12元</view>
-      </view>
+      </view> -->
       <view class="li">
         <view class="right">合计:￥{{price}}</view>
       </view>

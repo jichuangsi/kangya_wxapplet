@@ -120,7 +120,8 @@ Page({
     });
   },
   checkyh(e){
-    let price = Number(this.data.price)-Number(e.currentTarget.dataset.item.price)>0?Number(this.data.price)-Number(e.currentTarget.dataset.item.price):0
+    let price = Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price)>0?Number(this.data.all_price)-Number(e.currentTarget.dataset.item.price):0
+    price = Math.round(price * 100) / 100
     if(this.data.quannum=='1'){
       this.setData({
         yh_id:e.currentTarget.dataset.id,
@@ -297,8 +298,6 @@ Page({
         let obj = {}
         if(self.data.arr[0].goodinfo){
           for(let i = 0;i<self.data.arr.length;i++){
-            console.log((Number(self.data.arr[i].goodinfo.price)))
-            console.log((Number(self.data.arr[i].goodinfo.num)))
             price += (Number(self.data.arr[i].goodinfo.price)*Number(self.data.arr[i].goodinfo.num))
             obj[self.data.arr[i].value]=self.data.arr[i].goodinfo.num
           }
@@ -308,7 +307,7 @@ Page({
             obj[self.data.arr[i].id]=self.data.arr[i].buynum
           }
         }
-        console.log(price)
+        price = Math.round(price * 100) / 100
         self.setData({
           user:res.data.list[0],
           all_price:price,
