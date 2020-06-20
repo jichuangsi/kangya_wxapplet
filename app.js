@@ -21,6 +21,7 @@ App({
         data = view.data;
         console.log('是否重写分享方法', data.isOverShare);
         if (!data.isOverShare) {
+          console.log(44444444444)
           data.isOverShare = true;
           view.onShareAppMessage = function () {
             //分享配置

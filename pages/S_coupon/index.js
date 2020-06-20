@@ -70,8 +70,32 @@ Page({
       success: function(res) {
         console.log(54361)
         console.log(res)
+        let arr = res.data.list
+        let arr1 = [
+          { title: '代金券(0)', state: 0 },
+          { title: '满减劵(0)', state: 0 },
+          { title: '运费券(0)', state: 0 },
+        ]
+        let index1 = 0
+        let index2 = 0
+        let index3 = 0
+        for(let i = 0;i<arr.length;i++){
+          if(arr[i].state==4){
+            if(arr[i].stype == 1){
+              index1++
+              arr1[0].title = '代金券('+index1+')'
+            }else if(arr[i].stype == 2){
+              index2++
+              arr1[1].title = '满减劵('+index2+')'
+            }else if(arr[i].stype == 2){
+              index3++
+              arr1[2].title = '运费券('+index3+')'
+            }
+          }
+        }
         self.setData({
-          yh_arr:res.data.list
+          yh_arr:res.data.list,
+          nav_arr:arr1
         })
       }
     });

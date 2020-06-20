@@ -145,6 +145,7 @@ Page({
     chain3_none: true,
     chain4_none: true,
     chain5_none: true,
+    isOverShare:true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -7044,9 +7045,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log(7777)
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];  //上一个页面
+    console.log(888)
     let date = new Date()
     this.setData({
       title: options.title,
@@ -7124,6 +7126,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    console.log(11123)
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/component/pages/erocdetails/index?title=' + this.data.title  // 路径，传递参数到指定页面。
+    }
   }
 })
