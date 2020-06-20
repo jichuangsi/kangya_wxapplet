@@ -135,7 +135,7 @@
     <view class="yh">
       <view class="yh_title">{{quannum==1?'优惠券':'运费券'}}</view>
       <view class="yh_box">
-              <view class="yh_li" wx:for="{{yh_arr}}" wx:if="{{item.state==0&&quannum=='1'}}">
+              <view class="yh_li" wx:for="{{yh_arr}}" wx:if="{{item.state==0&&quannum=='1'&&item.stype!=3}}">
                 <view class="left">
                     <view wx:if="{{item.price!=0}}"><view>￥</view>{{item.price}}</view>
                     <view>{{item.des}}</view>
@@ -153,7 +153,7 @@
                   <view wx:if="{{all_price<item.m_price}}" class="right_state hui">不可使用</view>
                 </view>
               </view>
-              <view class="yh_li" wx:for="{{yh_arr}}" wx:if="{{item.state==0&&quannum=='2'}}">
+              <view class="yh_li" wx:for="{{yh_arr}}" wx:if="{{item.state==0&&quannum=='2'&&item.stype==3}}">
                 <view class="left">
                     <view wx:if="{{item.price!=0}}"><view>￥</view>{{item.price}}</view>
                     <view>{{item.des}}</view>

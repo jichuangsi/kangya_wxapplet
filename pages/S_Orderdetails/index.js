@@ -19,7 +19,8 @@ Page({
     company:[],
     price:'',
     user:'',
-    check_obj:''
+    check_obj:'',
+    isOverShare: true
   },
   onClickLeft() {
     wx.navigateBack({
@@ -398,5 +399,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+      title: this.data.title,
+      desc: '分享页面的内容',
+      path: '/pages/S_Orderdetails/index?id='+this.data.id+'&&user='+this.data.te_user+'&&item='+this.data.te_check_item  // 路径，传递参数到指定页面。
+    }
   }
 })

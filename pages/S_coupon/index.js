@@ -87,7 +87,7 @@ Page({
             }else if(arr[i].stype == 2){
               index2++
               arr1[1].title = '满减劵('+index2+')'
-            }else if(arr[i].stype == 2){
+            }else if(arr[i].stype == 3){
               index3++
               arr1[2].title = '运费券('+index3+')'
             }

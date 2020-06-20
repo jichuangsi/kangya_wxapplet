@@ -162,3 +162,6 @@ van-card {
   background-color: #fc3533;
   color: #fff;
 }
+.tesubtn {
+  color: #fc3533;
+}

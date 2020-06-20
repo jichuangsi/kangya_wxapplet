@@ -117,8 +117,8 @@
 }
 .yh .yh_li .right .right_top .state {
   padding: 2rpx 10rpx;
-  background-color: pink;
-  color: red;
+  background-color: rgba(255, 0, 0, 0.815);
+  color: #fff;
   margin-right: 10rpx;
 }
 .yh .yh_li .right .right_bottom {
